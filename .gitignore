@@ -1,0 +1,12 @@
+
+.idea/
+
+test-output/
+
+target/classes/com/appiumframework/core/
+
+target/classes/com/appiumframework/pages/
+
+.settings/
+
+target/classes/META-INF/
