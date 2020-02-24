@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
-  <test name="Test">
+  <test name="Sanity Release Checklist" preserve-order="true">
     <classes>
       <class name="com.appiumframework.tests.StartPageTest"/>
+      <class name="com.appiumframework.tests.LoginPageTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
