@@ -10,11 +10,11 @@ public class PinEntryPage extends BaseTest {
     @iOSXCUITFindBy(id = "5_button") private MobileElement fiveBtn;
     @iOSXCUITFindBy(id = "4_button") private MobileElement fourBtn;
 
-    public PinEntryPage pressPinBtns() {
+    public LoginPage pressPinBtns() {
         click(sevenBtn);
         click(threeBtn);
         click(fiveBtn);
         click(fourBtn);
-        return this;
+        return new LoginPage();
     }
 }
