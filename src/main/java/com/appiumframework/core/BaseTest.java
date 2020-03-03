@@ -118,7 +118,7 @@ public class BaseTest {
 //TODO: STEPS BELOW:
 /*
 * Change Context to webview
-*   -Make Function in Base Class    [x]
+* Make Function in Base Class       [x]
 * Wait For Visibility of LOGIN      [x]
 * Wait For Visibility of PASSWORD   [x]
 * Send Password to LOGIN            [x]
@@ -130,8 +130,13 @@ public class BaseTest {
 *
 * Upon Logging in Switch to Dashboard Class switch the context back to Mobile   [ ]
 *
-* Create Dashboard Page Class [ ]
-* Create Dashboard Test Class [ ]
+* Create Dashboard Page Class           [ ]
+* Create Dashboard Test Cla             [ ]
+*
+* Add Wait for PreLoader Class to finisH FIND ACCESSABILITY ID
+* Wait for Username and Password to be ENABLED
+* MATT HARRIS
+*
 *   MISC
 *       USE XCODE SAFARI INSPECTOR TO GET THE ID OF INCORRECT PASSWORD BUBBLE FOR TEST ASSERTIONS [ ]
 * */
