@@ -29,9 +29,19 @@ public class StartPageTest extends BaseTest {
     }
 
     @Test
-    public void xxx() {
+    public void fail() {
         startPage.pressGetStartedBtn();
+        pinEntryPage.pressIncorrectPinBtns();
+        pinEntryPage.pressIncorrectPinBtns();
+        pinEntryPage.pressIncorrectPinBtns();
+
+    }
+
+    @Test
+    public void xxx() {
+//        startPage.pressGetStartedBtn();
         pinEntryPage.pressPinBtns();
     }
+
 
 }
