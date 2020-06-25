@@ -1,12 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.frontlinemobile.demo</groupId>
-	<artifactId>MobileProject</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>frontlinemobile</name>
-	<properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cucumbermobiletest</groupId>
+  <artifactId>cucumbermobiletest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>frontlinemobiletest</name>
+  <properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<jdk.version>1.8</jdk.version>
@@ -49,9 +47,16 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<featureName>src/test/resources/features</featureName>
 		<featureTag>@login</featureTag>
-		<featureGlue>com.mobile.test</featureGlue>
+		<featureGlue>com.frontline.step</featureGlue>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>com.autofusionplus.mobile</groupId>
+			<artifactId>afpluscucumber-mobile</artifactId>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/afpluscucumber-mobile-1.0.jar</systemPath>
+			<version>1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>io.appium</groupId>
 			<artifactId>java-client</artifactId>
@@ -308,7 +313,7 @@
 								<tag>${featureTag}</tag>
 							</tags>
 							<namingScheme>simple</namingScheme>
-							<!-- The class naming pattern to use. Only required/used if naming
+							<!-- The class naming pattern to use. Only required/used if naming 
 								scheme is 'pattern'. -->
 							<namingPattern>Parallel{c}IT</namingPattern>
 							<parallelScheme>SCENARIO</parallelScheme>

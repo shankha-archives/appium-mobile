@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
     <Account type="login">
-        <loginid>ABC</loginid>
+        <loginid>John Doe</loginid>
         <loginpass>ThisIsNotAPassword</loginpass>
     </Account>
     <Account type="invalid">

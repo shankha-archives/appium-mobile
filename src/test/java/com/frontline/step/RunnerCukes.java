@@ -1,14 +1,14 @@
 package com.frontline.step;
 
 import org.junit.Test;
-import com.frontline.manager.AppiumManager;
+import com.afpluscucumbermobile.manager.AppiumManager;
 
-public class RunnerCukes
+public class RunnerCukes 
 {
-    @Test
-    public void testCukesRunner() throws Exception
+   @Test
+    public void testCukesRunner() throws Exception 
     {
-        AppiumManager parallelThread = new AppiumManager();
+	   AppiumManager parallelThread = new AppiumManager();
         parallelThread.runner("");
     }
 }

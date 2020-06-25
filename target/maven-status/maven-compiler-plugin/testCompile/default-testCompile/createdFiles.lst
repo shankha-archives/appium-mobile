@@ -1,0 +1,6 @@
+com\frontline\step\LoginSteps.class
+output\Parallel02IT.class
+com\frontline\page\objects\LoginPageObjects.class
+com\frontline\pages\LoginPageMethods.class
+output\Parallel01IT.class
+com\frontline\step\RunnerCukes.class
