@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="52461" started-at="2020-06-25T14:01:54Z" finished-at="2020-06-25T14:02:47Z">
+  <suite name="Surefire suite" duration-ms="121831" started-at="2020-06-26T12:32:16Z" finished-at="2020-06-26T12:34:18Z">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="52461" started-at="2020-06-25T14:01:54Z" finished-at="2020-06-25T14:02:47Z">
+    <test name="Surefire test" duration-ms="121831" started-at="2020-06-26T12:32:16Z" finished-at="2020-06-26T12:34:18Z">
       <class name="com.frontline.step.RunnerCukes">
-        <test-method status="PASS" signature="testCukesRunner() throws java.lang.Exception" name="testCukesRunner" duration-ms="52366" started-at="2020-06-25T14:01:54Z" finished-at="2020-06-25T14:02:47Z">
+        <test-method status="PASS" signature="testCukesRunner() throws java.lang.Exception" name="testCukesRunner" duration-ms="121723" started-at="2020-06-26T12:32:16Z" finished-at="2020-06-26T12:34:18Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testCukesRunner -->

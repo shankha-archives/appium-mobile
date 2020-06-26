@@ -11,13 +11,6 @@
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- output.Parallel01IT -->
-      <class name="output.Parallel02IT">
-        <methods>
-          <include name="setUpClass"/>
-          <include name="feature" invocation-numbers="0"/>
-          <include name="tearDownClass"/>
-        </methods>
-      </class> <!-- output.Parallel02IT -->
     </classes>
   </test> <!-- TestNG Test0(failed) -->
 </suite> <!-- Failed suite [TestNG Forum] -->

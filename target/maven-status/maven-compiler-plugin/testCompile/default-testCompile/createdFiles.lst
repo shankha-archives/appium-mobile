@@ -1,6 +1,6 @@
-com\frontline\step\LoginSteps.class
-output\Parallel02IT.class
-com\frontline\page\objects\LoginPageObjects.class
-com\frontline\pages\LoginPageMethods.class
+com\frontline\pages\DriverClass.class
+com\frontline\object\LoginPageObjects.class
+com\frontline\step\LoginPage.class
 output\Parallel01IT.class
+com\frontline\pages\LoginPagesMethod.class
 com\frontline\step\RunnerCukes.class

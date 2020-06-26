@@ -434,3 +434,59 @@
 [INFO ] 2020-06-25 20:09:03.730 [Thread_0] Log - 2020-06-25 20:09:03 [INFO] [scenario:250] - #################################################
 [INFO ] 2020-06-25 20:09:03.730 [Thread_0] Log - 2020-06-25 20:09:03 [INFO] [scenario:251] - 		Scenario: Login with invalid userName		
 [INFO ] 2020-06-25 20:09:03.731 [Thread_0] Log - 2020-06-25 20:09:03 [INFO] [scenario:252] - #################################################
+[INFO ] 2020-06-26 17:58:00.489 [main] Log - 2020-06-26 17:58:00 [INFO] [getDeviceSerial:91] - Adding all android devices: emulator-5554
+[INFO ] 2020-06-26 17:58:00.499 [main] Log - 2020-06-26 17:58:00 [INFO] [getAndroidDeviceSerial:77] - Adding Android devices
+[INFO ] 2020-06-26 17:58:00.501 [main] Log - 2020-06-26 17:58:00 [INFO] [initializeDevices:66] - {emulator-5554=true}
+[INFO ] 2020-06-26 17:58:00.520 [main] Log - 2020-06-26 17:58:00 [INFO] [parallelExecution:70] - creating directory: Logs
+[INFO ] 2020-06-26 17:58:00.531 [main] Log - 2020-06-26 17:58:00 [INFO] [getDeviceInfo:55] - D:\Frontline\frontlinemobile\testdata\deviceSheet.csv
+[INFO ] 2020-06-26 17:58:00.534 [main] Log - 2020-06-26 17:58:00 [INFO] [getDeviceInfo:55] - D:\Frontline\frontlinemobile\testdata\deviceSheet.csv
+[INFO ] 2020-06-26 17:58:00.537 [main] Log - 2020-06-26 17:58:00 [INFO] [parallelExecution:86] - creating directory: ADBLogs
+[INFO ] 2020-06-26 17:58:00.544 [main] Log - 2020-06-26 17:58:00 [INFO] [parallelExecution:111] - ********************************************
+
+[INFO ] 2020-06-26 17:58:00.545 [main] Log - 2020-06-26 17:58:00 [INFO] [parallelExecution:112] - Total Number of devices detected::1
+
+[INFO ] 2020-06-26 17:58:00.547 [main] Log - 2020-06-26 17:58:00 [INFO] [parallelExecution:113] - ********************************************
+
+[INFO ] 2020-06-26 17:58:00.548 [main] Log - 2020-06-26 17:58:00 [INFO] [parallelExecution:114] - starting running tests in threads
+[INFO ] 2020-06-26 17:58:01.303 [TestNG-tests-1] Log - 2020-06-26 17:58:01 [INFO] [feature:171] - Feature Name: Verify the Login Scenarios
+[INFO ] 2020-06-26 17:58:01.308 [Thread_0] Log - 2020-06-26 17:58:01 [INFO] [createAppiumInstance:205] - 0parallel
+[INFO ] 2020-06-26 17:58:04.033 [Thread_0] Log - 2020-06-26 17:58:04 [INFO] [startAppiumServerForAndroid:67] - *****************************************
+
+[INFO ] 2020-06-26 17:58:04.034 [Thread_0] Log - 2020-06-26 17:58:04 [INFO] [startAppiumServerForAndroid:68] - Starting Appium Server for Android Device::emulator-5554
+
+[INFO ] 2020-06-26 17:58:04.035 [Thread_0] Log - 2020-06-26 17:58:04 [INFO] [startAppiumServerForAndroid:69] - *****************************************
+
+[INFO ] 2020-06-26 17:58:11.382 [Thread_0] Log - 2020-06-26 17:58:11 [INFO] [androidNative:34] - Setting Android Desired Capabilities:
+[INFO ] 2020-06-26 17:58:11.385 [Thread_0] Log - 2020-06-26 17:58:11 [INFO] [androidNative:47] - emulator-555413
+[INFO ] 2020-06-26 17:58:41.498 [Thread_0] Log - 2020-06-26 17:58:41 [INFO] [startOfScenarioLifeCycle:196] - []
+[INFO ] 2020-06-26 17:58:41.501 [Thread_0] Log - 2020-06-26 17:58:41 [INFO] [scenario:250] - #################################################
+[INFO ] 2020-06-26 17:58:41.505 [Thread_0] Log - 2020-06-26 17:58:41 [INFO] [scenario:251] - 		Scenario: Login with Valid credentials		
+[INFO ] 2020-06-26 17:58:41.508 [Thread_0] Log - 2020-06-26 17:58:41 [INFO] [scenario:252] - #################################################
+[INFO ] 2020-06-26 18:02:17.412 [main] Log - 2020-06-26 18:02:17 [INFO] [getDeviceSerial:91] - Adding all android devices: emulator-5554
+[INFO ] 2020-06-26 18:02:17.422 [main] Log - 2020-06-26 18:02:17 [INFO] [getAndroidDeviceSerial:77] - Adding Android devices
+[INFO ] 2020-06-26 18:02:17.422 [main] Log - 2020-06-26 18:02:17 [INFO] [initializeDevices:66] - {emulator-5554=true}
+[INFO ] 2020-06-26 18:02:17.443 [main] Log - 2020-06-26 18:02:17 [INFO] [parallelExecution:70] - creating directory: Logs
+[INFO ] 2020-06-26 18:02:17.454 [main] Log - 2020-06-26 18:02:17 [INFO] [getDeviceInfo:55] - D:\Frontline\frontlinemobile\testdata\deviceSheet.csv
+[INFO ] 2020-06-26 18:02:17.457 [main] Log - 2020-06-26 18:02:17 [INFO] [getDeviceInfo:55] - D:\Frontline\frontlinemobile\testdata\deviceSheet.csv
+[INFO ] 2020-06-26 18:02:17.460 [main] Log - 2020-06-26 18:02:17 [INFO] [parallelExecution:86] - creating directory: ADBLogs
+[INFO ] 2020-06-26 18:02:17.466 [main] Log - 2020-06-26 18:02:17 [INFO] [parallelExecution:111] - ********************************************
+
+[INFO ] 2020-06-26 18:02:17.467 [main] Log - 2020-06-26 18:02:17 [INFO] [parallelExecution:112] - Total Number of devices detected::1
+
+[INFO ] 2020-06-26 18:02:17.468 [main] Log - 2020-06-26 18:02:17 [INFO] [parallelExecution:113] - ********************************************
+
+[INFO ] 2020-06-26 18:02:17.469 [main] Log - 2020-06-26 18:02:17 [INFO] [parallelExecution:114] - starting running tests in threads
+[INFO ] 2020-06-26 18:02:18.308 [TestNG-tests-1] Log - 2020-06-26 18:02:18 [INFO] [feature:171] - Feature Name: Verify the Login Scenarios
+[INFO ] 2020-06-26 18:02:18.313 [Thread_0] Log - 2020-06-26 18:02:18 [INFO] [createAppiumInstance:205] - 0parallel
+[INFO ] 2020-06-26 18:02:21.227 [Thread_0] Log - 2020-06-26 18:02:21 [INFO] [startAppiumServerForAndroid:67] - *****************************************
+
+[INFO ] 2020-06-26 18:02:21.227 [Thread_0] Log - 2020-06-26 18:02:21 [INFO] [startAppiumServerForAndroid:68] - Starting Appium Server for Android Device::emulator-5554
+
+[INFO ] 2020-06-26 18:02:21.228 [Thread_0] Log - 2020-06-26 18:02:21 [INFO] [startAppiumServerForAndroid:69] - *****************************************
+
+[INFO ] 2020-06-26 18:02:29.432 [Thread_0] Log - 2020-06-26 18:02:29 [INFO] [androidNative:34] - Setting Android Desired Capabilities:
+[INFO ] 2020-06-26 18:02:29.435 [Thread_0] Log - 2020-06-26 18:02:29 [INFO] [androidNative:47] - emulator-555413
+[INFO ] 2020-06-26 18:03:01.010 [Thread_0] Log - 2020-06-26 18:03:01 [INFO] [startOfScenarioLifeCycle:196] - []
+[INFO ] 2020-06-26 18:03:01.011 [Thread_0] Log - 2020-06-26 18:03:01 [INFO] [scenario:250] - #################################################
+[INFO ] 2020-06-26 18:03:01.013 [Thread_0] Log - 2020-06-26 18:03:01 [INFO] [scenario:251] - 		Scenario: Login with Valid credentials		
+[INFO ] 2020-06-26 18:03:01.014 [Thread_0] Log - 2020-06-26 18:03:01 [INFO] [scenario:252] - #################################################
