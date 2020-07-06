@@ -1,6 +1,10 @@
-com\frontline\pages\DriverClass.class
-com\frontline\object\LoginPageObjects.class
-com\frontline\step\LoginPage.class
-output\Parallel01IT.class
-com\frontline\pages\LoginPagesMethod.class
-com\frontline\step\RunnerCukes.class
+mobile\frontline\pages\BasePage$2.class
+mobile\frontline\pages\LoginPage.class
+mobile\frontline\stepdef\LoginStepDef.class
+mobile\frontline\stepdef\Hooks.class
+mobile\frontline\pages\BasePage.class
+mobile\frontline\pages\BasePage$1.class
+mobile\frontline\pages\BasePage$4.class
+mobile\frontline\pages\BasePage$3.class
+mobile\frontline\pages\BasePage$Direction.class
+mobile\frontline\runners\MyRunnerTest.class

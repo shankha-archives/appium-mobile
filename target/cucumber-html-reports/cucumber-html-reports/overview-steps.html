@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports  - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>No Name (add projectName to cucumber-reporting.properties)</td>
+      <td>06 Jul 2020, 19:07</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.Hooks.initialize()</td>
+              <td>3</td>
+              <td class="duration" data-value="2824666666">2.824</td>
+              <td class="duration" data-value="2824666666">3.330</td>
+              <td class="duration" data-value="8474000000">8.474</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.Hooks.quit(io.cucumber.java.Scenario)</td>
+              <td>3</td>
+              <td class="duration" data-value="2549333333">2.549</td>
+              <td class="duration" data-value="2549333333">2.721</td>
+              <td class="duration" data-value="7648000000">7.648</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.theSubstituteUserArrivesOnThePINEntryScreen()</td>
+              <td>1</td>
+              <td class="duration" data-value="4000000">0.004</td>
+              <td class="duration" data-value="4000000">0.004</td>
+              <td class="duration" data-value="4000000">0.004</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.theSubstituteUserIsPromptedWithAYouMayNotHaveAccessYetDialog()</td>
+              <td>1</td>
+              <td class="duration" data-value="3000000">0.003</td>
+              <td class="duration" data-value="3000000">0.003</td>
+              <td class="duration" data-value="3000000">0.003</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.theSubstituteUserLaunchesTheApp()</td>
+              <td>2</td>
+              <td class="duration" data-value="1709500000">1.709</td>
+              <td class="duration" data-value="1709500000">2.378</td>
+              <td class="duration" data-value="3419000000">3.419</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_arrives_on_the_pin_entry_screen()</td>
+              <td>1</td>
+              <td class="duration" data-value="2211000000">2.211</td>
+              <td class="duration" data-value="2211000000">2.211</td>
+              <td class="duration" data-value="2211000000">2.211</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_enter_a_incorrect_pin_code_7777()</td>
+              <td>1</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_enters_a_incorrect_pin_code_3333()</td>
+              <td>1</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_enters_a_incorrect_pin_code_5555()</td>
+              <td>1</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_enters_the_pin_code_7354()</td>
+              <td>1</td>
+              <td class="duration" data-value="1000000">0.001</td>
+              <td class="duration" data-value="1000000">0.001</td>
+              <td class="duration" data-value="1000000">0.001</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_is_taken_to_the_login_page()</td>
+              <td>1</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_lands_on_the_splash_screen()</td>
+              <td>1</td>
+              <td class="duration" data-value="395000000">0.395</td>
+              <td class="duration" data-value="395000000">0.395</td>
+              <td class="duration" data-value="395000000">0.395</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_launches_the_app()</td>
+              <td>1</td>
+              <td class="duration" data-value="669000000">0.669</td>
+              <td class="duration" data-value="669000000">0.669</td>
+              <td class="duration" data-value="669000000">0.669</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_passes_the_splash_screen()</td>
+              <td>2</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="2000000">0.002</td>
+              <td class="duration" data-value="4000000">0.004</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">mobile.frontline.stepdef.LoginStepDef.the_substitute_user_taps_the_get_started_button()</td>
+              <td>1</td>
+              <td class="duration" data-value="527000000">0.527</td>
+              <td class="duration" data-value="527000000">0.527</td>
+              <td class="duration" data-value="527000000">0.527</td>
+              <td class="passed">100.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>15</td>
+            <td>21</td>
+            <td class="duration">1.112</td>
+            <td class="duration">8.474</td>
+            <td class="duration">23.363</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.monochromata.cucumber:reporting-plugin:4.0.49">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/monochromata/cucumber/reporting-plugin/4.0.49/reporting-plugin-4.0.49.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/de/monochromata/cucumber/reporting-plugin/4.0.49/reporting-plugin-4.0.49-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/monochromata/cucumber/reporting-plugin/4.0.49/reporting-plugin-4.0.49-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
