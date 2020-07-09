@@ -90,16 +90,14 @@ public class LoginPage extends BasePage {
 	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement homePageHeader;
 
-
-
-	//###################################################################
+  //###################################################################
 	public LoginPage(){
 	}
 
 	public void verify_splashScreen_displayed() {
-		fluentWait(splashScreen);
-		isElementDisplayed(splashScreen);
-		Assert.assertTrue("Splash screen is not displayed", splashScreen.isDisplayed());
+		fluentWait(splashHeader);
+		isElementDisplayed(splashHeader);
+		Assert.assertTrue("Splash screen is not displayed", splashHeader.isDisplayed());
 		utils.log().info("Splash screen Page is displayed");
 	}
 
@@ -210,64 +208,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void verify_pinUnlokError(){
-		isElementDisplayed(pinUnlockErr);
-		utils.log().info("Unlock error message displays successfully" );
 		Assert.assertTrue("Pin Unlock error message is not displayed", pinUnlockErr.isDisplayed());
-		}
-
-	public void enterUserID_OnLoginPage(String userName) {
-		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
-		//username.click();
-		//driver.getKeyboard().sendKeys(userName);
-		enterValueInTextField(username, userName);
-	}
-
-	public void enterPassword(String userPassword)
-	{
-		password.click();
-		driver.getKeyboard().sendKeys(userPassword);
-	}
-	public void enterUserPassword_onLoginPage(String userPassword){
-		hideKeyboard();
-		Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
-		password.click();
-		driver.getKeyboard().sendKeys(userPassword);
-		//enterValueInTextField(password, userPassword);
-	}
-
-	public void clickOnLoginBtn() {
-		hideKeyboard();
-		Assert.assertTrue("Login btn is not displayed", loginBtn.isDisplayed());
-		clickElement(loginBtn);
-		utils.log().info("Clicked on Login Button");
-	}
-
-	public void verifyInvalidCredentials_errorMessage() {
-		fluentWait(credentialErr);
-		Assert.assertTrue("No Invalid Credentials error message is displayed",
-				credentialErr.isDisplayed());
-		utils.log().info(" 'Invalid Credentials' error message is displayed");
-	}
-
-	public void verify_homeScreen_displayed() {
-		switchToWebView();
-		fluentWait(homePageHeader);
-		isElementDisplayed(homePageHeader);
-		Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-		utils.log().info("Home Page is displayed");
-	}
-
-	public void verifyNoUserName_errorMessage() {
-		fluentWait(userNameRequired);
-		Assert.assertTrue("Your username is required error message is not displayed",
-				userNameRequired.isDisplayed());
-		utils.log().info("Your username is required error message is displayed");
-	}
-
-	public void verifyNoPassword_errorMessage() {
-		fluentWait(userPasswordRequired);
-		Assert.assertTrue("Your username is required error message is not displayed",
-				userNameRequired.isDisplayed());
-		utils.log().info("Your username is required error message is displayed");
+		utils.log().info("Unlock error message displays successfully" );
 	}
 }

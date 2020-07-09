@@ -1,6 +1,0 @@
-com\frontline\pages\DriverClass.class
-com\frontline\object\LoginPageObjects.class
-com\frontline\step\LoginPage.class
-output\Parallel01IT.class
-com\frontline\pages\LoginPagesMethod.class
-com\frontline\step\RunnerCukes.class

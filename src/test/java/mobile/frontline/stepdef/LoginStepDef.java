@@ -11,9 +11,8 @@ import org.junit.Assert;
 public class LoginStepDef {
 
 	public LoginPage loginPage = new LoginPage();
-	private String password;
 
-	//@MOB-3204
+//@MOB-3204
 	@When("^The substitute user launches the app$")
 	public void the_substitute_user_launches_the_app() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
@@ -125,6 +124,4 @@ public class LoginStepDef {
 	public void the_substitute_navigates_to_dashboard_page() throws Throwable {
 		loginPage.verify_homeScreen_displayed();
 	}
-
-
 }
