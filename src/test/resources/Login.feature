@@ -1,0 +1,63 @@
+@login
+Feature: Login scenarios
+
+@regression @splashscreen @MOB-3204
+ Scenario: First time user experience or fresh app install
+     When The substitute user launches the app
+     And The substitute user lands on the splash screen
+     When The substitute user taps the Get Started Button
+     Then The substitute user arrives on the PIN entry screen
+
+  @regression @pinunclok @pinunclok_1 @MOB-3205
+  Scenario: First time user experience / fresh app install
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    Then the substitute user arrives on the PIN entry screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+
+  @regression @pinunclok @pinunclok_2 @MOB-3205
+  Scenario: Failed Attempts
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters a incorrect PIN code '3333'
+    Then the substitute user enter a incorrect PIN code '7777'
+    Then the substitute user enters a incorrect PIN code '5555'
+    Then the substitute user is prompted with a “You may not have access yet” dialog
+
+  @regression @login @invalidLogin @MOB-3206
+  Scenario Outline: Login with invalid credentials
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And the substitute enter invalid username"<userName>"
+    And the substitute enter invalid password"<userPassword>"
+    When Click on Sign In with Frontline ID button
+    Then Incorrect username and password error message displays
+    Examples:
+      | userName   | userPassword   |
+      | rupakumari | xyz@abc |
+
+  @regression @login @noCredentials @MOB-3206
+  Scenario: The substitute clicked on Login button when user is not entered userId and Password
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    When Click on Sign In with Frontline ID button
+    Then Error message displays to the substitute users
+
+  @regression @login @validlogin @MOB-3206
+  Scenario Outline: Login with valid credentials
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And the substitute enter valid username"<userName>"
+    And the substitute enter valid password"<userPassword>"
+    When Click on Sign In with Frontline ID button
+    Then the substitute navigates to dashboard page
+    Examples:
+      | userName   | userPassword   |
+      | jobsub002 | FLultra1! |
