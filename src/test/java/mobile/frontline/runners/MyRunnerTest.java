@@ -26,13 +26,12 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@login"}
-
+        ,tags = {"@jobs"}
 )
 
 public class MyRunnerTest {
 
-    @BeforeClass
+   /* @BeforeClass
     public static void initialize() throws Exception {
         GlobalParams params = new GlobalParams();
         params.initializeGlobalParams();
@@ -50,10 +49,10 @@ public class MyRunnerTest {
         if(driverManager.getDriver() != null){
             driverManager.getDriver().quit();
             driverManager.setDriver(null);
-        }
+       }
         ServerManager serverManager = new ServerManager();
         if(serverManager.getServer() != null){
             serverManager.getServer().stop();
         }
-    }
+    }*/
 }

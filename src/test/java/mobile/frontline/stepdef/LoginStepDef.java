@@ -11,8 +11,9 @@ import org.junit.Assert;
 public class LoginStepDef {
 
 	public LoginPage loginPage = new LoginPage();
+	private String password;
 
-//@MOB-3204
+	//@MOB-3204
 	@When("^The substitute user launches the app$")
 	public void the_substitute_user_launches_the_app() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
@@ -81,4 +82,48 @@ public class LoginStepDef {
 	public void theSubstituteUserIsPromptedWithAYouMayNotHaveAccessYetDialog() {
 		loginPage.verify_pinUnlokError();
 	}
+
+	//MOB-3206
+	//scenario 1
+	@And("^the substitute enter invalid username\"([^\"]*)\"$")
+	public void the_substitute_enter_invalid_username(String userName) throws Throwable {
+		loginPage.enterUserID_OnLoginPage(userName);
+	}
+
+	@And("^the substitute enter invalid password\"([^\"]*)\"$")
+	public void the_substitute_enter_invalid_passwordsomething(String userPassword) throws Throwable {
+		loginPage.enterUserPassword_onLoginPage(userPassword);
+	}
+
+	@When("^Click on Sign In with Frontline ID button$")
+	public void click_on_sign_in_with_frontline_id_button() throws Throwable {
+		loginPage.clickOnLoginBtn();
+	}
+
+	@Then("^Incorrect username and password error message displays$")
+	public void incorrect_username_and_password_error_message_displays() throws Throwable {
+		loginPage.verifyInvalidCredentials_errorMessage();
+	}
+	//scenario 2
+	@Then("^Error message displays to the substitute users$")
+	public void error_message_displays_to_the_substitute_users() throws Throwable {
+		loginPage.verifyNoUserName_errorMessage();
+		loginPage.verifyNoPassword_errorMessage();
+	}
+	//Scenario 3
+	@And("^the substitute enter valid username\"([^\"]*)\"$")
+	public void the_substitute_enter_valid_username(String userName) throws Throwable {
+		loginPage.enterUserID_OnLoginPage(userName);
+	}
+
+	@And("^the substitute enter valid password\"([^\"]*)\"$")
+	public void the_substitute_enter_valid_password(String userPassword) throws Throwable {
+		loginPage.enterUserPassword_onLoginPage(userPassword);
+	}
+
+	@Then("^the substitute navigates to dashboard page$")
+	public void the_substitute_navigates_to_dashboard_page() throws Throwable {
+		loginPage.verify_homeScreen_displayed();
+	}
+
 }
