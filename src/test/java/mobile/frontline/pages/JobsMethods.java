@@ -42,7 +42,9 @@ public class JobsMethods extends LoginPage{
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Job Detail']")
     @iOSXCUITFindBy(accessibility = "")
     public MobileElement jobDetailsHeader;
-
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]") 
+    public MobileElement confirmationNumber;
 
 //#########################################################################################################################
     public JobsMethods(){
@@ -96,4 +98,9 @@ public class JobsMethods extends LoginPage{
         Assert.assertTrue("Job Details page is not displayed", jobDetailsHeader.isDisplayed());
         utils.log().info("Job Details page is displayed");
     }
+    
+	public void confirmationPresent() {
+        Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
+        utils.log().info("Confirmation number is displayed");
+	}
 }
