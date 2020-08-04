@@ -1,12 +1,9 @@
 package mobile.frontline.stepdef;
 
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
-import mobile.frontline.pages.BasePage;
-import mobile.frontline.pages.LoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+import mobile.frontline.pages.LoginPage;
 
 public class LoginStepDef {
 
@@ -62,7 +59,7 @@ public class LoginStepDef {
 		loginPage.verify_enterUnlockCodeScreen();
 	}
 
-    // Scenario-2
+	// Scenario-2
 	@When("^the substitute user enters a incorrect PIN code '3333'$")
 	public void the_substitute_user_enters_a_incorrect_pin_code_3333() throws Throwable {
 		loginPage.enterUnlockCode3();

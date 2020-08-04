@@ -215,6 +215,7 @@ public class LoginPage extends BasePage {
 		Assert.assertTrue("Pin Unlock error message is not displayed", pinUnlockErr.isDisplayed());
 		}
 
+
 	public void enterUserID_OnLoginPage(String userName) {
 		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
 		//username.click();
@@ -249,6 +250,7 @@ public class LoginPage extends BasePage {
 				credentialErr.isDisplayed());
 		utils.log().info(" 'Invalid Credentials' error message is displayed");
 	}
+
 
 	public void verify_homeScreen_displayed() throws InterruptedException {
 	//	switchToWebView();
