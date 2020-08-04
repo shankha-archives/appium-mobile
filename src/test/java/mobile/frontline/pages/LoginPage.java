@@ -204,7 +204,7 @@ public class LoginPage extends BasePage {
 
 	public void verify_loginPageLoaded() throws InterruptedException {
 		switchToWebView();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		Assert.assertTrue("Login Page is not displayed", loginPageHeader.isDisplayed());
 		utils.log().info("Login Page Loaded successfully" );
 	}
@@ -213,7 +213,8 @@ public class LoginPage extends BasePage {
 		isElementDisplayed(pinUnlockErr);
 		utils.log().info("Unlock error message displays successfully" );
 		Assert.assertTrue("Pin Unlock error message is not displayed", pinUnlockErr.isDisplayed());
-	}
+		}
+
 
 	public void enterUserID_OnLoginPage(String userName) {
 		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
@@ -235,11 +236,12 @@ public class LoginPage extends BasePage {
 		//enterValueInTextField(password, userPassword);
 	}
 
-	public void clickOnLoginBtn() {
+	public void clickOnLoginBtn() throws InterruptedException {
 		hideKeyboard();
 		Assert.assertTrue("Login btn is not displayed", loginBtn.isDisplayed());
 		clickElement(loginBtn);
 		utils.log().info("Clicked on Login Button");
+		Thread.sleep(3000);
 	}
 
 	public void verifyInvalidCredentials_errorMessage() {
@@ -249,8 +251,11 @@ public class LoginPage extends BasePage {
 		utils.log().info(" 'Invalid Credentials' error message is displayed");
 	}
 
-	public void verify_homeScreen_displayed() {
-		switchToWebView();
+
+	public void verify_homeScreen_displayed() throws InterruptedException {
+	//	switchToWebView();
+		Thread.sleep(8000);
+		switchToNativeApp();
 		fluentWait(homePageHeader);
 		isElementDisplayed(homePageHeader);
 		Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
