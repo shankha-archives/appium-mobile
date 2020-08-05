@@ -40,6 +40,7 @@ public class JobsStepDef {
     public void the_success_message_overlay_is_displayed() throws Throwable {
        jobulatorPage.successMsgPOPUP();
     }
+    
     @When("^I click Okay$")
     public void i_click_okay() throws Throwable {
        jobulatorPage.clickOnOkBtn_successMsg();
