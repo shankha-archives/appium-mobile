@@ -1,8 +1,12 @@
 package mobile.frontline.pages;
 
+import com.google.common.base.Function;
+import com.google.common.collect.ImmutableMap;
+import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidBatteryInfo;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.connection.ConnectionState;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.CommandPrompt;
@@ -14,14 +18,12 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -48,6 +50,9 @@ import javax.imageio.ImageIO;
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofMillis;
+
+//import com.aventstack.extentreports.Status;
+//import io.appium.java_client.android.AndroidKeyCode;
 
 @SuppressWarnings({ "unchecked", "rawtypes", "deprecation" })
 public class BasePage {
@@ -902,7 +907,7 @@ public class BasePage {
    /*  Swipe Up Until Element Exist
      @param MobileElement element*/
 
-       public void swipeUpUntilElementExist(MobileElement element) {
+    public void swipeUpUntilElementExist(MobileElement element) {
         do {
             swipeUp();
         } while (!IsElementPresent(element));
@@ -964,20 +969,19 @@ public class BasePage {
      * method to set the default webview context
      */
     public void switchToWebView() {
-    	try {
-    		Thread.sleep(4000);
-    	} catch (InterruptedException e) {
-    		e.printStackTrace();
-    	}
-    	@SuppressWarnings("unchecked")
-    	Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
-    	for (String contextName : contextNames) {
-    		if(contextName.contains("WEBVIEW") || contextName.contains("Webview"))
-    		{
-    			utils.log().info("Setting WebView: "+contextName);
-    			break;
-    		}
-    	}
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Set<String> contextNames = driver.getContextHandles();
+        for (String contextName : contextNames) {
+            if (contextName.contains("WEBVIEW") || contextName.contains("Webview")) {
+                System.out.println("Setting WebView: " + contextName);
+                driver.context((String) contextNames.toString());
+                System.out.println("Current context" + driver.getContext());
+            }
+        }
     }
 
     /*public void logStepIntoExtentReport(String elementDescription, String action, String typeString) {
