@@ -122,5 +122,15 @@ public class LoginStepDef {
 	public void the_substitute_navigates_to_dashboard_page() throws Throwable {
 		loginPage.verify_homeScreen_displayed();
 	}
+	
+    @Then("^the user is presented with the role picker$")
+    public void role_picker_page_displayed() throws Throwable {
+    	loginPage.rolePickerPageLoads();
+    }
+    
+    @Then("^the user is presented with the org picker$")
+    public void org_picker_page_displayed() throws Throwable {
+    	loginPage.orgPickerPageLoads();
+    }
 
 }
