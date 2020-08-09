@@ -4,9 +4,6 @@ import io.cucumber.java.en.And;
 import mobile.frontline.pages.LoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import mobile.frontline.pages.LoginPage;
 
 public class LoginStepDef {
 
