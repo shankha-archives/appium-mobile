@@ -49,4 +49,9 @@ public class JobsStepDef {
     public void success_message_is_dismissed_revealing_accepted_job_details_page() throws Throwable {
         jobulatorPage.jobDetailsPageLoads();
     }
+    
+    @Then("^Verify the confirmation number present on the job details page$")
+    public void verify_the_confirmation_number_present_on_the_job_details_page() throws Throwable {
+        jobulatorPage.confirmationPresent();
+    }
 }

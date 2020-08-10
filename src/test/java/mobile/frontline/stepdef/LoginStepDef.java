@@ -1,14 +1,14 @@
 package mobile.frontline.stepdef;
 
 import io.cucumber.java.en.And;
+import mobile.frontline.pages.LoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import mobile.frontline.pages.LoginPage;
 
 public class LoginStepDef {
 
 	public LoginPage loginPage = new LoginPage();
-	private String password;
+	//private String password;
 
 	//@MOB-3204
 	@When("^The substitute user launches the app$")

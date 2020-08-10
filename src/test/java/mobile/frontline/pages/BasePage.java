@@ -950,19 +950,20 @@ public class BasePage {
      * method to set the default webview context
      */
     public void switchToWebView() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Set<String> contextNames = driver.getContextHandles();
-        for (String contextName : contextNames) {
-            if (contextName.contains("WEBVIEW") || contextName.contains("Webview")) {
-                System.out.println("Setting WebView: " + contextName);
-                driver.context((String) contextNames.toString());
-                System.out.println("Current context" + driver.getContext());
-            }
-        }
+    	try {
+    		Thread.sleep(4000);
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    	@SuppressWarnings("unchecked")
+    	Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
+    	for (String contextName : contextNames) {
+    		if(contextName.contains("WEBVIEW") || contextName.contains("Webview"))
+    		{
+    			utils.log().info("Setting WebView: "+contextName);
+    			break;
+    		}
+    	}
     }
 
     /*public void logStepIntoExtentReport(String elementDescription, String action, String typeString) {
