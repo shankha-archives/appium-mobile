@@ -931,42 +931,42 @@ public class BasePage {
 		}
 	}
 
-	/**
-	 * method to set the context to required view.
-	 *
-	 * @param context view to be set
-	 */
-	public void setContext(String context) {
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		driver.context((String) context.toString());
-		System.out.println("Current context" + driver.getContext());
-	}
+    /**
+     * method to set the context to required view.
+     *
+     * @param context view to be set
+     */
+    public void setContext(String context) {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.context((String) context.toString());
+        System.out.println("Current context" + driver.getContext());
+    }
 
-	/**
-	 * method to set the default webview context
-	 */
-	public void switchToWebView() {
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		@SuppressWarnings("unchecked")
-		Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
-		for (String contextName : contextNames) {
-			if(contextName.contains("WEBVIEW") || contextName.contains("Webview"))
-			{
-				utils.log().info("Setting WebView: "+contextName);
-				break;
-			}
-		}
-	}
+    /**
+     * method to set the default webview context
+     */
+    public void switchToWebView() {
+    	try {
+    		Thread.sleep(4000);
+    	} catch (InterruptedException e) {
+    		e.printStackTrace();
+    	}
+    	@SuppressWarnings("unchecked")
+    	Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
+    	for (String contextName : contextNames) {
+    		if(contextName.contains("WEBVIEW") || contextName.contains("Webview"))
+    		{
+    			utils.log().info("Setting WebView: "+contextName);
+    			break;
+    		}
+    	}
+    }
 
-	/*public void logStepIntoExtentReport(String elementDescription, String action, String typeString) {
+    /*public void logStepIntoExtentReport(String elementDescription, String action, String typeString) {
         ExtentTestManager.getTest().log(Status.INFO,
                 elementDescription + "; " + withBoldHTML("Text") + ": " + typeString);
     }
@@ -974,7 +974,7 @@ public class BasePage {
     public void logStepIntoReport(String elementDescription) {
         ExtentTestManager.getTest().log(Status.INFO, elementDescription);
     }
-	 */
+*/
 	public String withBoldHTML(String string) {
 		if (!string.trim().isEmpty()) {
 			return "<b>" + string + "</b>";
