@@ -90,7 +90,14 @@ public class LoginPage extends BasePage {
 	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement homePageHeader;
 
-
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select a Role']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement rolePickerPageHeader;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select an Organization']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement orgPickerPageHeader;
+    
 
 	//###################################################################
 	public LoginPage(){
@@ -274,5 +281,17 @@ public class LoginPage extends BasePage {
 		Assert.assertTrue("Your username is required error message is not displayed",
 				userNameRequired.isDisplayed());
 		utils.log().info("Your username is required error message is displayed");
+	}
+	
+	public void rolePickerPageLoads() {
+        fluentWait(rolePickerPageHeader);
+        Assert.assertTrue("Role picker page is not displayed", rolePickerPageHeader.isDisplayed());
+        utils.log().info("Role picker page is displayed");
+	}
+	
+	public void orgPickerPageLoads() {
+        fluentWait(orgPickerPageHeader);
+        Assert.assertTrue("Organization picker page is not displayed", orgPickerPageHeader.isDisplayed());
+        utils.log().info("Organization picker page is displayed");
 	}
 }
