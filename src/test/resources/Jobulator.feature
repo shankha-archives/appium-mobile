@@ -31,3 +31,15 @@ Feature: Jobulator scenarios
     Examples:
       | userName   | userPassword   |
       | Addams@district.com | Addams23 |
+
+  @regression @MOB-3681
+  Scenario Outline: Login with valid credentials
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the user choose the sub user of one org and extract the jobs
+    When the user choose the sub user of another org and extract the jobs
+    Then verify the jobs
+    Examples:
+      | userName   | userPassword   |
+      | multimulti  | FLultra1! |
