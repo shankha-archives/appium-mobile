@@ -25,7 +25,7 @@ Feature: Login scenarios
     Then the substitute user enters a incorrect PIN code '5555'
     Then the substitute user is prompted with a “You may not have access yet” dialog
 
-  @regression @login @invalidLogin @MOB-3206
+  @regression @login @invalidLogin @MOB-3206 @MOB-3145
   Scenario Outline: Login with invalid credentials
     When the substitute user launches the app
     Then the substitute user passes the splash screen
@@ -48,7 +48,7 @@ Feature: Login scenarios
     When Click on Sign In with Frontline ID button
     Then Error message displays to the substitute users
 
-  @regression @login @validlogin @MOB-3206
+  @regression @login @validlogin @MOB-3206 @MOB-3145
   Scenario Outline: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user passes the splash screen
