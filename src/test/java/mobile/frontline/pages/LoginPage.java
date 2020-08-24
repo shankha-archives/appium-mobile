@@ -98,7 +98,10 @@ public class LoginPage extends BasePage {
     @iOSXCUITFindBy(accessibility = "")
     public MobileElement orgPickerPageHeader;
     
-
+    @AndroidFindBy(xpath = "")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement noLoginDialogBox;
+    
 	//###################################################################
 	public LoginPage(){
 	}
@@ -293,5 +296,11 @@ public class LoginPage extends BasePage {
         fluentWait(orgPickerPageHeader);
         Assert.assertTrue("Organization picker page is not displayed", orgPickerPageHeader.isDisplayed());
         utils.log().info("Organization picker page is displayed");
+	}
+	
+	public void verifyNoLoginDialogbox() {
+		 fluentWait(noLoginDialogBox);
+	        Assert.assertTrue("You have not been granted access to any organizations that use the Frontline Insights Platform", noLoginDialogBox.isDisplayed());
+	        utils.log().info("You have not been granted access to any organizations that use the Frontline Insights Platform is displayed");
 	}
 }

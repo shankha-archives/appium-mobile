@@ -81,3 +81,13 @@ Feature: Login scenarios
     Examples:
       | userName   | userPassword   |
       | stageMultiMulti | FLultra1! |
+      
+   @regression @login @MOB-3682
+  Scenario Outline: Feature flags access-No Districts associated with Sub
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the system presents a dialog
+    Examples:
+      | userName   | userPassword   |
+      | stageNoOrg | frontline1!|
