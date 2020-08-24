@@ -43,3 +43,15 @@ Feature: Jobulator scenarios
     Examples:
       | userName   | userPassword   |
       | multimulti  | FLultra1! |
+      
+    @regression @MOB-3683
+  Scenario Outline: Feature flags access- Multi District User
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the substitute navigates to dashboard page
+    And the dashboard displays all available jobs from all districts
+    Examples:
+      | userName   | userPassword   |
+      | stageSubShivani | FLultra1! |
+  

@@ -73,4 +73,16 @@ public class JobsStepDef {
     public void verify_the_jobs() {
      Assert.assertEquals(OrgJob1, OrgJob2);
     }
+    
+    
+//  @Then("^the substitute navigates to dashboard page$")
+//  public void the_substitute_navigates_to_dashboard_page() throws Throwable {
+//  	jobulatorPage.clickOnAvailableJobs();
+//  }
+
+
+  @And("^the dashboard displays all available jobs from all districts$")
+  public void the_dashboard_displays_all_available_jobs_from_all_districts() throws Throwable {
+  	jobulatorPage.clickOnAvailableJobs_displayed();
+  }
 }
