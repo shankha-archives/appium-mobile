@@ -15,43 +15,43 @@ public class LoginPage extends BasePage {
 	BasePage common = new BasePage();
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Sign in with a Frontline ID\"]")
 	public MobileElement splashHeader;
 
 	@AndroidFindBy(className = "android.widget.EditText")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[7]/XCUIElementTypeTextField")
 	public MobileElement username;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Get Started']")
 	public MobileElement getStarted;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Without Limits']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Work Without Limits")
 	public MobileElement splashScreen;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter Unlock Code']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Enter Unlock Code")
 	public MobileElement enterUnlockCode;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='7']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='7']")
 	public MobileElement enterCode7;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='3']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='3']")
 	public MobileElement enterCode3;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='5']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='5']")
 	public MobileElement enterCode5;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='4']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='4']")
 	public MobileElement enterCode4;
 
 	@AndroidFindBy(className = "android.view.View")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
 	public MobileElement loginPageHeader;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='You may not have access yet.']")
@@ -59,11 +59,11 @@ public class LoginPage extends BasePage {
 	public MobileElement pinUnlockErr;
 
 	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[9]/XCUIElementTypeSecureTextField")
 	public MobileElement password;
 
 	@AndroidFindBy(className = "android.widget.Button") //class_name : qa-button-login
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(id = "Sign In with Frontline ID")
 	public MobileElement loginBtn;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Your username is required.']")
@@ -83,11 +83,11 @@ public class LoginPage extends BasePage {
 	public MobileElement forgotPassword;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='The username or password you entered is incorrect']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='The username or password you entered is incorrect']")
 	public MobileElement credentialErr;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcome_user_text")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "New Version Available_ModuleHeader")
 	public MobileElement homePageHeader;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select a Role']")
