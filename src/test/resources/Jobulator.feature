@@ -16,7 +16,7 @@ Feature: Jobulator scenarios
       | userName   | userPassword   |
       | Tietjens@district.com | Tietjens23 |
       
-  @regression @jobs @MOB-3324
+  @regression @jobs @MOB-3324 @MOB-3326
   Scenario Outline: Success Confirmation Number
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin

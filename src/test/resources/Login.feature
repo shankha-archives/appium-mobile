@@ -39,7 +39,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       | rupakumari | xyz@abc |
 
-  @regression @login @noCredentials @MOB-3206
+  @regression @login @noCredentials @MOB-3206 @MOB-3145
   Scenario: The substitute clicked on Login button when user is not entered userId and Password
     When the substitute user launches the app
     Then the substitute user passes the splash screen
