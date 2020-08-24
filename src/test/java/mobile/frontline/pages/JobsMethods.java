@@ -45,6 +45,33 @@ public class JobsMethods extends LoginPage{
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]") 
     public MobileElement confirmationNumber;
+    
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='VeriTime Automation Org 20 - DO NOT USE']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement veritimeorg;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement SubtituteUser;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Alphabet School District']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement chesterorg;
+	
+	
+	//////////////////////////////////////////////555555555
+	@AndroidFindBy(xpath = "//[@class='android.widget.RelativeLayout' and @resource-id='com.frontline.frontlinemobile:id/fragment_card_widget_header']//[@index='1']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement noavailablejobs;
+
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='Continue']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement contbtn;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement switchbtn;
 
 //#########################################################################################################################
     public JobsMethods(){
@@ -103,4 +130,85 @@ public class JobsMethods extends LoginPage{
         Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
         utils.log().info("Confirmation number is displayed");
 	}
+	
+	 public void selectOrg()
+		{
+			try {
+				Thread.sleep(10000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			fluentWait(veritimeorg);
+			 Assert.assertTrue("Available Organizations are not displayed", veritimeorg.isDisplayed());
+		     utils.log().info("Available Organizations are  displayed");
+		     click(veritimeorg);
+		     click(contbtn);
+		     try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		     fluentWait(SubtituteUser);
+			 Assert.assertTrue("Available roles are not displayed", veritimeorg.isDisplayed());
+		     utils.log().info("Available roles are  displayed");
+		     click(SubtituteUser);
+		     click(contbtn);
+
+		}
+	    
+	    public String checkAvailablejob() {
+	    	 try {
+					Thread.sleep(30000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    	fluentWait(availableJobs);
+		     common.isElementDisplayed(availableJobs);
+		        Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
+		        utils.log().info("Available Jobs option is displayed on Home page");
+		        
+		        try {
+					Thread.sleep(30000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        
+		        ////////////Extract the available jobs
+		        String jobs=getElementText(noavailablejobs);
+		        //Assert.assertEquals(jobs, "16");
+		        return jobs;
+		        //System.out.println(jobs);
+		        
+		     
+	    }
+	    public void switchToAnotherOrg()
+	    {
+	    	click(switchbtn);	
+	    	try {
+				Thread.sleep(30000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			fluentWait(chesterorg);
+			 Assert.assertTrue("Available Organizations are not displayed", chesterorg.isDisplayed());
+		     utils.log().info("Available Organizations are  displayed");
+		     click(chesterorg);
+		     click(contbtn);
+		     try {
+					Thread.sleep(10000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		     fluentWait(SubtituteUser);
+			 Assert.assertTrue("Available roles are not displayed", chesterorg.isDisplayed());
+		     utils.log().info("Available roles are  displayed");
+		     click(SubtituteUser);
+		     click(contbtn);
+	    }
 }

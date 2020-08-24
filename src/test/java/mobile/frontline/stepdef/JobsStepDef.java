@@ -1,5 +1,5 @@
 package mobile.frontline.stepdef;
-
+import org.junit.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,6 +10,7 @@ public class JobsStepDef {
 
     public LoginPage loginPage = new LoginPage();
     public JobsMethods jobulatorPage = new JobsMethods();
+    public String OrgJob1, OrgJob2;
 
     @Then("^the substitute user click on Get Started Button and enter the pin$")
     public void the_substitute_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
@@ -54,5 +55,22 @@ public class JobsStepDef {
     @Then("^Verify the confirmation number present on the job details page$")
     public void verify_the_confirmation_number_present_on_the_job_details_page() throws Throwable {
         jobulatorPage.confirmationPresent();
+    }
+    
+    @Then("^the user choose the sub user of one org and extract the jobs$")
+    public void the_user_choose_the_sub_user_of_one_org_and_extract_the_jobs()  {
+    	jobulatorPage.selectOrg();
+    	OrgJob1= jobulatorPage.checkAvailablejob();
+    }
+    
+    @When("^the user choose the sub user of another org and extract the jobs$")
+    public void the_user_choose_the_sub_user_of_another_org_and_extract_the_jobs()  {
+    	jobulatorPage.switchToAnotherOrg();
+    	OrgJob2=jobulatorPage.checkAvailablejob();
+    }
+
+    @Then("^verify the jobs$")
+    public void verify_the_jobs() {
+     Assert.assertEquals(OrgJob1, OrgJob2);
     }
 }
