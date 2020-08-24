@@ -132,5 +132,9 @@ public class LoginStepDef {
     public void org_picker_page_displayed() throws Throwable {
     	loginPage.orgPickerPageLoads();
     }
-
+    
+    @Then("^the system presents a dialog$")
+    public void the_system_presents_a_dialog() throws Throwable {
+       loginPage.verifyNoLoginDialogbox();
+    }
 }
