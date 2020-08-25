@@ -91,3 +91,46 @@ Feature: Login scenarios
     Examples:
       | userName   | userPassword   |
       | stageNoOrg | frontline1!|
+      
+      @regression @MOB-3776 @MultiOrg 
+  Scenario Outline: Feature flags access- Multi District & Multi Role User
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the user is presented with the org picker
+    When user selects the org with only role as sub
+    Then a dialogue box is displayed
+    When user clicks on back button
+    Then the user is presented with the org picker
+    Examples:
+      | userName   | userPassword   |
+      |  | |
+
+@regression @MOB-3776 @MultiOrg @SubRole
+  Scenario Outline: Feature flags access- Multi District & Multi Role User
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the user is presented with the org picker
+    When user selects the org with only role as sub
+    Then a dialogue box is displayed
+    When user clicks on back button
+    Then the user is presented with login page
+    Examples:
+      | userName   | userPassword   |
+      |  | |
+
+@regression @MOB-3776 @MultiOrg @MultiRole
+  Scenario Outline: Feature flags access- Multi District & Multi Role User
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the user is presented with the org picker
+    When user selects the org with only role as sub
+    Then a dialogue box is displayed
+    When user clicks on back button
+    Then the user is presented with the role picker
+    Examples:
+      | userName   | userPassword   |
+      |  | |
+   
