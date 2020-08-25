@@ -67,11 +67,11 @@ public class LoginPage extends BasePage {
 	public MobileElement loginBtn;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Your username is required.']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(id = "qa-validation-username-required")
 	public MobileElement userNameRequired;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Your password is required.']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(id = "qa-validation-password-required")
 	public MobileElement userPasswordRequired;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Forgot Username']")

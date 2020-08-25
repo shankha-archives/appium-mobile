@@ -12,7 +12,7 @@ public class JobsMethods extends LoginPage{
     LoginPage loginPage = new LoginPage();
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
     public MobileElement availableJobs;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_footer_button")
@@ -20,30 +20,32 @@ public class JobsMethods extends LoginPage{
     public MobileElement viewAllAvailableJobsBtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "view_header")
     public MobileElement availableJobsHeader;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Frontline\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
     public MobileElement jobslist;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Accept']")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Accept\"]")
     public MobileElement jobAcceptBtn;
 
     @AndroidFindBy(id = "android:id/message")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
     public MobileElement successMsg;
 
     @AndroidFindBy(id = "android:id/button1")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement successOkBtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Job Detail']")
-    @iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "//XCUIElementTypeApplication[@name=\"Frontline\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther")    
     public MobileElement jobDetailsHeader;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]") 
+//  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Conf')]")    
+    @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
     public MobileElement confirmationNumber;
     
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='VeriTime Automation Org 20 - DO NOT USE']")
