@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
+	JobsMethods jobs = new JobsMethods();
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Sign in with a Frontline ID\"]")
@@ -101,6 +102,18 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(xpath = "")
     @iOSXCUITFindBy(accessibility = "")
     public MobileElement noLoginDialogBox;
+    
+    @AndroidFindBy(xpath = "")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement orgWithOnlySubRole;
+    
+    @AndroidFindBy(xpath = "")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement errorMessageLogin;
+    
+    @AndroidFindBy(xpath = "")
+    @iOSXCUITFindBy(accessibility = "")
+    public MobileElement bckBtn;
     
 	//###################################################################
 	public LoginPage(){
@@ -302,5 +315,22 @@ public class LoginPage extends BasePage {
 		 fluentWait(noLoginDialogBox);
 	        Assert.assertTrue("You have not been granted access to any organizations that use the Frontline Insights Platform", noLoginDialogBox.isDisplayed());
 	        utils.log().info("You have not been granted access to any organizations that use the Frontline Insights Platform is displayed");
+	}
+	
+	public void orgWithOnlySubRole() {
+		fluentWait(orgWithOnlySubRole);
+		clickElement(orgWithOnlySubRole);
+        utils.log().info("Clicked on selected org");
+        clickElement(jobs.contbtn);
+	}
+	
+	public void VerifyMessage() {
+		fluentWait(errorMessageLogin);
+		  Assert.assertTrue("This mobile app is not currently available for substitutes", errorMessageLogin.isDisplayed());
+	        utils.log().info("Error Dialog box is displayed");
+	}
+	
+	public void clickBackBtn() {
+		 clickElement(bckBtn);
 	}
 }

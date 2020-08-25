@@ -137,4 +137,21 @@ public class LoginStepDef {
     public void the_system_presents_a_dialog() throws Throwable {
        loginPage.verifyNoLoginDialogbox();
     }
+    
+    @When("^user selects the org with only role as sub$")
+    public void user_selects_the_org_with_only_role_as_sub() throws Throwable {
+    	loginPage.orgWithOnlySubRole();
+    }
+
+    @When("^user clicks on back button$")
+    public void user_clicks_on_back_button() throws Throwable {
+    	loginPage.clickBackBtn();
+    }
+
+    @Then("^a dialogue box is displayed$")
+    public void a_dialogue_box_is_displayed() throws Throwable {
+      loginPage.VerifyMessage();
+    }
+     
+   
 }
