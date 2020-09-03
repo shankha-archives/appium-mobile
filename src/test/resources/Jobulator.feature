@@ -54,4 +54,15 @@ Feature: Jobulator scenarios
     Examples:
       | userName   | userPassword   |
       | stageSubShivani | FLultra1! |
+      
+      @regression @jobs @MOB-4173 
+  Scenario Outline: Login with valid credentials
+    When the substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the substitute navigates to dashboard page
+    And click on the Available Jobs and view job list
+    Examples:
+      | userName   | userPassword   |
+      | stageSubEmma  | FLultra1! |
   

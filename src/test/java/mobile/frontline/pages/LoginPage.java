@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	JobsMethods jobs = new JobsMethods();
+//	JobsMethods jobs = new JobsMethods();
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Sign in with a Frontline ID\"]")
@@ -321,7 +321,7 @@ public class LoginPage extends BasePage {
 		fluentWait(orgWithOnlySubRole);
 		clickElement(orgWithOnlySubRole);
         utils.log().info("Clicked on selected org");
-        clickElement(jobs.contbtn);
+      //  clickElement(jobs.contbtn);
 	}
 	
 	public void VerifyMessage() {
