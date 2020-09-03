@@ -1,7 +1,7 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @regression @jobs @MOB-3325
+  @regression @jobs @MOB-3325 @ios
   Scenario Outline: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
@@ -14,9 +14,9 @@ Feature: Jobulator scenarios
     Then Success Message is dismissed revealing accepted job details page
     Examples:
       | userName   | userPassword   |
-      | Tietjens@district.com | Tietjens23 |
+      | StageSubEmma | FLultra1! |
       
-  @regression @jobs @MOB-3324 @MOB-3326
+  @regression @jobs @MOB-3324 @MOB-3326 @test
   Scenario Outline: Success Confirmation Number
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
@@ -30,7 +30,7 @@ Feature: Jobulator scenarios
     Then Verify the confirmation number present on the job details page
     Examples:
       | userName   | userPassword   |
-      | Addams@district.com | Addams23 |
+      | StageSubEmma | FLultra1! |
 
   @regression @MOB-3681
   Scenario Outline: Login with valid credentials
