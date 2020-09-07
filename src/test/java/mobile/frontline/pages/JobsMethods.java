@@ -15,20 +15,16 @@ public class JobsMethods extends LoginPage{
     @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
     public MobileElement availableJobs;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_footer_button")
-    @iOSXCUITFindBy(accessibility = "")
-    public MobileElement viewAllAvailableJobsBtn;
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
     @iOSXCUITFindBy(accessibility = "view_header")
     public MobileElement availableJobsHeader;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Frontline\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+    @iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
     public MobileElement jobslist;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Accept']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Accept\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Accept']")
     public MobileElement jobAcceptBtn;
 
     @AndroidFindBy(id = "android:id/message")
@@ -40,39 +36,39 @@ public class JobsMethods extends LoginPage{
     public MobileElement successOkBtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Job Detail']")
-    @iOSXCUITFindBy(accessibility = "//XCUIElementTypeApplication[@name=\"Frontline\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther")    
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='Job Detail']")
     public MobileElement jobDetailsHeader;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]") 
-//  @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Conf')]")    
-    @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
+    @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Conf')]")
+   // @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
     public MobileElement confirmationNumber;
     
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='VeriTime Automation Org 20 - DO NOT USE']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement veritimeorg;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement SubtituteUser;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Alphabet School District']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement chesterorg;
 	
 	
 	//////////////////////////////////////////////555555555
 	@AndroidFindBy(xpath = "//[@class='android.widget.RelativeLayout' and @resource-id='com.frontline.frontlinemobile:id/fragment_card_widget_header']//[@index='1']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement noavailablejobs;
 
 	
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Continue']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement contbtn;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement switchbtn;
 
 //#########################################################################################################################
@@ -88,18 +84,20 @@ public class JobsMethods extends LoginPage{
         Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
         utils.log().info("Available Jobs option is displayed on Home page");
         click(availableJobs);
+        isElementDisplayed(availableJobsHeader);
         Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
         utils.log().info("Available Jobs list Page is displayed");
     }
 
     public void clickOnAvailableJobs(){
+        isElementDisplayed(jobslist);
         Assert.assertTrue("Available Jobs list not displayed", jobslist.isDisplayed());
         utils.log().info("Available Jobs list is displayed");
         click(jobslist);
         utils.log().info("clicked on Job ");
     }
     public void clickOnAcceptJobsBtn(){
-        fluentWait(jobAcceptBtn);
+        isElementDisplayed(jobAcceptBtn);
         Assert.assertTrue("Accept job btn is not displayed", jobAcceptBtn.isDisplayed());
         utils.log().info("Accept job btn is displayed");
         click(jobAcceptBtn);
@@ -108,7 +106,7 @@ public class JobsMethods extends LoginPage{
 
     public void successMsgPOPUP()
     {
-        fluentWait(successMsg);
+        isElementDisplayed(successMsg);
         Assert.assertTrue("Success message is not displayed", successMsg.isDisplayed());
         utils.log().info("Success message is displayed");
     }
@@ -123,7 +121,7 @@ public class JobsMethods extends LoginPage{
 
     public void jobDetailsPageLoads()
     {
-        fluentWait(jobDetailsHeader);
+        isElementDisplayed(jobDetailsHeader);
         Assert.assertTrue("Job Details page is not displayed", jobDetailsHeader.isDisplayed());
         utils.log().info("Job Details page is displayed");
     }

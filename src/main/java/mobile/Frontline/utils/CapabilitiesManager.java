@@ -38,7 +38,7 @@ public class CapabilitiesManager {
                     caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, props.getProperty("iOSAutomationName"));
                     //String iOSAppUrl = getClass().getResource(props.getProperty("iOSAppLocation")).getFile();
                     String iOSAppUrl = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
-                            + File.separator + "resources" + File.separator + "apps" + File.separator + "frontline.app";
+                            + File.separator + "resources" + File.separator + "apps" + File.separator + "Frontline.app";
                     utils.log().info("appUrl is" + iOSAppUrl);
                     caps.setCapability("bundleId", props.getProperty("iOSBundleId"));
                     caps.setCapability("wdaLocalPort", params.getWdaLocalPort());
