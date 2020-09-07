@@ -31,6 +31,21 @@ Feature: Jobulator scenarios
     Examples:
       | userName   | userPassword   |
       | Addams@district.com | Addams23 |
+      
+  @regression @jobs @MOB-4174 
+  Scenario Outline: Remove job from Available Jobs list
+    When The substitute user launches the app
+    Then the substitute user click on Get Started Button and enter the pin
+    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    Then the substitute navigates to dashboard page
+    And click on the Available Jobs and view job list
+    And Click on the job and accept it
+    Then click okay on Success Message overlay
+    And visit available jobs page again
+    Then verify if accepted job is still present
+    Examples:
+      | userName   | userPassword   |
+      | stageSubEmma | FLultra1! |
 
   @regression @MOB-3681
   Scenario Outline: Login with valid credentials

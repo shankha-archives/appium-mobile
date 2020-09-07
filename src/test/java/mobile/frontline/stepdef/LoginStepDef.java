@@ -19,7 +19,6 @@ public class LoginStepDef {
 	@And("^The substitute user lands on the splash screen$")
 	public void the_substitute_user_lands_on_the_splash_screen() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
-
 	}
 
 	@When("^The substitute user taps the Get Started Button$")
@@ -50,7 +49,7 @@ public class LoginStepDef {
 	}
 
 	@When("^the substitute user launches the app$")
-	public void theSubstituteUserLaunchesTheApp() {
+	public void theSubstituteUserLaunchesTheApp() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
 	}
 

@@ -20,7 +20,7 @@ public class JobsStepDef {
 
     @And("^Enter username\"([^\"]*)\" and password\"([^\"]*)\" and click on Sign In button$")
     public void enter_username_and_password_and_click_on_sign_in_button(String username, String userpassword) throws Throwable {
-        loginPage.verify_loginPageLoaded();
+    	loginPage.verify_loginPageLoaded();
         loginPage.enterUserID_OnLoginPage(username);
         loginPage.enterUserPassword_onLoginPage(userpassword);
         loginPage.clickOnLoginBtn();
@@ -46,7 +46,26 @@ public class JobsStepDef {
     public void i_click_okay() throws Throwable {
        jobulatorPage.clickOnOkBtn_successMsg();
     }
+    
+    @Then("^click okay on Success Message overlay$")
+    public void click_okay_on_success_message() throws Throwable {
+        jobulatorPage.successMsgPOPUP();
+        jobulatorPage.clickOnOkBtn_successMsg();
+     }
+    
+    @And("^visit available jobs page again$")
+    public void visit_available_jobs_page() throws Throwable {
+        jobulatorPage.clickOnHomeButton();
+        jobulatorPage.clickOnAvailableJobs_displayed();
+    }
 
+    @Then("^verify if accepted job is still present$")
+    public void verify_if_accepted_job_is_still_present() throws Throwable {
+        jobulatorPage.verifyAcceptedJob();
+     }
+    
+    
+    
     @Then("^Success Message is dismissed revealing accepted job details page$")
     public void success_message_is_dismissed_revealing_accepted_job_details_page() throws Throwable {
         jobulatorPage.jobDetailsPageLoads();
