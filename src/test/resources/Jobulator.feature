@@ -55,7 +55,7 @@ Feature: Jobulator scenarios
       | userName   | userPassword   |
       | stageSubShivani | FLultra1! |
       
-      @regression @jobs @MOB-4173 
+      @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS
   Scenario Outline: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
