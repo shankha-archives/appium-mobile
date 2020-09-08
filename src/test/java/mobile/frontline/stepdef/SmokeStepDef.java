@@ -28,5 +28,10 @@ public class SmokeStepDef {
  		basePage.killAndRelaunch();  	
     }
 
+     //@MOB-4229
+ 	 @And("^The user minimize and relaunch the application$")
+     public void the_user_minimize_and_relaunch_the_application() throws Throwable {
+       basePage.bgRunningApp();
+     }
     
 }

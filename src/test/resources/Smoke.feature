@@ -11,3 +11,14 @@ Scenario: Need to restrict login once the application is killed and relaunched
     Then the substitute navigates to dashboard page
     And The user kill and relaunch the application
     Then the substitute navigates to dashboard page
+
+@MOB-4229 @smoke @Android
+Scenario: Need to restrict login if application is running in background and then opened
+	When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And Enter username and password and click on Sign In button
+    Then the substitute navigates to dashboard page
+    And The user minimize and relaunch the application
+    Then the substitute navigates to dashboard page
