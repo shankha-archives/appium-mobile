@@ -245,6 +245,7 @@ public class BasePage {
 		return element;
 	}
 
+	
 	public boolean find(final MobileElement element, int timeout) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
@@ -473,6 +474,8 @@ public class BasePage {
 	public void clickBackButton() {
 		driver.navigate().back();
 	}
+	
+	
 
 	/**
 	 * Hide the Keyboard
@@ -1004,6 +1007,7 @@ public class BasePage {
 
 		cmd.runCommand("adb -s " + deviceID + " uninstall " + app_package);
 	}
+	
 
 	/**
 	 * This method install apk in the devices attached
@@ -1037,7 +1041,7 @@ public class BasePage {
 	 * This method close the running app from the devices attached
 	 */
 	public void bgRunningApp() throws Exception {
-		driver.runAppInBackground(Duration.ofSeconds(-1));
+		driver.runAppInBackground(Duration.ofSeconds(10));
 	}
 
 	/**
@@ -1245,6 +1249,10 @@ public class BasePage {
 	public void tapAtCordinates(int x, int y) {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(PointOption.point(x, y)).perform();
+	}
+	
+	public void killAndRelaunch() throws Exception {
+		driver.runAppInBackground(Duration.ofSeconds(10));
 	}
 
 	public boolean isElementEnabled(MobileElement ele) {

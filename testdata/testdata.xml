@@ -4,4 +4,9 @@
         <invalidlogin>JohnDoe</invalidlogin>
         <invalidpass>admin123</invalidpass>
     </Account>
+     <Account type="valid">
+        <substitutelogin>StageSubRupa</substitutelogin>
+        <substitutepass>FLultra1!</substitutepass>
+    </Account>
+    
 </testdata>
