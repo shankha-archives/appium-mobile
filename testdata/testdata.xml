@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+    <Account type="invalid">
+        <invalidlogin>JohnDoe</invalidlogin>
+        <invalidpass>admin123</invalidpass>
+    </Account>
+     <Account type="valid">
+        <substitutelogin>StageSubRupa</substitutelogin>
+        <substitutepass>FLultra1!</substitutepass>
+    </Account>
+    
+</testdata>

@@ -1,5 +1,6 @@
 package mobile.frontline.pages;
 
+import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -13,10 +14,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-//	JobsMethods jobs = new JobsMethods();
+	//JobsMethods jobs = new JobsMethods();
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Sign in with a Frontline ID\"]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
 	public MobileElement splashHeader;
 
 	@AndroidFindBy(className = "android.widget.EditText")
@@ -56,7 +57,7 @@ public class LoginPage extends BasePage {
 	public MobileElement loginPageHeader;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='You may not have access yet.']")
-	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "You may not have access yet.")
 	public MobileElement pinUnlockErr;
 
 	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
@@ -64,23 +65,22 @@ public class LoginPage extends BasePage {
 	public MobileElement password;
 
 	@AndroidFindBy(className = "android.widget.Button") //class_name : qa-button-login
-	@iOSXCUITFindBy(id = "Sign In with Frontline ID")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Sign In with Frontline ID']")
 	public MobileElement loginBtn;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Your username is required.']")
-	@iOSXCUITFindBy(id = "qa-validation-username-required")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your username is required.']")
 	public MobileElement userNameRequired;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Your password is required.']")
-	@iOSXCUITFindBy(id = "qa-validation-password-required")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your password is required.']")
 	public MobileElement userPasswordRequired;
-
 	@AndroidFindBy(xpath = "//android.view.View[@text='Forgot Username']")
-	@iOSXCUITFindBy(accessibility = "")
+	//@iOSXCUITFindBy(accessibility = "")
 	public MobileElement forgotUsername;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Forgot Password']")
-	@iOSXCUITFindBy(accessibility = "")
+	//@iOSXCUITFindBy(accessibility = "")
 	public MobileElement forgotPassword;
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='The username or password you entered is incorrect']")
@@ -92,30 +92,37 @@ public class LoginPage extends BasePage {
 	public MobileElement homePageHeader;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select a Role']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement rolePickerPageHeader;
     
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select an Organization']")
-    @iOSXCUITFindBy(accessibility = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement orgPickerPageHeader;
     
-    @AndroidFindBy(xpath = "")
-    @iOSXCUITFindBy(accessibility = "")
+   // @AndroidFindBy(xpath = "")
+   // @iOSXCUITFindBy(accessibility = "")
     public MobileElement noLoginDialogBox;
     
-    @AndroidFindBy(xpath = "")
-    @iOSXCUITFindBy(accessibility = "")
+    //@AndroidFindBy(xpath = "")
+   // @iOSXCUITFindBy(accessibility = "")
     public MobileElement orgWithOnlySubRole;
     
-    @AndroidFindBy(xpath = "")
-    @iOSXCUITFindBy(accessibility = "")
+   // @AndroidFindBy(xpath = "")
+    //@iOSXCUITFindBy(accessibility = "")
     public MobileElement errorMessageLogin;
     
-    @AndroidFindBy(xpath = "")
-    @iOSXCUITFindBy(accessibility = "")
+    //@AndroidFindBy(xpath = "")
+   // @iOSXCUITFindBy(accessibility = "")
     public MobileElement bckBtn;
-    
-	//###################################################################
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Allow']")
+    public MobileElement PushNotificationAllow;
+
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Okay']")
+    public MobileElement PushNotificationOK;
+
+
+    //###################################################################
 	public LoginPage(){
 	}
 
@@ -227,7 +234,8 @@ public class LoginPage extends BasePage {
 
 	public void verify_loginPageLoaded() throws InterruptedException {
 		switchToWebView();
-		Thread.sleep(5000);
+		//Thread.sleep(35000);
+		isElementDisplayed(loginPageHeader);
 		Assert.assertTrue("Login Page is not displayed", loginPageHeader.isDisplayed());
 		utils.log().info("Login Page Loaded successfully" );
 	}
@@ -259,12 +267,28 @@ public class LoginPage extends BasePage {
 		//enterValueInTextField(password, userPassword);
 	}
 
-	public void clickOnLoginBtn() throws InterruptedException {
-		hideKeyboard();
+	public void clickOnLoginBtn() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				hideKeyboard();
+				Assert.assertTrue("Login btn is not displayed", loginBtn.isDisplayed());
+				clickElement(loginBtn);
+				utils.log().info("Clicked on Login Button");
+				Thread.sleep(3000);
+				break;
+			case "iOS":
+				clickElement(loginBtn);
+				utils.log().info("Clicked on Login Button");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+
+		}
+	/*	hideKeyboard();
 		Assert.assertTrue("Login btn is not displayed", loginBtn.isDisplayed());
 		clickElement(loginBtn);
 		utils.log().info("Clicked on Login Button");
-		Thread.sleep(3000);
+		Thread.sleep(3000);*/
 	}
 
 	public void verifyInvalidCredentials_errorMessage() {
@@ -275,14 +299,39 @@ public class LoginPage extends BasePage {
 	}
 
 
-	public void verify_homeScreen_displayed() throws InterruptedException {
+	public void verify_homeScreen_displayed() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				Thread.sleep(8000);
+				switchToNativeApp();
+				isElementDisplayed(homePageHeader);
+				Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+				utils.log().info("Home Page is displayed");
+				break;
+			case "iOS":
+				isElementDisplayed(PushNotificationAllow);
+				clickElement(PushNotificationAllow);
+				isElementDisplayed(PushNotificationOK);
+				clickElement(PushNotificationOK);
+				switchToNativeApp();
+				isElementDisplayed(homePageHeader);
+				Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+				utils.log().info("Home Page is displayed");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+
+		}
 	//	switchToWebView();
-		Thread.sleep(8000);
+	/*	Thread.sleep(8000);
+		clickElement(PushNotificationAllow);
+		fluentWait(PushNotificationOK);
+		clickElement(PushNotificationOK);
 		switchToNativeApp();
 		fluentWait(homePageHeader);
 		isElementDisplayed(homePageHeader);
 		Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-		utils.log().info("Home Page is displayed");
+		utils.log().info("Home Page is displayed");*/
 	}
 
 	public void verifyNoUserName_errorMessage() {
