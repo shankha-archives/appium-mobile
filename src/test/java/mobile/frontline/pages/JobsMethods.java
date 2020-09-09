@@ -106,10 +106,30 @@ public class JobsMethods extends LoginPage{
         Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
         utils.log().info("Available Jobs list Page is displayed");
        
-	    storeJobDetails();
+	    storeJobDetails();  
 	
     }
-
+    
+    private void storeJobDetails() {
+    	try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+    	job_date = getElementText(jobDate);
+    	job_time = getElementText(jobTime);
+    	job_org = getElementText(jobOrg);
+	}
+    
+	public void verifyAcceptedJob() {
+		String date = getElementText(jobDate);
+		String time = getElementText(jobTime);
+		String org = getElementText(jobOrg);
+		
+        Assert.assertTrue("Accepted job still present in the jobs list", !(date==job_date && time==job_time && org==job_org));
+		utils.log().info("Accepted job removed from jobs list");
+	}
+	
     public void clickOnAvailableJobs(){
         isElementDisplayed(jobslist);
         Assert.assertTrue("Available Jobs list not displayed", jobslist.isDisplayed());
@@ -146,26 +166,6 @@ public class JobsMethods extends LoginPage{
         utils.log().info("Home button is displayed");
         click(homeButton);
         utils.log().info("Click on Home button is displayed");
-	}
-	
-    private void storeJobDetails() {
-    	try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-    	job_date = getElementText(jobDate);
-    	job_time = getElementText(jobTime);
-    	job_org = getElementText(jobOrg);
-	}
-
-	public void verifyAcceptedJob() {
-		String date = getElementText(jobDate);
-		String time = getElementText(jobTime);
-		String org = getElementText(jobOrg);
-		
-        Assert.assertTrue("Accepted job still present in the jobs list", !(date==job_date && time==job_time && org==job_org));
-		utils.log().info("Accepted job removed from jobs list");
 	}
     
     public void jobDetailsPageLoads()

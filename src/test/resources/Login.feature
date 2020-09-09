@@ -48,7 +48,7 @@ Feature: Login scenarios
     When Click on Sign In with Frontline ID button
     Then Error message displays to the substitute users
 
-  @regression @login @validlogin @MOB-3206 @MOB-3145 @ios @Android
+  @regression @login @validlogin @MOB-3206 @MOB-3145 @ios @Android 
   Scenario Outline: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user passes the splash screen
@@ -58,6 +58,21 @@ Feature: Login scenarios
     And the substitute enter valid password"<userPassword>"
     When Click on Sign In with Frontline ID button
     Then the substitute navigates to dashboard page
+    Examples:
+      | userName   | userPassword   |
+      | StageSubAhmed | FLultra1! |
+      
+  @regression @login @MOB-4271 @ios @Android 
+  Scenario Outline: Pull to refresh
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And the substitute enter valid username"<userName>"
+    And the substitute enter valid password"<userPassword>"
+    When Click on Sign In with Frontline ID button
+    Then the substitute navigates to dashboard page
+    And pulls to refresh the page
     Examples:
       | userName   | userPassword   |
       | StageSubAhmed | FLultra1! |

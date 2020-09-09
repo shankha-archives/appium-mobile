@@ -30,6 +30,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
+import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofMillis;
 
 //import com.aventstack.extentreports.Status;
@@ -1395,6 +1396,12 @@ public class BasePage {
 		boolean appStatus = ((AndroidDriver) driver).isAppInstalled(bundleId);
 		return appStatus;
 	}
-
+	
+	public void pullDown(MobileElement source, MobileElement destination) {
+		TouchAction touch = new TouchAction(driver);
+		
+		touch.press(element(source))
+		     .moveTo(element(destination)).release().perform();
+	} 
 
 }
