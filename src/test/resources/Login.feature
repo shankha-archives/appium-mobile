@@ -82,7 +82,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       | stageMultiMulti | FLultra1! |
       
-   @regression @login @MOB-3682
+   @regression @login @MOB-3682  @partaillycompleted 
   Scenario Outline: Feature flags access-No Districts associated with Sub
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
@@ -92,7 +92,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       | stageNoOrg | frontline1!|
       
-      @regression @MOB-3776 @MultiOrg 
+   @regression @MOB-3776 @MultiOrg  @partaillycompleted 
   Scenario Outline: Feature flags access- Multi District & Multi Role User
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
@@ -106,7 +106,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       |  | |
 
-@regression @MOB-3776 @MultiOrg @SubRole
+  @regression @MOB-3776 @MultiOrg @SubRole  @partaillycompleted 
   Scenario Outline: Feature flags access- Multi District & Multi Role User
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
@@ -120,7 +120,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       |  | |
 
-@regression @MOB-3776 @MultiOrg @MultiRole
+  @regression @MOB-3776 @MultiOrg @MultiRole  @partaillycompleted 
   Scenario Outline: Feature flags access- Multi District & Multi Role User
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin

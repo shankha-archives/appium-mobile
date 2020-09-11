@@ -70,7 +70,24 @@ public class JobsMethods extends LoginPage{
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
     //@iOSXCUITFindBy(accessibility = "")
     public MobileElement switchbtn;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_duration_date")
+    public MobileElement jobDate;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_time")
+    public MobileElement jobTime;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_location")
+    public MobileElement jobOrg;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
+	public MobileElement homeButton;
+	
+	public String job_date;
+	public String job_time;
+	public String job_org;
 
+	//String jobs=getElementText(noavailablejobs);
 //#########################################################################################################################
     public JobsMethods(){
     }
@@ -87,6 +104,9 @@ public class JobsMethods extends LoginPage{
         isElementDisplayed(availableJobsHeader);
         Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
         utils.log().info("Available Jobs list Page is displayed");
+       
+	    storeJobDetails();
+	
     }
 
     public void clickOnAvailableJobs(){
@@ -118,7 +138,29 @@ public class JobsMethods extends LoginPage{
         click(successOkBtn);
         utils.log().info("Click on Success OK button is displayed");
     }
+    
+	public void clickOnHomeButton() {
+        Assert.assertTrue("Home button is not displayed", homeButton.isDisplayed());
+        utils.log().info("Home button is displayed");
+        click(homeButton);
+        utils.log().info("Click on Home button is displayed");
+	}
+	
+    private void storeJobDetails() {
+    	job_date = getElementText(jobDate);
+    	job_time = getElementText(jobTime);
+    	job_org = getElementText(jobOrg);
+	}
 
+	public void verifyAcceptedJob() {
+		String date = getElementText(jobDate);
+		String time = getElementText(jobTime);
+		String org = getElementText(jobOrg);
+		
+        Assert.assertTrue("Accepted job still present in the jobs list", !(date==job_date && time==job_time && org==job_org));
+		utils.log().info("Accepted job removed from jobs list");
+	}
+    
     public void jobDetailsPageLoads()
     {
         isElementDisplayed(jobDetailsHeader);
@@ -139,7 +181,6 @@ public class JobsMethods extends LoginPage{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			fluentWait(veritimeorg);
 			 Assert.assertTrue("Available Organizations are not displayed", veritimeorg.isDisplayed());
 		     utils.log().info("Available Organizations are  displayed");
 		     click(veritimeorg);
@@ -150,7 +191,6 @@ public class JobsMethods extends LoginPage{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		     fluentWait(SubtituteUser);
 			 Assert.assertTrue("Available roles are not displayed", veritimeorg.isDisplayed());
 		     utils.log().info("Available roles are  displayed");
 		     click(SubtituteUser);
@@ -160,18 +200,17 @@ public class JobsMethods extends LoginPage{
 	    
 	    public String checkAvailablejob() {
 	    	 try {
-					Thread.sleep(30000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-	    	fluentWait(availableJobs);
 		     common.isElementDisplayed(availableJobs);
 		        Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
 		        utils.log().info("Available Jobs option is displayed on Home page");
 		        
 		        try {
-					Thread.sleep(30000);
+					Thread.sleep(10000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -189,7 +228,7 @@ public class JobsMethods extends LoginPage{
 	    {
 	    	click(switchbtn);	
 	    	try {
-				Thread.sleep(30000);
+				Thread.sleep(10000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -211,4 +250,6 @@ public class JobsMethods extends LoginPage{
 		     click(SubtituteUser);
 		     click(contbtn);
 	    }
+
+
 }
