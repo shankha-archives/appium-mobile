@@ -147,11 +147,6 @@ public class JobsMethods extends LoginPage{
 	}
 	
     private void storeJobDetails() {
-    	try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
     	job_date = getElementText(jobDate);
     	job_time = getElementText(jobTime);
     	job_org = getElementText(jobOrg);
