@@ -395,9 +395,6 @@ public class LoginPage extends BasePage {
 	}
 
 	public void pullToRefresh() {
-		fluentWait(homePageTop);
-		common.isElementDisplayed(homePageTop);
-		
-		pullDown(homePageTop, homePageBottom);
+		common.scrollDown();
 	}
 }
