@@ -141,6 +141,11 @@ public class SmokeMethods extends LoginPage {
 		//@iOSXCUITFindBy(xpath = "")
 		public MobileElement darkMode;
 		
+		// create absence btn //click
+		@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
+		@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		public MobileElement createAbsBtn;
+		
 		public String absence_Ename;
 		public String absence_day;
 		public String absence_month;
@@ -312,4 +317,10 @@ public class SmokeMethods extends LoginPage {
 		common.scrollDown();
 	}
 
+	public void clickCreateAbs() {
+		fluentWait(createAbsBtn);
+		Assert.assertTrue("Create Absence button is not displayed", createAbsBtn.isDisplayed());
+		utils.log().info("Create Absence button is displayed");
+		createAbsBtn.click();
+	}
 }
