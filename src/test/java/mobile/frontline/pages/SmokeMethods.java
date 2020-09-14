@@ -126,6 +126,21 @@ public class SmokeMethods extends LoginPage {
 		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 		    public MobileElement okBtn;
 		
+		//click on Menu tab
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement menuTab;
+
+		//click on Settings
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement settings;
+
+		//toggle dark mode
+		@AndroidFindBy(xpath = "//android.widget.Switch[@text='OFF']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement darkMode;
+		
 		public String absence_Ename;
 		public String absence_day;
 		public String absence_month;
@@ -277,6 +292,20 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Approved job still present in the approval list",
 				!(absence_Ename == name && absence_day == day && absence_month == month));
 		utils.log().info("Approved job removed from jobs list");
+	}
+	
+	public void clickOnSetting()
+	{
+		fluentWait(menuTab);
+		click(menuTab);
+		fluentWait(settings);
+		click(settings);
+	}
+	
+	public void toggleDarkMode()
+	{
+		fluentWait(darkMode);
+		click(darkMode);
 	}
 
 	public void pullToRefresh() {

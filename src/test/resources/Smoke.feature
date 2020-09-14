@@ -54,4 +54,15 @@ Scenario: Admin can approve the absence
 	When selected approved a job 
 	Then the job is no longer in the list for approval 
 	
+@MOB-4269 @smoke @Android
+Scenario: The user can toggle the Dark mode from setting	
+   	When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And Enter username and password and click on Sign In button
+    Then the substitute navigates to dashboard page
+    When the user clicks on Menu tab and click on Settings
+    Then the user toggle the Dark Mode
+	
  
