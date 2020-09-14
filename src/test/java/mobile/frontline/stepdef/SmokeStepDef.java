@@ -38,12 +38,12 @@ public class SmokeStepDef {
 	}
 
 	@And("^Enter admin username and password and click on Sign In button$")
-    public void enter_admin_username_and_password_and_click_on_sign_in_button() throws Throwable {
+	public void enter_admin_username_and_password_and_click_on_sign_in_button() throws Throwable {
 		loginPage.verify_loginPageLoaded();
 		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "adminlogin"));
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "adminpass"));
 		loginPage.clickOnLoginBtn();
-    }
+	}
 
 	@When("^the admin user launches the app$")
 	public void the_admin_user_launches_the_app() throws Throwable {
@@ -69,7 +69,7 @@ public class SmokeStepDef {
 	}
 
 	@When("^enter teacher select reason date length summary$")
-    public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
+	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
 		smokePage.enterTeachersName(testdata.read_property("testingData", "users", "teacher"));
 		smokePage.selectTeachersName();
 		smokePage.clickNext();
@@ -95,6 +95,23 @@ public class SmokeStepDef {
 	@And("^verify absence$")
 	public void verify_absence() throws Throwable {
 		smokePage.verifyAbsence();
+	}
+
+	@Then("click on the approval widget and navigates to the approval absence page")
+	public void clickOnTheApprovalWidgetAndNavigatesToTheApprovalAbsencePage() {
+		smokePage.selectAbsenceApprovalWidget();
+		smokePage.verifyAbsenceApprovalPage();
+	}
+
+	@When("selected approved a job")
+	public void selectedApprovedAJob() {
+		smokePage.storeAbsenceDetails();
+		smokePage.selectApproveConfirmAbsence();
+	}
+
+	@Then("the job is no longer in the list for approval")
+	public void theJobIsNoLongerInTheListForApproval() {
+		smokePage.verifyAcceptedAbsence();
 	}
 
 }
