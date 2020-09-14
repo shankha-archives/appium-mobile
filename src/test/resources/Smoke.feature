@@ -22,3 +22,14 @@ Scenario: Need to restrict login if application is running in background and the
     Then the substitute navigates to dashboard page
     And The user minimize and relaunch the application
     Then the substitute navigates to dashboard page
+    
+@smoke @MOB-4249 @Android
+  Scenario: Admin creates an absence for another user
+    When the admin user launches the app
+    Then the admin user click on Get Started Button and enter the pin
+    And Enter admin username and password and click on Sign In button
+    Then the admin navigates to dashboard page
+    And click on the absences then add absence
+    When enter teacher select reason date length summary
+    Then submit and view absence
+    And verify absence
