@@ -113,5 +113,10 @@ public class SmokeStepDef {
 	public void theJobIsNoLongerInTheListForApproval() {
 		smokePage.verifyAcceptedAbsence();
 	}
+	
+	@And("^pulls to refresh the page$")
+	public void pulls_to_refresh_the_page() throws Throwable {
+		smokePage.pullToRefresh();
+	}
 
 }

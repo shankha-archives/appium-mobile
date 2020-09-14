@@ -279,4 +279,8 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Approved job removed from jobs list");
 	}
 
+	public void pullToRefresh() {
+		common.scrollDown();
+	}
+
 }

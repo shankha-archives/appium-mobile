@@ -3,6 +3,7 @@ package mobile.frontline.pages;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.junit.Assert;
@@ -14,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	//JobsMethods jobs = new JobsMethods();
+	JobsMethods jobs = new JobsMethods();
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
@@ -75,6 +76,7 @@ public class LoginPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.view.View[@text='Your password is required.']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your password is required.']")
 	public MobileElement userPasswordRequired;
+	
 	@AndroidFindBy(xpath = "//android.view.View[@text='Forgot Username']")
 	//@iOSXCUITFindBy(accessibility = "")
 	public MobileElement forgotUsername;
@@ -98,6 +100,14 @@ public class LoginPage extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select an Organization']")
     //@iOSXCUITFindBy(accessibility = "")
     public MobileElement orgPickerPageHeader;
+    
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='What's New']")
+    //@iOSXCUITFindBy(accessibility = "")
+    public MobileElement homePageTop;
+    
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Review Release Notes']")
+    //@iOSXCUITFindBy(accessibility = "")
+    public MobileElement homePageBottom;
     
    // @AndroidFindBy(xpath = "")
    // @iOSXCUITFindBy(accessibility = "")
@@ -149,6 +159,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void verify_splashScreenLoaded() {
+		fluentWait(splashScreen);
 		Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
 	}
 
@@ -382,4 +393,5 @@ public class LoginPage extends BasePage {
 	public void clickBackBtn() {
 		 clickElement(bckBtn);
 	}
+
 }
