@@ -65,4 +65,13 @@ Scenario: The user can toggle the Dark mode from setting
     When the user clicks on Menu tab and click on Settings
     Then the user toggle the Dark Mode
 	
- 
+@smoke @MOB-4245 @Android
+  Scenario: Employee creates an absence for himself
+    When the employee user launches the app
+    Then the employee user click on Get Started Button and enter the pin
+    And Enter employee username and password and click on Sign In button
+    Then the employee navigates to dashboard page
+    And click on the create absences
+    When select reason date length summary
+    Then submit and view absence
+    And verify absence 
