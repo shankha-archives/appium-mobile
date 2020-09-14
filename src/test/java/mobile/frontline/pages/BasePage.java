@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.PointOption.point;
+import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofMillis;
 
 //import com.aventstack.extentreports.Status;
