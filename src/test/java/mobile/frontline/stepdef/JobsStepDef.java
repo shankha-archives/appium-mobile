@@ -103,5 +103,6 @@ public class JobsStepDef {
   @And("^the dashboard displays all available jobs from all districts$")
   public void the_dashboard_displays_all_available_jobs_from_all_districts() throws Throwable {
   	jobulatorPage.clickOnAvailableJobs_displayed();
+  	jobulatorPage.multiDistrictVerification();
   }
 }
