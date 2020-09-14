@@ -90,6 +90,45 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
 	@iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
 	public MobileElement confirmationNumber;
+	
+	//click on approvals
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text='']")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement absenceApprovalwidget;
+		
+		//verify approvals
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approvals']")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement verifyAbsencePage;
+
+		//employee name for verification
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approval_employee_name")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement employeeName;
+
+		//day of absence name for verification
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_day_text")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement dayName;
+
+		//month of absence name for verification
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_month_text")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement monthName;
+
+		//click on approve btn
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approve_button")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement approvebtn;
+		
+		//month of absence name for verification
+		@AndroidFindBy(id = "android:id/button1")
+		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		    public MobileElement okBtn;
+		
+		public String absence_Ename;
+		public String absence_day;
+		public String absence_month;
 
 	public SmokeMethods() {
 	}
@@ -154,7 +193,7 @@ public class SmokeMethods extends LoginPage {
 		// dateVerification.click();
 
 		String cdate = common.currentDate();
-	String nd = common.nextDate(cdate);
+		String nd = common.nextDate(cdate);
 		MobileElement date = driver
 				.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 		String tagName = date.getAttribute("content-desc").toString();
@@ -164,8 +203,8 @@ public class SmokeMethods extends LoginPage {
 			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 			tagName = date.getAttribute("content-desc").toString();
 		}
-	driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
-		
+		driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
+
 	}
 
 	public void selectReason() {
@@ -193,6 +232,51 @@ public class SmokeMethods extends LoginPage {
 		fluentWait(confirmationNumber);
 		Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
 		utils.log().info("Confirmation number is displayed");
+	}
+
+	public void selectAbsenceApprovalWidget() {
+
+		common.swipeUpSlowly();
+		common.isElementDisplayed(absenceApprovalwidget);
+		Assert.assertTrue("Absence approval option is not displayed Home page", absenceApprovalwidget.isDisplayed());
+		utils.log().info("Absence approval option is displayed on Home page");
+		click(absenceApprovalwidget);
+
+	}
+
+	public void verifyAbsenceApprovalPage() {
+		fluentWait(verifyAbsencePage);
+		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
+		utils.log().info("Absence approval page is displayed");
+	}
+
+	public void storeAbsenceDetails() {
+		absence_Ename = getElementText(employeeName);
+		absence_day = getElementText(dayName);
+		absence_month = getElementText(monthName);
+	}
+
+	public void selectApproveConfirmAbsence() {
+		employeeName.click();
+		fluentWait(approvebtn);
+		approvebtn.click();
+		fluentWait(okBtn);
+		okBtn.click();
+	}
+
+	public void verifyAcceptedAbsence() {
+
+		fluentWait(verifyAbsencePage);
+		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
+		utils.log().info("Absence approval page is displayed");
+
+		String name = getElementText(employeeName);
+		String day = getElementText(dayName);
+		String month = getElementText(monthName);
+
+		Assert.assertTrue("Approved job still present in the approval list",
+				!(absence_Ename == name && absence_day == day && absence_month == month));
+		utils.log().info("Approved job removed from jobs list");
 	}
 
 }

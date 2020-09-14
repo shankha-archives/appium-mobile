@@ -33,3 +33,15 @@ Scenario: Need to restrict login if application is running in background and the
     When enter teacher select reason date length summary
     Then submit and view absence
     And verify absence
+    
+@smoke @MOB-4251 @Android 
+Scenario: Admin can approve the absence 
+	When the admin user launches the app 
+	Then the admin user click on Get Started Button and enter the pin 
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	And click on the approval widget and navigates to the approval absence page 
+	When selected approved a job 
+	Then the job is no longer in the list for approval 
+	
+ 
