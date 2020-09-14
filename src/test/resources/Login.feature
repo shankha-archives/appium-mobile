@@ -48,7 +48,7 @@ Feature: Login scenarios
     When Click on Sign In with Frontline ID button
     Then Error message displays to the substitute users
 
-  @regression @login @validlogin @MOB-3206 @MOB-3145 @ios @Android 
+  @regression @login @validlogin @MOB-3206 @MOB-3145 @ios @Android
   Scenario Outline: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user passes the splash screen
@@ -92,7 +92,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       | stageNoOrg | frontline1!|
       
-  @regression @MOB-3776 @MultiOrg   
+   @regression @MOB-3776 @MultiOrg   
   Scenario Outline: Feature flags access- Multi District & Multi Role User
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin

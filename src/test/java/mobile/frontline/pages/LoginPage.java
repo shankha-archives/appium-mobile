@@ -394,7 +394,4 @@ public class LoginPage extends BasePage {
 		 clickElement(bckBtn);
 	}
 
-	public void pullToRefresh() {
-		common.scrollDown();
-	}
 }

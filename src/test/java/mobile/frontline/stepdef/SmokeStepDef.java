@@ -1,4 +1,5 @@
 package mobile.frontline.stepdef;
+
 import org.junit.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -7,31 +8,115 @@ import mobile.Frontline.utils.TestDataManager;
 import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
+import mobile.frontline.pages.SmokeMethods;
 
 public class SmokeStepDef {
 
-    public LoginPage loginPage = new LoginPage();
-    public JobsMethods jobulatorPage = new JobsMethods();
-    public BasePage basePage = new BasePage();
-	public TestDataManager testdata=new TestDataManager();
+	public LoginPage loginPage = new LoginPage();
+	public JobsMethods jobulatorPage = new JobsMethods();
+	public BasePage basePage = new BasePage();
+	public TestDataManager testdata = new TestDataManager();
+	public SmokeMethods smokePage = new SmokeMethods();
 
+	@And("^Enter username and password and click on Sign In button$")
+	public void enter_username_and_password_and_click_on_sign_in_button() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "substitutelogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "substitutepass"));
+		loginPage.clickOnLoginBtn();
+	}
+
+	@And("^The user kill and relaunch the application$")
+	public void the_user_kill_and_relaunch_the_application() throws Throwable {
+		basePage.killAndRelaunch();
+	}
+
+	// @MOB-4229
+	@And("^The user minimize and relaunch the application$")
+	public void the_user_minimize_and_relaunch_the_application() throws Throwable {
+		basePage.bgRunningApp();
+	}
+
+	@And("^Enter admin username and password and click on Sign In button$")
+	public void enter_admin_username_and_password_and_click_on_sign_in_button() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "adminlogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "adminpass"));
+		loginPage.clickOnLoginBtn();
+	}
+
+	@When("^the admin user launches the app$")
+	public void the_admin_user_launches_the_app() throws Throwable {
+		loginPage.verify_splashScreenLoaded();
+	}
+
+	@Then("^the admin user click on Get Started Button and enter the pin$")
+	public void the_admin_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
+		loginPage.clickOnGetStartedBtn();
+		loginPage.enterUnlockCode();
+	}
+
+	@Then("^the admin navigates to dashboard page$")
+	public void the_admin_navigates_to_dashboard_page() throws Throwable {
+		loginPage.verify_homeScreen_displayed();
+
+	}
+
+	@And("^click on the absences then add absence$")
+	public void click_on_the_absences_then_add_absence() throws Throwable {
+		smokePage.selectAbsenceWidget();
+		smokePage.addAbsence();
+	}
+
+	@When("^enter teacher select reason date length summary$")
+	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
+		smokePage.enterTeachersName(testdata.read_property("testingData", "users", "teacher"));
+		smokePage.selectTeachersName();
+		smokePage.clickNext();
+		// page 3
+		smokePage.absenceReason();
+		smokePage.clickNext();
+		// page 4
+		smokePage.selectDate();
+		smokePage.clickNext();
+		// page 5
+		smokePage.selectReason();
+		smokePage.clickNext();
+		// page 6
+		smokePage.clickNext();
+	}
+
+	@Then("^submit and view absence$")
+	public void submit_and_view_absence() throws Throwable {
+		smokePage.submitAbsence();
+		smokePage.viewAbsence();
+	}
+
+	@And("^verify absence$")
+	public void verify_absence() throws Throwable {
+		smokePage.verifyAbsence();
+	}
+
+	@Then("click on the approval widget and navigates to the approval absence page")
+	public void clickOnTheApprovalWidgetAndNavigatesToTheApprovalAbsencePage() {
+		smokePage.selectAbsenceApprovalWidget();
+		smokePage.verifyAbsenceApprovalPage();
+	}
+
+	@When("selected approved a job")
+	public void selectedApprovedAJob() {
+		smokePage.storeAbsenceDetails();
+		smokePage.selectApproveConfirmAbsence();
+	}
+
+	@Then("the job is no longer in the list for approval")
+	public void theJobIsNoLongerInTheListForApproval() {
+		smokePage.verifyAcceptedAbsence();
+	}
 	
- 	 @And("^Enter username and password and click on Sign In button$")
- 	    public void enter_username_and_password_and_click_on_sign_in_button() throws Throwable {
- 		  loginPage.verify_loginPageLoaded();
- 	      loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "substitutelogin"));
- 	      loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "substitutepass"));
- 	      loginPage.clickOnLoginBtn(); 
- 	    }
- 	@And("^The user kill and relaunch the application$")
-   public void the_user_kill_and_relaunch_the_application() throws Throwable {
- 		basePage.killAndRelaunch();  	
-    }
+	@And("^pulls to refresh the page$")
+	public void pulls_to_refresh_the_page() throws Throwable {
+		smokePage.pullToRefresh();
+	}
 
-     //@MOB-4229
- 	 @And("^The user minimize and relaunch the application$")
-     public void the_user_minimize_and_relaunch_the_application() throws Throwable {
-       basePage.bgRunningApp();
-     }
-    
 }

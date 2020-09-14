@@ -122,11 +122,6 @@ public class LoginStepDef {
 		loginPage.verify_homeScreen_displayed();
 	}
 	
-	@And("^pulls to refresh the page$")
-	public void pulls_to_refresh_the_page() throws Throwable {
-		loginPage.pullToRefresh();
-	}
-	
     @Then("^the user is presented with the role picker$")
     public void role_picker_page_displayed() throws Throwable {
     	loginPage.rolePickerPageLoads();
