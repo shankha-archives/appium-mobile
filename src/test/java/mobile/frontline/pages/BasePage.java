@@ -24,7 +24,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -41,11 +44,10 @@ public class BasePage {
 	int generic_timeOutInMiliSeconds = 5000;
 	private CommandPrompt cmd = new CommandPrompt();
 
-
 	public AppiumDriver<MobileElement> driver;
 	Utils utils = new Utils();
 
-	public BasePage(){
+	public BasePage() {
 		this.driver = new DriverManager().getDriver();
 		PageFactory.initElements(new AppiumFieldDecorator(this.driver), this);
 	}
@@ -105,7 +107,7 @@ public class BasePage {
 
 	public String getText(MobileElement e, String msg) {
 		String txt;
-		switch(new GlobalParams().getPlatformName()){
+		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			txt = getAttribute(e, "text");
 			break;
@@ -121,7 +123,7 @@ public class BasePage {
 
 	public String getText(By e, String msg) {
 		String txt;
-		switch(new GlobalParams().getPlatformName()){
+		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			txt = getAttribute(e, "text");
 			break;
@@ -145,8 +147,8 @@ public class BasePage {
 
 	public MobileElement andScrollToElementUsingUiScrollable(String childLocAttr, String childLocValue) {
 		return (MobileElement) ((FindsByAndroidUIAutomator) driver).findElementByAndroidUIAutomator(
-				"new UiScrollable(new UiSelector()" + ".scrollable(true)).scrollIntoView("
-						+ "new UiSelector()."+ childLocAttr +"(\"" + childLocValue + "\"));");
+				"new UiScrollable(new UiSelector()" + ".scrollable(true)).scrollIntoView(" + "new UiSelector()."
+						+ childLocAttr + "(\"" + childLocValue + "\"));");
 	}
 
 	public MobileElement iOSScrollToElementUsingMobileScroll(MobileElement e) {
@@ -154,23 +156,23 @@ public class BasePage {
 		String elementID = element.getId();
 		HashMap<String, String> scrollObject = new HashMap<String, String>();
 		scrollObject.put("element", elementID);
-		//	  scrollObject.put("direction", "down");
-		//	  scrollObject.put("predicateString", "label == 'ADD TO CART'");
-		//	  scrollObject.put("name", "test-ADD TO CART");
+		// scrollObject.put("direction", "down");
+		// scrollObject.put("predicateString", "label == 'ADD TO CART'");
+		// scrollObject.put("name", "test-ADD TO CART");
 		scrollObject.put("toVisible", "sdfnjksdnfkld");
 		driver.executeScript("mobile:scroll", scrollObject);
 		return e;
 	}
 
 	public By iOSScrollToElementUsingMobileScrollParent(MobileElement parentE, String predicateString) {
-		RemoteWebElement parent = (RemoteWebElement)parentE;
+		RemoteWebElement parent = (RemoteWebElement) parentE;
 		String parentID = parent.getId();
 		HashMap<String, String> scrollObject = new HashMap<String, String>();
 		scrollObject.put("element", parentID);
-		//	  scrollObject.put("direction", "down");
+		// scrollObject.put("direction", "down");
 		scrollObject.put("predicateString", predicateString);
-		//	  scrollObject.put("name", "test-ADD TO CART");
-		//        scrollObject.put("toVisible", "sdfnjksdnfkld");
+		// scrollObject.put("name", "test-ADD TO CART");
+		// scrollObject.put("toVisible", "sdfnjksdnfkld");
 		driver.executeScript("mobile:scroll", scrollObject);
 		By m = MobileBy.iOSNsPredicateString(predicateString);
 		System.out.println("Mobilelement is " + m);
@@ -205,7 +207,7 @@ public class BasePage {
 				swipe(startX, startY, endX, endY, 1000);
 			}
 		}
-		if(!isFound){
+		if (!isFound) {
 			throw new Exception("Element not found");
 		}
 		return element;
@@ -239,13 +241,12 @@ public class BasePage {
 				swipe(startX, startY, endX, endY, 1000);
 			}
 		}
-		if(!isFound){
+		if (!isFound) {
 			throw new Exception("Element not found");
 		}
 		return element;
 	}
 
-	
 	public boolean find(final MobileElement element, int timeout) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
@@ -280,11 +281,10 @@ public class BasePage {
 		}
 	}
 
-	public void swipe(int startX, int startY, int endX, int endY, int millis)
-			throws InterruptedException {
+	public void swipe(int startX, int startY, int endX, int endY, int millis) throws InterruptedException {
 		TouchAction t = new TouchAction(driver);
 		t.press(point(startX, startY)).waitAction(waitOptions(ofMillis(millis))).moveTo(point(endX, endY)).release()
-		.perform();
+				.perform();
 	}
 
 	public void wait(int n) {
@@ -347,7 +347,8 @@ public class BasePage {
 	/**
 	 * Return the property key value from config.properties
 	 *
-     //* @param String field*/
+	 * //* @param String field
+	 */
 
 	public String getPropValue(String field) {
 		Properties prop = new Properties();
@@ -381,7 +382,7 @@ public class BasePage {
 	/**
 	 * Wait for page to load using visibilityOf
 	 *
-     // @param WebElement id
+	 * // @param WebElement id
 	 */
 	public void waitForPageToLoad(WebElement id) {
 		WebDriverWait wait = new WebDriverWait(driver, LOAD_TIMEOUT);
@@ -410,7 +411,7 @@ public class BasePage {
 	/**
 	 * Wait for page to load using elementToBeClickable
 	 *
-     // @param MobileElement id
+	 * // @param MobileElement id
 	 */
 	public void waitForElementClickable(WebElement id) {
 		setLoadTime();
@@ -423,8 +424,7 @@ public class BasePage {
 	}
 
 	/**
-	 * Wait for Element and return an element
-     //* @param id
+	 * Wait for Element and return an element //* @param id
 	 */
 	public WebElement waitForElement(WebElement arg) {
 		waitForPageToLoad(arg);
@@ -450,6 +450,7 @@ public class BasePage {
 		});
 		return foo;
 	}
+
 	/**
 	 * Set fluent wait.
 	 *
@@ -468,14 +469,13 @@ public class BasePage {
 		});
 		return foo;
 	}
+
 	/**
 	 * Navigate back to the previous screen
 	 */
 	public void clickBackButton() {
 		driver.navigate().back();
 	}
-	
-	
 
 	/**
 	 * Hide the Keyboard
@@ -578,6 +578,7 @@ public class BasePage {
 			return true;
 		}
 	}
+
 	public boolean isElementNotPresent(MobileElement element) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20, 500);
@@ -589,8 +590,7 @@ public class BasePage {
 	}
 
 	/**
-	 * Return true if elements are present else return false
-     //* @param list
+	 * Return true if elements are present else return false //* @param list
 	 */
 	public boolean IsElementsPresent(List<MobileElement> element) {
 		boolean value = false;
@@ -629,13 +629,13 @@ public class BasePage {
 		int endY = (int) (size.height * .8);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 
@@ -649,13 +649,13 @@ public class BasePage {
 		int endY = (int) (size.height * .2);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 
@@ -666,13 +666,13 @@ public class BasePage {
 		int endY = (int) (size.height * .3);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 
@@ -693,19 +693,25 @@ public class BasePage {
 		}
 	}
 
-	/*Swipe Element
-    // @param int  startX, int startY, int endX, int endY
-     @param long Duration*/
+	/*
+	 * Swipe Element // @param int startX, int startY, int endX, int endY
+	 * 
+	 * @param long Duration
+	 */
 
 	public void swipe(int startX, int startY, int endX, int endY, long duration) {
 		(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-		.waitAction(WaitOptions.waitOptions(Duration.ofMillis(duration))).moveTo(PointOption.point(endX, endY))
-		.release().perform();
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(duration))).moveTo(PointOption.point(endX, endY))
+				.release().perform();
 	}
 
-	/*   Swipe Up Element
-     @param MobileElement
-     @param Int Duration*/
+	/*
+	 * Swipe Up Element
+	 * 
+	 * @param MobileElement
+	 * 
+	 * @param Int Duration
+	 */
 
 	public void swipeUpElement(MobileElement element, int duration) {
 		int topY = element.getLocation().getY();
@@ -713,8 +719,8 @@ public class BasePage {
 		int centerX = element.getLocation().getX() + (element.getSize().getWidth() / 2);
 
 		(new TouchAction<>(driver)).press(PointOption.point(centerX, bottomY))
-		.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300))).moveTo(PointOption.point(centerX, topY))
-		.release().perform();
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300))).moveTo(PointOption.point(centerX, topY))
+				.release().perform();
 	}
 
 	/**
@@ -727,13 +733,13 @@ public class BasePage {
 		int endY = (int) (size.height * .2);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 
@@ -747,13 +753,13 @@ public class BasePage {
 		int endY = (int) (size.height * .8);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 
@@ -767,13 +773,13 @@ public class BasePage {
 		int starty = size.height / 2;
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startx, starty))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300))).moveTo(PointOption.point(endx, starty))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300))).moveTo(PointOption.point(endx, starty))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(0, starty))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(900)))
-			.moveTo(PointOption.point(endx + 200, starty)).release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(900)))
+					.moveTo(PointOption.point(endx + 200, starty)).release().perform();
 		}
 	}
 
@@ -787,18 +793,21 @@ public class BasePage {
 		int starty = size.height / 2;
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startx, starty))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300))).moveTo(PointOption.point(endx, starty))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(300))).moveTo(PointOption.point(endx, starty))
+					.release().perform();
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startx + 100, starty))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(900)))
-			.moveTo(PointOption.point(endx - 100, starty)).release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(900)))
+					.moveTo(PointOption.point(endx - 100, starty)).release().perform();
 		}
 	}
 
-	/* Swipe Up Until Text Exist
-     @param String expected*/
+	/*
+	 * Swipe Up Until Text Exist
+	 * 
+	 * @param String expected
+	 */
 
 	public void swipeUpUntilTextExists(String expected) {
 		do {
@@ -806,8 +815,11 @@ public class BasePage {
 		} while (!driver.getPageSource().contains(expected));
 	}
 
-	/* Swipe Down Until Text Exist
-     @param String expected*/
+	/*
+	 * Swipe Down Until Text Exist
+	 * 
+	 * @param String expected
+	 */
 
 	public void swipeDownUntilTextExists(String expected) {
 		do {
@@ -815,8 +827,11 @@ public class BasePage {
 		} while (!driver.getPageSource().contains(expected));
 	}
 
-	/* Swipe Right Until Text Exist
-     @param String expected*/
+	/*
+	 * Swipe Right Until Text Exist
+	 * 
+	 * @param String expected
+	 */
 
 	public void swipeRightUntilTextExists(String expected) {
 		do {
@@ -824,8 +839,11 @@ public class BasePage {
 		} while (!driver.getPageSource().contains(expected));
 	}
 
-	/*Swipe Left Until Text Exist
-     @param String expected*/
+	/*
+	 * Swipe Left Until Text Exist
+	 * 
+	 * @param String expected
+	 */
 
 	public void swipeLeftUntilTextExists(String expected) {
 		do {
@@ -833,8 +851,11 @@ public class BasePage {
 		} while (!driver.getPageSource().contains(expected));
 	}
 
-	/*Swipe Right Until Element Exist
-     @param By expected*/
+	/*
+	 * Swipe Right Until Element Exist
+	 * 
+	 * @param By expected
+	 */
 
 	public void swipeRightUntilElementExist(By by) {
 		do {
@@ -842,8 +863,11 @@ public class BasePage {
 		} while (!IsElementPresent(by));
 	}
 
-	/*  Swipe Left Until Element Exist
-     @param By expected*/
+	/*
+	 * Swipe Left Until Element Exist
+	 * 
+	 * @param By expected
+	 */
 
 	public void swipeLeftUntilElementExist(By by) {
 		do {
@@ -851,8 +875,11 @@ public class BasePage {
 		} while (!IsElementPresent(by));
 	}
 
-	/*Swipe Up Until Element Exist
-     @param By expected*/
+	/*
+	 * Swipe Up Until Element Exist
+	 * 
+	 * @param By expected
+	 */
 
 	public void swipeUpUntilElementExist(By by) {
 		do {
@@ -860,18 +887,24 @@ public class BasePage {
 		} while (!IsElementPresent(by));
 	}
 
-	/*Swipe Down Until Element Exist
-    @param By expected*/
+	/*
+	 * Swipe Down Until Element Exist
+	 * 
+	 * @param By expected
+	 */
 
 	public void swipeDownUntilElementExist(By by) {
 		do {
 			swipeDown();
 		} while (!IsElementPresent(by));
 	}
-	//#####################
+	// #####################
 
-	/* Swipe Right Until Element Exist
-     @param MobileElement element*/
+	/*
+	 * Swipe Right Until Element Exist
+	 * 
+	 * @param MobileElement element
+	 */
 
 	public void swipeRightUntilElementExist(MobileElement element) {
 		do {
@@ -879,8 +912,11 @@ public class BasePage {
 		} while (!IsElementPresent(element));
 	}
 
-	/*Swipe Left Until Element Exist
-     @param MobileElement element*/
+	/*
+	 * Swipe Left Until Element Exist
+	 * 
+	 * @param MobileElement element
+	 */
 
 	public void swipeLeftUntilElementExist(MobileElement element) {
 		do {
@@ -888,8 +924,11 @@ public class BasePage {
 		} while (!IsElementPresent(element));
 	}
 
-	/*  Swipe Up Until Element Exist
-     @param MobileElement element*/
+	/*
+	 * Swipe Up Until Element Exist
+	 * 
+	 * @param MobileElement element
+	 */
 
 	public void swipeUpUntilElementExist(MobileElement element) {
 		do {
@@ -897,8 +936,11 @@ public class BasePage {
 		} while (!IsElementPresent(element));
 	}
 
-	/* Swipe Down Until Element Exist
-    @param MobileElement element*/
+	/*
+	 * Swipe Down Until Element Exist
+	 * 
+	 * @param MobileElement element
+	 */
 
 	public void swipeDownUntilElementExist(MobileElement element) {
 		do {
@@ -919,8 +961,11 @@ public class BasePage {
 		}
 	}
 
-	/*   method to get the context to required view
-    @param context view to be set*/
+	/*
+	 * method to get the context to required view
+	 * 
+	 * @param context view to be set
+	 */
 
 	public void getContext() {
 		try {
@@ -934,50 +979,48 @@ public class BasePage {
 		}
 	}
 
-    /**
-     * method to set the context to required view.
-     *
-     * @param context view to be set
-     */
-    public void setContext(String context) {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.context((String) context.toString());
-        System.out.println("Current context" + driver.getContext());
-    }
+	/**
+	 * method to set the context to required view.
+	 *
+	 * @param context view to be set
+	 */
+	public void setContext(String context) {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		driver.context((String) context.toString());
+		System.out.println("Current context" + driver.getContext());
+	}
 
-    /**
-     * method to set the default webview context
-     */
-    public void switchToWebView() {
-    	try {
-    		Thread.sleep(4000);
-    	} catch (InterruptedException e) {
-    		e.printStackTrace();
-    	}
-    	@SuppressWarnings("unchecked")
-    	Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
-    	for (String contextName : contextNames) {
-    		if(contextName.contains("WEBVIEW") || contextName.contains("Webview"))
-    		{
-    			utils.log().info("Setting WebView: "+contextName);
-    			break;
-    		}
-    	}
-    }
+	/**
+	 * method to set the default webview context
+	 */
+	public void switchToWebView() {
+		try {
+			Thread.sleep(4000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		@SuppressWarnings("unchecked")
+		Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
+		for (String contextName : contextNames) {
+			if (contextName.contains("WEBVIEW") || contextName.contains("Webview")) {
+				utils.log().info("Setting WebView: " + contextName);
+				break;
+			}
+		}
+	}
 
-    /*public void logStepIntoExtentReport(String elementDescription, String action, String typeString) {
-        ExtentTestManager.getTest().log(Status.INFO,
-                elementDescription + "; " + withBoldHTML("Text") + ": " + typeString);
-    }
-
-    public void logStepIntoReport(String elementDescription) {
-        ExtentTestManager.getTest().log(Status.INFO, elementDescription);
-    }
-*/
+	/*
+	 * public void logStepIntoExtentReport(String elementDescription, String action,
+	 * String typeString) { ExtentTestManager.getTest().log(Status.INFO,
+	 * elementDescription + "; " + withBoldHTML("Text") + ": " + typeString); }
+	 * 
+	 * public void logStepIntoReport(String elementDescription) {
+	 * ExtentTestManager.getTest().log(Status.INFO, elementDescription); }
+	 */
 	public String withBoldHTML(String string) {
 		if (!string.trim().isEmpty()) {
 			return "<b>" + string + "</b>";
@@ -1007,7 +1050,6 @@ public class BasePage {
 
 		cmd.runCommand("adb -s " + deviceID + " uninstall " + app_package);
 	}
-	
 
 	/**
 	 * This method install apk in the devices attached
@@ -1085,7 +1127,7 @@ public class BasePage {
 		// Getting pixel color by position x and y
 		int clr = image.getRGB(centerx, centerY);
 		int red = (clr & 0x00ff0000) >> 16;
-			int green = (clr & 0x0000ff00) >> 8;
+		int green = (clr & 0x0000ff00) >> 8;
 		int blue = clr & 0x000000ff;
 
 		switch (Color) {
@@ -1250,7 +1292,7 @@ public class BasePage {
 		TouchAction touchAction = new TouchAction(driver);
 		touchAction.tap(PointOption.point(x, y)).perform();
 	}
-	
+
 	public void killAndRelaunch() throws Exception {
 		driver.runAppInBackground(Duration.ofSeconds(10));
 	}
@@ -1288,10 +1330,10 @@ public class BasePage {
 		int clr = image.getRGB(centerx, centerY);
 		int red = (clr & 0x00ff0000) >> 16;
 		int green = (clr & 0x0000ff00) >> 8;
-			int blue = clr & 0x000000ff;
-			utils.log().info("Red Color value = " + red);
-			utils.log().info("Green Color value = " + green);
-			utils.log().info("Blue Color value = " + blue);
+		int blue = clr & 0x000000ff;
+		utils.log().info("Red Color value = " + red);
+		utils.log().info("Green Color value = " + green);
+		utils.log().info("Blue Color value = " + blue);
 	}
 
 	public void swipeUpOnePage() {
@@ -1301,38 +1343,32 @@ public class BasePage {
 		int endY = (int) (size.height * .3);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-			.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-			.release().perform();
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 
-	public void swipeElementLeft(MobileElement elem)
-	{
+	public void swipeElementLeft(MobileElement elem) {
 		Point bannerPoint = elem.getLocation();
 		Dimension screenSize = driver.manage().window().getSize();
 		int startX = Math.toIntExact(Math.round(screenSize.getWidth() * 0.8));
 		int endX = 0;
 		TouchAction action = new TouchAction(driver);
-		action
-		.press(PointOption.point(startX, bannerPoint.getY()))
-		.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-		.moveTo(PointOption.point(endX, bannerPoint.getY()))
-		.release();
+		action.press(PointOption.point(startX, bannerPoint.getY()))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+				.moveTo(PointOption.point(endX, bannerPoint.getY())).release();
 		driver.performTouchAction(action);
 	}
 
-	public void swipeElementRight(MobileElement elem)
-	{
+	public void swipeElementRight(MobileElement elem) {
 		Point bannerPoint = elem.getLocation();
 		Dimension screenSize = driver.manage().window().getSize();
 		int startX = 0;
 		int endX = Math.toIntExact(Math.round(screenSize.getWidth() * 0.8));
 		TouchAction action = new TouchAction(driver);
-		action
-		.press(PointOption.point(startX, bannerPoint.getY()))
-		.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
-		.moveTo(PointOption.point(endX, bannerPoint.getY()))
-		.release();
+		action.press(PointOption.point(startX, bannerPoint.getY()))
+				.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+				.moveTo(PointOption.point(endX, bannerPoint.getY())).release();
 		driver.performTouchAction(action);
 	}
 
@@ -1359,12 +1395,12 @@ public class BasePage {
 			e.printStackTrace();
 		}
 	}
-	public void setWiFiState(boolean status)
-	{
+
+	public void setWiFiState(boolean status) {
 		try {
-			AndroidDriver anddriver=((AndroidDriver) driver);
-			ConnectionState con=anddriver.getConnection();
-			boolean val=con.isWiFiEnabled();
+			AndroidDriver anddriver = ((AndroidDriver) driver);
+			ConnectionState con = anddriver.getConnection();
+			boolean val = con.isWiFiEnabled();
 			if (val != status) {
 				anddriver.toggleWifi();
 				wait(1700);
@@ -1375,10 +1411,11 @@ public class BasePage {
 			e.printStackTrace();
 		}
 	}
+
 	public boolean checkWiFiStatus() {
-		AndroidDriver anddriver=((AndroidDriver) driver);
-		ConnectionState con=anddriver.getConnection();
-		boolean val=con.isWiFiEnabled();
+		AndroidDriver anddriver = ((AndroidDriver) driver);
+		ConnectionState con = anddriver.getConnection();
+		boolean val = con.isWiFiEnabled();
 		return val;
 	}
 
@@ -1386,15 +1423,30 @@ public class BasePage {
 		AndroidBatteryInfo baatInfo = ((AndroidDriver) driver).getBatteryInfo();
 		utils.log().info(baatInfo.getState().CHARGING.toString());
 	}
+
 	public String getDeviceTime() {
 		String deviceTimeInfo = ((AndroidDriver) driver).getDeviceTime();
 		utils.log().info(deviceTimeInfo);
 		return deviceTimeInfo;
 	}
+
 	public boolean getApplicationStatus(String bundleId) {
 		boolean appStatus = ((AndroidDriver) driver).isAppInstalled(bundleId);
 		return appStatus;
 	}
 
+	public String currentDate() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd, yyyy");
+		return dtf.format(LocalDateTime.now());
+	}
+
+	public String nextDate(String date) throws Exception {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd, yyyy");
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateFormat.parse(date));
+		c.add(Calendar.DAY_OF_MONTH, 1);
+		String newDate = dateFormat.format(c.getTime());
+		return newDate;
+	}
 
 }

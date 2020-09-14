@@ -92,6 +92,7 @@ Feature: Login scenarios
       | userName   | userPassword   |
       | stageNoOrg | frontline1!|
       
+
   @regression @MOB-3776 @MultiOrg  @partaillycompleted 
   Scenario Outline: Feature flags access- Multi District & Multi Role User
     When the substitute user launches the app

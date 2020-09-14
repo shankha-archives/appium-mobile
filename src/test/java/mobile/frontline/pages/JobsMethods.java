@@ -149,11 +149,6 @@ public class JobsMethods extends LoginPage{
 	}
 	
     private void storeJobDetails() {
-    	try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
     	job_date = getElementText(jobDate);
     	job_time = getElementText(jobTime);
     	job_org = getElementText(jobOrg);
@@ -188,7 +183,6 @@ public class JobsMethods extends LoginPage{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			//fluentWait(veritimeorg);
 			 Assert.assertTrue("Available Organizations are not displayed", veritimeorg.isDisplayed());
 		     utils.log().info("Available Organizations are  displayed");
 		     click(veritimeorg);
@@ -199,7 +193,6 @@ public class JobsMethods extends LoginPage{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		    // fluentWait(SubtituteUser);
 			 Assert.assertTrue("Available roles are not displayed", veritimeorg.isDisplayed());
 		     utils.log().info("Available roles are  displayed");
 		     click(SubtituteUser);
@@ -214,7 +207,6 @@ public class JobsMethods extends LoginPage{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-	    //	fluentWait(availableJobs);
 		     common.isElementDisplayed(availableJobs);
 		        Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
 		        utils.log().info("Available Jobs option is displayed on Home page");
