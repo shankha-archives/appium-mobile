@@ -125,5 +125,9 @@ public class SmokeStepDef {
 	 public void the_user_toggle_the_dark_mode() throws Throwable {
 		 smokePage.toggleDarkMode();
 	 }
-
+  
+	@And("^pulls to refresh the page$")
+	public void pulls_to_refresh_the_page() throws Throwable {
+		smokePage.pullToRefresh();
+	}
 }

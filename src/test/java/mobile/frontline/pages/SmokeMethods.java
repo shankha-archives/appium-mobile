@@ -308,4 +308,8 @@ public class SmokeMethods extends LoginPage {
 		click(darkMode);
 	}
 
+	public void pullToRefresh() {
+		common.scrollDown();
+	}
+
 }

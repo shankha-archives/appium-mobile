@@ -22,6 +22,16 @@ Scenario: Need to restrict login if application is running in background and the
     Then the substitute navigates to dashboard page
     And The user minimize and relaunch the application
     Then the substitute navigates to dashboard page
+        
+  @MOB-4271 @smoke @Android 
+  Scenario Outline: Pull to refresh
+    When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And Enter username and password and click on Sign In button
+    Then the substitute navigates to dashboard page
+    And pulls to refresh the page
     
 @smoke @MOB-4249 @Android
   Scenario: Admin creates an absence for another user

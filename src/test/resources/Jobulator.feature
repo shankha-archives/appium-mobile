@@ -59,7 +59,7 @@ Feature: Jobulator scenarios
       | userName   | userPassword   |
       | multimulti  | FLultra1! |
       
-    @regression @MOB-3683
+  @regression @MOB-3683
   Scenario Outline: Feature flags access- Multi District User
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
@@ -70,7 +70,7 @@ Feature: Jobulator scenarios
       | userName   | userPassword   |
       | stageSubShivani | FLultra1! |
       
-      @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS
+  @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS
   Scenario Outline: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
