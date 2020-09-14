@@ -113,5 +113,17 @@ public class SmokeStepDef {
 	public void theJobIsNoLongerInTheListForApproval() {
 		smokePage.verifyAcceptedAbsence();
 	}
+	
+	 //@MOB-4269
+	 @When("^the user clicks on Menu tab and click on Settings$")
+	 public void the_user_clicks_on_Menu_tab_and_click_on_Settings() throws Throwable {
+		 smokePage.clickOnSetting();
+	 }
+	 
+	 //@MOB-4269
+	 @Then("^the user toggle the Dark Mode$")
+	 public void the_user_toggle_the_dark_mode() throws Throwable {
+		 smokePage.toggleDarkMode();
+	 }
 
 }
