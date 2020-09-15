@@ -12,7 +12,13 @@
 		<teacherlogin>stageTeachStanley</teacherlogin>
 		<teacherpass>FLultra1!</teacherpass>
 		<employeelogin>prod01</employeelogin>
-        <employeepass>FLultra1!</employeepass>
+    <employeepass>FLultra1!</employeepass>
+		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>
+		<multiOrgSubsPass>FLultra1!</multiOrgSubsPass>
+		<MultiOrgUser>stageMultiMulti</MultiOrgUser>
+		<MultiOrgPass>FLultra1!</MultiOrgPass>
+		<NoDistrictUser>stageNoOrg</NoDistrictUser>
+		<NoDistrictPass>frontline1!</NoDistrictPass>
 	</Account>
 	<testingData type="users">
 		<teacher>Oldguy</teacher>
