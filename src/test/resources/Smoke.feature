@@ -33,7 +33,7 @@ Scenario: Need to restrict login if application is running in background and the
     Then the substitute navigates to dashboard page
     And pulls to refresh the page
     
-@smoke @MOB-4249 @Android
+  @smoke @MOB-4249 @Android
   Scenario: Admin creates an absence for another user
     When the admin user launches the app
     Then the admin user click on Get Started Button and enter the pin
@@ -64,9 +64,18 @@ Scenario: The user can toggle the Dark mode from setting
     Then the substitute navigates to dashboard page
     When the user clicks on Menu tab and click on Settings
     Then the user toggle the Dark Mode
+    
+ @MOB-4255 @smoke @sprint7 @Android 
+ Scenario: View leave balances and check available days
+    When the employee user launches the app
+    Then the employee user click on Get Started Button and enter the pin 
+    And Enter employee username and password and click on SignIn button
+    Then the employee navigates to dashboard page
+    And click on Available Leave Balances and view leave balances
+    Then verify available days
 	
-@smoke @MOB-4245 @Android
-  Scenario: Employee creates an absence for himself
+ @smoke @MOB-4245 @Android
+ Scenario: Employee creates an absence for himself
     When the employee user launches the app
     Then the employee user click on Get Started Button and enter the pin
     And Enter employee username and password and click on Sign In button
