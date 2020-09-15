@@ -342,7 +342,7 @@ public class SmokeMethods extends LoginPage {
 	
 	public void verify_availableDays() {
 		String leaveBalance = getElementText(availableDays);
-		Assert.assertTrue("Available Leaves are invalid", Integer.parseInt(leaveBalance)>=0);
+		Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance)>=0);
 		utils.log().info("Available Days are valid");
 	}
 
