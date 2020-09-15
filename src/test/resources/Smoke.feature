@@ -84,3 +84,12 @@ Scenario: The user can toggle the Dark mode from setting
     Then the employee navigates to dashboard page
     When click on the inbox
     Then view the message in the inbox
+    
+@smoke @MOB-4267 @Android
+  Scenario: An admin can visit inbox and view messages
+   When the admin user launches the app 
+	Then the admin user click on Get Started Button and enter the pin 
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+    When click on the inbox
+    Then view the message in the inbox
