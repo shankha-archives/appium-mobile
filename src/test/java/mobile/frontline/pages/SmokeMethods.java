@@ -1,6 +1,7 @@
 package mobile.frontline.pages;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.Assert;
 
@@ -145,6 +146,36 @@ public class SmokeMethods extends LoginPage {
 		@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
 		@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 		public MobileElement createAbsBtn;
+		
+		//click on Feedback
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement feedback;
+		
+		//click on drop down icon
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_icon")
+		//@iOSXCUITFindBy(accessibility = "")
+		public MobileElement topic;
+		
+		//selecting value from drop down
+		@AndroidFindBy(xpath = "//android.widget.TextView[@index= 0]")
+		//@iOSXCUITFindBy(xpath = "")
+		public List<MobileElement> itemsInDropDown;
+		
+		//enter text in Title
+		@AndroidFindBy(xpath = "//android.widget.EditText[@text='Title']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement title;
+		
+		//enter text in message
+		@AndroidFindBy(xpath = "//android.widget.EditText[@text='Message']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement message;
+		
+		//click on save
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
+		//@iOSXCUITFindBy(accessibility = "")
+		public MobileElement saveBtn;
 		
 		public String absence_Ename;
 		public String absence_day;
@@ -322,5 +353,30 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Create Absence button is not displayed", createAbsBtn.isDisplayed());
 		utils.log().info("Create Absence button is displayed");
 		createAbsBtn.click();
+	}
+	
+	public void clickOnFeedback()
+	{
+		fluentWait(menuTab);
+		click(menuTab);
+		fluentWait(feedback);
+		click(feedback);	
+	}
+	
+	public void sendFeedback()
+	{
+		fluentWait(topic);
+		click(topic);
+		int size = itemsInDropDown.size();
+		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
+		itemsInDropDown.get(randomNumber).click();
+		fluentWait(title);
+		title.click();
+		driver.getKeyboard().sendKeys("Android Test");
+		fluentWait(message);
+		click(message);
+		driver.getKeyboard().sendKeys("This is a random message");
+		fluentWait(saveBtn);
+		click(saveBtn);
 	}
 }
