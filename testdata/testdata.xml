@@ -12,6 +12,12 @@
 		<adminpass>FLultra1!</adminpass>
 		<teacherlogin>stageTeachStanley</teacherlogin>
 		<teacherpass>FLultra1!</teacherpass>
+		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>
+		<multiOrgSubsPass>FLultra1!</multiOrgSubsPass>
+		<MultiOrgUser>stageMultiMulti</MultiOrgUser>
+		<MultiOrgPass>FLultra1!</MultiOrgPass>
+		<NoDistrictUser>stageNoOrg</NoDistrictUser>
+		<NoDistrictPass>frontline1!</NoDistrictPass>
 	</Account>
 	<testingData type="users">
 		<teacher>Oldguy</teacher>

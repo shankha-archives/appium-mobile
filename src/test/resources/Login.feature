@@ -57,30 +57,25 @@ Feature: Login scenarios
     Then the substitute navigates to dashboard page
   
   @regression @MOB-3601 @MultiRoleUser @MultiRole @Android
-  Scenario Outline: user has only one enabled organization with multiple roles within that organization including substitute
+  Scenario: user has only one enabled organization with multiple roles within that organization including substitute
     When The substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
-    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    And Enter username and password for multiple roles including substitute and organization and click on Sign In button
     Then the user is presented with the role picker
-    Examples:
-      | userName   | userPassword   |
-      | alexaOrgMultirole | FLultra1! |
 
   @regression @MOB-3601 @MultiRoleUser @MultiOrg @Android
-  Scenario Outline: user has multiple organization with multiple roles within these organizations
+  Scenario: user has multiple organization with multiple roles within these organizations
     When The substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
-    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    And Enter username and password for multiple organization and click on Sign In button
     Then the user is presented with the org picker
-    Examples:
-      | userName   | userPassword   |
-      | stageMultiMulti | FLultra1! |
+
       
   @regression @login @MOB-3682   
   Scenario Outline: Feature flags access-No Districts associated with Sub
     When the substitute user launches the app
     Then the substitute user click on Get Started Button and enter the pin
-    And Enter username"<userName>" and password"<userPassword>" and click on Sign In button
+    And Enter username and password access No Districts associated with Sub and click on Sign In button
     Then the system presents a dialog
     Examples:
       | userName   | userPassword   |
