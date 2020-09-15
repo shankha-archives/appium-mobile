@@ -174,4 +174,18 @@ public class SmokeStepDef {
 		// page 6
 		smokePage.clickNext();
 	}
+	
+	//MOB-4265
+	@When("click on the inbox")
+	public void clickOnTheInbox() throws Throwable {
+		smokePage.clickInbox();
+		smokePage.verifyInboxPage();
+	}
+	
+	@Then("view the message in the inbox")
+	public void viewTheMessageInTheInbox() {
+		smokePage.viewText();
+	}
+
 }
+

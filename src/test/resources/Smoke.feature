@@ -75,3 +75,12 @@ Scenario: The user can toggle the Dark mode from setting
     When select reason date length summary
     Then submit and view absence
     And verify absence 
+
+@smoke @MOB-4265 @Android
+  Scenario: An employee can visit inbox and view messages
+    When the employee user launches the app
+    Then the employee user click on Get Started Button and enter the pin
+    And Enter employee username and password and click on Sign In button
+    Then the employee navigates to dashboard page
+    When click on the inbox
+    Then view the message in the inbox
