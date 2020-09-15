@@ -55,11 +55,31 @@ public class SmokeStepDef {
 		loginPage.clickOnGetStartedBtn();
 		loginPage.enterUnlockCode();
 	}
-
+	
+	
 	@Then("^the admin navigates to dashboard page$")
 	public void the_admin_navigates_to_dashboard_page() throws Throwable {
 		loginPage.verify_homeScreen_displayed();
 
+	}
+	
+	//MOB-4255
+	@And("^Enter employee username and password and click on SignIn button$")
+	public void enter_employee_username_and_password_and_click_on_sign_in_button() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "employeelogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "employeepass"));
+		loginPage.clickOnLoginBtn();
+	}
+	
+	@And("^click on Available Leave Balances and view leave balances$")
+	public void click_on_available_leave_balance() throws Throwable {
+		smokePage.clickOnAvailableLeaveBalance_displayed();
+	}
+	
+	@Then("^verify available days$")
+	public void verify_available_days() throws Throwable {
+		smokePage.verify_availableDays();
 	}
 
 	@And("^click on the absences then add absence$")
@@ -138,7 +158,7 @@ public class SmokeStepDef {
 	}
 
 	@Then("the employee user click on Get Started Button and enter the pin")
-	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() {
+	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
 		loginPage.enterUnlockCode();
 	}

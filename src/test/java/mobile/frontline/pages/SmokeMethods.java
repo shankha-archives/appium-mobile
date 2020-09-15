@@ -191,6 +191,17 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.view.View")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement msgData;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement availableLeaveBalance;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement availableLeaveBalanceHeader;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
+	public MobileElement availableDays;
 
 	public String absence_Ename;
 	public String absence_day;
@@ -359,6 +370,24 @@ public class SmokeMethods extends LoginPage {
 
 	public void pullToRefresh() {
 		common.scrollDown();
+	}
+	
+	public void clickOnAvailableLeaveBalance_displayed() {
+		common.swipeUpSlowly();
+		common.swipeUpSlowly();
+		common.isElementDisplayed(availableLeaveBalance);
+		Assert.assertTrue("Available Leave Balances is not displayed on Home page", availableLeaveBalance.isDisplayed());
+		utils.log().info("Available Leave Balances is displayed on Home page");
+		click(availableLeaveBalance);
+		isElementDisplayed(availableLeaveBalanceHeader);
+		Assert.assertTrue("Available Leave Balance page is not displayed", availableLeaveBalanceHeader.isDisplayed());
+		utils.log().info("Available Leave Balance Page is displayed");
+	}
+	
+	public void verify_availableDays() {
+		String leaveBalance = getElementText(availableDays);
+		Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance)>=0);
+		utils.log().info("Available Days are valid");
 	}
 
 	public void clickCreateAbs() {
