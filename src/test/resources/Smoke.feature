@@ -1,7 +1,7 @@
 @smoke
 Feature: Smoke scenarios
 
-@MOB-4227 @smoke @Android
+@MOB-4227 @smoke @Android @iOS @MOB-4228
 Scenario: Need to restrict login once the application is killed and relaunched
 	When the substitute user launches the app
     Then the substitute user passes the splash screen
@@ -24,7 +24,7 @@ Scenario: Need to restrict login if application is running in background and the
     Then the substitute navigates to dashboard page
         
   @MOB-4271 @smoke @Android 
-  Scenario Outline: Pull to refresh
+  Scenario: Pull to refresh
     When the substitute user launches the app
     Then the substitute user passes the splash screen
     When the substitute user enters the PIN code 7354
@@ -86,3 +86,12 @@ Scenario: The user can send the Feedback
     Then the substitute navigates to dashboard page
     When the user clicks on Menu tab and click on Feedback
     Then the user send the feedback
+
+@smoke @MOB-4265 @Android
+  Scenario: An employee can visit inbox and view messages
+    When the employee user launches the app
+    Then the employee user click on Get Started Button and enter the pin
+    And Enter employee username and password and click on Sign In button
+    Then the employee navigates to dashboard page
+    When click on the inbox
+    Then view the message in the inbox

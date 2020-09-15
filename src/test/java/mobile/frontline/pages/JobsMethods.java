@@ -14,7 +14,7 @@ import org.junit.Assert;
 public class JobsMethods extends LoginPage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	LoginPage loginPage = new LoginPage();
+	//LoginPage loginPage = new LoginPage();
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")

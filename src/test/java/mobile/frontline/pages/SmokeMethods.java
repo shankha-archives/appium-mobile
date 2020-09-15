@@ -176,10 +176,25 @@ public class SmokeMethods extends LoginPage {
 		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
 		//@iOSXCUITFindBy(accessibility = "")
 		public MobileElement saveBtn;
-		
-		public String absence_Ename;
-		public String absence_day;
-		public String absence_month;
+
+	// click on inbox tab
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Inbox']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inboxTab;
+
+	// click on inbox message
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inboxMsg;
+
+	// click on inbox tab
+	@AndroidFindBy(xpath = "//android.view.View")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement msgData;
+
+	public String absence_Ename;
+	public String absence_day;
+	public String absence_month;
 
 	public SmokeMethods() {
 	}
@@ -329,17 +344,15 @@ public class SmokeMethods extends LoginPage {
 				!(absence_Ename == name && absence_day == day && absence_month == month));
 		utils.log().info("Approved job removed from jobs list");
 	}
-	
-	public void clickOnSetting()
-	{
+
+	public void clickOnSetting() {
 		fluentWait(menuTab);
 		click(menuTab);
 		fluentWait(settings);
 		click(settings);
 	}
-	
-	public void toggleDarkMode()
-	{
+
+	public void toggleDarkMode() {
 		fluentWait(darkMode);
 		click(darkMode);
 	}
@@ -378,5 +391,24 @@ public class SmokeMethods extends LoginPage {
 		driver.getKeyboard().sendKeys("This is a random message");
 		fluentWait(saveBtn);
 		click(saveBtn);
+	}
+
+	public void clickInbox() {
+		fluentWait(inboxTab);
+		click(inboxTab);
+	}
+
+	public void verifyInboxPage() throws Exception {
+		fluentWait(inboxTab);
+		Assert.assertTrue("Inbox page is not displayed", inboxTab.isDisplayed());
+		utils.log().info("Inbox page is displayed");
+
+	}
+
+	public void viewText() {
+		fluentWait(inboxMsg);
+		click(inboxMsg);
+		Assert.assertTrue("Message is not displayed", getElementText(msgData).length()>1);
+		utils.log().info("MEssage is displayed");
 	}
 }
