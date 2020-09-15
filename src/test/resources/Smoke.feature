@@ -84,6 +84,17 @@ Scenario: The user can toggle the Dark mode from setting
     When select reason date length summary
     Then submit and view absence
     And verify absence 
+    
+@MOB-4275 @smoke @Android @sprint_7
+Scenario: The user can send the Feedback	
+   	When the substitute user launches the app
+    Then the substitute user passes the splash screen
+    When the substitute user enters the PIN code 7354
+    Then the substitute user is taken to the Login Page
+    And Enter username and password and click on Sign In button
+    Then the substitute navigates to dashboard page
+    When the user clicks on Menu tab and click on Feedback
+    Then the user send the feedback
 
 @smoke @MOB-4265 @Android
   Scenario: An employee can visit inbox and view messages

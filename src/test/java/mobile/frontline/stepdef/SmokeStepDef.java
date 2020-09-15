@@ -195,6 +195,18 @@ public class SmokeStepDef {
 		smokePage.clickNext();
 	}
 	
+	 //@MOB-4275
+	 @When("^the user clicks on Menu tab and click on Feedback$")
+	 public void the_user_clicks_on_Menu_tab_and_click_on_Feedback() throws Throwable {
+		 smokePage.clickOnFeedback();
+	 }
+	 
+	 //@MOB-4275
+	 @Then("^the user send the feedback$")
+	 public void the_user_send_the_Feedback() throws Throwable {
+		 smokePage.sendFeedback();
+	 }
+	 
 	//MOB-4265
 	@When("click on the inbox")
 	public void clickOnTheInbox() throws Throwable {
@@ -206,6 +218,5 @@ public class SmokeStepDef {
 	public void viewTheMessageInTheInbox() {
 		smokePage.viewText();
 	}
-
 }
 
