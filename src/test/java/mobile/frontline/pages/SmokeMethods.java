@@ -90,65 +90,80 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
 	@iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
 	public MobileElement confirmationNumber;
-	
-	//click on approvals
-		@AndroidFindBy(xpath = "//android.widget.TextView[@text='']")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement absenceApprovalwidget;
-		
-		//verify approvals
-		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approvals']")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement verifyAbsencePage;
 
-		//employee name for verification
-		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approval_employee_name")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement employeeName;
+	// click on approvals
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='']")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement absenceApprovalwidget;
 
-		//day of absence name for verification
-		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_day_text")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement dayName;
+	// verify approvals
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approvals']")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement verifyAbsencePage;
 
-		//month of absence name for verification
-		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_month_text")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement monthName;
+	// employee name for verification
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approval_employee_name")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement employeeName;
 
-		//click on approve btn
-		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approve_button")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement approvebtn;
-		
-		//month of absence name for verification
-		@AndroidFindBy(id = "android:id/button1")
-		    @iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		    public MobileElement okBtn;
-		
-		//click on Menu tab
-		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
-		//@iOSXCUITFindBy(xpath = "")
-		public MobileElement menuTab;
+	// day of absence name for verification
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_day_text")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement dayName;
 
-		//click on Settings
-		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
-		//@iOSXCUITFindBy(xpath = "")
-		public MobileElement settings;
+	// month of absence name for verification
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_month_text")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement monthName;
 
-		//toggle dark mode
-		@AndroidFindBy(xpath = "//android.widget.Switch[@text='OFF']")
-		//@iOSXCUITFindBy(xpath = "")
-		public MobileElement darkMode;
-		
-		// create absence btn //click
-		@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
-		@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-		public MobileElement createAbsBtn;
-		
-		public String absence_Ename;
-		public String absence_day;
-		public String absence_month;
+	// click on approve btn
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approve_button")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement approvebtn;
+
+	// month of absence name for verification
+	@AndroidFindBy(id = "android:id/button1")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement okBtn;
+
+	// click on Menu tab
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement menuTab;
+
+	// click on Settings
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement settings;
+
+	// toggle dark mode
+	@AndroidFindBy(xpath = "//android.widget.Switch[@text='OFF']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement darkMode;
+
+	// create absence btn //click
+	@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement createAbsBtn;
+
+	// click on inbox tab
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Inbox']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inboxTab;
+
+	// click on inbox message
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inboxMsg;
+
+	// click on inbox tab
+	@AndroidFindBy(xpath = "//android.view.View")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement msgData;
+
+	public String absence_Ename;
+	public String absence_day;
+	public String absence_month;
 
 	public SmokeMethods() {
 	}
@@ -298,17 +313,15 @@ public class SmokeMethods extends LoginPage {
 				!(absence_Ename == name && absence_day == day && absence_month == month));
 		utils.log().info("Approved job removed from jobs list");
 	}
-	
-	public void clickOnSetting()
-	{
+
+	public void clickOnSetting() {
 		fluentWait(menuTab);
 		click(menuTab);
 		fluentWait(settings);
 		click(settings);
 	}
-	
-	public void toggleDarkMode()
-	{
+
+	public void toggleDarkMode() {
 		fluentWait(darkMode);
 		click(darkMode);
 	}
@@ -323,4 +336,24 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Create Absence button is displayed");
 		createAbsBtn.click();
 	}
+
+	public void clickInbox() {
+		fluentWait(inboxTab);
+		click(inboxTab);
+	}
+
+	public void verifyInboxPage() throws Exception {
+		fluentWait(inboxTab);
+		Assert.assertTrue("Inbox page is not displayed", inboxTab.isDisplayed());
+		utils.log().info("Inbox page is displayed");
+
+	}
+
+	public void viewText() {
+		fluentWait(inboxMsg);
+		click(inboxMsg);
+		Assert.assertTrue("Message is not displayed", getElementText(msgData).length()>1);
+		utils.log().info("MEssage is displayed");
+	}
+
 }
