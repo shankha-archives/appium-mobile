@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
-
-    <Account type="invalid">
-        <invalidlogin>JohnDoe</invalidlogin>
-        <invalidpass>admin123</invalidpass>
-    </Account>
-    <Account type="valid">
-        <substitutelogin>StageSubRupa</substitutelogin>
-        <substitutepass>FLultra1!</substitutepass>
-        <adminlogin>purpleadmin</adminlogin>
-        <adminpass>FLultra1!</adminpass>
-        <employeelogin>prod01</employeelogin>
+	<Account type="invalid">
+		<invalidlogin>JohnDoe</invalidlogin>
+		<invalidpass>admin123</invalidpass>
+	</Account>
+	<Account type="valid">
+		<substitutelogin>StageSubRupa</substitutelogin>
+		<substitutepass>FLultra1!</substitutepass>
+		<adminlogin>purpleadmin</adminlogin>
+		<adminpass>FLultra1!</adminpass>
+		<teacherlogin>stageTeachStanley</teacherlogin>
+		<teacherpass>FLultra1!</teacherpass>
+		<employeelogin>prod01</employeelogin>
         <employeepass>FLultra1!</employeepass>
-    </Account>
-    <testingData type="users">
-        <teacher>Oldguy</teacher>
-    </testingData>
-    
-    <Teacher ></Teacher>
+	</Account>
+	<testingData type="users">
+		<teacher>Oldguy</teacher>
+	</testingData>
+
+	<Teacher></Teacher>
 </testdata>

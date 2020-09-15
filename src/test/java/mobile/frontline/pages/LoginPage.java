@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	JobsMethods jobs = new JobsMethods();
+	//JobsMethods jobs = new JobsMethods();
 
 	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
@@ -311,38 +311,31 @@ public class LoginPage extends BasePage {
 
 
 	public void verify_homeScreen_displayed() throws Exception {
-		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-				Thread.sleep(8000);
-				switchToNativeApp();
-				isElementDisplayed(homePageHeader);
-				Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-				utils.log().info("Home Page is displayed");
-				break;
-			case "iOS":
-				isElementDisplayed(PushNotificationAllow);
-				clickElement(PushNotificationAllow);
-				isElementDisplayed(PushNotificationOK);
-				clickElement(PushNotificationOK);
-				switchToNativeApp();
-				isElementDisplayed(homePageHeader);
-				Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-				utils.log().info("Home Page is displayed");
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
-
-		}
-	//	switchToWebView();
-	/*	Thread.sleep(8000);
-		clickElement(PushNotificationAllow);
-		fluentWait(PushNotificationOK);
-		clickElement(PushNotificationOK);
-		switchToNativeApp();
-		fluentWait(homePageHeader);
-		isElementDisplayed(homePageHeader);
-		Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-		utils.log().info("Home Page is displayed");*/
+		   switch (new GlobalParams().getPlatformName()) {
+		      case "Android":
+		         Thread.sleep(8000);
+		         switchToNativeApp();
+		         isElementDisplayed(homePageHeader);
+		         Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+		         utils.log().info("Home Page is displayed");
+		         break;
+		      case "iOS":
+		         if (isElementDisplayed(PushNotificationAllow)) {
+		            clickElement(PushNotificationAllow);
+		         utils.log().info("Push Notification pop-up displayed");}
+		         else{utils.log().info("Push Notification pop-up not displayed");}
+		         if(isElementDisplayed(PushNotificationOK)){
+		            utils.log().info("Push Notification pop-up displayed");
+		            clickElement(PushNotificationOK);}
+		         else {utils.log().info("Push Notification pop-up not displayed");}
+		         switchToNativeApp();
+		         isElementDisplayed(homePageHeader);
+		         Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+		         utils.log().info("Home Page is displayed");
+		         break;
+		      default:
+		         throw new Exception("Invalid platform Name");
+		   }
 	}
 
 	public void verifyNoUserName_errorMessage() {

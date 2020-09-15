@@ -1,6 +1,7 @@
 package mobile.frontline.stepdef;
 
 import io.cucumber.java.en.And;
+import mobile.Frontline.utils.TestDataManager;
 import mobile.frontline.pages.LoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,6 +9,7 @@ import io.cucumber.java.en.When;
 public class LoginStepDef {
 
 	public LoginPage loginPage = new LoginPage();
+	public TestDataManager testdata = new TestDataManager();
 	//private String password;
 
 	//@MOB-3204
@@ -81,15 +83,14 @@ public class LoginStepDef {
 
 	//MOB-3206
 	//scenario 1
-	@And("^the substitute enter invalid username\"([^\"]*)\"$")
-	public void the_substitute_enter_invalid_username(String userName) throws Throwable {
-		loginPage.enterUserID_OnLoginPage(userName);
-	}
-
-	@And("^the substitute enter invalid password\"([^\"]*)\"$")
-	public void the_substitute_enter_invalid_passwordsomething(String userPassword) throws Throwable {
-		loginPage.enterUserPassword_onLoginPage(userPassword);
-	}
+	 @And("^the substitute enter invalid username$")
+	    public void the_substitute_enter_invalid_username() throws Throwable {
+		 loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "invalid", "invalidlogin"));
+	    }
+	  @And("^the substitute enter invalid password$")
+	    public void the_substitute_enter_invalid_password() throws Throwable {
+		  loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "invalid", "invalidpass"));
+	    }
 
 	@When("^Click on Sign In with Frontline ID button$")
 	public void click_on_sign_in_with_frontline_id_button() throws Throwable {
@@ -107,16 +108,17 @@ public class LoginStepDef {
 		loginPage.verifyNoPassword_errorMessage();
 	}
 	//Scenario 3
-	@And("^the substitute enter valid username\"([^\"]*)\"$")
-	public void the_substitute_enter_valid_username(String userName) throws Throwable {
-		loginPage.enterUserID_OnLoginPage(userName);
-	}
 
-	@And("^the substitute enter valid password\"([^\"]*)\"$")
-	public void the_substitute_enter_valid_password(String userPassword) throws Throwable {
-		loginPage.enterUserPassword_onLoginPage(userPassword);
-	}
+	 @And("^the substitute enter valid username$")
+	    public void the_substitute_enter_valid_username() throws Throwable {
+		 loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "substitutelogin"));
+	    }
 
+	 @And("^the substitute enter valid password$")
+	    public void the_substitute_enter_valid_password() throws Throwable {
+		 loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "substitutepass"));
+	    }
+	
 	@Then("^the substitute navigates to dashboard page$")
 	public void the_substitute_navigates_to_dashboard_page() throws Throwable {
 		loginPage.verify_homeScreen_displayed();

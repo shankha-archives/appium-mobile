@@ -1,9 +1,9 @@
 @smoke
 Feature: Smoke scenarios
 
-  @MOB-4227 @smoke @Android
-  Scenario: Need to restrict login once the application is killed and relaunched
-	  When the substitute user launches the app
+@MOB-4227 @smoke @Android @iOS @MOB-4228
+Scenario: Need to restrict login once the application is killed and relaunched
+	When the substitute user launches the app
     Then the substitute user passes the splash screen
     When the substitute user enters the PIN code 7354
     Then the substitute user is taken to the Login Page
@@ -24,7 +24,7 @@ Feature: Smoke scenarios
     Then the substitute navigates to dashboard page
         
   @MOB-4271 @smoke @Android 
-  Scenario Outline: Pull to refresh
+  Scenario: Pull to refresh
     When the substitute user launches the app
     Then the substitute user passes the splash screen
     When the substitute user enters the PIN code 7354
@@ -74,4 +74,13 @@ Scenario: Admin can approve the absence
     And click on Available Leave Balances and view leave balances
     Then verify available days
 	
- 
+@smoke @MOB-4245 @Android
+  Scenario: Employee creates an absence for himself
+    When the employee user launches the app
+    Then the employee user click on Get Started Button and enter the pin
+    And Enter employee username and password and click on Sign In button
+    Then the employee navigates to dashboard page
+    And click on the create absences
+    When select reason date length summary
+    Then submit and view absence
+    And verify absence 

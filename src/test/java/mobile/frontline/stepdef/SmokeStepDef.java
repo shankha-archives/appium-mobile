@@ -165,4 +165,48 @@ public class SmokeStepDef {
 	public void pulls_to_refresh_the_page() throws Throwable {
 		smokePage.pullToRefresh();
 	}
+	
+	//MOB-4245
+	@When("the employee user launches the app")
+	public void theEmployeeUserLaunchesTheApp() {
+		loginPage.verify_splashScreenLoaded();   
+	}
+
+	@Then("the employee user click on Get Started Button and enter the pin")
+	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() {
+		loginPage.clickOnGetStartedBtn();
+		loginPage.enterUnlockCode();
+	}
+
+	@Then("Enter employee username and password and click on Sign In button")
+	public void enterEmployeeUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "teacherlogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "teacherpass"));
+		loginPage.clickOnLoginBtn();
+	}
+
+	@Then("the employee navigates to dashboard page")
+	public void theEmployeeNavigatesToDashboardPage() throws Throwable {
+		loginPage.verify_homeScreen_displayed();
+	}
+
+	@And("^click on the create absences$")
+    public void click_on_the_create_absences() throws Throwable {
+		smokePage.clickCreateAbs();
+    }
+	
+	@When("select reason date length summary")
+	public void selectReasonDateLengthSummary() throws Throwable {
+		smokePage.absenceReason();
+		smokePage.clickNext();
+		// page 4
+		smokePage.selectDate();
+		smokePage.clickNext();
+		// page 5
+		smokePage.selectReason();
+		smokePage.clickNext();
+		// page 6
+		smokePage.clickNext();
+	}
 }

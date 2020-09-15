@@ -152,6 +152,11 @@ public class SmokeMethods extends LoginPage {
 		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
 		public MobileElement availableDays;
 		
+		// create absence btn //click
+		@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
+		@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+		public MobileElement createAbsBtn;
+		
 		public String absence_Ename;
 		public String absence_day;
 		public String absence_month;
@@ -341,4 +346,10 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Available Days are valid");
 	}
 
+	public void clickCreateAbs() {
+		fluentWait(createAbsBtn);
+		Assert.assertTrue("Create Absence button is not displayed", createAbsBtn.isDisplayed());
+		utils.log().info("Create Absence button is displayed");
+		createAbsBtn.click();
+	}
 }
