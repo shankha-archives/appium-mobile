@@ -55,11 +55,46 @@ public class SmokeStepDef {
 		loginPage.clickOnGetStartedBtn();
 		loginPage.enterUnlockCode();
 	}
-
+	
+	
 	@Then("^the admin navigates to dashboard page$")
 	public void the_admin_navigates_to_dashboard_page() throws Throwable {
 		loginPage.verify_homeScreen_displayed();
 
+	}
+	
+	@When("^the employee user launches the app$")
+	public void the_employee_user_launches_the_app() throws Throwable {
+		loginPage.verify_splashScreenLoaded();
+	}
+	
+	@Then("^the employee user click on Get Started Button and enter the pin$")
+	public void the_employee_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
+		loginPage.clickOnGetStartedBtn();
+		loginPage.enterUnlockCode();
+	}
+	
+	@And("^Enter employee username and password and click on Sign In button$")
+	public void enter_employee_username_and_password_and_click_on_sign_in_button() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "employeelogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "employeepass"));
+		loginPage.clickOnLoginBtn();
+	}
+
+	@Then("^the employee navigates to dashboard page$")
+	public void the_employee_navigates_to_dashboard_page() throws Throwable {
+		loginPage.verify_homeScreen_displayed();
+	}
+	
+	@And("^click on Available Leave Balances and view leave balances$")
+	public void click_on_available_leave_balance() throws Throwable {
+		smokePage.clickOnAvailableLeaveBalance_displayed();
+	}
+	
+	@Then("^verify available days$")
+	public void verify_available_days() throws Throwable {
+		smokePage.verify_availableDays();
 	}
 
 	@And("^click on the absences then add absence$")

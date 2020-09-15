@@ -5,11 +5,13 @@
         <invalidlogin>JohnDoe</invalidlogin>
         <invalidpass>admin123</invalidpass>
     </Account>
-     <Account type="valid">
+    <Account type="valid">
         <substitutelogin>StageSubRupa</substitutelogin>
         <substitutepass>FLultra1!</substitutepass>
         <adminlogin>purpleadmin</adminlogin>
         <adminpass>FLultra1!</adminpass>
+        <employeelogin>prod01</employeelogin>
+        <employeepass>FLultra1!</employeepass>
     </Account>
     <testingData type="users">
         <teacher>Oldguy</teacher>
