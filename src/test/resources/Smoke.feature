@@ -55,7 +55,7 @@ Scenario: Admin can approve the absence
 	When selected approved a job 
 	Then the job is no longer in the list for approval 
 	
-@MOB-4269 @smoke @Android @sprint7Androidonly 
+@MOB-4269 @smoke @Android @MOB-4270 @iOS @sprint7Androidonly @sprint7iOSonly
 Scenario: The user can toggle the Dark mode from setting 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -66,7 +66,7 @@ Scenario: The user can toggle the Dark mode from setting
 	When the user clicks on Menu tab and click on Settings 
 	Then the user toggle the Dark Mode 
 	
-@MOB-4255 @smoke @sprint7 @Android 
+@MOB-4255 @smoke @sprint7 @Android @sprint7AndroidOnly
 Scenario: View leave balances and check available days 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -86,7 +86,7 @@ Scenario: Employee creates an absence for himself
 	Then submit and view absence 
 	And verify absence 
 	
-@MOB-4275 @smoke @Android @sprint_7 
+@MOB-4275 @smoke @Android @sprint7Androidonly
 Scenario: The user can send the Feedback 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -97,7 +97,7 @@ Scenario: The user can send the Feedback
 	When the user clicks on Menu tab and click on Feedback 
 	Then the user send the feedback 
 	
-@smoke @MOB-4265 @Android @sprint_7 
+@smoke @MOB-4265 @Android @sprint7 
 Scenario: An employee can visit inbox and view messages 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -106,7 +106,7 @@ Scenario: An employee can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 	
-@smoke @MOB-4267 @Android @sprint_7 
+@smoke @MOB-4267 @Android @sprint7 
 Scenario: An admin can visit inbox and view messages 
 	When the admin user launches the app 
 	Then the admin user click on Get Started Button and enter the pin 
