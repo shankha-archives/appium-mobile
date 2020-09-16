@@ -77,7 +77,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then submit and view absence
     And verify absence 
     
-@MOB-4275 @smoke @Android @sprint_7
+@MOB-4275 @smoke @Android @sprint7Androidonly
 Scenario: The user can send the Feedback	
    	When the substitute user launches the app
     Then the substitute user passes the splash screen
