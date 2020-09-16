@@ -1,14 +1,17 @@
-package mobile.frontline.pages;
+﻿package mobile.frontline.pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
+import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.TestUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class SmokeMethods extends LoginPage {
 
@@ -149,32 +152,32 @@ public class SmokeMethods extends LoginPage {
 
 	// click on Feedback
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
 	public MobileElement feedback;
 
 	// click on drop down icon
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_icon")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Feature Request")
 	public MobileElement topic;
 
 	// selecting value from drop down
 	@AndroidFindBy(xpath = "//android.widget.TextView[@index= 0]")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Topic']")
 	public List<MobileElement> itemsInDropDown;
 
 	// enter text in Title
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Title']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[contains(@value, 'Title')]")
 	public MobileElement title;
 
 	// enter text in message
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Message']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView[contains(@value, 'Message')]")
 	public MobileElement message;
 
 	// click on save
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Submit")
 	public MobileElement saveBtn;
 
 	// click on inbox tab
@@ -447,21 +450,41 @@ public class SmokeMethods extends LoginPage {
 		click(feedback);
 	}
 
-	public void sendFeedback() {
-		fluentWait(topic);
-		click(topic);
-		int size = itemsInDropDown.size();
-		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
-		itemsInDropDown.get(randomNumber).click();
-		fluentWait(title);
-		title.click();
-		driver.getKeyboard().sendKeys("Android Test");
-		fluentWait(message);
-		click(message);
-		driver.getKeyboard().sendKeys("This is a random message");
-		fluentWait(saveBtn);
-		click(saveBtn);
-	}
+	public void sendFeedback() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			fluentWait(topic);
+			click(topic);
+			int size = itemsInDropDown.size();
+			int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
+			itemsInDropDown.get(randomNumber).click();
+			fluentWait(title);
+			title.click();
+			driver.getKeyboard().sendKeys("Android Test");
+			fluentWait(message);
+			click(message);
+			driver.getKeyboard().sendKeys("This is a random message");
+			fluentWait(saveBtn);
+			click(saveBtn);
+			break;
+		case "iOS":
+			fluentWait(topic);
+			click(topic);
+			int iOSsize = itemsInDropDown.size();
+			int iOSrandomNumber = ThreadLocalRandom.current().nextInt(0, iOSsize);
+			itemsInDropDown.get(iOSrandomNumber).click();
+			fluentWait(title);
+			title.click();
+			driver.getKeyboard().sendKeys("iOS Test");
+			fluentWait(message);
+			click(message);
+			driver.getKeyboard().sendKeys("This is a random message");
+			fluentWait(saveBtn);
+			click(saveBtn);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 
 	public void clickInbox() {
 		fluentWait(inboxTab);
