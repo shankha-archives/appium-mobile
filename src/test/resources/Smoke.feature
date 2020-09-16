@@ -86,7 +86,7 @@ Scenario: Employee creates an absence for himself
 	Then submit and view absence 
 	And verify absence 
 	
-@MOB-4275 @smoke @Android @sprint7Androidonly
+@MOB-4275 @smoke @Android @MOB-4276 @iOS @sprint7Androidonly @sprint7iOSonly
 Scenario: The user can send the Feedback 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
