@@ -202,6 +202,18 @@ public class SmokeMethods extends LoginPage {
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
 	public MobileElement availableDays;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='UNFILLED']")
+	public MobileElement unfilledAbsence; 
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to Assign']")
+	public MobileElement assignSubstitute; 
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+	public MobileElement selectSubstitute; 
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+	public MobileElement confirmAssignSub;
 
 	public String absence_Ename;
 	public String absence_day;
@@ -439,5 +451,29 @@ public class SmokeMethods extends LoginPage {
 		click(inboxMsg);
 		Assert.assertTrue("Message is not displayed", getElementText(msgData).length()>1);
 		utils.log().info("MEssage is displayed");
+	}
+
+	public void selectUnfilledAbsence() {
+		common.swipeUpSlowly();
+		common.swipeUpSlowly();
+		common.isElementDisplayed(unfilledAbsence);
+		Assert.assertTrue("No Unfilled Absence is present", unfilledAbsence.isDisplayed());
+		utils.log().info("Unfilled Absence is present");
+		click(unfilledAbsence);
+	}
+
+	public void click_tapToAssign() {
+		common.isElementDisplayed(assignSubstitute);
+		click(assignSubstitute);		
+	}
+
+	public void assignSubstitute() {
+		common.isElementDisplayed(selectSubstitute);
+		click(selectSubstitute);	
+	}
+
+	public void confirmAssignSubstitute() {
+		common.isElementDisplayed(confirmAssignSub);
+		click(confirmAssignSub);
 	}
 }

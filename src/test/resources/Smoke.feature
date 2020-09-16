@@ -105,11 +105,22 @@ Scenario: The user can send the Feedback
     When click on the inbox
     Then view the message in the inbox
     
-@smoke @MOB-4267 @Android
-  Scenario: An admin can visit inbox and view messages
+ @smoke @MOB-4267 @Android
+ Scenario: An admin can visit inbox and view messages
    When the admin user launches the app 
-	Then the admin user click on Get Started Button and enter the pin 
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-    When click on the inbox
-    Then view the message in the inbox
+	 Then the admin user click on Get Started Button and enter the pin 
+	 And Enter admin username and password and click on Sign In button 
+	 Then the admin navigates to dashboard page 
+   When click on the inbox
+   Then view the message in the inbox
+    
+ @smoke @MOB-4253 @sprint7 @Android
+ Scenario: Admin can assign a substitute to an unfilled absence
+    When the admin user launches the app
+    Then the admin user click on Get Started Button and enter the pin
+    And Enter admin username and password and click on Sign In button
+    Then the admin navigates to dashboard page
+    And click on unfilled absence in absence widget
+    Then click on Tap to Assign and select Assign substitute
+    And click Assign again to confirm
+    
