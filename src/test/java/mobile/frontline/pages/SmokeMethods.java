@@ -1,6 +1,7 @@
 package mobile.frontline.pages;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.junit.Assert;
 
@@ -146,9 +147,65 @@ public class SmokeMethods extends LoginPage {
 		@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 		public MobileElement createAbsBtn;
 		
-		public String absence_Ename;
-		public String absence_day;
-		public String absence_month;
+		//click on Feedback
+		@AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement feedback;
+		
+		//click on drop down icon
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_icon")
+		//@iOSXCUITFindBy(accessibility = "")
+		public MobileElement topic;
+		
+		//selecting value from drop down
+		@AndroidFindBy(xpath = "//android.widget.TextView[@index= 0]")
+		//@iOSXCUITFindBy(xpath = "")
+		public List<MobileElement> itemsInDropDown;
+		
+		//enter text in Title
+		@AndroidFindBy(xpath = "//android.widget.EditText[@text='Title']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement title;
+		
+		//enter text in message
+		@AndroidFindBy(xpath = "//android.widget.EditText[@text='Message']")
+		//@iOSXCUITFindBy(xpath = "")
+		public MobileElement message;
+		
+		//click on save
+		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
+		//@iOSXCUITFindBy(accessibility = "")
+		public MobileElement saveBtn;
+
+	// click on inbox tab
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Inbox']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inboxTab;
+
+	// click on inbox message
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inboxMsg;
+
+	// click on inbox tab
+	@AndroidFindBy(xpath = "//android.view.View")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement msgData;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement availableLeaveBalance;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement availableLeaveBalanceHeader;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
+	public MobileElement availableDays;
+
+	public String absence_Ename;
+	public String absence_day;
+	public String absence_month;
 
 	public SmokeMethods() {
 	}
@@ -298,17 +355,15 @@ public class SmokeMethods extends LoginPage {
 				!(absence_Ename == name && absence_day == day && absence_month == month));
 		utils.log().info("Approved job removed from jobs list");
 	}
-	
-	public void clickOnSetting()
-	{
+
+	public void clickOnSetting() {
 		fluentWait(menuTab);
 		click(menuTab);
 		fluentWait(settings);
 		click(settings);
 	}
-	
-	public void toggleDarkMode()
-	{
+
+	public void toggleDarkMode() {
 		fluentWait(darkMode);
 		click(darkMode);
 	}
@@ -316,11 +371,73 @@ public class SmokeMethods extends LoginPage {
 	public void pullToRefresh() {
 		common.scrollDown();
 	}
+	
+	public void clickOnAvailableLeaveBalance_displayed() {
+		common.swipeUpSlowly();
+		common.swipeUpSlowly();
+		common.isElementDisplayed(availableLeaveBalance);
+		Assert.assertTrue("Available Leave Balances is not displayed on Home page", availableLeaveBalance.isDisplayed());
+		utils.log().info("Available Leave Balances is displayed on Home page");
+		click(availableLeaveBalance);
+		isElementDisplayed(availableLeaveBalanceHeader);
+		Assert.assertTrue("Available Leave Balance page is not displayed", availableLeaveBalanceHeader.isDisplayed());
+		utils.log().info("Available Leave Balance Page is displayed");
+	}
+	
+	public void verify_availableDays() {
+		String leaveBalance = getElementText(availableDays);
+		Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance)>=0);
+		utils.log().info("Available Days are valid");
+	}
 
 	public void clickCreateAbs() {
 		fluentWait(createAbsBtn);
 		Assert.assertTrue("Create Absence button is not displayed", createAbsBtn.isDisplayed());
 		utils.log().info("Create Absence button is displayed");
 		createAbsBtn.click();
+	}
+	
+	public void clickOnFeedback()
+	{
+		fluentWait(menuTab);
+		click(menuTab);
+		fluentWait(feedback);
+		click(feedback);	
+	}
+	
+	public void sendFeedback()
+	{
+		fluentWait(topic);
+		click(topic);
+		int size = itemsInDropDown.size();
+		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
+		itemsInDropDown.get(randomNumber).click();
+		fluentWait(title);
+		title.click();
+		driver.getKeyboard().sendKeys("Android Test");
+		fluentWait(message);
+		click(message);
+		driver.getKeyboard().sendKeys("This is a random message");
+		fluentWait(saveBtn);
+		click(saveBtn);
+	}
+
+	public void clickInbox() {
+		fluentWait(inboxTab);
+		click(inboxTab);
+	}
+
+	public void verifyInboxPage() throws Exception {
+		fluentWait(inboxTab);
+		Assert.assertTrue("Inbox page is not displayed", inboxTab.isDisplayed());
+		utils.log().info("Inbox page is displayed");
+
+	}
+
+	public void viewText() {
+		fluentWait(inboxMsg);
+		click(inboxMsg);
+		Assert.assertTrue("Message is not displayed", getElementText(msgData).length()>1);
+		utils.log().info("MEssage is displayed");
 	}
 }
