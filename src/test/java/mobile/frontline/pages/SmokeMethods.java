@@ -129,17 +129,17 @@ public class SmokeMethods extends LoginPage {
 
 	// click on Menu tab
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "Menu_TabBar_Button")
 	public MobileElement menuTab;
 
 	// click on Settings
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "Settings_MenuOption")
 	public MobileElement settings;
 
 	// toggle dark mode
 	@AndroidFindBy(xpath = "//android.widget.Switch[@text='OFF']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "darkMode")
 	public MobileElement darkMode;
 
 	// create absence btn //click
@@ -403,6 +403,11 @@ public class SmokeMethods extends LoginPage {
 	public void toggleDarkMode() {
 		fluentWait(darkMode);
 		click(darkMode);
+	}
+	
+	public void screenshotcapture() throws IOException {
+		File file  = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file, new File("screenshot/DarkMode.jpg"));
 	}
 
 	public void pullToRefresh() {
