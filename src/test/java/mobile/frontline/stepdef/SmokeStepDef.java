@@ -165,6 +165,7 @@ public class SmokeStepDef {
 
 	@Then("Enter employee username and password and click on Sign In button")
 	public void enterEmployeeUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
+		
 		loginPage.verify_loginPageLoaded();
 		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "teacherlogin"));
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "teacherpass"));
@@ -218,5 +219,26 @@ public class SmokeStepDef {
 	public void viewTheMessageInTheInbox() {
 		smokePage.viewText();
 	}
+	
+	//MOB-4263
+	@When("click on menu then click on timesheet option")
+	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
+		smokePage.clickTimesheetOption();
+//		loginPage.verify_homeScreen_displayed();
+//		smokePage.clickTimesheetOption();
+	}
+	
+	@Then("click on submit timesheet option")
+	public void clickOnSubmitTimesheetOption() throws Throwable {
+		smokePage.submitTimesheet();
+		smokePage.enterTimeSheetdetails();
+	}
+
+	@Then("undo the timesheet")
+	public void undoTheTimesheet() {
+		smokePage.undoTimesheet();
+		smokePage.verifyUndo();
+	}
+
 }
 
