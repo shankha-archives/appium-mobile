@@ -88,6 +88,23 @@ public class SmokeStepDef {
 		smokePage.addAbsence();
 	}
 
+	//MOB-4253
+	@And("^click on unfilled absence in absence widget$")
+	public void click_on_absences_and_select_unfilled_absence() throws Throwable {
+		smokePage.selectUnfilledAbsence();
+	}
+
+	@Then("^click on Tap to Assign and select Assign substitute$")
+	public void click_on_tap_to_assign_substitute() throws Throwable {
+		smokePage.click_tapToAssign();
+		smokePage.assignSubstitute();
+	}
+	
+	@And("^click Assign again to confirm$")
+	public void click_assign_to_select_substitute() throws Throwable {
+		smokePage.confirmAssignSubstitute();
+	}
+
 	@When("^enter teacher select reason date length summary$")
 	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
 		smokePage.enterTeachersName(testdata.read_property("testingData", "users", "teacher"));
@@ -144,7 +161,7 @@ public class SmokeStepDef {
 	 @Then("^the user toggle the Dark Mode$")
 	 public void the_user_toggle_the_dark_mode() throws Throwable {
 		 smokePage.toggleDarkMode();
-                 smokePage.screenshotcapture();
+         smokePage.screenshotcapture();
 	 }
   
 	@And("^pulls to refresh the page$")

@@ -9,6 +9,7 @@ import org.junit.Assert;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -205,6 +206,18 @@ public class SmokeMethods extends LoginPage {
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
 	public MobileElement availableDays;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='UNFILLED']")
+	public MobileElement unfilledAbsence; 
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to Assign']")
+	public MobileElement assignSubstitute; 
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+	public MobileElement selectSubstitute; 
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+	public MobileElement confirmAssignSub;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Timesheets']")
 //	@iOSXCUITFindBy(accessibility = "")
@@ -485,6 +498,7 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
+	}
 
 	public void clickInbox() {
 		fluentWait(inboxTab);
@@ -505,6 +519,30 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("MEssage is displayed");
 	}
 
+	public void selectUnfilledAbsence() {
+		common.swipeUpSlowly();
+		common.swipeUpSlowly();
+		common.isElementDisplayed(unfilledAbsence);
+		Assert.assertTrue("No Unfilled Absence is present", unfilledAbsence.isDisplayed());
+		utils.log().info("Unfilled Absence is present");
+		click(unfilledAbsence);
+	}
+
+	public void click_tapToAssign() {
+		common.isElementDisplayed(assignSubstitute);
+		click(assignSubstitute);		
+	}
+
+	public void assignSubstitute() {
+		common.isElementDisplayed(selectSubstitute);
+		click(selectSubstitute);	
+	}
+
+	public void confirmAssignSubstitute() {
+		common.isElementDisplayed(confirmAssignSub);
+		click(confirmAssignSub);
+	}
+	
 	public void clickTimesheetOption() {
 		//click(menuTab);
 		common.swipeUpSlowly();
