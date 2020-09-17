@@ -77,17 +77,6 @@ Scenario: The user can toggle the Dark mode from setting
     Then submit and view absence
     And verify absence 
     
-@MOB-4275 @smoke @Android @sprint7Androidonly
-Scenario: The user can send the Feedback	
-   	When the substitute user launches the app
-    Then the substitute user passes the splash screen
-    When the substitute user enters the PIN code 7354
-    Then the substitute user is taken to the Login Page
-    And Enter username and password and click on Sign In button
-    Then the substitute navigates to dashboard page
-    When the user clicks on Menu tab and click on Feedback
-    Then the user send the feedback
-    
  @smoke @MOB-4253 @sprint7 @Android
  Scenario: Admin can assign a substitute to an unfilled absence
     When the admin user launches the app
@@ -106,6 +95,17 @@ Scenario: View leave balances and check available days
 	Then the employee navigates to dashboard page 
 	And click on Available Leave Balances and view leave balances 
 	Then verify available days 
+	
+@MOB-4275 @smoke @Android @MOB-4276 @iOS @sprint7Androidonly @sprint7iOSonly
+Scenario: The user can send the Feedback 
+	When the substitute user launches the app 
+	Then the substitute user passes the splash screen 
+	When the substitute user enters the PIN code 7354 
+	Then the substitute user is taken to the Login Page 
+	And Enter username and password and click on Sign In button 
+	Then the substitute navigates to dashboard page 
+	When the user clicks on Menu tab and click on Feedback 
+	Then the user send the feedback 
 	
 @smoke @MOB-4265 @Android @sprint7 
 Scenario: An employee can visit inbox and view messages 
