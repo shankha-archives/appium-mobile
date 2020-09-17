@@ -134,3 +134,14 @@ Scenario: An employee can submit a timesheet and then undo a timesheet
 	When click on menu then click on timesheet option
 	Then click on submit timesheet option 
 	And undo the timesheet
+	
+@smoke @MOB-4257 @Android @sprint7 
+Scenario: A user can visit inbox and view messages 
+	When the substitute user launches the app 
+	Then the substitute user passes the splash screen 
+	When the substitute user enters the PIN code 7354 
+	Then the substitute user is taken to the Login Page 
+	And Enter username and password and click on Sign In button 
+	Then the substitute navigates to dashboard page 
+	When click on the inbox 
+	Then view the message in the inbox 
