@@ -116,6 +116,16 @@ Scenario: An employee can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 	
+@smoke @MOB-4233 @Android @sprint7 
+Scenario: Entered text should be searchable when user perform search operation 
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	When click on menu and tap the search bar
+	Then enter the search text in bar 
+	And verify the search result
+	
 @smoke @MOB-4267 @Android @sprint7 
 Scenario: An admin can visit inbox and view messages 
 	When the admin user launches the app 

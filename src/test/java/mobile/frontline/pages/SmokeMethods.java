@@ -135,6 +135,10 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
 	@iOSXCUITFindBy(accessibility = "Menu_TabBar_Button")
 	public MobileElement menuTab;
+	
+	// click on search bar
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Search Frontline Mobile']")
+	public MobileElement searchBar;
 
 	// click on Settings
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Settings']")
@@ -255,10 +259,14 @@ public class SmokeMethods extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement declinebtn;
 	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
+	public MobileElement searchResult;
+	
 	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
+	public String searchResultText;
 
 	public SmokeMethods() {
 	}
@@ -585,5 +593,33 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Submit timesheet option is not displayed", submittimesheetsbtn.isDisplayed());
 		utils.log().info("Submit timesheet option is not displayed");
 	}
-	
+
+	public void openMenuSearchBar() {
+		fluentWait(menuTab);
+		click(menuTab);
+		fluentWait(searchBar);
+		click(searchBar);
+	}
+
+	public void enterSearchText(String searchText) {
+		common.isElementDisplayed(searchBar);
+		searchResultText = searchText;
+		searchBar.click();
+		searchBar.clear();
+		searchBar.sendKeys(searchText);
+		
+//		fluentWait(searchBar);
+//		click(searchBar);
+//		driver.getKeyboard().sendKeys("3661");
+		
+	}
+
+	public void verifySearchResult() {
+		common.isElementDisplayed(searchResult);
+		String result = getElementText(searchResult);
+		
+		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
+		utils.log().info("Entered text matches with result");
+	}
+
 }
