@@ -12,7 +12,7 @@
 		<teacherlogin>stageTeachStanley</teacherlogin>
 		<teacherpass>FLultra1!</teacherpass>
 		<employeelogin>prod01</employeelogin>
-    <employeepass>FLultra1!</employeepass>
+        <employeepass>FLultra1!</employeepass>
 		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>
 		<multiOrgSubsPass>FLultra1!</multiOrgSubsPass>
 		<MultiOrgUser>stageMultiMulti</MultiOrgUser>
@@ -22,6 +22,7 @@
 	</Account>
 	<testingData type="users">
 		<teacher>Oldguy</teacher>
+		<searchText>Calendar</searchText>
 	</testingData>
 
 	<Teacher></Teacher>

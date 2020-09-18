@@ -104,6 +104,22 @@ public class SmokeStepDef {
 	public void click_assign_to_select_substitute() throws Throwable {
 		smokePage.confirmAssignSubstitute();
 	}
+	
+	//@MOB-4233
+	@When("^click on menu and tap the search bar$")
+	public void click_on_menu_and_search_bar() throws Throwable {
+		smokePage.openMenuSearchBar();
+	}
+	
+	@Then("^enter the search text in bar$")
+	public void enter_search_text() throws Throwable {
+		smokePage.enterSearchText(testdata.read_property("testingData", "users", "searchText"));
+	}
+	
+	@And("^verify the search result$")
+	public void verify_the_search_result() throws Throwable {
+		smokePage.verifySearchResult();
+	}
 
 	@When("^enter teacher select reason date length summary$")
 	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
