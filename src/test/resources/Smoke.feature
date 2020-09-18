@@ -155,3 +155,35 @@ Scenario: A user can visit inbox and view messages
 	Then the substitute navigates to dashboard page 
 	When click on the inbox 
 	Then view the message in the inbox 
+
+@smoke @MOB-4241 @Android @sprint7 @subtitute 
+Scenario: Substitute Need to rearrange the widgets on the dashboard 
+	When the substitute user launches the app 
+	Then the substitute user passes the splash screen 
+	When the substitute user enters the PIN code 7354 
+	Then the substitute user is taken to the Login Page 
+	And Enter username and password and click on Sign In button 
+	Then the substitute navigates to dashboard page 
+	When click on reorder widget 
+	Then rearrange the widget
+	And verify the order of widgets
+
+@smoke @MOB-4241 @Android @sprint7 @employee
+Scenario: Employee Need to rearrange the widgets on the dashboard 
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When click on reorder widget 
+	Then rearrange the widget
+	And verify the order of widgets
+	
+@smoke @MOB-4241 @Android @sprint7 @admin 
+Scenario: Admin Need to rearrange the widgets on the dashboard 
+	When the admin user launches the app 
+	Then the admin user click on Get Started Button and enter the pin 
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	When click on reorder widget 
+	Then rearrange the widget
+	And verify the order of widgets
