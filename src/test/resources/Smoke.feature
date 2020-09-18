@@ -24,7 +24,7 @@ Need to restrict login if application is running in background and then opened
 	And The user minimize and relaunch the application 
 	Then the substitute navigates to dashboard page 
 	
-@MOB-4271 @smoke @Android 
+@MOB-4271 @smoke @Android @MOB-4272 @iOS @sprint7iOSonly
 Scenario: Pull to refresh 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 

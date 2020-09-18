@@ -472,8 +472,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void sendFeedback() throws Exception {
-		switch (new GlobalParams().getPlatformName()) {
-		case "Android":
 			fluentWait(topic);
 			click(topic);
 			int size = itemsInDropDown.size();
@@ -481,31 +479,12 @@ public class SmokeMethods extends LoginPage {
 			itemsInDropDown.get(randomNumber).click();
 			fluentWait(title);
 			title.click();
-			driver.getKeyboard().sendKeys("Android Test");
+			driver.getKeyboard().sendKeys("Automation Test");
 			fluentWait(message);
 			click(message);
-			driver.getKeyboard().sendKeys("This is a random message");
+			driver.getKeyboard().sendKeys("This is a Test message");
 			fluentWait(saveBtn);
 			click(saveBtn);
-			break;
-		case "iOS":
-			fluentWait(topic);
-			click(topic);
-			int iOSsize = itemsInDropDown.size();
-			int iOSrandomNumber = ThreadLocalRandom.current().nextInt(0, iOSsize);
-			itemsInDropDown.get(iOSrandomNumber).click();
-			fluentWait(title);
-			title.click();
-			driver.getKeyboard().sendKeys("iOS Test");
-			fluentWait(message);
-			click(message);
-			driver.getKeyboard().sendKeys("This is a random message");
-			fluentWait(saveBtn);
-			click(saveBtn);
-			break;
-		default:
-			throw new Exception("Invalid platform Name");
-		}
 	}
 
 	public void clickInbox() {
