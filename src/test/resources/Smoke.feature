@@ -134,6 +134,15 @@ Scenario: An admin can visit inbox and view messages
 	Then the admin navigates to dashboard page 
 	When click on the inbox 
 	Then view the message in the inbox 
+
+@smoke @MOB-4259 @Android @sprint7 
+Scenario: An employee can view week of timesheets and timesheets for selected date
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	And click on timesheets widget and view timesheets
+	Then click on any day to view timesheet 
 	
 @smoke @MOB-4263 @Android @sprint_7 
 Scenario: An employee can submit a timesheet and then undo a timesheet 

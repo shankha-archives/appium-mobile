@@ -63,6 +63,17 @@ public class SmokeStepDef {
 
 	}
 	
+	//MOB-4259
+	@And("^click on timesheets widget and view timesheets$")
+	public void click_on_timesheets_widget_and_view_timesheets() throws Throwable {
+		smokePage.viewWeekTimesheets();
+	}
+	
+	@Then("^click on any day to view timesheet$")
+	public void click_on_any_day_to_view_timesheet() throws Throwable {
+		smokePage.viewDayTimesheets();
+	}
+	
 	//MOB-4255
 	@And("^Enter employee username and password and click on SignIn button$")
 	public void enter_employee_username_and_password_and_click_on_sign_in_button() throws Throwable {
