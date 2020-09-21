@@ -274,5 +274,21 @@ public class SmokeStepDef {
 		smokePage.verifyUndo();
 	}
 
+	@When("click on reorder widget")
+	public void clickOnReorderWidget() throws Throwable {
+		smokePage.clickReorderWidget();
+		smokePage.draganddrop();
+	}
+
+	@Then("rearrange the widget")
+	public void rearrangeTheWidget() throws Throwable {
+		smokePage.saveReorderedWidget();
+		loginPage.verify_homeScreen_displayed();
+	}
+
+	@Then("verify the order of widgets")
+	public void verifyTheOrderOfWidgets() {
+		smokePage.verifyWidgetsOrder() ;
+	}
 }
 

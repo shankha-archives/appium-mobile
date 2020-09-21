@@ -2,13 +2,18 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import org.openqa.selenium.OutputType;
@@ -262,11 +267,28 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
 	public MobileElement searchResult;
 	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement reOrderWidgetbtn;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement saveOrderWidgetbtn;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/drag_handle")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement dragableEle;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
+	@iOSXCUITFindBy(xpath = "")
+	public List<MobileElement> WidgetOrderList;
 	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
 	public String searchResultText;
+	ArrayList<String> widgetlistbeforeReorder = new ArrayList<String>();
+	ArrayList<String> widgetlistafterReorder = new ArrayList<String>();
 
 	public SmokeMethods() {
 	}
@@ -600,5 +622,49 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
 	}
+
+	public void clickReorderWidget() throws Throwable {
+		reOrderWidgetbtn = common.scrollToElement(reOrderWidgetbtn, "up");
+		//common.swipeUpSlowly();
+		common.isElementDisplayed(reOrderWidgetbtn);
+		click(reOrderWidgetbtn);
+		
+		for(MobileElement widgetlistele : WidgetOrderList )
+		{
+			widgetlistbeforeReorder.add(common.getElementText(widgetlistele));
+		}
+	}
+
+	public void draganddrop() throws Throwable {
+
+		common.isElementDisplayed(dragableEle);
+		TouchAction action = new TouchAction(driver);
+		int dragX = dragableEle.getLocation().x + (dragableEle.getSize().width / 2);
+		int dragY = dragableEle.getLocation().y + (dragableEle.getSize().height / 2);
+
+//		  int dropX= ele2.getLocation().x + (ele2.getSize().width/2); 
+//		  int dropY= ele2.getLocation().y + (ele2.getSize().height/2); 
+
+		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
+				.moveTo(PointOption.point(dragX, dragY + 400)).release().perform();
+
+	}
+
+	public void saveReorderedWidget() {
+
+		for(MobileElement widgetlistele : WidgetOrderList )
+		{
+			widgetlistafterReorder.add(common.getElementText(widgetlistele));
+		}
+		//Assert.assertEquals(widgetlist.get(1),"2");
+		click(saveOrderWidgetbtn);
+	}
+
+	public void verifyWidgetsOrder() {
+		
+		Assert.assertNotEquals(widgetlistbeforeReorder,widgetlistafterReorder);
+	}
+
+
 
 }
