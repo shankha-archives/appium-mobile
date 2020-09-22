@@ -278,6 +278,25 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/drag_handle")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement dragableEle;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'TUE')]")
+//	@iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
+	public MobileElement tuesday;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'MON')]")
+	public MobileElement monday;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'WED')]")
+	public MobileElement wednesday;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'THU')]")
+	public MobileElement thursday;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'FRI')]")
+	public MobileElement friday;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'SAT')]")
+	public MobileElement saturday;
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'SUN')]")
+	public MobileElement sunday;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Day Total']")
+	public MobileElement commonDayTotal;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
 //	@iOSXCUITFindBy(xpath = "")
@@ -706,6 +725,34 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertNotEquals(widgetlistbeforeReorder,widgetlistafterReorder);
 	}
 
+	public void viewWeekTimesheets() {
+		clickTimesheetOption();
+		
+		common.isElementDisplayed(monday);
+		Assert.assertTrue("Monday timesheet is not displayed", monday.isDisplayed());
+		common.isElementDisplayed(tuesday);
+		Assert.assertTrue("Tuesday timesheet is not displayed", tuesday.isDisplayed());
+		common.isElementDisplayed(wednesday);
+		Assert.assertTrue("Wednesday timesheet is not displayed", wednesday.isDisplayed());
+		common.isElementDisplayed(thursday);
+		Assert.assertTrue("Thursday timesheet is not displayed", thursday.isDisplayed());
+		common.isElementDisplayed(friday);
+		Assert.assertTrue("Friday timesheet is not displayed", friday.isDisplayed());
+		common.isElementDisplayed(saturday);
+		Assert.assertTrue("Saturday timesheet is not displayed", saturday.isDisplayed());
+		common.isElementDisplayed(sunday);
+		Assert.assertTrue("Sunday timesheet is not displayed", sunday.isDisplayed());
+		utils.log().info("Timesheets for entire week is displayed");
+	}
+
+	public void viewDayTimesheets() {
+		common.isElementDisplayed(friday);
+		click(friday);
+		common.isElementDisplayed(commonDayTotal);
+		Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
+		utils.log().info("Timesheets for the day is displayed");
+	}
+	
 	public void addTimeSheet() throws Throwable {
 		common.isElementDisplayed(selectDayToFillTimesheet);
 		click(selectDayToFillTimesheet);
@@ -725,6 +772,7 @@ public class SmokeMethods extends LoginPage {
 		//common.isElementClickable(timeSheetInTime);
 		click(timeSheetInTime);
 	}
+	
 	public void editTimesheet() throws Throwable {
 		
 		common.isElementDisplayed(dailytimeSheetedittbtn);
@@ -734,7 +782,6 @@ public class SmokeMethods extends LoginPage {
 		click(timeSheetOutTime);
 		click(okBtn);
 		click(saveTimesheets);	
-		
 	}
 
 	public void deleteTimesheet() throws Throwable{
