@@ -126,6 +126,17 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then enter the search text in bar 
 	And verify the search result
 	
+@smoke @MOB-4235 @Android @sprint7 
+Scenario: Absence Detail page displays for the selected absence from search result
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	When click on menu and tap the search bar
+	Then enter the absence search text in bar 
+	And click the absence search result
+	Then verify the absence detail page
+	
 @smoke @MOB-4267 @Android @sprint7 
 Scenario: An admin can visit inbox and view messages 
 	When the admin user launches the app 

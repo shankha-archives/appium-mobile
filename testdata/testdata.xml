@@ -23,6 +23,7 @@
 	<testingData type="users">
 		<teacher>Oldguy</teacher>
 		<searchText>Calendar</searchText>
+		<absenceKeyword>AbsReason</absenceKeyword>
 	</testingData>
 
 	<Teacher></Teacher>
