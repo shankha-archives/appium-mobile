@@ -705,9 +705,9 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewDayTimesheets() {
-		fluentWait(friday);
+		common.isElementDisplayed(friday);
 		click(friday);
-		fluentWait(commonDayTotal);
+		common.isElementDisplayed(commonDayTotal);
 		Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
 		utils.log().info("Timesheets for the day is displayed");
 	}
