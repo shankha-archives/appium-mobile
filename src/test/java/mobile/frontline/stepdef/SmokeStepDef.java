@@ -301,5 +301,28 @@ public class SmokeStepDef {
 	public void verifyTheOrderOfWidgets() {
 		smokePage.verifyWidgetsOrder() ;
 	}
+	
+	//MOB-4261
+	@When("employee clicks on the timesheet widget")
+	public void employeeClicksOnTheTimesheetWidget() {
+		smokePage.clickTimesheetOption();
+	}
+
+	@When("open the past day timesheet and add a new time sheet")
+	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
+		smokePage.addTimeSheet();
+		smokePage.goToEditDeleteTimeSheetOption();
+	  
+	}
+
+	@Then("user edits the timesheet")
+	public void userEditsTheTimesheet() throws Throwable {
+		smokePage.editTimesheet();    
+	}
+
+	@Then("Delete the timesheet")
+	public void deleteTheTimesheet() throws Throwable {
+		smokePage.deleteTimesheet();   
+	}
 }
 

@@ -299,13 +299,54 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement commonDayTotal;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
-	@iOSXCUITFindBy(xpath = "")
+//	@iOSXCUITFindBy(xpath = "")
 	public List<MobileElement> WidgetOrderList;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='6']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement selectDayToFillTimesheet;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/menu_item_add_time")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement addTimeSheets;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement workDetails;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_entry_save_button")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement saveTimesheets;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement timeSheetInTime;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/day_view_submit_time_sheet_button")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement dailytimeSheetsubmitbtn;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_menu_item")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement dailytimeSheetedittbtn;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement timeSheetOutTime;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/delete_event_button")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement timeSheetDeletebtn;
+
+	@AndroidFindBy(id = "//android.widget.TextView[@text='Time Event']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement timeSheetTimeEventPage;
 	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
 	public String searchResultText;
+	public String Intime;
 	ArrayList<String> widgetlistbeforeReorder = new ArrayList<String>();
 	ArrayList<String> widgetlistafterReorder = new ArrayList<String>();
 
@@ -711,5 +752,51 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
 		utils.log().info("Timesheets for the day is displayed");
 	}
+	
+	public void addTimeSheet() throws Throwable {
+		common.isElementDisplayed(selectDayToFillTimesheet);
+		click(selectDayToFillTimesheet);
+		click(addTimeSheets);
 
+		common.isElementDisplayed(workDetails);
+		Intime = common.getElementText(timeSheetInTime);
+		
+		//Assert.assertEquals(time,"2");
+		click(saveTimesheets);		
+		
+	}
+	
+	public void goToEditDeleteTimeSheetOption() {
+		common.isElementDisplayed(dailytimeSheetsubmitbtn);
+		timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'"+Intime+"')]");
+		//common.isElementClickable(timeSheetInTime);
+		click(timeSheetInTime);
+	}
+	
+	public void editTimesheet() throws Throwable {
+		
+		common.isElementDisplayed(dailytimeSheetedittbtn);
+		click(dailytimeSheetedittbtn);
+		
+		common.isElementDisplayed(workDetails);
+		click(timeSheetOutTime);
+		click(okBtn);
+		click(saveTimesheets);	
+	}
+
+	public void deleteTimesheet() throws Throwable{
+		
+		//Thread.sleep(10000);
+		common.isElementDisplayed(timeSheetTimeEventPage);
+		common.isElementDisplayed(dailytimeSheetedittbtn);
+		common.isElementDisplayed(timeSheetDeletebtn);
+		click(timeSheetDeletebtn);
+		click(okBtn);
+		
+		common.isElementDisplayed(dailytimeSheetsubmitbtn);
+	//	common.isElementNotPresent(timeSheetInTime);
+		
+		Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
+		utils.log().info("Time sheet is deleted");
+	}
 }
