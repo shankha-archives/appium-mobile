@@ -102,9 +102,9 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement confirmationNumber;
 
 	// click on approvals
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='']")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-	public MobileElement absenceApprovalwidget;
+    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text='Absences')]")
+ 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+ 	public MobileElement absenceApprovalwidget;
 
 	// verify approvals
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approvals']")
@@ -229,39 +229,39 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement confirmAssignSub;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Timesheets']")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "Timesheets_ModuleHeader")
 	public MobileElement timesheetsbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/submit_time_sheet_button")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='TimesheetWeekView_Submit_Button']")
 	public MobileElement submittimesheetsbtn;
 	
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Enter PIN']")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_EnterPin_TextField")
 	public MobileElement enterPin;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/timesheet_checkbox")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_CertifyCheckBox_Other")
 	public MobileElement checkbox;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/submit_time_sheets_button")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_Submit_Button")
 	public MobileElement submitTimesheet;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_undo_submission_text")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Undo Submission'])[1]")
 	public MobileElement undoSubmission;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_icon")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "TimesheetWeekView_UndoSubmit_Button")
 	public MobileElement undoicon;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_time_sheets_button")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_UndoSubmit_Button")
 	public MobileElement undobtn;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/review_dialog_decline_button")
-//	@iOSXCUITFindBy(accessibility = "")
+    @iOSXCUITFindBy(accessibility = "Not Now")
 	public MobileElement declinebtn;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
@@ -621,47 +621,59 @@ public class SmokeMethods extends LoginPage {
 		click(confirmAssignSub);
 	}
 	
-	public void clickTimesheetOption() {
-		//click(menuTab);
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		fluentWait(timesheetsbtn);
-		click(timesheetsbtn);
+	public void clickTimesheetOption() throws Exception {
+       common.scrollToElement(timesheetsbtn,"up");
+		isElementDisplayed(timesheetsbtn);
+ 		click(timesheetsbtn);
 	}
 	
+	public void verifySubmitTimesheetBtn(){
+		isElementDisplayed(submittimesheetsbtn);
+ 		Assert.assertTrue("Submit timesheet option is not displayed", submittimesheetsbtn.isDisplayed());
+
+ 	}
+	
 	public void submitTimesheet() throws Throwable {	
-		//Thread.sleep(20000);
-		fluentWait(submittimesheetsbtn);
-		Assert.assertTrue("Submit timesheet option is not displayed", submittimesheetsbtn.isDisplayed());
-		utils.log().info("Submit timesheet option is not displayed");
+	    verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
 	}
 	
+	public void verifySubmitTimesheet(){
+		Assert.assertTrue("Timesheet button not displayed", submitTimesheet.isDisplayed());
+		utils.log().info("Timesheet button displayed");
+	}
+	
 	public void enterTimeSheetdetails() {
-		fluentWait(enterPin);
-		click(enterPin);
-		driver.getKeyboard().sendKeys("3661");
-		click(checkbox);
-		common.swipeUpSlowly();
-		click(submitTimesheet);
+	if (isElementDisplayed(enterPin)) {
+			click(enterPin);
+			driver.getKeyboard().sendKeys("3661");
+			hideKeyboard();
+			click(checkbox);
+		}
+		else{utils.log().info("Digital signature not displayed");}
+		verifySubmitTimesheet();
+ 		common.swipeUpSlowly();
+ 		click(submitTimesheet);
 	}
 	
-	public void undoTimesheet() {
-		fluentWait(undoSubmission);
-		Assert.assertTrue("Undo timesheet option is not displayed", undoSubmission.isDisplayed());
-		utils.log().info("Undo timesheet option is not displayed");
-		undoicon.click();
-		fluentWait(undobtn);
-		undobtn.click();	
+    public void undoTimesheet() throws Exception {
+		verifyUndoBtn();
+    	undoicon.click();
+		isElementDisplayed(undobtn);
+		undobtn.click();
 	}
 	
+	public void verifyUndoBtn(){
+   isElementDisplayed(undoSubmission);
+   Assert.assertTrue("Undo timesheet option is not displayed", undoSubmission.isDisplayed());
+   utils.log().info("Undo timesheet option is not displayed");
+}
+
 	public void verifyUndo() {
-		fluentWait(declinebtn);
-		declinebtn.click();
-		fluentWait(submittimesheetsbtn);
-		Assert.assertTrue("Submit timesheet option is not displayed", submittimesheetsbtn.isDisplayed());
-		utils.log().info("Submit timesheet option is not displayed");
+	   isElementDisplayed(declinebtn);
+	   declinebtn.click();
+	   verifySubmitTimesheetBtn();
+	   utils.log().info("Submit timesheet option is not displayed");
 	}
 
 	public void openMenuSearchBar() {
