@@ -269,8 +269,6 @@ public class SmokeStepDef {
 	@When("click on menu then click on timesheet option")
 	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
 		smokePage.clickTimesheetOption();
-//		loginPage.verify_homeScreen_displayed();
-//		smokePage.clickTimesheetOption();
 	}
 	
 	@Then("click on submit timesheet option")
@@ -280,7 +278,7 @@ public class SmokeStepDef {
 	}
 
 	@Then("undo the timesheet")
-	public void undoTheTimesheet() {
+	public void undoTheTimesheet() throws Exception {
 		smokePage.undoTimesheet();
 		smokePage.verifyUndo();
 	}

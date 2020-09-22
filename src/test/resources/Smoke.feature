@@ -144,7 +144,7 @@ Scenario: An employee can view week of timesheets and timesheets for selected da
 	And click on timesheets widget and view timesheets
 	Then click on any day to view timesheet 
 	
-@smoke @MOB-4263 @Android @sprint_7 
+@smoke @MOB-4263 @Android @iOS @MOB-4264 @sprint7Android @sprint7iOS
 Scenario: An employee can submit a timesheet and then undo a timesheet 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
