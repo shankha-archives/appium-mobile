@@ -187,3 +187,16 @@ Scenario: Admin Need to rearrange the widgets on the dashboard
 	When click on reorder widget 
 	Then rearrange the widget
 	And verify the order of widgets
+	
+@smoke @MOB-4261 @Android @sprint7 
+Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When employee clicks on the timesheet widget 
+	And open the past day timesheet and add a new time sheet
+	Then user edits the timesheet
+	And Delete the timesheet 
+
+
