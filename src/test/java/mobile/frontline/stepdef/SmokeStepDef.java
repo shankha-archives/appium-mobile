@@ -131,6 +131,22 @@ public class SmokeStepDef {
 	public void verify_the_search_result() throws Throwable {
 		smokePage.verifySearchResult();
 	}
+	
+	//@MOB-4235
+	@Then("^enter the absence search text in bar$")
+	public void enter_absence_search_text_in_bar() throws Throwable {
+		smokePage.enterSearchText(testdata.read_property("testingData", "users", "absenceKeyword"));
+	}
+	
+	@And("^click the absence search result$")
+	public void click_the_absence_search_result() throws Throwable {
+		smokePage.click_searchResult();
+	}
+	
+	@Then("^verify the absence detail page$")
+	public void verify_the_absence_detail_page() throws Throwable {
+		smokePage.verifyAbsenceDetailPage();
+	}
 
 	@When("^enter teacher select reason date length summary$")
 	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1

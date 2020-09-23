@@ -297,6 +297,15 @@ public class SmokeMethods extends LoginPage {
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Day Total']")
 	public MobileElement commonDayTotal;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'AbsReason')]")
+	public MobileElement searchAbsReason;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
+	public MobileElement absenceDetailPageSubstitute;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approval Status']")
+	public MobileElement absenceDetailPageApproval;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
 //	@iOSXCUITFindBy(xpath = "")
@@ -680,11 +689,6 @@ public class SmokeMethods extends LoginPage {
 		searchBar.click();
 		searchBar.clear();
 		searchBar.sendKeys(searchText);
-		
-//		fluentWait(searchBar);
-//		click(searchBar);
-//		driver.getKeyboard().sendKeys("3661");
-		
 	}
 
 	public void verifySearchResult() {
@@ -810,5 +814,18 @@ public class SmokeMethods extends LoginPage {
 		
 		Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
 		utils.log().info("Time sheet is deleted");
+	}
+
+	public void click_searchResult() {
+		common.isElementDisplayed(searchAbsReason);
+		click(searchAbsReason);
+	}
+
+	public void verifyAbsenceDetailPage() {
+		common.isElementDisplayed(confirmationNumber);
+		common.isElementDisplayed(absenceDetailPageSubstitute);
+		common.isElementDisplayed(absenceDetailPageApproval);
+		Assert.assertTrue("Absence Details Page is not displayed", confirmationNumber.isDisplayed());
+		utils.log().info("Absence Details Page is displayed");
 	}
 }
