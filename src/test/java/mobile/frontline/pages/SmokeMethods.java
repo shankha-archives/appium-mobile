@@ -1,4 +1,4 @@
-﻿package mobile.frontline.pages;
+package mobile.frontline.pages;
 
 import java.io.File;
 import java.io.IOException;
@@ -741,7 +741,7 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertNotEquals(widgetlistbeforeReorder,widgetlistafterReorder);
 	}
 
-	public void viewWeekTimesheets() {
+	public void viewWeekTimesheets() throws Exception {
 		clickTimesheetOption();
 		
 		common.isElementDisplayed(monday);

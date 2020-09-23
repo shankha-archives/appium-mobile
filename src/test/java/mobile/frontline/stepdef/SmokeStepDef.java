@@ -318,7 +318,7 @@ public class SmokeStepDef {
 	
 	//MOB-4261
 	@When("employee clicks on the timesheet widget")
-	public void employeeClicksOnTheTimesheetWidget() {
+	public void employeeClicksOnTheTimesheetWidget() throws Exception {
 		smokePage.clickTimesheetOption();
 	}
 
