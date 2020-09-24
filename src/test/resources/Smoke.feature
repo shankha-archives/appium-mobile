@@ -219,4 +219,14 @@ Scenario: An employee can add time to a timesheet and edit and delete the time f
 	Then user edits the timesheet
 	And Delete the timesheet 
 
+@smoke @MOB-4237 @Android @sprint7 
+Scenario: Event should be display when user taps on any event, on any day from calendar
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	When the employee creates an absence 
+	And the user opens the calendar through menu
+	Then tap on the day when absence was created
+	And the event will be displayed tap on it to view or verify the details
 
