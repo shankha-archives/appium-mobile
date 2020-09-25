@@ -223,10 +223,14 @@ public class SmokeStepDef {
 		loginPage.clickOnGetStartedBtn();
 		loginPage.enterUnlockCode();
 	}
+	
+	@Then("the user click on Get Started Button")
+	public void user_click_on_get_started_button() throws Throwable {
+		loginPage.clickOnGetStartedBtn();
+	}
 
 	@Then("Enter employee username and password and click on Sign In button")
 	public void enterEmployeeUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
-		
 		loginPage.verify_loginPageLoaded();
 		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "teacherlogin"));
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "teacherpass"));
@@ -316,9 +320,27 @@ public class SmokeStepDef {
 		smokePage.verifyWidgetsOrder() ;
 	}
 	
+	//MOB-4239
+	@When("click on reorder widget & get back")
+	public void click_on_reorder_widget() throws Throwable {
+		smokePage.clickReorderWidget();
+		smokePage.goBack();
+	}
+	
+	@Then("verify all the widgets present")
+	public void verify_all_the_widgets_present() throws Throwable {
+		loginPage.verify_homeScreen_displayed();
+		smokePage.verify_widgetsPresent();
+	}
+	
+	@And("verify the footer")
+	public void verify_the_footer() {
+		smokePage.verify_footerPresent();
+	}
+	
 	//MOB-4261
 	@When("employee clicks on the timesheet widget")
-	public void employeeClicksOnTheTimesheetWidget() throws Exception {
+	public void employeeClicksOnTheTimesheetWidget() throws Throwable {
 		smokePage.clickTimesheetOption();
 	}
 
