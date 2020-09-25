@@ -55,26 +55,25 @@ public class SmokeStepDef {
 		loginPage.clickOnGetStartedBtn();
 		loginPage.enterUnlockCode();
 	}
-	
-	
+
 	@Then("^the admin navigates to dashboard page$")
 	public void the_admin_navigates_to_dashboard_page() throws Throwable {
 		loginPage.verify_homeScreen_displayed();
 
 	}
-	
-	//MOB-4259
+
+	// MOB-4259
 	@And("^click on timesheets widget and view timesheets$")
 	public void click_on_timesheets_widget_and_view_timesheets() throws Throwable {
 		smokePage.viewWeekTimesheets();
 	}
-	
+
 	@Then("^click on any day to view timesheet$")
 	public void click_on_any_day_to_view_timesheet() throws Throwable {
 		smokePage.viewDayTimesheets();
 	}
-	
-	//MOB-4255
+
+	// MOB-4255
 	@And("^Enter employee username and password and click on SignIn button$")
 	public void enter_employee_username_and_password_and_click_on_sign_in_button() throws Throwable {
 		loginPage.verify_loginPageLoaded();
@@ -82,12 +81,12 @@ public class SmokeStepDef {
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "employeepass"));
 		loginPage.clickOnLoginBtn();
 	}
-	
+
 	@And("^click on Available Leave Balances and view leave balances$")
 	public void click_on_available_leave_balance() throws Throwable {
 		smokePage.clickOnAvailableLeaveBalance_displayed();
 	}
-	
+
 	@Then("^verify available days$")
 	public void verify_available_days() throws Throwable {
 		smokePage.verify_availableDays();
@@ -99,7 +98,7 @@ public class SmokeStepDef {
 		smokePage.addAbsence();
 	}
 
-	//MOB-4253
+	// MOB-4253
 	@And("^click on unfilled absence in absence widget$")
 	public void click_on_absences_and_select_unfilled_absence() throws Throwable {
 		smokePage.selectUnfilledAbsence();
@@ -110,39 +109,39 @@ public class SmokeStepDef {
 		smokePage.click_tapToAssign();
 		smokePage.assignSubstitute();
 	}
-	
+
 	@And("^click Assign again to confirm$")
 	public void click_assign_to_select_substitute() throws Throwable {
 		smokePage.confirmAssignSubstitute();
 	}
-	
-	//@MOB-4233
+
+	// @MOB-4233
 	@When("^click on menu and tap the search bar$")
 	public void click_on_menu_and_search_bar() throws Throwable {
 		smokePage.openMenuSearchBar();
 	}
-	
+
 	@Then("^enter the search text in bar$")
 	public void enter_search_text() throws Throwable {
 		smokePage.enterSearchText(testdata.read_property("testingData", "users", "searchText"));
 	}
-	
+
 	@And("^verify the search result$")
 	public void verify_the_search_result() throws Throwable {
 		smokePage.verifySearchResult();
 	}
-	
-	//@MOB-4235
+
+	// @MOB-4235
 	@Then("^enter the absence search text in bar$")
 	public void enter_absence_search_text_in_bar() throws Throwable {
 		smokePage.enterSearchText(testdata.read_property("testingData", "users", "absenceKeyword"));
 	}
-	
+
 	@And("^click the absence search result$")
 	public void click_the_absence_search_result() throws Throwable {
 		smokePage.click_searchResult();
 	}
-	
+
 	@Then("^verify the absence detail page$")
 	public void verify_the_absence_detail_page() throws Throwable {
 		smokePage.verifyAbsenceDetailPage();
@@ -163,6 +162,7 @@ public class SmokeStepDef {
 		smokePage.selectReason();
 		smokePage.clickNext();
 		// page 6
+		smokePage.substituteAssignPageVerification();
 		smokePage.clickNext();
 	}
 
@@ -193,29 +193,29 @@ public class SmokeStepDef {
 	public void theJobIsNoLongerInTheListForApproval() {
 		smokePage.verifyAcceptedAbsence();
 	}
-	
-	 //@MOB-4269
-	 @When("^the user clicks on Menu tab and click on Settings$")
-	 public void the_user_clicks_on_Menu_tab_and_click_on_Settings() throws Throwable {
-		 smokePage.clickOnSetting();
-	 }
-	 
-	 //@MOB-4269
-	 @Then("^the user toggle the Dark Mode$")
-	 public void the_user_toggle_the_dark_mode() throws Throwable {
-		 smokePage.toggleDarkMode();
-         smokePage.screenshotcapture();
-	 }
-  
+
+	// @MOB-4269
+	@When("^the user clicks on Menu tab and click on Settings$")
+	public void the_user_clicks_on_Menu_tab_and_click_on_Settings() throws Throwable {
+		smokePage.clickOnSetting();
+	}
+
+	// @MOB-4269
+	@Then("^the user toggle the Dark Mode$")
+	public void the_user_toggle_the_dark_mode() throws Throwable {
+		smokePage.toggleDarkMode();
+		smokePage.screenshotcapture();
+	}
+
 	@And("^pulls to refresh the page$")
 	public void pulls_to_refresh_the_page() throws Throwable {
 		smokePage.pullToRefresh();
 	}
-	
-	//MOB-4245
+
+	// MOB-4245
 	@When("the employee user launches the app")
 	public void theEmployeeUserLaunchesTheApp() {
-		loginPage.verify_splashScreenLoaded();   
+		loginPage.verify_splashScreenLoaded();
 	}
 
 	@Then("the employee user click on Get Started Button and enter the pin")
@@ -243,10 +243,10 @@ public class SmokeStepDef {
 	}
 
 	@And("^click on the create absences$")
-    public void click_on_the_create_absences() throws Throwable {
+	public void click_on_the_create_absences() throws Throwable {
 		smokePage.clickCreateAbs();
-    }
-	
+	}
+
 	@When("select reason date length summary")
 	public void selectReasonDateLengthSummary() throws Throwable {
 		smokePage.absenceReason();
@@ -258,39 +258,40 @@ public class SmokeStepDef {
 		smokePage.selectReason();
 		smokePage.clickNext();
 		// page 6
+		smokePage.substituteAssignPageVerification();
 		smokePage.clickNext();
 	}
-	
-	 //@MOB-4275
-	 @When("^the user clicks on Menu tab and click on Feedback$")
-	 public void the_user_clicks_on_Menu_tab_and_click_on_Feedback() throws Throwable {
-		 smokePage.clickOnFeedback();
-	 }
-	 
-	 //@MOB-4275
-	 @Then("^the user send the feedback$")
-	 public void the_user_send_the_Feedback() throws Throwable {
-		 smokePage.sendFeedback();
-	 }
-	 
-	//MOB-4265
+
+	// @MOB-4275
+	@When("^the user clicks on Menu tab and click on Feedback$")
+	public void the_user_clicks_on_Menu_tab_and_click_on_Feedback() throws Throwable {
+		smokePage.clickOnFeedback();
+	}
+
+	// @MOB-4275
+	@Then("^the user send the feedback$")
+	public void the_user_send_the_Feedback() throws Throwable {
+		smokePage.sendFeedback();
+	}
+
+	// MOB-4265
 	@When("click on the inbox")
 	public void clickOnTheInbox() throws Throwable {
 		smokePage.clickInbox();
 		smokePage.verifyInboxPage();
 	}
-	
+
 	@Then("view the message in the inbox")
 	public void viewTheMessageInTheInbox() {
 		smokePage.viewText();
 	}
-	
-	//MOB-4263
+
+	// MOB-4263
 	@When("click on menu then click on timesheet option")
 	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
 		smokePage.clickTimesheetOption();
 	}
-	
+
 	@Then("click on submit timesheet option")
 	public void clickOnSubmitTimesheetOption() throws Throwable {
 		smokePage.submitTimesheet();
@@ -317,7 +318,7 @@ public class SmokeStepDef {
 
 	@Then("verify the order of widgets")
 	public void verifyTheOrderOfWidgets() {
-		smokePage.verifyWidgetsOrder() ;
+		smokePage.verifyWidgetsOrder();
 	}
 	
 	//MOB-4239
@@ -337,8 +338,8 @@ public class SmokeStepDef {
 	public void verify_the_footer() {
 		smokePage.verify_footerPresent();
 	}
-	
-	//MOB-4261
+
+	// MOB-4261
 	@When("employee clicks on the timesheet widget")
 	public void employeeClicksOnTheTimesheetWidget() throws Throwable {
 		smokePage.clickTimesheetOption();
@@ -348,17 +349,53 @@ public class SmokeStepDef {
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
 		smokePage.addTimeSheet();
 		smokePage.goToEditDeleteTimeSheetOption();
-	  
+
 	}
 
 	@Then("user edits the timesheet")
 	public void userEditsTheTimesheet() throws Throwable {
-		smokePage.editTimesheet();    
+		smokePage.editTimesheet();
 	}
 
 	@Then("Delete the timesheet")
 	public void deleteTheTimesheet() throws Throwable {
-		smokePage.deleteTimesheet();   
+		smokePage.deleteTimesheet();
+	}
+
+	// MOB-4237
+	@When("the employee creates an absence")
+	public void theEmployeeCreatesAnAbsence() throws Throwable {
+		smokePage.clickCreateAbs();
+
+		smokePage.absenceReason();
+		smokePage.clickNext();
+		// page 4
+		smokePage.selectDate();
+		smokePage.clickNext();
+		// page 5
+		smokePage.selectReason();
+		smokePage.clickNext();
+		// page 6
+		smokePage.substituteAssignPageVerification();
+		smokePage.clickNext();
+		smokePage.submitAbsence();
+		smokePage.viewAbsence();
+
+	}
+
+	@When("the user opens the calendar through menu")
+	public void theUserOpensTheCalendarThroughMenu() throws Throwable {
+		smokePage.getDate();
+		loginPage.verify_homeScreen_displayed();
+	}
+
+	@Then("tap on the day when absence was created")
+	public void tapOnTheDayWhenAbsenceWasCreated() {
+		smokePage.clickCalender();
+	}
+
+	@Then("the event will be displayed tap on it to view or verify the details")
+	public void theEventWillBeDisplayedTapOnItToViewOrVerifyTheDetails() {
+		smokePage.verifyAbsence();
 	}
 }
-
