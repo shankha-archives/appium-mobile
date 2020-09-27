@@ -3,6 +3,7 @@ import org.junit.Assert;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import mobile.Frontline.utils.TestDataManager;
 import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
 
@@ -11,20 +12,21 @@ public class JobsStepDef {
     public LoginPage loginPage = new LoginPage();
     public JobsMethods jobulatorPage = new JobsMethods();
     public String OrgJob1, OrgJob2;
+    public TestDataManager testdata = new TestDataManager();
 
     @Then("^the substitute user click on Get Started Button and enter the pin$")
     public void the_substitute_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
         loginPage.clickOnGetStartedBtn();
-        loginPage.enterUnlockCode();
+        //loginPage.enterUnlockCode();
     }
 
-    @And("^Enter username\"([^\"]*)\" and password\"([^\"]*)\" and click on Sign In button$")
-    public void enter_username_and_password_and_click_on_sign_in_button(String username, String userpassword) throws Throwable {
-    	loginPage.verify_loginPageLoaded();
-        loginPage.enterUserID_OnLoginPage(username);
-        loginPage.enterUserPassword_onLoginPage(userpassword);
-        loginPage.clickOnLoginBtn();
-    }
+//    @And("^Enter username\"([^\"]*)\" and password\"([^\"]*)\" and click on Sign In button$")
+//    public void enter_username_and_password_and_click_on_sign_in_button(String username, String userpassword) throws Throwable {
+//    	loginPage.verify_loginPageLoaded();
+//        loginPage.enterUserID_OnLoginPage(username);
+//        loginPage.enterUserPassword_onLoginPage(userpassword);
+//        loginPage.clickOnLoginBtn();
+//    }
 
     @And("^click on the Available Jobs and view job list$")
     public void click_on_the_available_jobs_and_view_job_list() throws Throwable {
@@ -74,6 +76,14 @@ public class JobsStepDef {
     @Then("^Verify the confirmation number present on the job details page$")
     public void verify_the_confirmation_number_present_on_the_job_details_page() throws Throwable {
         jobulatorPage.confirmationPresent();
+    }
+    
+    @And("^Enter multiorg multirole username and password and click on Sign In button$")
+    public void enter_multiorg_multirole_username_and_password_and_click_on_sign_in_button() throws Throwable {
+    	loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "MultiOrgUser"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "MultiOrgPass"));
+		loginPage.clickOnLoginBtn();
     }
     
     @Then("^the user choose the sub user of one org and extract the jobs$")

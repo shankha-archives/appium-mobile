@@ -5,19 +5,18 @@ Feature: Smoke scenarios
 Scenario: Need to restrict login once the application is killed and relaunched 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	And The user kill and relaunch the application 
 	Then the substitute navigates to dashboard page 
 	
-@MOB-4229 @smoke @Android @iOS @MOB-4230 @sprint7onlyiOS 
-Scenario:
-Need to restrict login if application is running in background and then opened 
+@MOB-4229 @smoke @Android @iOS @MOB-4230 @sprint7onlyiOS @demo
+Scenario:  Need to restrict login if application is running in background and then opened 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
@@ -28,13 +27,13 @@ Need to restrict login if application is running in background and then opened
 Scenario: Pull to refresh 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	And pulls to refresh the page 
 	
-@smoke @MOB-4249 @Android 
+@smoke @MOB-4249 @Android @demo
 Scenario: Admin creates an absence for another user 
 	When the admin user launches the app 
 	Then the admin user click on Get Started Button and enter the pin 
@@ -59,7 +58,7 @@ Scenario: Admin can approve the absence
 Scenario: The user can toggle the Dark mode from setting 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
@@ -100,7 +99,7 @@ Scenario: View leave balances and check available days
 Scenario: The user can send the Feedback 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
@@ -126,7 +125,7 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then enter the search text in bar 
 	And verify the search result
 	
-@smoke @MOB-4235 @Android @sprint7 
+@smoke @MOB-4235 @Android @sprint7 @demo
 Scenario: Absence Detail page displays for the selected absence from search result
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -169,7 +168,7 @@ Scenario: An employee can submit a timesheet and then undo a timesheet
 Scenario: A user can visit inbox and view messages 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
@@ -180,7 +179,7 @@ Scenario: A user can visit inbox and view messages
 Scenario: Substitute Need to rearrange the widgets on the dashboard 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
-	When the substitute user enters the PIN code 7354 
+#	When the substitute user enters the PIN code 7354 
 	Then the substitute user is taken to the Login Page 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
@@ -188,7 +187,7 @@ Scenario: Substitute Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 
-@smoke @MOB-4241 @Android @sprint7 @employee
+@smoke @MOB-4241 @Android @sprint7 @employee @demo
 Scenario: Employee Need to rearrange the widgets on the dashboard 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -208,7 +207,7 @@ Scenario: Admin Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@smoke @MOB-4261 @Android @sprint7 
+@smoke @MOB-4261 @Android @sprint7 @demo
 Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
