@@ -100,11 +100,8 @@ public class JobsMethods extends LoginPage {
 	public JobsMethods() {
 	}
 
-	public void clickOnAvailableJobs_displayed() {
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
+	public void clickOnAvailableJobs_displayed() throws Exception {
+		common.scrollToElement(availableJobs, "up");
 		common.isElementDisplayed(availableJobs);
 		Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
 		utils.log().info("Available Jobs option is displayed on Home page");

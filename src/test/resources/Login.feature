@@ -6,7 +6,7 @@ Feature: Login scenarios
      When The substitute user launches the app
      And The substitute user lands on the splash screen
      When The substitute user taps the Get Started Button
-     Then The substitute user arrives on the PIN entry screen
+#     Then The substitute user arrives on the PIN entry screen
 
   @regression @pinunclok @pinunclok_1 @MOB-3205 @Android @ios
   Scenario: First time user experience / fresh app install
@@ -29,7 +29,7 @@ Feature: Login scenarios
   Scenario: Login with invalid credentials
     When the substitute user launches the app
     Then the substitute user passes the splash screen
-    When the substitute user enters the PIN code 7354
+#    When the substitute user enters the PIN code 7354
     Then the substitute user is taken to the Login Page
     And the substitute enter invalid username
     And the substitute enter invalid password
@@ -40,7 +40,7 @@ Feature: Login scenarios
   Scenario: The substitute clicked on Login button when user is not entered userId and Password
     When the substitute user launches the app
     Then the substitute user passes the splash screen
-    When the substitute user enters the PIN code 7354
+#    When the substitute user enters the PIN code 7354
     Then the substitute user is taken to the Login Page
     When Click on Sign In with Frontline ID button
     Then Error message displays to the substitute users
@@ -49,7 +49,7 @@ Feature: Login scenarios
   Scenario: Login with valid credentials
     When the substitute user launches the app
     Then the substitute user passes the splash screen
-    When the substitute user enters the PIN code 7354
+#    When the substitute user enters the PIN code 7354
     Then the substitute user is taken to the Login Page
     And the substitute enter valid username
     And the substitute enter valid password

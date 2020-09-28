@@ -53,7 +53,7 @@ public class SmokeStepDef {
 	@Then("^the admin user click on Get Started Button and enter the pin$")
 	public void the_admin_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
-		loginPage.enterUnlockCode();
+		//loginPage.enterUnlockCode();
 	}
 
 	@Then("^the admin navigates to dashboard page$")
@@ -178,7 +178,7 @@ public class SmokeStepDef {
 	}
 
 	@Then("click on the approval widget and navigates to the approval absence page")
-	public void clickOnTheApprovalWidgetAndNavigatesToTheApprovalAbsencePage() {
+	public void clickOnTheApprovalWidgetAndNavigatesToTheApprovalAbsencePage() throws Throwable {
 		smokePage.selectAbsenceApprovalWidget();
 		smokePage.verifyAbsenceApprovalPage();
 	}
@@ -221,7 +221,7 @@ public class SmokeStepDef {
 	@Then("the employee user click on Get Started Button and enter the pin")
 	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
-		loginPage.enterUnlockCode();
+//		loginPage.enterUnlockCode();
 	}
 
 	@Then("Enter employee username and password and click on Sign In button")
