@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.io.FileUtils;
@@ -102,7 +103,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement confirmationNumber;
 
 	// click on approvals
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text='Absences')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'awaiting approval')]")
 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 	public MobileElement absenceApprovalwidget;
 
@@ -194,9 +195,6 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Inbox']")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement inboxTab;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
-	public MobileElement homeTab;
 
 	// click on inbox message
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
@@ -350,8 +348,8 @@ public class SmokeMethods extends LoginPage {
 	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement timeSheetDeletebtn;
 
-	@AndroidFindBy(id = "//android.widget.TextView[@text='Time Event']")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Time Event']")
+//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement timeSheetTimeEventPage;
 
 	@AndroidFindBy(className = "android.widget.ImageButton")
@@ -382,6 +380,15 @@ public class SmokeMethods extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement subAssignPageVerification;
 
+	// click on home tab
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement homeTab;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next: Choose Reason']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement whoAbsencePageWaittoClickCaret;
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -426,7 +433,7 @@ public class SmokeMethods extends LoginPage {
 	public void selectTeachersName() {
 		common.isElementDisplayed(selectReqName);
 		selectReqName.click();
-
+		common.isElementDisplayed(whoAbsencePageWaittoClickCaret);	
 	}
 
 	public void clickNext() {
@@ -450,14 +457,35 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void selectDate() throws Exception {
+//		fluentWait(datePageVerification);
+//		common.isElementDisplayed(datePageVerification);
+//		Assert.assertTrue("Create Absence Page 4 is not displayed", datePageVerification.isDisplayed());
+//		utils.log().info("Create Absence Page 4 is displayed");
+//		// dateVerification.click();
+//
+//		String cdate = common.currentDate();
+//		String nd = common.nextDate(cdate);
+//		MobileElement date = driver
+//				.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
+//		String tagName = date.getAttribute("content-desc").toString();
+//
+//		while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
+//			nd = common.nextDate(nd);
+//			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
+//			tagName = date.getAttribute("content-desc").toString();
+//		}
+//		driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
+
+		 Calendar cal = Calendar.getInstance();
+	      int res = cal.getActualMaximum(Calendar.DATE);
 		fluentWait(datePageVerification);
 		common.isElementDisplayed(datePageVerification);
 		Assert.assertTrue("Create Absence Page 4 is not displayed", datePageVerification.isDisplayed());
 		utils.log().info("Create Absence Page 4 is displayed");
-		// dateVerification.click();
-
+		
 		String cdate = common.currentDate();
 		String nd = common.nextDate(cdate);
+		
 		MobileElement date = driver
 				.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 		String tagName = date.getAttribute("content-desc").toString();
@@ -465,6 +493,9 @@ public class SmokeMethods extends LoginPage {
 		while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
 			nd = common.nextDate(nd);
 			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
+			if(nd.contains(Integer.toString(res))) {
+				common.swipeUpSlowly();
+			}
 			tagName = date.getAttribute("content-desc").toString();
 		}
 		driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
@@ -511,10 +542,11 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Confirmation number is displayed");
 	}
 
-	public void selectAbsenceApprovalWidget() {
+	public void selectAbsenceApprovalWidget() throws Throwable {
 
-		common.swipeUpSlowly();
-		common.isElementDisplayed(absenceApprovalwidget);
+		//common.swipeUpSlowly();
+		common.scrollToElement(absenceApprovalwidget, "up");
+		//common.isElementDisplayed(absenceApprovalwidget);
 		Assert.assertTrue("Absence approval option is not displayed Home page", absenceApprovalwidget.isDisplayed());
 		utils.log().info("Absence approval option is displayed on Home page");
 		click(absenceApprovalwidget);
