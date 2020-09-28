@@ -187,7 +187,7 @@ Scenario: Substitute Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 
-@smoke @MOB-4241 @Android @sprint7 @employee @demo
+@smoke @MOB-4241 @Android @sprint7 @employee 
 Scenario: Employee Need to rearrange the widgets on the dashboard 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -207,7 +207,37 @@ Scenario: Admin Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@smoke @MOB-4261 @Android @sprint7 @demo
+@smoke @MOB-4239 @Android @sprint7 @employee 
+Scenario: Employee need to tap on footer buttons and all widgets
+	When the employee user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When click on reorder widget & get back 
+	Then verify all the widgets present
+	And verify the footer 
+	
+@smoke @MOB-4239 @Android @sprint7 @subtitute 
+Scenario: Substitute need to tap on footer buttons and all widgets
+	When the substitute user launches the app 
+	Then the user click on Get Started Button 
+	And Enter username and password and click on Sign In button 
+	Then the substitute navigates to dashboard page 
+	When click on reorder widget & get back 
+	Then verify all the widgets present
+	And verify the footer 
+	
+@smoke @MOB-4239 @Android @sprint7 @admin
+Scenario: Admin need to tap on footer buttons and all widgets 
+	When the admin user launches the app 
+	Then the user click on Get Started Button 
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	When click on reorder widget & get back 
+	Then verify all the widgets present
+	And verify the footer 
+	
+@smoke @MOB-4261 @Android @sprint7 
 Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
