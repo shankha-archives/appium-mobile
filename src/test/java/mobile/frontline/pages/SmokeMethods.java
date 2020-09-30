@@ -219,15 +219,19 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement availableDays;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='UNFILLED']")
+	@iOSXCUITFindBy(accessibility = "UNFILLED")
 	public MobileElement unfilledAbsence;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to Assign']")
+	@iOSXCUITFindBy(accessibility = "AbsenceDetailBaseView_Tap to Assign_StaticText")
 	public MobileElement assignSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"SubstituteSearchTableCell_Assign_Button\"])[1]")
 	public MobileElement selectSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+	@iOSXCUITFindBy(accessibility = "AbsenceSubstituteSearchView_FinalAssign_Button")
 	public MobileElement confirmAssignSub;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Timesheets']")
