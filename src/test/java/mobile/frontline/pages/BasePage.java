@@ -24,6 +24,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -992,6 +993,12 @@ public class BasePage {
 		}
 		driver.context((String) context.toString());
 		System.out.println("Current context" + driver.getContext());
+	}
+
+	public String currentTime(){
+		DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+		String dateString = dateFormat.format(new Date()).toString();
+		return dateString;
 	}
 
 	/**
