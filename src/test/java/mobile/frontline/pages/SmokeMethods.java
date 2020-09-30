@@ -218,13 +218,13 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement availableDays;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='UNFILLED']")
-	public MobileElement unfilledAbsence; 
+	public MobileElement unfilledAbsence;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to Assign']")
-	public MobileElement assignSubstitute; 
+	public MobileElement assignSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
-	public MobileElement selectSubstitute; 
+	public MobileElement selectSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
 	public MobileElement confirmAssignSub;
@@ -313,31 +313,31 @@ public class SmokeMethods extends LoginPage {
 	public List<MobileElement> WidgetOrderList;
 
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='6']")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Timesheet_Table")
 	public MobileElement selectDayToFillTimesheet;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/menu_item_add_time")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Add Time")
 	public MobileElement addTimeSheets;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "JOBtypeEmp")
 	public MobileElement workDetails;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_entry_save_button")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Add")
 	public MobileElement saveTimesheets;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Time_Event_Cell_0")
 	public MobileElement timeSheetInTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/day_view_submit_time_sheet_button")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_Submit_Button")
 	public MobileElement dailytimeSheetsubmitbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_menu_item")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Edit")
 	public MobileElement dailytimeSheetedittbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
@@ -345,7 +345,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeSheetOutTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/delete_event_button")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Delete Event")
 	public MobileElement timeSheetDeletebtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Time Event']")
@@ -354,7 +354,7 @@ public class SmokeMethods extends LoginPage {
 
 	@AndroidFindBy(className = "android.widget.ImageButton")
 	public MobileElement backButton;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_0']")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement absenceReason;
@@ -384,11 +384,32 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement homeTab;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next: Choose Reason']")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement whoAbsencePageWaittoClickCaret;
-	
+
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[1]")
+	public MobileElement timeInEdit1;
+
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[2]")
+	public MobileElement timeInEdit2;
+
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[3]")
+	public MobileElement timeInEdit3;
+
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]")
+	public MobileElement commentBox;
+
+	@iOSXCUITFindBy(accessibility = "Done")
+	public MobileElement Done;
+
+	@iOSXCUITFindBy(accessibility = "Save")
+	public MobileElement saveButton;
+
+	@iOSXCUITFindBy(accessibility = "Okay")
+	public MobileElement okay;
+
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -410,7 +431,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void addAbsence() {
-		fluentWait(addAbsence);
+		isElementDisplayed(addAbsence);
 		common.isElementDisplayed(addAbsence);
 		Assert.assertTrue("Add Absence button is not displayed absence page", addAbsence.isDisplayed());
 		utils.log().info("Add Absence option is displayed on absence page");
@@ -419,7 +440,7 @@ public class SmokeMethods extends LoginPage {
 
 	// Create Absence Page 1
 	public void verifyWhoPage() {
-		fluentWait(absenceRequiredFor);
+		isElementDisplayed(absenceRequiredFor);
 		common.isElementDisplayed(absenceRequiredFor);
 		Assert.assertTrue("Create Absence Page 1 is not displayed", absenceRequiredFor.isDisplayed());
 		utils.log().info("Create Absence Page 1 is displayed");
@@ -433,18 +454,16 @@ public class SmokeMethods extends LoginPage {
 	public void selectTeachersName() {
 		common.isElementDisplayed(selectReqName);
 		selectReqName.click();
-		common.isElementDisplayed(whoAbsencePageWaittoClickCaret);	
+		common.isElementDisplayed(whoAbsencePageWaittoClickCaret);
 	}
 
 	public void clickNext() {
-		// fluentWait(forwardCaret);
 		common.isElementClickable(forwardCaret);
-		// forwardCaret.isEnabled();
 		forwardCaret.click();
 	}
 
 	public void absenceReason() {
-		fluentWait(absenceReasonVerification);
+		isElementDisplayed(absenceReasonVerification);
 		common.isElementDisplayed(absenceReasonVerification);
 		Assert.assertTrue("Create Absence Page 3 is not displayed", absenceReasonVerification.isDisplayed());
 		utils.log().info("Create Absence Page 3 is displayed");
@@ -457,35 +476,16 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void selectDate() throws Exception {
-//		fluentWait(datePageVerification);
-//		common.isElementDisplayed(datePageVerification);
-//		Assert.assertTrue("Create Absence Page 4 is not displayed", datePageVerification.isDisplayed());
-//		utils.log().info("Create Absence Page 4 is displayed");
-//		// dateVerification.click();
-//
-//		String cdate = common.currentDate();
-//		String nd = common.nextDate(cdate);
-//		MobileElement date = driver
-//				.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
-//		String tagName = date.getAttribute("content-desc").toString();
-//
-//		while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
-//			nd = common.nextDate(nd);
-//			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
-//			tagName = date.getAttribute("content-desc").toString();
-//		}
-//		driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
-
-		 Calendar cal = Calendar.getInstance();
-	      int res = cal.getActualMaximum(Calendar.DATE);
-		fluentWait(datePageVerification);
+		Calendar cal = Calendar.getInstance();
+		int res = cal.getActualMaximum(Calendar.DATE);
+		isElementDisplayed(datePageVerification);
 		common.isElementDisplayed(datePageVerification);
 		Assert.assertTrue("Create Absence Page 4 is not displayed", datePageVerification.isDisplayed());
 		utils.log().info("Create Absence Page 4 is displayed");
-		
+
 		String cdate = common.currentDate();
 		String nd = common.nextDate(cdate);
-		
+
 		MobileElement date = driver
 				.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 		String tagName = date.getAttribute("content-desc").toString();
@@ -493,7 +493,7 @@ public class SmokeMethods extends LoginPage {
 		while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
 			nd = common.nextDate(nd);
 			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
-			if(nd.contains(Integer.toString(res))) {
+			if (nd.contains(Integer.toString(res))) {
 				common.swipeUpSlowly();
 			}
 			tagName = date.getAttribute("content-desc").toString();
@@ -503,7 +503,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void selectReason() {
-		fluentWait(durationPageVerification);
+		isElementDisplayed(durationPageVerification);
 		common.isElementDisplayed(durationPageVerification);
 		Assert.assertTrue("Create Absence Page 5 is not displayed", durationPageVerification.isDisplayed());
 		utils.log().info("Create Absence Page 5 is displayed");
@@ -524,7 +524,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void submitAbsence() {
-		fluentWait(reviewPageVerification);
+		isElementDisplayed(reviewPageVerification);
 		common.isElementDisplayed(reviewPageVerification);
 		Assert.assertTrue("Create Absence Page 6 is not displayed", reviewPageVerification.isDisplayed());
 		utils.log().info("Create Absence Page 6 is displayed");
@@ -532,29 +532,25 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewAbsence() {
-		fluentWait(viewAbsence);
+		isElementDisplayed(viewAbsence);
 		viewAbsence.click();
 	}
 
 	public void verifyAbsence() {
-		fluentWait(confirmationNumber);
+		isElementDisplayed(confirmationNumber);
 		Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
 		utils.log().info("Confirmation number is displayed");
 	}
 
 	public void selectAbsenceApprovalWidget() throws Throwable {
-
-		//common.swipeUpSlowly();
 		common.scrollToElement(absenceApprovalwidget, "up");
-		//common.isElementDisplayed(absenceApprovalwidget);
 		Assert.assertTrue("Absence approval option is not displayed Home page", absenceApprovalwidget.isDisplayed());
 		utils.log().info("Absence approval option is displayed on Home page");
 		click(absenceApprovalwidget);
-
 	}
 
 	public void verifyAbsenceApprovalPage() {
-		fluentWait(verifyAbsencePage);
+		isElementDisplayed(verifyAbsencePage);
 		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
 		utils.log().info("Absence approval page is displayed");
 	}
@@ -567,36 +563,43 @@ public class SmokeMethods extends LoginPage {
 
 	public void selectApproveConfirmAbsence() {
 		employeeName.click();
-		fluentWait(approvebtn);
-		approvebtn.click();
-		fluentWait(okBtn);
+		approveBtnOnAbsence();
+		clickonOkBtn();
+	}
+
+	public void clickonOkBtn(){
+		isElementDisplayed(okBtn);
 		okBtn.click();
+	}
+	public void approveBtnOnAbsence()
+	{
+		isElementDisplayed(approvebtn);
+		approvebtn.click();
 	}
 
 	public void verifyAcceptedAbsence() {
-
-		fluentWait(verifyAbsencePage);
+		isElementDisplayed(verifyAbsencePage);
 		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
 		utils.log().info("Absence approval page is displayed");
-
 		String name = getElementText(employeeName);
 		String day = getElementText(dayName);
 		String month = getElementText(monthName);
-
 		Assert.assertTrue("Approved job still present in the approval list",
 				!(absence_Ename == name && absence_day == day && absence_month == month));
 		utils.log().info("Approved job removed from jobs list");
 	}
 
 	public void clickOnSetting() {
-		fluentWait(menuTab);
-		click(menuTab);
-		fluentWait(settings);
-		click(settings);
+		clickOnMenuTab();
+		settingOption();
 	}
 
+	public void settingOption(){
+		isElementDisplayed(settings);
+		click(settings);
+	}
 	public void toggleDarkMode() {
-		fluentWait(darkMode);
+		isElementDisplayed(darkMode);
 		click(darkMode);
 	}
 
@@ -630,49 +633,61 @@ public class SmokeMethods extends LoginPage {
 
 	public void clickCreateAbs() throws Throwable {
 		common.scrollToElement(createAbsBtn, "up");
-		// fluentWait(createAbsBtn);
 		Assert.assertTrue("Create Absence button is not displayed", createAbsBtn.isDisplayed());
 		utils.log().info("Create Absence button is displayed");
 		createAbsBtn.click();
 	}
 
 	public void clickOnFeedback() {
-		fluentWait(menuTab);
-		click(menuTab);
-		fluentWait(feedback);
-		click(feedback);
+		clickOnMenuTab();
+		clickOnFeedbackOption();
 	}
 
+	public void clickOnMenuTab(){
+		isElementDisplayed(menuTab);
+		click(menuTab);
+	}
+
+	public void clickOnFeedbackOption(){
+		isElementDisplayed(feedback);
+		click(feedback);
+	}
 	public void sendFeedback() throws Exception {
-		fluentWait(topic);
+		isElementDisplayed(topic);
 		click(topic);
 		int size = itemsInDropDown.size();
 		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
 		itemsInDropDown.get(randomNumber).click();
-		fluentWait(title);
-		title.click();
-		driver.getKeyboard().sendKeys("Automation Test");
-		fluentWait(message);
-		click(message);
-		driver.getKeyboard().sendKeys("This is a Test message");
-		fluentWait(saveBtn);
-		click(saveBtn);
+		sendFeedbackTitle();
+		sendFeedbackMessage();
 	}
 
+	public void sendFeedbackTitle(){
+		isElementDisplayed(title);
+		title.click();
+		driver.getKeyboard().sendKeys("Automation Test");
+	}
+	public void sendFeedbackMessage(){
+		isElementDisplayed(message);
+		click(message);
+		driver.getKeyboard().sendKeys("This is a Test message");
+		isElementDisplayed(saveBtn);
+		click(saveBtn);
+	}
 	public void clickInbox() {
-		fluentWait(inboxTab);
+		isElementDisplayed(inboxTab);
 		click(inboxTab);
 	}
 
 	public void verifyInboxPage() throws Exception {
-		fluentWait(inboxTab);
+		isElementDisplayed(inboxTab);
 		Assert.assertTrue("Inbox page is not displayed", inboxTab.isDisplayed());
 		utils.log().info("Inbox page is displayed");
 
 	}
 
 	public void viewText() {
-		fluentWait(inboxMsg);
+		isElementDisplayed(inboxMsg);
 		click(inboxMsg);
 		Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
@@ -703,17 +718,17 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickTimesheetOption() throws Exception {
-		common.scrollToElement(timesheetsbtn,"up");
+		common.scrollToElement(timesheetsbtn, "up");
 		isElementDisplayed(timesheetsbtn);
 		click(timesheetsbtn);
 	}
 
-	public void verifySubmitTimesheetBtn(){
+	public void verifySubmitTimesheetBtn() {
 		isElementDisplayed(submittimesheetsbtn);
 		Assert.assertTrue("Submit timesheet option is not displayed", submittimesheetsbtn.isDisplayed());
 	}
 
-	public void submitTimesheet() throws Throwable {	
+	public void submitTimesheet() throws Throwable {
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
 	}
@@ -758,12 +773,16 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void openMenuSearchBar() {
-		fluentWait(menuTab);
+		isElementDisplayed(menuTab);
 		click(menuTab);
-		fluentWait(searchBar);
-		click(searchBar);
+		clickOnSearchBar();
 	}
 
+	public void clickOnSearchBar()
+	{
+		isElementDisplayed(searchBar);
+		click(searchBar);
+	}
 	public void enterSearchText(String searchText) {
 		common.isElementDisplayed(searchBar);
 		searchResultText = searchText;
@@ -775,14 +794,12 @@ public class SmokeMethods extends LoginPage {
 	public void verifySearchResult() {
 		common.isElementDisplayed(searchResult);
 		String result = getElementText(searchResult);
-
 		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
 	}
 
 	public void clickReorderWidget() throws Throwable {
 		reOrderWidgetbtn = common.scrollToElement(reOrderWidgetbtn, "up");
-		// common.swipeUpSlowly();
 		common.isElementDisplayed(reOrderWidgetbtn);
 		click(reOrderWidgetbtn);
 
@@ -792,26 +809,18 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void draganddrop() throws Throwable {
-
 		common.isElementDisplayed(dragableEle);
 		TouchAction action = new TouchAction(driver);
 		int dragX = dragableEle.getLocation().x + (dragableEle.getSize().width / 2);
 		int dragY = dragableEle.getLocation().y + (dragableEle.getSize().height / 2);
-
-		//		  int dropX= ele2.getLocation().x + (ele2.getSize().width/2); 
-		//		  int dropY= ele2.getLocation().y + (ele2.getSize().height/2); 
-
 		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
-		.moveTo(PointOption.point(dragX, dragY + 400)).release().perform();
-
+				.moveTo(PointOption.point(dragX, dragY + 400)).release().perform();
 	}
 
 	public void saveReorderedWidget() {
-
 		for (MobileElement widgetlistele : WidgetOrderList) {
 			widgetlistafterReorder.add(common.getElementText(widgetlistele));
 		}
-		// Assert.assertEquals(widgetlist.get(1),"2");
 		click(saveOrderWidgetbtn);
 	}
 
@@ -821,77 +830,178 @@ public class SmokeMethods extends LoginPage {
 
 	public void viewWeekTimesheets() throws Exception {
 		clickTimesheetOption();
-
-		common.isElementDisplayed(monday);
-		Assert.assertTrue("Monday timesheet is not displayed", monday.isDisplayed());
-		common.isElementDisplayed(tuesday);
-		Assert.assertTrue("Tuesday timesheet is not displayed", tuesday.isDisplayed());
-		common.isElementDisplayed(wednesday);
-		Assert.assertTrue("Wednesday timesheet is not displayed", wednesday.isDisplayed());
-		common.isElementDisplayed(thursday);
-		Assert.assertTrue("Thursday timesheet is not displayed", thursday.isDisplayed());
-		common.isElementDisplayed(friday);
-		Assert.assertTrue("Friday timesheet is not displayed", friday.isDisplayed());
-		common.isElementDisplayed(saturday);
-		Assert.assertTrue("Saturday timesheet is not displayed", saturday.isDisplayed());
-		common.isElementDisplayed(sunday);
-		Assert.assertTrue("Sunday timesheet is not displayed", sunday.isDisplayed());
+		verifyMonday();
+		verifyTuesday();
+		verifyWednesday();
+		verifyThrusday();
+		verifyFriday();
+		verifySaturday();
+		verifySunday();
 		utils.log().info("Timesheets for entire week is displayed");
 	}
 
-	public void viewDayTimesheets() {
+	public void verifyMonday() {
+		common.isElementDisplayed(monday);
+		Assert.assertTrue("Monday timesheet is not displayed", monday.isDisplayed());
+	}
+
+	public void verifySunday(){
+	common.isElementDisplayed(sunday);
+		Assert.assertTrue("Sunday timesheet is not displayed",sunday.isDisplayed());
+    }
+	public void verifySaturday(){
+		common.isElementDisplayed(saturday);
+		Assert.assertTrue("Saturday timesheet is not displayed", saturday.isDisplayed());
+	}
+	public void verifyTuesday() {
+		common.isElementDisplayed(tuesday);
+		Assert.assertTrue("Tuesday timesheet is not displayed", tuesday.isDisplayed());
+	}
+
+	public void verifyWednesday() {
+		common.isElementDisplayed(wednesday);
+		Assert.assertTrue("Wednesday timesheet is not displayed", wednesday.isDisplayed());
+	}
+
+	public void verifyThrusday() {
+		common.isElementDisplayed(thursday);
+		Assert.assertTrue("Thursday timesheet is not displayed", thursday.isDisplayed());
+	}
+
+	public void verifyFriday() {
+	common.isElementDisplayed(friday);
+		Assert.assertTrue("Friday timesheet is not displayed",friday.isDisplayed());
+}
+
+	public void clickOnFriday(){
 		common.isElementDisplayed(friday);
 		click(friday);
+	}
+	public void viewDayTimesheets() {
+		clickOnFriday();
 		common.isElementDisplayed(commonDayTotal);
 		Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
 		utils.log().info("Timesheets for the day is displayed");
 	}
 
 	public void addTimeSheet() throws Throwable {
-		common.isElementDisplayed(selectDayToFillTimesheet);
-		click(selectDayToFillTimesheet);
-		click(addTimeSheets);
-
-		common.isElementDisplayed(workDetails);
-		Intime = common.getElementText(timeSheetInTime);
-
-		// Assert.assertEquals(time,"2");
-		click(saveTimesheets);
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				common.isElementDisplayed(selectDayToFillTimesheet);
+				click(selectDayToFillTimesheet);
+				click(addTimeSheets);
+				common.isElementDisplayed(workDetails);
+				Intime = common.getElementText(timeSheetInTime);
+				click(saveTimesheets);
+				break;
+			case "iOS":
+				common.isElementDisplayed(selectDayToFillTimesheet);
+				click(selectDayToFillTimesheet);
+				click(addTimeSheets);
+				common.isElementDisplayed(workDetails);
+				clickonEditButton2();
+				clickOnEditBtton3();
+				Intime = common.currentTime();
+				click(saveTimesheets);
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
-	public void goToEditDeleteTimeSheetOption() {
-		common.isElementDisplayed(dailytimeSheetsubmitbtn);
-		timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
-		// common.isElementClickable(timeSheetInTime);
-		click(timeSheetInTime);
+	public void clickOnEditBtton3(){
+		click(timeInEdit3);
+		click(Done);
+	}
+
+	public void goToEditDeleteTimeSheetOption() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				common.isElementDisplayed(dailytimeSheetsubmitbtn);
+				timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
+				click(timeSheetInTime);
+				break;
+			case "iOS":
+				common.isElementDisplayed(dailytimeSheetsubmitbtn);
+				click(timeSheetInTime);
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void editTimesheet() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				timEntryEditBtnClick();
+				common.isElementDisplayed(workDetails);
+				click(timeSheetOutTime);
+				click(okBtn);
+				click(saveTimesheets);
+				break;
+			case "iOS":
+				timEntryEditBtnClick();
+				clickonEditButton1();
+				clickonEditButton2();
+				AddTextonCommentSection();
+				click(saveButton);
+				clickOnNotNowBtn();
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
+	}
+	public void clickonEditButton1(){
+		click(timeInEdit1);
+		click(Done);
+	}
 
-		common.isElementDisplayed(dailytimeSheetedittbtn);
+	public void AddTextonCommentSection(){
+		click(commentBox);
+		driver.getKeyboard().sendKeys("Checking Edit Functionality");
+	}
+
+	public void clickonEditButton2(){
+		click(timeInEdit2);
+		click(Done);
+	}
+
+	public void clickOnNotNowBtn() {
+		isElementDisplayed(declinebtn);
+		click(declinebtn);
+	}
+
+	public void timEntryEditBtnClick() {
+		isElementDisplayed(dailytimeSheetedittbtn);
 		click(dailytimeSheetedittbtn);
+	}
 
-		common.isElementDisplayed(workDetails);
-		click(timeSheetOutTime);
-		click(okBtn);
-		click(saveTimesheets);
+	public void clickOnDeleteTimesheet() {
+	common.isElementDisplayed(timeSheetDeletebtn);
+	click(timeSheetDeletebtn);
 	}
 
 	public void deleteTimesheet() throws Throwable {
-
-		// Thread.sleep(10000);
-		common.isElementDisplayed(timeSheetTimeEventPage);
-		common.isElementDisplayed(dailytimeSheetedittbtn);
-		common.isElementDisplayed(timeSheetDeletebtn);
-		click(timeSheetDeletebtn);
-		click(okBtn);
-
-		common.isElementDisplayed(dailytimeSheetsubmitbtn);
-
-		// common.isElementNotPresent(timeSheetInTime);
-
-		Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
-		utils.log().info("Time sheet is deleted");
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				common.isElementDisplayed(timeSheetTimeEventPage);
+				common.isElementDisplayed(dailytimeSheetedittbtn);
+				clickOnDeleteTimesheet();
+				click(okBtn);
+				common.isElementDisplayed(dailytimeSheetsubmitbtn);
+				Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
+				utils.log().info("Time sheet is deleted");
+				break;
+			case "iOS":
+				click(timeSheetInTime);
+				isElementDisplayed(dailytimeSheetedittbtn);
+				click(timeSheetDeletebtn);
+				click(okay);
+				isElementDisplayed(dailytimeSheetsubmitbtn);
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void click_searchResult() {
@@ -914,7 +1024,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verify_widgetsPresent() throws Exception {
-		
 		widgetlistbeforeReorder.forEach(widget->{
 			if(widget.equals("What's New")) {
 				return;
@@ -937,20 +1046,25 @@ public class SmokeMethods extends LoginPage {
 	}
 	
 	public void getDate() throws Throwable {
-
 		common.isElementDisplayed(getdate);
 		absence_day = common.getElementText(getdate).substring(9, 11);
 		click(homeTab);
 		pullToRefresh();
 	}
 
-	public void clickCalender() {
-
-		click(menuTab);
+	public void clickOnSeachResult(){
 		common.isElementDisplayed(searchResult);
 		click(searchResult);
+	}
+	public void clickCalender() {
+		click(menuTab);
+		clickOnSeachResult();
 		common.isElementDisplayed(calendertitle);
 		driver.findElementByXPath("//android.widget.TextView[@text='" + absence_day + "']").click();
+		clickOnEvent();
+	}
+
+	public void clickOnEvent(){
 		common.isElementDisplayed(eventTitle);
 		click(eventTitle);
 	}
