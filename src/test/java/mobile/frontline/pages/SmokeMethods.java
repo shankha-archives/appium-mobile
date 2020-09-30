@@ -144,6 +144,7 @@ public class SmokeMethods extends LoginPage {
 
 	// click on search bar
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Search Frontline Mobile']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField[@name='Search Frontline Mobile']")
 	public MobileElement searchBar;
 
 	// click on Settings
@@ -266,6 +267,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement declinebtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Calendar_NavSearchResult']")
 	public MobileElement searchResult;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
@@ -776,7 +778,7 @@ public class SmokeMethods extends LoginPage {
 		common.isElementDisplayed(searchResult);
 		String result = getElementText(searchResult);
 
-		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
+		Assert.assertTrue("Entered text does not match", result.toLowerCase().contains(searchResultText.toLowerCase()));
 		utils.log().info("Entered text matches with result");
 	}
 
