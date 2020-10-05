@@ -398,4 +398,18 @@ public class SmokeStepDef {
 	public void theEventWillBeDisplayedTapOnItToViewOrVerifyTheDetails() {
 		smokePage.verifyAbsence();
 	}
+	
+	@When("employee clicks on the clockin btn")
+	public void employeeClicksOnTheClockinBtn() throws Throwable {
+		smokePage.allowClockInPermissions();
+		loginPage.verify_homeScreen_displayed();
+		smokePage.clockInbtn();
+		
+	}
+
+	 @Then("the user clocks out through timesheet")
+	 public void the_user_clocks_out_through_timesheet() throws Throwable {
+		 smokePage.clockOutThroughTimesheet() ;    
+		 smokePage.verifyClockOut();
+	 }
 }

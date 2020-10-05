@@ -259,3 +259,11 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
 
+@smoke @MOB-4243 @Android @sprint7 
+Scenario: An employee should be clock in and clock out
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When employee clicks on the clockin btn 
+    Then the user clocks out through timesheet

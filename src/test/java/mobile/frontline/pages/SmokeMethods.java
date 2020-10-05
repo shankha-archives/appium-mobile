@@ -415,6 +415,30 @@ public class SmokeMethods extends LoginPage {
 
 	@iOSXCUITFindBy(accessibility = "Okay")
 	public MobileElement okay;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='Clock In']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement clockInbtn;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/location_services_permit_access_button")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement permissionGrantbtn;
+
+	@AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement permissionGrantonlyForApp;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_right_bubble")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement clockedInVerification;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/clock_in_time_text_widget")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement clockedInTime;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_summary_event_name")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement eventSummary;
 
 	public String absence_Ename;
 	public String absence_day;
@@ -1073,5 +1097,42 @@ public class SmokeMethods extends LoginPage {
 	public void clickOnEvent(){
 		common.isElementDisplayed(eventTitle);
 		click(eventTitle);
+	}
+	
+	public void allowClockInPermissions() throws Throwable {
+		common.isElementDisplayed(clockInbtn);
+		click(clockInbtn);
+		common.isElementDisplayed(permissionGrantbtn);
+		click(permissionGrantbtn);
+		common.isElementDisplayed(permissionGrantonlyForApp);
+		click(permissionGrantonlyForApp);
+
+	}
+
+	public void clockInbtn() throws Throwable {
+		common.isElementDisplayed(clockInbtn);
+		click(clockInbtn);
+		common.isElementDisplayed(clockedInVerification);
+	}
+
+	public void clockOutThroughTimesheet() throws Throwable {
+		Intime = common.getElementText(clockedInTime).substring(1);
+
+		clickTimesheetOption();
+		String date = common.currentDate().substring(0, 2);
+		common.isElementDisplayed(monday);
+		driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + date + "')]").click();
+		common.isElementDisplayed(eventSummary);
+		clockedInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
+		clockedInTime.click();
+		editTimesheet();
+
+	}
+
+	public void verifyClockOut() {
+		common.isElementDisplayed(timeSheetTimeEventPage);
+		click(homeTab);
+		Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
+		utils.log().info("Clocked out successfully");
 	}
 }
