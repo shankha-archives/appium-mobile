@@ -72,7 +72,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then submit and view absence
     And verify absence 
     
- @MOB-4253 @AndroidSmoke
+ @MOB-4253 @AndroidSmoke @MOB-4254 @iOSSmoke
  Scenario: Admin can assign a substitute to an unfilled absence
     When the user launches the app
     Then the user click on Get Started Button
@@ -110,7 +110,7 @@ Scenario: An employee can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 	
-@MOB-4233 @AndroidSmoke
+@MOB-4233 @AndroidSmoke @MOB-4234 @iOSSmoke
 Scenario: Entered text should be searchable when user perform search operation 
 	When the user launches the app 
 	Then the user click on Get Started Button
