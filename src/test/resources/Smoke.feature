@@ -251,6 +251,16 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	And the user opens the calendar through menu
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
+	
+@smoke @MOB-4247 @Android @sprint7
+Scenario: An employee can edit an Absence for himself
+    When the employee user launches the app
+    Then the employee user click on Get Started Button and enter the pin
+    And Enter employee username and password and click on Sign In button
+    Then the employee navigates to dashboard page
+    When click on Absences
+    When click on editable absence and click on Edit tab
+    Then edit the absence
 
 @smoke @MOB-4243 @Android @sprint7 
 Scenario: An employee should be clock in and clock out
