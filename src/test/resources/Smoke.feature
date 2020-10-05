@@ -1,7 +1,7 @@
 @smoke 
 Feature: Smoke scenarios 
 
-@MOB-4227 @smoke @Android @iOS @MOB-4228 @sprint7onlyiOS 
+@MOB-4227 @AndroidSmoke @iOSSmoke @MOB-4228
 Scenario: Need to restrict login once the application is killed and relaunched 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -12,7 +12,7 @@ Scenario: Need to restrict login once the application is killed and relaunched
 	And The user kill and relaunch the application 
 	Then the substitute navigates to dashboard page 
 	
-@MOB-4229 @smoke @Android @iOS @MOB-4230 @sprint7onlyiOS @demo
+@MOB-4229 @AndroidSmoke @iOSSmoke @MOB-4230
 Scenario:  Need to restrict login if application is running in background and then opened 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -23,7 +23,7 @@ Scenario:  Need to restrict login if application is running in background and th
 	And The user minimize and relaunch the application 
 	Then the substitute navigates to dashboard page 
 	
-@MOB-4271 @smoke @Android @MOB-4272 @iOS @sprint7iOSonly
+@MOB-4271 @AndroidSmoke @MOB-4272 @iOSSmoke
 Scenario: Pull to refresh 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -33,7 +33,7 @@ Scenario: Pull to refresh
 	Then the substitute navigates to dashboard page 
 	And pulls to refresh the page 
 	
-@smoke @MOB-4249 @Android @demo
+@MOB-4249 @AndroidSmoke
 Scenario: Admin creates an absence for another user 
 	When the admin user launches the app 
 	Then the admin user click on Get Started Button and enter the pin 
@@ -44,7 +44,7 @@ Scenario: Admin creates an absence for another user
 	Then submit and view absence 
 	And verify absence 
 	
-@smoke @MOB-4251 @Android @sprint7AndroidOnly 
+@MOB-4251 @AndroidSmoke
 Scenario: Admin can approve the absence 
 	When the admin user launches the app 
 	Then the admin user click on Get Started Button and enter the pin 
@@ -54,7 +54,7 @@ Scenario: Admin can approve the absence
 	When selected approved a job 
 	Then the job is no longer in the list for approval 
 	
-@MOB-4269 @smoke @Android @MOB-4270 @iOS @sprint7Androidonly @sprint7iOSonly
+@MOB-4269 @AndroidSmoke @MOB-4270 @iOSSmoke
 Scenario: The user can toggle the Dark mode from setting 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -65,7 +65,7 @@ Scenario: The user can toggle the Dark mode from setting
 	When the user clicks on Menu tab and click on Settings 
 	Then the user toggle the Dark Mode 
 	
- @smoke @MOB-4245 @Android
+@MOB-4245 @AndroidSmoke
  Scenario: Employee creates an absence for himself
     When the employee user launches the app
     Then the employee user click on Get Started Button and enter the pin
@@ -76,7 +76,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then submit and view absence
     And verify absence 
     
- @smoke @MOB-4253 @sprint7 @Android
+ @MOB-4253 @AndroidSmoke
  Scenario: Admin can assign a substitute to an unfilled absence
     When the admin user launches the app
     Then the admin user click on Get Started Button and enter the pin
@@ -86,7 +86,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then click on Tap to Assign and select Assign substitute
     And click Assign again to confirm
     
-@MOB-4255 @smoke @sprint7 @Android @sprint7AndroidOnly
+@MOB-4255 @AndroidSmoke
 Scenario: View leave balances and check available days 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -95,7 +95,7 @@ Scenario: View leave balances and check available days
 	And click on Available Leave Balances and view leave balances 
 	Then verify available days 
 	
-@MOB-4275 @smoke @Android @MOB-4276 @iOS @sprint7Androidonly @sprint7iOSonly
+@MOB-4275 @AndroidSmoke @MOB-4276 @iOSSmoke
 Scenario: The user can send the Feedback 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -106,7 +106,7 @@ Scenario: The user can send the Feedback
 	When the user clicks on Menu tab and click on Feedback 
 	Then the user send the feedback 
 	
-@smoke @MOB-4265 @Android @sprint7 
+@MOB-4265 @AndroidSmoke
 Scenario: An employee can visit inbox and view messages 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -115,7 +115,7 @@ Scenario: An employee can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 	
-@smoke @MOB-4233 @Android @sprint7 
+@MOB-4233 @AndroidSmoke
 Scenario: Entered text should be searchable when user perform search operation 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -125,7 +125,7 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then enter the search text in bar 
 	And verify the search result
 	
-@smoke @MOB-4235 @Android @sprint7 @demo
+@MOB-4235 @AndroidSmoke
 Scenario: Absence Detail page displays for the selected absence from search result
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -136,8 +136,8 @@ Scenario: Absence Detail page displays for the selected absence from search resu
 	And click the absence search result
 	Then verify the absence detail page
 	
-@smoke @MOB-4267 @Android @sprint7 
-Scenario: An admin can visit inbox and view messages 
+@MOB-4267 @AndroidSmoke
+Scenario: An admin can visit inbox and view messages
 	When the admin user launches the app 
 	Then the admin user click on Get Started Button and enter the pin 
 	And Enter admin username and password and click on Sign In button 
@@ -145,7 +145,7 @@ Scenario: An admin can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@smoke @MOB-4259 @Android @sprint7 
+@MOB-4259 @AndroidSmoke
 Scenario: An employee can view week of timesheets and timesheets for selected date
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -154,7 +154,7 @@ Scenario: An employee can view week of timesheets and timesheets for selected da
 	And click on timesheets widget and view timesheets
 	Then click on any day to view timesheet 
 	
-@smoke @MOB-4263 @Android @iOS @MOB-4264 @sprint7Android @sprint7iOS
+@MOB-4263 @AndroidSmoke @iOSSmoke
 Scenario: An employee can submit a timesheet and then undo a timesheet 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -164,7 +164,7 @@ Scenario: An employee can submit a timesheet and then undo a timesheet
 	Then click on submit timesheet option 
 	And undo the timesheet
 	
-@smoke @MOB-4257 @Android @sprint7 
+@MOB-4257 @AndroidSmoke
 Scenario: A user can visit inbox and view messages 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -175,7 +175,7 @@ Scenario: A user can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@smoke @MOB-4241 @Android @sprint7 @subtitute 
+@MOB-4241 @AndroidSmoke
 Scenario: Substitute Need to rearrange the widgets on the dashboard 
 	When the substitute user launches the app 
 	Then the substitute user passes the splash screen 
@@ -187,7 +187,7 @@ Scenario: Substitute Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 
-@smoke @MOB-4241 @Android @sprint7 @employee 
+@MOB-4241 @AndroidSmoke
 Scenario: Employee Need to rearrange the widgets on the dashboard 
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -197,7 +197,7 @@ Scenario: Employee Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@smoke @MOB-4241 @Android @sprint7 @admin 
+@MOB-4241 @AndroidSmoke
 Scenario: Admin Need to rearrange the widgets on the dashboard 
 	When the admin user launches the app 
 	Then the admin user click on Get Started Button and enter the pin 
@@ -207,7 +207,7 @@ Scenario: Admin Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@smoke @MOB-4239 @Android @sprint7 @employee 
+@MOB-4239 @AndroidSmoke
 Scenario: Employee need to tap on footer buttons and all widgets
 	When the employee user launches the app 
 	Then the user click on Get Started Button 
@@ -217,7 +217,7 @@ Scenario: Employee need to tap on footer buttons and all widgets
 	Then verify all the widgets present
 	And verify the footer 
 	
-@smoke @MOB-4239 @Android @sprint7 @subtitute 
+@MOB-4239 @AndroidSmoke
 Scenario: Substitute need to tap on footer buttons and all widgets
 	When the substitute user launches the app 
 	Then the user click on Get Started Button 
@@ -227,7 +227,7 @@ Scenario: Substitute need to tap on footer buttons and all widgets
 	Then verify all the widgets present
 	And verify the footer 
 	
-@smoke @MOB-4239 @Android @sprint7 @admin
+@MOB-4239 @AndroidSmoke
 Scenario: Admin need to tap on footer buttons and all widgets 
 	When the admin user launches the app 
 	Then the user click on Get Started Button 
@@ -235,9 +235,9 @@ Scenario: Admin need to tap on footer buttons and all widgets
 	Then the admin navigates to dashboard page 
 	When click on reorder widget & get back 
 	Then verify all the widgets present
-	And verify the footer 
-	
-@smoke @MOB-4261 @Android @sprint7 
+	And verify the footer
+
+@MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmoke @sprint8iOS
 Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -248,7 +248,7 @@ Scenario: An employee can add time to a timesheet and edit and delete the time f
 	Then user edits the timesheet
 	And Delete the timesheet 
 
-@smoke @MOB-4237 @Android @sprint7 
+@MOB-4237 @AndroidSmoke
 Scenario: Event should be display when user taps on any event, on any day from calendar
 	When the employee user launches the app 
 	Then the employee user click on Get Started Button and enter the pin 
@@ -269,3 +269,11 @@ Scenario: An employee can edit an Absence for himself
     When click on editable absence and click on Edit tab
     Then edit the absence
 
+@smoke @MOB-4243 @Android @sprint7 
+Scenario: An employee should be clock in and clock out
+	When the employee user launches the app 
+	Then the employee user click on Get Started Button and enter the pin 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When employee clicks on the clockin btn 
+    Then the user clocks out through timesheet
