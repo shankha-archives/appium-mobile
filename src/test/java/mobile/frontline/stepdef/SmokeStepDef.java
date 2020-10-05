@@ -398,4 +398,22 @@ public class SmokeStepDef {
 	public void theEventWillBeDisplayedTapOnItToViewOrVerifyTheDetails() {
 		smokePage.verifyAbsence();
 	}
+	
+	//MOB-4247
+	@When("click on Absences")
+	public void clickOnAbsences() throws Throwable {
+		smokePage.clickOnAbsence();
+	}
+	
+	//MOB-4247
+	@When("click on editable absence and click on Edit tab")
+	public void click_on_editable_absence_and_click_on_Edit_tab() throws Throwable {
+		smokePage.editVacationAbsence();
+	}
+	
+	//MOB-4247
+	@When("edit the absence")
+	public void edit_the_absence() throws Throwable {
+		smokePage.editAbsence();
+	}
 }

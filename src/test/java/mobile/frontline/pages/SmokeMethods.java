@@ -389,6 +389,52 @@ public class SmokeMethods extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement whoAbsencePageWaittoClickCaret;
 	
+	//Edit Absence //HomePage
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement clickOnAbsenceWidget;
+	
+	//selecting editable Absence
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='NewReason']")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement reasonAbsence;
+
+	//clicking edit tab
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit']")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement editTab;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_forward_caret")
+	public MobileElement forwardBtn;
+	
+	//selecting absence date
+	@AndroidFindBy(xpath = "//android.view.ViewGroup/child::android.widget.TextView[@index=1][1]")
+	//@AndroidFindBy(xpath="//android.widget.ImageButton/following-sibling::android.widget.TextView")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement fullDateAbsence;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Custom']")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement custom;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_start_time")
+	public MobileElement startTime;
+	
+	@AndroidFindBy(xpath = "//android.widget.RadialTimePickerView$RadialPickerTouchHelper[@index=6]")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement selectTime;
+	
+	@AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement okButton;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
+	public MobileElement saveChanges;
+	
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text='HH:MM']")
+	//@iOSXCUITFindBy(xpath = "")
+	public MobileElement timeAbsent;
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -953,5 +999,49 @@ public class SmokeMethods extends LoginPage {
 		driver.findElementByXPath("//android.widget.TextView[@text='" + absence_day + "']").click();
 		common.isElementDisplayed(eventTitle);
 		click(eventTitle);
+	}
+	
+	public void clickOnAbsence()
+	{
+		common.swipeUpSlowly();
+		common.isElementDisplayed(clickOnAbsenceWidget);
+		Assert.assertTrue("Absence option is not displayed Home page", clickOnAbsenceWidget.isDisplayed());
+		utils.log().info("Absence option is displayed on Home page");
+		click(clickOnAbsenceWidget);
+	}
+	
+	public void editVacationAbsence() throws Throwable
+	{
+		common.swipeUpSlowly();
+		common.swipeUpSlowly();
+		common.isElementDisplayed(reasonAbsence);
+		click(reasonAbsence);
+		String fullDate = getElementText(fullDateAbsence);
+		String date = fullDate.substring(9,11);
+		fluentWait(editTab);
+		click(editTab);
+		fluentWait(forwardBtn);
+		click(forwardBtn);
+		wait(3000);
+		click(forwardBtn);	
+		wait(3000);
+		MobileElement clickDate = driver.findElementByXPath("//android.widget.TextView[@text="+date+"]");
+		common.isElementDisplayed(clickDate);
+		click(clickDate);
+		fluentWait(forwardBtn);
+		click(forwardBtn);
+	}
+	
+	public void editAbsence()
+	{
+		fluentWait(timeAbsent);
+		timeAbsent.click();
+		driver.getKeyboard().sendKeys("0200");
+		wait(3000);
+		click(forwardBtn);
+		wait(3000);
+		click(forwardBtn);
+		fluentWait(saveChanges);
+		click(saveChanges);
 	}
 }
