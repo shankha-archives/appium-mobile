@@ -194,17 +194,17 @@ public class SmokeMethods extends LoginPage {
 
 	// click on inbox tab
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Inbox']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "Inbox_TabBar_Button")
 	public MobileElement inboxTab;
 
 	// click on inbox message
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='FLAlertView_Table']/XCUIElementTypeCell")
 	public MobileElement inboxMsg;
 
 	// click on inbox tab
 	@AndroidFindBy(xpath = "//android.view.View")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText")
 	public MobileElement msgData;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
@@ -1187,6 +1187,8 @@ public class SmokeMethods extends LoginPage {
 		click(forwardBtn);
 		fluentWait(saveChanges);
 		click(saveChanges);
+		
+	}
 
 	public void allowClockInPermissions() throws Throwable {
 		common.isElementDisplayed(clockInbtn);
