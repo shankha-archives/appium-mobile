@@ -159,7 +159,7 @@ Scenario: An employee can submit a timesheet and then undo a timesheet
 	Then click on submit timesheet option 
 	And undo the timesheet
 	
-@MOB-4257 @AndroidSmoke
+@MOB-4257 @AndroidSmoke @MOB-4258 @iOSSmoke @sprint8
 Scenario: A user can visit inbox and view messages 
 	When the user launches the app 
 	Then the substitute user passes the splash screen  
