@@ -318,7 +318,7 @@ public class SmokeStepDef {
 	@Then("rearrange the widget")
 	public void rearrangeTheWidget() throws Throwable {
 		smokePage.saveReorderedWidget();
-		loginPage.verify_homeScreen_displayed();
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 
 	@Then("verify the order of widgets")

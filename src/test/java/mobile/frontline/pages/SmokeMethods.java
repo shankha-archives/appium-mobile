@@ -275,15 +275,15 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement searchResult;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
-	//	@iOSXCUITFindBy(accessibility = "")
+	   @iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
 	public MobileElement reOrderWidgetbtn;
-
+	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
-	//	@iOSXCUITFindBy(accessibility = "")
+	   @iOSXCUITFindBy(accessibility = "Done")
 	public MobileElement saveOrderWidgetbtn;
-
+	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/drag_handle")
-	//	@iOSXCUITFindBy(accessibility = "")
+	   @iOSXCUITFindBy(accessibility = "Reorder New Version Available")
 	public MobileElement dragableEle;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'TUE')]")
@@ -315,7 +315,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement absenceDetailPageApproval;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
-	//	@iOSXCUITFindBy(xpath = "")
+	   @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '')]")
 	public List<MobileElement> WidgetOrderList;
 
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='6']")
