@@ -131,7 +131,7 @@ Scenario: Absence Detail page displays for the selected absence from search resu
 	And click the absence search result
 	Then verify the absence detail page
 	
-@MOB-4267 @AndroidSmoke
+@MOB-4267 @AndroidSmoke @MOB-4268 @iOSSmoke
 Scenario: An admin can visit inbox and view messages
 	When the user launches the app 
 	Then the user click on Get Started Button
