@@ -101,7 +101,7 @@ Scenario: The user can send the Feedback
 	When the user clicks on Menu tab and click on Feedback 
 	Then the user send the feedback 
 	
-@MOB-4265 @AndroidSmoke
+@MOB-4265 @AndroidSmoke @MOB-4266 @iOSSmoke @sprint8
 Scenario: An employee can visit inbox and view messages 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -131,7 +131,7 @@ Scenario: Absence Detail page displays for the selected absence from search resu
 	And click the absence search result
 	Then verify the absence detail page
 	
-@MOB-4267 @AndroidSmoke @MOB-4268 @iOSSmoke
+@MOB-4267 @AndroidSmoke @MOB-4268 @iOSSmoke @sprint8
 Scenario: An admin can visit inbox and view messages
 	When the user launches the app 
 	Then the user click on Get Started Button
