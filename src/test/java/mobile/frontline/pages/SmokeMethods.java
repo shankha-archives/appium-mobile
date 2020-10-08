@@ -1117,12 +1117,11 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			widgetlistbeforeReorder.forEach(widget->{
-				if(widget.equals("What's New")) {
+				if(widget.equals("New Version Available")) {
 					return;
 				}
 				common.swipeUpSlowly();
-				MobileElement widgetElement = driver
-						.findElementByXPath("//android.widget.TextView[@text='"+widget+"']");
+				MobileElement widgetElement = driver.findElementById(widget+"_ModuleHeader");
 				common.isElementDisplayed(widgetElement);
 				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
 				utils.log().info("Widget is present");
