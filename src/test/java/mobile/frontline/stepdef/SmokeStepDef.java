@@ -254,6 +254,10 @@ public class SmokeStepDef {
 
 	@When("select reason date length summary")
 	public void selectReasonDateLengthSummary() throws Throwable {
+		
+		smokePage.selectLocation();
+		smokePage.clickNext();
+
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
