@@ -61,7 +61,7 @@ Scenario: The user can toggle the Dark mode from setting
 	When the user clicks on Menu tab and click on Settings 
 	Then the user toggle the Dark Mode 
 	
-@MOB-4245 @AndroidSmoke
+@MOB-4245 @AndroidSmoke @MOB-4246
  Scenario: Employee creates an absence for himself
     When the user launches the app
     Then the user click on Get Started Button
@@ -252,7 +252,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
 	
-@smoke @MOB-4247 @Android @sprint7
+@smoke @MOB-4247 @Android @sprint7 
 Scenario: An employee can edit an Absence for himself
     When the employee user launches the app
     Then the employee user click on Get Started Button and enter the pin
