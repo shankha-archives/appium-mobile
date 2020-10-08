@@ -275,7 +275,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement searchResult;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
-	   @iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
+	@iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
 	public MobileElement reOrderWidgetbtn;
 	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
@@ -359,6 +359,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeSheetTimeEventPage;
 
 	@AndroidFindBy(className = "android.widget.ImageButton")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Cancel']")
 	public MobileElement backButton;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_0']")
@@ -388,7 +389,7 @@ public class SmokeMethods extends LoginPage {
 
 	// click on home tab
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
-//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
 	public MobileElement homeTab;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next: Choose Reason']")

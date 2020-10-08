@@ -82,7 +82,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then click on Tap to Assign and select Assign substitute
     And click Assign again to confirm
     
-@MOB-4255 @AndroidSmoke
+@MOB-4255 @AndroidSmoke 
 Scenario: View leave balances and check available days 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -200,7 +200,7 @@ Scenario: Admin Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@MOB-4239 @AndroidSmoke
+@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke
 Scenario: Employee need to tap on footer buttons and all widgets
 	When the user launches the app 
 	Then the user click on Get Started Button 
