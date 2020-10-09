@@ -217,7 +217,7 @@ public class SmokeMethods extends LoginPage {
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
 	public MobileElement availableDays;
-	
+
 	@iOSXCUITFindBy(accessibility = "Schedule_Absence_Button")
 	public MobileElement absenceBtn;
 
@@ -691,10 +691,8 @@ public class SmokeMethods extends LoginPage {
 		common.scrollDown();
 	}
 
-	public void clickOnAvailableLeaveBalance_displayed() {
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		common.isElementDisplayed(availableLeaveBalance);
+	public void clickOnAvailableLeaveBalance_displayed() throws Exception {
+		common.scrollToElement(availableLeaveBalance, "up");
 		Assert.assertTrue("Available Leave Balances is not displayed on Home page",
 				availableLeaveBalance.isDisplayed());
 		utils.log().info("Available Leave Balances is displayed on Home page");
