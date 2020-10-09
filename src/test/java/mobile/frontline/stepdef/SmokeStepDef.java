@@ -120,21 +120,22 @@ public class SmokeStepDef {
 		smokePage.confirmAssignSubstitute();
 	}
 
-	// @MOB-4233
-	@When("^click on menu and tap the search bar$")
-	public void click_on_menu_and_search_bar() throws Throwable {
-		smokePage.openMenuSearchBar();
-	}
+	// @MOB-4233   // @MOB-4234
+		@When("^click on menu and tap the search bar$")
+		public void click_on_menu_and_search_bar() throws Throwable {
+			smokePage.openMenuSearchBar();
+		}
 
-	@Then("^enter the search text in bar$")
-	public void enter_search_text() throws Throwable {
-		smokePage.enterSearchText(testdata.read_property("testingData", "users", "searchText"));
-	}
+		@Then("^enter the search text in bar and click on result$")
+		public void enter_search_text() throws Throwable {
+			smokePage.enterSearchText(testdata.read_property("testingData", "users", "searchText"));
+			smokePage.clickOnResult();
+		}
 
-	@And("^verify the search result$")
-	public void verify_the_search_result() throws Throwable {
-		smokePage.verifySearchResult();
-	}
+		@And("^verify the search result$")
+		public void verify_the_search_result() throws Throwable {
+			smokePage.verifySearchResult();
+		}
 
 	// @MOB-4235
 	@Then("^enter the absence search text in bar$")
