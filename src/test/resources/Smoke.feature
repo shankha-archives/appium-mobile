@@ -30,7 +30,7 @@ Scenario: Pull to refresh
 	Then the substitute navigates to dashboard page 
 	And pulls to refresh the page 
 	
-@MOB-4249 @AndroidSmoke
+@MOB-4249 @AndroidSmoke @MOB-4250
 Scenario: Admin creates an absence for another user 
 	When the user launches the app 
 	Then the user click on Get Started Button

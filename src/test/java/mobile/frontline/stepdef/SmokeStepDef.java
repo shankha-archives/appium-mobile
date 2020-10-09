@@ -155,7 +155,8 @@ public class SmokeStepDef {
 	@When("^enter teacher select reason date length summary$")
 	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
 		smokePage.enterTeachersName(testdata.read_property("testingData", "users", "teacher"));
-		smokePage.selectTeachersName();
+		smokePage.selectTeachersName(testdata.read_property("testingData", "users", "teacher"));
+	      
 		smokePage.clickNext();
 		// page 3
 		smokePage.absenceReason();
