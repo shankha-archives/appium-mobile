@@ -190,13 +190,13 @@ public class SmokeStepDef {
 	}
 
 	@When("selected approved a job")
-	public void selectedApprovedAJob() {
+	public void selectedApprovedAJob() throws Exception {
 		smokePage.storeAbsenceDetails();
 		smokePage.selectApproveConfirmAbsence();
 	}
 
 	@Then("the job is no longer in the list for approval")
-	public void theJobIsNoLongerInTheListForApproval() {
+	public void theJobIsNoLongerInTheListForApproval() throws Exception {
 		smokePage.verifyAcceptedAbsence();
 	}
 
