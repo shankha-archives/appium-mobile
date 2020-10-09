@@ -82,7 +82,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then click on Tap to Assign and select Assign substitute
     And click Assign again to confirm
     
-@MOB-4255 @AndroidSmoke
+@MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke
 Scenario: View leave balances and check available days 
 	When the user launches the app 
 	Then the user click on Get Started Button

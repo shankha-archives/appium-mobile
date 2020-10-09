@@ -212,15 +212,18 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement msgData;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Available Leave Balances_ModuleHeader")
 	public MobileElement availableLeaveBalance;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Absences")
 	public MobileElement availableLeaveBalanceHeader;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
 	public MobileElement availableDays;
+
+	@iOSXCUITFindBy(accessibility = "Schedule_Absence_Button")
+	public MobileElement absenceBtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='UNFILLED']")
 	@iOSXCUITFindBy(accessibility = "UNFILLED")
@@ -360,13 +363,18 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeSheetDeletebtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Time Event']")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement timeSheetTimeEventPage;
 
 	@AndroidFindBy(className = "android.widget.ImageButton")
 	public MobileElement backButton;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_0']")
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_0']")
+//	//	@iOSXCUITFindBy(accessibility = "")
+//	public MobileElement absenceReason;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_time_absent")
+	//	@iOSXCUITFindBy(accessibility = "")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='AbsReason_1']")
 	public MobileElement absenceReason;
 
@@ -375,25 +383,25 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement absenceshifttime;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement getdate;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_title")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement calendertitle;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_one")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement eventTitle;
 
 	// page 6 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
-//	@iOSXCUITFindBy(accessibility = "Create Absence")
+	//	@iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement subAssignPageVerification;
 
 	// click on home tab
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement homeTab;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next: Choose Reason']")
@@ -421,10 +429,11 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Okay")
 	public MobileElement okay;
 
-	// Edit Absence //HomePage
+	//Edit Absence //HomePage
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement clickOnAbsenceWidget;
+
 
 	// selecting editable Absence
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='NewReason']")
@@ -468,27 +477,27 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeAbsent;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Clock In']")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement clockInbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/location_services_permit_access_button")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement permissionGrantbtn;
 
 	@AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement permissionGrantonlyForApp;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_right_bubble")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement clockedInVerification;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/clock_in_time_text_widget")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement clockedInTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_summary_event_name")
-//	@iOSXCUITFindBy(accessibility = "")
+	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement eventSummary;
 
 	public String absence_Ename;
@@ -785,10 +794,8 @@ public class SmokeMethods extends LoginPage {
 		common.scrollDown();
 	}
 
-	public void clickOnAvailableLeaveBalance_displayed() {
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		common.isElementDisplayed(availableLeaveBalance);
+	public void clickOnAvailableLeaveBalance_displayed() throws Exception {
+		common.scrollToElement(availableLeaveBalance, "up");
 		Assert.assertTrue("Available Leave Balances is not displayed on Home page",
 				availableLeaveBalance.isDisplayed());
 		utils.log().info("Available Leave Balances is displayed on Home page");
@@ -798,10 +805,21 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Available Leave Balance Page is displayed");
 	}
 
-	public void verify_availableDays() {
-		String leaveBalance = getElementText(availableDays);
-		Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance) >= 0);
-		utils.log().info("Available Days are valid");
+	public void verify_availableDays() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			String leaveBalance = getElementText(availableDays);
+			Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance) >= 0);
+			utils.log().info("Available Days are valid");
+			break;
+		case "iOS":
+			isElementDisplayed(absenceBtn);
+			Assert.assertTrue("Absence button is not displayed", absenceBtn.isDisplayed());
+			utils.log().info("Absence button is displayed");			
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickCreateAbs() throws Throwable {
@@ -990,7 +1008,7 @@ public class SmokeMethods extends LoginPage {
 		int dragX = dragableEle.getLocation().x + (dragableEle.getSize().width / 2);
 		int dragY = dragableEle.getLocation().y + (dragableEle.getSize().height / 2);
 		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
-				.moveTo(PointOption.point(dragX, dragY + 400)).release().perform();
+		.moveTo(PointOption.point(dragX, dragY + 400)).release().perform();
 	}
 
 	public void saveReorderedWidget() {
