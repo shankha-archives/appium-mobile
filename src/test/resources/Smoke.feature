@@ -41,7 +41,7 @@ Scenario: Admin creates an absence for another user
 	Then submit and view absence 
 	And verify absence 
 	
-@MOB-4251 @AndroidSmoke
+@MOB-4251 @AndroidSmoke @MOB-4252
 Scenario: Admin can approve the absence 
 	When the user launches the app 
 	Then the user click on Get Started Button

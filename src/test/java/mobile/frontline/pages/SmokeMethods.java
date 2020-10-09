@@ -39,7 +39,6 @@ public class SmokeMethods extends LoginPage {
 
 	// page 1 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Who?']")
-	// @iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement absenceRequiredFor;
 
 	// sendkey //com.frontline.frontlinemobile:id/who_search_view
@@ -58,7 +57,6 @@ public class SmokeMethods extends LoginPage {
 
 	// page 3 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Why?']")
-	@iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement absenceReasonVerification;
 
 	// click //page 3 reason
@@ -68,13 +66,11 @@ public class SmokeMethods extends LoginPage {
 
 	// page 4 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='When?']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText [4]")
 	public MobileElement datePageVerification;
 
 	// also check the date which is taken
 	// page 5 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='How Long?']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='CreateAbsence_FullDay_Button']")
 	public MobileElement durationPageVerification;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_full_day")
@@ -83,7 +79,6 @@ public class SmokeMethods extends LoginPage {
 
 	// page 6 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Review']")
-	// @iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement reviewPageVerification;
 
 	// click next
@@ -104,37 +99,35 @@ public class SmokeMethods extends LoginPage {
 
 	// click on approvals
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'awaiting approval')]")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "awaiting approval")
 	public MobileElement absenceApprovalwidget;
 
 	// verify approvals
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approvals']")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "Approvals")
 	public MobileElement verifyAbsencePage;
 
 	// employee name for verification
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approval_employee_name")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "ApprovalsView_UnapprovedCell_0")
 	public MobileElement employeeName;
 
 	// day of absence name for verification
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_day_text")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 	public MobileElement dayName;
 
 	// month of absence name for verification
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_to_date_month_text")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 	public MobileElement monthName;
 
 	// click on approve btn
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approve_button")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "AbsenceRequestDetailView_Approve_Button")
 	public MobileElement approvebtn;
 
 	// month of absence name for verification
 	@AndroidFindBy(id = "android:id/button1")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "Yes")
 	public MobileElement okBtn;
 
 	// click on Menu tab
@@ -736,10 +729,20 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Absence approval page is displayed");
 	}
 
-	public void storeAbsenceDetails() {
-		absence_Ename = getElementText(employeeName);
-		absence_day = getElementText(dayName);
-		absence_month = getElementText(monthName);
+	public void storeAbsenceDetails() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+	absence_Ename = getElementText(employeeName);
+	absence_day = getElementText(dayName);
+	absence_month = getElementText(monthName);
+			break;
+		case "iOS":
+			utils.log().info("Absence approval page is displayed");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+	}
+
 	}
 
 	public void selectApproveConfirmAbsence() {
@@ -758,16 +761,26 @@ public class SmokeMethods extends LoginPage {
 		approvebtn.click();
 	}
 
-	public void verifyAcceptedAbsence() {
+	public void verifyAcceptedAbsence() throws Exception {
 		isElementDisplayed(verifyAbsencePage);
 		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
 		utils.log().info("Absence approval page is displayed");
+
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		String name = getElementText(employeeName);
 		String day = getElementText(dayName);
 		String month = getElementText(monthName);
 		Assert.assertTrue("Approved job still present in the approval list",
 				!(absence_Ename == name && absence_day == day && absence_month == month));
 		utils.log().info("Approved job removed from jobs list");
+				break;
+			case "iOS":
+				utils.log().info("Approvals page is displayed");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickOnSetting() {
