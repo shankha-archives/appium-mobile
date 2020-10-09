@@ -29,46 +29,46 @@ public class SmokeMethods extends LoginPage {
 
 	// click //homepage
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences Today']")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Absences Today_ModuleHeader")
 	public MobileElement absenceWidget;
 
 	// click //in absence widget
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/add_absence")
-	//	@iOSXCUITFindBy(accessibility = "Create Absence")
+	@iOSXCUITFindBy(accessibility = "iconPlus")
 	public MobileElement addAbsence;
 
 	// page 1 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Who?']")
-	//	@iOSXCUITFindBy(accessibility = "Create Absence")
+	// @iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement absenceRequiredFor;
 
 	// sendkey //com.frontline.frontlinemobile:id/who_search_view
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/search_view_edit_text")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Search employees by last name")
 	public MobileElement serachEditText;
 
 	// click
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/create_absence_list_cell_name")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText")
 	public MobileElement selectReqName;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_forward_circle")
-		@iOSXCUITFindBy(accessibility = "Create_Absence_NextStep_Button")
+	@iOSXCUITFindBy(accessibility = "Create_Absence_NextStep_Button")
 	public MobileElement forwardCaret;
 
 	// page 3 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Why?']")
-	//		@iOSXCUITFindBy(accessibility = "Create Absence")
+	@iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement absenceReasonVerification;
 
 	// click //page 3 reason
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='*Personal']")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='*Personal']")
 	public MobileElement reason;
 
 	// page 4 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='When?']")
-	//			@iOSXCUITFindBy(accessibility = "Create Absence")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText [4]")
 	public MobileElement datePageVerification;
 
 	// also check the date which is taken
@@ -78,28 +78,28 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement durationPageVerification;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_full_day")
-	//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='CreateAbsence_FullDay_Button']")
 	public MobileElement selectDuration;
 
 	// page 6 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Review']")
-	//					@iOSXCUITFindBy(accessibility = "Create Absence")
+	// @iOSXCUITFindBy(accessibility = "Create Absence")
 	public MobileElement reviewPageVerification;
 
 	// click next
 	// click
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
-		@iOSXCUITFindBy(accessibility = "Submit_Absence")
+	@iOSXCUITFindBy(accessibility = "Submit_Absence")
 	public MobileElement submitAbsence;
 
 	// click
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/view_absence_button")
-		@iOSXCUITFindBy(accessibility = "View Absence")
+	@iOSXCUITFindBy(accessibility = "View Absence")
 	public MobileElement viewAbsence;
 
 	// verify conf number is present
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
-	@iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Conf')]")
 	public MobileElement confirmationNumber;
 
 	// click on approvals
@@ -163,9 +163,9 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement createAbsBtn;
 
 	// create absence btn //click
-		@AndroidFindBy(id = "com.frontline.frontlinemobile:id/create_absence_list_cell_name")
-		public MobileElement selectLocation;
-		
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/create_absence_list_cell_name")
+	public MobileElement selectLocation;
+
 	// click on Feedback
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
 	@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
@@ -212,11 +212,11 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement msgData;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
-	//	@iOSXCUITFindBy(accessibility = "")
+	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement availableLeaveBalance;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
-	//	@iOSXCUITFindBy(accessibility = "")
+	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement availableLeaveBalanceHeader;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
@@ -279,19 +279,20 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement searchResult;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
-	   @iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
+	@iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
 	public MobileElement reOrderWidgetbtn;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
-	   @iOSXCUITFindBy(accessibility = "Done")
+	@iOSXCUITFindBy(accessibility = "Done")
 	public MobileElement saveOrderWidgetbtn;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/drag_handle")
-	   @iOSXCUITFindBy(accessibility = "Reorder New Version Available")
+	@iOSXCUITFindBy(accessibility = "Reorder New Version Available")
 	public MobileElement dragableEle;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'TUE')]")
-	//	@iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND name BEGINSWITH 'Conf '")
+	// @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND
+	// name BEGINSWITH 'Conf '")
 	public MobileElement tuesday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'MON')]")
 	public MobileElement monday;
@@ -319,7 +320,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement absenceDetailPageApproval;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
-	   @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '')]")
 	public List<MobileElement> WidgetOrderList;
 
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='6']")
@@ -351,7 +352,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement dailytimeSheetedittbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
-	//	@iOSXCUITFindBy(accessibility = "")
+	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement timeSheetOutTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/delete_event_button")
@@ -396,7 +397,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement homeTab;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next: Choose Reason']")
-//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "(//*[@type='XCUIElementTypeStaticText'])[3]")
 	public MobileElement whoAbsencePageWaittoClickCaret;
 
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[1]")
@@ -419,53 +420,53 @@ public class SmokeMethods extends LoginPage {
 
 	@iOSXCUITFindBy(accessibility = "Okay")
 	public MobileElement okay;
-	
-	//Edit Absence //HomePage
+
+	// Edit Absence //HomePage
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement clickOnAbsenceWidget;
-	
-	//selecting editable Absence
+
+	// selecting editable Absence
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='NewReason']")
-	//@iOSXCUITFindBy(xpath = "")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement reasonAbsence;
 
-	//clicking edit tab
+	// clicking edit tab
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit']")
-	//@iOSXCUITFindBy(xpath = "")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement editTab;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_forward_caret")
 	public MobileElement forwardBtn;
-	
-	//selecting absence date
+
+	// selecting absence date
 	@AndroidFindBy(xpath = "//android.view.ViewGroup/child::android.widget.TextView[@index=1][1]")
-	//@AndroidFindBy(xpath="//android.widget.ImageButton/following-sibling::android.widget.TextView")
-	//@iOSXCUITFindBy(xpath = "")
+	// @AndroidFindBy(xpath="//android.widget.ImageButton/following-sibling::android.widget.TextView")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement fullDateAbsence;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Custom']")
-	//@iOSXCUITFindBy(xpath = "")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement custom;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_start_time")
 	public MobileElement startTime;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.RadialTimePickerView$RadialPickerTouchHelper[@index=6]")
-	//@iOSXCUITFindBy(xpath = "")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement selectTime;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
-	//@iOSXCUITFindBy(xpath = "")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement okButton;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
 	public MobileElement saveChanges;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='HH:MM']")
-	//@iOSXCUITFindBy(xpath = "")
+	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement timeAbsent;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Clock In']")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement clockInbtn;
@@ -501,10 +502,8 @@ public class SmokeMethods extends LoginPage {
 	public SmokeMethods() {
 	}
 
-	public void selectAbsenceWidget() {
-
-		common.swipeUpSlowly();
-		common.isElementDisplayed(absenceWidget);
+	public void selectAbsenceWidget() throws Exception {
+		common.scrollToElement(absenceWidget, "up");
 		Assert.assertTrue("Absence option is not displayed Home page", absenceWidget.isDisplayed());
 		utils.log().info("Absence option is displayed on Home page");
 		click(absenceWidget);
@@ -531,10 +530,20 @@ public class SmokeMethods extends LoginPage {
 		driver.getKeyboard().sendKeys(teacher);
 	}
 
-	public void selectTeachersName() {
-		common.isElementDisplayed(selectReqName);
-		selectReqName.click();
-		common.isElementDisplayed(whoAbsencePageWaittoClickCaret);
+	public void selectTeachersName(String teacher) throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			common.isElementDisplayed(selectReqName);
+			selectReqName.click();
+			common.isElementDisplayed(whoAbsencePageWaittoClickCaret);
+			break;
+		case "iOS":
+			common.isElementDisplayed(whoAbsencePageWaittoClickCaret);
+			driver.findElementByXPath("//XCUIElementTypeButton[contains(@name, '" + teacher + "')]").click();
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickNext() {
@@ -555,7 +564,7 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-	
+
 	public void absenceReason() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -570,8 +579,11 @@ public class SmokeMethods extends LoginPage {
 			}
 			break;
 		case "iOS":
-			isElementDisplayed(absenceReason);
-			click(absenceReason);
+			if (isElementDisplayed(reason)) {
+				click(reason);
+			} else {
+				click(absenceReason);
+			}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -620,7 +632,7 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		
+
 	}
 
 	public void selectReason() throws Exception {
@@ -640,11 +652,13 @@ public class SmokeMethods extends LoginPage {
 			}
 			break;
 		case "iOS":
-			selectDuration.click();
-			common.isElementDisplayed(absenceshifttime);
-			absenceshifttime.click();
-			hideKeyboard();
-			driver.getKeyboard().sendKeys("1000");
+			if (common.isElementDisplayed(absenceshifttime)) {
+				absenceshifttime.click();
+				hideKeyboard();
+				driver.getKeyboard().sendKeys("1000");
+			} else {
+				utils.log().info("Time Absence shift type not displayed");
+			}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -684,14 +698,20 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewAbsence() {
-		isElementDisplayed(viewAbsence);
-		viewAbsence.click();
+		if (common.isElementDisplayed(viewAbsence)) {
+			viewAbsence.click();
+		} else {
+			click(okay);
+		}
 	}
 
 	public void verifyAbsence() {
-		isElementDisplayed(confirmationNumber);
-		Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
-		utils.log().info("Confirmation number is displayed");
+		if (common.isElementDisplayed(confirmationNumber)) {
+			Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
+			utils.log().info("Confirmation number is displayed");
+		} else {
+			utils.log().info("Absence Created");
+		}
 	}
 
 	public void selectAbsenceApprovalWidget() throws Throwable {
@@ -719,12 +739,12 @@ public class SmokeMethods extends LoginPage {
 		clickonOkBtn();
 	}
 
-	public void clickonOkBtn(){
+	public void clickonOkBtn() {
 		isElementDisplayed(okBtn);
 		okBtn.click();
 	}
-	public void approveBtnOnAbsence()
-	{
+
+	public void approveBtnOnAbsence() {
 		isElementDisplayed(approvebtn);
 		approvebtn.click();
 	}
@@ -746,10 +766,11 @@ public class SmokeMethods extends LoginPage {
 		settingOption();
 	}
 
-	public void settingOption(){
+	public void settingOption() {
 		isElementDisplayed(settings);
 		click(settings);
 	}
+
 	public void toggleDarkMode() {
 		isElementDisplayed(darkMode);
 		click(darkMode);
@@ -795,15 +816,16 @@ public class SmokeMethods extends LoginPage {
 		clickOnFeedbackOption();
 	}
 
-	public void clickOnMenuTab(){
+	public void clickOnMenuTab() {
 		isElementDisplayed(menuTab);
 		click(menuTab);
 	}
 
-	public void clickOnFeedbackOption(){
+	public void clickOnFeedbackOption() {
 		isElementDisplayed(feedback);
 		click(feedback);
 	}
+
 	public void sendFeedback() throws Exception {
 		isElementDisplayed(topic);
 		click(topic);
@@ -814,18 +836,20 @@ public class SmokeMethods extends LoginPage {
 		sendFeedbackMessage();
 	}
 
-	public void sendFeedbackTitle(){
+	public void sendFeedbackTitle() {
 		isElementDisplayed(title);
 		title.click();
 		driver.getKeyboard().sendKeys("Automation Test");
 	}
-	public void sendFeedbackMessage(){
+
+	public void sendFeedbackMessage() {
 		isElementDisplayed(message);
 		click(message);
 		driver.getKeyboard().sendKeys("This is a Test message");
 		isElementDisplayed(saveBtn);
 		click(saveBtn);
 	}
+
 	public void clickInbox() {
 		isElementDisplayed(inboxTab);
 		click(inboxTab);
@@ -930,11 +954,11 @@ public class SmokeMethods extends LoginPage {
 		clickOnSearchBar();
 	}
 
-	public void clickOnSearchBar()
-	{
+	public void clickOnSearchBar() {
 		isElementDisplayed(searchBar);
 		click(searchBar);
 	}
+
 	public void enterSearchText(String searchText) {
 		common.isElementDisplayed(searchBar);
 		searchResultText = searchText;
@@ -997,14 +1021,16 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Monday timesheet is not displayed", monday.isDisplayed());
 	}
 
-	public void verifySunday(){
-	common.isElementDisplayed(sunday);
-		Assert.assertTrue("Sunday timesheet is not displayed",sunday.isDisplayed());
-    }
-	public void verifySaturday(){
+	public void verifySunday() {
+		common.isElementDisplayed(sunday);
+		Assert.assertTrue("Sunday timesheet is not displayed", sunday.isDisplayed());
+	}
+
+	public void verifySaturday() {
 		common.isElementDisplayed(saturday);
 		Assert.assertTrue("Saturday timesheet is not displayed", saturday.isDisplayed());
 	}
+
 	public void verifyTuesday() {
 		common.isElementDisplayed(tuesday);
 		Assert.assertTrue("Tuesday timesheet is not displayed", tuesday.isDisplayed());
@@ -1021,14 +1047,15 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyFriday() {
-	common.isElementDisplayed(friday);
-		Assert.assertTrue("Friday timesheet is not displayed",friday.isDisplayed());
-}
+		common.isElementDisplayed(friday);
+		Assert.assertTrue("Friday timesheet is not displayed", friday.isDisplayed());
+	}
 
-	public void clickOnFriday(){
+	public void clickOnFriday() {
 		common.isElementDisplayed(friday);
 		click(friday);
 	}
+
 	public void viewDayTimesheets() {
 		clickOnFriday();
 		common.isElementDisplayed(commonDayTotal);
@@ -1038,82 +1065,83 @@ public class SmokeMethods extends LoginPage {
 
 	public void addTimeSheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-				common.isElementDisplayed(selectDayToFillTimesheet);
-				click(selectDayToFillTimesheet);
-				click(addTimeSheets);
-				common.isElementDisplayed(workDetails);
-				Intime = common.getElementText(timeSheetInTime);
-				click(saveTimesheets);
-				break;
-			case "iOS":
-				common.isElementDisplayed(selectDayToFillTimesheet);
-				click(selectDayToFillTimesheet);
-				click(addTimeSheets);
-				common.isElementDisplayed(workDetails);
-				clickonEditButton2();
-				clickOnEditBtton3();
-				Intime = common.currentTime();
-				click(saveTimesheets);
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			common.isElementDisplayed(selectDayToFillTimesheet);
+			click(selectDayToFillTimesheet);
+			click(addTimeSheets);
+			common.isElementDisplayed(workDetails);
+			Intime = common.getElementText(timeSheetInTime);
+			click(saveTimesheets);
+			break;
+		case "iOS":
+			common.isElementDisplayed(selectDayToFillTimesheet);
+			click(selectDayToFillTimesheet);
+			click(addTimeSheets);
+			common.isElementDisplayed(workDetails);
+			clickonEditButton2();
+			clickOnEditBtton3();
+			Intime = common.currentTime();
+			click(saveTimesheets);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
 
-	public void clickOnEditBtton3(){
+	public void clickOnEditBtton3() {
 		click(timeInEdit3);
 		click(Done);
 	}
 
 	public void goToEditDeleteTimeSheetOption() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-				common.isElementDisplayed(dailytimeSheetsubmitbtn);
-				timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
-				click(timeSheetInTime);
-				break;
-			case "iOS":
-				common.isElementDisplayed(dailytimeSheetsubmitbtn);
-				click(timeSheetInTime);
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			common.isElementDisplayed(dailytimeSheetsubmitbtn);
+			timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
+			click(timeSheetInTime);
+			break;
+		case "iOS":
+			common.isElementDisplayed(dailytimeSheetsubmitbtn);
+			click(timeSheetInTime);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
 
 	public void editTimesheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-				timEntryEditBtnClick();
-				common.isElementDisplayed(workDetails);
-				click(timeSheetOutTime);
-				click(okBtn);
-				click(saveTimesheets);
-				break;
-			case "iOS":
-				timEntryEditBtnClick();
-				clickonEditButton1();
-				clickonEditButton2();
-				AddTextonCommentSection();
-				click(saveButton);
-				clickOnNotNowBtn();
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			timEntryEditBtnClick();
+			common.isElementDisplayed(workDetails);
+			click(timeSheetOutTime);
+			click(okBtn);
+			click(saveTimesheets);
+			break;
+		case "iOS":
+			timEntryEditBtnClick();
+			clickonEditButton1();
+			clickonEditButton2();
+			AddTextonCommentSection();
+			click(saveButton);
+			clickOnNotNowBtn();
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
-	public void clickonEditButton1(){
+
+	public void clickonEditButton1() {
 		click(timeInEdit1);
 		click(Done);
 	}
 
-	public void AddTextonCommentSection(){
+	public void AddTextonCommentSection() {
 		click(commentBox);
 		driver.getKeyboard().sendKeys("Checking Edit Functionality");
 	}
 
-	public void clickonEditButton2(){
+	public void clickonEditButton2() {
 		click(timeInEdit2);
 		click(Done);
 	}
@@ -1129,30 +1157,30 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnDeleteTimesheet() {
-	common.isElementDisplayed(timeSheetDeletebtn);
-	click(timeSheetDeletebtn);
+		common.isElementDisplayed(timeSheetDeletebtn);
+		click(timeSheetDeletebtn);
 	}
 
 	public void deleteTimesheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-				common.isElementDisplayed(timeSheetTimeEventPage);
-				common.isElementDisplayed(dailytimeSheetedittbtn);
-				clickOnDeleteTimesheet();
-				click(okBtn);
-				common.isElementDisplayed(dailytimeSheetsubmitbtn);
-				Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
-				utils.log().info("Time sheet is deleted");
-				break;
-			case "iOS":
-				click(timeSheetInTime);
-				isElementDisplayed(dailytimeSheetedittbtn);
-				click(timeSheetDeletebtn);
-				click(okay);
-				isElementDisplayed(dailytimeSheetsubmitbtn);
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			common.isElementDisplayed(timeSheetTimeEventPage);
+			common.isElementDisplayed(dailytimeSheetedittbtn);
+			clickOnDeleteTimesheet();
+			click(okBtn);
+			common.isElementDisplayed(dailytimeSheetsubmitbtn);
+			Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
+			utils.log().info("Time sheet is deleted");
+			break;
+		case "iOS":
+			click(timeSheetInTime);
+			isElementDisplayed(dailytimeSheetedittbtn);
+			click(timeSheetDeletebtn);
+			click(okay);
+			isElementDisplayed(dailytimeSheetsubmitbtn);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
 
@@ -1169,20 +1197,20 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Absence Details Page is displayed");
 	}
 
-	//MOB-4239
+	// MOB-4239
 	public void goBack() {
 		common.isElementDisplayed(backButton);
 		click(backButton);
 	}
 
 	public void verify_widgetsPresent() throws Exception {
-		widgetlistbeforeReorder.forEach(widget->{
-			if(widget.equals("What's New")) {
+		widgetlistbeforeReorder.forEach(widget -> {
+			if (widget.equals("What's New")) {
 				return;
 			}
 			common.swipeUpSlowly();
 			MobileElement widgetElement = driver
-					.findElementByXPath("//android.widget.TextView[@text='"+widget+"']");
+					.findElementByXPath("//android.widget.TextView[@text='" + widget + "']");
 			common.isElementDisplayed(widgetElement);
 			Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
 			utils.log().info("Widget is present");
@@ -1193,10 +1221,11 @@ public class SmokeMethods extends LoginPage {
 		common.isElementDisplayed(homeTab);
 		common.isElementDisplayed(menuTab);
 		common.isElementDisplayed(inboxTab);
-		Assert.assertTrue("Footers are not displayed", homeTab.isDisplayed() && menuTab.isDisplayed() && inboxTab.isDisplayed());
+		Assert.assertTrue("Footers are not displayed",
+				homeTab.isDisplayed() && menuTab.isDisplayed() && inboxTab.isDisplayed());
 		utils.log().info("Footers are present");
 	}
-	
+
 	public void getDate() throws Throwable {
 		common.isElementDisplayed(getdate);
 		absence_day = common.getElementText(getdate).substring(9, 11);
@@ -1204,10 +1233,11 @@ public class SmokeMethods extends LoginPage {
 		pullToRefresh();
 	}
 
-	public void clickOnSeachResult(){
+	public void clickOnSeachResult() {
 		common.isElementDisplayed(searchResult);
 		click(searchResult);
 	}
+
 	public void clickCalender() {
 		click(menuTab);
 		clickOnSeachResult();
@@ -1216,44 +1246,41 @@ public class SmokeMethods extends LoginPage {
 		clickOnEvent();
 	}
 
-	public void clickOnEvent(){
+	public void clickOnEvent() {
 		common.isElementDisplayed(eventTitle);
 		click(eventTitle);
 	}
-	
-	public void clickOnAbsence()
-	{
+
+	public void clickOnAbsence() {
 		common.swipeUpSlowly();
 		common.isElementDisplayed(clickOnAbsenceWidget);
 		Assert.assertTrue("Absence option is not displayed Home page", clickOnAbsenceWidget.isDisplayed());
 		utils.log().info("Absence option is displayed on Home page");
 		click(clickOnAbsenceWidget);
 	}
-	
-	public void editVacationAbsence() throws Throwable
-	{
+
+	public void editVacationAbsence() throws Throwable {
 		common.swipeUpSlowly();
 		common.swipeUpSlowly();
 		common.isElementDisplayed(reasonAbsence);
 		click(reasonAbsence);
 		String fullDate = getElementText(fullDateAbsence);
-		String date = fullDate.substring(9,11);
+		String date = fullDate.substring(9, 11);
 		fluentWait(editTab);
 		click(editTab);
 		fluentWait(forwardBtn);
 		click(forwardBtn);
 		wait(3000);
-		click(forwardBtn);	
+		click(forwardBtn);
 		wait(3000);
-		MobileElement clickDate = driver.findElementByXPath("//android.widget.TextView[@text="+date+"]");
+		MobileElement clickDate = driver.findElementByXPath("//android.widget.TextView[@text=" + date + "]");
 		common.isElementDisplayed(clickDate);
 		click(clickDate);
 		fluentWait(forwardBtn);
 		click(forwardBtn);
 	}
-	
-	public void editAbsence()
-	{
+
+	public void editAbsence() {
 		fluentWait(timeAbsent);
 		timeAbsent.click();
 		driver.getKeyboard().sendKeys("0200");
@@ -1263,7 +1290,7 @@ public class SmokeMethods extends LoginPage {
 		click(forwardBtn);
 		fluentWait(saveChanges);
 		click(saveChanges);
-		
+
 	}
 
 	public void allowClockInPermissions() throws Throwable {
