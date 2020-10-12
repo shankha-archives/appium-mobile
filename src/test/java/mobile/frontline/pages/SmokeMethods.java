@@ -984,10 +984,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	//MOB-4233    //MOB-4234
-//	public void openMenuBar() {
-//		click(menuTab);
-//	}
-
 	public void enterSearchText(String searchText) {
 		common.isElementDisplayed(searchBar);
 		searchResultText = searchText;
