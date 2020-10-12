@@ -492,6 +492,10 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_summary_event_name")
 	//	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement eventSummary;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Calendar']")
+	public MobileElement calendar;
 
 	public String absence_Ename;
 	public String absence_day;
@@ -979,17 +983,7 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Submit timesheet option is not displayed");
 	}
 
-	public void openMenuSearchBar() {
-		isElementDisplayed(menuTab);
-		click(menuTab);
-		clickOnSearchBar();
-	}
-
-	public void clickOnSearchBar() {
-		isElementDisplayed(searchBar);
-		click(searchBar);
-	}
-
+	//MOB-4233    //MOB-4234
 	public void enterSearchText(String searchText) {
 		common.isElementDisplayed(searchBar);
 		searchResultText = searchText;
@@ -997,11 +991,16 @@ public class SmokeMethods extends LoginPage {
 		searchBar.clear();
 		searchBar.sendKeys(searchText);
 	}
+	
+	public void clickOnResult()
+	{
+		common.isElementDisplayed(searchResult);
+		searchResult.click();
+	}
 
 	public void verifySearchResult() {
-		common.isElementDisplayed(searchResult);
-		String result = getElementText(searchResult);
-		Assert.assertTrue("Entered text does not match", result.toLowerCase().contains(searchResultText.toLowerCase()));
+		String result = getElementText(calendar);
+		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
 	}
 
