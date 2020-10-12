@@ -116,7 +116,7 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then the user click on Get Started Button
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
-	When click on menu and tap the search bar
+	When click on menu bar
 	Then enter the search text in bar and click on result
 	And verify the search result
 	

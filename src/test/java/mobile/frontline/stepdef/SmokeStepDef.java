@@ -121,9 +121,9 @@ public class SmokeStepDef {
 	}
 
 	// @MOB-4233   // @MOB-4234
-		@When("^click on menu and tap the search bar$")
-		public void click_on_menu_and_search_bar() throws Throwable {
-			smokePage.openMenuSearchBar();
+		@When("^click on menu bar$")
+		public void click_on_menu() throws Throwable {
+			smokePage.clickOnMenuTab();
 		}
 
 		@Then("^enter the search text in bar and click on result$")
