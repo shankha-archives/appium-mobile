@@ -307,12 +307,15 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement commonDayTotal;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'AbsReason')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name,'AbsReason')][1]")
 	public MobileElement searchAbsReason;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Substitute']")
 	public MobileElement absenceDetailPageSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Approval Status']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Approval Status']")
 	public MobileElement absenceDetailPageApproval;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_name")
@@ -1320,7 +1323,6 @@ public class SmokeMethods extends LoginPage {
 		click(forwardBtn);
 		fluentWait(saveChanges);
 		click(saveChanges);
-
 	}
 
 	public void allowClockInPermissions() throws Throwable {
@@ -1330,7 +1332,6 @@ public class SmokeMethods extends LoginPage {
 		click(permissionGrantbtn);
 		common.isElementDisplayed(permissionGrantonlyForApp);
 		click(permissionGrantonlyForApp);
-
 	}
 
 	public void clockInbtn() throws Throwable {
@@ -1350,7 +1351,6 @@ public class SmokeMethods extends LoginPage {
 		clockedInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
 		clockedInTime.click();
 		editTimesheet();
-
 	}
 
 	public void verifyClockOut() {

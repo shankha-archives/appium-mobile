@@ -120,7 +120,7 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then enter the search text in bar and click on result
 	And verify the search result
 	
-@MOB-4235 @AndroidSmoke
+@MOB-4235 @AndroidSmoke @MOB-4236 @iOSSmoke
 Scenario: Absence Detail page displays for the selected absence from search result
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -252,7 +252,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
 	
-@smoke @MOB-4247 @Android @sprint7 
+@smoke @MOB-4247 @Android @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
     When the employee user launches the app
     Then the employee user click on Get Started Button and enter the pin
