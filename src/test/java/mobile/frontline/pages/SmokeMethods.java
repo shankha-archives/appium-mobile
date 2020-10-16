@@ -304,6 +304,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement sunday;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Day Total']")
+	@iOSXCUITFindBy(accessibility = "Day Total")
 	public MobileElement commonDayTotal;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'AbsReason')]")
@@ -1023,17 +1024,27 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertNotEquals(widgetlistbeforeReorder, widgetlistafterReorder);
 	}
 
-	public void viewWeekTimesheets() throws Exception {
-		clickTimesheetOption();
-		verifyMonday();
-		verifyTuesday();
-		verifyWednesday();
-		verifyThrusday();
-		verifyFriday();
-		verifySaturday();
-		verifySunday();
-		utils.log().info("Timesheets for entire week is displayed");
-	}
+public void viewWeekTimesheets() throws Exception {
+   switch (new GlobalParams().getPlatformName()) {
+      case "Android":
+   clickTimesheetOption();
+   verifyMonday();
+   verifyTuesday();
+   verifyWednesday();
+   verifyThrusday();
+   verifyFriday();
+   verifySaturday();
+   verifySunday();
+   utils.log().info("Timesheets for entire week is displayed");
+   break;
+      case "iOS":
+         clickTimesheetOption();
+         utils.log().info("Timesheets for entire week is displayed");
+         break;
+      default:
+         throw new Exception("Invalid platform Name");
+}
+}
 
 	public void verifyMonday() {
 		common.isElementDisplayed(monday);
@@ -1075,12 +1086,24 @@ public class SmokeMethods extends LoginPage {
 		click(friday);
 	}
 
-	public void viewDayTimesheets() {
-		clickOnFriday();
-		common.isElementDisplayed(commonDayTotal);
-		Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
-		utils.log().info("Timesheets for the day is displayed");
-	}
+public void viewDayTimesheets() throws Exception {
+       switch (new GlobalParams().getPlatformName()) {
+           case "Android":
+               clickOnFriday();
+               common.isElementDisplayed(commonDayTotal);
+               Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
+               utils.log().info("Timesheets for the day is displayed");
+           break;
+           case "iOS":
+               common.isElementDisplayed(selectDayToFillTimesheet);
+               click(selectDayToFillTimesheet);
+               Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
+               utils.log().info("Timesheets for the day is displayed");
+               break;
+           default:
+               throw new Exception("Invalid platform Name");
+       }
+}
 
 	public void addTimeSheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
