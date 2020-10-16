@@ -1287,11 +1287,11 @@ public class SmokeMethods extends LoginPage {
 		case "Android":
 			String fullDate = getElementText(fullDateAbsence);
 			String date = fullDate.substring(9, 11);
-			wait(3000);
+			common.isElementDisplayed(editTab);
 			click(editTab);
 			common.isElementDisplayed(forwardBtn);
 			click(forwardBtn);		
-			wait(5000);
+			common.isElementDisplayed(forwardBtn);
 			click(forwardBtn);
 			MobileElement clickDate = driver.findElementByXPath("//android.widget.TextView[@text=" + date + "]");
 			common.isElementDisplayed(clickDate);
@@ -1300,13 +1300,13 @@ public class SmokeMethods extends LoginPage {
 			click(forwardBtn);
 		break;
 		case "iOS":
-			wait(3000);
+			common.isElementDisplayed(editTab);
 			click(editTab);
-			wait(7000);
-			click(forwardBtn);		
 			wait(5000);
+			click(forwardBtn);		
+			common.isElementDisplayed(forwardBtn);
 			click(forwardBtn);
-			wait(3000);	
+			common.isElementDisplayed(forwardBtn);	
 			click(forwardBtn);
 		break;
 		default:
@@ -1320,7 +1320,7 @@ public class SmokeMethods extends LoginPage {
 		driver.getKeyboard().sendKeys("0200");
 		wait(3000);
 		click(forwardBtn);
-		wait(3000);
+		common.isElementDisplayed(forwardBtn);
 		click(forwardBtn);
 		common.isElementDisplayed(saveChanges);
 		click(saveChanges);
