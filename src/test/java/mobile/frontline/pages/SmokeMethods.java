@@ -305,6 +305,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement sunday;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Day Total']")
+	@iOSXCUITFindBy(accessibility = "Day Total")
 	public MobileElement commonDayTotal;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'AbsReason')]")
@@ -425,21 +426,21 @@ public class SmokeMethods extends LoginPage {
 
 	// Edit Absence //HomePage
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Absences_ModuleHeader")
 	public MobileElement clickOnAbsenceWidget;
-
 
 	// selecting editable Absence
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='NewReason']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name, 'NewReason')][1]")
 	public MobileElement reasonAbsence;
 
 	// clicking edit tab
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "Edit")
 	public MobileElement editTab;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_forward_caret")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Create_Absence_NextStep_Button']")
 	public MobileElement forwardBtn;
 
 	// selecting absence date
@@ -448,27 +449,16 @@ public class SmokeMethods extends LoginPage {
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement fullDateAbsence;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Custom']")
-	// @iOSXCUITFindBy(xpath = "")
-	public MobileElement custom;
-
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_start_time")
-	public MobileElement startTime;
-
-	@AndroidFindBy(xpath = "//android.widget.RadialTimePickerView$RadialPickerTouchHelper[@index=6]")
-	// @iOSXCUITFindBy(xpath = "")
-	public MobileElement selectTime;
-
-	@AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
-	// @iOSXCUITFindBy(xpath = "")
-	public MobileElement okButton;
-
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit_Absence']")
 	public MobileElement saveChanges;
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='HH:MM']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@name='Time_Absence_TextField']")
 	public MobileElement timeAbsent;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
+	public MobileElement doneBtn;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Clock In']")
 	// @iOSXCUITFindBy(accessibility = "")
@@ -1087,17 +1077,27 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertNotEquals(widgetlistbeforeReorder, widgetlistafterReorder);
 	}
 
-	public void viewWeekTimesheets() throws Exception {
-		clickTimesheetOption();
-		verifyMonday();
-		verifyTuesday();
-		verifyWednesday();
-		verifyThrusday();
-		verifyFriday();
-		verifySaturday();
-		verifySunday();
-		utils.log().info("Timesheets for entire week is displayed");
-	}
+public void viewWeekTimesheets() throws Exception {
+   switch (new GlobalParams().getPlatformName()) {
+      case "Android":
+   clickTimesheetOption();
+   verifyMonday();
+   verifyTuesday();
+   verifyWednesday();
+   verifyThrusday();
+   verifyFriday();
+   verifySaturday();
+   verifySunday();
+   utils.log().info("Timesheets for entire week is displayed");
+   break;
+      case "iOS":
+         clickTimesheetOption();
+         utils.log().info("Timesheets for entire week is displayed");
+         break;
+      default:
+         throw new Exception("Invalid platform Name");
+}
+}
 
 	public void verifyMonday() {
 		common.isElementDisplayed(monday);
@@ -1139,12 +1139,24 @@ public class SmokeMethods extends LoginPage {
 		click(friday);
 	}
 
-	public void viewDayTimesheets() {
-		clickOnFriday();
-		common.isElementDisplayed(commonDayTotal);
-		Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
-		utils.log().info("Timesheets for the day is displayed");
-	}
+public void viewDayTimesheets() throws Exception {
+       switch (new GlobalParams().getPlatformName()) {
+           case "Android":
+               clickOnFriday();
+               common.isElementDisplayed(commonDayTotal);
+               Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
+               utils.log().info("Timesheets for the day is displayed");
+           break;
+           case "iOS":
+               common.isElementDisplayed(selectDayToFillTimesheet);
+               click(selectDayToFillTimesheet);
+               Assert.assertTrue("Timesheet for the day is not displayed", commonDayTotal.isDisplayed());
+               utils.log().info("Timesheets for the day is displayed");
+               break;
+           default:
+               throw new Exception("Invalid platform Name");
+       }
+}
 
 	public void addTimeSheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
@@ -1334,46 +1346,60 @@ public class SmokeMethods extends LoginPage {
 		click(eventTitle);
 	}
 
+	//MOB-4247    //MOB-4248
 	public void clickOnAbsence() {
 		common.swipeUpSlowly();
 		common.isElementDisplayed(clickOnAbsenceWidget);
 		Assert.assertTrue("Absence option is not displayed Home page", clickOnAbsenceWidget.isDisplayed());
 		utils.log().info("Absence option is displayed on Home page");
 		click(clickOnAbsenceWidget);
+		wait(3000);
+		common.isElementDisplayed(reasonAbsence);
+		click(reasonAbsence);	
 	}
 
 	public void editVacationAbsence() throws Throwable {
-		common.swipeUpSlowly();
-		common.swipeUpSlowly();
-		common.isElementDisplayed(reasonAbsence);
-		click(reasonAbsence);
-		String fullDate = getElementText(fullDateAbsence);
-		String date = fullDate.substring(9, 11);
-		fluentWait(editTab);
-		click(editTab);
-		fluentWait(forwardBtn);
-		click(forwardBtn);
-		wait(3000);
-		click(forwardBtn);
-		wait(3000);
-		MobileElement clickDate = driver.findElementByXPath("//android.widget.TextView[@text=" + date + "]");
-		common.isElementDisplayed(clickDate);
-		click(clickDate);
-		fluentWait(forwardBtn);
-		click(forwardBtn);
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			String fullDate = getElementText(fullDateAbsence);
+			String date = fullDate.substring(9, 11);
+			common.isElementDisplayed(editTab);
+			click(editTab);
+			common.isElementDisplayed(forwardBtn);
+			click(forwardBtn);		
+			common.isElementDisplayed(forwardBtn);
+			click(forwardBtn);
+			MobileElement clickDate = driver.findElementByXPath("//android.widget.TextView[@text=" + date + "]");
+			common.isElementDisplayed(clickDate);
+			click(clickDate);
+			wait(3000);	
+			click(forwardBtn);
+		break;
+		case "iOS":
+			common.isElementDisplayed(editTab);
+			click(editTab);
+			wait(5000);
+			click(forwardBtn);		
+			common.isElementDisplayed(forwardBtn);
+			click(forwardBtn);
+			common.isElementDisplayed(forwardBtn);	
+			click(forwardBtn);
+		break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}	
 	}
 
 	public void editAbsence() {
-		fluentWait(timeAbsent);
+		common.isElementDisplayed(timeAbsent);
 		timeAbsent.click();
 		driver.getKeyboard().sendKeys("0200");
 		wait(3000);
 		click(forwardBtn);
-		wait(3000);
+		common.isElementDisplayed(forwardBtn);
 		click(forwardBtn);
-		fluentWait(saveChanges);
+		common.isElementDisplayed(saveChanges);
 		click(saveChanges);
-
 	}
 
 	public void allowClockInPermissions() throws Throwable {

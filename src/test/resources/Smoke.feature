@@ -140,7 +140,7 @@ Scenario: An admin can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@MOB-4259 @AndroidSmoke
+@MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke
 Scenario: An employee can view week of timesheets and timesheets for selected date
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -252,7 +252,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
 	
-@smoke @MOB-4247 @Android @sprint7 
+@smoke @MOB-4247 @Android @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
     When the employee user launches the app
     Then the employee user click on Get Started Button and enter the pin
