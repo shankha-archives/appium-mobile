@@ -378,6 +378,9 @@ public class SmokeStepDef {
 	public void theEmployeeCreatesAnAbsence() throws Throwable {
 		smokePage.clickCreateAbs();
 
+		smokePage.selectLocation();
+		smokePage.clickNext();
+		
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
@@ -397,7 +400,7 @@ public class SmokeStepDef {
 	@When("the user opens the calendar through menu")
 	public void theUserOpensTheCalendarThroughMenu() throws Throwable {
 		smokePage.getDate();
-		loginPage.verify_homeScreen_displayed();
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 
 	@Then("tap on the day when absence was created")
