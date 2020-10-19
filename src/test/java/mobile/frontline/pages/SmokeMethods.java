@@ -1116,17 +1116,17 @@ public class SmokeMethods extends LoginPage {
 			});
 			break;
 		case "iOS":
-			widgetlistbeforeReorder.forEach(widget->{
-				if(widget.equals("New Version Available")) {
-					return;
-				}
-				common.swipeUpSlowly();
-				MobileElement widgetElement = driver.findElementById(widget+"_ModuleHeader");
-				common.isElementDisplayed(widgetElement);
-				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
-				utils.log().info("Widget is present");
-			});
-			break;
+			   widgetlistbeforeReorder.forEach(widget->{
+			      if(widget.equals("New Version Available")||widget.equals("Customize Home")) {
+			         return;
+			      }
+			      common.swipeUpSlowly();
+			      MobileElement widgetElement = driver.findElementByAccessibilityId(widget+"_ModuleHeader");
+			      common.isElementDisplayed(widgetElement);
+			      Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
+			      utils.log().info("Widget is present");
+			   });
+			   break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}

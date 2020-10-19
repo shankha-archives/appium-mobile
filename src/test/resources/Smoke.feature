@@ -210,7 +210,7 @@ Scenario: Employee need to tap on footer buttons and all widgets
 	Then verify all the widgets present
 	And verify the footer 
 	
-@MOB-4239 @AndroidSmoke
+@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke
 Scenario: Substitute need to tap on footer buttons and all widgets
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -220,7 +220,7 @@ Scenario: Substitute need to tap on footer buttons and all widgets
 	Then verify all the widgets present
 	And verify the footer 
 	
-@MOB-4239 @AndroidSmoke
+@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke
 Scenario: Admin need to tap on footer buttons and all widgets 
 	When the user launches the app 
 	Then the user click on Get Started Button 

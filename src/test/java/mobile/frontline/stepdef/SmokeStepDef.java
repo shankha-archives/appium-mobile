@@ -335,7 +335,7 @@ public class SmokeStepDef {
 	
 	@Then("verify all the widgets present")
 	public void verify_all_the_widgets_present() throws Throwable {
-		loginPage.verify_homeScreen_displayed();
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 		smokePage.verify_widgetsPresent();
 	}
 	
