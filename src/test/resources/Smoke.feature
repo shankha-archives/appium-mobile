@@ -30,7 +30,7 @@ Scenario: Pull to refresh
 	Then the substitute navigates to dashboard page 
 	And pulls to refresh the page 
 	
-@MOB-4249 @AndroidSmoke
+@MOB-4249 @AndroidSmoke @MOB-4250
 Scenario: Admin creates an absence for another user 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -41,7 +41,7 @@ Scenario: Admin creates an absence for another user
 	Then submit and view absence 
 	And verify absence 
 	
-@MOB-4251 @AndroidSmoke
+@MOB-4251 @AndroidSmoke @MOB-4252
 Scenario: Admin can approve the absence 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -61,7 +61,7 @@ Scenario: The user can toggle the Dark mode from setting
 	When the user clicks on Menu tab and click on Settings 
 	Then the user toggle the Dark Mode 
 	
-@MOB-4245 @AndroidSmoke
+@MOB-4245 @AndroidSmoke @MOB-4246
  Scenario: Employee creates an absence for himself
     When the user launches the app
     Then the user click on Get Started Button
@@ -82,7 +82,8 @@ Scenario: The user can toggle the Dark mode from setting
     Then click on Tap to Assign and select Assign substitute
     And click Assign again to confirm
     
-@MOB-4255 @AndroidSmoke 
+
+@MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke
 Scenario: View leave balances and check available days 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -116,11 +117,11 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then the user click on Get Started Button
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
-	When click on menu and tap the search bar
-	Then enter the search text in bar 
+	When click on menu bar
+	Then enter the search text in bar and click on result
 	And verify the search result
 	
-@MOB-4235 @AndroidSmoke
+@MOB-4235 @AndroidSmoke @MOB-4236 @iOSSmoke
 Scenario: Absence Detail page displays for the selected absence from search result
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -140,7 +141,7 @@ Scenario: An admin can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@MOB-4259 @AndroidSmoke
+@MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke
 Scenario: An employee can view week of timesheets and timesheets for selected date
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -252,7 +253,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
 	
-@smoke @MOB-4247 @Android @sprint7
+@smoke @MOB-4247 @Android @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
     When the employee user launches the app
     Then the employee user click on Get Started Button and enter the pin
@@ -270,3 +271,12 @@ Scenario: An employee should be clock in and clock out
 	Then the employee navigates to dashboard page
 	When employee clicks on the clockin btn 
     Then the user clocks out through timesheet
+
+@MOB-4277 @AndroidSmoke @pest @MOB-4278
+ Scenario: The user with directory access can view the full directory list and details
+    When the user launches the app
+    Then the user click on Get Started Button
+    And Enter employee username and password and click on SignIn button
+    And click on People widget
+    When search for a person
+    Then user details are displayed
