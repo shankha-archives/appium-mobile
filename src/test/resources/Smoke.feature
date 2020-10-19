@@ -120,7 +120,7 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then enter the search text in bar and click on result
 	And verify the search result
 	
-@MOB-4235 @AndroidSmoke
+@MOB-4235 @AndroidSmoke @MOB-4236 @iOSSmoke
 Scenario: Absence Detail page displays for the selected absence from search result
 	When the user launches the app 
 	Then the user click on Get Started Button
