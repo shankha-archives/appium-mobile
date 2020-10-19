@@ -1,7 +1,7 @@
 @regression
 Feature: Regression scenarios 
 	
-  @regression @MOB-4789 @Android @sprint8 
+  @regression @MOB-4789 @Android @sprint8 @MOB-4791 @iOS
   Scenario: Show calendar link in substitute Menu 
 	  When the user launches the app  
 	  Then the user click on Get Started Button 
