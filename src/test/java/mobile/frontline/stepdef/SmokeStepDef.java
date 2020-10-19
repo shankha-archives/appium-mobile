@@ -54,11 +54,11 @@ public class SmokeStepDef {
 	public void theUserLaunchesTheApp() {
 		loginPage.verify_splashScreenLoaded();
 	}
-	
+
 	@Then("^the admin user click on Get Started Button and enter the pin$")
 	public void the_admin_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
-		//loginPage.enterUnlockCode();
+		// loginPage.enterUnlockCode();
 	}
 
 	@Then("^the admin navigates to dashboard page$")
@@ -120,22 +120,22 @@ public class SmokeStepDef {
 		smokePage.confirmAssignSubstitute();
 	}
 
-	// @MOB-4233   // @MOB-4234
-		@When("^click on menu bar$")
-		public void click_on_menu() throws Throwable {
-			smokePage.clickOnMenuTab();
-		}
+	// @MOB-4233 // @MOB-4234
+	@When("^click on menu bar$")
+	public void click_on_menu() throws Throwable {
+		smokePage.clickOnMenuTab();
+	}
 
-		@Then("^enter the search text in bar and click on result$")
-		public void enter_search_text() throws Throwable {
-			smokePage.enterSearchText(testdata.read_property("testingData", "users", "searchText"));
-			smokePage.clickOnResult();
-		}
+	@Then("^enter the search text in bar and click on result$")
+	public void enter_search_text() throws Throwable {
+		smokePage.enterSearchText(testdata.read_property("testingData", "users", "searchText"));
+		smokePage.clickOnResult();
+	}
 
-		@And("^verify the search result$")
-		public void verify_the_search_result() throws Throwable {
-			smokePage.verifySearchResult();
-		}
+	@And("^verify the search result$")
+	public void verify_the_search_result() throws Throwable {
+		smokePage.verifySearchResult();
+	}
 
 	// @MOB-4235
 	@Then("^enter the absence search text in bar$")
@@ -157,7 +157,7 @@ public class SmokeStepDef {
 	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
 		smokePage.enterTeachersName(testdata.read_property("testingData", "users", "teacher"));
 		smokePage.selectTeachersName(testdata.read_property("testingData", "users", "teacher"));
-	      
+
 		smokePage.clickNext();
 		// page 3
 		smokePage.absenceReason();
@@ -230,7 +230,7 @@ public class SmokeStepDef {
 		loginPage.clickOnGetStartedBtn();
 //		loginPage.enterUnlockCode();
 	}
-	
+
 	@Then("the user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
@@ -256,7 +256,7 @@ public class SmokeStepDef {
 
 	@When("select reason date length summary")
 	public void selectReasonDateLengthSummary() throws Throwable {
-		
+
 		smokePage.selectLocation();
 		smokePage.clickNext();
 
@@ -331,20 +331,20 @@ public class SmokeStepDef {
 	public void verifyTheOrderOfWidgets() {
 		smokePage.verifyWidgetsOrder();
 	}
-	
-	//MOB-4239
+
+	// MOB-4239
 	@When("click on reorder widget & get back")
 	public void click_on_reorder_widget() throws Throwable {
 		smokePage.clickReorderWidget();
 		smokePage.goBack();
 	}
-	
+
 	@Then("verify all the widgets present")
 	public void verify_all_the_widgets_present() throws Throwable {
 		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 		smokePage.verify_widgetsPresent();
 	}
-	
+
 	@And("verify the footer")
 	public void verify_the_footer() {
 		smokePage.verify_footerPresent();
@@ -401,7 +401,7 @@ public class SmokeStepDef {
 	}
 
 	@Then("tap on the day when absence was created")
-	public void tapOnTheDayWhenAbsenceWasCreated() {
+	public void tapOnTheDayWhenAbsenceWasCreated() throws Exception {
 		smokePage.clickCalender();
 	}
 
@@ -409,36 +409,55 @@ public class SmokeStepDef {
 	public void theEventWillBeDisplayedTapOnItToViewOrVerifyTheDetails() {
 		smokePage.verifyAbsence();
 	}
-	
-	//MOB-4247
+
+	// MOB-4247
 	@When("click on Absences")
 	public void clickOnAbsences() throws Throwable {
 		smokePage.clickOnAbsence();
 	}
-	
-	//MOB-4247
+
+	// MOB-4247
 	@When("click on editable absence and click on Edit tab")
 	public void click_on_editable_absence_and_click_on_Edit_tab() throws Throwable {
 		smokePage.editVacationAbsence();
 	}
-	
-	//MOB-4247
+
+	// MOB-4247
 	@When("edit the absence")
 	public void edit_the_absence() throws Throwable {
 		smokePage.editAbsence();
 	}
-  
+
 	@When("employee clicks on the clockin btn")
 	public void employeeClicksOnTheClockinBtn() throws Throwable {
 		smokePage.allowClockInPermissions();
 		loginPage.verify_homeScreen_displayed();
 		smokePage.clockInbtn();
-		
+
 	}
 
-	 @Then("the user clocks out through timesheet")
-	 public void the_user_clocks_out_through_timesheet() throws Throwable {
-		 smokePage.clockOutThroughTimesheet() ;    
-		 smokePage.verifyClockOut();
-	 }
+	@Then("the user clocks out through timesheet")
+	public void the_user_clocks_out_through_timesheet() throws Throwable {
+		smokePage.clockOutThroughTimesheet();
+		smokePage.verifyClockOut();
+	}
+
+	//MOB-4277
+	@Then("click on People widget")
+	public void clickOnPeopleWidget() throws Exception {
+		loginPage.orgPickerPageLoads();
+		smokePage.selectOrganization();
+		smokePage.clickPeopleWidget();	
+	}
+
+	@When("search for a person")
+	public void searchForAPerson() throws Exception {
+		smokePage.SerachName(testdata.read_property("testingData", "users", "lastName"));
+	}
+
+	@Then("user details are displayed")
+	public void userDetailsAreDisplayed() {
+		smokePage.verifyContactDetails();
+	}
+
 }

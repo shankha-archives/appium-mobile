@@ -98,7 +98,7 @@ public class LoginPage extends BasePage {
 	public MobileElement rolePickerPageHeader;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Select an Organization']")
-	// @iOSXCUITFindBy(accessibility = "")
+	 @iOSXCUITFindBy(accessibility = "Select an Organization")
 	public MobileElement orgPickerPageHeader;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='What's New']")

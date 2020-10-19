@@ -270,3 +270,12 @@ Scenario: An employee should be clock in and clock out
 	Then the employee navigates to dashboard page
 	When employee clicks on the clockin btn 
     Then the user clocks out through timesheet
+
+@MOB-4277 @AndroidSmoke @pest @MOB-4278
+ Scenario: The user with directory access can view the full directory list and details
+    When the user launches the app
+    Then the user click on Get Started Button
+    And Enter employee username and password and click on SignIn button
+    And click on People widget
+    When search for a person
+    Then user details are displayed
