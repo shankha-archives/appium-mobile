@@ -17,6 +17,15 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Calendar")
 	public MobileElement calendar;
 	
+	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	public MobileElement availableJobs;
+	
+	@iOSXCUITFindBy(accessibility = "Available")
+	public MobileElement available;
+	
+	@iOSXCUITFindBy(accessibility = "Accepted")
+	public MobileElement accepted;
+	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
 		click(smoke.menuTab);
@@ -29,5 +38,20 @@ public class SettingsPage extends LoginPage {
 		Assert.assertTrue("Calendar Page is not displayed", calendar.isDisplayed());
 		utils.log().info("Calendar Page is displayed");		
 	}
-
+	
+	public void avaialbleJobsLink() {
+		common.swipeUpSlowly();
+		common.isElementDisplayed(availableJobs);
+		click(availableJobs);
+	}
+	
+	public void jobListTab() {
+		common.isElementDisplayed(available);
+		Assert.assertTrue("Available tab is not displayed", available.isDisplayed());
+		utils.log().info("Available tab is displayed");	
+		click(accepted);
+		common.isElementDisplayed(accepted);
+		Assert.assertTrue("Accepted tab is not displayed", accepted.isDisplayed());
+		utils.log().info("Accepted tab is displayed");
+	}
 }
