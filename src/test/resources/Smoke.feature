@@ -83,7 +83,7 @@ Scenario: The user can toggle the Dark mode from setting
     And click Assign again to confirm
     
 
-@MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke
+@MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @prod
 Scenario: View leave balances and check available days 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -242,7 +242,7 @@ Scenario: An employee can add time to a timesheet and edit and delete the time f
 	Then user edits the timesheet
 	And Delete the timesheet 
 
-@MOB-4237 @AndroidSmoke
+@MOB-4237 @AndroidSmoke @MOB-4238
 Scenario: Event should be display when user taps on any event, on any day from calendar
 	When the user launches the app
 	Then the user click on Get Started Button
@@ -272,7 +272,7 @@ Scenario: An employee should be clock in and clock out
 	When employee clicks on the clockin btn 
     Then the user clocks out through timesheet
 
-@MOB-4277 @AndroidSmoke @pest @MOB-4278
+@MOB-4277 @AndroidSmoke @pest @MOB-4278 @prod
  Scenario: The user with directory access can view the full directory list and details
     When the user launches the app
     Then the user click on Get Started Button

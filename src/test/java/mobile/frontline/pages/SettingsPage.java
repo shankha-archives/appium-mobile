@@ -4,6 +4,7 @@ import org.junit.Assert;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.TestUtils;
 
 public class SettingsPage extends LoginPage {
@@ -13,6 +14,7 @@ public class SettingsPage extends LoginPage {
 	LoginPage loginPage = new LoginPage();
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
+	@iOSXCUITFindBy(accessibility = "Calendar")
 	public MobileElement calendar;
 	
 	public void openMenuCalendar() {
