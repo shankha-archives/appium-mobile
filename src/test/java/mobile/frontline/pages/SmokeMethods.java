@@ -365,6 +365,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeSheetTimeEventPage;
 
 	@AndroidFindBy(className = "android.widget.ImageButton")
+	@iOSXCUITFindBy(accessibility = "Done")
 	public MobileElement backButton;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_0']")
@@ -1297,17 +1298,35 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verify_widgetsPresent() throws Exception {
-		widgetlistbeforeReorder.forEach(widget -> {
-			if (widget.equals("What's New")) {
-				return;
-			}
-			common.swipeUpSlowly();
-			MobileElement widgetElement = driver
-					.findElementByXPath("//android.widget.TextView[@text='" + widget + "']");
-			common.isElementDisplayed(widgetElement);
-			Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
-			utils.log().info("Widget is present");
-		});
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			widgetlistbeforeReorder.forEach(widget->{
+				if(widget.equals("What's New")) {
+					return;
+				}
+				common.swipeUpSlowly();
+				MobileElement widgetElement = driver
+						.findElementByXPath("//android.widget.TextView[@text='"+widget+"']");
+				common.isElementDisplayed(widgetElement);
+				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
+				utils.log().info("Widget is present");
+			});
+			break;
+		case "iOS":
+			   widgetlistbeforeReorder.forEach(widget->{
+			      if(widget.equals("New Version Available")||widget.equals("Customize Home")) {
+			         return;
+			      }
+			      common.swipeUpSlowly();
+			      MobileElement widgetElement = driver.findElementByAccessibilityId(widget+"_ModuleHeader");
+			      common.isElementDisplayed(widgetElement);
+			      Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
+			      utils.log().info("Widget is present");
+			   });
+			   break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void verify_footerPresent() {
