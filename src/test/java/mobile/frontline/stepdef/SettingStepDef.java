@@ -17,4 +17,14 @@ public class SettingStepDef {
 	public void verify_the_calendar() throws Throwable {
 		settingsPage.verifyCalendar();
 	}
+	
+	@When("^click on Avalaible Jobs link")
+	public void click_on_available_jobs_link() throws Throwable {
+		settingsPage.avaialbleJobsLink();
+	}
+	
+	@Then("^verify Job List tab bar for available and accepted jobs")
+	public void verify_Job_List_tab() throws Throwable {
+		settingsPage.jobListTab();
+	}
 }
