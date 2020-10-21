@@ -11,6 +11,8 @@
 		<adminpass>FLultra1!</adminpass>
 		<teacherlogin>RupaEmpTest</teacherlogin>
 		<teacherpass>FLultra1!</teacherpass>
+		<inboxteachlogin>stageteachstanley</inboxteachlogin>
+		<inboxteachpass>FLultra1!</inboxteachpass>
 		<employeelogin>prod01</employeelogin>
         <employeepass>FLultra1!</employeepass>
 		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>

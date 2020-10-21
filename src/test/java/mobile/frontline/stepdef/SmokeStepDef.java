@@ -244,6 +244,14 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
+	@Then("Enter employee username and password for inbox and click on Sign In button")
+	public void enterEmployeeUsernameAndPasswordForInboxAndClickOnSignInButton() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "inboxteachlogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "inboxteachpass"));
+		loginPage.clickOnLoginBtn();
+	}
+	
 	@Then("the employee navigates to dashboard page")
 	public void theEmployeeNavigatesToDashboardPage() throws Throwable {
 		loginPage.verify_homeScreen_displayed();
@@ -429,6 +437,7 @@ public class SmokeStepDef {
 	@When("edit the absence")
 	public void edit_the_absence() throws Throwable {
 		smokePage.editAbsence();
+		smokePage.verifyAbsence();
 	}
 
 	@When("employee clicks on the clockin btn")

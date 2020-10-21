@@ -72,7 +72,7 @@ Scenario: The user can toggle the Dark mode from setting
     Then submit and view absence
     And verify absence 
     
- @MOB-4253 @AndroidSmoke @MOB-4254 @iOSSmoke
+@MOB-4253 @AndroidSmoke @MOB-4254 @iOSSmoke
  Scenario: Admin can assign a substitute to an unfilled absence
     When the user launches the app
     Then the user click on Get Started Button
@@ -82,7 +82,6 @@ Scenario: The user can toggle the Dark mode from setting
     Then click on Tap to Assign and select Assign substitute
     And click Assign again to confirm
     
-
 @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @prod
 Scenario: View leave balances and check available days 
 	When the user launches the app 
@@ -106,7 +105,7 @@ Scenario: The user can send the Feedback
 Scenario: An employee can visit inbox and view messages 
 	When the user launches the app 
 	Then the user click on Get Started Button
-	And Enter employee username and password and click on Sign In button 
+	And Enter employee username and password for inbox and click on Sign In button 
 	Then the employee navigates to dashboard page 
 	When click on the inbox 
 	Then view the message in the inbox 
@@ -127,7 +126,7 @@ Scenario: Absence Detail page displays for the selected absence from search resu
 	Then the user click on Get Started Button
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
-	When click on menu and tap the search bar
+	When click on menu bar
 	Then enter the absence search text in bar 
 	And click the absence search result
 	Then verify the absence detail page
@@ -255,7 +254,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	
 @smoke @MOB-4247 @Android @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
-    When the employee user launches the app
+    When the user launches the app
     Then the employee user click on Get Started Button and enter the pin
     And Enter employee username and password and click on Sign In button
     Then the employee navigates to dashboard page
@@ -272,7 +271,7 @@ Scenario: An employee should be clock in and clock out
 	When employee clicks on the clockin btn 
     Then the user clocks out through timesheet
 
-@MOB-4277 @AndroidSmoke @pest @MOB-4278 @prod
+@MOB-4277 @AndroidSmoke @MOB-4278 @prod
  Scenario: The user with directory access can view the full directory list and details
     When the user launches the app
     Then the user click on Get Started Button
