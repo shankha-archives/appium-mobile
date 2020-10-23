@@ -15,6 +15,7 @@ import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.Utils;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
@@ -1225,6 +1226,18 @@ public class BasePage {
 		return val;
 	}
 
+	public boolean isElementdisplayed(MobileElement ele) {
+		boolean val = false;
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
+			val = ele.isDisplayed();
+		} catch (Exception e) {
+			val = false;
+		}
+		return val;
+	}
+
 	public boolean checkElementIsEnabled(MobileElement ele) {
 		return ele.isEnabled();
 	}
@@ -1276,7 +1289,7 @@ public class BasePage {
 
 	public void enterValueInTextField(MobileElement ele, String keysToSend) {
 		try {
-			if (isElementDisplayed(ele)) {
+			if (isElementdisplayed(ele)) {
 				ele.click();
 				ele.clear();
 				ele.sendKeys(keysToSend);

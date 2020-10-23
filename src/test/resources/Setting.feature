@@ -18,3 +18,13 @@ Feature: Regression scenarios
 	  Then the substitute navigates to dashboard page 
 	  When click on Avalaible Jobs link
 	  Then verify Job List tab bar for available and accepted jobs
+
+	@regression @MOB-4809 @iOS @sprint9
+	Scenario: Show Job List tab bar
+		When the user launches the app
+		Then the user click on Get Started Button
+		And Enter username and password and click on Sign In button
+		Then the substitute navigates to dashboard page
+		When click on menu bar
+		And Long press on Frontline Logo at bottom of the screen
+		Then User click on the send Diagnostics option and click on Okay button
