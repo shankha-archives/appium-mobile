@@ -243,7 +243,7 @@ public class LoginPage extends BasePage {
 	public void verify_loginPageLoaded() throws InterruptedException {
 		switchToWebView();
 		// Thread.sleep(35000);
-		isElementDisplayed(loginPageHeader);
+		isElementdisplayed(loginPageHeader);
 		Assert.assertTrue("Login Page is not displayed", loginPageHeader.isDisplayed());
 		utils.log().info("Login Page Loaded successfully");
 	}
@@ -256,8 +256,6 @@ public class LoginPage extends BasePage {
 
 	public void enterUserID_OnLoginPage(String userName) {
 		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
-		// username.click();
-		// driver.getKeyboard().sendKeys(userName);
 		enterValueInTextField(username, userName);
 	}
 
@@ -266,13 +264,22 @@ public class LoginPage extends BasePage {
 		driver.getKeyboard().sendKeys(userPassword);
 	}
 
-	public void enterUserPassword_onLoginPage(String userPassword) {
-		hideKeyboard();
-		Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
-		password.click();
-		driver.getKeyboard().sendKeys(userPassword);
-		// enterValueInTextField(password, userPassword);
-	}
+	public void enterUserPassword_onLoginPage(String userPassword) throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				hideKeyboard();
+				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
+				password.click();
+				driver.getKeyboard().sendKeys(userPassword);
+				break;
+			case "iOS":
+				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
+				password.click();
+				driver.getKeyboard().sendKeys(userPassword);
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+	}}
 
 	public void clickOnLoginBtn() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
@@ -309,25 +316,25 @@ public class LoginPage extends BasePage {
 		case "Android":
 			Thread.sleep(8000);
 			switchToNativeApp();
-			isElementDisplayed(homePageHeader);
+			isElementdisplayed(homePageHeader);
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			utils.log().info("Home Page is displayed");
 			break;
 		case "iOS":
-			if (isElementDisplayed(PushNotificationAllow)) {
+			if (isElementdisplayed(PushNotificationAllow)) {
 				clickElement(PushNotificationAllow);
 				utils.log().info("Push Notification pop-up displayed");
 			} else {
 				utils.log().info("Push Notification pop-up not displayed");
 			}
-			if (isElementDisplayed(PushNotificationOK)) {
+			if (isElementdisplayed(PushNotificationOK)) {
 				utils.log().info("Push Notification pop-up displayed");
 				clickElement(PushNotificationOK);
 			} else {
 				utils.log().info("Push Notification pop-up not displayed");
 			}
 			switchToNativeApp();
-			isElementDisplayed(homePageHeader);
+			isElementdisplayed(homePageHeader);
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			utils.log().info("Home Page is displayed");
 			break;

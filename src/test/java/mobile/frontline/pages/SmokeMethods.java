@@ -925,7 +925,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnMenuTab() {
-		isElementDisplayed(menuTab);
 		click(menuTab);
 	}
 
