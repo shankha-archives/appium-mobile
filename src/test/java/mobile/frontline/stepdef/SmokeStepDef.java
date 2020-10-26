@@ -87,6 +87,14 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
+	@Then("Enter employee username and password with directory access and click on SignIn button") 
+	public void enterEmployeeUsernameAndPasswordWithDirectoryAccessAndClickOnSignInButton() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "directoryLogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "directorypass"));
+		loginPage.clickOnLoginBtn();
+	}
+	
 	@And("^click on Available Leave Balances and view leave balances$")
 	public void click_on_available_leave_balance() throws Throwable {
 		smokePage.clickOnAvailableLeaveBalance_displayed();
@@ -455,10 +463,14 @@ public class SmokeStepDef {
 	}
 
 	//MOB-4277
-	@Then("click on People widget")
-	public void clickOnPeopleWidget() throws Exception {
+	@When("Select the required organization")
+	public void selectTheRequiredOrganization() {
 		loginPage.orgPickerPageLoads();
 		smokePage.selectOrganization();
+	}
+	
+	@Then("click on People widget")
+	public void clickOnPeopleWidget() throws Exception {
 		smokePage.clickPeopleWidget();	
 	}
 

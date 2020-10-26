@@ -21,6 +21,8 @@
 		<MultiOrgPass>FLultra1!</MultiOrgPass>
 		<NoDistrictUser>stageNoOrg</NoDistrictUser>
 		<NoDistrictPass>frontline1!</NoDistrictPass>
+		<directoryLogin>msisco1</directoryLogin>
+		<directorypass>FLultra1!</directorypass>
 	</Account>
 	<testingData type="users">
 		<teacher>Oldguy</teacher>

@@ -10,7 +10,7 @@ Feature: Regression scenarios
 	  When click on menu and tap the Calendar link
 	  Then verify the calendar 
 	
- @regression @MOB-4806 @iOS @sprint9
+ @regression @MOB-4806 @iOS @sprint9 @MOB-4805
   Scenario: Show Job List tab bar
   	  When the user launches the app  
 	  Then the user click on Get Started Button 

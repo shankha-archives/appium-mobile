@@ -275,7 +275,9 @@ Scenario: An employee should be clock in and clock out
  Scenario: The user with directory access can view the full directory list and details
     When the user launches the app
     Then the user click on Get Started Button
-    And Enter employee username and password and click on SignIn button
+    And Enter employee username and password with directory access and click on SignIn button
+    When Select the required organization
+    Then the employee navigates to dashboard page
     And click on People widget
     When search for a person
     Then user details are displayed
