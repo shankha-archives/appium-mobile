@@ -30,7 +30,7 @@ Scenario: Pull to refresh
 	Then the substitute navigates to dashboard page 
 	And pulls to refresh the page 
 	
-@MOB-4249 @AndroidSmoke @MOB-4250
+@MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke
 Scenario: Admin creates an absence for another user 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -41,7 +41,7 @@ Scenario: Admin creates an absence for another user
 	Then submit and view absence 
 	And verify absence 
 	
-@MOB-4251 @AndroidSmoke @MOB-4252
+@MOB-4251 @AndroidSmoke @MOB-4252 @iOSSmoke
 Scenario: Admin can approve the absence 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -61,7 +61,7 @@ Scenario: The user can toggle the Dark mode from setting
 	When the user clicks on Menu tab and click on Settings 
 	Then the user toggle the Dark Mode 
 	
-@MOB-4245 @AndroidSmoke @MOB-4246
+@MOB-4245 @AndroidSmoke @MOB-4246 @iOSSmoke
  Scenario: Employee creates an absence for himself
     When the user launches the app
     Then the user click on Get Started Button
@@ -149,7 +149,7 @@ Scenario: An employee can view week of timesheets and timesheets for selected da
 	And click on timesheets widget and view timesheets
 	Then click on any day to view timesheet 
 	
-@MOB-4263 @AndroidSmoke @iOSSmoke
+@MOB-4263 @AndroidSmoke @iOSSmoke @MOB-4264
 Scenario: An employee can submit a timesheet and then undo a timesheet 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -169,7 +169,7 @@ Scenario: A user can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@MOB-4241 @AndroidSmoke
+@MOB-4241 @AndroidSmoke @MOB-4242 @iosSmoke
 Scenario: Substitute Need to rearrange the widgets on the dashboard 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -180,7 +180,7 @@ Scenario: Substitute Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 
-@MOB-4241 @AndroidSmoke
+@MOB-4241 @AndroidSmoke @MOB-4242 @iosSmoke
 Scenario: Employee Need to rearrange the widgets on the dashboard 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -190,7 +190,7 @@ Scenario: Employee Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@MOB-4241 @AndroidSmoke
+@MOB-4241 @AndroidSmoke @MOB-4242 @iosSmoke
 Scenario: Admin Need to rearrange the widgets on the dashboard 
 	When the user launches the app
 	Then the user click on Get Started Button
@@ -241,7 +241,7 @@ Scenario: An employee can add time to a timesheet and edit and delete the time f
 	Then user edits the timesheet
 	And Delete the timesheet 
 
-@MOB-4237 @AndroidSmoke @MOB-4238
+@MOB-4237 @AndroidSmoke @MOB-4238 @iosSmoke
 Scenario: Event should be display when user taps on any event, on any day from calendar
 	When the user launches the app
 	Then the user click on Get Started Button
@@ -262,7 +262,7 @@ Scenario: An employee can edit an Absence for himself
     When click on editable absence and click on Edit tab
     Then edit the absence
 
-@smoke @MOB-4243 @Android @sprint7 
+@smoke @MOB-4243 @Android @sprint7 @MOB-4244 @iosSmoke 
 Scenario: An employee should be clock in and clock out
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -271,7 +271,7 @@ Scenario: An employee should be clock in and clock out
 	When employee clicks on the clockin btn 
     Then the user clocks out through timesheet
 
-@MOB-4277 @AndroidSmoke @MOB-4278 @prod
+@MOB-4277 @AndroidSmoke @MOB-4278 @prod @iosSmoke
  Scenario: The user with directory access can view the full directory list and details
     When the user launches the app
     Then the user click on Get Started Button

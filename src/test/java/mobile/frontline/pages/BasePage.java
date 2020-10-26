@@ -1442,18 +1442,4 @@ public class BasePage {
 		return appStatus;
 	}
 
-	public String currentDate() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d, yyyy");
-		return dtf.format(LocalDateTime.now());
-	}
-
-	public String nextDate(String date) throws Exception {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("d, yyyy");
-		Calendar c = Calendar.getInstance();
-		c.setTime(dateFormat.parse(date));
-		c.add(Calendar.DAY_OF_MONTH, 1);
-		String newDate = dateFormat.format(c.getTime());
-		return newDate;
-	}
-
 }
