@@ -28,11 +28,14 @@ public class SettingsPage extends LoginPage {
 	public MobileElement calendar;
 	
 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
 	public MobileElement availableJobs;
 	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available']")
 	@iOSXCUITFindBy(accessibility = "Available")
 	public MobileElement available;
 	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Accepted']")
 	@iOSXCUITFindBy(accessibility = "Accepted")
 	public MobileElement accepted;
 
@@ -62,9 +65,8 @@ public class SettingsPage extends LoginPage {
 		utils.log().info("Calendar Page is displayed");		
 	}
 	
-	public void avaialbleJobsLink() {
-		common.swipeUpSlowly();
-		common.isElementDisplayed(availableJobs);
+	public void avaialbleJobsLink() throws Throwable {
+		common.scrollToElement(availableJobs, "up");
 		click(availableJobs);
 	}
 	

@@ -1632,6 +1632,7 @@ public class SmokeMethods extends LoginPage {
 			common.isElementDisplayed(PeopleWidget);
 			click(SearchPeople);
 			driver.getKeyboard().sendKeys(lastName);
+			common.hideKeyboard();
 			driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + lastName + "')]").click();
 			break;
 		case "iOS":
