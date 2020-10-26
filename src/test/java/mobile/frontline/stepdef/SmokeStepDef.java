@@ -13,6 +13,7 @@ import mobile.frontline.pages.SmokeMethods;
 public class SmokeStepDef {
 
 	public LoginPage loginPage = new LoginPage();
+	public JobsMethods jobulatorPage = new JobsMethods();
 	public BasePage basePage = new BasePage();
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
