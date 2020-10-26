@@ -2,7 +2,10 @@ package mobile.frontline.pages;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -290,8 +293,6 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement dragableEle;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'TUE')]")
-	// @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND
-	// name BEGINSWITH 'Conf '")
 	public MobileElement tuesday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'MON')]")
 	public MobileElement monday;
@@ -545,6 +546,11 @@ public class SmokeMethods extends LoginPage {
 	//@iOSXCUITFindBy(accessibility = "")
 	public MobileElement homePageRoleHeader;
 	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_right_button_image")
+	//@iOSXCUITFindBy(accessibility = "")
+	public MobileElement nextMonthCalender;
+	
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -669,11 +675,46 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Create Absence Page 4 is displayed");
 	}
 	
-	public void selectDate() throws Exception {
+	public String currentDate() throws Exception {
+		DateTimeFormatter dtf;
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			 dtf = DateTimeFormatter.ofPattern("dd, yyyy");
+			break;
+		case "iOS":
+			 dtf = DateTimeFormatter.ofPattern("d, yyyy");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+	
+		return dtf.format(LocalDateTime.now());
+	}
+
+	public String nextDate(String date) throws Exception {
+		SimpleDateFormat dateFormat;
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			dateFormat = new SimpleDateFormat("dd, yyyy");
+			break;
+		case "iOS":
+			dateFormat = new SimpleDateFormat("d, yyyy");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateFormat.parse(date));
+		c.add(Calendar.DAY_OF_MONTH, 1);
+		String newDate = dateFormat.format(c.getTime());
+		return newDate;
+	}
+	
+	public void selectDate() throws Throwable {
 		Calendar cal = Calendar.getInstance();
 		int res = cal.getActualMaximum(Calendar.DATE);
-		String cdate = common.currentDate();
-		String nd = common.nextDate(cdate);
+		String cdate = currentDate();
+		String nd = nextDate(cdate);
 		MobileElement date;
 		String tagName;
 		switch (new GlobalParams().getPlatformName()) {
@@ -682,9 +723,10 @@ public class SmokeMethods extends LoginPage {
 			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 			tagName = date.getAttribute("content-desc").toString();
 			while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
-				nd = common.nextDate(nd);
+				nd = nextDate(nd);
 				date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 				if (nd.contains(Integer.toString(res))) {
+					common.swipeUpSlowly();
 					common.swipeUpSlowly();
 				}
 				tagName = date.getAttribute("content-desc").toString();
@@ -695,7 +737,7 @@ public class SmokeMethods extends LoginPage {
 			date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + nd + "')]");
 			tagName = date.getAttribute("label").toString();
 			while (tagName.contains("unavailable") || tagName.contains("events")) {
-				nd = common.nextDate(nd);
+				nd = nextDate(nd);
 				date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + nd + "')]");
 				if (nd.contains(Integer.toString(res))) {
 					common.swipeUpSlowly();
@@ -898,8 +940,9 @@ public class SmokeMethods extends LoginPage {
 	public void verify_availableDays() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			String leaveBalance = getElementText(availableDays);
-			Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance) >= 0);
+			//String leaveBalance = getElementText(availableDays);
+			//Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance) >= 0);
+			Assert.assertTrue("Available Leaves are invalid", availableDays.isDisplayed());
 			utils.log().info("Available Days are valid");
 			break;
 		case "iOS":
@@ -1002,7 +1045,6 @@ public class SmokeMethods extends LoginPage {
 
 	public void clickTimesheetOption() throws Exception {
 		common.scrollToElement(timesheetsbtn, "up");
-//		isElementDisplayed(timesheetsbtn);
 		click(timesheetsbtn);
 	}
 
@@ -1012,6 +1054,16 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void submitTimesheet() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			isElementDisplayed(tuesday);
+			break;
+		case "iOS":
+			utils.log().info("Submit timesheet button is displayed");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
 	}
@@ -1070,6 +1122,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifySearchResult() {
+		common.isElementDisplayed(calendar);
 		String result = getElementText(calendar);
 		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
@@ -1330,7 +1383,7 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			widgetlistbeforeReorder.forEach(widget -> {
-				if (widget.equals("What's New")) {
+				if (widget.equals("What's New")||widget.equals("New Version")) {
 					return;
 				}
 				if(getElementText(homePageRoleHeader).contains("Organization")) {
@@ -1375,7 +1428,9 @@ public class SmokeMethods extends LoginPage {
 		common.isElementDisplayed(getdate);
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			absence_day = common.getElementText(getdate).substring(9, 11);
+			//absence_day = common.getElementText(getdate).substring(9, 11);
+			absence_day = common.getElementText(getdate).substring(9);
+			absence_month = common.getElementText(getdate).substring(4,8);
 			click(homeTab);
 			pullToRefresh();
 			break;
@@ -1408,7 +1463,12 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			common.isElementDisplayed(calendertitle);
-			driver.findElementByXPath("//android.widget.TextView[@text='" + absence_day + "']").click();
+			if(!getElementText(calendertitle).contains(absence_month))
+			{		click(nextMonthCalender);
+			common.isElementDisplayed(calendertitle);
+			}
+			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc,'" + absence_day + "')]").click();
+
 			break;
 		case "iOS":
 			common.isElementDisplayed(calendar);
@@ -1536,7 +1596,7 @@ public class SmokeMethods extends LoginPage {
 		Intime = common.getElementText(clockedInTime).substring(1);
 
 		clickTimesheetOption();
-		String date = common.currentDate().substring(0, 2);
+		String date = currentDate().substring(0, 2);
 		common.isElementDisplayed(monday);
 		driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + date + "')]").click();
 		common.isElementDisplayed(eventSummary);
