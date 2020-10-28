@@ -55,6 +55,9 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Menu']")
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
 	public MobileElement MenuHeader;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
+	public MobileElement nextScheduledJobWidget;
 
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -146,5 +149,11 @@ public class SettingsPage extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-
+	
+	public void verifyNextScheduledJobWidget() throws Throwable{
+		common.scrollToElement(nextScheduledJobWidget, "up");
+		common.isElementdisplayed(nextScheduledJobWidget);
+		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
+		utils.log().info("Next Scheduled Job is displayed");
+	}
 }

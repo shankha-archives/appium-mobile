@@ -28,3 +28,12 @@ Scenario: Allow user to submit diagnostic data
 	When click on menu bar 
 	And Long press on Frontline Logo at bottom of the screen 
 	Then User click on the send Diagnostics option and click on Okay button 
+		
+	@regression @MOB-4808 @iOS @sprint10
+	Scenario: Show Next Scheduled Job widget
+	   When the user launches the app 
+	   Then the user click on Get Started Button
+	   Then the substitute user is taken to the Login Page 
+	   And Enter username and password and click on Sign In button 
+	   Then the substitute navigates to dashboard page 
+	   Then The user moves to Next Scheduled Job widget and verify it

@@ -46,4 +46,10 @@ public class SettingStepDef {
 	public void long_press_on_frontline_logo_at_bottom_of_the_screen() throws Throwable {
 		settingsPage.LongPressOnFrontline_setting();
 	}
+	
+	//4808
+	@Then("^The user moves to Next Scheduled Job widget and verify it")
+	public void user_verifies_next_scheduled_job_widget() throws Throwable {
+		settingsPage.verifyNextScheduledJobWidget();
+	}
 }
