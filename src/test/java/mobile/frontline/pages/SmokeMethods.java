@@ -1415,7 +1415,7 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			absence_day = common.getElementText(getdate).substring(9);
-			absence_month = common.getElementText(getdate).substring(4,8);
+			absence_month = common.getElementText(getdate).substring(5,8);
 			click(homeTab);
 			pullToRefresh();
 			break;
