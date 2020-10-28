@@ -569,7 +569,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void addAbsence() {
-		isElementDisplayed(addAbsence);
+		isElementdisplayed(addAbsence);
 		Assert.assertTrue("Add Absence button is not displayed absence page", addAbsence.isDisplayed());
 		utils.log().info("Add Absence option is displayed on absence page");
 		click(addAbsence);
@@ -578,7 +578,6 @@ public class SmokeMethods extends LoginPage {
 	// Create Absence Page 1
 	public void verifyWhoPage() {
 		isElementDisplayed(absenceRequiredFor);
-		common.isElementDisplayed(absenceRequiredFor);
 		Assert.assertTrue("Create Absence Page 1 is not displayed", absenceRequiredFor.isDisplayed());
 		utils.log().info("Create Absence Page 1 is displayed");
 	}
@@ -652,7 +651,7 @@ public class SmokeMethods extends LoginPage {
 			}
 			break;
 		case "iOS":
-			if (isElementDisplayed(reason)) {
+			if (isElementdisplayed(reason)) {
 				click(reason);
 			} else {
 				click(absenceReason);
@@ -768,7 +767,7 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			selectDuration.click();
-			if (common.isElementDisplayed(absenceshifttime)) {
+			if (common.isElementdisplayed(absenceshifttime)) {
 				absenceshifttime.click();
 				driver.getKeyboard().sendKeys("1000");
 				click(Done);
@@ -814,7 +813,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewAbsence() {
-		if (common.isElementDisplayed(viewAbsence)) {
+		if (common.isElementdisplayed(viewAbsence)) {
 			viewAbsence.click();
 		} else {
 			click(okay);
@@ -822,7 +821,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyAbsence() {
-		if (common.isElementDisplayed(confirmationNumber)) {
+		if (common.isElementdisplayed(confirmationNumber)) {
 			Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
 			utils.log().info("Confirmation number is displayed");
 		} else {
@@ -908,7 +907,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void toggleDarkMode() {
-		isElementDisplayed(darkMode);
+		isElementdisplayed(darkMode);
 		click(darkMode);
 	}
 
@@ -962,17 +961,17 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnMenuTab() {
-		isElementDisplayed(menuTab);
+		isElementdisplayed(menuTab);
 		click(menuTab);
 	}
 
 	public void clickOnFeedbackOption() {
-		isElementDisplayed(feedback);
+		isElementdisplayed(feedback);
 		click(feedback);
 	}
 
 	public void sendFeedback() throws Exception {
-		isElementDisplayed(topic);
+		isElementdisplayed(topic);
 		click(topic);
 		int size = itemsInDropDown.size();
 		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
@@ -982,33 +981,32 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void sendFeedbackTitle() {
-		isElementDisplayed(title);
+		isElementdisplayed(title);
 		title.click();
 		driver.getKeyboard().sendKeys("Automation Test");
 	}
 
 	public void sendFeedbackMessage() {
-		isElementDisplayed(message);
+		isElementdisplayed(message);
 		click(message);
 		driver.getKeyboard().sendKeys("This is a Test message");
-		isElementDisplayed(saveBtn);
 		click(saveBtn);
 	}
 
 	public void clickInbox() {
-		isElementDisplayed(inboxTab);
+		isElementdisplayed(inboxTab);
 		click(inboxTab);
 	}
 
 	public void verifyInboxPage() throws Exception {
-		isElementDisplayed(inboxTab);
+		isElementdisplayed(inboxTab);
 		Assert.assertTrue("Inbox page is not displayed", inboxTab.isDisplayed());
 		utils.log().info("Inbox page is displayed");
 
 	}
 
 	public void viewText() {
-		isElementDisplayed(inboxMsg);
+		isElementdisplayed(inboxMsg);
 		click(inboxMsg);
 		Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
@@ -1048,7 +1046,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void submitTimesheet() throws Throwable {
-		isElementDisplayed(addTimeSheets);
+		isElementdisplayed(addTimeSheets);
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
 	}
@@ -1094,7 +1092,7 @@ public class SmokeMethods extends LoginPage {
 
 	// MOB-4233 //MOB-4234
 	public void enterSearchText(String searchText) {
-		common.isElementDisplayed(searchBar);
+		common.isElementdisplayed(searchBar);
 		searchResultText = searchText;
 		searchBar.click();
 		searchBar.clear();
@@ -1102,12 +1100,11 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnResult() {
-		common.isElementDisplayed(searchResult);
+		common.isElementdisplayed(searchResult);
 		searchResult.click();
 	}
 
 	public void verifySearchResult() {
-		common.isElementDisplayed(calendar);
 		String result = getElementText(calendar);
 		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
@@ -1115,7 +1112,7 @@ public class SmokeMethods extends LoginPage {
 
 	public void clickReorderWidget() throws Throwable {
 		reOrderWidgetbtn = common.scrollToElement(reOrderWidgetbtn, "up");
-		common.isElementDisplayed(reOrderWidgetbtn);
+		common.isElementdisplayed(reOrderWidgetbtn);
 		click(reOrderWidgetbtn);
 
 		for (MobileElement widgetlistele : WidgetOrderList) {
@@ -1346,21 +1343,20 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void click_searchResult() {
-		common.isElementDisplayed(searchAbsReason);
 		click(searchAbsReason);
 	}
 
 	public void verifyAbsenceDetailPage() {
-		common.isElementDisplayed(confirmationNumber);
-		common.isElementDisplayed(absenceDetailPageSubstitute);
-		common.isElementDisplayed(absenceDetailPageApproval);
+		common.isElementdisplayed(confirmationNumber);
+		common.isElementdisplayed(absenceDetailPageSubstitute);
+		common.isElementdisplayed(absenceDetailPageApproval);
 		Assert.assertTrue("Absence Details Page is not displayed", confirmationNumber.isDisplayed());
 		utils.log().info("Absence Details Page is displayed");
 	}
 
 	// MOB-4239
 	public void goBack() {
-		common.isElementDisplayed(backButton);
+		common.isElementdisplayed(backButton);
 		click(backButton);
 	}
 
@@ -1401,9 +1397,9 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verify_footerPresent() {
-		common.isElementDisplayed(homeTab);
-		common.isElementDisplayed(menuTab);
-		common.isElementDisplayed(inboxTab);
+		common.isElementdisplayed(homeTab);
+		common.isElementdisplayed(menuTab);
+		common.isElementdisplayed(inboxTab);
 		Assert.assertTrue("Footers are not displayed",
 				homeTab.isDisplayed() && menuTab.isDisplayed() && inboxTab.isDisplayed());
 		utils.log().info("Footers are present");
@@ -1472,7 +1468,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnEvent() {
-		common.isElementDisplayed(eventTitle);
+		common.isElementdisplayed(eventTitle);
 		click(eventTitle);
 	}
 
@@ -1500,11 +1496,11 @@ public class SmokeMethods extends LoginPage {
 			click(forwardCaret);			
 			break;
 		case "iOS":
-			common.isElementDisplayed(editTab);
+			common.isElementdisplayed(editTab);
 			click(editTab);
 			isElementDisplayed(selectLocation);
 			click(forwardCaret);
-			isElementDisplayed(absenceReasonVerification);
+			isElementdisplayed(absenceReasonVerification);
 			click(forwardCaret);
 			isElementDisplayed(datePageVerification);
 			click(forwardCaret);
@@ -1528,10 +1524,10 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			isElementDisplayed(durationPageVerification);
-			common.isElementDisplayed(absenceshifttime);
+			common.isElementdisplayed(absenceshifttime);
 			absenceshifttime.click();
 			driver.getKeyboard().sendKeys("1000");
-			isElementDisplayed(Done);
+			isElementdisplayed(Done);
 			click(Done);
 			click(forwardCaret);
 			isElementDisplayed(subAssignPageVerification);
@@ -1540,7 +1536,7 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}	
-		common.isElementDisplayed(saveChanges);
+		common.isElementdisplayed(saveChanges);
 		click(saveChanges);
 		click(viewAbsence);
 	}

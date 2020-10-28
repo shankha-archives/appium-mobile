@@ -51,6 +51,9 @@ public class SettingsPage extends LoginPage {
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Menu']")
 	public MobileElement MenuHeader;
+	
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
+	public MobileElement nextScheduledJobWidget;
 
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -113,5 +116,11 @@ public class SettingsPage extends LoginPage {
 		click(sendDiagnosticsBtn);
 		click(smoke.okay);
 	}
-
+	
+	public void verifyNextScheduledJobWidget() throws Throwable{
+		common.scrollToElement(nextScheduledJobWidget, "up");
+		common.isElementdisplayed(nextScheduledJobWidget);
+		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
+		utils.log().info("Next Scheduled Job is displayed");
+	}
 }
