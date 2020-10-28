@@ -163,7 +163,6 @@ public class LoginPage extends BasePage {
 	}
 
 	public void clickOnGetStartedBtn() {
-		verify_splashScreenLoaded();
 		common.clickElement(getStarted);
 	}
 
@@ -353,7 +352,11 @@ public class LoginPage extends BasePage {
 			utils.log().info("Home Page is displayed");
 			break;
 		case "iOS":
-			utils.log().info("Home Page displayed");
+			switchToNativeApp();
+			if(isElementdisplayed(homePageHeader))
+			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+			else {
+			utils.log().info("Home Page displayed");}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");

@@ -63,8 +63,7 @@ public class SmokeStepDef {
 
 	@Then("^the admin navigates to dashboard page$")
 	public void the_admin_navigates_to_dashboard_page() throws Throwable {
-		loginPage.verify_homeScreen_displayed();
-
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 
 	// MOB-4259
@@ -262,7 +261,7 @@ public class SmokeStepDef {
 	
 	@Then("the employee navigates to dashboard page")
 	public void theEmployeeNavigatesToDashboardPage() throws Throwable {
-		loginPage.verify_homeScreen_displayed();
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 
 	@And("^click on the create absences$")
