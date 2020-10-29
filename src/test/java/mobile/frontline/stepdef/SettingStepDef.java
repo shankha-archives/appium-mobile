@@ -48,7 +48,7 @@ public class SettingStepDef {
 	public void long_press_on_frontline_logo_at_bottom_of_the_screen() throws Throwable {
 		settingsPage.LongPressOnFrontline_setting();
 	}
-	
+  //MOB-4803
 	@When("click on available job widget")
 	public void clickOnAvailableJobWidget() throws Throwable {
 		settingsPage.avaialbleJobsLink();
@@ -56,15 +56,18 @@ public class SettingStepDef {
 	}
 
 	@When("accept the job")
-	public void acceptTheJob() throws Throwable {
-		
+	public void acceptTheJob() throws Throwable {	
 		settingsPage.viewDetails();
 		jobPage.clickOnAcceptJobsBtn();
 		jobPage.clickOnOkBtn_successMsg();
-		
 	}
 	@Then("go to calender and view the accepted job")
 	public void goToCalenderAndViewTheAcceptedJob() throws Exception {
 		settingsPage.viewInCalender();
+  }
+	//4808
+	@Then("^The user moves to Next Scheduled Job widget and verify it")
+	public void user_verifies_next_scheduled_job_widget() throws Throwable {
+		settingsPage.verifyNextScheduledJobWidget();
 	}
 }
