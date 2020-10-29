@@ -169,7 +169,6 @@ public class SettingsPage extends LoginPage {
 	
 	public void verifyNextScheduledJobWidget() throws Throwable{
 		common.scrollToElement(nextScheduledJobWidget, "up");
-		common.isElementdisplayed(nextScheduledJobWidget);
 		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
 		utils.log().info("Next Scheduled Job is displayed");
 	}

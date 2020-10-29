@@ -1047,7 +1047,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void submitTimesheet() throws Throwable {
-		isElementdisplayed(addTimeSheets);
+		isElementdisplayed(tuesday);
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
 	}
@@ -1106,6 +1106,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifySearchResult() {
+		isElementdisplayed(calendar);
 		String result = getElementText(calendar);
 		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
