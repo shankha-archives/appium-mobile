@@ -29,7 +29,7 @@ Scenario: Allow user to submit diagnostic data
 	And Long press on Frontline Logo at bottom of the screen 
 	Then User click on the send Diagnostics option and click on Okay button 
 		
-	@regression @MOB-4808 @iOS @sprint10
+	@regression @MOB-4808 @iOS @sprint10 @MOB-4807 @android
 	Scenario: Show Next Scheduled Job widget
 	   When the user launches the app 
 	   Then the user click on Get Started Button

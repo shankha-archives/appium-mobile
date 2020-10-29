@@ -56,6 +56,7 @@ public class SettingsPage extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
 	public MobileElement MenuHeader;
 	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Scheduled Job']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
 	public MobileElement nextScheduledJobWidget;
 
@@ -152,7 +153,6 @@ public class SettingsPage extends LoginPage {
 	
 	public void verifyNextScheduledJobWidget() throws Throwable{
 		common.scrollToElement(nextScheduledJobWidget, "up");
-		common.isElementdisplayed(nextScheduledJobWidget);
 		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
 		utils.log().info("Next Scheduled Job is displayed");
 	}
