@@ -9,6 +9,7 @@ import org.junit.Assert;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import org.openqa.selenium.Point;
 
@@ -51,7 +52,14 @@ public class SettingsPage extends LoginPage {
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Menu']")
 	public MobileElement MenuHeader;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement jobDetailDate;
 
+	public String job_day;
+	public String job_month;
+	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
 		click(smoke.menuTab);
@@ -113,5 +121,17 @@ public class SettingsPage extends LoginPage {
 		click(sendDiagnosticsBtn);
 		click(smoke.okay);
 	}
-
+	
+	public void viewDetails() {
+		String date = common.getElementText(jobDetailDate); 
+        String[] dateDetails = date.split(", ",2); 
+        dateDetails = dateDetails[1].split(" ",2);
+        job_day = dateDetails[1];
+        job_month = dateDetails[0];
+      
+	}
+	
+	public void viewInCalender() throws Exception {
+		smoke.verifyEventInCalender(job_day,job_month);
+	}
 }

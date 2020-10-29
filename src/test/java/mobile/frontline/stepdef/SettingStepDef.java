@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.TestDataManager;
 import mobile.frontline.pages.BasePage;
+import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
 import mobile.frontline.pages.SettingsPage;
 import mobile.frontline.pages.SmokeMethods;
@@ -17,6 +18,7 @@ public class SettingStepDef {
 	public BasePage common = new BasePage();
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
+	public JobsMethods jobPage = new JobsMethods();
 
 	@When("^click on menu and tap the Calendar link$")
 	public void click_on_menu_and_cakendar() throws Throwable {
@@ -45,5 +47,24 @@ public class SettingStepDef {
 	@And("^Long press on Frontline Logo at bottom of the screen$")
 	public void long_press_on_frontline_logo_at_bottom_of_the_screen() throws Throwable {
 		settingsPage.LongPressOnFrontline_setting();
+	}
+	
+	@When("click on available job widget")
+	public void clickOnAvailableJobWidget() throws Throwable {
+		settingsPage.avaialbleJobsLink();
+		jobPage.clickOnAvailableJobs();
+	}
+
+	@When("accept the job")
+	public void acceptTheJob() throws Throwable {
+		
+		settingsPage.viewDetails();
+		jobPage.clickOnAcceptJobsBtn();
+		jobPage.clickOnOkBtn_successMsg();
+		
+	}
+	@Then("go to calender and view the accepted job")
+	public void goToCalenderAndViewTheAcceptedJob() throws Exception {
+		settingsPage.viewInCalender();
 	}
 }

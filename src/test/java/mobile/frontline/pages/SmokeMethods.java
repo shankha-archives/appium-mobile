@@ -393,7 +393,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Calendar_MenuOption")
 	public MobileElement calendertitle;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_one")
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_two")
 	@iOSXCUITFindBy(accessibility = "EventView_Absence_Other")
 	public MobileElement eventTitle;
 
@@ -722,6 +722,7 @@ public class SmokeMethods extends LoginPage {
 				nd = nextDate(nd);
 				date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 				if (nd.contains(Integer.toString(res))) {
+					common.swipeUpSlowly();
 					common.swipeUpSlowly();
 				}
 				tagName = date.getAttribute("content-desc").toString();
@@ -1410,7 +1411,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void getDate() throws Throwable {
-		Thread.sleep(20000);
 		common.isElementDisplayed(getdate);
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -1444,6 +1444,10 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickCalender() throws Exception {
+		verifyEventInCalender(absence_day,absence_month);
+	}
+	
+	public void verifyEventInCalender(String absence_day, String absence_month ) throws Exception {
 		click(menuTab);
 		clickOnSeachResult();
 		switch (new GlobalParams().getPlatformName()) {
