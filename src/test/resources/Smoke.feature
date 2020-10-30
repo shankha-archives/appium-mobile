@@ -149,7 +149,7 @@ Scenario: An employee can view week of timesheets and timesheets for selected da
 	And click on timesheets widget and view timesheets
 	Then click on any day to view timesheet 
 	
-@MOB-4263 @AndroidSmoke @iOSSmoke
+@MOB-4263 @AndroidSmoke @iOSSmoke @MOB-4264
 Scenario: An employee can submit a timesheet and then undo a timesheet 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -169,7 +169,7 @@ Scenario: A user can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@MOB-4241 @AndroidSmoke
+@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke
 Scenario: Substitute Need to rearrange the widgets on the dashboard 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -180,7 +180,7 @@ Scenario: Substitute Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 
-@MOB-4241 @AndroidSmoke
+@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke
 Scenario: Employee Need to rearrange the widgets on the dashboard 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -190,7 +190,7 @@ Scenario: Employee Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@MOB-4241 @AndroidSmoke
+@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke
 Scenario: Admin Need to rearrange the widgets on the dashboard 
 	When the user launches the app
 	Then the user click on Get Started Button
@@ -262,7 +262,7 @@ Scenario: An employee can edit an Absence for himself
     When click on editable absence and click on Edit tab
     Then edit the absence
 
-@smoke @MOB-4243 @Android @sprint7 
+@smoke @MOB-4243 @Android @sprint7 @MOB-4243 @iOSSmoke
 Scenario: An employee should be clock in and clock out
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -271,7 +271,7 @@ Scenario: An employee should be clock in and clock out
 	When employee clicks on the clockin btn 
     Then the user clocks out through timesheet
 
-@MOB-4277 @AndroidSmoke @MOB-4278 @prod
+@MOB-4277 @AndroidSmoke @MOB-4278 @prod @iOSSmoke
  Scenario: The user with directory access can view the full directory list and details
     When the user launches the app
     Then the user click on Get Started Button
