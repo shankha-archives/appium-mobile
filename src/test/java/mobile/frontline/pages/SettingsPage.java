@@ -56,7 +56,8 @@ public class SettingsPage extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
 	public MobileElement MenuHeader;
 	
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Scheduled Job']")
+//	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement jobDetailDate;
 
