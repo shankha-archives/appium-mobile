@@ -593,7 +593,6 @@ public class SmokeMethods extends LoginPage {
 
 		serachEditText.click();
 		driver.getKeyboard().sendKeys(teacher);
-
 	}
 
 	public void selectTeachersName(String teacher) throws Exception {
@@ -657,7 +656,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 	}
 
 	public void verifyAsbsenceDatePage() {
@@ -674,7 +672,7 @@ public class SmokeMethods extends LoginPage {
 			 dtf = DateTimeFormatter.ofPattern("dd, yyyy");
 			break;
 		case "iOS":
-			 dtf = DateTimeFormatter.ofPattern("d, yyyy");
+			 dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -690,7 +688,7 @@ public class SmokeMethods extends LoginPage {
 			dateFormat = new SimpleDateFormat("dd, yyyy");
 			break;
 		case "iOS":
-			dateFormat = new SimpleDateFormat("d, yyyy");
+			dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -726,22 +724,21 @@ public class SmokeMethods extends LoginPage {
 			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
 			break;
 		case "iOS":
-			date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + nd + "')]");
+			date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@name, '" + nd + "')]");
 			tagName = date.getAttribute("label").toString();
 			while (tagName.contains("unavailable") || tagName.contains("events")) {
-				nd = nextDate(nd);
-				date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + nd + "')]");
 				if (nd.contains(Integer.toString(res))) {
 					common.swipeUpSlowly();
 				}
+				nd = nextDate(nd);
+				date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@name, '" + nd + "')]");
 				tagName = date.getAttribute("label").toString();
 			}
-			driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + nd + "')]").click();
+			driver.findElementByXPath("//XCUIElementTypeCell[contains(@name, '" + nd + "')]").click();
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 	}
 
 	public void verifyAsbsenceDuratioPage() {
@@ -1414,7 +1411,7 @@ public class SmokeMethods extends LoginPage {
 			pullToRefresh();
 			break;
 		case "iOS":
-			absence_day = common.getElementText(getdate).substring(9);
+			absence_day = common.getElementText(getdate).substring(8);
 			absence_month = common.getElementText(getdate).substring(5,8);
 			break;
 		default:
