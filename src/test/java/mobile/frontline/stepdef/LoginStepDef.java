@@ -28,18 +28,6 @@ public class LoginStepDef {
 		loginPage.clickOnGetStartedBtn();
 	}
 
-	@Then("^The substitute user arrives on the PIN entry screen$")
-	public void the_substitute_user_arrives_on_the_pin_entry_screen() throws Throwable {
-		loginPage.verify_enterUnlockCodeScreen();
-	}
-
-	// MOB-3205
-	// Scenario-1
-	@When("^the substitute user enters the PIN code 7354$")
-	public void the_substitute_user_enters_the_pin_code_7354() throws Throwable {
-		loginPage.enterUnlockCode();
-	}
-
 	@Then("^the substitute user passes the splash screen$")
 	public void the_substitute_user_passes_the_splash_screen() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
@@ -53,27 +41,6 @@ public class LoginStepDef {
 	@When("^the substitute user launches the app$")
 	public void theSubstituteUserLaunchesTheApp() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
-	}
-
-	@Then("^the substitute user arrives on the PIN entry screen$")
-	public void theSubstituteUserArrivesOnThePINEntryScreen() {
-		loginPage.verify_enterUnlockCodeScreen();
-	}
-
-	// Scenario-2
-	@When("^the substitute user enters a incorrect PIN code '3333'$")
-	public void the_substitute_user_enters_a_incorrect_pin_code_3333() throws Throwable {
-		loginPage.enterUnlockCode3();
-	}
-
-	@Then("^the substitute user enter a incorrect PIN code '7777'$")
-	public void the_substitute_user_enter_a_incorrect_pin_code_7777() throws Throwable {
-		loginPage.enterUnlockCode7();
-	}
-
-	@Then("^the substitute user enters a incorrect PIN code '5555'$")
-	public void the_substitute_user_enters_a_incorrect_pin_code_5555() throws Throwable {
-		loginPage.enterUnlockCode5();
 	}
 
 	@Then("^the substitute user is prompted with a “You may not have access yet” dialog$")

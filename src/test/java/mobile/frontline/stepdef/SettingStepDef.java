@@ -70,4 +70,10 @@ public class SettingStepDef {
 	public void user_verifies_next_scheduled_job_widget() throws Throwable {
 		settingsPage.verifyNextScheduledJobWidget();
 	}
+	
+	//4796
+	@And("^the user verify that Unlock code page should not displayed")
+	public void user_verify_unlock_code_page_should_not_displayed() throws Throwable {
+		settingsPage.verifyUnlockCodePage();
+	}
 }

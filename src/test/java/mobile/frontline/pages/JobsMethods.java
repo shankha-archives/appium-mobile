@@ -109,9 +109,7 @@ public class JobsMethods extends LoginPage {
 		isElementDisplayed(availableJobsHeader);
 		Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
 		utils.log().info("Available Jobs list Page is displayed");
-
 		storeJobDetails();
-
 	}
 
 	private void storeJobDetails() {
@@ -189,7 +187,6 @@ public class JobsMethods extends LoginPage {
 		utils.log().info("Available roles are  displayed");
 		click(SubtituteUser);
 		click(contbtn);
-
 	}
 
 	public String checkAvailablejob() {
@@ -201,10 +198,7 @@ public class JobsMethods extends LoginPage {
 		fluentWait(noavailablejobs);
 		//////////// Extract the available jobs
 		String jobs = getElementText(noavailablejobs);
-		// Assert.assertEquals(jobs, "16");
 		return jobs;
-		// System.out.println(jobs);
-
 	}
 
 	public void switchToAnotherOrg() {
@@ -238,7 +232,6 @@ public class JobsMethods extends LoginPage {
 		}
 		HashSet<String> districts = new HashSet(districtNames);
 		Assert.assertTrue("It is not an multi district account", districts.size() > 1);
-
 	}
 
 }
