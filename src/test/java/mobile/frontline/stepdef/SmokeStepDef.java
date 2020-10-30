@@ -45,11 +45,6 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
-//	@When("^the admin user launches the app$")
-//	public void the_admin_user_launches_the_app() throws Throwable {
-//		loginPage.verify_splashScreenLoaded();
-//	}
-
 	@When("the user launches the app")
 	public void theUserLaunchesTheApp() {
 		loginPage.verify_splashScreenLoaded();
@@ -58,7 +53,6 @@ public class SmokeStepDef {
 	@Then("^the admin user click on Get Started Button and enter the pin$")
 	public void the_admin_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
-		// loginPage.enterUnlockCode();
 	}
 
 	@Then("^the admin navigates to dashboard page$")
@@ -225,12 +219,6 @@ public class SmokeStepDef {
 	public void pulls_to_refresh_the_page() throws Throwable {
 		smokePage.pullToRefresh();
 	}
-
-	// MOB-4245
-//	@When("the employee user launches the app")
-//	public void theEmployeeUserLaunchesTheApp() {
-//		loginPage.verify_splashScreenLoaded();
-//	}
 
 	@Then("the employee user click on Get Started Button and enter the pin")
 	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() throws Throwable {

@@ -36,22 +36,22 @@ public class LoginPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter Unlock Code']")
 	@iOSXCUITFindBy(accessibility = "Enter Unlock Code")
 	public MobileElement enterUnlockCode;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='7']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='7']")
-	public MobileElement enterCode7;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='3']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='3']")
-	public MobileElement enterCode3;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='5']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='5']")
-	public MobileElement enterCode5;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='4']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='4']")
-	public MobileElement enterCode4;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='7']")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='7']")
+//	public MobileElement enterCode7;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='3']")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='3']")
+//	public MobileElement enterCode3;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='5']")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='5']")
+//	public MobileElement enterCode5;
+//
+//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='4']")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='4']")
+//	public MobileElement enterCode4;
 
 	@AndroidFindBy(className = "android.view.View")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
@@ -145,7 +145,6 @@ public class LoginPage extends BasePage {
 	public void verify_emailAddressTextBox() throws InterruptedException {
 		waitForElementClickable(username);
 		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
-		// loginPageObject.username.sendKeys("xyz@abc.com");
 		Thread.sleep(3000);
 	}
 
@@ -166,82 +165,8 @@ public class LoginPage extends BasePage {
 		common.clickElement(getStarted);
 	}
 
-	public void verify_enterUnlockCodeScreen() {
-		common.waitForElement(enterUnlockCode);
-		Assert.assertTrue("Enter Unlock code screen is not displayed", enterUnlockCode.isDisplayed());
-	}
-
-	public void verify_code7() {
-		Assert.assertTrue("Code 7 is not displayed", enterCode7.isDisplayed());
-	}
-
-	public void verify_code3() {
-		Assert.assertTrue("Code 3 is not displayed", enterCode3.isDisplayed());
-	}
-
-	public void verify_code5() {
-		Assert.assertTrue("Code 5 is not displayed", enterCode5.isDisplayed());
-	}
-
-	public void verify_code4() {
-		Assert.assertTrue("Code 4 is not displayed", enterCode4.isDisplayed());
-	}
-
-	public void clickOnCode7Btn() {
-		verify_code7();
-		common.clickElement(enterCode7);
-	}
-
-	public void clickOnCode3Btn() {
-		verify_code3();
-		common.clickElement(enterCode3);
-	}
-
-	public void clickOnCode5Btn() {
-		verify_code5();
-		clickElement(enterCode5);
-	}
-
-	public void clickOnCode4Btn() {
-		verify_code4();
-		clickElement(enterCode4);
-	}
-
-	public void enterUnlockCode() {
-		verify_enterUnlockCodeScreen();
-		clickOnCode7Btn();
-		clickOnCode3Btn();
-		clickOnCode5Btn();
-		clickOnCode4Btn();
-	}
-
-	public void enterUnlockCode3() {
-		verify_enterUnlockCodeScreen();
-		clickOnCode3Btn();
-		clickOnCode3Btn();
-		clickOnCode3Btn();
-		clickOnCode3Btn();
-	}
-
-	public void enterUnlockCode7() {
-		verify_enterUnlockCodeScreen();
-		clickOnCode7Btn();
-		clickOnCode7Btn();
-		clickOnCode7Btn();
-		clickOnCode7Btn();
-	}
-
-	public void enterUnlockCode5() {
-		verify_enterUnlockCodeScreen();
-		clickOnCode5Btn();
-		clickOnCode5Btn();
-		clickOnCode5Btn();
-		clickOnCode5Btn();
-	}
-
 	public void verify_loginPageLoaded() throws InterruptedException {
 		switchToWebView();
-		// Thread.sleep(35000);
 		isElementdisplayed(loginPageHeader);
 		Assert.assertTrue("Login Page is not displayed", loginPageHeader.isDisplayed());
 		utils.log().info("Login Page Loaded successfully");
@@ -400,7 +325,6 @@ public class LoginPage extends BasePage {
 		fluentWait(orgWithOnlySubRole);
 		clickElement(orgWithOnlySubRole);
 		utils.log().info("Clicked on selected org");
-		// clickElement(jobs.contbtn);
 	}
 
 	public void VerifyMessage() {

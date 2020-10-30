@@ -17,16 +17,7 @@ public class JobsStepDef {
     @Then("^the substitute user click on Get Started Button and enter the pin$")
     public void the_substitute_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
         loginPage.clickOnGetStartedBtn();
-        //loginPage.enterUnlockCode();
     }
-
-//    @And("^Enter username\"([^\"]*)\" and password\"([^\"]*)\" and click on Sign In button$")
-//    public void enter_username_and_password_and_click_on_sign_in_button(String username, String userpassword) throws Throwable {
-//    	loginPage.verify_loginPageLoaded();
-//        loginPage.enterUserID_OnLoginPage(username);
-//        loginPage.enterUserPassword_onLoginPage(userpassword);
-//        loginPage.clickOnLoginBtn();
-//    }
 
     @And("^click on the Available Jobs and view job list$")
     public void click_on_the_available_jobs_and_view_job_list() throws Throwable {
@@ -102,13 +93,6 @@ public class JobsStepDef {
     public void verify_the_jobs() {
      Assert.assertEquals(OrgJob1, OrgJob2);
     }
-    
-    
-//  @Then("^the substitute navigates to dashboard page$")
-//  public void the_substitute_navigates_to_dashboard_page() throws Throwable {
-//  	jobulatorPage.clickOnAvailableJobs();
-//  }
-
 
   @And("^the dashboard displays all available jobs from all districts$")
   public void the_dashboard_displays_all_available_jobs_from_all_districts() throws Throwable {

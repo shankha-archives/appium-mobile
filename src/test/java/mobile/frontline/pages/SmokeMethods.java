@@ -47,7 +47,6 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Who?']")
 	public MobileElement absenceRequiredFor;
 
-	// sendkey //com.frontline.frontlinemobile:id/who_search_view
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/search_view_edit_text")
 	@iOSXCUITFindBy(accessibility = "Search employees by last name")
 	public MobileElement serachEditText;
@@ -450,8 +449,6 @@ public class SmokeMethods extends LoginPage {
 
 	// selecting absence date
 	@AndroidFindBy(xpath = "//android.view.ViewGroup/child::android.widget.TextView[@index=1][1]")
-	// @AndroidFindBy(xpath="//android.widget.ImageButton/following-sibling::android.widget.TextView")
-	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement fullDateAbsence;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")

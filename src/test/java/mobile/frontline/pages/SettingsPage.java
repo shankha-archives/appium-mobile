@@ -40,7 +40,6 @@ public class SettingsPage extends LoginPage {
 	public MobileElement accepted;
 
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[2]")
-	// XCUIElementTypeApplication[@name="Frontline"]/XCUIElementTypeWindow[1]
 	@AndroidFindBy(className = "android.widget.ImageView")
 	public MobileElement frontlineLogo;
 
@@ -172,5 +171,10 @@ public class SettingsPage extends LoginPage {
 		common.scrollToElement(nextScheduledJobWidget, "up");
 		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
 		utils.log().info("Next Scheduled Job is displayed");
+	}
+	
+	public void verifyUnlockCodePage() throws Throwable{
+		Assert.assertTrue("Unlock code page is not displayed", IsElementNotPresent(loginPage.enterUnlockCode));
+		utils.log().info("Unlock code page is not displayed");
 	}
 }
