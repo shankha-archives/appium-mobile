@@ -57,9 +57,16 @@ public class SettingsPage extends LoginPage {
 	public MobileElement MenuHeader;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Scheduled Job']")
+//	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement jobDetailDate;
+
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
 	public MobileElement nextScheduledJobWidget;
-
+  
+	public String job_day;
+	public String job_month;
+	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
 		click(smoke.menuTab);
@@ -125,7 +132,6 @@ public class SettingsPage extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 	}
 
 	public void LongPressOnFrontline_setting() throws Throwable {
@@ -138,8 +144,7 @@ public class SettingsPage extends LoginPage {
 
 	public void clickOnSendDiagnosticBtn() throws Throwable {
 		click(sendDiagnosticsBtn);
-
-		switch (new GlobalParams().getPlatformName()) {
+  switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			utils.log().info("Diagnostic is sent");
 			break;
@@ -149,6 +154,18 @@ public class SettingsPage extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
+	}
+	
+	public void viewDetails() {
+		String date = common.getElementText(jobDetailDate); 
+        String[] dateDetails = date.split(", ",2); 
+        dateDetails = dateDetails[1].split(" ",2);
+        job_day = dateDetails[1];
+        job_month = dateDetails[0];
+	}
+	
+	public void viewInCalender() throws Exception {
+		smoke.verifyEventInCalender(job_day,job_month);		
 	}
 	
 	public void verifyNextScheduledJobWidget() throws Throwable{
