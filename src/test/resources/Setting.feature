@@ -48,7 +48,7 @@ Scenario: Show Next Scheduled Job widget
 	 Then the substitute navigates to dashboard page 
 	 Then The user moves to Next Scheduled Job widget and verify it
 	   
-@regression @MOB-4796 @iOS @sprint10
+@regression @MOB-4796 @iOS @sprint10 @MOB-4797
 Scenario: Remove Unlock Code Page
 	When the user launches the app 
 	Then the user click on Get Started Button

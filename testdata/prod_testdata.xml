@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testdata>
+	<Account type="valid">
+		<employeelogin>prod01</employeelogin>
+		<employeepass>FLultra1!</employeepass>
+		<directoryLogin>msisco1</directoryLogin>
+		<directorypass>FLultra1!</directorypass>
+	</Account>
+	<testingData type="users">
+		<lastName>Astor</lastName>
+	</testingData>
+</testdata>
