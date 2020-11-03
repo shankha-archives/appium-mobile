@@ -36,22 +36,6 @@ public class LoginPage extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter Unlock Code']")
 	@iOSXCUITFindBy(accessibility = "Enter Unlock Code")
 	public MobileElement enterUnlockCode;
-//
-//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='7']")
-//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='7']")
-//	public MobileElement enterCode7;
-//
-//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='3']")
-//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='3']")
-//	public MobileElement enterCode3;
-//
-//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='5']")
-//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='5']")
-//	public MobileElement enterCode5;
-//
-//	@AndroidFindBy(xpath = "//android.widget.TextView[@text='4']")
-//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='4']")
-//	public MobileElement enterCode4;
 
 	@AndroidFindBy(className = "android.view.View")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
@@ -220,13 +204,7 @@ public class LoginPage extends BasePage {
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
-
 		}
-		/*
-		 * hideKeyboard(); Assert.assertTrue("Login btn is not displayed",
-		 * loginBtn.isDisplayed()); clickElement(loginBtn);
-		 * utils.log().info("Clicked on Login Button"); Thread.sleep(3000);
-		 */
 	}
 
 	public void verifyInvalidCredentials_errorMessage() {

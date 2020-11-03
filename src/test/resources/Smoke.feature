@@ -186,7 +186,7 @@ Scenario: Employee Need to rearrange the widgets on the dashboard
 	Then the user click on Get Started Button
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page
-	When click on reorder widget 
+	When click on reorder widget
 	Then rearrange the widget
 	And verify the order of widgets
 	
@@ -200,7 +200,7 @@ Scenario: Admin Need to rearrange the widgets on the dashboard
 	Then rearrange the widget
 	And verify the order of widgets
 	
-@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke
+@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke_1git
 Scenario: Employee need to tap on footer buttons and all widgets
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -210,7 +210,7 @@ Scenario: Employee need to tap on footer buttons and all widgets
 	Then verify all the widgets present
 	And verify the footer 
 	
-@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke
+@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke_1
 Scenario: Substitute need to tap on footer buttons and all widgets
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -220,7 +220,7 @@ Scenario: Substitute need to tap on footer buttons and all widgets
 	Then verify all the widgets present
 	And verify the footer 
 	
-@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke
+@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke_1
 Scenario: Admin need to tap on footer buttons and all widgets 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -252,7 +252,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 	Then tap on the day when absence was created
 	And the event will be displayed tap on it to view or verify the details
 	
-@smoke @MOB-4247 @Android @sprint7 @MOB-4248 @iOSSmoke
+@smoke @MOB-4247 @AndroidSmoke @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
     When the user launches the app
     Then the employee user click on Get Started Button and enter the pin
@@ -262,7 +262,7 @@ Scenario: An employee can edit an Absence for himself
     When click on editable absence and click on Edit tab
     Then edit the absence
 
-@smoke @MOB-4243 @Android @sprint7 @MOB-4243 @iOSSmoke
+@smoke @MOB-4243 @AndroidSmoke @sprint7 @MOB-4243 @iOSSmoke
 Scenario: An employee should be clock in and clock out
 	When the user launches the app 
 	Then the user click on Get Started Button

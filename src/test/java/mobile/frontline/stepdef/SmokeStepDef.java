@@ -223,7 +223,6 @@ public class SmokeStepDef {
 	@Then("the employee user click on Get Started Button and enter the pin")
 	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
-//		loginPage.enterUnlockCode();
 	}
 
 	@Then("the user click on Get Started Button")

@@ -103,30 +103,10 @@ public class SettingsPage extends LoginPage {
 			action.press(PointOption.point(startX, startY)).perform();
 			break;
 		case "iOS":
-			/*
-			 * utils.log().info("============== Entered in code ====================");
-			 * MobileElement recBtn = frontlineLogo;
-			 * //driver.findElement(MobileBy.xpath("//XCUIElementTypeImage)[2]"));
-			 * utils.log().
-			 * info("============== Entered in 2nd line of code ===================="+recBtn
-			 * ); Point location = recBtn.getLocation();
-			 * utils.log().info("Element location is============="+location); new
-			 * TouchAction(driver).press(PointOption.point(location.getX(),
-			 * location.getY())).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(20)))
-			 * .release().perform();
-			 * utils.log().info("============START==================");
-			 */
-			utils.log().info("============START==================");
-			// TouchAction action = new TouchAction(driver);
 			int dragX = frontlineLogo.getLocation().x + (frontlineLogo.getSize().width / 2);
-			utils.log().info("============dragX==================" + dragX);
 			int dragY = frontlineLogo.getLocation().y + (frontlineLogo.getSize().height / 2);
-			utils.log().info("============dragY==================" + dragY);
 			action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
 					.release().perform();
-
-			utils.log().info("============END==================");
-			Thread.sleep(1000);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
