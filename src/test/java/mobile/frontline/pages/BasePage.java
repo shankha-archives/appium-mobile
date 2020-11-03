@@ -201,7 +201,7 @@ public class BasePage {
 			break;
 		}
 
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 10; i++) {
 			if (find(element, 1)) {
 				isFound = true;
 				break;
@@ -636,7 +636,7 @@ public class BasePage {
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
 		}
 	}
@@ -656,7 +656,7 @@ public class BasePage {
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
 		}
 	}
@@ -673,7 +673,7 @@ public class BasePage {
 		}
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(100))).moveTo(PointOption.point(startX, endY))
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
 		}
 	}
