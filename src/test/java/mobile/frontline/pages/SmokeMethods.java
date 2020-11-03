@@ -375,7 +375,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Done")
 	public MobileElement backButton;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_0']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_2']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='AbsReason_1']")
 	public MobileElement absenceReason;
 
@@ -1325,8 +1325,8 @@ public class SmokeMethods extends LoginPage {
 	public void deleteTimesheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.isElementdisplayed(timeSheetTimeEventPage);
-			common.isElementdisplayed(dailytimeSheetedittbtn);
+			//common.isElementDisplayed(timeSheetTimeEventPage);
+			common.isElementDisplayed(dailytimeSheetedittbtn);
 			clickOnDeleteTimesheet();
 			click(okBtn);
 			common.isElementdisplayed(dailytimeSheetsubmitbtn);

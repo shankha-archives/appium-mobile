@@ -13,23 +13,16 @@
 		<teacherpass>FLultra1!</teacherpass>
 		<inboxteachlogin>stageteachstanley</inboxteachlogin>
 		<inboxteachpass>FLultra1!</inboxteachpass>
-		<employeelogin>prod01</employeelogin>
-        <employeepass>FLultra1!</employeepass>
 		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>
 		<multiOrgSubsPass>FLultra1!</multiOrgSubsPass>
 		<MultiOrgUser>stageMultiMulti</MultiOrgUser>
 		<MultiOrgPass>FLultra1!</MultiOrgPass>
 		<NoDistrictUser>stageNoOrg</NoDistrictUser>
 		<NoDistrictPass>frontline1!</NoDistrictPass>
-		<directoryLogin>msisco1</directoryLogin>
-		<directorypass>FLultra1!</directorypass>
 	</Account>
 	<testingData type="users">
 		<teacher>Oldguy</teacher>
 		<searchText>Calendar</searchText>
 		<absenceKeyword>AbsReason</absenceKeyword>
-		<lastName>Astor</lastName>
 	</testingData>
-
-	<Teacher></Teacher>
 </testdata>
