@@ -232,7 +232,8 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement unfilledAbsence;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to Assign']")
-	@iOSXCUITFindBy(accessibility = "AbsenceDetailBaseView_Tap to Assign_StaticText")
+	//@iOSXCUITFindBy(accessibility = "AbsenceDetailBaseView_Tap to Assign_StaticText")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[3]//XCUIElementTypeStaticText[3]")
 	public MobileElement assignSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
@@ -1037,10 +1038,20 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void submitTimesheet() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
 		isElementdisplayed(tuesday);
+		break;
+		case "iOS":
+		isElementdisplayed(addTimeSheets);
+		break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
-	}
+	
+}
 
 	public void verifySubmitTimesheet() {
 		Assert.assertTrue("Timesheet button not displayed", submitTimesheet.isDisplayed());
@@ -1273,7 +1284,8 @@ public class SmokeMethods extends LoginPage {
 			clickonEditButton2();
 			AddTextonCommentSection();
 			click(saveButton);
-			clickOnNotNowBtn();
+			if(isElementdisplayed(declinebtn))
+			{click(declinebtn);}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1323,6 +1335,8 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			click(timeSheetInTime);
+			if(isElementdisplayed(PushNotificationOK))
+			{click(PushNotificationOK);}
 			isElementdisplayed(dailytimeSheetedittbtn);
 			click(timeSheetDeletebtn);
 			click(okay);
