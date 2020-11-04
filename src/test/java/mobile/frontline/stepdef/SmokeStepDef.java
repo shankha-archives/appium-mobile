@@ -220,11 +220,6 @@ public class SmokeStepDef {
 		smokePage.pullToRefresh();
 	}
 
-	@Then("the employee user click on Get Started Button and enter the pin")
-	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() throws Throwable {
-		loginPage.clickOnGetStartedBtn();
-	}
-
 	@Then("the user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
 		loginPage.clickOnGetStartedBtn();

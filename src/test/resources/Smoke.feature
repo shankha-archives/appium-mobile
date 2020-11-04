@@ -233,7 +233,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 @smoke @MOB-4247 @AndroidSmoke @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
     When the user launches the app
-    Then the employee user click on Get Started Button
+    Then the user click on Get Started Button
     And Enter employee username and password and click on Sign In button
     Then the employee navigates to dashboard page
     When click on Absences

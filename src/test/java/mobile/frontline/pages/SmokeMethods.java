@@ -968,12 +968,12 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnFeedbackOption() {
-		isElementdisplayed(feedback);
+		Assert.assertTrue("Feedback tab is not displayed", feedback.isDisplayed());
 		click(feedback);
 	}
 
 	public void sendFeedback() throws Exception {
-		isElementdisplayed(topic);
+		Assert.assertTrue("Topic tab is not displayed", topic.isDisplayed());
 		click(topic);
 		int size = itemsInDropDown.size();
 		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
@@ -983,20 +983,20 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void sendFeedbackTitle() {
-		isElementdisplayed(title);
+		Assert.assertTrue("Title tab is not displayed", title.isDisplayed());
 		title.click();
 		driver.getKeyboard().sendKeys("Automation Test");
 	}
 
 	public void sendFeedbackMessage() {
-		isElementdisplayed(message);
+		Assert.assertTrue("message tab is not displayed", message.isDisplayed());
 		click(message);
 		driver.getKeyboard().sendKeys("This is a Test message");
 		click(saveBtn);
 	}
 
 	public void clickInbox() {
-		isElementdisplayed(inboxTab);
+		Assert.assertTrue("Inbox tab is not displayed", inboxTab.isDisplayed());
 		click(inboxTab);
 	}
 
@@ -1008,7 +1008,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewText() {
-		isElementdisplayed(inboxMsg);
 		click(inboxMsg);
 		Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
