@@ -545,6 +545,9 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText)[2]")
 	public MobileElement monthVerify;
 	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/log_out_button")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Log Out']")
+	public MobileElement logoutBtn;
 	
 	public String absence_Ename;
 	public String absence_day;
@@ -1399,6 +1402,7 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
+		widgetlistbeforeReorder.clear();
 	}
 
 	public void verify_footerPresent() {
@@ -1626,4 +1630,10 @@ public class SmokeMethods extends LoginPage {
 						|| getElementText(PersonalEmailData).length() > 0);
 		utils.log().info("Details are displayed");
 	}
+	public void logoutApplication(){
+		   clickOnMenuTab();
+		   click(settings);
+		   //isElementDisplayed(logoutBtn) ;
+		   click(logoutBtn);
+		}
 }

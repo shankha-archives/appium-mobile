@@ -169,66 +169,44 @@ Scenario: A user can visit inbox and view messages
 	When click on the inbox 
 	Then view the message in the inbox 
 
-@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke
-Scenario: Substitute Need to rearrange the widgets on the dashboard 
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	Then the substitute user is taken to the Login Page 
-	And Enter username and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	When click on reorder widget 
-	Then rearrange the widget
-	And verify the order of widgets
-
-@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke
-Scenario: Employee Need to rearrange the widgets on the dashboard 
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter employee username and password and click on Sign In button 
-	Then the employee navigates to dashboard page
-	When click on reorder widget
-	Then rearrange the widget
-	And verify the order of widgets
+@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke 
+Scenario: Need to rearrange the widgets on the dashboard
+   When the user launches the app
+   Then the user click on Get Started Button
+   Then the substitute user is taken to the Login Page
+   And Enter username and password and click on Sign In button
+   Then the substitute navigates to dashboard page
+   When click on reorder widget and rearrange the widget
+   And verify the order of widgets
+   And  logouts out from the application
+   And Enter employee username and password and click on Sign In button
+   Then the employee navigates to dashboard page
+   When click on reorder widget and rearrange the widget
+   And verify the order of widgets
+   And  logouts out from the application
+   And Enter admin username and password and click on Sign In button
+   Then the admin navigates to dashboard page
+   When click on reorder widget and rearrange the widget
+   And verify the order of widgets
 	
-@MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke
-Scenario: Admin Need to rearrange the widgets on the dashboard 
-	When the user launches the app
-	Then the user click on Get Started Button
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-	When click on reorder widget 
-	Then rearrange the widget
-	And verify the order of widgets
-	
-@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke_1git
-Scenario: Employee need to tap on footer buttons and all widgets
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter employee username and password and click on Sign In button 
-	Then the employee navigates to dashboard page
-	When click on reorder widget & get back 
-	Then verify all the widgets present
-	And verify the footer 
-	
-@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke_1
-Scenario: Substitute need to tap on footer buttons and all widgets
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter username and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	When click on reorder widget & get back 
-	Then verify all the widgets present
-	And verify the footer 
-	
-@MOB-4239 @AndroidSmoke @MOB-4240 @iOSSmoke_1
-Scenario: Admin need to tap on footer buttons and all widgets 
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-	When click on reorder widget & get back 
-	Then verify all the widgets present
-	And verify the footer
+@MOB-4239 @iOSSmoke @AndroidSmoke @MOB-4240 
+Scenario: Need to tap on footer buttons and all widgets
+   When the user launches the app
+   Then the user click on Get Started Button
+   And Enter employee username and password and click on Sign In button
+   Then the employee navigates to dashboard page
+   When click on reorder widget & get back
+   Then verify all the widgets and footers present
+   And  logouts out from the application
+   And Enter username and password and click on Sign In button
+   Then the substitute navigates to dashboard page
+   When click on reorder widget & get back
+   Then verify all the widgets and footers present
+   And  logouts out from the application
+   And Enter admin username and password and click on Sign In button
+   Then the admin navigates to dashboard page
+   When click on reorder widget & get back
+   Then verify all the widgets and footers present
 
 @MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmoke @sprint8iOS
 Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
@@ -255,7 +233,7 @@ Scenario: Event should be display when user taps on any event, on any day from c
 @smoke @MOB-4247 @AndroidSmoke @sprint7 @MOB-4248 @iOSSmoke
 Scenario: An employee can edit an Absence for himself
     When the user launches the app
-    Then the employee user click on Get Started Button and enter the pin
+    Then the employee user click on Get Started Button
     And Enter employee username and password and click on Sign In button
     Then the employee navigates to dashboard page
     When click on Absences
