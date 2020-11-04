@@ -220,11 +220,6 @@ public class SmokeStepDef {
 		smokePage.pullToRefresh();
 	}
 
-	@Then("the employee user click on Get Started Button and enter the pin")
-	public void theEmployeeUserClickOnGetStartedButtonAndEnterThePin() throws Throwable {
-		loginPage.clickOnGetStartedBtn();
-	}
-
 	@Then("the user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
 		loginPage.clickOnGetStartedBtn();
@@ -317,17 +312,17 @@ public class SmokeStepDef {
 		smokePage.verifyUndo();
 	}
 
-	@When("click on reorder widget")
-	public void clickOnReorderWidget() throws Throwable {
-		smokePage.clickReorderWidget();
-		smokePage.draganddrop();
-	}
-
-	@Then("rearrange the widget")
-	public void rearrangeTheWidget() throws Throwable {
-		smokePage.saveReorderedWidget();
-		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-	}
+//	@When("click on reorder widget")
+//	public void clickOnReorderWidget() throws Throwable {
+//		smokePage.clickReorderWidget();
+//		smokePage.draganddrop();
+//	}
+//
+//	@Then("rearrange the widget")
+//	public void rearrangeTheWidget() throws Throwable {
+//		smokePage.saveReorderedWidget();
+//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
+//	}
 
 	@Then("verify the order of widgets")
 	public void verifyTheOrderOfWidgets() {
@@ -341,16 +336,16 @@ public class SmokeStepDef {
 		smokePage.goBack();
 	}
 
-	@Then("verify all the widgets present")
-	public void verify_all_the_widgets_present() throws Throwable {
-		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-		smokePage.verify_widgetsPresent();
-	}
-
-	@And("verify the footer")
-	public void verify_the_footer() {
-		smokePage.verify_footerPresent();
-	}
+//	@Then("verify all the widgets present")
+//	public void verify_all_the_widgets_present() throws Throwable {
+//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
+//		smokePage.verify_widgetsPresent();
+//	}
+//
+//	@And("verify the footer")
+//	public void verify_the_footer() {
+//		smokePage.verify_footerPresent();
+//	}
 
 	// MOB-4261
 	@When("employee clicks on the timesheet widget")
@@ -470,4 +465,21 @@ public class SmokeStepDef {
 		smokePage.verifyContactDetails();
 	}
 
+	@When("click on reorder widget and rearrange the widget")
+	public void clickOnReorderWidgetAndRearrangeTheWidget() throws Throwable {
+	   smokePage.clickReorderWidget();
+	   smokePage.draganddrop();
+	   smokePage.saveReorderedWidget();
+	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
+	}
+	@And("logouts out from the application")
+	public void logoutsOutFromTheApplication() {
+	   smokePage.logoutApplication();
+	}
+	@Then("verify all the widgets and footers present")
+	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
+	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
+	   smokePage.verify_widgetsPresent();
+	   smokePage.verify_footerPresent();
+	}
 }
