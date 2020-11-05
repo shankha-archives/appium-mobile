@@ -271,8 +271,8 @@ public class SmokeStepDef {
 	}
 
 	// @MOB-4275
-	@When("^the user clicks on Menu tab and click on Feedback$")
-	public void the_user_clicks_on_Menu_tab_and_click_on_Feedback() throws Throwable {
+	@When("^the user clicks on Back button and click on Feedback$")
+	public void the_user_clicks_on_Back_btn_and_click_on_Feedback() throws Throwable {
 		smokePage.clickOnFeedback();
 	}
 
