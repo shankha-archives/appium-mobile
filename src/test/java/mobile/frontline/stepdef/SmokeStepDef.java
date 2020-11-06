@@ -432,7 +432,7 @@ public class SmokeStepDef {
 	@When("employee clicks on the clockin btn")
 	public void employeeClicksOnTheClockinBtn() throws Throwable {
 		smokePage.allowClockInPermissions();
-		loginPage.verify_homeScreen_displayed();
+		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 		smokePage.clockInbtn();
 
 	}
@@ -482,5 +482,11 @@ public class SmokeStepDef {
 	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	   smokePage.verify_widgetsPresent();
 	   smokePage.verify_footerPresent();
+	}
+
+	@Then("click on the home button to navigate back to dashboard")
+	public void clickOnTheHomeButtonToNavigateBackToDashboard() throws Exception {
+		smokePage.clickOnHomeButtonFooter();
+		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 	}
 }

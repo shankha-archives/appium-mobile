@@ -26,7 +26,7 @@ import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@jobs"}
+        ,tags = {"@MOB-4235"}
 )
 
 public class MyRunnerTest {

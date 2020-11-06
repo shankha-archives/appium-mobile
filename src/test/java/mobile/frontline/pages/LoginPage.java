@@ -266,6 +266,23 @@ public class LoginPage extends BasePage {
 		}
 	}
 
+	public void verify_homeScreen_displayedWithoutReLaunch() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+			    isElementdisplayed(homePageHeader);
+				Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+				utils.log().info("Home Page is displayed");
+				break;
+			case "iOS":
+				if(isElementdisplayed(homePageHeader))
+					Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+				else {
+					utils.log().info("Home Page displayed");}
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
+	}
 	public void verifyNoUserName_errorMessage() {
 		fluentWait(userNameRequired);
 		Assert.assertTrue("Your username is required error message is not displayed", userNameRequired.isDisplayed());
