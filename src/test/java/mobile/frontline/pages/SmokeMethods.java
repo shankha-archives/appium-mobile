@@ -549,6 +549,10 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Log Out']")
 	public MobileElement logoutBtn;
 	
+	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+	@iOSXCUITFindBy(accessibility = "Home")
+	public MobileElement backBtn;
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -958,6 +962,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickOnFeedback() {
+		click(backBtn);
 		clickOnMenuTab();
 		clickOnFeedbackOption();
 	}
@@ -1083,7 +1088,6 @@ public class SmokeMethods extends LoginPage {
 	public void undoTimesheet() throws Exception {
 		verifyUndoBtn();
 		undoicon.click();
-		isElementdisplayed(undobtn);
 		undobtn.click();
 	}
 
@@ -1623,7 +1627,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 	}
 
 	public void verifyContactDetails() {
@@ -1635,10 +1638,12 @@ public class SmokeMethods extends LoginPage {
 						|| getElementText(PersonalEmailData).length() > 0);
 		utils.log().info("Details are displayed");
 	}
+	
 	public void logoutApplication(){
 		   clickOnMenuTab();
 		   click(settings);
 		   //isElementDisplayed(logoutBtn) ;
 		   click(logoutBtn);
+		   //isElementdisplayed(loginPageHeader);
 		}
 }
