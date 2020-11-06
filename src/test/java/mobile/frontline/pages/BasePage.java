@@ -665,7 +665,7 @@ public class BasePage {
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
 		int startY = (int) (size.height * .6);
-		int endY = (int) (size.height * .35);
+		int endY = (int) (size.height * .3);
 		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
