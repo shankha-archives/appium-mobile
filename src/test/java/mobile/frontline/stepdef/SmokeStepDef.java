@@ -472,10 +472,12 @@ public class SmokeStepDef {
 	   smokePage.saveReorderedWidget();
 	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
+	
 	@And("logouts out from the application")
 	public void logoutsOutFromTheApplication() {
 	   smokePage.logoutApplication();
 	}
+	
 	@Then("verify all the widgets and footers present")
 	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
 	   loginPage.verify_homeScreen_displayedWithoutPushVerify();

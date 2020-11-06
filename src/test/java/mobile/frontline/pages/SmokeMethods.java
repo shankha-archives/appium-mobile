@@ -1627,7 +1627,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 	}
 
 	public void verifyContactDetails() {
@@ -1639,10 +1638,12 @@ public class SmokeMethods extends LoginPage {
 						|| getElementText(PersonalEmailData).length() > 0);
 		utils.log().info("Details are displayed");
 	}
+	
 	public void logoutApplication(){
 		   clickOnMenuTab();
 		   click(settings);
 		   //isElementDisplayed(logoutBtn) ;
 		   click(logoutBtn);
+		   //isElementdisplayed(loginPageHeader);
 		}
 }

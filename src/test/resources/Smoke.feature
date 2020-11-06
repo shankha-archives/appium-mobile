@@ -87,16 +87,7 @@ Scenario: View leave balances and check available days
 	And Enter employee username and password and click on SignIn button 
 	Then the employee navigates to dashboard page 
 	And click on Available Leave Balances and view leave balances 
-	Then verify available days 
-	
-@MOB-4265 @AndroidSmoke @MOB-4266 @iOSSmoke @sprint8
-Scenario: An employee can visit inbox and view messages 
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter employee username and password for inbox and click on Sign In button 
-	Then the employee navigates to dashboard page 
-	When click on the inbox 
-	Then view the message in the inbox 
+	Then verify available days  
 	
 @MOB-4233 @AndroidSmoke @MOB-4234 @iOSSmoke
 Scenario: Entered text should be searchable when user perform search operation 
@@ -118,15 +109,6 @@ Scenario: Absence Detail page displays for the selected absence from search resu
 	Then enter the absence search text in bar 
 	And click the absence search result
 	Then verify the absence detail page
-	
-@MOB-4267 @AndroidSmoke @MOB-4268 @iOSSmoke @sprint8
-Scenario: An admin can visit inbox and view messages
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-	When click on the inbox 
-	Then view the message in the inbox 
 
 @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke
 Scenario: An employee can view week of timesheets and timesheets for selected date
@@ -154,7 +136,35 @@ Scenario: A user can visit inbox and view messages
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When click on the inbox 
+	Then view the message in the inbox
+	And  logouts out from the application
+	And Enter employee username and password for inbox and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	When click on the inbox 
+	Then view the message in the inbox
+	And  logouts out from the application
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	When click on the inbox 
 	Then view the message in the inbox 
+
+#@MOB-4265 @AndroidSmoke @MOB-4266 @iOSSmoke @sprint8
+#Scenario: An employee can visit inbox and view messages 
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter employee username and password for inbox and click on Sign In button 
+#	Then the employee navigates to dashboard page 
+#	When click on the inbox 
+#	Then view the message in the inbox
+
+#@MOB-4267 @AndroidSmoke @MOB-4268 @iOSSmoke @sprint8
+#Scenario: An admin can visit inbox and view messages
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter admin username and password and click on Sign In button 
+#	Then the admin navigates to dashboard page 
+#	When click on the inbox 
+#	Then view the message in the inbox 
 
 @MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke 
 Scenario: Need to rearrange the widgets on the dashboard
