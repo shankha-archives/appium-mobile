@@ -129,7 +129,7 @@ Scenario: An employee can submit a timesheet and then undo a timesheet
 	Then click on submit timesheet option 
 	And undo the timesheet
 	
-@MOB-4257 @AndroidSmoke @MOB-4258 @iOSSmoke @sprint8
+@MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @sprint8
 Scenario: A user can visit inbox and view messages 
 	When the user launches the app 
 	Then the user click on Get Started Button  
@@ -146,25 +146,7 @@ Scenario: A user can visit inbox and view messages
 	And Enter admin username and password and click on Sign In button 
 	Then the admin navigates to dashboard page 
 	When click on the inbox 
-	Then view the message in the inbox 
-
-#@MOB-4265 @AndroidSmoke @MOB-4266 @iOSSmoke @sprint8
-#Scenario: An employee can visit inbox and view messages 
-#	When the user launches the app 
-#	Then the user click on Get Started Button
-#	And Enter employee username and password for inbox and click on Sign In button 
-#	Then the employee navigates to dashboard page 
-#	When click on the inbox 
-#	Then view the message in the inbox
-
-#@MOB-4267 @AndroidSmoke @MOB-4268 @iOSSmoke @sprint8
-#Scenario: An admin can visit inbox and view messages
-#	When the user launches the app 
-#	Then the user click on Get Started Button
-#	And Enter admin username and password and click on Sign In button 
-#	Then the admin navigates to dashboard page 
-#	When click on the inbox 
-#	Then view the message in the inbox 
+	Then view the message in the inbox
 
 @MOB-4241 @AndroidSmoke @MOB-4242 @iOSSmoke 
 Scenario: Need to rearrange the widgets on the dashboard
