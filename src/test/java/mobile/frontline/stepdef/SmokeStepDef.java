@@ -330,11 +330,11 @@ public class SmokeStepDef {
 	}
 
 	// MOB-4239
-	@When("click on reorder widget & get back")
-	public void click_on_reorder_widget() throws Throwable {
-		smokePage.clickReorderWidget();
-		smokePage.goBack();
-	}
+//	@When("click on reorder widget & get back")
+//	public void click_on_reorder_widget() throws Throwable {
+//		smokePage.clickReorderWidget();
+//		smokePage.goBack();
+//	}
 
 //	@Then("verify all the widgets present")
 //	public void verify_all_the_widgets_present() throws Throwable {
@@ -470,7 +470,6 @@ public class SmokeStepDef {
 	   smokePage.clickReorderWidget();
 	   smokePage.draganddrop();
 	   smokePage.saveReorderedWidget();
-	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 	
 	@And("logouts out from the application")

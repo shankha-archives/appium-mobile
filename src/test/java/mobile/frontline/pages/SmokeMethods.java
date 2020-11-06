@@ -22,6 +22,8 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
+
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -232,7 +234,8 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement unfilledAbsence;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to Assign']")
-	//@iOSXCUITFindBy(accessibility = "AbsenceDetailBaseView_Tap to Assign_StaticText")
+	// @iOSXCUITFindBy(accessibility = "AbsenceDetailBaseView_Tap to
+	// Assign_StaticText")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[3]//XCUIElementTypeStaticText[3]")
 	public MobileElement assignSubstitute;
 
@@ -371,9 +374,9 @@ public class SmokeMethods extends LoginPage {
 	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement timeSheetTimeEventPage;
 
-	@AndroidFindBy(className = "android.widget.ImageButton")
-	@iOSXCUITFindBy(accessibility = "Done")
-	public MobileElement backButton;
+//	@AndroidFindBy(className = "android.widget.ImageButton")
+//	@iOSXCUITFindBy(accessibility = "Done")
+//	public MobileElement backButton;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_2']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='AbsReason_1']")
@@ -534,25 +537,25 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name,'Absence Only')]")
 	public MobileElement peopleWidgetOrg;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcomeRoleName")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeStaticText[2]")
-	public MobileElement homePageRoleHeader;
-	
+//	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcomeRoleName")
+//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeStaticText[2]")
+//	public MobileElement homePageRoleHeader;
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_right_button_image")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
 	public MobileElement nextMonthCalender;
-	
+
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText)[2]")
 	public MobileElement monthVerify;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/log_out_button")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Log Out']")
 	public MobileElement logoutBtn;
-	
-	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+
+  @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
 	@iOSXCUITFindBy(accessibility = "Home")
 	public MobileElement backBtn;
-	
+
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -613,7 +616,7 @@ public class SmokeMethods extends LoginPage {
 			common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			break;
 		case "iOS":
-			common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
+			// common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			driver.findElementByXPath("//XCUIElementTypeButton[contains(@name, '" + teacher + "')]").click();
 			break;
 		default:
@@ -645,7 +648,7 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Create Absence Page 3 is not displayed", absenceReasonVerification.isDisplayed());
 		utils.log().info("Create Absence Page 3 is displayed");
 	}
-	
+
 	public void absenceReason() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -674,20 +677,20 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Create Absence Page 4 is not displayed", datePageVerification.isDisplayed());
 		utils.log().info("Create Absence Page 4 is displayed");
 	}
-	
+
 	public String currentDate() throws Exception {
 		DateTimeFormatter dtf;
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			 dtf = DateTimeFormatter.ofPattern("dd, yyyy");
+			dtf = DateTimeFormatter.ofPattern("dd, yyyy");
 			break;
 		case "iOS":
-			 dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-	
+
 		return dtf.format(LocalDateTime.now());
 	}
 
@@ -709,7 +712,7 @@ public class SmokeMethods extends LoginPage {
 		String newDate = dateFormat.format(c.getTime());
 		return newDate;
 	}
-	
+
 	public void selectDate() throws Throwable {
 		Calendar cal = Calendar.getInstance();
 		int res = cal.getActualMaximum(Calendar.DATE);
@@ -740,7 +743,6 @@ public class SmokeMethods extends LoginPage {
 				if (nd.contains(Integer.toString(res))) {
 					common.swipeUpSlowly();
 				}
-				wait(1500);
 				nd = nextDate(nd);
 				date = driver.findElementByXPath("//XCUIElementTypeCell[contains(@name, '" + nd + "')]");
 				tagName = date.getAttribute("label").toString();
@@ -756,6 +758,7 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Create Absence Page 5 is not displayed", durationPageVerification.isDisplayed());
 		utils.log().info("Create Absence Page 5 is displayed");
 	}
+
 	public void selectReason() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -834,19 +837,13 @@ public class SmokeMethods extends LoginPage {
 
 	public void selectAbsenceApprovalWidget() throws Throwable {
 		common.scrollToElement(absenceApprovalwidget, "up");
-		//*******************************************************
-		//verify without asserts on android
-//		Assert.assertTrue("Absence approval option is not displayed on HomePage", absenceApprovalwidget.isDisplayed());
-//		utils.log().info("Absence approval option is displayed on HomePage");
 		click(absenceApprovalwidget);
 	}
 
 	public void verifyAbsenceApprovalPage() {
 		isElementdisplayed(verifyAbsencePage);
-		//*******************************************************
-		//verify without asserts on android
-//		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
-//		utils.log().info("Absence approval page is displayed");
+		Assert.assertTrue("Absence approval page is not displayed", verifyAbsencePage.isDisplayed());
+		utils.log().info("Absence approval page is displayed");
 	}
 
 	public void storeAbsenceDetails() throws Exception {
@@ -956,8 +953,6 @@ public class SmokeMethods extends LoginPage {
 
 	public void clickCreateAbs() throws Throwable {
 		common.scrollToElement(createAbsBtn, "up");
-		Assert.assertTrue("Create Absence button is not displayed", createAbsBtn.isDisplayed());
-		utils.log().info("Create Absence button is displayed");
 		createAbsBtn.click();
 	}
 
@@ -1053,18 +1048,18 @@ public class SmokeMethods extends LoginPage {
 	public void submitTimesheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-		isElementdisplayed(tuesday);
-		break;
+			isElementdisplayed(tuesday);
+			break;
 		case "iOS":
-		isElementdisplayed(addTimeSheets);
-		break;
+			isElementdisplayed(addTimeSheets);
+			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
-	
-}
+
+	}
 
 	public void verifySubmitTimesheet() {
 		Assert.assertTrue("Timesheet button not displayed", submitTimesheet.isDisplayed());
@@ -1080,8 +1075,8 @@ public class SmokeMethods extends LoginPage {
 		} else {
 			utils.log().info("Digital signature not displayed");
 		}
-		verifySubmitTimesheet();
-		common.swipeUpSlowly();
+		// verifySubmitTimesheet();
+		// common.swipeUpSlowly();
 		click(submitTimesheet);
 	}
 
@@ -1126,8 +1121,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickReorderWidget() throws Throwable {
-		reOrderWidgetbtn = common.scrollToElement(reOrderWidgetbtn, "up");
-		common.isElementdisplayed(reOrderWidgetbtn);
+		common.scrollToElement(reOrderWidgetbtn, "up");
 		click(reOrderWidgetbtn);
 		for (MobileElement widgetlistele : WidgetOrderList) {
 			widgetlistbeforeReorder.add(common.getElementText(widgetlistele));
@@ -1135,7 +1129,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void draganddrop() throws Throwable {
-		common.isElementdisplayed(dragableEle);
+		// common.isElementdisplayed(dragableEle);
 		TouchAction action = new TouchAction(driver);
 		int dragX = dragableEle.getLocation().x + (dragableEle.getSize().width / 2);
 		int dragY = dragableEle.getLocation().y + (dragableEle.getSize().height / 2);
@@ -1152,6 +1146,8 @@ public class SmokeMethods extends LoginPage {
 
 	public void verifyWidgetsOrder() {
 		Assert.assertNotEquals(widgetlistbeforeReorder, widgetlistafterReorder);
+		widgetlistbeforeReorder.clear();
+		widgetlistafterReorder.clear();
 	}
 
 	public void viewWeekTimesheets() throws Exception {
@@ -1296,8 +1292,9 @@ public class SmokeMethods extends LoginPage {
 			clickonEditButton2();
 			AddTextonCommentSection();
 			click(saveButton);
-			if(isElementdisplayed(declinebtn))
-			{click(declinebtn);}
+			if (isElementdisplayed(declinebtn)) {
+				click(declinebtn);
+			}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1337,7 +1334,7 @@ public class SmokeMethods extends LoginPage {
 	public void deleteTimesheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			//common.isElementDisplayed(timeSheetTimeEventPage);
+			// common.isElementDisplayed(timeSheetTimeEventPage);
 			common.isElementDisplayed(dailytimeSheetedittbtn);
 			clickOnDeleteTimesheet();
 			click(okBtn);
@@ -1347,8 +1344,9 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			click(timeSheetInTime);
-			if(isElementdisplayed(PushNotificationOK))
-			{click(PushNotificationOK);}
+			if (isElementdisplayed(PushNotificationOK)) {
+				click(PushNotificationOK);
+			}
 			isElementdisplayed(dailytimeSheetedittbtn);
 			click(timeSheetDeletebtn);
 			click(okay);
@@ -1372,46 +1370,40 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	// MOB-4239
-	public void goBack() {
-		common.isElementdisplayed(backButton);
-		click(backButton);
-	}
+//	public void goBack() {
+//		common.isElementdisplayed(backButton);
+//		click(backButton);
+//	}
 
 	public void verify_widgetsPresent() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			widgetlistbeforeReorder.forEach(widget -> {
+			widgetlistafterReorder.forEach(widget -> {
 				if (widget.equals("What's New")) {
 					return;
 				}
-				if(getElementText(homePageRoleHeader).contains("Organization")) {
-					common.swipeUpSlowly();}
 				MobileElement widgetElement = driver
 						.findElementByXPath("//android.widget.TextView[@text='" + widget + "']");
-				common.isElementdisplayed(widgetElement);
 				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
 				utils.log().info("Widget is present");
-				common.swipeUpSlowly();
+				swipeUpSlowlyOnDashboard();
 			});
 			break;
 		case "iOS":
-			widgetlistbeforeReorder.forEach(widget -> {
+			widgetlistafterReorder.forEach(widget -> {
 				if (widget.equals("New Version Available") || widget.equals("Customize Home")) {
 					return;
 				}
-				if(getElementText(homePageRoleHeader).contains("Organization")) {
-					common.swipeUpSlowly();}
 				MobileElement widgetElement = driver.findElementByAccessibilityId(widget + "_ModuleHeader");
-				common.isElementdisplayed(widgetElement);
 				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
 				utils.log().info("Widget is present");
-				common.swipeUpSlowly();
+				swipeUpSlowlyOnDashboard();
 			});
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		widgetlistbeforeReorder.clear();
+		// widgetlistafterReorder.clear();
 	}
 
 	public void verify_footerPresent() {
@@ -1428,13 +1420,13 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			absence_day = common.getElementText(getdate).substring(9);
-			absence_month = common.getElementText(getdate).substring(5,8);
+			absence_month = common.getElementText(getdate).substring(5, 8);
 			click(homeTab);
 			pullToRefresh();
 			break;
 		case "iOS":
 			absence_day = common.getElementText(getdate).substring(8);
-			absence_month = common.getElementText(getdate).substring(5,8);
+			absence_month = common.getElementText(getdate).substring(5, 8);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1457,28 +1449,29 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickCalender() throws Exception {
-		verifyEventInCalender(absence_day,absence_month);
+		verifyEventInCalender(absence_day, absence_month);
 	}
-	
-	public void verifyEventInCalender(String absence_day, String absence_month ) throws Exception {
+
+	public void verifyEventInCalender(String absence_day, String absence_month) throws Exception {
 		click(menuTab);
 		clickOnSeachResult();
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			common.isElementdisplayed(calendertitle);
-			if(!getElementText(calendertitle).contains(absence_month))
-			{		click(nextMonthCalender);
-			common.isElementdisplayed(calendertitle);
+			if (!getElementText(calendertitle).contains(absence_month)) {
+				click(nextMonthCalender);
+				common.isElementdisplayed(calendertitle);
 			}
-			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc,'" + absence_day + "')]").click();
+			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc,'" + absence_day + "')]")
+					.click();
 
 			break;
 		case "iOS":
 			common.isElementdisplayed(calendar);
 			isElementdisplayed(monthVerify);
-			if(!getElementText(monthVerify).contains(absence_month))
-			{		click(nextMonthCalender);
-			common.isElementdisplayed(calendar);
+			if (!getElementText(monthVerify).contains(absence_month)) {
+				click(nextMonthCalender);
+				common.isElementdisplayed(calendar);
 			}
 			driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + absence_day + "')]").click();
 			break;
@@ -1502,19 +1495,19 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void editVacationAbsence() throws Throwable {
-		
+
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			String date = getElementText(fullDateAbsence).substring(9, 11);			
+			String date = getElementText(fullDateAbsence).substring(9, 11);
 			common.isElementdisplayed(editTab);
 			click(editTab);
 			isElementdisplayed(selectLocation);
-			click(forwardCaret);		
+			click(forwardCaret);
 			verifyAsbsenceReasonPage();
-			click(forwardCaret);			
+			click(forwardCaret);
 			verifyAsbsenceDatePage();
 			driver.findElementByXPath("//android.widget.TextView[@text=" + date + "]").click();
-			click(forwardCaret);			
+			click(forwardCaret);
 			break;
 		case "iOS":
 			common.isElementdisplayed(editTab);
@@ -1539,13 +1532,13 @@ public class SmokeMethods extends LoginPage {
 			absenceshifttime.click();
 			hideKeyboard();
 			driver.getKeyboard().sendKeys("1000");
-			click(forwardCaret);		
+			click(forwardCaret);
 			substituteAssignPageVerification();
-			click(forwardCaret);	
+			click(forwardCaret);
 			break;
 		case "iOS":
 			isElementdisplayed(durationPageVerification);
-			common.isElementdisplayed(absenceshifttime);
+			// common.isElementdisplayed(absenceshifttime);
 			absenceshifttime.click();
 			driver.getKeyboard().sendKeys("1000");
 			isElementdisplayed(Done);
@@ -1556,7 +1549,7 @@ public class SmokeMethods extends LoginPage {
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
-		}	
+		}
 		common.isElementdisplayed(saveChanges);
 		click(saveChanges);
 		click(viewAbsence);
@@ -1638,12 +1631,26 @@ public class SmokeMethods extends LoginPage {
 						|| getElementText(PersonalEmailData).length() > 0);
 		utils.log().info("Details are displayed");
 	}
-	
-	public void logoutApplication(){
-		   clickOnMenuTab();
-		   click(settings);
-		   //isElementDisplayed(logoutBtn) ;
-		   click(logoutBtn);
-		   //isElementdisplayed(loginPageHeader);
+  
+	public void logoutApplication() {
+		clickOnMenuTab();
+		click(settings);
+		// isElementDisplayed(logoutBtn) ;
+		click(logoutBtn);
+	}
+	public void swipeUpSlowlyOnDashboard() {
+		Dimension size = driver.manage().window().getSize();
+		int startX = size.width / 2;
+		int startY = (int) (size.height * .6);
+		int endY = (int) (size.height * .35);
+		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
+			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
+		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
+			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
+    }
 }
