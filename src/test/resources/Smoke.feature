@@ -89,7 +89,7 @@ Scenario: View leave balances and check available days
 	And click on Available Leave Balances and view leave balances 
 	Then verify available days  
 	
-@MOB-4233 @AndroidSmoke @MOB-4234 @iOSSmoke
+@MOB-4233 @MOB-4235  @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke
 Scenario: Entered text should be searchable when user perform search operation 
 	When the user launches the app 
 	Then the user click on Get Started Button
@@ -98,15 +98,9 @@ Scenario: Entered text should be searchable when user perform search operation
 	When click on menu bar
 	Then enter the search text in bar and click on result
 	And verify the search result
-	
-@MOB-4235 @AndroidSmoke @MOB-4236 @iOSSmoke
-Scenario: Absence Detail page displays for the selected absence from search result
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter employee username and password and click on Sign In button 
-	Then the employee navigates to dashboard page 
+	Then click on the home button to navigate back to dashboard
 	When click on menu bar
-	Then enter the absence search text in bar 
+	Then enter the absence search text in bar
 	And click the absence search result
 	Then verify the absence detail page
 
@@ -226,7 +220,7 @@ Scenario: An employee should be clock in and clock out
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page
 	When employee clicks on the clockin btn 
-    Then the user clocks out through timesheet
+   # Then the user clocks out through timesheet
 
 @MOB-4277 @AndroidSmoke @MOB-4278 @prod @iOSSmoke
  Scenario: The user with directory access can view the full directory list and details
