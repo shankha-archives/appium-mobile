@@ -1,22 +1,15 @@
 @smoke 
 Feature: Smoke scenarios 
 
-@MOB-4227 @AndroidSmoke @iOSSmoke @MOB-4228
-Scenario: Need to restrict login once the application is killed and relaunched 
+@MOB-4227 @MOB-4229 @AndroidSmoke @iOSSmoke @MOB-4228 @MOB-4230
+Scenario: Need to restrict login if application is running in background and then opened and then need to restrict login once the application is killed and relaunched 
 	When the user launches the app 
 	Then the user click on Get Started Button
 	And Enter username and password and click on Sign In button 
+	Then the substitute navigates to dashboard page
+	And The user minimize and relaunch the application 
 	Then the substitute navigates to dashboard page 
 	And The user kill and relaunch the application 
-	Then the substitute navigates to dashboard page 
-	
-@MOB-4229 @AndroidSmoke @iOSSmoke @MOB-4230
-Scenario:  Need to restrict login if application is running in background and then opened 
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter username and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	And The user minimize and relaunch the application 
 	Then the substitute navigates to dashboard page 
 	
 @MOB-4271 @AndroidSmoke @MOB-4272 @iOSSmoke
