@@ -357,7 +357,6 @@ public class SmokeStepDef {
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
 		smokePage.addTimeSheet();
 		smokePage.goToEditDeleteTimeSheetOption();
-
 	}
 
 	@Then("user edits the timesheet")
@@ -391,7 +390,6 @@ public class SmokeStepDef {
 		smokePage.clickNext();
 		smokePage.submitAbsence();
 		smokePage.viewAbsence();
-
 	}
 
 	@When("the user opens the calendar through menu")
@@ -434,7 +432,6 @@ public class SmokeStepDef {
 		smokePage.allowClockInPermissions();
 		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 		smokePage.clockInbtn();
-
 	}
 
 	@Then("the user clocks out through timesheet")

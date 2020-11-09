@@ -144,6 +144,4 @@ public class LoginStepDef {
     public void a_dialogue_box_is_displayed() throws Throwable {
       loginPage.VerifyMessage();
     }
-     
-   
 }
