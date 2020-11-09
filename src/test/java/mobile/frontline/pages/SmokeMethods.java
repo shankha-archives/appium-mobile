@@ -240,7 +240,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement assignSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"SubstituteSearchTableCell_Assign_Button\"])[1]")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='SubstituteSearchTableCell_Assign_Button'])[1]")
 	public MobileElement selectSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
