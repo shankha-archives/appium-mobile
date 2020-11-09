@@ -612,7 +612,7 @@ public class SmokeMethods extends LoginPage {
 			common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			break;
 		case "iOS":
-			common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
+			//common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			driver.findElementByXPath("//XCUIElementTypeButton[contains(@name, '" + teacher + "')]").click();
 			break;
 		default:
