@@ -27,26 +27,26 @@ Scenario: Pull to refresh
 	Then the substitute navigates to dashboard page 
 	And pulls to refresh the page 
 	
-@MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke
-Scenario: Admin creates an absence for another user 
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-	And click on the absences then add absence 
-	When enter teacher select reason date length summary 
-	Then submit and view absence 
-	And verify absence 
-	
-@MOB-4251 @AndroidSmoke @MOB-4252 @iOSSmoke
-Scenario: Admin can approve the absence 
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-	And click on the approval widget and navigates to the approval absence page 
-	When selected approved a job 
-	Then the job is no longer in the list for approval 
+#@MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke
+#Scenario: Admin creates an absence for another user 
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter admin username and password and click on Sign In button 
+#	Then the admin navigates to dashboard page 
+#	And click on the absences then add absence 
+#	When enter teacher select reason date length summary 
+#	Then submit and view absence 
+#	And verify absence 
+#	
+#@MOB-4251 @AndroidSmoke @MOB-4252 @iOSSmoke
+#Scenario: Admin can approve the absence 
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter admin username and password and click on Sign In button 
+#	Then the admin navigates to dashboard page 
+#	And click on the approval widget and navigates to the approval absence page 
+#	When selected approved a job 
+#	Then the job is no longer in the list for approval 
 	
 @MOB-4269 @MOB-4275 @AndroidSmoke @MOB-4270 @MOB-4276 @iOSSmoke
 Scenario: The user toggle the Dark mode from setting and then send the Feedback
@@ -70,16 +70,16 @@ Scenario: The user toggle the Dark mode from setting and then send the Feedback
     Then submit and view absence
     And verify absence 
     
-@MOB-4253 @AndroidSmoke @MOB-4254 @iOSSmoke
- Scenario: Admin can assign a substitute to an unfilled absence
-    When the user launches the app
-    Then the user click on Get Started Button
-    And Enter admin username and password and click on Sign In button
-    Then the admin navigates to dashboard page
-    And click on unfilled absence in absence widget
-    Then click on Tap to Assign and select Assign substitute
-    And click Assign again to confirm
-    
+#@MOB-4253 @AndroidSmoke @MOB-4254 @iOSSmoke
+# Scenario: Admin can assign a substitute to an unfilled absence
+#    When the user launches the app
+#    Then the user click on Get Started Button
+#    And Enter admin username and password and click on Sign In button
+#    Then the admin navigates to dashboard page
+#    And click on unfilled absence in absence widget
+#    Then click on Tap to Assign and select Assign substitute
+#    And click Assign again to confirm
+#    
 @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @prod
 Scenario: View leave balances and check available days 
 	When the user launches the app 
@@ -237,3 +237,17 @@ Scenario: An employee should be clock in and clock out
     And click on People widget
     When search for a person
     Then user details are displayed
+    
+  @abc
+Scenario: Admin creates an absence for another user 
+	When the user launches the app 
+	Then the user click on Get Started Button
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	And click on the absences then add absence 
+	When enter teacher select reason date length summary 
+	Then submit and view absence 
+	When click on Tap to Assign and select Assign substitute
+	And click Assign again to confirm
+	Then click on approve btn approve a job
+	And verify absences page is displayed

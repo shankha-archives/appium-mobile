@@ -80,14 +80,14 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
-	@Then("Enter employee username and password with directory access and click on SignIn button") 
+	@Then("Enter employee username and password with directory access and click on SignIn button")
 	public void enterEmployeeUsernameAndPasswordWithDirectoryAccessAndClickOnSignInButton() throws Throwable {
 		loginPage.verify_loginPageLoaded();
 		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "directoryLogin"));
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "directorypass"));
 		loginPage.clickOnLoginBtn();
 	}
-	
+
 	@And("^click on Available Leave Balances and view leave balances$")
 	public void click_on_available_leave_balance() throws Throwable {
 		smokePage.clickOnAvailableLeaveBalance_displayed();
@@ -240,7 +240,7 @@ public class SmokeStepDef {
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "inboxteachpass"));
 		loginPage.clickOnLoginBtn();
 	}
-	
+
 	@Then("the employee navigates to dashboard page")
 	public void theEmployeeNavigatesToDashboardPage() throws Throwable {
 		loginPage.verify_homeScreen_displayedWithoutPushVerify();
@@ -377,7 +377,7 @@ public class SmokeStepDef {
 
 		smokePage.selectLocation();
 		smokePage.clickNext();
-		
+
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
@@ -443,16 +443,16 @@ public class SmokeStepDef {
 		smokePage.verifyClockOut();
 	}
 
-	//MOB-4277
+	// MOB-4277
 	@When("Select the required organization")
 	public void selectTheRequiredOrganization() {
 		loginPage.orgPickerPageLoads();
 		smokePage.selectOrganization();
 	}
-	
+
 	@Then("click on People widget")
 	public void clickOnPeopleWidget() throws Exception {
-		smokePage.clickPeopleWidget();	
+		smokePage.clickPeopleWidget();
 	}
 
 	@When("search for a person")
@@ -467,21 +467,32 @@ public class SmokeStepDef {
 
 	@When("click on reorder widget and rearrange the widget")
 	public void clickOnReorderWidgetAndRearrangeTheWidget() throws Throwable {
-	   smokePage.clickReorderWidget();
-	   smokePage.draganddrop();
-	   smokePage.saveReorderedWidget();
-	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
+		smokePage.clickReorderWidget();
+		smokePage.draganddrop();
+		smokePage.saveReorderedWidget();
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
-	
+
 	@And("logouts out from the application")
 	public void logoutsOutFromTheApplication() {
-	   smokePage.logoutApplication();
+		smokePage.logoutApplication();
 	}
-	
+
 	@Then("verify all the widgets and footers present")
 	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
-	   loginPage.verify_homeScreen_displayedWithoutPushVerify();
-	   smokePage.verify_widgetsPresent();
-	   smokePage.verify_footerPresent();
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
+		smokePage.verify_widgetsPresent();
+		smokePage.verify_footerPresent();
 	}
+
+	@Then("click on approve btn approve a job")
+	public void clickOnApproveBtnApproveAJob() {
+		smokePage.selectApproveConfirmAbsence();
+	}
+
+	@And("^verify absences page is displayed$")
+	public void verify_absences_page_is_displayed() throws Throwable {
+		
+	}
+
 }
