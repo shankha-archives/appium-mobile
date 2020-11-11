@@ -68,8 +68,8 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement absenceReasonVerification;
 
 	// click //page 3 reason
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='*Personal']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='*Personal']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Pending2Approve']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pending2Approve']")
 	public MobileElement reason;
 
 	// page 4 verification
@@ -378,8 +378,8 @@ public class SmokeMethods extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "Done")
 //	public MobileElement backButton;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='AbsReason_2']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='AbsReason_1']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='NewReason']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='NewReason']")
 	public MobileElement absenceReason;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_time_absent")
@@ -392,7 +392,11 @@ public class SmokeMethods extends LoginPage {
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_title")
 	@iOSXCUITFindBy(accessibility = "Calendar_MenuOption")
-	public MobileElement calendertitle;
+	public MobileElement calendartitle;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_title")
+	@iOSXCUITFindBy(accessibility = "Calendar_MenuOption")
+	public List<MobileElement> calendarMonthlist;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_two")
 	@iOSXCUITFindBy(accessibility = "EventView_Absence_Other")
@@ -400,7 +404,6 @@ public class SmokeMethods extends LoginPage {
 
 	// page 6 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
-	// @iOSXCUITFindBy(accessibility = "Create Absence")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText[1])[2]")
 	public MobileElement subAssignPageVerification;
 
@@ -543,7 +546,7 @@ public class SmokeMethods extends LoginPage {
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_right_button_image")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
-	public MobileElement nextMonthCalender;
+	public MobileElement nextMonthCalendar;
 
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText)[2]")
 	public MobileElement monthVerify;
@@ -708,7 +711,7 @@ public class SmokeMethods extends LoginPage {
 		String newDate = dateFormat.format(c.getTime());
 		return newDate;
 	}
-
+	
 	public void selectDate() throws Throwable {
 		Calendar cal = Calendar.getInstance();
 		int res = cal.getActualMaximum(Calendar.DATE);
@@ -1414,11 +1417,12 @@ public class SmokeMethods extends LoginPage {
 			absence_day = common.getElementText(getdate).substring(9);
 			absence_month = common.getElementText(getdate).substring(5, 8);
 			click(homeTab);
+			click(declinebtn);
 			pullToRefresh();
 			break;
 		case "iOS":
 			absence_day = common.getElementText(getdate).substring(8);
-			absence_month = common.getElementText(getdate).substring(5, 8);
+			absence_month = common.getElementText(getdate).substring(4, 7);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1436,27 +1440,27 @@ public class SmokeMethods extends LoginPage {
 			click(searchResult);
 			break;
 		case "iOS":
-			Assert.assertTrue("search Result fails to display", calendertitle.isDisplayed());
-			click(calendertitle);
+			Assert.assertTrue("search Result fails to display", calendartitle.isDisplayed());
+			click(calendartitle);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 	}
 
-	public void clickCalender() throws Exception {
-		verifyEventInCalender(absence_day, absence_month);
+	public void clickCalendar() throws Exception {
+		verifyEventInCalendar(absence_day, absence_month);
 	}
 
-	public void verifyEventInCalender(String absence_day, String absence_month) throws Exception {
+	public void verifyEventInCalendar(String absence_day, String absence_month) throws Exception {
 		click(menuTab);
 		clickOnSeachResult();
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.isElementdisplayed(calendertitle);
-			if (!getElementText(calendertitle).contains(absence_month)) {
-				click(nextMonthCalender);
-				common.isElementdisplayed(calendertitle);
+			common.isElementdisplayed(calendartitle);
+			while (!getElementText(calendartitle).contains(absence_month)) {
+				click(nextMonthCalendar);
+				common.isElementdisplayed(calendartitle);
 			}
 			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc,'" + absence_day + "')]")
 					.click();
@@ -1465,8 +1469,9 @@ public class SmokeMethods extends LoginPage {
 		case "iOS":
 			common.isElementdisplayed(calendar);
 			isElementdisplayed(monthVerify);
-			if (!getElementText(monthVerify).contains(absence_month)) {
-				click(nextMonthCalender);
+			String	monthName = monthVerify.getAttribute("name").toString();	
+				while (!monthName.contains(absence_month)) {	
+				click(nextMonthCalendar);
 				common.isElementdisplayed(calendar);
 			}
 			driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + absence_day + "')]").click();
@@ -1490,37 +1495,61 @@ public class SmokeMethods extends LoginPage {
 		click(reasonAbsence);
 	}
 
-	public void editVacationAbsence() throws Throwable {
-
+	public void dragcalendar() throws Throwable {
+		MobileElement calendarmonth1=  calendarMonthlist.get(1);
+		MobileElement calendarmonth2=  calendarMonthlist.get(0);
+		TouchAction action = new TouchAction(driver);
+		int dragX = calendarmonth1.getLocation().x + (calendarmonth1.getSize().width / 2);
+		int dragY = calendarmonth1.getLocation().y + (calendarmonth1.getSize().height / 2);
+		
+		
+		int dragY1 = calendarmonth2.getLocation().y + (calendarmonth2.getSize().height / 2);
+		
+		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
+				.moveTo(PointOption.point(dragX, dragY1-100)).release().perform();
+	}
+	
+	public void selectDateForEdit() throws Throwable {
+		verifyAsbsenceDatePage();
+		while(!getElementText(calendartitle).contains(absence_month))
+			dragcalendar();
+		driver.findElementByXPath("//android.widget.TextView[@text=" + absence_day + "]").click();
+	}
+	
+	public void editCreatedAbsence() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			String date = getElementText(fullDateAbsence).substring(9, 11);
+			isElementdisplayed(fullDateAbsence);
+			absence_day = getElementText(fullDateAbsence).substring(9, 11);
+			absence_month = getElementText(fullDateAbsence).substring(5, 8);
 			common.isElementdisplayed(editTab);
 			click(editTab);
 			isElementdisplayed(selectLocation);
-			click(forwardCaret);
+			clickNext();
+			//click(forwardCaret);
 			verifyAsbsenceReasonPage();
-			click(forwardCaret);
-			verifyAsbsenceDatePage();
-			driver.findElementByXPath("//android.widget.TextView[@text=" + date + "]").click();
-			click(forwardCaret);
+			clickNext();
+			//click(forwardCaret);
+			selectDateForEdit();
+			//click(forwardCaret);
+			clickNext();
 			break;
 		case "iOS":
 			common.isElementdisplayed(editTab);
 			click(editTab);
 			isElementdisplayed(selectLocation);
-			click(forwardCaret);
+			clickNext();
 			isElementdisplayed(absenceReasonVerification);
-			click(forwardCaret);
+			clickNext();
 			isElementdisplayed(datePageVerification);
-			click(forwardCaret);
+			clickNext();
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 	}
 
-	public void editAbsence() throws Throwable {
+	public void saveEditedAbsence() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			verifyAsbsenceDuratioPage();
@@ -1528,20 +1557,19 @@ public class SmokeMethods extends LoginPage {
 			absenceshifttime.click();
 			hideKeyboard();
 			driver.getKeyboard().sendKeys("1000");
-			click(forwardCaret);
+			clickNext();
 			substituteAssignPageVerification();
-			click(forwardCaret);
+			clickNext();
 			break;
 		case "iOS":
 			isElementdisplayed(durationPageVerification);
-			// common.isElementdisplayed(absenceshifttime);
 			absenceshifttime.click();
 			driver.getKeyboard().sendKeys("1000");
-			isElementdisplayed(Done);
+			//isElementdisplayed(Done);
 			click(Done);
-			click(forwardCaret);
+			clickNext();
 			isElementdisplayed(subAssignPageVerification);
-			click(forwardCaret);
+			clickNext();
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
