@@ -187,7 +187,8 @@ public class LoginPage extends BasePage {
 				break;
 			default:
 				throw new Exception("Invalid platform Name");
-	}}
+		}
+	}
 
 	public void clickOnLoginBtn() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
@@ -332,5 +333,4 @@ public class LoginPage extends BasePage {
 	public void clickBackBtn() {
 		clickElement(bckBtn);
 	}
-
 }

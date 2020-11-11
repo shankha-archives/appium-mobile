@@ -240,7 +240,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement assignSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name=\"SubstituteSearchTableCell_Assign_Button\"])[1]")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='SubstituteSearchTableCell_Assign_Button'])[1]")
 	public MobileElement selectSubstitute;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
@@ -615,7 +615,7 @@ public class SmokeMethods extends LoginPage {
 			common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			break;
 		case "iOS":
-			// common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
+			//common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			driver.findElementByXPath("//XCUIElementTypeButton[contains(@name, '" + teacher + "')]").click();
 			break;
 		default:
@@ -1002,7 +1002,6 @@ public class SmokeMethods extends LoginPage {
 		isElementdisplayed(inboxTab);
 		Assert.assertTrue("Inbox page is not displayed", inboxTab.isDisplayed());
 		utils.log().info("Inbox page is displayed");
-
 	}
 
 	public void viewText() {
@@ -1056,7 +1055,6 @@ public class SmokeMethods extends LoginPage {
 		}
 		verifySubmitTimesheetBtn();
 		click(submittimesheetsbtn);
-
 	}
 
 	public void verifySubmitTimesheet() {
@@ -1400,7 +1398,6 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-
 	public void verify_footerPresent() {
 		common.isElementdisplayed(homeTab);
 		common.isElementdisplayed(menuTab);
@@ -1433,6 +1430,7 @@ public class SmokeMethods extends LoginPage {
 		Assert.assertTrue("Footer fails to display", homeBtnFooter.isDisplayed());
 		click(homeBtnFooter);
 	}
+	
 	public void clickOnSeachResult() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -1683,6 +1681,7 @@ public class SmokeMethods extends LoginPage {
 		click(settings);
 		click(logoutBtn);
 	}
+	
 	public void swipeUpSlowlyOnDashboard() {
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
