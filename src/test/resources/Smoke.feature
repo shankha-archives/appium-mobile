@@ -97,24 +97,24 @@ Scenario: Entered text should be searchable when user perform search operation
 	And click the absence search result
 	Then verify the absence detail page
 
-@MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke
-Scenario: An employee can view week of timesheets and timesheets for selected date
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter employee username and password and click on Sign In button 
-	Then the employee navigates to dashboard page 
-	And click on timesheets widget and view timesheets
-	Then click on any day to view timesheet 
+#@MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke
+#Scenario: An employee can view week of timesheets and timesheets for selected date
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter employee username and password and click on Sign In button 
+#	Then the employee navigates to dashboard page 
+#	And click on timesheets widget and view timesheets
+#	Then click on any day to view timesheet 
 	
-@MOB-4263 @AndroidSmoke @iOSSmoke @MOB-4264
-Scenario: An employee can submit a timesheet and then undo a timesheet 
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter employee username and password and click on Sign In button 
-	Then the employee navigates to dashboard page 
-	When click on menu then click on timesheet option
-	Then click on submit timesheet option 
-	And undo the timesheet
+#@MOB-4263 @AndroidSmoke @iOSSmoke @MOB-4264
+#Scenario: An employee can submit a timesheet and then undo a timesheet 
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter employee username and password and click on Sign In button 
+#	Then the employee navigates to dashboard page 
+#	When click on menu then click on timesheet option
+#	Then click on submit timesheet option 
+#	And undo the timesheet
 	
 @MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @sprint8
 Scenario: A user can visit inbox and view messages 
@@ -174,16 +174,16 @@ Scenario: A user can visit inbox and view messages
 #   When click on reorder widget & get back
 #   Then verify all the widgets and footers present
 
-@MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmoke @sprint8iOS
-Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
-	When the user launches the app 
-	Then the user click on Get Started Button
-	And Enter employee username and password and click on Sign In button 
-	Then the employee navigates to dashboard page
-	When employee clicks on the timesheet widget 
-	And open the past day timesheet and add a new time sheet
-	Then user edits the timesheet
-	And Delete the timesheet 
+#@MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmoke @sprint8iOS
+#Scenario: An employee can add time to a timesheet and edit and delete the time from the timesheet
+#	When the user launches the app 
+#	Then the user click on Get Started Button
+#	And Enter employee username and password and click on Sign In button 
+#	Then the employee navigates to dashboard page
+#	When employee clicks on the timesheet widget 
+#	And open the past day timesheet and add a new time sheet
+#	Then user edits the timesheet
+#	And Delete the timesheet 
 
 @MOB-4237 @AndroidSmoke @MOB-4238 @iOSSmoke
 Scenario: Event should be display when user taps on any event, on any day from calendar
@@ -206,14 +206,21 @@ Scenario: An employee can edit an Absence for himself
     When click on editable absence and click on Edit tab
     Then edit the absence
 
-@smoke @MOB-4243 @AndroidSmoke @sprint7 @MOB-4243 @iOSSmoke
-Scenario: An employee should be clock in and clock out
+@smoke @MOB-4243 @MOB-4263 @MOB-4259 @MOB-4261 @AndroidSmoke @sprint7 @MOB-4243 @MOB-4264 @MOB-4260 @MOB-4262 @iOSSmoke
+Scenario: An employee should be clock in and clock out and then submit timesheet and undo it and then click on any day to view timesheet and then add time to a timesheet and edit and delete the time from it
 	When the user launches the app 
 	Then the user click on Get Started Button
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page
 	When employee clicks on the clockin btn 
-   # Then the user clocks out through timesheet
+    Then the user clocks out through timesheet
+	And click on timesheets widget and view timesheets
+	Then click on submit timesheet option 
+	And undo the timesheet
+	Then click on any day to view timesheet
+	And click back button and open the past day timesheet and add a new time sheet
+	Then user edits the timesheet
+	And Delete the timesheet 
 
 @MOB-4277 @AndroidSmoke @MOB-4278 @prod @iOSSmoke
  Scenario: The user with directory access can view the full directory list and details
