@@ -353,8 +353,15 @@ public class SmokeStepDef {
 		smokePage.clickTimesheetOption();
 	}
 
-	@When("open the past day timesheet and add a new time sheet")
+//	@When("open the past day timesheet and add a new time sheet")
+//	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
+//		smokePage.addTimeSheet();
+//		smokePage.goToEditDeleteTimeSheetOption();
+//	}
+	
+	@When("click back button and open the past day timesheet and add a new time sheet")
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
+		smokePage.clickOnBack();
 		smokePage.addTimeSheet();
 		smokePage.goToEditDeleteTimeSheetOption();
 	}

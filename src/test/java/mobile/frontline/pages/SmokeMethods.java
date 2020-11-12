@@ -563,6 +563,9 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
 	public MobileElement homeBtnFooter;
 
+	@iOSXCUITFindBy(accessibility = "Week")
+	public MobileElement week;
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -677,6 +680,12 @@ public class SmokeMethods extends LoginPage {
 		utils.log().info("Create Absence Page 4 is displayed");
 	}
 
+	public String currentDateTimesheet() throws Exception {
+		DateTimeFormatter dtf;
+		dtf = DateTimeFormatter.ofPattern("M/dd");
+		return dtf.format(LocalDateTime.now());
+	}
+	
 	public String currentDate() throws Exception {
 		DateTimeFormatter dtf;
 		switch (new GlobalParams().getPlatformName()) {
@@ -689,7 +698,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 		return dtf.format(LocalDateTime.now());
 	}
 
@@ -1608,7 +1616,8 @@ public class SmokeMethods extends LoginPage {
 			case "Android":
 		Intime = common.getElementText(clockedInTime).substring(1);
 		clickTimesheetOption();
-		String date = currentDate().substring(0, 2);
+		//String date = currentDate().substring(0, 2);
+	     String date = currentDateTimesheet();
 		common.isElementdisplayed(monday);
 		driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + date + "')]").click();
 		common.isElementdisplayed(eventSummary);
@@ -1629,6 +1638,7 @@ public class SmokeMethods extends LoginPage {
 	public void verifyClockOut() {
 		common.isElementdisplayed(timeSheetTimeEventPage);
 		click(homeTab);
+		isElementdisplayed(clockInbtn);
 		Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
 		utils.log().info("Clocked out successfully");
 	}
@@ -1680,6 +1690,19 @@ public class SmokeMethods extends LoginPage {
 		clickOnMenuTab();
 		click(settings);
 		click(logoutBtn);
+	}
+	
+	public void clickOnBack() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+		click(backBtn);
+		break;
+		case "iOS":
+		click(week);
+		break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 	
 	public void swipeUpSlowlyOnDashboard() {
