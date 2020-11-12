@@ -143,8 +143,8 @@ public class SettingsPage extends LoginPage {
         job_month = dateDetails[0];
 	}
 	
-	public void viewInCalender() throws Exception {
-		smoke.verifyEventInCalender(job_day,job_month);		
+	public void viewInCalendar() throws Exception {
+		smoke.verifyEventInCalendar(job_day,job_month);		
 	}
 	
 	public void verifyNextScheduledJobWidget() throws Throwable{
