@@ -12,4 +12,9 @@ public class TimesheetsStepDef {
 		smokePage.addTimeSheet();
 		smokePage.goToEditDeleteTimeSheetOption();
 	}
+	
+	@When("click on timesheet option")
+	public void clickOnTimesheetOption() throws Exception {
+		smokePage.clickTimesheetOption();
+	}
 }
