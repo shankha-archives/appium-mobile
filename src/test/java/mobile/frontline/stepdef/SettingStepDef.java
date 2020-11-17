@@ -63,7 +63,7 @@ public class SettingStepDef {
 	}
 	@Then("go to calender and view the accepted job")
 	public void goToCalenderAndViewTheAcceptedJob() throws Exception {
-		settingsPage.viewInCalender();
+		settingsPage.viewInCalendar();
   }
 	//4808
 	@Then("^The user moves to Next Scheduled Job widget and verify it")

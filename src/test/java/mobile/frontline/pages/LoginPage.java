@@ -119,18 +119,18 @@ public class LoginPage extends BasePage {
 	public LoginPage() {
 	}
 
-	public void verify_splashScreen_displayed() {
-		fluentWait(splashScreen);
-		isElementDisplayed(splashScreen);
-		Assert.assertTrue("Splash screen is not displayed", splashScreen.isDisplayed());
-		utils.log().info("Splash screen Page is displayed");
-	}
-
-	public void verify_emailAddressTextBox() throws InterruptedException {
-		waitForElementClickable(username);
-		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
-		Thread.sleep(3000);
-	}
+//	public void verify_splashScreen_displayed() {
+//		fluentWait(splashScreen);
+//		isElementDisplayed(splashScreen);
+//		Assert.assertTrue("Splash screen is not displayed", splashScreen.isDisplayed());
+//		utils.log().info("Splash screen Page is displayed");
+//	}
+//
+//	public void verify_emailAddressTextBox() throws InterruptedException {
+//		waitForElementClickable(username);
+//		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
+//		Thread.sleep(3000);
+//	}
 
 	public void waitFor_loader_disappears() {
 		try {
@@ -187,7 +187,8 @@ public class LoginPage extends BasePage {
 				break;
 			default:
 				throw new Exception("Invalid platform Name");
-	}}
+		}
+	}
 
 	public void clickOnLoginBtn() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
@@ -236,7 +237,7 @@ public class LoginPage extends BasePage {
 				utils.log().info("Push Notification pop-up not displayed");
 			}
 			switchToNativeApp();
-			isElementdisplayed(homePageHeader);
+			//isElementdisplayed(homePageHeader);
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			utils.log().info("Home Page is displayed");
 			break;
@@ -250,22 +251,39 @@ public class LoginPage extends BasePage {
 		case "Android":
 			Thread.sleep(8000);
 			switchToNativeApp();
-			isElementDisplayed(homePageHeader);
+			isElementdisplayed(homePageHeader);
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			utils.log().info("Home Page is displayed");
 			break;
 		case "iOS":
 			switchToNativeApp();
-			if(isElementdisplayed(homePageHeader))
-			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-			else {
-			utils.log().info("Home Page displayed");}
+//			if(isElementdisplayed(homePageHeader))
+//			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+//			else {
+//			utils.log().info("Home Page displayed");}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 	}
 
+	public void verify_homeScreen_displayedWithoutReLaunch() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+			    isElementdisplayed(homePageHeader);
+				Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+				utils.log().info("Home Page is displayed");
+				break;
+			case "iOS":
+				if(isElementdisplayed(homePageHeader))
+					Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+				else {
+					utils.log().info("Home Page displayed");}
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
+	}
 	public void verifyNoUserName_errorMessage() {
 		fluentWait(userNameRequired);
 		Assert.assertTrue("Your username is required error message is not displayed", userNameRequired.isDisplayed());
@@ -315,5 +333,4 @@ public class LoginPage extends BasePage {
 	public void clickBackBtn() {
 		clickElement(bckBtn);
 	}
-
 }

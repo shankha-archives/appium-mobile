@@ -330,11 +330,11 @@ public class SmokeStepDef {
 	}
 
 	// MOB-4239
-	@When("click on reorder widget & get back")
-	public void click_on_reorder_widget() throws Throwable {
-		smokePage.clickReorderWidget();
-		smokePage.goBack();
-	}
+//	@When("click on reorder widget & get back")
+//	public void click_on_reorder_widget() throws Throwable {
+//		smokePage.clickReorderWidget();
+//		smokePage.goBack();
+//	}
 
 //	@Then("verify all the widgets present")
 //	public void verify_all_the_widgets_present() throws Throwable {
@@ -353,11 +353,17 @@ public class SmokeStepDef {
 		smokePage.clickTimesheetOption();
 	}
 
-	@When("open the past day timesheet and add a new time sheet")
+//	@When("open the past day timesheet and add a new time sheet")
+//	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
+//		smokePage.addTimeSheet();
+//		smokePage.goToEditDeleteTimeSheetOption();
+//	}
+	
+	@When("click back button and open the past day timesheet and add a new time sheet")
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
+		smokePage.clickOnBack();
 		smokePage.addTimeSheet();
 		smokePage.goToEditDeleteTimeSheetOption();
-
 	}
 
 	@Then("user edits the timesheet")
@@ -391,7 +397,6 @@ public class SmokeStepDef {
 		smokePage.clickNext();
 		smokePage.submitAbsence();
 		smokePage.viewAbsence();
-
 	}
 
 	@When("the user opens the calendar through menu")
@@ -402,7 +407,7 @@ public class SmokeStepDef {
 
 	@Then("tap on the day when absence was created")
 	public void tapOnTheDayWhenAbsenceWasCreated() throws Exception {
-		smokePage.clickCalender();
+		smokePage.clickCalendar();
 	}
 
 	@Then("the event will be displayed tap on it to view or verify the details")
@@ -411,30 +416,29 @@ public class SmokeStepDef {
 	}
 
 	// MOB-4247
-	@When("click on Absences")
-	public void clickOnAbsences() throws Throwable {
-		smokePage.clickOnAbsence();
-	}
-
-	// MOB-4247
-	@When("click on editable absence and click on Edit tab")
-	public void click_on_editable_absence_and_click_on_Edit_tab() throws Throwable {
-		smokePage.editVacationAbsence();
-	}
-
-	// MOB-4247
-	@When("edit the absence")
-	public void edit_the_absence() throws Throwable {
-		smokePage.editAbsence();
-		smokePage.verifyAbsence();
-	}
+//	@When("click on Absences")
+//	public void clickOnAbsences() throws Throwable {
+//		smokePage.clickOnAbsence();
+//	}
+//
+//	// MOB-4247
+//	@When("click on editable absence and click on Edit tab")
+//	public void click_on_editable_absence_and_click_on_Edit_tab() throws Throwable {
+//		smokePage.editCreatedAbsence();
+//	}
+//
+//	// MOB-4247
+//	@When("edit the absence")
+//	public void edit_the_absence() throws Throwable {
+//		smokePage.saveEditedAbsence();
+//		smokePage.verifyAbsence();
+//	}
 
 	@When("employee clicks on the clockin btn")
 	public void employeeClicksOnTheClockinBtn() throws Throwable {
 		smokePage.allowClockInPermissions();
-		loginPage.verify_homeScreen_displayed();
+		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 		smokePage.clockInbtn();
-
 	}
 
 	@Then("the user clocks out through timesheet")
@@ -470,7 +474,6 @@ public class SmokeStepDef {
 		smokePage.clickReorderWidget();
 		smokePage.draganddrop();
 		smokePage.saveReorderedWidget();
-		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 
 	@And("logouts out from the application")
@@ -492,7 +495,19 @@ public class SmokeStepDef {
 
 	@And("^verify absences page is displayed$")
 	public void verify_absences_page_is_displayed() throws Throwable {
-		
+	smokePage.verifyAbsencesPage();	
 	}
 
+	@Then("click on the home button to navigate back to dashboard")
+	public void clickOnTheHomeButtonToNavigateBackToDashboard() throws Exception {
+		smokePage.clickOnHomeButtonFooter();
+		loginPage.verify_homeScreen_displayedWithoutReLaunch();
+	}
+
+    @When("^click on edit btn and edit the absence$")
+    public void click_on_edit_tab_and_edit_the_absence() throws Throwable {
+    	smokePage.editCreatedAbsence();
+		smokePage.saveEditedAbsence();
+		smokePage.verifyAbsence();   
+    }
 }
