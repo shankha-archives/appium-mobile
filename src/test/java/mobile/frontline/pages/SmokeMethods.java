@@ -540,6 +540,10 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[contains(@name,'Absence Only')]")
 	public MobileElement peopleWidgetOrg;
 
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_right_button_image")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
+	public MobileElement nextMonthCalender;
+
 //	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcomeRoleName")
 //	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeStaticText[2]")
 //	public MobileElement homePageRoleHeader;
@@ -555,7 +559,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Log Out']")
 	public MobileElement logoutBtn;
 
-  @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
 	@iOSXCUITFindBy(accessibility = "Home")
 	public MobileElement backBtn;
 
@@ -719,7 +723,7 @@ public class SmokeMethods extends LoginPage {
 		String newDate = dateFormat.format(c.getTime());
 		return newDate;
 	}
-	
+
 	public void selectDate() throws Throwable {
 		Calendar cal = Calendar.getInstance();
 		int res = cal.getActualMaximum(Calendar.DATE);
@@ -868,7 +872,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void selectApproveConfirmAbsence() {
-		employeeName.click();
+		// employeeName.click();
 		approveBtnOnAbsence();
 		clickonOkBtn();
 	}
@@ -1026,16 +1030,21 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void click_tapToAssign() {
-		Assert.assertTrue("Assign substitute btn is not displayed", assignSubstitute.isDisplayed());
+		isElementdisplayed(assignSubstitute);
+		// Assert.assertTrue("Assign substitute btn is not displayed",
+		// assignSubstitute.isDisplayed());
 		click(assignSubstitute);
 	}
 
 	public void assignSubstitute() {
+		//android wait required
+		isElementdisplayed(selectSubstitute);
 		Assert.assertTrue("Select substitute btn is not displayed", selectSubstitute.isDisplayed());
 		click(selectSubstitute);
 	}
 
 	public void confirmAssignSubstitute() {
+		isElementdisplayed(confirmAssignSub);
 		Assert.assertTrue("Confirm substitute btn is not displayed", confirmAssignSub.isDisplayed());
 		click(confirmAssignSub);
 	}
@@ -1358,7 +1367,7 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-
+  
 	public void click_searchResult() {
 		click(searchAbsReason);
 	}
@@ -1376,7 +1385,7 @@ public class SmokeMethods extends LoginPage {
 //		click(backButton);
 //	}
 
-	public void verify_widgetsPresent() throws Exception {
+public void verify_widgetsPresent() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 			case "Android":
 				widgetlistafterReorder.forEach(widget -> {
@@ -1454,8 +1463,8 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void clickCalendar() throws Exception {
-		verifyEventInCalendar(absence_day, absence_month);
+	public void clickCalender() throws Exception {
+		verifyEventInCalender(absence_day, absence_month);
 	}
 
 	public void verifyEventInCalendar(String absence_day, String absence_month) throws Exception {
@@ -1500,7 +1509,7 @@ public class SmokeMethods extends LoginPage {
 		common.scrollToElement(reasonAbsence, "up");
 		click(reasonAbsence);
 	}
-
+  
 	public void dragcalendar() throws Throwable {
 		MobileElement calendarmonth1=  calendarMonthlist.get(1);
 		MobileElement calendarmonth2=  calendarMonthlist.get(0);
@@ -1689,8 +1698,16 @@ public class SmokeMethods extends LoginPage {
 	public void logoutApplication() {
 		clickOnMenuTab();
 		click(settings);
+		// isElementDisplayed(logoutBtn) ;
 		click(logoutBtn);
 	}
+	
+	public void verifyAbsencesPage() {
+		isElementdisplayed(clickOnAbsenceWidget);
+		Assert.assertTrue("Absences page is not displayed", clickOnAbsenceWidget.isDisplayed());
+		utils.log().info("Absences page is not displayed");
+	}
+}
 	
 	public void clickOnBack() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
@@ -1722,3 +1739,4 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 }
+
