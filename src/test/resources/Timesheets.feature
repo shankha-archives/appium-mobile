@@ -1,7 +1,7 @@
 @timesheet
 Feature: Timesheet scenarios 
 
-@MOB-5210 @AndroidSmoke @MOB-5209 @iOSSmoke
+@MOB-5210 @AndroidSmoke @MOB-5209 @MOB-5254 @MOB-5256 @iOSSmoke
 Scenario: Timesheet day view 
 	When the user launches the app 
 	Then the user click on Get Started Button 
