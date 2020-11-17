@@ -277,3 +277,18 @@ Scenario: Employee creates and edit absence also check in calendar
 	And the user opens the calendar through menu
 	Then tap on the day when absence was created 
 	And the event will be displayed tap on it to view or verify the details	
+  
+ @MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254
+Scenario: Admin creates an absence for another user 
+	When the user launches the app 
+	Then the user click on Get Started Button
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	And click on the absences then add absence 
+	When enter teacher select reason date length summary 
+	Then submit and view absence 
+	When click on Tap to Assign and select Assign substitute
+	And click Assign again to confirm
+	Then click on approve btn approve a job
+	And verify absences page is displayed
+  
