@@ -1464,7 +1464,7 @@ public void verify_widgetsPresent() throws Exception {
 	}
 
 	public void clickCalender() throws Exception {
-		verifyEventInCalender(absence_day, absence_month);
+		verifyEventInCalendar(absence_day, absence_month);
 	}
 
 	public void verifyEventInCalendar(String absence_day, String absence_month) throws Exception {
@@ -1707,7 +1707,6 @@ public void verify_widgetsPresent() throws Exception {
 		Assert.assertTrue("Absences page is not displayed", clickOnAbsenceWidget.isDisplayed());
 		utils.log().info("Absences page is not displayed");
 	}
-}
 	
 	public void clickOnBack() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {

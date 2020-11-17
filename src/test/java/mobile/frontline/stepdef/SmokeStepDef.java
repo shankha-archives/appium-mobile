@@ -407,7 +407,7 @@ public class SmokeStepDef {
 
 	@Then("tap on the day when absence was created")
 	public void tapOnTheDayWhenAbsenceWasCreated() throws Exception {
-		smokePage.clickCalendar();
+		smokePage.clickCalender();
 	}
 
 	@Then("the event will be displayed tap on it to view or verify the details")
