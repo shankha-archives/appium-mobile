@@ -295,10 +295,10 @@ public class SmokeStepDef {
 	}
 
 	// MOB-4263
-	@When("click on menu then click on timesheet option")
-	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
-		smokePage.clickTimesheetOption();
-	}
+//	@When("click on menu then click on timesheet option")
+//	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
+//		smokePage.clickTimesheetOption();
+//	}
 
 	@Then("click on submit timesheet option")
 	public void clickOnSubmitTimesheetOption() throws Throwable {
