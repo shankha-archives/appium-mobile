@@ -1,7 +1,7 @@
 @timesheet
 Feature: Timesheet scenarios 
 
-@MOB-5210 @AndroidSmoke @MOB-5209 @iOSSmoke @MOB-5255 @MOB-5257
+@MOB-5210 @MOB-5255 @MOB-5257 @AndroidSmoke @MOB-5209 @MOB-5254 @MOB-5256 @iOSSmoke 
 Scenario: Timesheet day view, add and edit
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -11,7 +11,7 @@ Scenario: Timesheet day view, add and edit
 	And open the past day timesheet and add a new time sheet 
 	Then user edits the timesheet 
 	
-@MOB-5208 @AndroidSmoke
+@MOB-5208 @AndroidSmoke @MOB-5207 @iOSSmoke
 Scenario: Timesheet week view
  	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -19,7 +19,7 @@ Scenario: Timesheet week view
 	Then the employee navigates to dashboard page 
 	And click on timesheets widget and view timesheets
 
-@MOB-5259 @AndroidSmoke
+@MOB-5259 @AndroidSmoke @MOB-5258 @iOSSmoke
 Scenario: Submit Timesheets 
 	When the user launches the app 
 	Then the user click on Get Started Button 
