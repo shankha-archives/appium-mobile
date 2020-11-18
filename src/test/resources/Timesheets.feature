@@ -1,8 +1,8 @@
 @timesheet
 Feature: Timesheet scenarios 
 
-@MOB-5210 @AndroidSmoke @MOB-5209 @MOB-5254 @MOB-5256 @iOSSmoke
-Scenario: Timesheet day view 
+@MOB-5210 @MOB-5257 @MOB-5255 @AndroidSmoke @MOB-5209 @MOB-5254 @MOB-5256 @iOSSmoke
+Scenario: Timesheet day view, add and edit
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username and password and click on Sign In button 
