@@ -68,7 +68,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement absenceReasonVerification;
 
 	// click //page 3 reason
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Pending2Approve']")
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[8]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pending2Approve']")
 	public MobileElement reason;
 
@@ -318,7 +318,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Day Total")
 	public MobileElement commonDayTotal;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'AbsReason')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'c. No Approval Required')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name,'AbsReason')][1]")
 	public MobileElement searchAbsReason;
 
@@ -378,7 +378,7 @@ public class SmokeMethods extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "Done")
 //	public MobileElement backButton;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='NewReason']")
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[8]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='NewReason']")
 	public MobileElement absenceReason;
 
@@ -638,7 +638,7 @@ public class SmokeMethods extends LoginPage {
 	public void selectLocation() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			isElementdisplayed(selectLocation);
+			if(isElementdisplayed(selectLocation))
 			click(selectLocation);
 			break;
 		case "iOS":
@@ -739,11 +739,11 @@ public class SmokeMethods extends LoginPage {
 			while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
 				nd = nextDate(nd);
 				date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
-				if (nd.contains(Integer.toString(res))) {
+				tagName = date.getAttribute("content-desc").toString();
+				if (nd.contains(Integer.toString(res))&& (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one"))) {
 					common.swipeUpSlowly();
 					common.swipeUpSlowly();
 				}
-				tagName = date.getAttribute("content-desc").toString();
 			}
 			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
 			break;
@@ -1126,8 +1126,18 @@ public class SmokeMethods extends LoginPage {
 		searchResult.click();
 	}
 
-	public void verifySearchResult() {
-		Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
+	public void verifySearchResult() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			isElementDisplayed(calendar);
+			break;
+		case "iOS":
+			Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		
 		String result = getElementText(calendar);
 		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
@@ -1372,7 +1382,17 @@ public class SmokeMethods extends LoginPage {
 		click(searchAbsReason);
 	}
 
-	public void verifyAbsenceDetailPage() {
+	public void verifyAbsenceDetailPage() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			isElementDisplayed(confirmationNumber);
+			break;
+		case "iOS":
+			utils.log().info("Absence Page is displayed");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 		Assert.assertTrue("confirmation Number Page is not displayed", confirmationNumber.isDisplayed());
 		Assert.assertTrue("Absence Detail Page Substitute is not displayed", absenceDetailPageSubstitute.isDisplayed());
 		Assert.assertTrue("Absence Details Page is not displayed", absenceDetailPageApproval.isDisplayed());
@@ -1393,7 +1413,7 @@ public void verify_widgetsPresent() throws Exception {
 						return;
 					}
 					MobileElement widgetElement = driver
-							.findElementByXPath("//android.widget.TextView[@text='" + widget + "']");
+							.findElementByXPath("//android.widget.TextView[contains(@text,'" + widget + "')]");
 					Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
 					utils.log().info("Widget is present");
 					swipeUpSlowlyOnDashboard();
@@ -1431,7 +1451,7 @@ public void verify_widgetsPresent() throws Exception {
 			absence_day = common.getElementText(getdate).substring(9);
 			absence_month = common.getElementText(getdate).substring(5, 8);
 			click(homeTab);
-			click(declinebtn);
+			if(isElementdisplayed(declinebtn))click(declinebtn);
 			pullToRefresh();
 			break;
 		case "iOS":
@@ -1532,6 +1552,7 @@ public void verify_widgetsPresent() throws Exception {
 	}
 	
 	public void editCreatedAbsence() throws Throwable {
+		//Thread.sleep(20000);
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			isElementdisplayed(fullDateAbsence);
@@ -1539,8 +1560,7 @@ public void verify_widgetsPresent() throws Exception {
 			absence_month = getElementText(fullDateAbsence).substring(5, 8);
 			common.isElementdisplayed(editTab);
 			click(editTab);
-			isElementdisplayed(selectLocation);
-			clickNext();
+			if(isElementdisplayed(selectLocation)) clickNext();
 			//click(forwardCaret);
 			verifyAsbsenceReasonPage();
 			clickNext();
