@@ -5,8 +5,19 @@
 		<employeepass>FLultra1!</employeepass>
 		<directoryLogin>msisco1</directoryLogin>
 		<directorypass>FLultra1!</directorypass>
+		<substitutelogin>Glwray</substitutelogin>
+		<substitutepass>GPfl1!1!*</substitutepass>
+		<adminlogin>Gjhendrix</adminlogin>
+		<adminpass>GPfl1!1!*</adminpass>
+		<teacherlogin>prod01</teacherlogin>
+		<teacherpass>FLultra1!</teacherpass>
+		<inboxteachlogin>Gbking</inboxteachlogin>
+		<inboxteachpass>GPfl1!1!*</inboxteachpass>
 	</Account>
 	<testingData type="users">
+	<teacher>king</teacher>
+		<searchText>Calendar</searchText>
+		<absenceKeyword>Approval</absenceKeyword>
 		<lastName>Astor</lastName>
 	</testingData>
 </testdata>
