@@ -15,12 +15,12 @@ public class TimesheetsStepDef {
 		smokePage.addTimeSheet();
 		smokePage.goToEditDeleteTimeSheetOption();
 	}
-	
+
 	@When("click on timesheet option")
 	public void clickOnTimesheetOption() throws Exception {
 		smokePage.clickTimesheetOption();
 	}
-	
+
 	@Then("click on day and submit day timesheet option")
 	public void clickOnDayAndSubmitDayTimesheetOption() throws Throwable {
 		smokePage.selectCurrentDayForTimesheet();
@@ -28,4 +28,11 @@ public class TimesheetsStepDef {
 		timesheetPage.verifySubmission();
 	}
 
+	@Then("verify no timesheet added and no submit btn is displayed")
+	public void verifyNoTimesheetAddedAndNoSubmitBtnIsDisplayed() throws Throwable {
+		timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
+		smokePage.addTimeSheet();
+		timesheetPage.timesheetNonEditablePopup();
+		
+	}
 }
