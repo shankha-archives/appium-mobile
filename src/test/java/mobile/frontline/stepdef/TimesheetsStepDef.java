@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import mobile.frontline.pages.SmokeMethods;
 import mobile.frontline.pages.TimesheetMethods;
 
+import java.io.IOException;
+
 public class TimesheetsStepDef {
 
 	public SmokeMethods smokePage = new SmokeMethods();
@@ -29,6 +31,10 @@ public class TimesheetsStepDef {
 		timesheetPage.verifySubmission();
 	}
 
+	@Then("Take the screenshot")
+	public void takeTheScreenshot() throws IOException {
+		smokePage.screenshotCapture();
+	}
 	@Then("verify no timesheet added and no submit btn is displayed")
 	public void verifyNoTimesheetAddedAndNoSubmitBtnIsDisplayed() throws Throwable {
 		timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
@@ -46,5 +52,4 @@ public class TimesheetsStepDef {
     public void verifyDeletedTimesheet() throws Throwable {
     	timesheetPage.verifyDeletedTimesheet();
     }
-
 }

@@ -2,12 +2,15 @@ package mobile.frontline.pages;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import org.apache.commons.io.FileUtils;
@@ -26,6 +29,7 @@ import mobile.Frontline.utils.TestUtils;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.io.FileHandler;
 
 public class SmokeMethods extends LoginPage {
 
@@ -925,9 +929,11 @@ public class SmokeMethods extends LoginPage {
 		click(darkMode);
 	}
 
-	public void screenshotcapture() throws IOException {
-		File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File("screenshot/DarkMode.jpg"));
+	public void screenshotCapture() throws IOException {
+		Date d = new Date();
+		String FileName = d.toString().replace(":", "_").replace(" ", "_") + ".png";
+		File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileHandler.copy(screenshot, new File("screenshot/" + FileName));
 	}
 
 	public void pullToRefresh() {
