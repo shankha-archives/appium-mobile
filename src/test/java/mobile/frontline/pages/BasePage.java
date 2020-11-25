@@ -997,7 +997,7 @@ public class BasePage {
 	}
 
 	public String currentTime(){
-		DateFormat dateFormat = new SimpleDateFormat("hh:mm");
+		DateFormat dateFormat = new SimpleDateFormat("h:mm");
 		String dateString = dateFormat.format(new Date()).toString();
 		return dateString;
 	}
