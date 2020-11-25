@@ -2,8 +2,6 @@ package mobile.frontline.pages;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -72,7 +70,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement absenceReasonVerification;
 
 	// click //page 3 reason
-	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[8]")
+	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[4]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pending2Approve']")
 	public MobileElement reason;
 
@@ -166,7 +164,7 @@ public class SmokeMethods extends LoginPage {
 
 	// create absence btn //click
 	@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
-	@iOSXCUITFindBy(accessibility = "AbsencesModule_Create_Button")
+	@iOSXCUITFindBy(accessibility = "AbsencesThisYearModule_Schedule_Button")
 	public MobileElement createAbsBtn;
 
 	// create absence btn //click
@@ -322,7 +320,8 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Day Total")
 	public MobileElement commonDayTotal;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'c. No Approval Required')]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Approval Required')]")
+	//@AndroidFindBy(xpath = "//android.widget.TextView[@index='1']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='ABSENCES']/following-sibling::XCUIElementTypeOther[2]//XCUIElementTypeOther[1]")
 	public MobileElement searchAbsReason;
 
@@ -338,7 +337,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '')]")
 	public List<MobileElement> WidgetOrderList;
 
-	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='6']")
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index='2']")
 	@iOSXCUITFindBy(accessibility = "Timesheet_Table")
 	public MobileElement selectDayToFillTimesheet;
 
@@ -746,8 +745,10 @@ public class SmokeMethods extends LoginPage {
 				tagName = date.getAttribute("content-desc").toString();
 				if (nd.contains(Integer.toString(res)) && (tagName.contains("Saturday") || tagName.contains("Sunday")
 						|| tagName.contains("This day has one"))) {
-					common.swipeUpSlowly();
-					common.swipeUpSlowly();
+//					common.swipeUpSlowly();
+//					common.swipeUpSlowly();
+					//swipeUp();
+					dragcalendar();
 				}
 			}
 			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
@@ -1366,12 +1367,12 @@ public class SmokeMethods extends LoginPage {
 			common.isElementDisplayed(dailytimeSheetedittbtn);
 			clickOnDeleteTimesheet();
 			click(okBtn);
-			common.isElementdisplayed(dailytimeSheetsubmitbtn);
-			Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
-			utils.log().info("Time sheet is deleted");
+//			common.isElementdisplayed(dailytimeSheetsubmitbtn);
+//			Assert.assertFalse("Time sheet is not deleted", common.isElementNotPresent(timeSheetInTime));
+//			utils.log().info("Time sheet is deleted");
 			break;
 		case "iOS":
-			//click(timeSheetInTime);
+			click(timeSheetInTime);
 			if (isElementdisplayed(PushNotificationOK)) {
 				click(PushNotificationOK);
 			}
@@ -1541,6 +1542,8 @@ public class SmokeMethods extends LoginPage {
 	public void dragcalendar() throws Throwable {
 		MobileElement calendarmonth1 = calendarMonthlist.get(1);
 		MobileElement calendarmonth2 = calendarMonthlist.get(0);
+		//MobileElement calendarmonth2 = datePageVerification;
+		
 		TouchAction action = new TouchAction(driver);
 		int dragX = calendarmonth1.getLocation().x + (calendarmonth1.getSize().width / 2);
 		int dragY = calendarmonth1.getLocation().y + (calendarmonth1.getSize().height / 2);
@@ -1549,7 +1552,7 @@ public class SmokeMethods extends LoginPage {
 		int dragY1 = calendarmonth2.getLocation().y + (calendarmonth2.getSize().height / 2);
 
 		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
-				.moveTo(PointOption.point(dragX, dragY1 - 100)).release().perform();
+				.moveTo(PointOption.point(dragX, dragY1-100)).release().perform();
 	}
 
 	public void selectDateForEdit() throws Throwable {
@@ -1763,11 +1766,11 @@ public class SmokeMethods extends LoginPage {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
-		}
-		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
-			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-					.release().perform();
+			if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
+				(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
+						.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700)))
+						.moveTo(PointOption.point(startX, endY)).release().perform();
+			}
 		}
 	}
 }
