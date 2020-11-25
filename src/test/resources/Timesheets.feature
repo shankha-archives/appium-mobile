@@ -50,3 +50,24 @@ Scenario: Timesheets Submission Day View
 	Then click on the home button to navigate back to dashboard
 	When click on timesheet option
 	Then Take the screenshot
+	
+@MOB-5568 
+Scenario: Submit time sheets no timesheets to add state
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	When employee clicks on the timesheet widget 
+	Then click on submit timesheet option
+	And verify no timesheet added and no submit btn is displayed 
+	
+@MOB-5580
+Scenario: Timesheet widget not updating after time events are added/removed
+	 When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When employee clicks on the timesheet widget
+	And add timesheet and verify time event
+	And Delete the timesheet
+	Then verify the deleted timesheet

@@ -166,7 +166,7 @@ public class SmokeMethods extends LoginPage {
 
 	// create absence btn //click
 	@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
-	@iOSXCUITFindBy(accessibility = "AbsencesThisYearModule_Schedule_Button")
+	@iOSXCUITFindBy(accessibility = "AbsencesModule_Create_Button")
 	public MobileElement createAbsBtn;
 
 	// create absence btn //click
@@ -323,7 +323,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement commonDayTotal;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'c. No Approval Required')]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name,'AbsReason')][1]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='ABSENCES']/following-sibling::XCUIElementTypeOther[2]//XCUIElementTypeOther[1]")
 	public MobileElement searchAbsReason;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
@@ -383,7 +383,7 @@ public class SmokeMethods extends LoginPage {
 //	public MobileElement backButton;
 
 	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[8]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='NewReason']")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[2]/following-sibling::XCUIElementTypeOther[1]//XCUIElementTypeButton[3]")
 	public MobileElement absenceReason;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_time_absent")
@@ -1371,7 +1371,7 @@ public class SmokeMethods extends LoginPage {
 			utils.log().info("Time sheet is deleted");
 			break;
 		case "iOS":
-			click(timeSheetInTime);
+			//click(timeSheetInTime);
 			if (isElementdisplayed(PushNotificationOK)) {
 				click(PushNotificationOK);
 			}
@@ -1763,11 +1763,11 @@ public class SmokeMethods extends LoginPage {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
-			if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
-				(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-						.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700)))
-						.moveTo(PointOption.point(startX, endY)).release().perform();
-			}
+		}
+		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
+			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
+					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+					.release().perform();
 		}
 	}
 }
