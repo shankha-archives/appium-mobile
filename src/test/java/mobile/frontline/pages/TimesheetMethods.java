@@ -50,7 +50,6 @@ public class TimesheetMethods extends LoginPage {
 		common.isElementDisplayed(smoke.commonDayTotal);
 		String Intime = common.currentTime();
 	    MobileElement currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
-	    scrollToElement(currentTimesheet, "up");
 	    Assert.assertTrue("current Timesheet is not displayed", currentTimesheet.isDisplayed());
 	    currentTimesheet.click();
 	}
