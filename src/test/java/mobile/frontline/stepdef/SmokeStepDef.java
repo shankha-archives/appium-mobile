@@ -212,7 +212,7 @@ public class SmokeStepDef {
 	@Then("^the user toggle the Dark Mode$")
 	public void the_user_toggle_the_dark_mode() throws Throwable {
 		smokePage.toggleDarkMode();
-		smokePage.screenshotcapture();
+		smokePage.screenshotCapture();
 	}
 
 	@And("^pulls to refresh the page$")

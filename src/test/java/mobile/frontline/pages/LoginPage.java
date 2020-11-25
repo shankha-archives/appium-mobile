@@ -257,10 +257,10 @@ public class LoginPage extends BasePage {
 			break;
 		case "iOS":
 			switchToNativeApp();
-//			if(isElementdisplayed(homePageHeader))
-//			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-//			else {
-//			utils.log().info("Home Page displayed");}
+			if(isElementdisplayed(homePageHeader))
+			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
+			else {
+			utils.log().info("Home Page displayed");}
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
