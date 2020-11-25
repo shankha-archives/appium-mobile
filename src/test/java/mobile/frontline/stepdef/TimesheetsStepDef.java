@@ -1,5 +1,6 @@
 package mobile.frontline.stepdef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.frontline.pages.SmokeMethods;
@@ -33,6 +34,17 @@ public class TimesheetsStepDef {
 		timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
 		smokePage.addTimeSheet();
 		timesheetPage.timesheetNonEditablePopup();
-		
 	}
+
+    @And("add timesheet and verify time event")
+    public void addTimesheetAndVerifyTimeEvent() throws Throwable {
+    	smokePage.addTimeSheet();
+    	timesheetPage.verifyTimesheet();
+    }
+    
+    @Then("verify the deleted timesheet")
+    public void verifyDeletedTimesheet() throws Throwable {
+    	timesheetPage.verifyDeletedTimesheet();
+    }
+
 }

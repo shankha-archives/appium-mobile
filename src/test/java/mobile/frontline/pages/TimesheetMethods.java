@@ -45,5 +45,23 @@ public class TimesheetMethods extends LoginPage {
 		if(isElementdisplayed(smoke.submittimesheetsbtn))
 		Assert.assertTrue("Submit timesheet option is not displayed",!smoke.submittimesheetsbtn.isDisplayed());
 	}
-
+	
+	public void verifyTimesheet() throws Throwable {
+		common.isElementDisplayed(smoke.commonDayTotal);
+		String Intime = common.currentTime();
+	    MobileElement currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
+	    scrollToElement(currentTimesheet, "up");
+	    Assert.assertTrue("current Timesheet is not displayed", currentTimesheet.isDisplayed());
+	    currentTimesheet.click();
+	}
+	
+	public void verifyDeletedTimesheet() {
+		if (isElementdisplayed(smoke.declinebtn)) {
+			click(smoke.declinebtn);
+		}
+		isElementDisplayed(smoke.commonDayTotal);
+		String Intime = common.currentTime();
+		Assert.assertFalse("Time sheet is not deleted", smoke.timeSheetInTime.isDisplayed());
+		utils.log().info("Time sheet is deleted");
+	}
 }
