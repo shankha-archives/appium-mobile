@@ -64,7 +64,7 @@ public class TimesheetMethods extends LoginPage {
 		common.isElementdisplayed(smoke.commonDayTotal);
 	    currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
 	    Assert.assertTrue("current Timesheet is not displayed", currentTimesheet.isDisplayed());
-	    currentTimesheet.click();
+	    //currentTimesheet.click();
 	}
 	
 	public void verifyDeletedTimesheet() {
