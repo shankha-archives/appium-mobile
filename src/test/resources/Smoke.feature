@@ -252,7 +252,7 @@ Scenario: Need to rearrange the widgets on the dashboard
 	Then verify all the widgets and footers present 
 	And verify the order of widgets 
 	And  logouts out from the application 
-	And Enter employee username and password and click on Sign In button 
+	And Enter employee username and password for inbox and click on Sign In button 
 	Then the employee navigates to dashboard page 
 	When click on reorder widget and rearrange the widget 
 	Then verify all the widgets and footers present 
