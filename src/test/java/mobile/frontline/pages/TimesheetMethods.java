@@ -22,6 +22,8 @@ public class TimesheetMethods extends LoginPage {
 	@AndroidFindBy(id = "android:id/message")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement timesheetErrorMessage;
+	
+	MobileElement currentTimesheet;
 
 	public void submitDayTimesheet() throws Exception {
 		isElementdisplayed(timesheetDaySubmitBtn);
@@ -46,10 +48,21 @@ public class TimesheetMethods extends LoginPage {
 		Assert.assertTrue("Submit timesheet option is not displayed",!smoke.submittimesheetsbtn.isDisplayed());
 	}
 	
-	public void verifyTimesheet() throws Throwable {
-		common.isElementDisplayed(smoke.commonDayTotal);
+	public String addNewTimesheet() {
+		common.isElementdisplayed(smoke.selectDayToFillTimesheet);
+		click(smoke.selectDayToFillTimesheet);
+		click(smoke.addTimeSheets);
+		common.isElementdisplayed(smoke.workDetails);
+		smoke.clickonEditButton2();
+		smoke.clickOnEditBtton3();
 		String Intime = common.currentTime();
-	    MobileElement currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
+		click(smoke.saveTimesheets);
+		return Intime;
+	}
+	
+	public void verifyTimesheet(String Intime) throws Throwable {
+		common.isElementdisplayed(smoke.commonDayTotal);
+	    currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
 	    Assert.assertTrue("current Timesheet is not displayed", currentTimesheet.isDisplayed());
 	    currentTimesheet.click();
 	}
@@ -58,9 +71,8 @@ public class TimesheetMethods extends LoginPage {
 		if (isElementdisplayed(smoke.declinebtn)) {
 			click(smoke.declinebtn);
 		}
-		isElementDisplayed(smoke.commonDayTotal);
-		String Intime = common.currentTime();
-		Assert.assertFalse("Time sheet is not deleted", smoke.timeSheetInTime.isDisplayed());
+		isElementdisplayed(smoke.commonDayTotal);
+		Assert.assertTrue("Time sheet is not deleted", !currentTimesheet.isDisplayed());
 		utils.log().info("Time sheet is deleted");
 	}
 }
