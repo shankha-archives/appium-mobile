@@ -30,7 +30,7 @@ Scenario: Submit Timesheets
 	Then click on submit timesheet option 
 	And undo the timesheet
 
-@MOB-5577 
+@MOB-5577 @AndroidRegression
 Scenario: Timesheets Submission Day View
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -51,7 +51,7 @@ Scenario: Timesheets Submission Day View
 	When click on timesheet option
 	Then Take the screenshot
 	
-@MOB-5568 
+@MOB-5568 @AndroidRegression
 Scenario: Submit time sheets no timesheets to add state
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -61,7 +61,7 @@ Scenario: Submit time sheets no timesheets to add state
 	Then click on submit timesheet option
 	And verify no timesheet added and no submit btn is displayed 
 	
-@MOB-5580
+@MOB-5580 @iOSRegression @MOB-5581 @AndroidRegression
 Scenario: Timesheet widget not updating after time events are added/removed
 	 When the user launches the app 
 	Then the user click on Get Started Button 
@@ -72,7 +72,7 @@ Scenario: Timesheet widget not updating after time events are added/removed
 	And Delete the timesheet
 	Then verify the deleted timesheet
 	
-@MOB-5587
+@MOB-5587 @AndroidRegression
 Scenario: Automate editing of timesheet to delete clock in entry
 	When the user launches the app 
 	Then the user click on Get Started Button 
