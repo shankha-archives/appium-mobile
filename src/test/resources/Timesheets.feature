@@ -72,7 +72,7 @@ Scenario: Timesheet widget not updating after time events are added/removed
 	And Delete the timesheet
 	Then verify the deleted timesheet
 	
-@MOB-5587 @AndroidRegression
+@MOB-5587 @AndroidRegression @MOB-5586 @iOSRegression
 Scenario: Automate editing of timesheet to delete clock in entry
 	When the user launches the app 
 	Then the user click on Get Started Button 

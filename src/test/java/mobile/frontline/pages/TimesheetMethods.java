@@ -82,6 +82,7 @@ public class TimesheetMethods extends BasePage {
 		return Intime;
 	}
 
+	
 	public void verifyTimesheet(String Intime) throws Throwable {
 		common.isElementdisplayed(smoke.commonDayTotal);
 
