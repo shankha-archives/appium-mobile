@@ -9,8 +9,7 @@ Scenario: Timesheet day view, add and edit
 	Then the employee navigates to dashboard page 
 	When employee clicks on the timesheet widget 
 	And open the past day timesheet and add a new time sheet 
-	Then user edits the timesheet 
-	
+	Then user edits the timesheet	
 
 @MOB-5208 @AndroidRegression @MOB-5207 @iOSRegression
 Scenario: Timesheet week view
@@ -51,7 +50,7 @@ Scenario: Timesheets Submission Day View
 	When click on timesheet option
 	Then Take the screenshot
 	
-@MOB-5568 @AndroidRegression
+@MOB-5568 @AndroidRegression @MOB-5569 @iOSRegression
 Scenario: Submit time sheets no timesheets to add state
 	When the user launches the app 
 	Then the user click on Get Started Button 
