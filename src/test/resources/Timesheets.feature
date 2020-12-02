@@ -81,3 +81,14 @@ Scenario: Automate editing of timesheet to delete clock in entry
 	And open the past day timesheet and add a new time sheet 
 	Then user edits the timesheet 
 	And Delete the timesheet 
+	
+@MOB-5578 @AndroidRegression 
+Scenario: Timesheet Submission Week View
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	When employee clicks on the timesheet widget 
+	And Add a new timesheet
+	Then verify work total time this week to be greater than zero
+
