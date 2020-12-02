@@ -56,7 +56,7 @@ public class TimesheetsStepDef {
     @And("add timesheet and verify time event")
     public void addTimesheetAndVerifyTimeEvent() throws Throwable {
     	String Intime = timesheetPage.addNewTimesheet();
-    //	timesheetPage.verifyTimesheet(Intime);
+    	timesheetPage.verifyTimesheet(Intime);
     }
     
     @Then("verify the deleted timesheet")

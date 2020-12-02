@@ -71,13 +71,6 @@ public class TimesheetMethods extends BasePage {
 			Assert.assertTrue("Submit timesheet option is not displayed", !smoke.submittimesheetsbtn.isDisplayed());
 	}
 
-	public void verifyTimesheet(String Intime) throws Throwable {
-		common.isElementdisplayed(smoke.commonDayTotal);
-		currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
-		Assert.assertTrue("current Timesheet is not displayed", currentTimesheet.isDisplayed());
-		// currentTimesheet.click();
-	}
-
 	public String addNewTimesheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -134,7 +127,7 @@ public class TimesheetMethods extends BasePage {
 			break;
 		case "iOS":
 			isElementdisplayed(smoke.commonDayTotal);
-			Assert.assertTrue("Time sheet is not deleted", currentTimesheet.isDisplayed());
+			Assert.assertTrue("Time sheet is not deleted", !currentTimesheet.isDisplayed());
 			utils.log().info("Time sheet is deleted");
 			break;
 		default:
@@ -172,10 +165,9 @@ public class TimesheetMethods extends BasePage {
 	}
 
 	public void verifyWeekTime() throws Exception {
-
 		DateFormat dateFormat = new SimpleDateFormat("h:mm");
 		click(smoke.homeTab);
-		common.scrollToElement(smoke.reOrderWidgetbtn, "up");
+		common.scrollToElement(totalWeekTime, "up");
 		String weekTotal = common.getElementText(totalWeekTime);
 		Date d = dateFormat.parse(weekTotal);
 		Assert.assertNotEquals(d, dateFormat.parse("0:00"));
