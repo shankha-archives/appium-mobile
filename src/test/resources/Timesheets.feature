@@ -93,7 +93,7 @@ Scenario: Timesheet Submission Week View
 	Then verify work total time this week to be greater than zero
 	And Delete the timesheet
 
-	@MOB-5574 @iOSRegression
+	@MOB-5574 @iOSRegression @MOB-5575 @AndroidRegression
 	Scenario: Timesheets unsubmit Week view
 		When the user launches the app
 		Then the user click on Get Started Button
