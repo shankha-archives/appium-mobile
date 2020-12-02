@@ -61,7 +61,7 @@ Scenario: Submit time sheets no timesheets to add state
 	Then click on submit timesheet option
 	And verify no timesheet added and no submit btn is displayed 
 	
-@MOB-5580 @iOSRegression
+@MOB-5580 @iOSRegression @MOB-5581 @AndroidRegression
 Scenario: Timesheet widget not updating after time events are added/removed
 	 When the user launches the app 
 	Then the user click on Get Started Button 
