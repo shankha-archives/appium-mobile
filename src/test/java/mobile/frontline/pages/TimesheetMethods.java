@@ -23,7 +23,7 @@ public class TimesheetMethods extends BasePage {
 	public MobileElement timesheetDaySubmitBtn;
 
 	@AndroidFindBy(id = "android:id/message")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name='Error']")
 	public MobileElement timesheetErrorMessage;
 
 	MobileElement currentTimesheet;
@@ -53,7 +53,6 @@ public class TimesheetMethods extends BasePage {
 	}
 
 	public String addNewTimesheet() throws Throwable {
-
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			common.isElementdisplayed(smoke.selectDayToFillTimesheet);
@@ -63,9 +62,7 @@ public class TimesheetMethods extends BasePage {
 			Intime = common.getElementText(smoke.timeSheetInTime);
 			click(smoke.saveTimesheets);
 			break;
-
 		case "iOS":
-
 			common.isElementdisplayed(smoke.selectDayToFillTimesheet);
 			click(smoke.selectDayToFillTimesheet);
 			click(smoke.addTimeSheets);
@@ -75,27 +72,21 @@ public class TimesheetMethods extends BasePage {
 			String Intime = common.currentTime();
 			click(smoke.saveTimesheets);
 			break;
-
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 		return Intime;
 	}
 
-	
 	public void verifyTimesheet(String Intime) throws Throwable {
 		common.isElementdisplayed(smoke.commonDayTotal);
-
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			currentTimesheet = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
 			break;
-
 		case "iOS":
 			currentTimesheet = driver.findElementByXPath("//XCUIElementTypeCell[contains(@label, '" + Intime + "')]");
-
 			break;
-
 		default:
 			throw new Exception("Invalid platform Name");
 		}
@@ -115,17 +106,13 @@ public class TimesheetMethods extends BasePage {
 			} else
 				utils.log().info("Time sheet is deleted");
 			break;
-
 		case "iOS":
 			isElementdisplayed(smoke.commonDayTotal);
 			Assert.assertTrue("Time sheet is not deleted", currentTimesheet.isDisplayed());
 			utils.log().info("Time sheet is deleted");
 			break;
-
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 	}
-
 }
