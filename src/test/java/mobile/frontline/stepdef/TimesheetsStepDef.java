@@ -35,6 +35,7 @@ public class TimesheetsStepDef {
 	public void takeTheScreenshot() throws IOException {
 		smokePage.screenshotCapture();
 	}
+
 	@Then("verify no timesheet added and no submit btn is displayed")
 	public void verifyNoTimesheetAddedAndNoSubmitBtnIsDisplayed() throws Throwable {
 		timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
@@ -42,14 +43,25 @@ public class TimesheetsStepDef {
 		timesheetPage.timesheetNonEditablePopup();
 	}
 
-    @And("add timesheet and verify time event")
-    public void addTimesheetAndVerifyTimeEvent() throws Throwable {
-    	String Intime = timesheetPage.addNewTimesheet();
-    	timesheetPage.verifyTimesheet(Intime);
-    }
-    
-    @Then("verify the deleted timesheet")
-    public void verifyDeletedTimesheet() throws Throwable {
-    	timesheetPage.verifyDeletedTimesheet();
-    }
+	@And("add timesheet and verify time event")
+	public void addTimesheetAndVerifyTimeEvent() throws Throwable {
+		String Intime = timesheetPage.addNewTimesheet();
+		timesheetPage.verifyTimesheet(Intime);
+	}
+
+	@Then("verify the deleted timesheet")
+	public void verifyDeletedTimesheet() throws Throwable {
+		timesheetPage.verifyDeletedTimesheet();
+	}
+
+	@When("Add a new timesheet")
+	public void addANewTimesheet() throws Throwable {
+		timesheetPage.AddTimesheet();
+	}
+
+	@Then("verify work total time this week to be greater than zero")
+	public void verifyWorkTotalTimeThisWeekToBeGreaterThanZero() throws Exception {
+		timesheetPage.verifyWeekTime();
+	}
+
 }
