@@ -80,7 +80,7 @@ Scenario: Automate editing of timesheet to delete clock in entry
 	When employee clicks on the timesheet widget 
 	And open the past day timesheet and add a new time sheet 
 	Then user edits the timesheet 
-	And Delete the timesheet 
+	And Delete the timesheet
 	
 @MOB-5578 @AndroidRegression 
 Scenario: Timesheet Submission Week View
@@ -91,6 +91,7 @@ Scenario: Timesheet Submission Week View
 	When employee clicks on the timesheet widget 
 	And Add a new timesheet
 	Then verify work total time this week to be greater than zero
+	And Delete the timesheet
 
 	@MOB-5574 @iOSRegression @MOB-5575 @AndroidRegression
 	Scenario: Timesheets unsubmit Week view

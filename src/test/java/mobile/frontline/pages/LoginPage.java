@@ -151,7 +151,7 @@ public class LoginPage extends BasePage {
 
 	public void verify_loginPageLoaded() throws InterruptedException {
 		switchToWebView();
-		isElementdisplayed(loginPageHeader);
+		isElementDisplayed(loginPageHeader);
 		Assert.assertTrue("Login Page is not displayed", loginPageHeader.isDisplayed());
 		utils.log().info("Login Page Loaded successfully");
 	}
