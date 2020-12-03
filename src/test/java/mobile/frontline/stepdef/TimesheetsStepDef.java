@@ -68,4 +68,9 @@ public class TimesheetsStepDef {
     public void timesheetsIsNotSubmitted() throws Throwable {
 		smokePage.submitTimesheet();
     }
+    
+    @And("^verify timesheets submit btn not displayed$")
+    public void verify_timesheets_submit_btn_not_displayed() throws Throwable {
+    	timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
+    }
 }
