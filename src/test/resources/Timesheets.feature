@@ -92,7 +92,7 @@ Scenario: Timesheet Submission Week View
 	And Add a new timesheet
 	Then verify work total time this week to be greater than zero
 
-	@MOB-5574 @iOSRegression @MOB-5575 @AndroidRegression
+@MOB-5574 @iOSRegression @MOB-5575 @AndroidRegression
 	Scenario: Timesheets unsubmit Week view
 		When the user launches the app
 		Then the user click on Get Started Button
@@ -100,3 +100,14 @@ Scenario: Timesheet Submission Week View
 		Then the employee navigates to dashboard page
 		When employee clicks on the timesheet widget
 	    Then Timesheets is not submitted
+
+@MOB-5206 @AndroidRegression 
+Scenario: Timesheets landing page
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	And click on timesheets widget and view timesheets
+	And Add a new timesheet
+	Then click on submit timesheet option 
+	And verify timesheets submit btn not displayed

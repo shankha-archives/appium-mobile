@@ -22,6 +22,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
+import mobile.Frontline.utils.TestDataManager;
 import mobile.Frontline.utils.TestUtils;
 
 import org.openqa.selenium.Dimension;
@@ -35,6 +36,7 @@ public class SmokeMethods extends LoginPage {
 	BasePage common = new BasePage();
 	LoginPage loginPage = new LoginPage();
 	JobsMethods jobPage = new JobsMethods();
+	public TestDataManager testdata = new TestDataManager();
 	String cdate;
 
 	// click //homepage
@@ -1090,7 +1092,7 @@ public class SmokeMethods extends LoginPage {
 	public void enterTimeSheetdetails() {
 		if (isElementdisplayed(enterPin)) {
 			click(enterPin);
-			driver.getKeyboard().sendKeys("3661");
+			driver.getKeyboard().sendKeys(testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();
 			click(checkbox);
 		} else {
