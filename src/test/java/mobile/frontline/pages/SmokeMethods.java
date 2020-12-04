@@ -368,7 +368,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement dailytimeSheetedittbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[3]")
 	public MobileElement timeSheetOutTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/delete_event_button")

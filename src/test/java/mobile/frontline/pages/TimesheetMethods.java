@@ -2,11 +2,15 @@ package mobile.frontline.pages;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import org.junit.Assert;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 
@@ -18,8 +22,6 @@ public class TimesheetMethods extends BasePage {
 	JobsMethods jobPage = new JobsMethods();
 	SmokeMethods smoke = new SmokeMethods();
 
-	String Intime;
-
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/day_view_submit_time_sheet_button")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement timesheetDaySubmitBtn;
@@ -29,7 +31,7 @@ public class TimesheetMethods extends BasePage {
 	public MobileElement timesheetErrorMessage;
   
 	@AndroidFindBy(id = "android:id/hours")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel[1]")
 	public MobileElement outTime;
 
 	@AndroidFindBy(id = "android:id/am_label")
@@ -41,11 +43,14 @@ public class TimesheetMethods extends BasePage {
 	public MobileElement pm_label;
 
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]/android.widget.TextView")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
 	public MobileElement totalWeekTime;
 
 	MobileElement currentTimesheet;
 	String OutTime;
+	String Intime;
+	String weekTotal;
+	Date d;
 
 	public void submitDayTimesheet() throws Exception {
 		isElementdisplayed(timesheetDaySubmitBtn);
@@ -135,11 +140,13 @@ public class TimesheetMethods extends BasePage {
 		}
 	}
 
-	public void AddTimesheet() throws Exception {
-
+	public void AddTimesheet() throws Throwable {
 		click(smoke.addTimeSheets);
 		common.isElementdisplayed(smoke.workDetails);
 		click(smoke.timeSheetOutTime);
+		
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
 		OutTime = common.getElementText(outTime);
 		int out = Integer.parseInt(OutTime);
 		int changeHourClock = out;
@@ -162,15 +169,46 @@ public class TimesheetMethods extends BasePage {
 			click(smoke.okBtn);
 			click(smoke.backBtn);
 		}
+		break;
+	case "iOS":
+		outTime.click();
+		dragClock();
+		smoke.saveOrderWidgetbtn.click();
+		click(smoke.saveTimesheets);
+		break;
+	default:
+		throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void verifyWeekTime() throws Exception {
 		DateFormat dateFormat = new SimpleDateFormat("h:mm");
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
 		click(smoke.homeTab);
 		common.scrollToElement(totalWeekTime, "up");
-		String weekTotal = common.getElementText(totalWeekTime);
-		Date d = dateFormat.parse(weekTotal);
+		weekTotal = common.getElementText(totalWeekTime);
+		d = dateFormat.parse(weekTotal);
 		Assert.assertNotEquals(d, dateFormat.parse("0:00"));
 		utils.log().info("Total time of the week is displayed");
+		    break;
+		case "iOS":
+			isElementdisplayed(totalWeekTime);
+			weekTotal = totalWeekTime.getAttribute("name").toString();
+			d = dateFormat.parse(weekTotal);
+			Assert.assertNotEquals(d, dateFormat.parse("0:00"));
+			utils.log().info("Total time of the week is displayed");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+	}
+	
+	public void dragClock() throws Throwable {
+		TouchAction action = new TouchAction(driver);
+		int dragX = outTime.getLocation().x + (outTime.getSize().width / 2);
+		int dragY = outTime.getLocation().y + (outTime.getSize().height / 2);
+		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
+				.moveTo(PointOption.point(dragX, dragY - 50)).release().perform();
 	}
 }
