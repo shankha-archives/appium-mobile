@@ -82,7 +82,7 @@ Scenario: Automate editing of timesheet to delete clock in entry
 	Then user edits the timesheet 
 	And Delete the timesheet
 	
-@MOB-5578 @AndroidRegression 
+@MOB-5578 @AndroidRegression @MOB-5579 @iOSRegression
 Scenario: Timesheet Submission Week View
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -93,13 +93,13 @@ Scenario: Timesheet Submission Week View
 	Then verify work total time this week to be greater than zero
 
 @MOB-5574 @iOSRegression @MOB-5575 @AndroidRegression
-	Scenario: Timesheets unsubmit Week view
-		When the user launches the app
-		Then the user click on Get Started Button
-		And Enter employee username and password and click on Sign In button
-		Then the employee navigates to dashboard page
-		When employee clicks on the timesheet widget
-	    Then Timesheets is not submitted
+Scenario: Timesheets unsubmit Week view
+	When the user launches the app
+	Then the user click on Get Started Button
+	And Enter employee username and password and click on Sign In button
+	Then the employee navigates to dashboard page
+	When employee clicks on the timesheet widget
+	Then Timesheets is not submitted
 
 @MOB-5206 @AndroidRegression 
 Scenario: Timesheets landing page
