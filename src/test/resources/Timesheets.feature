@@ -101,7 +101,7 @@ Scenario: Timesheets unsubmit Week view
 	When employee clicks on the timesheet widget
 	Then Timesheets is not submitted
 
-@MOB-5206 @AndroidRegression 
+@MOB-5206 @AndroidRegression @MOB-5205 @iOSRegression
 Scenario: Timesheets landing page
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -111,3 +111,20 @@ Scenario: Timesheets landing page
 	And Add a new timesheet
 	Then click on submit timesheet option 
 	And verify timesheets submit btn not displayed
+	
+@MOB-5203 @iOSRegression @MOB-5204 @AndroidRegression
+Scenario: Timesheet Widget
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	And user verify the current pay period of timesheet on dashboard 
+	And Add a new timesheet
+	
+@MOB-4794 @iOSRegression
+Scenario: View More Link should be present under Absence Widget
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	And Verify the View More link under Absence Widget
