@@ -128,3 +128,14 @@ Scenario: View More Link should be present under Absence Widget
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page
 	And Verify the View More link under Absence Widget
+	
+@MOB-5585 @AndroidRegression @MOB-5584 @iOSRegression
+Scenario: Make mobile error status code for incorrect pin when submitting a timesheet
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When employee clicks on the timesheet widget
+	When Click on submit btn with wrong entering pin
+	Then verify the invaid pin message
+	
