@@ -45,6 +45,13 @@ public class TimesheetMethods extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]/android.widget.TextView")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
 	public MobileElement totalWeekTime;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name,'For The Current Week')]")
+	public MobileElement currentPayPeriod;
+	
+	@iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@name='View More']")
+	public MobileElement viewMore;
 
 	MobileElement currentTimesheet;
 	String OutTime;
@@ -210,5 +217,18 @@ public class TimesheetMethods extends BasePage {
 		int dragY = outTime.getLocation().y + (outTime.getSize().height / 2);
 		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
 				.moveTo(PointOption.point(dragX, dragY - 50)).release().perform();
+	}
+	
+	public void verifyPayPeriod() throws Exception {
+		  common.scrollToElement(currentPayPeriod, "up");
+		  isElementdisplayed(currentPayPeriod);
+		  Assert.assertTrue("current Pay period is not displayed", currentPayPeriod.isDisplayed());
+		  click(smoke.timesheetsbtn);
+		}
+	
+	public void verifyViewMore() throws Exception {
+		common.scrollToElement(viewMore, "up");
+		  isElementdisplayed(viewMore);
+		  Assert.assertTrue("View More link is not displayed", viewMore.isDisplayed());
 	}
 }

@@ -73,4 +73,14 @@ public class TimesheetsStepDef {
     public void verify_timesheets_submit_btn_not_displayed() throws Throwable {
     	timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
     }
+    
+    @And("^user verify the current pay period of timesheet on dashboard$")
+    public void user_verify_current_pay_period() throws Throwable {
+    	timesheetPage.verifyPayPeriod();
+    }
+    
+    @And("^Verify the View More link under Absence Widget$")
+    public void verify_ViewMore_Link() throws Throwable {
+    	timesheetPage.verifyViewMore();
+    }
 }
