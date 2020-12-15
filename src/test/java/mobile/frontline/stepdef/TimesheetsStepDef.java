@@ -35,7 +35,7 @@ public class TimesheetsStepDef {
 	public void takeTheScreenshot() throws IOException {
 		smokePage.screenshotCapture();
 	}
-  
+
 	@Then("verify no timesheet added and no submit btn is displayed")
 	public void verifyNoTimesheetAddedAndNoSubmitBtnIsDisplayed() throws Throwable {
 		timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
@@ -53,34 +53,50 @@ public class TimesheetsStepDef {
 		timesheetPage.verifyWeekTime();
 	}
 
-    @And("add timesheet and verify time event")
-    public void addTimesheetAndVerifyTimeEvent() throws Throwable {
-    	String Intime = timesheetPage.addNewTimesheet();
-    	timesheetPage.verifyTimesheet(Intime);
-    }
-    
-    @Then("verify the deleted timesheet")
-    public void verifyDeletedTimesheet() throws Throwable {
-    	timesheetPage.verifyDeletedTimesheet();
-    }
+	@And("add timesheet and verify time event")
+	public void addTimesheetAndVerifyTimeEvent() throws Throwable {
+		String Intime = timesheetPage.addNewTimesheet();
+		timesheetPage.verifyTimesheet(Intime);
+	}
 
-    @Then("Timesheets is not submitted")
-    public void timesheetsIsNotSubmitted() throws Throwable {
+	@Then("verify the deleted timesheet")
+	public void verifyDeletedTimesheet() throws Throwable {
+		timesheetPage.verifyDeletedTimesheet();
+	}
+
+	@Then("Timesheets is not submitted")
+	public void timesheetsIsNotSubmitted() throws Throwable {
 		smokePage.submitTimesheet();
-    }
-    
-    @And("^verify timesheets submit btn not displayed$")
-    public void verify_timesheets_submit_btn_not_displayed() throws Throwable {
-    	timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
-    }
-    
-    @And("^user verify the current pay period of timesheet on dashboard$")
-    public void user_verify_current_pay_period() throws Throwable {
-    	timesheetPage.verifyPayPeriod();
-    }
-    
-    @And("^Verify the View More link under Absence Widget$")
-    public void verify_ViewMore_Link() throws Throwable {
-    	timesheetPage.verifyViewMore();
-    }
+	}
+
+	@And("^verify timesheets submit btn not displayed$")
+	public void verify_timesheets_submit_btn_not_displayed() throws Throwable {
+		timesheetPage.verifySubmitTimesheetBtnNotDisplayed();
+	}
+
+	@And("^user verify the current pay period of timesheet on dashboard$")
+	public void user_verify_current_pay_period() throws Throwable {
+		timesheetPage.verifyPayPeriod();
+	}
+
+	@And("^Verify the View More link under Absence Widget$")
+	public void verify_ViewMore_Link() throws Throwable {
+		timesheetPage.verifyViewMore();
+	}
+
+	@When("^Click on submit btn with wrong entering pin$")
+	public void click_on_submit_btn_with_wrong_entering_pin() throws Throwable {
+		smokePage.submitTimesheet();
+		timesheetPage.submitTimesheetsWithIncorrectPin();
+	}
+
+	@Then("^verify the invaid pin message$")
+	public void verify_the_invaid_pin_message() throws Throwable {
+		timesheetPage.toastMessge();
+	}
+
+	@And("^Navigate to menu links$")
+	public void navigate_to_menu_links() throws Throwable {
+		timesheetPage.clickBack();
+	}
 }

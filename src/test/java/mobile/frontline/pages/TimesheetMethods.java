@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -53,11 +56,15 @@ public class TimesheetMethods extends BasePage {
 	@iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@name='View More']")
 	public MobileElement viewMore;
 
+	 @iOSXCUITFindBy(accessibility = "Invalid PIN")
+	 public MobileElement inValidPin;
+	 
 	MobileElement currentTimesheet;
 	String OutTime;
 	String Intime;
 	String weekTotal;
 	Date d;
+	String InvalidPinMsg;
 
 	public void submitDayTimesheet() throws Exception {
 		isElementdisplayed(timesheetDaySubmitBtn);
@@ -230,5 +237,45 @@ public class TimesheetMethods extends BasePage {
 		common.scrollToElement(viewMore, "up");
 		  isElementdisplayed(viewMore);
 		  Assert.assertTrue("View More link is not displayed", viewMore.isDisplayed());
+	}
+	
+	public void clickBack() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			click(smoke.backBtn);
+			break;
+		case "iOS":
+			utils.log().info("Timesheet dark mode");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		
+	}
+	
+	public void submitTimesheetsWithIncorrectPin() {
+	         click(smoke.enterPin);
+	         driver.getKeyboard().sendKeys("3661");
+	         hideKeyboard();
+	         click(smoke.checkbox);
+	      click(smoke.submitTimesheet);
+	}
+
+	public void toastMessge() throws Exception {
+	
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			Thread.sleep(2000);
+			WebElement toastView = driver.findElement(By.xpath("//android.widget.Toast[1]"));
+			InvalidPinMsg = toastView.getAttribute("name");
+			break;
+		case "iOS":
+			isElementdisplayed(inValidPin);
+			InvalidPinMsg = getElementText(inValidPin);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		Assert.assertEquals(InvalidPinMsg, "Invalid PIN");
 	}
 }
