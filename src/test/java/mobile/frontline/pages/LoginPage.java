@@ -22,7 +22,8 @@ public class LoginPage extends BasePage {
 	public MobileElement splashHeader;
 
 	@AndroidFindBy(className = "android.widget.EditText")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[7]/XCUIElementTypeTextField")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[7]/XCUIElementTypeTextField")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
 	public MobileElement username;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
@@ -46,7 +47,8 @@ public class LoginPage extends BasePage {
 	public MobileElement pinUnlockErr;
 
 	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[9]/XCUIElementTypeSecureTextField")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[9]/XCUIElementTypeSecureTextField")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
 	public MobileElement password;
 
 	@AndroidFindBy(className = "android.widget.Button") // class_name : qa-button-login
