@@ -139,3 +139,13 @@ Scenario: Make mobile error status code for incorrect pin when submitting a time
 	When Click on submit btn with wrong entering pin
 	Then verify the invaid pin message
 	
+@MOB-5541 @iOSRegression
+Scenario: Undo Button working on Day view
+ 	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	And click on timesheets widget and view timesheets
+	Then click on submit timesheet option
+	And undo the timesheet
+	
