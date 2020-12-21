@@ -99,4 +99,9 @@ public class TimesheetsStepDef {
 	public void navigate_to_menu_links() throws Throwable {
 		timesheetPage.clickBack();
 	}
+	
+	@Then("^verify the time format$")
+	public void verify_the_time_format() throws Throwable {
+		timesheetPage.verifyTimeFormat();
+	}
 }

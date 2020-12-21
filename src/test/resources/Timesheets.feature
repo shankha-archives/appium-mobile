@@ -149,3 +149,11 @@ Scenario: Undo Button working on Day view
 	Then click on submit timesheet option
 	And undo the timesheet
 	
+@MOB-5583 @iOSRegression
+Scenario: Format timesheet display in accordance with durationFormat
+ 	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	And click on timesheets widget and view timesheets
+	Then verify the time format

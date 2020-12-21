@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
+
+import org.apache.commons.validator.DateValidator;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -65,6 +67,7 @@ public class TimesheetMethods extends BasePage {
 	String weekTotal;
 	Date d;
 	String InvalidPinMsg;
+	DateFormat dateFormat = new SimpleDateFormat("h:mm");
 
 	public void submitDayTimesheet() throws Exception {
 		isElementdisplayed(timesheetDaySubmitBtn);
@@ -195,8 +198,7 @@ public class TimesheetMethods extends BasePage {
 		}
 	}
 
-	public void verifyWeekTime() throws Exception {
-		DateFormat dateFormat = new SimpleDateFormat("h:mm");
+	public void verifyWeekTime() throws Exception {	
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 		click(smoke.homeTab);
@@ -277,5 +279,12 @@ public class TimesheetMethods extends BasePage {
 			throw new Exception("Invalid platform Name");
 		}
 		Assert.assertEquals(InvalidPinMsg, "Invalid PIN");
+	}
+	
+	public void verifyTimeFormat() throws Exception {
+		isElementdisplayed(totalWeekTime);
+		weekTotal = totalWeekTime.getAttribute("name").toString();
+		d = dateFormat.parse(weekTotal);
+		utils.log().info("Timesheet Date Format");
 	}
 }
