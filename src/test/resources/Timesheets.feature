@@ -139,7 +139,7 @@ Scenario: Make mobile error status code for incorrect pin when submitting a time
 	When Click on submit btn with wrong entering pin
 	Then verify the invaid pin message
 	
-@MOB-5541 @iOSRegression @MOB-5551 @iOSRegression
+@MOB-5541 @iOSRegression @MOB-5551 @AndroidRegression
 Scenario: Undo Button working on Day view
  	When the user launches the app 
 	Then the user click on Get Started Button 
