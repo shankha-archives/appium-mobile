@@ -549,9 +549,9 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
 	public MobileElement nextMonthCalender;
 
-//	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcomeRoleName")
-//	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeStaticText[2]")
-//	public MobileElement homePageRoleHeader;
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcomeRoleName")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther//XCUIElementTypeStaticText[2]")
+	public MobileElement homePageRoleHeader;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_right_button_image")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
@@ -993,13 +993,32 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void sendFeedback() throws Exception {
-		Assert.assertTrue("Topic tab is not displayed", topic.isDisplayed());
-		click(topic);
-		int size = itemsInDropDown.size();
-		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
-		itemsInDropDown.get(randomNumber).click();
-		sendFeedbackTitle();
-		sendFeedbackMessage();
+//		Assert.assertTrue("Topic tab is not displayed", topic.isDisplayed());
+//		click(topic);
+//		int size = itemsInDropDown.size();
+//		int randomNumber = ThreadLocalRandom.current().nextInt(0, size);
+//		itemsInDropDown.get(randomNumber).click();
+//		sendFeedbackTitle();
+//		sendFeedbackMessage();
+		
+		
+			isElementdisplayed(topic);
+			Assert.assertTrue("Topic tab is not displayed", topic.isDisplayed());
+			click(topic);
+//			itemsInDropDown.remove(0);
+//			itemsInDropDown.remove(0);
+//			itemsInDropDown.remove(0);
+//			for (MobileElement widgetlistele : itemsInDropDown) {
+//				widgetlistbeforeReorder.add(common.getElementText(widgetlistele));
+//			}
+//			Assert.assertEquals(widgetlistbeforeReorder.size(), "sbhs");
+//			   int size=itemsInDropDown.size();
+//			 Random rand = new Random(); 
+//			itemsInDropDown.get(rand.nextInt(size)).click();
+			isElementdisplayed(itemsInDropDown.get(1));
+			itemsInDropDown.get(1).click();
+			sendFeedbackTitle();
+			sendFeedbackMessage();
 	}
 
 	public void sendFeedbackTitle() {
@@ -1420,6 +1439,9 @@ public class SmokeMethods extends LoginPage {
 		case "Android":
 			widgetlistafterReorder.forEach(widget -> {
 				if (widget.equals("What's New")) {
+					if(getElementText(homePageRoleHeader).contains("Org")) {
+						swipeUpSlowlyOnDashboard();
+					}
 					return;
 				}
 				MobileElement widgetElement = driver
