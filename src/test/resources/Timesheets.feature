@@ -121,7 +121,7 @@ Scenario: Timesheet Widget
 	And user verify the current pay period of timesheet on dashboard 
 	And Add a new timesheet
 	
-@MOB-4794 @iOSRegression
+@MOB-4794 @iOSRegression @MOB-5718 @AndroidRegression
 Scenario: View More Link should be present under Absence Widget
 	When the user launches the app 
 	Then the user click on Get Started Button 

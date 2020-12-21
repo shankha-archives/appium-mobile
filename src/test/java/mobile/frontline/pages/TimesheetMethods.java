@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
-import org.apache.commons.validator.DateValidator;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -55,6 +54,7 @@ public class TimesheetMethods extends BasePage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name,'For The Current Week')]")
 	public MobileElement currentPayPeriod;
 	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absences_widget_fragment_id")
 	@iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@name='View More']")
 	public MobileElement viewMore;
 
@@ -236,9 +236,21 @@ public class TimesheetMethods extends BasePage {
 		}
 	
 	public void verifyViewMore() throws Exception {
-		common.scrollToElement(viewMore, "up");
-		  isElementdisplayed(viewMore);
-		  Assert.assertTrue("View More link is not displayed", viewMore.isDisplayed());
+		
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			common.scrollToElement(smoke.createAbsBtn, "up");			
+			String creat= getElementText(smoke.createAbsBtn);
+			Assert.assertNotEquals(creat, "View More");
+			break;
+		case "iOS":
+			common.scrollToElement(viewMore, "up");
+			  Assert.assertTrue("View More link is not displayed", viewMore.isDisplayed());
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+	
 	}
 	
 	public void clickBack() throws Exception {
