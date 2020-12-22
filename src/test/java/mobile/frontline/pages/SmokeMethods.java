@@ -918,12 +918,13 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void clickOnSetting() {
+	public void clickOnSetting() throws Exception {
 		clickOnMenuTab();
 		settingOption();
 	}
 
-	public void settingOption() {
+	public void settingOption() throws Exception {
+		common.scrollToElement(settings, "up");
 		Assert.assertTrue("Settings tab is not displayed", settings.isDisplayed());
 		click(settings);
 	}
