@@ -1395,7 +1395,7 @@ public class SmokeMethods extends LoginPage {
 //			utils.log().info("Time sheet is deleted");
 			break;
 		case "iOS":
-			click(timeSheetInTime);
+			//click(timeSheetInTime);
 			if (isElementdisplayed(PushNotificationOK)) {
 				click(PushNotificationOK);
 			}

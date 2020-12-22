@@ -110,7 +110,7 @@ public class TimesheetMethods extends BasePage {
 			common.isElementdisplayed(smoke.workDetails);
 			smoke.clickonEditButton2();
 			smoke.clickOnEditBtton3();
-			String Intime = common.currentTime();
+			Intime = common.currentTime();
 			click(smoke.saveTimesheets);
 			break;
 		default:
