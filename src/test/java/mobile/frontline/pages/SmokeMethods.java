@@ -186,7 +186,8 @@ public class SmokeMethods extends LoginPage {
 
 	// selecting value from drop down
 	@AndroidFindBy(xpath = "//android.widget.TextView[@index= 0]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Topic']")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Topic']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell")
 	public List<MobileElement> itemsInDropDown;
 
 	// enter text in Title
@@ -1790,6 +1791,7 @@ public class SmokeMethods extends LoginPage {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
+		}
 			if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 				(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 						.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700)))
@@ -1797,4 +1799,3 @@ public class SmokeMethods extends LoginPage {
 			}
 		}
 	}
-}
