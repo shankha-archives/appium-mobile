@@ -303,17 +303,16 @@ public class TimesheetMethods extends BasePage {
 
 		case "Android":
 			weekTotal = common.getElementText(totalWeekTotalAmount);
-			d = dateFormat.parse(weekTotal);
 			break;
 
 		case "iOS":
 			isElementdisplayed(totalWeekTime);
 			weekTotal = totalWeekTime.getAttribute("name").toString();
-			d = dateFormat.parse(weekTotal);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
+		d = dateFormat.parse(weekTotal);
 		Assert.assertTrue("Time is in h:mm format", !(d == null));
 		utils.log().info("Timesheet Date Format");
 	}
