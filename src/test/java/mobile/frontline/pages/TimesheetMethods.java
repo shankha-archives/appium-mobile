@@ -33,7 +33,7 @@ public class TimesheetMethods extends BasePage {
 	@AndroidFindBy(id = "android:id/message")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name='Error']")
 	public MobileElement timesheetErrorMessage;
-  
+
 	@AndroidFindBy(id = "android:id/hours")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel[1]")
 	public MobileElement outTime;
@@ -49,18 +49,22 @@ public class TimesheetMethods extends BasePage {
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]/android.widget.TextView")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
 	public MobileElement totalWeekTime;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name,'For The Current Week')]")
 	public MobileElement currentPayPeriod;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/absences_widget_fragment_id")
-	@iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@name='View More']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='View More']")
 	public MobileElement viewMore;
 
-	 @iOSXCUITFindBy(accessibility = "Invalid PIN")
-	 public MobileElement inValidPin;
-	 
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_view_total_amount")
+	// @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
+	public MobileElement totalWeekTotalAmount;
+
+	@iOSXCUITFindBy(accessibility = "Invalid PIN")
+	public MobileElement inValidPin;
+
 	MobileElement currentTimesheet;
 	String OutTime;
 	String Intime;
@@ -161,65 +165,66 @@ public class TimesheetMethods extends BasePage {
 		click(smoke.addTimeSheets);
 		common.isElementdisplayed(smoke.workDetails);
 		click(smoke.timeSheetOutTime);
-		
+
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-		OutTime = common.getElementText(outTime);
-		int out = Integer.parseInt(OutTime);
-		int changeHourClock = out;
-		if (out == 12)
-			out = 1;
-		else
-			out = out + 1;
-		driver.findElementByXPath(
-				"//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + out + "']").click();
-
-		if (changeHourClock == 11) {
-			if (Boolean.parseBoolean(am_label.getAttribute("checked").toString()))
-				click(pm_label);
+			OutTime = common.getElementText(outTime);
+			int out = Integer.parseInt(OutTime);
+			int changeHourClock = out;
+			if (out == 12)
+				out = 1;
 			else
-				click(am_label);
-		}
-		click(smoke.okBtn);
-		click(smoke.saveTimesheets);
-		if (isElementdisplayed(smoke.okBtn)) {
-			click(smoke.okBtn);
-			click(smoke.backBtn);
-		}
-		break;
-	case "iOS":
-		outTime.click();
-		dragClock();
-		smoke.saveOrderWidgetbtn.click();
-		click(smoke.saveTimesheets);
-		break;
-	default:
-		throw new Exception("Invalid platform Name");
-		}
-	}
+				out = out + 1;
+			driver.findElementByXPath(
+					"//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + out + "']")
+					.click();
 
-	public void verifyWeekTime() throws Exception {	
-		switch (new GlobalParams().getPlatformName()) {
-		case "Android":
-		click(smoke.homeTab);
-		common.scrollToElement(totalWeekTime, "up");
-		weekTotal = common.getElementText(totalWeekTime);
-		d = dateFormat.parse(weekTotal);
-		Assert.assertNotEquals(d, dateFormat.parse("0:00"));
-		utils.log().info("Total time of the week is displayed");
-		    break;
+			if (changeHourClock == 11) {
+				if (Boolean.parseBoolean(am_label.getAttribute("checked").toString()))
+					click(pm_label);
+				else
+					click(am_label);
+			}
+			click(smoke.okBtn);
+			click(smoke.saveTimesheets);
+			if (isElementdisplayed(smoke.okBtn)) {
+				click(smoke.okBtn);
+				click(smoke.backBtn);
+			}
+			break;
 		case "iOS":
-			isElementdisplayed(totalWeekTime);
-			weekTotal = totalWeekTime.getAttribute("name").toString();
-			d = dateFormat.parse(weekTotal);
-			Assert.assertNotEquals(d, dateFormat.parse("0:00"));
-			utils.log().info("Total time of the week is displayed");
+			outTime.click();
+			dragClock();
+			smoke.saveOrderWidgetbtn.click();
+			click(smoke.saveTimesheets);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 	}
-	
+
+	public void verifyWeekTime() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+
+		case "Android":
+			click(smoke.homeTab);
+			common.scrollToElement(totalWeekTime, "up");
+			weekTotal = common.getElementText(totalWeekTime);
+			d = dateFormat.parse(weekTotal);
+			break;
+
+		case "iOS":
+			isElementdisplayed(totalWeekTime);
+			weekTotal = totalWeekTime.getAttribute("name").toString();
+			d = dateFormat.parse(weekTotal);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		Assert.assertNotEquals(d, dateFormat.parse("0:00"));
+		utils.log().info("Total time of the week is displayed");
+	}
+
 	public void dragClock() throws Throwable {
 		TouchAction action = new TouchAction(driver);
 		int dragX = outTime.getLocation().x + (outTime.getSize().width / 2);
@@ -227,32 +232,32 @@ public class TimesheetMethods extends BasePage {
 		action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
 				.moveTo(PointOption.point(dragX, dragY - 50)).release().perform();
 	}
-	
+
 	public void verifyPayPeriod() throws Exception {
-		  common.scrollToElement(currentPayPeriod, "up");
-		  isElementdisplayed(currentPayPeriod);
-		  Assert.assertTrue("current Pay period is not displayed", currentPayPeriod.isDisplayed());
-		  click(smoke.timesheetsbtn);
-		}
-	
+		common.scrollToElement(currentPayPeriod, "up");
+		isElementdisplayed(currentPayPeriod);
+		Assert.assertTrue("current Pay period is not displayed", currentPayPeriod.isDisplayed());
+		click(smoke.timesheetsbtn);
+	}
+
 	public void verifyViewMore() throws Exception {
-		
+
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.scrollToElement(smoke.createAbsBtn, "up");			
-			String creat= getElementText(smoke.createAbsBtn);
+			common.scrollToElement(smoke.createAbsBtn, "up");
+			String creat = getElementText(smoke.createAbsBtn);
 			Assert.assertNotEquals(creat, "View More");
 			break;
 		case "iOS":
 			common.scrollToElement(viewMore, "up");
-			  Assert.assertTrue("View More link is not displayed", viewMore.isDisplayed());
+			Assert.assertTrue("View More link is not displayed", viewMore.isDisplayed());
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-	
+
 	}
-	
+
 	public void clickBack() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -264,19 +269,19 @@ public class TimesheetMethods extends BasePage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		
+
 	}
-	
+
 	public void submitTimesheetsWithIncorrectPin() {
-	         click(smoke.enterPin);
-	         driver.getKeyboard().sendKeys("3661");
-	         hideKeyboard();
-	         click(smoke.checkbox);
-	      click(smoke.submitTimesheet);
+		click(smoke.enterPin);
+		driver.getKeyboard().sendKeys("3661");
+		hideKeyboard();
+		click(smoke.checkbox);
+		click(smoke.submitTimesheet);
 	}
 
 	public void toastMessge() throws Exception {
-	
+
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			Thread.sleep(2000);
@@ -292,11 +297,24 @@ public class TimesheetMethods extends BasePage {
 		}
 		Assert.assertEquals(InvalidPinMsg, "Invalid PIN");
 	}
-	
+
 	public void verifyTimeFormat() throws Exception {
-		isElementdisplayed(totalWeekTime);
-		weekTotal = totalWeekTime.getAttribute("name").toString();
-		d = dateFormat.parse(weekTotal);
+		switch (new GlobalParams().getPlatformName()) {
+
+		case "Android":
+			weekTotal = common.getElementText(totalWeekTotalAmount);
+			d = dateFormat.parse(weekTotal);
+			break;
+
+		case "iOS":
+			isElementdisplayed(totalWeekTime);
+			weekTotal = totalWeekTime.getAttribute("name").toString();
+			d = dateFormat.parse(weekTotal);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		Assert.assertTrue("Time is in h:mm format", !(d == null));
 		utils.log().info("Timesheet Date Format");
 	}
 }

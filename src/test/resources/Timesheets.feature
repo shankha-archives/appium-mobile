@@ -149,7 +149,7 @@ Scenario: Undo Button working on Day view
 	Then click on submit timesheet option
 	And undo the timesheet
 	
-@MOB-5583 @iOSRegression
+@MOB-5583 @iOSRegression @MOB-5582 @AndroidRegression
 Scenario: Format timesheet display in accordance with durationFormat
  	When the user launches the app 
 	Then the user click on Get Started Button 
