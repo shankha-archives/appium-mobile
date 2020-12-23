@@ -186,7 +186,8 @@ public class SmokeMethods extends LoginPage {
 
 	// selecting value from drop down
 	@AndroidFindBy(xpath = "//android.widget.TextView[@index= 0]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Topic']")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Topic']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell")
 	public List<MobileElement> itemsInDropDown;
 
 	// enter text in Title
@@ -917,12 +918,13 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void clickOnSetting() {
+	public void clickOnSetting() throws Exception {
 		clickOnMenuTab();
 		settingOption();
 	}
 
-	public void settingOption() {
+	public void settingOption() throws Exception {
+		common.scrollToElement(settings, "up");
 		Assert.assertTrue("Settings tab is not displayed", settings.isDisplayed());
 		click(settings);
 	}
@@ -1393,7 +1395,9 @@ public class SmokeMethods extends LoginPage {
 //			utils.log().info("Time sheet is deleted");
 			break;
 		case "iOS":
+			if (isElementdisplayed(timeSheetInTime)) {
 			click(timeSheetInTime);
+			}
 			if (isElementdisplayed(PushNotificationOK)) {
 				click(PushNotificationOK);
 			}
@@ -1790,6 +1794,7 @@ public class SmokeMethods extends LoginPage {
 			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
 					.release().perform();
+		}
 			if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
 				(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
 						.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700)))
@@ -1797,4 +1802,3 @@ public class SmokeMethods extends LoginPage {
 			}
 		}
 	}
-}

@@ -69,7 +69,7 @@ public class JobsMethods extends LoginPage {
 	public MobileElement noavailablejobs;
 
 	@AndroidFindBy(xpath = "//android.widget.Button[@text='Continue']")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "Continue")
 	public MobileElement contbtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
