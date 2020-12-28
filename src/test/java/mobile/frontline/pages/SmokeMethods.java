@@ -699,7 +699,8 @@ public class SmokeMethods extends LoginPage {
 		DateTimeFormatter dtf;
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			dtf = DateTimeFormatter.ofPattern("dd, yyyy");
+			dtf = DateTimeFormatter.ofPattern("MMMM dd, yyyy");
+			//dtf = DateTimeFormatter.ofPattern("dd, yyyy");
 			break;
 		case "iOS":
 			dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -714,7 +715,8 @@ public class SmokeMethods extends LoginPage {
 		SimpleDateFormat dateFormat;
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			dateFormat = new SimpleDateFormat("dd, yyyy");
+			dateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+			//dateFormat = new SimpleDateFormat("dd, yyyy");
 			break;
 		case "iOS":
 			dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -724,11 +726,12 @@ public class SmokeMethods extends LoginPage {
 		}
 		Calendar c = Calendar.getInstance();
 		c.setTime(dateFormat.parse(date));
-		c.add(Calendar.DAY_OF_MONTH, 1);
-		String newDate = dateFormat.format(c.getTime());
-		return newDate;
+		
+		c.add(Calendar.DAY_OF_YEAR, 1);
+		//c.add(Calendar.DAY_OF_MONTH, 1);
+		return dateFormat.format(c.getTime());
 	}
-
+	
 	public void selectDate() throws Throwable {
 		Calendar cal = Calendar.getInstance();
 		int res = cal.getActualMaximum(Calendar.DATE);
