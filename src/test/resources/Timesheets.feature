@@ -46,7 +46,7 @@ Scenario: Timesheets Submission Day View
 	Then the employee navigates to dashboard page
 	When the user clicks on Menu tab and click on Settings
 	Then the user toggle the Dark Mode
-	Then click on the home button to navigate back to dashboard
+	Then Navigate to menu links
 	When click on timesheet option
 	Then Take the screenshot
 	
