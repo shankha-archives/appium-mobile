@@ -743,16 +743,13 @@ public class SmokeMethods extends LoginPage {
 			date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
 			tagName = date.getAttribute("content-desc").toString();
 			while (tagName.contains("Saturday") || tagName.contains("Sunday") || tagName.contains("This day has one")) {
-				nd = nextDate(nd);
-				date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
-				tagName = date.getAttribute("content-desc").toString();
 				if (nd.contains(Integer.toString(res)) && (tagName.contains("Saturday") || tagName.contains("Sunday")
 						|| tagName.contains("This day has one"))) {
-//					common.swipeUpSlowly();
-//					common.swipeUpSlowly();
-					//swipeUp();
 					dragcalendar();
 				}
+				nd = nextDate(nd);
+				date = driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]");
+				tagName = date.getAttribute("content-desc").toString();				
 			}
 			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc, '" + nd + "')]").click();
 			break;
