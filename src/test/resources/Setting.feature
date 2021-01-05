@@ -55,14 +55,22 @@ Scenario: Remove Unlock Code Page
 	Then the substitute user is taken to the Login Page
 	And the user verify that Unlock code page should not displayed
 	
-@regression @MOB-6023
-  Scenario: Switch for mult-org user will always show role picker
-  When the user launches the app 
+@MOB-6023 @Android
+Scenario: Switch for mult-org user will always show role picker
+    When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter multiorg username and password and click on SignIn button 
-  Then the user is presented with the org picker
-  When Select the Organization
-  Then the substitute navigates to dashboard page
-  When click on switch
-  Then the user is presented with the org picker
+    Then the user is presented with the org picker
+    When Select the Organization
+    Then the substitute navigates to dashboard page
+    When click on switch
+    Then the user is presented with the org picker
 	   
+@MOB-6033 @iOS
+Scenario: Denied tab in absences view reads as no upcoming absences
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	And click on Available Leave Balances and view leave balances
+	Then click and verify the Denied panel 

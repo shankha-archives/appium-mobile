@@ -99,4 +99,10 @@ public class SettingStepDef {
 	public void clickOnSwitch() {
 		jobPage.clickSwitchbtn();
 	}
+	
+	//MOB-6033
+	@Then("^click and verify the Denied panel$")
+	public void click_and_verify_denied_panel() throws Throwable {
+		settingsPage.clickAndVerifyDeniedPanel();
+	}
 }
