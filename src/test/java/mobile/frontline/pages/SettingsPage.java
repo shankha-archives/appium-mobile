@@ -68,6 +68,10 @@ public class SettingsPage extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement orgSelection;
 	
+	//@AndroidFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "Denied")
+	public MobileElement deniedLeaveBalanceHeader;
+	
 	
 	public String job_day;
 	public String job_month;
@@ -169,4 +173,9 @@ public class SettingsPage extends LoginPage {
 		click(jobs.contbtn);
 	}
 	
+	public void clickAndVerifyDeniedPanel() throws Throwable {
+		click(deniedLeaveBalanceHeader);
+		String panel = deniedLeaveBalanceHeader.getAttribute("name").toString();
+		Assert.assertEquals(panel, "Denied");
+	}
 }
