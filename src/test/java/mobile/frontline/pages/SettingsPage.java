@@ -22,6 +22,7 @@ public class SettingsPage extends LoginPage {
 	TestUtils utils = new TestUtils();
 	SmokeMethods smoke = new SmokeMethods();
 	LoginPage loginPage = new LoginPage();
+	JobsMethods jobs = new JobsMethods();
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
 	@iOSXCUITFindBy(accessibility = "Calendar")
@@ -63,6 +64,11 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
 	public MobileElement nextScheduledJobWidget;
   
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_org_role_name")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement orgSelection;
+	
+	
 	public String job_day;
 	public String job_month;
 	
@@ -157,4 +163,10 @@ public class SettingsPage extends LoginPage {
 		Assert.assertTrue("Unlock code page is not displayed", IsElementNotPresent(loginPage.enterUnlockCode));
 		utils.log().info("Unlock code page is not displayed");
 	}
+	
+	public void selectOrg() {
+		click(orgSelection);
+		click(jobs.contbtn);
+	}
+	
 }

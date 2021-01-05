@@ -201,8 +201,11 @@ public class JobsMethods extends LoginPage {
 		return jobs;
 	}
 
-	public void switchToAnotherOrg() {
+	public void clickSwitchbtn() {
 		click(switchbtn);
+	}
+	
+	public void switchToAnotherOrg() {
 		fluentWait(chesterorg);
 		Assert.assertTrue("Available Organizations are not displayed", chesterorg.isDisplayed());
 		utils.log().info("Available Organizations are  displayed");
