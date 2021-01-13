@@ -115,6 +115,7 @@ public class SettingStepDef {
 
 	@Then("Click on any created absence and verify if crash happens")
 	public void clickOnAnyCreatedAbsenceAndVerifyIfCrashHappens() {
+		settingsPage.selectTodaysAbsence();
 		smokePage.verifyAbsence();
 	}
 }

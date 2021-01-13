@@ -72,6 +72,9 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Denied")
 	public MobileElement deniedLeaveBalanceHeader;
 	
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@index='1'])[4]")
+	@iOSXCUITFindBy(accessibility = "Denied")
+	public MobileElement todayAbsence;
 	
 	public String job_day;
 	public String job_month;
@@ -177,5 +180,9 @@ public class SettingsPage extends LoginPage {
 		click(deniedLeaveBalanceHeader);
 		String panel = deniedLeaveBalanceHeader.getAttribute("name").toString();
 		Assert.assertEquals(panel, "Denied");
+	}
+	
+	public void selectTodaysAbsence() {
+		click(todayAbsence);
 	}
 }
