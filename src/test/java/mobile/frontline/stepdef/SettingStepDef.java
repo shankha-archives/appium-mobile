@@ -99,10 +99,22 @@ public class SettingStepDef {
 	public void clickOnSwitch() {
 		jobPage.clickSwitchbtn();
 	}
-	
-	//MOB-6033
+
+	// MOB-6033
 	@Then("^click and verify the Denied panel$")
 	public void click_and_verify_denied_panel() throws Throwable {
 		settingsPage.clickAndVerifyDeniedPanel();
+	}
+
+	// MOB-6030
+	@When("Click on add Absence Widget")
+	public void clickOnAddAbsenceWidget() throws Throwable {
+		smokePage.selectAbsenceWidget();
+		smokePage.verifyAbsencesPage();	
+	}
+
+	@Then("Click on any created absence and verify if crash happens")
+	public void clickOnAnyCreatedAbsenceAndVerifyIfCrashHappens() {
+		smokePage.verifyAbsence();
 	}
 }

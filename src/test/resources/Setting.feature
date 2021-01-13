@@ -74,3 +74,12 @@ Scenario: Denied tab in absences view reads as no upcoming absences
 	Then the employee navigates to dashboard page
 	And click on Available Leave Balances and view leave balances
 	Then click and verify the Denied panel 
+	
+@MOB-6030 @Android
+Scenario: Application crashes after tapping on todays absences
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page 
+	When Click on add Absence Widget
+	Then Click on any created absence and verify if crash happens
