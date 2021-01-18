@@ -29,7 +29,7 @@ Scenario: Allow user to submit diagnostic data
 	And Long press on Frontline Logo at bottom of the screen 
 	Then User click on the send Diagnostics option and click on Okay button 
 		
-@sprint10 @MOB-4803 @android
+@sprint10 @MOB-4803 @android @regression
 Scenario: SHOW Accepted Jobs in-app Calendar 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -55,8 +55,8 @@ Scenario: Remove Unlock Code Page
 	Then the substitute user is taken to the Login Page
 	And the user verify that Unlock code page should not displayed
 	
-@MOB-6023 @Android @6024 @iOS
-Scenario: Switch for mult-org user will always show role picker
+@MOB-6023 @android @MOB-6024 @iOS @regression
+Scenario: Verify role picker option should not displayed when user account has only one role
     When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter multiorg username and password and click on SignIn button 
@@ -66,7 +66,7 @@ Scenario: Switch for mult-org user will always show role picker
     When click on switch
     Then the user is presented with the org picker
 	   
-@MOB-6033 @iOS
+@MOB-6033 @iOS @regression
 Scenario: Denied tab in absences view reads as no upcoming absences
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -75,8 +75,8 @@ Scenario: Denied tab in absences view reads as no upcoming absences
 	And click on Available Leave Balances and view leave balances
 	Then click and verify the Denied panel
 	
-@MOB-6019 @iOS
-Scenario: Add time in Timesheet should not change after relaunching the app
+@MOB-6019 @android @regression
+Scenario: Verify add Intime event value in Timesheet should remain same after relaunching the app
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username and password and click on Sign In button 
@@ -84,4 +84,4 @@ Scenario: Add time in Timesheet should not change after relaunching the app
 	When employee clicks on the timesheet widget
 	Then click on add timesheet and change InTime
 	And The user minimize and relaunch the application
-	Then verify that InTime should not changes
+	Then Verify that InTime should not changes

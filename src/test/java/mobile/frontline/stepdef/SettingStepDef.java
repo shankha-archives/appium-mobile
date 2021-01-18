@@ -112,7 +112,7 @@ public class SettingStepDef {
 		settingsPage.addTimesheetAndChangeIntime();
 	}
 		
-	@Then("^verify that InTime should not changes$")
+	@Then("^Verify that InTime should not changes$")
 	public void verify_that_InTime_should_not_changes() throws Throwable {
 		settingsPage.verifyInTime();
 	}

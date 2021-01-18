@@ -80,8 +80,8 @@ public class SettingsPage extends LoginPage {
 	public String job_day;
 	public String job_month;
 	public String InTime;
-	public String time1;
-	public String time2;
+	public String expectedInTime;
+	public String actualInTime;
 	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -208,14 +208,14 @@ public class SettingsPage extends LoginPage {
 				click(timesheet.am_label);
 		}
 		click(smoke.okBtn);
-		time1 = getElementText(InTimeEdit);
+		expectedInTime = getElementText(InTimeEdit);
 	}
 	
 	public void verifyInTime() throws Throwable {
 		common.isElementdisplayed(smoke.workDetails);
 		isElementdisplayed(InTimeEdit);
-		time2 = getElementText(InTimeEdit);
-		Assert.assertEquals(time1, time2);
+		actualInTime = getElementText(InTimeEdit);
+		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
 		utils.log().info("InTime is not back to default");	
-		}
+	}
 }
