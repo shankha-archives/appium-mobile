@@ -216,6 +216,6 @@ public class SettingsPage extends LoginPage {
 		isElementdisplayed(InTimeEdit);
 		time2 = getElementText(InTimeEdit);
 		Assert.assertEquals(time1, time2);
-		utils.log().info("InTime is changed");	
+		utils.log().info("InTime is not back to default");	
 		}
 }
