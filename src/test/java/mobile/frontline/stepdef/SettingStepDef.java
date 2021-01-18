@@ -105,4 +105,15 @@ public class SettingStepDef {
 	public void click_and_verify_denied_panel() throws Throwable {
 		settingsPage.clickAndVerifyDeniedPanel();
 	}
+	
+	//MOB-6019
+	@Then("^click on add timesheet and change InTime$")
+	public void click_on_add_timesheet_and_change_InTime() throws Throwable {
+		settingsPage.addTimesheetAndChangeIntime();
+	}
+		
+	@Then("^verify that InTime should not changes$")
+	public void verify_that_InTime_should_not_changes() throws Throwable {
+		settingsPage.verifyInTime();
+	}
 }

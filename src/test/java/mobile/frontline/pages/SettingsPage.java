@@ -23,6 +23,7 @@ public class SettingsPage extends LoginPage {
 	SmokeMethods smoke = new SmokeMethods();
 	LoginPage loginPage = new LoginPage();
 	JobsMethods jobs = new JobsMethods();
+	TimesheetMethods timesheet = new TimesheetMethods();
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
 	@iOSXCUITFindBy(accessibility = "Calendar")
@@ -65,16 +66,22 @@ public class SettingsPage extends LoginPage {
 	public MobileElement nextScheduledJobWidget;
   
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_org_role_name")
-//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[1]")
 	public MobileElement orgSelection;
 	
 	//@AndroidFindBy(xpath = "")
 	@iOSXCUITFindBy(accessibility = "Denied")
 	public MobileElement deniedLeaveBalanceHeader;
 	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement InTimeEdit;
 	
 	public String job_day;
 	public String job_month;
+	public String InTime;
+	public String time1;
+	public String time2;
 	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -178,4 +185,37 @@ public class SettingsPage extends LoginPage {
 		String panel = deniedLeaveBalanceHeader.getAttribute("name").toString();
 		Assert.assertEquals(panel, "Denied");
 	}
+	
+	public void addTimesheetAndChangeIntime() throws Throwable {
+		click(smoke.addTimeSheets);
+		common.isElementdisplayed(smoke.workDetails);
+		click(InTimeEdit);
+		InTime = common.getElementText(timesheet.outTime);
+		int in = Integer.parseInt(InTime);
+		int changeHourClock = in;
+		if (in == 12)
+			in = 1;
+		else
+			in = in + 1;
+		driver.findElementByXPath(
+				"//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + in + "']")
+				.click();
+
+		if (changeHourClock == 11) {
+			if (Boolean.parseBoolean(timesheet.am_label.getAttribute("checked").toString()))
+				click(timesheet.pm_label);
+			else
+				click(timesheet.am_label);
+		}
+		click(smoke.okBtn);
+		time1 = getElementText(InTimeEdit);
+	}
+	
+	public void verifyInTime() throws Throwable {
+		common.isElementdisplayed(smoke.workDetails);
+		isElementdisplayed(InTimeEdit);
+		time2 = getElementText(InTimeEdit);
+		Assert.assertEquals(time1, time2);
+		utils.log().info("InTime is changed");	
+		}
 }

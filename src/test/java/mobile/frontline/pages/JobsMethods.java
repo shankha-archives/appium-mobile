@@ -73,7 +73,7 @@ public class JobsMethods extends LoginPage {
 	public MobileElement contbtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[1]")
 	public MobileElement switchbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_duration_date")

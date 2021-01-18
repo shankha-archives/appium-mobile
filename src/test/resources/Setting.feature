@@ -55,7 +55,7 @@ Scenario: Remove Unlock Code Page
 	Then the substitute user is taken to the Login Page
 	And the user verify that Unlock code page should not displayed
 	
-@MOB-6023 @Android
+@MOB-6023 @Android @6024 @iOS
 Scenario: Switch for mult-org user will always show role picker
     When the user launches the app 
 	Then the user click on Get Started Button 
@@ -73,4 +73,15 @@ Scenario: Denied tab in absences view reads as no upcoming absences
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page
 	And click on Available Leave Balances and view leave balances
-	Then click and verify the Denied panel 
+	Then click and verify the Denied panel
+	
+@MOB-6019 @iOS
+Scenario: Add time in Timesheet should not change after relaunching the app
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	When employee clicks on the timesheet widget
+	Then click on add timesheet and change InTime
+	And The user minimize and relaunch the application
+	Then verify that InTime should not changes
