@@ -79,7 +79,6 @@ public class SettingsPage extends LoginPage {
 	
 	public String job_day;
 	public String job_month;
-	public String InTime;
 	public String expectedInTime;
 	public String actualInTime;
 	
@@ -210,7 +209,6 @@ public class SettingsPage extends LoginPage {
 	}
 	
 	public void verifyInTime() throws Throwable {
-		common.isElementdisplayed(smoke.workDetails);
 		isElementdisplayed(InTimeEdit);
 		actualInTime = getElementText(InTimeEdit);
 		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
