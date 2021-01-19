@@ -23,6 +23,7 @@ public class SettingsPage extends LoginPage {
 	SmokeMethods smoke = new SmokeMethods();
 	LoginPage loginPage = new LoginPage();
 	JobsMethods jobs = new JobsMethods();
+	TimesheetMethods timesheet = new TimesheetMethods();
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
 	@iOSXCUITFindBy(accessibility = "Calendar")
@@ -65,16 +66,21 @@ public class SettingsPage extends LoginPage {
 	public MobileElement nextScheduledJobWidget;
   
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_org_role_name")
-//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[1]")
 	public MobileElement orgSelection;
 	
 	//@AndroidFindBy(xpath = "")
 	@iOSXCUITFindBy(accessibility = "Denied")
 	public MobileElement deniedLeaveBalanceHeader;
 	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement InTimeEdit;
 	
 	public String job_day;
 	public String job_month;
+	public String expectedInTime;
+	public String actualInTime;
 	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -177,5 +183,35 @@ public class SettingsPage extends LoginPage {
 		click(deniedLeaveBalanceHeader);
 		String panel = deniedLeaveBalanceHeader.getAttribute("name").toString();
 		Assert.assertEquals(panel, "Denied");
+	}
+	
+	public void addTimesheetAndChangeIntime() throws Throwable {
+		click(smoke.addTimeSheets);
+		click(InTimeEdit);
+		int inTime = Integer.parseInt(common.getElementText(timesheet.outTime));
+		int changeHourClock = inTime;
+		if (inTime == 12)
+			inTime = 1;
+		else
+			inTime++;
+		driver.findElementByXPath(
+				"//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + inTime + "']")
+				.click();
+
+		if (changeHourClock == 11) {
+			if (Boolean.parseBoolean(timesheet.am_label.getAttribute("checked").toString()))
+				click(timesheet.pm_label);
+			else
+				click(timesheet.am_label);
+		}
+		click(smoke.okBtn);
+		expectedInTime = getElementText(InTimeEdit);
+	}
+	
+	public void verifyInTime() throws Throwable {
+		isElementdisplayed(InTimeEdit);
+		actualInTime = getElementText(InTimeEdit);
+		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
+		utils.log().info("InTime is not back to default");	
 	}
 }
