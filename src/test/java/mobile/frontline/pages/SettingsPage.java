@@ -188,15 +188,13 @@ public class SettingsPage extends LoginPage {
 	
 	public void addTimesheetAndChangeIntime() throws Throwable {
 		click(smoke.addTimeSheets);
-		common.isElementdisplayed(smoke.workDetails);
 		click(InTimeEdit);
-		InTime = common.getElementText(timesheet.outTime);
-		int in = Integer.parseInt(InTime);
+		int in = Integer.parseInt(common.getElementText(timesheet.outTime));
 		int changeHourClock = in;
 		if (in == 12)
 			in = 1;
 		else
-			in = in + 1;
+			in++;
 		driver.findElementByXPath(
 				"//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + in + "']")
 				.click();
