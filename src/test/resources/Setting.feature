@@ -3,6 +3,7 @@ Feature: Regression scenarios
 
 @regression @MOB-4789 @android @sprint8 @MOB-4791 @iOS 
 Scenario: Show calendar link in substitute Menu 
+	When Verify if absences already present for employee and delete them
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter username and password and click on Sign In button 
@@ -66,7 +67,7 @@ Scenario: Switch for mult-org user will always show role picker
     When click on switch
     Then the user is presented with the org picker
 	   
-@MOB-6033 @iOS
+@MOB-6033 @iOS @MOB-6034 @Android
 Scenario: Denied tab in absences view reads as no upcoming absences
 	When the user launches the app 
 	Then the user click on Get Started Button 

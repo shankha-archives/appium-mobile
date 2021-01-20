@@ -1,10 +1,16 @@
 package mobile.frontline.stepdef;
 
+import org.json.simple.parser.ParseException;
 import org.junit.Assert;
+
+import com.mashape.unirest.http.exceptions.UnirestException;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.TestDataManager;
+import mobile.frontline.pages.APIServices;
+import mobile.frontline.pages.ApiCallClass;
 import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
@@ -17,7 +23,8 @@ public class SmokeStepDef {
 	public BasePage basePage = new BasePage();
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
-
+	public APIServices apiService = new APIServices();
+	
 	@And("^Enter username and password and click on Sign In button$")
 	public void enter_username_and_password_and_click_on_sign_in_button() throws Throwable {
 		loginPage.verify_loginPageLoaded();
@@ -46,7 +53,7 @@ public class SmokeStepDef {
 	}
 
 	@When("the user launches the app")
-	public void theUserLaunchesTheApp() {
+	public void theUserLaunchesTheApp() throws UnirestException, ParseException {
 		loginPage.verify_splashScreenLoaded();
 	}
 
@@ -509,5 +516,12 @@ public class SmokeStepDef {
     	smokePage.editCreatedAbsence();
 		smokePage.saveEditedAbsence();
 		smokePage.verifyAbsence();   
+    }
+    
+
+    @When("^Verify if absences already present for employee and delete them$")
+    public void verify_if_absences_already_present_for_employee_and_delete_them() throws Throwable {
+    	apiService.apiResponseTokenGeneration();
+    	apiService.apiResponseAbsenceDateCount();
     }
 }

@@ -68,7 +68,7 @@ public class SettingsPage extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement orgSelection;
 	
-	//@AndroidFindBy(xpath = "")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Denied']")
 	@iOSXCUITFindBy(accessibility = "Denied")
 	public MobileElement deniedLeaveBalanceHeader;
 	
