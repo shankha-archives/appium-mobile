@@ -1,4 +1,5 @@
 package mobile.frontline.stepdef;
+
 import java.util.Properties;
 import org.junit.Assert;
 
@@ -35,6 +36,14 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
+	@And("^Enter username \"([^\"]*)\" and password and click on Sign In button$")
+	public void enter_username_something_and_password_and_click_on_sign_in_button(String username) throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", username));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "FrontlinePassword"));
+		loginPage.clickOnLoginBtn();
+	}
+
 	@And("^The user kill and relaunch the application$")
 	public void the_user_kill_and_relaunch_the_application() throws Throwable {
 		basePage.killAndRelaunch();
@@ -55,7 +64,7 @@ public class SmokeStepDef {
 	}
 
 	@When("the user launches the app")
-	public void theUserLaunchesTheApp() throws UnirestException{
+	public void theUserLaunchesTheApp() throws UnirestException {
 		loginPage.verify_splashScreenLoaded();
 	}
 
@@ -191,11 +200,11 @@ public class SmokeStepDef {
 	}
 
 	@Then("^submit absence and verify the alert$")
-    public void submit_absence_and_verify_the_alert() throws Throwable {
+	public void submit_absence_and_verify_the_alert() throws Throwable {
 		smokePage.submitAbsence();
 		smokePage.verifyAbsenceCreationPopup();
-    }
-	
+	}
+
 	@Then("^submit and view absence$")
 	public void submit_and_view_absence() throws Throwable {
 		smokePage.submitAbsence();
@@ -271,7 +280,7 @@ public class SmokeStepDef {
 			String AutomationEmployeeMOB4245) throws Throwable {
 		loginPage.verify_loginPageLoaded();
 		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", AutomationEmployeeMOB4245));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "teacherpass"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "FrontlinePassword"));
 		loginPage.clickOnLoginBtn();
 	}
 
