@@ -1,8 +1,5 @@
 package mobile.frontline.stepdef;
-
 import java.util.Properties;
-
-import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -58,7 +55,7 @@ public class SmokeStepDef {
 	}
 
 	@When("the user launches the app")
-	public void theUserLaunchesTheApp() throws UnirestException, ParseException {
+	public void theUserLaunchesTheApp() throws UnirestException{
 		loginPage.verify_splashScreenLoaded();
 	}
 

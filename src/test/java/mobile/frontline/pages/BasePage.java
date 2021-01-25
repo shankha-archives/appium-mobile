@@ -216,7 +216,6 @@ public class BasePage {
 	}
 
 	public By scrollToElement(By element, String direction) throws Exception {
-		System.out.println("**************Using by to search*****************");
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
 		int endX = (int) (size.width * 0.5);
@@ -236,7 +235,7 @@ public class BasePage {
 			break;
 		}
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 5; i++) {
 			if (find(element, 5)) {
 				isFound = true;
 				break;
