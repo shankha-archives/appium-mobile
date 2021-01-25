@@ -29,16 +29,9 @@ public class ApiCallClass {
 		  .asString();
 		
 		return response.getBody();
-		
-//		JSONObject json = new JSONObject(response.getBody());
-//		token = json.getJSONObject("data").get("token").toString();
-//		
-		//token = json.getJSONObject("data").get("token").toString();
-		//Assert.assertEquals("", token);
 	}
 	
 	public String getAbsenceFromDate(String token) throws UnirestException{
-	//	generateAesopToken();
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<String> response = Unirest.get(BaseURL+"/api/v1.0/Workers/"+testdata.read_property("testingData", "users", "APIWorkerID")+"/AbsenceRequests")
 		  .queryString("startDate", "01/20/2021")
@@ -48,22 +41,9 @@ public class ApiCallClass {
 		 .asString();
 		
 		return response.getBody();
-		
-//		JSONObject json = new JSONObject(response.getBody());
-//		
-//		int numberOfAbsence = json.getJSONArray("data").length();//getInt(0);
-//		
-//		if(numberOfAbsence>0) {
-//		for (int i=0; i<numberOfAbsence; i++)  
-//			confirmationNumbers.add(json.getJSONArray("data").getJSONObject(i).get("id").toString());
-//		}
-
 	}
 	
 	public void deleteAbsenceFromConfirmationNumber(ArrayList<String> confirmationNumbers) throws UnirestException{
-		//generateAesopToken();
-		//getAbsenceFromDate();
-		
 		for(int i=0 ; i<confirmationNumbers.size();i++)
 		{
 		Unirest.setTimeouts(0, 0);
