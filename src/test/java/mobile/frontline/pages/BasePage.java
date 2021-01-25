@@ -46,7 +46,7 @@ public class BasePage {
 	public static int LOAD_TIMEOUT = 50;
 	int generic_timeOutInMiliSeconds = 5000;
 	private CommandPrompt cmd = new CommandPrompt();
-
+	
 	public AppiumDriver<MobileElement> driver;
 	Utils utils = new Utils();
 
@@ -236,8 +236,8 @@ public class BasePage {
 			break;
 		}
 
-		for (int i = 0; i < 3; i++) {
-			if (find(element, 1)) {
+		for (int i = 0; i < 5; i++) {
+			if (find(element, 5)) {
 				isFound = true;
 				break;
 			} else {
@@ -280,6 +280,7 @@ public class BasePage {
 				}
 			});
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -332,7 +333,7 @@ public class BasePage {
 		}
 		return val;
 	}
-
+	
 	public boolean isElementFoundForRecovery(MobileElement ele) {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		boolean val;
@@ -1219,7 +1220,7 @@ public class BasePage {
 	public boolean isElementDisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 60);
 			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			val = ele.isDisplayed();
 		} catch (Exception e) {
@@ -1231,7 +1232,7 @@ public class BasePage {
 	public boolean isElementdisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, 60);
 			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			val = ele.isDisplayed();
 		} catch (Exception e) {

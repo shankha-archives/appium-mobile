@@ -117,6 +117,8 @@ public class LoginPage extends BasePage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Okay']")
 	public MobileElement PushNotificationOK;
 
+	@iOSXCUITFindBy(xpath = "//*[contains(@label,'Thanks')]")
+	public MobileElement bioMatric;
 	// ###################################################################
 	public LoginPage() {
 	}
@@ -143,7 +145,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void verify_splashScreenLoaded() {
-		fluentWait(splashScreen);
+		isElementDisplayed(splashScreen);
 		Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
 	}
 
@@ -226,6 +228,12 @@ public class LoginPage extends BasePage {
 			utils.log().info("Home Page is displayed");
 			break;
 		case "iOS":
+			if (isElementdisplayed(bioMatric)) {
+				clickElement(bioMatric);
+				utils.log().info("Biometric pop-up displayed");
+			} else {
+				utils.log().info("Biometric pop-up not displayed");
+			}
 			if (isElementdisplayed(PushNotificationAllow)) {
 				clickElement(PushNotificationAllow);
 				utils.log().info("Push Notification pop-up displayed");
@@ -259,6 +267,12 @@ public class LoginPage extends BasePage {
 			break;
 		case "iOS":
 			switchToNativeApp();
+			if (isElementdisplayed(bioMatric)) {
+				clickElement(bioMatric);
+				utils.log().info("Biometric pop-up displayed");
+			} else {
+				utils.log().info("Biometric pop-up not displayed");
+			}
 			if(isElementdisplayed(homePageHeader))
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			else {

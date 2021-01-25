@@ -6,24 +6,34 @@
 	</Account>
 	<Account type="valid">
 		<substitutelogin>StageSubRupa</substitutelogin>
-		<substitutepass>FLultra1!</substitutepass>
+		<substitutepass>M0b113fl</substitutepass>
 		<adminlogin>purpleadmin</adminlogin>
-		<adminpass>FLultra1!</adminpass>
-		<teacherlogin>RupaEmpTest</teacherlogin>
-		<teacherpass>FLultra1!</teacherpass>
+		<adminpass>M0b113fl</adminpass>
+		<teacherlogin>stageteachtroy</teacherlogin>
+		<teacherpass>M0b113fl</teacherpass>
 		<inboxteachlogin>stageteachstanley</inboxteachlogin>
-		<inboxteachpass>FLultra1!</inboxteachpass>
+		<inboxteachpass>M0b113fl</inboxteachpass>
 		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>
 		<multiOrgSubsPass>FLultra1!</multiOrgSubsPass>
 		<MultiOrgUser>stageMultiMulti</MultiOrgUser>
 		<MultiOrgPass>FLultra1!</MultiOrgPass>
 		<NoDistrictUser>stageNoOrg</NoDistrictUser>
 		<NoDistrictPass>frontline1!</NoDistrictPass>
+		
+		
+	<!--  	<AutomationEmployeeMOB-4245>Automation4245</AutomationEmployeeMOB-4245>-->
+	<AutomationEmployeeMOB-4245>stageteachtroy</AutomationEmployeeMOB-4245>
+		<FrontlinePassword>Global@123</FrontlinePassword>
 	</Account>
 	<testingData type="users">
 		<teacher>Oldguy</teacher>
 		<searchText>Calendar</searchText>
 		<absenceKeyword>AbsReason</absenceKeyword>
 		<AccountingPin>3661</AccountingPin>
+		<APILoginID>report_18465</APILoginID>
+		<APIPin>1212</APIPin>
+		<APIWorkerID_MOB-4245>8542972</APIWorkerID_MOB-4245>
+		<APIWorkerID1>8542972</APIWorkerID1>
+		<BaseURL>https://aesopapistage.flqa.net</BaseURL>
 	</testingData>
 </testdata>

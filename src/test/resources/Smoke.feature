@@ -49,17 +49,34 @@ Scenario: Need to restrict login if application is running in background and the
 #	And click on the approval widget and navigates to the approval absence page 
 #	When selected approved a job 
 #	Then the job is no longer in the list for approval 
-	
-@MOB-4269 @MOB-4275 @AndroidSmoke @MOB-4270 @MOB-4276 @iOSSmoke 
-Scenario: The user toggle the Dark mode from setting and then send the Feedback 
+
+##Remove Feedback, Login check the dark mode switch(OFF),switch ON then logout-> login check the dark mode switch(ON)	
+#@MOB-4269 @MOB-4275 @AndroidSmoke @MOB-4270 @MOB-4276 @iOSSmoke 
+#Scenario: The user toggle the Dark mode from setting and then send the Feedback 
+#	When the user launches the app 
+#	Then the user click on Get Started Button 
+#	And Enter username and password and click on Sign In button 
+#	Then the substitute navigates to dashboard page 
+#	When the user clicks on Menu tab and click on Settings 
+#	Then the user toggle the Dark Mode 
+#	Then the user clicks on Back button and click on Feedback 
+#	Then the user send the feedback
+
+@smoke @MOB-4269 @MOB-4270 @AndroidSmoke @iOSSmoke 
+Scenario: Verify the user toggle the Dark mode 
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter username and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When the user clicks on Menu tab and click on Settings 
-	Then the user toggle the Dark Mode 
-	Then the user clicks on Back button and click on Feedback 
-	Then the user send the feedback 
+	Then Verify the dark mode btn and toggle the Dark Mode and Logout from app
+	And Enter username and password and click on Sign In button 
+	Then the substitute navigates to dashboard page 
+	When the user clicks on Menu tab and click on Settings 
+	Then Verify the dark mode button
+	
+#	Then the user clicks on Back button and click on Feedback 
+#	Then the user send the feedback
 	
 #@MOB-4245 @AndroidSmoke @MOB-4246 @iOSSmoke 
 #Scenario: Employee creates an absence for himself 
@@ -81,7 +98,8 @@ Scenario: The user toggle the Dark mode from setting and then send the Feedback
 #	And click on unfilled absence in absence widget 
 #	Then click on Tap to Assign and select Assign substitute 
 #	And click Assign again to confirm 
-	
+
+##	//change leaves through aPI or web, then check the balance Not valid for ios
 @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @prod 
 Scenario: View leave balances and check available days 
 	When the user launches the app 
@@ -89,8 +107,9 @@ Scenario: View leave balances and check available days
 	And Enter employee username and password and click on SignIn button 
 	Then the employee navigates to dashboard page 
 	And click on Available Leave Balances and view leave balances 
-	Then verify available days 
+	Then verify available days
 	
+##	//Create absence through API
 @MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke 
 Scenario: Entered text should be searchable when user perform search operation 
 	When the user launches the app 
@@ -125,6 +144,7 @@ Scenario: Entered text should be searchable when user perform search operation
 #	Then click on submit timesheet option 
 #	And undo the timesheet 
 	
+##	//text validation //one admin user is missing
 @MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @sprint8 
 Scenario: A user can visit inbox and view messages 
 	When the user launches the app 
@@ -242,6 +262,7 @@ Scenario: The user with directory access can view the full directory list and de
 	When search for a person 
 	Then user details are displayed 
 	
+##	//scroll and collect list of widgets-> rearrange widget -> scroll and collect another list -> Check both lists are unequal
 @MOB-4242 @MOB-4240 @MOB-4239 @MOB-4241 @iOSSmoke @AndroidSmoke 
 Scenario: Need to rearrange the widgets on the dashboard 
 	When the user launches the app 
@@ -264,20 +285,35 @@ Scenario: Need to rearrange the widgets on the dashboard
 	Then verify all the widgets and footers present 
 	And verify the order of widgets 
 	
-@MOB-4245 @MOB-4246  @MOB-4237 @MOB-4238  @MOB-4247 @MOB-4248 @MOB-4271 @MOB-4272 @AndroidSmoke @iOSSmoke
-Scenario: Employee creates and edit absence also check in calendar
+##	//1.)change absence time for edit 2.) pick conf number from first view and validate in calendar view
+@MOB-4246  @MOB-4237 @MOB-4238  @MOB-4247 @MOB-4248 @MOB-4271 @MOB-4272 @AndroidSmoke @iOSSmoke
+Scenario: Verify employee can create, edit and verify absence in calendar
+	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" and delete them
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter employee username and password and click on Sign In button 
+	And Enter employee username "AutomationEmployeeMOB-4245" and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
 	And click on the create absences 
-	When select reason date length summary 
-	Then submit and view absence 
+	When select reason date length summary
+	Then submit view absence and get confirmation number of employee
 	When click on edit btn and edit the absence 
 	And the user opens the calendar through menu
 	Then tap on the day when absence was created 
 	And the event will be displayed tap on it to view or verify the details	
   
+  
+@smoke @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke
+Scenario: Verify employee can create absence
+	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" and delete them
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username "AutomationEmployeeMOB-4245" and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	And click on the create absences 
+	When select reason date length summary
+	Then submit absence and verify the alert
+	
+  ## //read : inbox and rearrange :report13  //for update: create new ccreate absence and assign
  @MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254
 Scenario: Admin creates an absence for another user 
 	When the user launches the app 
