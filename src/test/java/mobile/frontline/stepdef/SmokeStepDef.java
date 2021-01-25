@@ -1,5 +1,7 @@
 package mobile.frontline.stepdef;
 
+import java.util.Properties;
+
 import org.json.simple.parser.ParseException;
 import org.junit.Assert;
 
@@ -8,9 +10,10 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import mobile.Frontline.utils.PropertyManager;
 import mobile.Frontline.utils.TestDataManager;
+import mobile.Frontline.utils.TestUtils;
 import mobile.frontline.pages.APIServices;
-import mobile.frontline.pages.ApiCallClass;
 import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
@@ -24,7 +27,9 @@ public class SmokeStepDef {
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
 	public APIServices apiService = new APIServices();
-	
+	TestUtils utils = new TestUtils();
+	Properties props;
+
 	@And("^Enter username and password and click on Sign In button$")
 	public void enter_username_and_password_and_click_on_sign_in_button() throws Throwable {
 		loginPage.verify_loginPageLoaded();
@@ -181,6 +186,19 @@ public class SmokeStepDef {
 		smokePage.clickNext();
 	}
 
+	@Then("^submit view absence and get confirmation number of employee$")
+	public void submit_view_absence_and_get_confirmation_number_of_employee() throws Throwable {
+		smokePage.submitAbsence();
+		smokePage.viewAbsence();
+		smokePage.getConfirmationForEmployee();
+	}
+
+	@Then("^submit absence and verify the alert$")
+    public void submit_absence_and_verify_the_alert() throws Throwable {
+		smokePage.submitAbsence();
+		smokePage.verifyAbsenceCreationPopup();
+    }
+	
 	@Then("^submit and view absence$")
 	public void submit_and_view_absence() throws Throwable {
 		smokePage.submitAbsence();
@@ -222,6 +240,17 @@ public class SmokeStepDef {
 		smokePage.screenshotCapture();
 	}
 
+	@Then("^Verify the dark mode btn and toggle the Dark Mode and Logout from app$")
+	public void verify_the_dark_mode_btn_and_toggle_the_dark_mode_and_logout_from_app() throws Throwable {
+		smokePage.toggleDarkMode();
+		smokePage.clickLogoutbtn();
+	}
+
+	@Then("^Verify the dark mode button$")
+	public void verify_the_dark_mode_button() throws Throwable {
+		smokePage.verifytoggledDarkMode();
+	}
+
 	@And("^pulls to refresh the page$")
 	public void pulls_to_refresh_the_page() throws Throwable {
 		smokePage.pullToRefresh();
@@ -236,6 +265,15 @@ public class SmokeStepDef {
 	public void enterEmployeeUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
 		loginPage.verify_loginPageLoaded();
 		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "teacherlogin"));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "teacherpass"));
+		loginPage.clickOnLoginBtn();
+	}
+
+	@And("^Enter employee username \"([^\"]*)\" and password and click on Sign In button$")
+	public void enter_employee_username_something_and_password_and_click_on_sign_in_button(
+			String AutomationEmployeeMOB4245) throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", AutomationEmployeeMOB4245));
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "teacherpass"));
 		loginPage.clickOnLoginBtn();
 	}
@@ -261,8 +299,8 @@ public class SmokeStepDef {
 	@When("select reason date length summary")
 	public void selectReasonDateLengthSummary() throws Throwable {
 
-		smokePage.selectLocation();
-		smokePage.clickNext();
+//		smokePage.selectLocation();
+//		smokePage.clickNext();
 
 		smokePage.absenceReason();
 		smokePage.clickNext();
@@ -365,7 +403,7 @@ public class SmokeStepDef {
 //		smokePage.addTimeSheet();
 //		smokePage.goToEditDeleteTimeSheetOption();
 //	}
-	
+
 	@When("click back button and open the past day timesheet and add a new time sheet")
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
 		smokePage.clickOnBack();
@@ -408,7 +446,7 @@ public class SmokeStepDef {
 
 	@When("the user opens the calendar through menu")
 	public void theUserOpensTheCalendarThroughMenu() throws Throwable {
-		smokePage.getDate();
+		smokePage.getAbsenceDetailsForCalendar();
 		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 	}
 
@@ -419,7 +457,7 @@ public class SmokeStepDef {
 
 	@Then("the event will be displayed tap on it to view or verify the details")
 	public void theEventWillBeDisplayedTapOnItToViewOrVerifyTheDetails() {
-		smokePage.verifyAbsence();
+		smokePage.verifyAbsenceConfandDuration();
 	}
 
 	// MOB-4247
@@ -502,7 +540,7 @@ public class SmokeStepDef {
 
 	@And("^verify absences page is displayed$")
 	public void verify_absences_page_is_displayed() throws Throwable {
-	smokePage.verifyAbsencesPage();	
+		smokePage.verifyAbsencesPage();
 	}
 
 	@Then("click on the home button to navigate back to dashboard")
@@ -511,17 +549,23 @@ public class SmokeStepDef {
 		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 	}
 
-    @When("^click on edit btn and edit the absence$")
-    public void click_on_edit_tab_and_edit_the_absence() throws Throwable {
-    	smokePage.editCreatedAbsence();
+	@When("^click on edit btn and edit the absence$")
+	public void click_on_edit_tab_and_edit_the_absence() throws Throwable {
+		smokePage.editCreatedAbsence();
 		smokePage.saveEditedAbsence();
-		smokePage.verifyAbsence();   
-    }
-    
+		// smokePage.verifyAbsence();
+	}
 
-    @When("^Verify if absences already present for employee and delete them$")
-    public void verify_if_absences_already_present_for_employee_and_delete_them() throws Throwable {
-    	apiService.apiResponseTokenGeneration();
-    	apiService.apiResponseAbsenceDateCount();
-    }
+	@When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" and delete them$")
+	public void verify_if_absences_present_for_employee_something_with_workerid_something_and_delete_them(
+			String apiLoginID, String workerID) throws Throwable {
+		props = new PropertyManager().getProps();
+		if (!props.getProperty("testdata").contains("prod")) {
+			apiService.apiTokenGeneration(apiLoginID);
+			apiService.apiGetConfirmationIds(workerID);
+			apiService.apiDeleteAbsence();
+		} else
+			utils.log().info("The environment selected is prodution");
+	}
+
 }

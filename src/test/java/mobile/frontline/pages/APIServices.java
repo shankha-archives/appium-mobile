@@ -5,34 +5,42 @@ import java.util.ArrayList;
 import org.json.JSONObject;
 import org.junit.Assert;
 
-import com.mashape.unirest.http.exceptions.UnirestException;
+import com.mashape.unirest.http.HttpResponse;
+
+import mobile.Frontline.utils.TestUtils;
 
 public class APIServices {
-	String token;
-	public ApiCallClass apicall = new ApiCallClass();
+	
+	public ApiMethods apiObject = new ApiMethods();
+	TestUtils utils = new TestUtils();
 	ArrayList<String> confirmationNumbers = new ArrayList<String>();
 	int numberOfAbsence;
+	String token;
 	
-	public void apiResponseTokenGeneration() throws Throwable {
-		String responseGenerateTokenAPI = apicall.generateAesopToken();
-		JSONObject json = new JSONObject(responseGenerateTokenAPI);
+	public void apiTokenGeneration(String apiLoginID) throws Throwable {
+		HttpResponse<String> responseGenerateTokenAPI = apiObject.generateAesopToken(apiLoginID);
+		Assert.assertEquals(responseGenerateTokenAPI.getStatus(),200);
+		JSONObject json = new JSONObject(responseGenerateTokenAPI.getBody());
 		token = json.getJSONObject("data").get("token").toString();
-		//Assert.assertEquals("", token);
-    //	apicall.deleteAbsenceFromConfirmationNumber();
 	}
 	
-	public void apiResponseAbsenceDateCount() throws UnirestException {
-		String responseGetAbsenceConfirmationNumberAPI = apicall.getAbsenceFromDate(token);
-		JSONObject json = new JSONObject(responseGetAbsenceConfirmationNumberAPI);
+	public void apiGetConfirmationIds(String workerID) throws Throwable {
+		HttpResponse<String> responseGetAbsenceConfirmationNumberAPI = apiObject.getAbsenceFromDate(token,workerID);
+		Assert.assertEquals(responseGetAbsenceConfirmationNumberAPI.getStatus(),200);
+		JSONObject json = new JSONObject(responseGetAbsenceConfirmationNumberAPI.getBody());
 		
-		 numberOfAbsence = json.getJSONArray("data").length();//getInt(0);
+		 numberOfAbsence = json.getJSONArray("data").length();
 		
 		for (int i=0; i<numberOfAbsence; i++)  
 			confirmationNumbers.add(json.getJSONArray("data").getJSONObject(i).get("id").toString());
-		Assert.assertEquals("", confirmationNumbers);
 	}
 	
-	public void apiResponseDeleteAbsence() {
-		
+	public void apiDeleteAbsence() throws Throwable {
+		if(!confirmationNumbers.isEmpty())
+			{HttpResponse<String> responseAbsenceDelete= apiObject.deleteAbsenceFromConfirmationNumber(confirmationNumbers,token);
+			Assert.assertEquals(responseAbsenceDelete.getStatus(),200);
+			}
+		else
+			utils.log().info("No Absence Found");
 	}
 }
