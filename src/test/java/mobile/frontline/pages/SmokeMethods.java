@@ -955,7 +955,8 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickLogoutbtn() {
-		click(logoutBtn);
+		isElementdisplayed(logoutBtn);
+		click(logoutBtn,"logout btn");
 	}
 	
 	public void verifytoggledDarkMode() throws Exception {

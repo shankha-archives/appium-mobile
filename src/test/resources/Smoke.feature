@@ -66,11 +66,11 @@ Scenario: Need to restrict login if application is running in background and the
 Scenario: Verify the user toggle the Dark mode 
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter username and password and click on Sign In button 
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
 	Then the substitute navigates to dashboard page 
 	When the user clicks on Menu tab and click on Settings 
 	Then Verify the dark mode btn and toggle the Dark Mode and Logout from app
-	And Enter username and password and click on Sign In button 
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When the user clicks on Menu tab and click on Settings 
 	Then Verify the dark mode button
@@ -286,7 +286,7 @@ Scenario: Need to rearrange the widgets on the dashboard
 	And verify the order of widgets 
 	
 ##	//1.)change absence time for edit 2.) pick conf number from first view and validate in calendar view
-@MOB-4246  @MOB-4237 @MOB-4238  @MOB-4247 @MOB-4248 @MOB-4271 @MOB-4272 @AndroidSmoke @iOSSmoke
+@MOB-4237 @MOB-4238  @MOB-4247 @MOB-4248 @MOB-4271 @MOB-4272 @AndroidSmoke @iOSSmoke
 Scenario: Verify employee can create, edit and verify absence in calendar
 	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" and delete them
 	When the user launches the app 
