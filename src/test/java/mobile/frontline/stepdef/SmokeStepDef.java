@@ -276,10 +276,10 @@ public class SmokeStepDef {
 	}
 
 	@And("^Enter employee username \"([^\"]*)\" and password and click on Sign In button$")
-	public void enter_employee_username_something_and_password_and_click_on_sign_in_button(
-			String AutomationEmployeeMOB4245) throws Throwable {
+	public void enter_employee_username_something_and_password_and_click_on_sign_in_button(String AutomationEmployee)
+			throws Throwable {
 		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", AutomationEmployeeMOB4245));
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", AutomationEmployee));
 		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "FrontlinePassword"));
 		loginPage.clickOnLoginBtn();
 	}
@@ -555,11 +555,16 @@ public class SmokeStepDef {
 		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 	}
 
-	@When("^click on edit btn and edit the absence$")
+	@When("^Click on edit btn and edit the absence$")
 	public void click_on_edit_tab_and_edit_the_absence() throws Throwable {
 		smokePage.editCreatedAbsence();
 		smokePage.saveEditedAbsence();
 		// smokePage.verifyAbsence();
+	}
+
+	@Then("^Verify the absence details$")
+	public void verify_the_absence_details() throws Throwable {
+		smokePage.verifyAbsenceConfandDuration();	
 	}
 
 	@When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" and delete them$")
@@ -572,6 +577,29 @@ public class SmokeStepDef {
 			apiService.apiDeleteAbsence();
 		} else
 			utils.log().info("The environment selected is prodution");
+	}
+
+	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" and delete the existing ones$")
+	public void create_absence_for_employee_something_with_workerid_something_and_delete_the_existing_ones(
+			String apiLoginID, String workerID) throws Throwable {
+		props = new PropertyManager().getProps();
+		if (!props.getProperty("testdata").contains("prod")) {
+			apiService.apiTokenGeneration(apiLoginID);
+			apiService.apiGetConfirmationIds(workerID);
+			apiService.apiDeleteAbsence();
+			apiService.apiCreateAbsence(workerID);
+		} else
+			utils.log().info("The environment selected is prodution");
+	}
+
+	@Then("^Tap on the day of created absence in the app Calendar$")
+	public void tap_on_the_day_of_created_absence_in_the_app_calendar() throws Throwable {
+		smokePage.getAbsenceDateForCalendar();
+	}
+
+	@And("^Verify the absence in Calendar$")
+	public void verify_the_absence_in_calendar() throws Throwable {
+		smokePage.verifyAbsence();
 	}
 
 }
