@@ -47,4 +47,14 @@ public class ApiMethods {
 	return response;
 	}
 	
+	public HttpResponse<String> createEmployeeAbsence(String token, String workerID) throws Throwable {
+		Unirest.setTimeouts(0, 0);
+		HttpResponse<String> response = Unirest.post(testdata.read_property("testingData", "users", "BaseURL")+"/api/v1.0/AbsenceRequests")
+		  .header("Content-Type", "application/json")
+		  .header("Accept", "application/json")
+		  .header("AesopToken", token)
+		  .body("{ \"worker\":{  \"id\":"+testdata.read_property("testingData", "users", workerID)+" }, \"absences\":[ { \"date\":\""+smokePage.nextWorkingDay()+"\", \"institution\":{ \"id\":"+testdata.read_property("testingData", "users", "APISchoolID")+"   }, \"entitlement\":{ \"id\":"+testdata.read_property("testingData", "users", "APIReasonID")+" }, \"shiftType\":1, \"absenceStartTime\":\"09:00 AM\", \"absenceEndTime\":\"03:00 PM\"  } ]}")
+		  .asString();
+		return response;
+	}
 }

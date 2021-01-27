@@ -286,21 +286,20 @@ Scenario: Need to rearrange the widgets on the dashboard
 	And verify the order of widgets 
 	
 ##	//1.)change absence time for edit 2.) pick conf number from first view and validate in calendar view
-@MOB-4237 @MOB-4238  @MOB-4247 @MOB-4248 @MOB-4271 @MOB-4272 @AndroidSmoke @iOSSmoke
-Scenario: Verify employee can create, edit and verify absence in calendar
-	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" and delete them
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter employee username "AutomationEmployeeMOB-4245" and password and click on Sign In button 
-	Then the employee navigates to dashboard page 
-	And click on the create absences 
-	When select reason date length summary
-	Then submit view absence and get confirmation number of employee
-	When click on edit btn and edit the absence 
-	And the user opens the calendar through menu
-	Then tap on the day when absence was created 
-	And the event will be displayed tap on it to view or verify the details	
-  
+ #@MOB-4271 @MOB-4272 @AndroidSmoke @iOSSmoke
+#Scenario: Verify employee can create, edit and verify absence in calendar
+#	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" and delete them
+#	When the user launches the app 
+#	Then the user click on Get Started Button 
+#	And Enter employee username "AutomationEmployeeMOB-4245" and password and click on Sign In button 
+#	Then the employee navigates to dashboard page 
+#	And click on the create absences 
+#	When select reason date length summary
+#	Then submit view absence and get confirmation number of employee
+#	When click on edit btn and edit the absence 
+#	And the user opens the calendar through menu
+#	Then tap on the day when absence was created 
+#	And the event will be displayed tap on it to view or verify the details	
   
 @smoke @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke
 Scenario: Verify employee can create absence
@@ -312,6 +311,27 @@ Scenario: Verify employee can create absence
 	And click on the create absences 
 	When select reason date length summary
 	Then submit absence and verify the alert
+	
+@MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke
+Scenario: Verify created absence display in calendar
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" and delete the existing ones
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username "AutomationEmployeeMOB-4237" and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	Then Tap on the day of created absence in the app Calendar
+	And Verify the absence in Calendar
+	
+@MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke
+Scenario: Verify created absence can be edited
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" and delete the existing ones
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter employee username "AutomationEmployeeMOB-4247" and password and click on Sign In button 
+	Then the employee navigates to dashboard page 
+	Then Tap on the day of created absence in the app Calendar
+	When Click on edit btn and edit the absence
+	Then Verify the absence details
 	
   ## //read : inbox and rearrange :report13  //for update: create new ccreate absence and assign
  @MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254

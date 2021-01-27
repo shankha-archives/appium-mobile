@@ -43,4 +43,9 @@ public class APIServices {
 		else
 			utils.log().info("No Absence Found");
 	}
+	
+	public void apiCreateAbsence(String workerID) throws Throwable {
+		HttpResponse<String> responseCreateAbsence= apiObject.createEmployeeAbsence(token,workerID);
+		Assert.assertEquals(responseCreateAbsence.getStatus(),201);
+	}
 }
