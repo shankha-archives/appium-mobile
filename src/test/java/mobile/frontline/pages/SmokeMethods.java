@@ -1572,7 +1572,7 @@ public class SmokeMethods extends LoginPage {
 		clickOnSeachResult();
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.isElementdisplayed(calendartitle);
+			isElementdisplayed(calendartitle);
 			while (!getElementText(calendartitle).contains(absence_month)) {
 				click(nextMonthCalendar);
 				common.isElementdisplayed(calendartitle);

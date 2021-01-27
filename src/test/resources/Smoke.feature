@@ -62,7 +62,7 @@ Scenario: Need to restrict login if application is running in background and the
 #	Then the user clicks on Back button and click on Feedback 
 #	Then the user send the feedback
 
-@smoke @MOB-4269 @MOB-4270 @AndroidSmoke @iOSSmoke 
+@smoke @MOB-4269 @MOB-4270 @AndroidSmoke @iOSSmoke
 Scenario: Verify the user toggle the Dark mode 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -313,7 +313,7 @@ Scenario: Verify employee can create absence
 	Then submit absence and verify the alert
 	
 @MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke
-Scenario: Verify created absence display in calendar
+Scenario: Verify created absence is displayed in calendar
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -323,7 +323,7 @@ Scenario: Verify created absence display in calendar
 	And Verify the absence in Calendar
 	
 @MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke
-Scenario: Verify created absence can be edited
+Scenario: Verify user is able to edit the absence
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button 
