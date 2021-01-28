@@ -116,4 +116,15 @@ public class SettingStepDef {
 	public void verify_that_InTime_should_not_changes() throws Throwable {
 		settingsPage.verifyInTime();
 	}
+	
+	//MOB-6025
+	@Then("^The user verifies that Login page is displayed$")
+	public void User_verifies_login_page() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+	}
+	
+	@Then("^Verify that Logn page is displayed after logout$")
+	public void Verify_login_page_after_logout() throws Throwable {
+		loginPage.verify_loginPageLoaded();
+	}
 }
