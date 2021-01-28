@@ -3,6 +3,7 @@ package mobile.frontline.pages;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -594,6 +595,15 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
 	public MobileElement createdAbsenceVerificationMsg;
 
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@index=0])[3]")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+	public MobileElement selectDayOFUnfilledUnassignedAbsence;
+	
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index=2]")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+	public MobileElement traverseToNextDay;
+	
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -748,10 +758,10 @@ public class SmokeMethods extends LoginPage {
 
 	public void selectDate() throws Throwable {
 		nextWorkingDate = nextWorkingDay();
-		DateFormat androidDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		DateFormat iOSDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
-		Date dateiOS = androidDateFormat.parse(nextWorkingDate);
-		dateAndroid = iOSDateFormat.format(dateiOS);
+//		DateFormat androidDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//		DateFormat iOSDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+//		Date dateiOS = androidDateFormat.parse(nextWorkingDate);
+		dateAndroid =  dateFormat(nextWorkingDate);
 
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -908,12 +918,12 @@ public class SmokeMethods extends LoginPage {
 
 	public void clickonOkBtn() {
 		isElementdisplayed(okBtn);
-		okBtn.click();
+		click(okBtn);
 	}
 
 	public void approveBtnOnAbsence() {
 		isElementdisplayed(approvebtn);
-		approvebtn.click();
+		click(approvebtn);
 	}
 
 	public void verifyAcceptedAbsence() throws Exception {
@@ -1074,14 +1084,14 @@ public class SmokeMethods extends LoginPage {
 //			 Random rand = new Random(); 
 //			itemsInDropDown.get(rand.nextInt(size)).click();
 		isElementdisplayed(itemsInDropDown.get(1));
-		itemsInDropDown.get(1).click();
+		click(itemsInDropDown.get(1));
 		sendFeedbackTitle();
 		sendFeedbackMessage();
 	}
 
 	public void sendFeedbackTitle() {
 		Assert.assertTrue("Title tab is not displayed", title.isDisplayed());
-		title.click();
+		click(title);
 		driver.getKeyboard().sendKeys("Automation Test");
 	}
 
@@ -1182,8 +1192,8 @@ public class SmokeMethods extends LoginPage {
 
 	public void undoTimesheet() throws Exception {
 		verifyUndoBtn();
-		undoicon.click();
-		undobtn.click();
+		click(undoicon);
+		click(undobtn);
 	}
 
 	public void verifyUndoBtn() {
@@ -1194,23 +1204,24 @@ public class SmokeMethods extends LoginPage {
 
 	public void verifyUndo() {
 		isElementdisplayed(declinebtn);
-		declinebtn.click();
+		click(declinebtn);
 		verifySubmitTimesheetBtn();
 		utils.log().info("Submit timesheet option is not displayed");
 	}
 
+	// change sendkeys method here
 	// MOB-4233 //MOB-4234
 	public void enterSearchText(String searchText) {
 		Assert.assertTrue("search Bar option is not displayed", searchBar.isDisplayed());
 		searchResultText = searchText;
-		searchBar.click();
+		click(searchBar);
 		searchBar.clear();
 		searchBar.sendKeys(searchText);
 	}
 
 	public void clickOnResult() {
 		Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
-		searchResult.click();
+		click(searchResult);
 	}
 
 	public void verifySearchResult() throws Exception {
@@ -1416,6 +1427,7 @@ public class SmokeMethods extends LoginPage {
 		click(Done);
 	}
 
+	//change sendkeys
 	public void AddTextonCommentSection() {
 		click(commentBox);
 		driver.getKeyboard().sendKeys("Checking Edit Functionality");
@@ -1649,10 +1661,7 @@ public class SmokeMethods extends LoginPage {
 	public void selectDateForEdit() throws Throwable {
 		verifyAsbsenceDatePage();
 		nextWorkingDate = nextWorkingDay();
-		DateFormat iOSDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		DateFormat androidDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
-		Date dateiOS = iOSDateFormat.parse(nextWorkingDate);
-		dateAndroid = androidDateFormat.format(dateiOS);
+		dateAndroid = dateFormat(nextWorkingDate);
 		androidScrollToElementUsingUiScrollable("description", dateAndroid);
 	}
 
@@ -1687,24 +1696,24 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			verifyAsbsenceDuratioPage();
-			halfDayDuration.click();
-			if (isElementdisplayed(absenceshifttime)) {
-				absenceshifttime.click();
-				hideKeyboard();
-				driver.getKeyboard().sendKeys("1000");
-			}
+			click(halfDayDuration);
+//			if (isElementdisplayed(absenceshifttime)) {
+//				absenceshifttime.click();
+//				hideKeyboard();
+//				driver.getKeyboard().sendKeys("1000");
+//			}
 			clickNext();
 			substituteAssignPageVerification();
 			clickNext();
 			break;
 		case "iOS":
 			isElementdisplayed(durationPageVerification);
-			halfDayDuration.click();
-			if (isElementdisplayed(absenceshifttime)) {
-				absenceshifttime.click();
-				driver.getKeyboard().sendKeys("1000");
-				click(Done);
-			}
+			click(halfDayDuration);
+//			if (isElementdisplayed(absenceshifttime)) {
+//				absenceshifttime.click();
+//				driver.getKeyboard().sendKeys("1000");
+//				click(Done);
+//			}
 			clickNext();
 			isElementdisplayed(subAssignPageVerification);
 			clickNext();
@@ -1712,7 +1721,7 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		common.isElementdisplayed(saveChanges);
+		isElementdisplayed(saveChanges);
 		click(saveChanges);
 		click(viewAbsence);
 	}
@@ -1758,7 +1767,7 @@ public class SmokeMethods extends LoginPage {
 			selectCurrentDayForTimesheet();
 			common.isElementdisplayed(eventSummary);
 			clockedInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
-			clockedInTime.click();
+			click(clockedInTime);
 			editTimesheet();
 			break;
 		case "iOS":
@@ -1790,7 +1799,7 @@ public class SmokeMethods extends LoginPage {
 		common.scrollToElement(PeopleWidget, "up");
 		Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
 		utils.log().info("People Widget is displayed");
-		PeopleWidget.click();
+		click(PeopleWidget);
 	}
 
 	public void SerachName(String lastName) throws Exception {
@@ -1899,12 +1908,17 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void getAbsenceDateForCalendar() throws Exception {
-		nextWorkingDate = nextWorkingDay();
+	public String dateFormat(String date) throws Throwable {
 		DateFormat iOSDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 		DateFormat androidDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
-		Date dateiOS = iOSDateFormat.parse(nextWorkingDate);
-		dateAndroid = androidDateFormat.format(dateiOS);
+		Date dateiOS = iOSDateFormat.parse(date);
+		String dateFormated = androidDateFormat.format(dateiOS);
+		return dateFormated;
+	}
+	
+	public void getAbsenceDateForCalendar() throws Throwable {
+		nextWorkingDate = nextWorkingDay();
+		dateAndroid = dateFormat(nextWorkingDate);
 		String monthName[] = dateAndroid.split(" ");
 
 		switch (new GlobalParams().getPlatformName()) {
@@ -1918,4 +1932,17 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
+	
+	public void selectUnfilledUnassignedAbsence(String userToSearch) throws Throwable {
+		nextWorkingDate = nextWorkingDay();
+		dateAndroid = dateFormat(nextWorkingDate);
+		for(int i=0;i<3;i++) {
+		if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
+			click(traverseToNextDay);
+		else
+			break;
+		}
+		 androidScrollToElementUsingUiScrollable("text",userToSearch);
+	}
+	
 }

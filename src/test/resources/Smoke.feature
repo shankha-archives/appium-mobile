@@ -301,7 +301,7 @@ Scenario: Need to rearrange the widgets on the dashboard
 #	Then tap on the day when absence was created 
 #	And the event will be displayed tap on it to view or verify the details	
   
-@smoke @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke
+@smoke @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke 
 Scenario: Verify employee can create absence
 	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" and delete them
 	When the user launches the app 
@@ -312,7 +312,7 @@ Scenario: Verify employee can create absence
 	When select reason date length summary
 	Then submit absence and verify the alert
 	
-@MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke
+@MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke 
 Scenario: Verify created absence is displayed in calendar
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" and delete the existing ones
 	When the user launches the app 
@@ -322,7 +322,7 @@ Scenario: Verify created absence is displayed in calendar
 	Then Tap on the day of created absence in the app Calendar
 	And Verify the absence in Calendar
 	
-@MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke
+@MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke 
 Scenario: Verify user is able to edit the absence
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" and delete the existing ones
 	When the user launches the app 
@@ -358,3 +358,16 @@ Scenario: Verify that admin creates an absence for another user
 	And click on the absences then add absence 
 	When enter teacher select reason date length summary 
 	Then submit absence and verify the alert
+	 
+	@AndroidSmoke @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254
+Scenario: Verify admin assigns substitute and also approve absence
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" and delete the existing ones
+	When the user launches the app 
+	Then the user click on Get Started Button
+	And Enter admin username "AutomationAdminMOB-4249" and password and click on Sign In button 
+	Then the admin navigates to dashboard page  
+	And Select an unfilled and unassigned absence
+	When click on Tap to Assign and select Assign substitute
+	And click Assign again to confirm
+	Then click on approve btn approve a job
+	And verify absences page is displayed

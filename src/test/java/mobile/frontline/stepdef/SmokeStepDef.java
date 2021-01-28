@@ -611,4 +611,10 @@ public class SmokeStepDef {
 		smokePage.verifyAbsence();
 	}
 
+	@And("^Select an unfilled and unassigned absence$")
+	public void select_an_unfilled_and_unassigned_absence() throws Throwable {
+		smokePage.selectAbsenceWidget();
+		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"));
+	}
+
 }
