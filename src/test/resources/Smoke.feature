@@ -357,6 +357,4 @@ Scenario: Verify that admin creates an absence for another user
 	Then the admin navigates to dashboard page 
 	And click on the absences then add absence 
 	When enter teacher select reason date length summary 
-	Then submit and view absence 
-	And verify absence 
-  
+	Then submit absence and verify the alert
