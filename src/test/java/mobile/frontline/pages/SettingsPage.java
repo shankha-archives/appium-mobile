@@ -89,8 +89,6 @@ public class SettingsPage extends LoginPage {
 	public String job_month;
 	public String expectedInTime;
 	public String actualInTime;
-	public String textAbsencesOut;
-	public String textAbsencesIn;
 	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -227,15 +225,13 @@ public class SettingsPage extends LoginPage {
 	
 	public void clickOnAbsencesTodayWidget() throws Exception {
 		scrollToElement(smoke.absenceWidget, "up");
-		textAbsencesOut = getElementText(absenceTextOut);
-		Assert.assertNotEquals(textAbsencesOut+ "is not same as No upcoming Absences", textAbsencesOut, "No upcoming Absences");
+		Assert.assertNotEquals(getElementText(absenceTextOut)+ "is not same as No upcoming Absences", getElementText(absenceTextOut), "No upcoming Absences");
 		utils.log().info("Absences are not visible");
 		click(smoke.absenceWidget);
 	}
 	
 	public void verifyAbsenceAreVisible() throws Exception {
-		textAbsencesIn = getElementText(absenceTextIn);
-		Assert.assertNotEquals(textAbsencesIn+ "is not same as No Absences", textAbsencesIn, "No Absences");
+		Assert.assertNotEquals(getElementText(absenceTextIn)+ "is not same as No Absences", getElementText(absenceTextIn), "No Absences");
 		utils.log().info("Absences are not visible");
 	}
 }
