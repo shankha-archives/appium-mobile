@@ -79,7 +79,7 @@ public class SmokeMethods extends LoginPage {
 
 	// click //page 3 reason
 	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[4]")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pending2Approve']")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
 	public MobileElement reason;
 
 	// page 4 verification
@@ -674,8 +674,11 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			isElementdisplayed(whoAbsencePageWaittoClickCaret);
-			By teacherName = By.xpath("//XCUIElementTypeCell[contains(@name,'" + teacher + "')]");
+			By teacherName = By.xpath("//XCUIElementTypeButton[contains(@name,'" + teacher + "')]");
+			//XCUIElementTypeButton[@name="AutomationEmp 4249"]
+			click(Done);
 			scrollToElement(teacherName, "up");
+
 			click(teacherName, "Click Teacher name");
 			break;
 		default:
