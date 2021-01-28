@@ -63,6 +63,15 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
+	@And("^Enter admin username \"([^\"]*)\" and password and click on Sign In button$")
+	public void enter_admin_username_something_and_password_and_click_on_sign_in_button(String userName)
+			throws Throwable {
+		loginPage.verify_loginPageLoaded();
+		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", userName));
+		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "FrontlinePassword"));
+		loginPage.clickOnLoginBtn();
+	}
+
 	@When("the user launches the app")
 	public void theUserLaunchesTheApp() throws UnirestException {
 		loginPage.verify_splashScreenLoaded();
@@ -564,7 +573,7 @@ public class SmokeStepDef {
 
 	@Then("^Verify the absence details$")
 	public void verify_the_absence_details() throws Throwable {
-		smokePage.verifyAbsenceConfandDuration();	
+		smokePage.verifyAbsenceConfandDuration();
 	}
 
 	@When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" and delete them$")

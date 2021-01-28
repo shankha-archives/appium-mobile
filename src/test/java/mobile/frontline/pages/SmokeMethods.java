@@ -389,9 +389,9 @@ public class SmokeMethods extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "Done")
 //	public MobileElement backButton;
 
-	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[8]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[2]/following-sibling::XCUIElementTypeOther[1]//XCUIElementTypeButton[3]")
-	public MobileElement absenceReason;
+//	@AndroidFindBy(xpath = "(//android.widget.LinearLayout)[8]")
+//	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[2]/following-sibling::XCUIElementTypeOther[1]//XCUIElementTypeButton[3]")
+//	public MobileElement absenceReason;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_time_absent")
 	@iOSXCUITFindBy(accessibility = "Time_Absence_TextField")
@@ -609,9 +609,19 @@ public class SmokeMethods extends LoginPage {
 	public SmokeMethods() {
 	}
 
-	public void selectAbsenceWidget() throws Exception {
-		common.scrollToElement(absenceWidget, "up");
-		click(absenceWidget);
+	public void selectAbsenceWidget() throws Throwable {
+
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			androidScrollToElementUsingUiScrollable("text", "Absences Today");
+			break;
+		case "iOS":
+			scrollToElement(absenceWidget, "up");
+			click(absenceWidget);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void addAbsence() {
@@ -638,20 +648,25 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 
-		serachEditText.click();
-		driver.getKeyboard().sendKeys(teacher);
+//		click(serachEditText);
+		common.sendKeys(serachEditText, teacher);
+//		driver.getKeyboard().sendKeys(teacher);
 	}
 
-	public void selectTeachersName(String teacher) throws Exception {
+	public void selectTeachersName(String teacher) throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.isElementdisplayed(selectReqName);
-			selectReqName.click();
-			common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
+			isElementdisplayed(selectReqName);
+			By teacherNameAndroid = By.xpath("//android.widget.TextView[contains(@text,'" + teacher + "')]");
+			scrollToElement(teacherNameAndroid, "up");
+			click(teacherNameAndroid, "Click Teacher name");
+			isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			break;
 		case "iOS":
-			// common.isElementdisplayed(whoAbsencePageWaittoClickCaret);
-			driver.findElementByXPath("//XCUIElementTypeButton[contains(@name, '" + teacher + "')]").click();
+			isElementdisplayed(whoAbsencePageWaittoClickCaret);
+			By teacherName = By.xpath("//XCUIElementTypeCell[contains(@name,'" + teacher + "')]");
+			scrollToElement(teacherName, "up");
+			click(teacherName, "Click Teacher name");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -763,30 +778,32 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			verifyAsbsenceDuratioPage();
-			selectDuration.click();
-			if (common.isElementdisplayed(absenceshifttime)) {
-				// click(absenceshifttime, "Absence shift time btb");
-				hideKeyboard();
-				sendKeys(absenceshifttime, "1000");
-				// driver.getKeyboard().sendKeys("1000");
-			} else {
-				utils.log().info("Time Absence shift type not displayed");
-			}
+//			click(selectDuration);
+//			if (common.isElementdisplayed(absenceshifttime)) {
+//				// click(absenceshifttime, "Absence shift time btb");
+//				hideKeyboard();
+//				sendKeys(absenceshifttime, "1000");
+//				// driver.getKeyboard().sendKeys("1000");
+//			} else {
+//				utils.log().info("Time Absence shift type not displayed");
+//			}
 			break;
 		case "iOS":
-			selectDuration.click();
-			if (common.isElementdisplayed(absenceshifttime)) {
-				// absenceshifttime.click();
-				sendKeys(absenceshifttime, "1000");
-				driver.getKeyboard().sendKeys("1000");
-				click(Done);
-			} else {
-				utils.log().info("Time Absence shift type not displayed");
-			}
+
+//			if (common.isElementdisplayed(absenceshifttime)) {
+//				// absenceshifttime.click();
+//				sendKeys(absenceshifttime, "1000");
+//				driver.getKeyboard().sendKeys("1000");
+//				click(Done);
+//			} else {
+//				utils.log().info("Time Absence shift type not displayed");
+//			}
+			utils.log().info("Verify the Absence Duration Page");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
+		click(selectDuration);
 	}
 
 	public void substituteAssignPageVerification() throws Exception {
@@ -1011,7 +1028,7 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			scrollToElement(createAbsBtn, "up");
-			createAbsBtn.click();
+			click(createAbsBtn);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1573,9 +1590,12 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			isElementdisplayed(calendartitle);
-			while (!getElementText(calendartitle).contains(absence_month)) {
-				click(nextMonthCalendar);
-				common.isElementdisplayed(calendartitle);
+			for (int i = 0; i < 12; i++) {
+				if (!getElementText(calendartitle).contains(absence_month)) {
+					click(nextMonthCalendar);
+					isElementdisplayed(calendartitle);
+				} else
+					break;
 			}
 			driver.findElementByXPath("//android.widget.TextView[contains(@content-desc,'" + absence_day + "')]")
 					.click();
@@ -1584,9 +1604,11 @@ public class SmokeMethods extends LoginPage {
 		case "iOS":
 			isElementdisplayed(monthVerify);
 			String monthName = monthVerify.getAttribute("name").toString();
-			while (!monthName.contains(absence_month)) {
-				click(nextMonthCalendar);
-				common.isElementdisplayed(calendar);
+			for (int i = 0; i < 12; i++) {
+				if (!monthName.contains(absence_month)) {
+					click(nextMonthCalendar);
+					common.isElementdisplayed(calendar);
+				}
 			}
 			driver.findElementByXPath("//XCUIElementTypeCell[contains(@name, '" + absence_day + "')]").click();
 			break;
