@@ -85,3 +85,12 @@ Scenario: Verify add Intime event value in Timesheet should remain same after re
 	Then click on add timesheet and change InTime
 	And The user minimize and relaunch the application
 	Then Verify that InTime should not changes
+
+@Setting @MOB-6021 @AndroidRegression @regression
+Scenario: Verify absences should be visible in Absences Today widget
+	When the user launches the app 
+	Then the user click on Get Started Button 
+	And Enter admin username and password and click on Sign In button 
+	Then the admin navigates to dashboard page
+	And Click on Absences Today widget
+	Then Verify that absences are visible

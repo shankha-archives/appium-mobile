@@ -77,10 +77,20 @@ public class SettingsPage extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement InTimeEdit;
 	
+	@AndroidFindBy(xpath = "((//android.widget.LinearLayout)[5]//android.widget.TextView)[1]")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement absenceTextOut;
+	
+	@AndroidFindBy(xpath = "((//android.widget.RelativeLayout)[7]//android.widget.TextView)[1]")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement absenceTextIn;
+	
 	public String job_day;
 	public String job_month;
 	public String expectedInTime;
 	public String actualInTime;
+	public String textAbsencesOut;
+	public String textAbsencesIn;
 	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -213,5 +223,19 @@ public class SettingsPage extends LoginPage {
 		actualInTime = getElementText(InTimeEdit);
 		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
 		utils.log().info("InTime is not back to default");	
+	}
+	
+	public void clickOnAbsencesTodayWidget() throws Exception {
+		scrollToElement(smoke.absenceWidget, "up");
+		textAbsencesOut = getElementText(absenceTextOut);
+		Assert.assertNotEquals(textAbsencesOut+ "is not same as No upcoming Absences", textAbsencesOut, "No upcoming Absences");
+		utils.log().info("Absences are not visible");
+		click(smoke.absenceWidget);
+	}
+	
+	public void verifyAbsenceAreVisible() throws Exception {
+		textAbsencesIn = getElementText(absenceTextIn);
+		Assert.assertNotEquals(textAbsencesIn+ "is not same as No Absences", textAbsencesIn, "No Absences");
+		utils.log().info("Absences are not visible");
 	}
 }

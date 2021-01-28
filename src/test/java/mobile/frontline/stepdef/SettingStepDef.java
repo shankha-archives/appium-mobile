@@ -116,4 +116,15 @@ public class SettingStepDef {
 	public void verify_that_InTime_should_not_changes() throws Throwable {
 		settingsPage.verifyInTime();
 	}
+	
+	//MOB-6021
+    @And("^Click on Absences Today widget$")
+    public void click_on_absences_today_widget() throws Throwable {
+    	settingsPage.clickOnAbsencesTodayWidget();
+    }
+    
+    @Then("^Verify that absences are visible$")
+    public void verify_that_absences_are_visible() throws Throwable {
+        settingsPage.verifyAbsenceAreVisible();
+    }
 }
