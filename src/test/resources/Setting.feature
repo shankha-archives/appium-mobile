@@ -66,7 +66,7 @@ Scenario: Verify role picker option should not displayed when user account has o
     When click on switch
     Then the user is presented with the org picker
 	   
-@Setting @MOB-6033 @iOSRegression @regression
+@Setting @MOB-6033 @iOSRegression @Regression
 Scenario: Denied tab in absences view reads as no upcoming absences
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -86,7 +86,7 @@ Scenario: Verify add Intime event value in Timesheet should remain same after re
 	And The user minimize and relaunch the application
 	Then Verify that InTime should not changes
 
-@Setting @MOB-6021 @AndroidRegression @regression
+@Setting @MOB-6021 @AndroidRegression @Regression
 Scenario: Verify absences should be visible in Absences Today widget
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -94,3 +94,13 @@ Scenario: Verify absences should be visible in Absences Today widget
 	Then the admin navigates to dashboard page
 	And Click on Absences Today widget
 	Then Verify that absences are visible
+
+@Setting @MOB-6025 @iOSRegression @Regression
+Scenario: Verify that application is able to open Login page on app startup or log-off
+	When the user launches the app 
+	Then the user click on Get Started Button
+	Then The user verifies that Login page is displayed 
+	And Enter employee username and password and click on Sign In button 
+	Then the employee navigates to dashboard page
+	And logouts out from the application
+	Then Verify that Logn page is displayed after logout
