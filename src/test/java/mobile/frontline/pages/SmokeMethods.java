@@ -596,13 +596,16 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement createdAbsenceVerificationMsg;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@index=0])[3]")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
 	public MobileElement selectDayOFUnfilledUnassignedAbsence;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index=2]")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
 	public MobileElement traverseToNextDay;
-	
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Absences']")
+	public MobileElement AbsencePageHeader;
 	
 	public String absence_Ename;
 	public String absence_day;
@@ -1842,8 +1845,8 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyAbsencesPage() {
-		isElementdisplayed(clickOnAbsenceWidget);
-		Assert.assertTrue("Absences page is not displayed", clickOnAbsenceWidget.isDisplayed());
+		isElementdisplayed(AbsencePageHeader);
+		Assert.assertTrue("Absences page is not displayed", AbsencePageHeader.isDisplayed());
 		utils.log().info("Absences page is not displayed");
 	}
 
@@ -1939,13 +1942,40 @@ public class SmokeMethods extends LoginPage {
 	public void selectUnfilledUnassignedAbsence(String userToSearch) throws Throwable {
 		nextWorkingDate = nextWorkingDay();
 		dateAndroid = dateFormat(nextWorkingDate);
-		for(int i=0;i<3;i++) {
-		if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
-			click(traverseToNextDay);
-		else
-			break;
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				for(int i=0;i<3;i++) {
+					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
+						click(traverseToNextDay);
+					else
+						break;
+				}
+				waitFortheSpinner();
+				androidScrollToElementUsingUiScrollable("text",userToSearch);
+				break;
+			case "iOS":
+				 dateAndroid = dateAndroid.split(" ",2)[1];
+				for(int i=0;i<=3;i++) {
+
+					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(dateAndroid))
+					{//Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
+						click(traverseToNextDay);
+						}
+					else
+						break;
+				}
+				By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
+				scrollToElement(unfilledabsenceDate, "up");
+				click(unfilledabsenceDate, "msg");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
 		}
-		 androidScrollToElementUsingUiScrollable("text",userToSearch);
+
 	}
-	
+	public void waitFortheSpinner() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(
+				By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
+	}
 }
