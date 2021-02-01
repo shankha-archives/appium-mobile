@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.junit.Assert;
@@ -329,8 +330,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Day Total")
 	public MobileElement commonDayTotal;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Approval Required')]")
-	// @AndroidFindBy(xpath = "//android.widget.TextView[@index='1']")
+	 @AndroidFindBy(xpath = "(//android.widget.TextView[@index=1])[3]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='ABSENCES']/following-sibling::XCUIElementTypeOther[2]//XCUIElementTypeOther[1]")
 	public MobileElement searchAbsReason;
 
@@ -596,14 +596,22 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement createdAbsenceVerificationMsg;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@index=0])[3]")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
 	public MobileElement selectDayOFUnfilledUnassignedAbsence;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index=2]")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
 	public MobileElement traverseToNextDay;
 	
-	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_title")
+	@iOSXCUITFindBy(xpath = "//	XCUIElementTypeButton[contains(@name, 'ModuleHeader')]")
+	public List<MobileElement> widgetListFromDashboard;
+
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Absences']")
+	public MobileElement AbsencePageHeader;
+
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -611,8 +619,8 @@ public class SmokeMethods extends LoginPage {
 	public String Intime;
 	public String confNumber;
 	public String absenceDuration;
-	ArrayList<String> widgetlistbeforeReorder = new ArrayList<String>();
-	ArrayList<String> widgetlistafterReorder = new ArrayList<String>();
+	ArrayList<String> widgetlistbeforeReorder;
+	ArrayList<String> widgetlistafterReorder ;
 	public String nextWorkingDate;
 	public String dateAndroid;
 
@@ -659,7 +667,7 @@ public class SmokeMethods extends LoginPage {
 		}
 
 //		click(serachEditText);
-		common.sendKeys(serachEditText, teacher);
+		sendKeys(serachEditText, teacher);
 //		driver.getKeyboard().sendKeys(teacher);
 	}
 
@@ -1094,8 +1102,8 @@ public class SmokeMethods extends LoginPage {
 
 	public void sendFeedbackTitle() {
 		Assert.assertTrue("Title tab is not displayed", title.isDisplayed());
-		click(title);
-		driver.getKeyboard().sendKeys("Automation Test");
+		//click(title);
+		sendKeys(title,"Automation Test");
 	}
 
 	public void sendFeedbackMessage() {
@@ -1117,8 +1125,11 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewText() {
+		String msg=getElementText(inboxMsg);
 		click(inboxMsg);
-		Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
+		
+		Assert.assertEquals(msg, getElementText(msgData));
+		//Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
 	}
 
@@ -1181,8 +1192,8 @@ public class SmokeMethods extends LoginPage {
 
 	public void enterTimeSheetdetails() {
 		if (isElementdisplayed(enterPin)) {
-			click(enterPin);
-			driver.getKeyboard().sendKeys(testdata.read_property("testingData", "users", "AccountingPin"));
+			//click(enterPin);
+			sendKeys(enterPin,testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();
 			click(checkbox);
 		} else {
@@ -1215,11 +1226,12 @@ public class SmokeMethods extends LoginPage {
 	// change sendkeys method here
 	// MOB-4233 //MOB-4234
 	public void enterSearchText(String searchText) {
+		isElementdisplayed(searchBar);
 		Assert.assertTrue("search Bar option is not displayed", searchBar.isDisplayed());
 		searchResultText = searchText;
 		click(searchBar);
-		searchBar.clear();
-		searchBar.sendKeys(searchText);
+		clearTextField(searchBar);
+		sendKeys(searchBar, searchText);
 	}
 
 	public void clickOnResult() {
@@ -1228,28 +1240,16 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifySearchResult() throws Exception {
-		switch (new GlobalParams().getPlatformName()) {
-		case "Android":
+		
 			isElementDisplayed(calendar);
-			break;
-		case "iOS":
 			Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
-			break;
-		default:
-			throw new Exception("Invalid platform Name");
-		}
-
-		String result = getElementText(calendar);
-		Assert.assertTrue("Entered text does not match", result.equalsIgnoreCase(searchResultText));
+	///	String result = getElementText(calendar);
+		Assert.assertTrue("Entered text does not match", getElementText(calendar).equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
 	}
 
-	public void clickReorderWidget() throws Throwable {
-		common.scrollToElement(reOrderWidgetbtn, "up");
+	public void clickReorderWidget() {
 		click(reOrderWidgetbtn);
-		for (MobileElement widgetlistele : WidgetOrderList) {
-			widgetlistbeforeReorder.add(common.getElementText(widgetlistele));
-		}
 	}
 
 	public void draganddrop() throws Throwable {
@@ -1261,16 +1261,11 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void saveReorderedWidget() {
-		for (MobileElement widgetlistele : WidgetOrderList) {
-			widgetlistafterReorder.add(common.getElementText(widgetlistele));
-		}
 		click(saveOrderWidgetbtn);
 	}
 
 	public void verifyWidgetsOrder() {
 		Assert.assertNotEquals(widgetlistbeforeReorder, widgetlistafterReorder);
-		widgetlistbeforeReorder.clear();
-		widgetlistafterReorder.clear();
 	}
 
 	public void viewWeekTimesheets() throws Exception {
@@ -1432,8 +1427,8 @@ public class SmokeMethods extends LoginPage {
 
 	//change sendkeys
 	public void AddTextonCommentSection() {
-		click(commentBox);
-		driver.getKeyboard().sendKeys("Checking Edit Functionality");
+		//click(commentBox);
+		sendKeys(commentBox,"Checking Edit Functionality");
 	}
 
 	public void clickonEditButton2() {
@@ -1510,43 +1505,43 @@ public class SmokeMethods extends LoginPage {
 //		click(backButton);
 //	}
 
-	public void verify_widgetsPresent() throws Exception {
-		switch (new GlobalParams().getPlatformName()) {
-		case "Android":
-			widgetlistafterReorder.forEach(widget -> {
-				if (widget.equals("What's New")) {
-					if (getElementText(homePageRoleHeader).contains("Org")) {
-						swipeUpSlowlyOnDashboard();
-					}
-					return;
-				}
-				MobileElement widgetElement = driver
-						.findElementByXPath("//android.widget.TextView[contains(@text,'" + widget + "')]");
-				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
-				utils.log().info("Widget is present");
-				swipeUpSlowlyOnDashboard();
-			});
-			break;
-		case "iOS":
-			widgetlistafterReorder.forEach(widget -> {
-				if (widget.equals("New Version Available") || widget.equals("Customize Home")) {
-					return;
-				}
-				MobileElement widgetElement = driver.findElementByAccessibilityId(widget + "_ModuleHeader");
-				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
-				utils.log().info("Widget is present");
-				swipeUpSlowlyOnDashboard();
-			});
-			break;
-		default:
-			throw new Exception("Invalid platform Name");
-		}
-	}
+//	public void verify_widgetsPresent() throws Exception {
+//		switch (new GlobalParams().getPlatformName()) {
+//		case "Android":
+//			widgetlistafterReorder.forEach(widget -> {
+//				if (widget.equals("What's New")) {
+//					if (getElementText(homePageRoleHeader).contains("Org")) {
+//						swipeUpSlowlyOnDashboard();
+//					}
+//					return;
+//				}
+//				MobileElement widgetElement = driver
+//						.findElementByXPath("//android.widget.TextView[contains(@text,'" + widget + "')]");
+//				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
+//				utils.log().info("Widget is present");
+//				swipeUpSlowlyOnDashboard();
+//			});
+//			break;
+//		case "iOS":
+//			widgetlistafterReorder.forEach(widget -> {
+//				if (widget.equals("New Version Available") || widget.equals("Customize Home")) {
+//					return;
+//				}
+//				MobileElement widgetElement = driver.findElementByAccessibilityId(widget + "_ModuleHeader");
+//				Assert.assertTrue("Widget is not displayed", widgetElement.isDisplayed());
+//				utils.log().info("Widget is present");
+//				swipeUpSlowlyOnDashboard();
+//			});
+//			break;
+//		default:
+//			throw new Exception("Invalid platform Name");
+//		}
+//	}
 
 	public void verify_footerPresent() {
-		common.isElementdisplayed(homeTab);
-		common.isElementdisplayed(menuTab);
-		common.isElementdisplayed(inboxTab);
+		isElementdisplayed(homeTab);
+		isElementdisplayed(menuTab);
+		isElementdisplayed(inboxTab);
 		Assert.assertTrue("Footers are not displayed",
 				homeTab.isDisplayed() && menuTab.isDisplayed() && inboxTab.isDisplayed());
 		utils.log().info("Footers are present");
@@ -1809,14 +1804,15 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			common.isElementdisplayed(PeopleWidget);
-			click(SearchPeople);
-			driver.getKeyboard().sendKeys(lastName);
+			//click(SearchPeople);
+			sendKeys(SearchPeople,lastName);
 			common.hideKeyboard();
 			driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + lastName + "')]").click();
 			break;
 		case "iOS":
-			click(serachEditText);
-			driver.getKeyboard().sendKeys(lastName);
+			//click(serachEditText);
+			sendKeys(serachEditText,lastName);
+			//driver.getKeyboard().sendKeys(lastName);
 			click(SearchPeople);
 			break;
 		default:
@@ -1842,8 +1838,8 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyAbsencesPage() {
-		isElementdisplayed(clickOnAbsenceWidget);
-		Assert.assertTrue("Absences page is not displayed", clickOnAbsenceWidget.isDisplayed());
+		isElementdisplayed(AbsencePageHeader);
+		Assert.assertTrue("Absences page is not displayed", AbsencePageHeader.isDisplayed());
 		utils.log().info("Absences page is not displayed");
 	}
 
@@ -1860,23 +1856,23 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void swipeUpSlowlyOnDashboard() {
-		Dimension size = driver.manage().window().getSize();
-		int startX = size.width / 2;
-		int startY = (int) (size.height * .6);
-		int endY = (int) (size.height * .35);
-		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
-			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-					.release().perform();
-		}
-		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
-			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
-					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
-					.release().perform();
-		}
-
-	}
+//	public void swipeUpSlowlyOnDashboard() {
+//		Dimension size = driver.manage().window().getSize();
+//		int startX = size.width / 2;
+//		int startY = (int) (size.height * .6);
+//		int endY = (int) (size.height * .35);
+//		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("android")) {
+//			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
+//					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+//					.release().perform();
+//		}
+//		if (driver.getSessionDetails().get("platformName").toString().equalsIgnoreCase("ios")) {
+//			(new TouchAction<>(driver)).press(PointOption.point(startX, startY))
+//					.waitAction(WaitOptions.waitOptions(Duration.ofMillis(700))).moveTo(PointOption.point(startX, endY))
+//					.release().perform();
+//		}
+//
+//	}
 
 	public void androidScrollToElementUsingUiScrollable(String attributeType, String attributeText) throws Throwable {
 		switch (attributeType.toLowerCase()) {
@@ -1939,13 +1935,88 @@ public class SmokeMethods extends LoginPage {
 	public void selectUnfilledUnassignedAbsence(String userToSearch) throws Throwable {
 		nextWorkingDate = nextWorkingDay();
 		dateAndroid = dateFormat(nextWorkingDate);
-		for(int i=0;i<3;i++) {
-		if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
-			click(traverseToNextDay);
-		else
-			break;
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				for(int i=0;i<3;i++) {
+					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
+						click(traverseToNextDay);
+					else
+						break;
+				}
+				waitFortheSpinner1();
+				androidScrollToElementUsingUiScrollable("text",userToSearch);
+				break;
+			case "iOS":
+				 dateAndroid = dateAndroid.split(" ",2)[1];
+				for(int i=0;i<=3;i++) {
+
+					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(dateAndroid))
+					{//Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
+						click(traverseToNextDay);
+						}
+					else
+						break;
+				}
+				By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
+				scrollToElement(unfilledabsenceDate, "up");
+				click(unfilledabsenceDate, "msg");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
 		}
-		 androidScrollToElementUsingUiScrollable("text",userToSearch);
+
+	}
+
+	public void waitFortheSpinner1() {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(
+				By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
+	}
+	
+	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction, List<MobileElement> collectListOf) throws Exception {
+		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();  
+			Dimension size = driver.manage().window().getSize();
+			int startX = (int) (size.width * 0.5);
+			int endX = (int) (size.width * 0.5);
+			int startY = 0;
+			int endY = 0;
+			boolean isFound = false;
+
+			switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.4);
+				startY = (int) (size.height * 0.6);
+				break;
+
+			case "down":
+				endY = (int) (size.height * 0.6);
+				startY = (int) (size.height * 0.4);
+				break;
+			}
+
+			for (int i = 0; i < 10; i++) {
+				for (MobileElement mobElement : collectListOf) {
+					listOfElementByScrolling.add(common.getElementText(mobElement));
+				}
+				if (find(elementTill, 1)) {
+					isFound = true;
+					break;
+				} else {
+					swipe(startX, startY, endX, endY, 1000);
+				}
+			}
+			if (!isFound) {
+				throw new Exception("Element not found");
+			}
+			return listOfElementByScrolling;
+		
+	}
+	public void getListOrderBeforeReorder() throws Throwable {
+		widgetlistbeforeReorder = new ArrayList<String>(getTheOrderListByScrolling(reOrderWidgetbtn,"up",widgetListFromDashboard));
+	}
+	
+	public void getListOrderAfterReorder() throws Throwable {
+		widgetlistafterReorder = new ArrayList<String>(getTheOrderListByScrolling(reOrderWidgetbtn,"up",widgetListFromDashboard));
 	}
 	
 }

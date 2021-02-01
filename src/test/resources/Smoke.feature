@@ -75,9 +75,6 @@ Scenario: Verify the user toggle the Dark mode
 	When the user clicks on Menu tab and click on Settings 
 	Then Verify the dark mode button
 	
-#	Then the user clicks on Back button and click on Feedback 
-#	Then the user send the feedback
-	
 #@MOB-4245 @AndroidSmoke @MOB-4246 @iOSSmoke 
 #Scenario: Employee creates an absence for himself 
 #	When the user launches the app 
@@ -110,11 +107,27 @@ Scenario: View leave balances and check available days
 	Then verify available days
 	
 ##	//Create absence through API
-@MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke 
+#@MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke 
+#Scenario: Entered text should be searchable when user perform search operation 
+#	When the user launches the app 
+#	Then the user click on Get Started Button 
+#	And Enter employee username and password and click on Sign In button 
+#	Then the employee navigates to dashboard page 
+#	When click on menu bar 
+#	Then enter the search text in bar and click on result 
+#	And verify the search result 
+#	Then click on the home button to navigate back to dashboard 
+#	When click on menu bar 
+#	Then enter the absence search text in bar 
+#	And click the absence search result 
+#	Then verify the absence detail page 
+	
+@MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke
 Scenario: Entered text should be searchable when user perform search operation 
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4233" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter employee username and password and click on Sign In button 
+	And Enter employee username "AutomationEmployeeMOB-4233" and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
 	When click on menu bar 
 	Then enter the search text in bar and click on result 
@@ -145,21 +158,21 @@ Scenario: Entered text should be searchable when user perform search operation
 #	And undo the timesheet 
 	
 ##	//text validation //one admin user is missing
-@MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @sprint8 
-Scenario: A user can visit inbox and view messages 
+@MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @sprint8
+Scenario: Verify a user can visit inbox and view messages 
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter username and password and click on Sign In button 
+	And Enter username "AutomationSubsMOB-4265" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When click on the inbox 
 	Then view the message in the inbox 
 	And  logouts out from the application 
-	And Enter employee username and password for inbox and click on Sign In button 
+	And Enter employee username "AutomationEmployeeMOB-4257" and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
 	When click on the inbox 
 	Then view the message in the inbox 
 	And  logouts out from the application 
-	And Enter admin username and password and click on Sign In button 
+	And Enter admin username "AutomationAdminMOB-4267" and password and click on Sign In button 
 	Then the admin navigates to dashboard page 
 	When click on the inbox 
 	Then view the message in the inbox 
@@ -262,27 +275,29 @@ Scenario: The user with directory access can view the full directory list and de
 	When search for a person 
 	Then user details are displayed 
 	
-##	//scroll and collect list of widgets-> rearrange widget -> scroll and collect another list -> Check both lists are unequal
-@MOB-4242 @MOB-4240 @MOB-4239 @MOB-4241 @iOSSmoke @AndroidSmoke 
+@MOB-4242 @MOB-4240 @MOB-4239 @MOB-4241 @iOSSmoke @AndroidSmoke
 Scenario: Need to rearrange the widgets on the dashboard 
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter username and password and click on Sign In button 
+	And Enter username "AutomationSubsMOB-4265" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
-	When click on reorder widget and rearrange the widget 
-	Then verify all the widgets and footers present 
+	When Click on reorder widget 
+	And Rearrange the widets
+	Then Verify the order of widgets and footers present 
 	And verify the order of widgets 
 	And  logouts out from the application 
-	And Enter employee username and password for inbox and click on Sign In button 
+	And Enter employee username "AutomationEmployeeMOB-4257" and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
-	When click on reorder widget and rearrange the widget 
-	Then verify all the widgets and footers present 
+	When Click on reorder widget 
+	And Rearrange the widets
+	Then Verify the order of widgets and footers present 
 	And verify the order of widgets 
 	And  logouts out from the application 
-	And Enter admin username and password and click on Sign In button 
+	And Enter admin username "AutomationAdminMOB-4267" and password and click on Sign In button 
 	Then the admin navigates to dashboard page 
-	When click on reorder widget and rearrange the widget 
-	Then verify all the widgets and footers present 
+	When Click on reorder widget 
+	And Rearrange the widets
+	Then Verify the order of widgets and footers present 
 	And verify the order of widgets 
 	
 ##	//1.)change absence time for edit 2.) pick conf number from first view and validate in calendar view
@@ -312,7 +327,7 @@ Scenario: Verify employee can create absence
 	When select reason date length summary
 	Then submit absence and verify the alert
 	
-@MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke 
+@MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke
 Scenario: Verify created absence is displayed in calendar
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" and delete the existing ones
 	When the user launches the app 
