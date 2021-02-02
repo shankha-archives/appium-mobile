@@ -20,7 +20,7 @@ public class SettingStepDef {
 	public SmokeMethods smokePage = new SmokeMethods();
 	public JobsMethods jobPage = new JobsMethods();
 	
-	 String confNumber;
+	String confNumber;
 
 	@When("^click on menu and tap the Calendar link$")
 	public void click_on_menu_and_cakendar() throws Throwable {
@@ -119,13 +119,13 @@ public class SettingStepDef {
 		settingsPage.verifyInTime();
 	}
 	
-	//MOB-6025
-	@Then("^The user verifies that Login page is displayed$")
+	//MOB-6025 
+    @Then("^The user verifies that Login page is displayed$")
 	public void User_verifies_login_page() throws Throwable {
 		loginPage.verify_loginPageLoaded();
 	}
 	
-	@Then("^Verify that Logn page is displayed after logout$")
+	@Then("^Verify that Login page is displayed after logout$")
 	public void Verify_login_page_after_logout() throws Throwable {
 		loginPage.verify_loginPageLoaded();
 	}

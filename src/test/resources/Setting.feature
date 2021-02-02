@@ -94,7 +94,7 @@ Scenario: Verify that application is able to open Login page on app startup or l
 	And Enter employee username and password and click on Sign In button 
 	Then the employee navigates to dashboard page
 	And  logouts out from the application
-	Then Verify that Logn page is displayed after logout
+	Then Verify that Login page is displayed after logout
 
 @Setting @MOB-6021 @AndroidRegression @Regression
 Scenario: Verify absences should be visible in Absences Today widget

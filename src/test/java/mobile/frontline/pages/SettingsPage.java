@@ -86,6 +86,10 @@ public class SettingsPage extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement absenceTextOut;
 	
+//	@AndroidFindBy(xpath = "((//android.widget.RelativeLayout)[7]//android.widget.TextView)[1]")
+////	@iOSXCUITFindBy(accessibility = "")
+//	public MobileElement absenceTextIn;
+	
 	public String job_day;
 	public String job_month;
 	public String expectedInTime;
@@ -225,7 +229,7 @@ public class SettingsPage extends LoginPage {
 		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
 		utils.log().info("InTime is not back to default");	
 	}
-	
+
 	public void scrollTo(String text){                
 		((AndroidDriver) driver).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))");
 	}
