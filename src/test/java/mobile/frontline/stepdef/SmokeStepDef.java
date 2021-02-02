@@ -531,10 +531,31 @@ public class SmokeStepDef {
 
 	@When("click on reorder widget and rearrange the widget")
 	public void clickOnReorderWidgetAndRearrangeTheWidget() throws Throwable {
-		smokePage.clickReorderWidget();
-		smokePage.draganddrop();
-		smokePage.saveReorderedWidget();
+		//smokePage.getTheOrderOfWidet();
+			
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
+		smokePage.getListOrderAfterReorder();
 	}
+	
+	 @When("^Click on reorder widget$")
+	    public void click_on_reorder_widget() throws Throwable {
+			smokePage.getListOrderBeforeReorder();
+			smokePage.clickReorderWidget();
+  
+	    }
+
+	 @And("^Rearrange the widets$")
+	    public void rearrange_the_widets() throws Throwable {
+		 smokePage.draganddrop();
+			smokePage.saveReorderedWidget();
+	    }
+	    @Then("^Verify the order of widgets and footers present$")
+	    public void verify_the_order_of_widgets_and_footers_present() throws Throwable {
+	    	loginPage.verify_homeScreen_displayedWithoutPushVerify();
+			smokePage.getListOrderAfterReorder();
+	    }
+
+	   
 
 	@And("logouts out from the application")
 	public void logoutsOutFromTheApplication() {
@@ -543,8 +564,8 @@ public class SmokeStepDef {
 
 	@Then("verify all the widgets and footers present")
 	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
-		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-		smokePage.verify_widgetsPresent();
+//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
+		//smokePage.verify_widgetsPresent();
 		smokePage.verify_footerPresent();
 	}
 
