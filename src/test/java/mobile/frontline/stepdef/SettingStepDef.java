@@ -19,6 +19,8 @@ public class SettingStepDef {
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
 	public JobsMethods jobPage = new JobsMethods();
+	
+	 String confNumber;
 
 	@When("^click on menu and tap the Calendar link$")
 	public void click_on_menu_and_cakendar() throws Throwable {
@@ -127,4 +129,22 @@ public class SettingStepDef {
 	public void Verify_login_page_after_logout() throws Throwable {
 		loginPage.verify_loginPageLoaded();
 	}
+	
+	//MOB-6021
+	 @Then("^Click on View Absence and move to dashboard$")
+	    public void click_on_view_absence_and_move_to_dashboard() throws Throwable {
+		 smokePage.viewAbsence();
+		 confNumber = smokePage.getConfirmationForEmployee();
+		 settingsPage.getEmployeeName();
+	 }
+	 
+	 @Then("^Move to absence today widget and verify the absence$")
+	    public void move_to_absence_today_widget_and_verify_the_absence() throws Throwable {
+	    settingsPage.verifyAbsenceOnDashboard();    
+	 }
+	 
+	 @Then("^Verify that absences are visible$")
+	 public void verify_that_absences_are_visible() throws Throwable {
+	     settingsPage.verifyAbsenceIsVisible(confNumber);
+	 }
 }

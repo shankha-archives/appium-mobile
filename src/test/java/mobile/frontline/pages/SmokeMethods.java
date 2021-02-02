@@ -657,7 +657,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 //		click(serachEditText);
 		common.sendKeys(serachEditText, teacher);
 //		driver.getKeyboard().sendKeys(teacher);
@@ -745,22 +744,31 @@ public class SmokeMethods extends LoginPage {
 		return dtf.format(LocalDateTime.now());
 	}
 
-	public String nextWorkingDay() throws Exception {
+	public String nextWorkingDay(String absenceDay) throws Exception {
 		String cdate = currentDate();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
 		Calendar c = Calendar.getInstance();
 		c.setTime(dateFormat.parse(cdate));
-
-		c.add(Calendar.DAY_OF_YEAR, 1);
-
-		while (c.get(c.DAY_OF_WEEK) == 7 || c.get(c.DAY_OF_WEEK) == 1)
-			c.add(Calendar.DAY_OF_YEAR, 1);
+		switch (absenceDay){
+			case "next day":
+				c.add(Calendar.DAY_OF_YEAR, 1);
+				while (c.get(c.DAY_OF_WEEK) == 7 || c.get(c.DAY_OF_WEEK) == 1)
+					c.add(Calendar.DAY_OF_YEAR, 1);
+				break;
+			case "current day":
+				c.add(Calendar.DAY_OF_YEAR, 0);
+				break;
+			case "past day":
+				break;
+			default:
+				throw new Exception("Invalid date");
+		}
 		return dateFormat.format(c.getTime());
 	}
 
-	public void selectDate() throws Throwable {
-		nextWorkingDate = nextWorkingDay();
+	public void selectDate(String absenceDay) throws Throwable {
+		nextWorkingDate = nextWorkingDay(absenceDay);
 //		DateFormat androidDateFormat = new SimpleDateFormat("MM/dd/yyyy");
 //		DateFormat iOSDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
 //		Date dateiOS = androidDateFormat.parse(nextWorkingDate);
@@ -865,12 +873,13 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void getConfirmationForEmployee() {
+	public String getConfirmationForEmployee() {
 
 		isElementdisplayed(confirmationNumber);
 		// Assert.assertTrue("Confirmation number is not displayed",
 		// confirmationNumber.isDisplayed());
 		confNumber = getElementText(confirmationNumber);
+		return confNumber;
 		// utils.log().info("Confirmation number is displayed");
 	}
 
@@ -1661,14 +1670,14 @@ public class SmokeMethods extends LoginPage {
 				.moveTo(PointOption.point(dragX, dragY1 - 100)).release().perform();
 	}
 
-	public void selectDateForEdit() throws Throwable {
+	public void selectDateForEdit(String absenceDay) throws Throwable {
 		verifyAsbsenceDatePage();
-		nextWorkingDate = nextWorkingDay();
+		nextWorkingDate = nextWorkingDay(absenceDay);
 		dateAndroid = dateFormat(nextWorkingDate);
 		androidScrollToElementUsingUiScrollable("description", dateAndroid);
 	}
 
-	public void editCreatedAbsence() throws Throwable {
+	public void editCreatedAbsence(String absenceDay) throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			isElementdisplayed(editTab);
@@ -1677,7 +1686,7 @@ public class SmokeMethods extends LoginPage {
 //				clickNext();
 			verifyAsbsenceReasonPage();
 			clickNext();
-			selectDateForEdit();
+			selectDateForEdit(absenceDay);
 			clickNext();
 			break;
 		case "iOS":
@@ -1919,8 +1928,8 @@ public class SmokeMethods extends LoginPage {
 		return dateFormated;
 	}
 	
-	public void getAbsenceDateForCalendar() throws Throwable {
-		nextWorkingDate = nextWorkingDay();
+	public void getAbsenceDateForCalendar(String absenceDay) throws Throwable {
+		nextWorkingDate = nextWorkingDay(absenceDay);
 		dateAndroid = dateFormat(nextWorkingDate);
 		String monthName[] = dateAndroid.split(" ");
 
@@ -1936,8 +1945,8 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 	
-	public void selectUnfilledUnassignedAbsence(String userToSearch) throws Throwable {
-		nextWorkingDate = nextWorkingDay();
+	public void selectUnfilledUnassignedAbsence(String userToSearch, String absenceDay) throws Throwable {
+		nextWorkingDate = nextWorkingDay(absenceDay);
 		dateAndroid = dateFormat(nextWorkingDate);
 		for(int i=0;i<3;i++) {
 		if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))

@@ -181,17 +181,17 @@ public class SmokeStepDef {
 		smokePage.verifyAbsenceDetailPage();
 	}
 
-	@When("^enter teacher select reason date length summary$")
-	public void enter_teacher_select_reason_date_length_summary() throws Throwable {// page 1
-		smokePage.enterTeachersName(testdata.read_property("testingData", "users", "teacher"));
-		smokePage.selectTeachersName(testdata.read_property("testingData", "users", "teacher"));
+	 @When("^enter \"([^\"]*)\" select reason date length summary for \"([^\"]*)\"$")
+	 public void enter_something_select_reason_date_length_summary_for_something(String empAbsence, String absenceDay) throws Throwable {// page 1
+		smokePage.enterTeachersName(testdata.read_property("testingData", "users", empAbsence));
+		smokePage.selectTeachersName(testdata.read_property("testingData", "users", empAbsence));
 
 		smokePage.clickNext();
 		// page 3
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
-		smokePage.selectDate();
+		smokePage.selectDate(absenceDay);
 		smokePage.clickNext();
 		// page 5
 		smokePage.selectReason();
@@ -205,7 +205,7 @@ public class SmokeStepDef {
 	public void submit_view_absence_and_get_confirmation_number_of_employee() throws Throwable {
 		smokePage.submitAbsence();
 		smokePage.viewAbsence();
-		smokePage.getConfirmationForEmployee();
+		String confNumber = smokePage.getConfirmationForEmployee();
 	}
 
 	@Then("^submit absence and verify the alert$")
@@ -311,8 +311,8 @@ public class SmokeStepDef {
 		smokePage.clickCreateAbs();
 	}
 
-	@When("select reason date length summary")
-	public void selectReasonDateLengthSummary() throws Throwable {
+	@When("^select reason date length summary for \"([^\"]*)\"$")
+	public void select_reason_date_length_summary_for_something(String absenceDay) throws Throwable {
 
 //		smokePage.selectLocation();
 //		smokePage.clickNext();
@@ -320,7 +320,7 @@ public class SmokeStepDef {
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
-		smokePage.selectDate();
+		smokePage.selectDate(absenceDay);
 		smokePage.clickNext();
 		// page 5
 		smokePage.selectReason();
@@ -437,8 +437,8 @@ public class SmokeStepDef {
 	}
 
 	// MOB-4237
-	@When("the employee creates an absence")
-	public void theEmployeeCreatesAnAbsence() throws Throwable {
+	@When("^the employee creates an absence for \"([^\"]*)\"$")
+	public void the_employee_creates_an_absence_for_something(String absenceDay) throws Throwable {
 		smokePage.clickCreateAbs();
 
 		smokePage.selectLocation();
@@ -447,7 +447,7 @@ public class SmokeStepDef {
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
-		smokePage.selectDate();
+		smokePage.selectDate(absenceDay);
 		smokePage.clickNext();
 		// page 5
 		smokePage.selectReason();
@@ -552,7 +552,7 @@ public class SmokeStepDef {
 	public void clickOnApproveBtnApproveAJob() {
 		smokePage.selectApproveConfirmAbsence();
 	}
-
+ 
 	@And("^verify absences page is displayed$")
 	public void verify_absences_page_is_displayed() throws Throwable {
 		smokePage.verifyAbsencesPage();
@@ -564,9 +564,9 @@ public class SmokeStepDef {
 		loginPage.verify_homeScreen_displayedWithoutReLaunch();
 	}
 
-	@When("^Click on edit btn and edit the absence$")
-	public void click_on_edit_tab_and_edit_the_absence() throws Throwable {
-		smokePage.editCreatedAbsence();
+	@When("^Click on edit btn and edit the absence for \"([^\"]*)\"$")
+	public void click_on_edit_btn_and_edit_the_absence_for_something(String absenceDay) throws Throwable {
+		smokePage.editCreatedAbsence(absenceDay);
 		smokePage.saveEditedAbsence();
 		// smokePage.verifyAbsence();
 	}
@@ -576,34 +576,34 @@ public class SmokeStepDef {
 		smokePage.verifyAbsenceConfandDuration();
 	}
 
-	@When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" and delete them$")
-	public void verify_if_absences_present_for_employee_something_with_workerid_something_and_delete_them(
-			String apiLoginID, String workerID) throws Throwable {
+	@When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete them$")
+	public void verify_if_absences_present_for_employee_something_with_workerid_something_for_something_and_delete_them(
+			String apiLoginID, String workerID, String absenceDay) throws Throwable {
 		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
-			apiService.apiGetConfirmationIds(workerID);
+			apiService.apiGetConfirmationIds(workerID,absenceDay);
 			apiService.apiDeleteAbsence();
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
 
-	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" and delete the existing ones$")
-	public void create_absence_for_employee_something_with_workerid_something_and_delete_the_existing_ones(
-			String apiLoginID, String workerID) throws Throwable {
+	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete the existing ones$")
+	public void create_absence_for_employee_something_with_workerid_something_for_something_and_delete_the_existing_ones(
+			String apiLoginID, String workerID, String absenceDay) throws Throwable {
 		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
-			apiService.apiGetConfirmationIds(workerID);
+			apiService.apiGetConfirmationIds(workerID, absenceDay);
 			apiService.apiDeleteAbsence();
-			apiService.apiCreateAbsence(workerID);
+			apiService.apiCreateAbsence(workerID,absenceDay);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
 
-	@Then("^Tap on the day of created absence in the app Calendar$")
-	public void tap_on_the_day_of_created_absence_in_the_app_calendar() throws Throwable {
-		smokePage.getAbsenceDateForCalendar();
+	@Then("^Tap on the day of created absence for \"([^\"]*)\" in the app Calendar$")
+	public void tap_on_the_day_of_created_absence_for_something_in_the_app_calendar(String absenceDay) throws Throwable {
+		smokePage.getAbsenceDateForCalendar(absenceDay);
 	}
 
 	@And("^Verify the absence in Calendar$")
@@ -611,10 +611,10 @@ public class SmokeStepDef {
 		smokePage.verifyAbsence();
 	}
 
-	@And("^Select an unfilled and unassigned absence$")
-	public void select_an_unfilled_and_unassigned_absence() throws Throwable {
+	@And("^Select an unfilled and unassigned absence for \"([^\"]*)\"$")
+	public void select_an_unfilled_and_unassigned_absence_for_something(String absenceDay) throws Throwable {
 		smokePage.selectAbsenceWidget();
-		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"));
+		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"),absenceDay);
 	}
 
 }
