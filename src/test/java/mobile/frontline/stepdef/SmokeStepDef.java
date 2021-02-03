@@ -410,7 +410,7 @@ public class SmokeStepDef {
 	// MOB-4261
 	@When("employee clicks on the timesheet widget")
 	public void employeeClicksOnTheTimesheetWidget() throws Throwable {
-		smokePage.clickTimesheetOption();
+		smokePage.clickTimesheetWidget();
 	}
 
 //	@When("open the past day timesheet and add a new time sheet")
@@ -494,11 +494,11 @@ public class SmokeStepDef {
 //		smokePage.verifyAbsence();
 //	}
 
-	@When("employee clicks on the clockin btn")
+	@When("Employee clicks on the clockin btn")
 	public void employeeClicksOnTheClockinBtn() throws Throwable {
-		smokePage.allowClockInPermissions();
-		loginPage.verify_homeScreen_displayedWithoutReLaunch();
-		smokePage.clockInbtn();
+		smokePage.clockInVerification();
+		//loginPage.verify_homeScreen_displayedWithoutReLaunch();
+		//smokePage.clockInbtn();
 	}
 
 	@Then("the user clocks out through timesheet")
@@ -531,31 +531,30 @@ public class SmokeStepDef {
 
 	@When("click on reorder widget and rearrange the widget")
 	public void clickOnReorderWidgetAndRearrangeTheWidget() throws Throwable {
-		//smokePage.getTheOrderOfWidet();
-			
+		// smokePage.getTheOrderOfWidet();
+
 		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 		smokePage.getListOrderAfterReorder();
 	}
-	
-	 @When("^Click on reorder widget$")
-	    public void click_on_reorder_widget() throws Throwable {
-			smokePage.getListOrderBeforeReorder();
-			smokePage.clickReorderWidget();
-  
-	    }
 
-	 @And("^Rearrange the widets$")
-	    public void rearrange_the_widets() throws Throwable {
-		 smokePage.draganddrop();
-			smokePage.saveReorderedWidget();
-	    }
-	    @Then("^Verify the order of widgets and footers present$")
-	    public void verify_the_order_of_widgets_and_footers_present() throws Throwable {
-	    	loginPage.verify_homeScreen_displayedWithoutPushVerify();
-			smokePage.getListOrderAfterReorder();
-	    }
+	@When("^Click on reorder widget$")
+	public void click_on_reorder_widget() throws Throwable {
+		smokePage.getListOrderBeforeReorder();
+		smokePage.clickReorderWidget();
 
-	   
+	}
+
+	@And("^Rearrange the widets$")
+	public void rearrange_the_widets() throws Throwable {
+		smokePage.draganddrop();
+		smokePage.saveReorderedWidget();
+	}
+
+	@Then("^Verify the order of widgets and footers present$")
+	public void verify_the_order_of_widgets_and_footers_present() throws Throwable {
+		loginPage.verify_homeScreen_displayedWithoutPushVerify();
+		smokePage.getListOrderAfterReorder();
+	}
 
 	@And("logouts out from the application")
 	public void logoutsOutFromTheApplication() {
@@ -565,7 +564,7 @@ public class SmokeStepDef {
 	@Then("verify all the widgets and footers present")
 	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
 //		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-		//smokePage.verify_widgetsPresent();
+		// smokePage.verify_widgetsPresent();
 		smokePage.verify_footerPresent();
 	}
 

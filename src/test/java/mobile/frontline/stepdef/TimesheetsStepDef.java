@@ -20,8 +20,8 @@ public class TimesheetsStepDef {
 	}
 
 	@When("click on timesheet option")
-	public void clickOnTimesheetOption() throws Exception {
-		smokePage.clickTimesheetOption();
+	public void clickOnTimesheetOption() throws Throwable {
+		smokePage.clickTimesheetWidget();
 	}
 
 	@Then("click on day and submit day timesheet option")
