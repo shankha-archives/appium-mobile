@@ -2,6 +2,7 @@ package mobile.frontline.pages;
 
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.touch.LongPressOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
@@ -77,10 +78,24 @@ public class SettingsPage extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement InTimeEdit;
 	
+	@AndroidFindBy(xpath = "(//android.widget.TextView)[1]")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement empName;
+	
+	@AndroidFindBy(xpath = "((//android.widget.LinearLayout)[5]//android.widget.TextView)[1]")
+//	@iOSXCUITFindBy(accessibility = "")
+	public MobileElement absenceTextOut;
+	
+//	@AndroidFindBy(xpath = "((//android.widget.RelativeLayout)[7]//android.widget.TextView)[1]")
+////	@iOSXCUITFindBy(accessibility = "")
+//	public MobileElement absenceTextIn;
+	
 	public String job_day;
 	public String job_month;
 	public String expectedInTime;
 	public String actualInTime;
+	public String employeeName;
+	MobileElement absenceName;
 	
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -213,5 +228,33 @@ public class SettingsPage extends LoginPage {
 		actualInTime = getElementText(InTimeEdit);
 		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
 		utils.log().info("InTime is not back to default");	
+	}
+
+	public void scrollTo(String text){                
+		((AndroidDriver) driver).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))");
+	}
+	
+	public void getEmployeeName() {
+		isElementdisplayed(empName);
+		employeeName = getElementText(empName);
+		click(smoke.homeTab);
+	}
+	
+	public void verifyAbsenceOnDashboard() throws Exception {
+		scrollTo("Absences Today");
+		Assert.assertNotEquals(getElementText(absenceTextOut)+ "is not same as No upcoming Absences", getElementText(absenceTextOut), "No upcoming Absences");
+		utils.log().info("Absences are not visible");
+		click(smoke.absenceWidget);
+	}
+	
+	public void verifyAbsenceIsVisible(String confNumber) throws Throwable {
+		//smoke.androidScrollToElementUsingUiScrollable("text", employeeName);
+		scrollTo(employeeName);
+		absenceName = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + employeeName + "')]");
+		Assert.assertNotEquals(employeeName+ "is not same as No Absences", employeeName, "No Absences");
+		utils.log().info("Absences are not visible");
+		click(absenceName);
+		isElementdisplayed(smoke.confirmationNumber);
+		Assert.assertTrue("Confirmation number is not displayed", smoke.confirmationNumber.isDisplayed());
 	}
 }

@@ -24,8 +24,8 @@ public class APIServices {
 		token = json.getJSONObject("data").get("token").toString();
 	}
 	
-	public void apiGetConfirmationIds(String workerID) throws Throwable {
-		HttpResponse<String> responseGetAbsenceConfirmationNumberAPI = apiObject.getAbsenceFromDate(token,workerID);
+	public void apiGetConfirmationIds(String workerID, String absenceDay) throws Throwable {
+		HttpResponse<String> responseGetAbsenceConfirmationNumberAPI = apiObject.getAbsenceFromDate(token,workerID,absenceDay);
 		Assert.assertEquals(responseGetAbsenceConfirmationNumberAPI.getStatus(),200);
 		JSONObject json = new JSONObject(responseGetAbsenceConfirmationNumberAPI.getBody());
 		
@@ -44,8 +44,8 @@ public class APIServices {
 			utils.log().info("No Absence Found");
 	}
 	
-	public void apiCreateAbsence(String workerID) throws Throwable {
-		HttpResponse<String> responseCreateAbsence= apiObject.createEmployeeAbsence(token,workerID);
+	public void apiCreateAbsence(String workerID, String absenceDay) throws Throwable {
+		HttpResponse<String> responseCreateAbsence= apiObject.createEmployeeAbsence(token,workerID,absenceDay);
 		Assert.assertEquals(responseCreateAbsence.getStatus(),201);
 	}
 }
