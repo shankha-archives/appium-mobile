@@ -219,7 +219,7 @@ public class SmokeMethods extends LoginPage {
 
 	// click on inbox message
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='FLAlertView_Table']/XCUIElementTypeCell")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[2]")
 	public MobileElement inboxMsg;
 
 	// click on inbox tab
@@ -1152,12 +1152,9 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewText() {
-		String msg = getElementText(inboxMsg);
+		String msg=getElementText(inboxMsg).trim();
 		click(inboxMsg);
-
 		Assert.assertEquals(msg, getElementText(msgData));
-		// Assert.assertTrue("Message is not displayed",
-		// getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
 	}
 
@@ -2043,9 +2040,27 @@ public class SmokeMethods extends LoginPage {
 
 	public void waitFortheSpinner1() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions
-				.invisibilityOfElementLocated(By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
+
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(
+				By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
 	}
+	
+	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction, List<MobileElement> collectListOf) throws Exception {
+		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();
+			Dimension size = driver.manage().window().getSize();
+			int startX = (int) (size.width * 0.5);
+			int endX = (int) (size.width * 0.5);
+			int startY = 0;
+			int endY = 0;
+			boolean isFound = false;
+
+			switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.4);
+				startY = (int) (size.height * 0.6);
+				break;
+	}
+
 
 	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction,
 			List<MobileElement> collectListOf) throws Exception {

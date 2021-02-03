@@ -228,12 +228,12 @@ public class LoginPage extends BasePage {
 			utils.log().info("Home Page is displayed");
 			break;
 		case "iOS":
-			if (isElementdisplayed(bioMatric)) {
+			/*if (isElementdisplayed(bioMatric)) {
 				clickElement(bioMatric);
 				utils.log().info("Biometric pop-up displayed");
 			} else {
 				utils.log().info("Biometric pop-up not displayed");
-			}
+			}*/
 			if (isElementdisplayed(PushNotificationAllow)) {
 				clickElement(PushNotificationAllow);
 				utils.log().info("Push Notification pop-up displayed");
@@ -267,12 +267,12 @@ public class LoginPage extends BasePage {
 			break;
 		case "iOS":
 			switchToNativeApp();
-			if (isElementdisplayed(bioMatric)) {
+			/*if (isElementdisplayed(bioMatric)) {
 				clickElement(bioMatric);
 				utils.log().info("Biometric pop-up displayed");
 			} else {
 				utils.log().info("Biometric pop-up not displayed");
-			}
+			}*/
 			if(isElementdisplayed(homePageHeader))
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			else {
