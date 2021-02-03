@@ -25,8 +25,8 @@ public class ApiMethods {
 	public HttpResponse<String> getAbsenceFromDate(String token, String workerID, String absenceDay) throws Throwable{
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<String> response = Unirest.get(testdata.read_property("testingData", "users", "BaseURL")+"/api/v1.0/Workers/"+testdata.read_property("testingData", "users", workerID)+"/AbsenceRequests")
-		  .queryString("startDate", smokePage.nextWorkingDay(absenceDay))
-		  .queryString("endDate", smokePage.nextWorkingDay(absenceDay))
+		  .queryString("startDate", smokePage.nextWorkingDay(absenceDay,"MM/dd/yyyy"))
+		  .queryString("endDate", smokePage.nextWorkingDay(absenceDay,"MM/dd/yyyy"))
 		  .header("Accept", "application/json")
 		  .header("AesopToken", token)
 		 .asString();
@@ -52,7 +52,7 @@ public class ApiMethods {
 		  .header("Content-Type", "application/json")
 		  .header("Accept", "application/json")
 		  .header("AesopToken", token)
-		  .body("{\"needSub\" : true, \"worker\":{  \"id\":"+testdata.read_property("testingData", "users", workerID)+" }, \"absences\":[ { \"date\":\""+smokePage.nextWorkingDay(absenceDay)+"\", \"institution\":{ \"id\":"+testdata.read_property("testingData", "users", "APISchoolID")+"   }, \"entitlement\":{ \"id\":"+testdata.read_property("testingData", "users", "APIReasonID")+" }, \"shiftType\":1, \"absenceStartTime\":\"09:00 AM\", \"absenceEndTime\":\"03:00 PM\"  } ]}")
+		  .body("{\"needSub\" : true, \"worker\":{  \"id\":"+testdata.read_property("testingData", "users", workerID)+" }, \"absences\":[ { \"date\":\""+smokePage.nextWorkingDay(absenceDay,"MM/dd/yyyy")+"\", \"institution\":{ \"id\":"+testdata.read_property("testingData", "users", "APISchoolID")+"   }, \"entitlement\":{ \"id\":"+testdata.read_property("testingData", "users", "APIReasonID")+" }, \"shiftType\":1, \"absenceStartTime\":\"09:00 AM\", \"absenceEndTime\":\"03:00 PM\"  } ]}")
 		  .asString();
 		return response;
 	}
