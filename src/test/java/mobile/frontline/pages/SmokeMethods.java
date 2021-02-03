@@ -330,7 +330,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Day Total")
 	public MobileElement commonDayTotal;
 
-	 @AndroidFindBy(xpath = "(//android.widget.TextView[@index=1])[3]")
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@index=1])[3]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='ABSENCES']/following-sibling::XCUIElementTypeOther[2]//XCUIElementTypeOther[1]")
 	public MobileElement searchAbsReason;
 
@@ -424,6 +424,7 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
 	public MobileElement homeTab;
 
+	//@AndroidFindBy(xpath = "//android.widget.TextView[@text=': Choose Reason']")
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next: Choose Reason']")
 	@iOSXCUITFindBy(xpath = "(//*[@type='XCUIElementTypeStaticText'])[3]")
 	public MobileElement whoAbsencePageWaittoClickCaret;
@@ -602,11 +603,10 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@index=2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
 	public MobileElement traverseToNextDay;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_title")
 	@iOSXCUITFindBy(xpath = "//	XCUIElementTypeButton[contains(@name, 'ModuleHeader')]")
 	public List<MobileElement> widgetListFromDashboard;
-
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Absences']")
@@ -620,7 +620,7 @@ public class SmokeMethods extends LoginPage {
 	public String confNumber;
 	public String absenceDuration;
 	ArrayList<String> widgetlistbeforeReorder;
-	ArrayList<String> widgetlistafterReorder ;
+	ArrayList<String> widgetlistafterReorder;
 	public String nextWorkingDate;
 	public String dateAndroid;
 
@@ -665,7 +665,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-
 //		click(serachEditText);
 		sendKeys(serachEditText, teacher);
 //		driver.getKeyboard().sendKeys(teacher);
@@ -683,7 +682,7 @@ public class SmokeMethods extends LoginPage {
 		case "iOS":
 			isElementdisplayed(whoAbsencePageWaittoClickCaret);
 			By teacherName = By.xpath("//XCUIElementTypeButton[contains(@name,'" + teacher + "')]");
-			//XCUIElementTypeButton[@name="AutomationEmp 4249"]
+			// XCUIElementTypeButton[@name="AutomationEmp 4249"]
 			click(Done);
 			scrollToElement(teacherName, "up");
 
@@ -747,39 +746,66 @@ public class SmokeMethods extends LoginPage {
 		return dtf.format(LocalDateTime.now());
 	}
 
-	public String currentDate() throws Exception {
+	public String currentDate(String format) throws Exception {
 		DateTimeFormatter dtf;
-		dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		// dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+		dtf = DateTimeFormatter.ofPattern(format);
 		return dtf.format(LocalDateTime.now());
 	}
 
-	public String nextWorkingDay() throws Exception {
-		String cdate = currentDate();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+	public String nextWorkingDay(String absenceDay, String format) throws Exception {
+		String cdate = currentDate(format);
+		// SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
 
 		Calendar c = Calendar.getInstance();
 		c.setTime(dateFormat.parse(cdate));
-
-		c.add(Calendar.DAY_OF_YEAR, 1);
-
-		while (c.get(c.DAY_OF_WEEK) == 7 || c.get(c.DAY_OF_WEEK) == 1)
+		switch (absenceDay) {
+		case "next day":
 			c.add(Calendar.DAY_OF_YEAR, 1);
+			while (c.get(c.DAY_OF_WEEK) == 7 || c.get(c.DAY_OF_WEEK) == 1)
+				c.add(Calendar.DAY_OF_YEAR, 1);
+			break;
+		case "current day":
+			c.add(Calendar.DAY_OF_YEAR, 0);
+			break;
+		case "past day":
+			break;
+		default:
+			throw new Exception("Invalid date");
+		}
 		return dateFormat.format(c.getTime());
 	}
 
-	public void selectDate() throws Throwable {
-		nextWorkingDate = nextWorkingDay();
-//		DateFormat androidDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//		DateFormat iOSDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
-//		Date dateiOS = androidDateFormat.parse(nextWorkingDate);
-		dateAndroid =  dateFormat(nextWorkingDate);
+	public void selectDate(String absenceDay) throws Throwable {
+//		nextWorkingDate = nextWorkingDay(absenceDay);
+////		DateFormat androidDateFormat = new SimpleDateFormat("MM/dd/yyyy");
+////		DateFormat iOSDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
+////		Date dateiOS = androidDateFormat.parse(nextWorkingDate);
+//		dateAndroid =  dateFormat(nextWorkingDate);
+//
+//		switch (new GlobalParams().getPlatformName()) {
+//		case "Android":
+//			verifyAsbsenceDatePage();
+//			androidScrollToElementUsingUiScrollable("description", dateAndroid);
+//			break;
+//		case "iOS":
+//			By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");
+//			scrollToElement(absenceDate, "up");
+//			click(absenceDate, "msg");
+//			break;
+//		default:
+//			throw new Exception("Invalid platform Name");
+//		}
 
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
+			nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
 			verifyAsbsenceDatePage();
-			androidScrollToElementUsingUiScrollable("description", dateAndroid);
+			androidScrollToElementUsingUiScrollable("description", nextWorkingDate);
 			break;
 		case "iOS":
+			nextWorkingDate = nextWorkingDay(absenceDay, "MM/dd/yyyy");
 			By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");
 			scrollToElement(absenceDate, "up");
 			click(absenceDate, "msg");
@@ -873,12 +899,13 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void getConfirmationForEmployee() {
+	public String getConfirmationForEmployee() {
 
 		isElementdisplayed(confirmationNumber);
 		// Assert.assertTrue("Confirmation number is not displayed",
 		// confirmationNumber.isDisplayed());
 		confNumber = getElementText(confirmationNumber);
+		return confNumber;
 		// utils.log().info("Confirmation number is displayed");
 	}
 
@@ -1102,8 +1129,8 @@ public class SmokeMethods extends LoginPage {
 
 	public void sendFeedbackTitle() {
 		Assert.assertTrue("Title tab is not displayed", title.isDisplayed());
-		//click(title);
-		sendKeys(title,"Automation Test");
+		// click(title);
+		sendKeys(title, "Automation Test");
 	}
 
 	public void sendFeedbackMessage() {
@@ -1125,11 +1152,12 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewText() {
-		String msg=getElementText(inboxMsg);
+		String msg = getElementText(inboxMsg);
 		click(inboxMsg);
-		
+
 		Assert.assertEquals(msg, getElementText(msgData));
-		//Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
+		// Assert.assertTrue("Message is not displayed",
+		// getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
 	}
 
@@ -1192,8 +1220,8 @@ public class SmokeMethods extends LoginPage {
 
 	public void enterTimeSheetdetails() {
 		if (isElementdisplayed(enterPin)) {
-			//click(enterPin);
-			sendKeys(enterPin,testdata.read_property("testingData", "users", "AccountingPin"));
+			// click(enterPin);
+			sendKeys(enterPin, testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();
 			click(checkbox);
 		} else {
@@ -1240,10 +1268,9 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifySearchResult() throws Exception {
-		
-			isElementDisplayed(calendar);
-			Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
-	///	String result = getElementText(calendar);
+		isElementDisplayed(calendar);
+		Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
+		/// String result = getElementText(calendar);
 		Assert.assertTrue("Entered text does not match", getElementText(calendar).equalsIgnoreCase(searchResultText));
 		utils.log().info("Entered text matches with result");
 	}
@@ -1425,10 +1452,10 @@ public class SmokeMethods extends LoginPage {
 		click(Done);
 	}
 
-	//change sendkeys
+	// change sendkeys
 	public void AddTextonCommentSection() {
-		//click(commentBox);
-		sendKeys(commentBox,"Checking Edit Functionality");
+		// click(commentBox);
+		sendKeys(commentBox, "Checking Edit Functionality");
 	}
 
 	public void clickonEditButton2() {
@@ -1656,14 +1683,22 @@ public class SmokeMethods extends LoginPage {
 				.moveTo(PointOption.point(dragX, dragY1 - 100)).release().perform();
 	}
 
-	public void selectDateForEdit() throws Throwable {
+//	public void selectDateForEdit(String absenceDay) throws Throwable {
+//		verifyAsbsenceDatePage();
+//		nextWorkingDate = nextWorkingDay(absenceDay);
+//		dateAndroid = dateFormat(nextWorkingDate);
+//		androidScrollToElementUsingUiScrollable("description", dateAndroid);
+//	}
+
+	public void selectDateForEdit(String absenceDay) throws Throwable {
 		verifyAsbsenceDatePage();
-		nextWorkingDate = nextWorkingDay();
-		dateAndroid = dateFormat(nextWorkingDate);
-		androidScrollToElementUsingUiScrollable("description", dateAndroid);
+//		nextWorkingDate = nextWorkingDay();
+//		dateAndroid = dateFormat(nextWorkingDate);
+		nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
+		androidScrollToElementUsingUiScrollable("description", nextWorkingDate);
 	}
 
-	public void editCreatedAbsence() throws Throwable {
+	public void editCreatedAbsence(String absenceDay) throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			isElementdisplayed(editTab);
@@ -1672,7 +1707,7 @@ public class SmokeMethods extends LoginPage {
 //				clickNext();
 			verifyAsbsenceReasonPage();
 			clickNext();
-			selectDateForEdit();
+			selectDateForEdit(absenceDay);
 			clickNext();
 			break;
 		case "iOS":
@@ -1804,15 +1839,15 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			common.isElementdisplayed(PeopleWidget);
-			//click(SearchPeople);
-			sendKeys(SearchPeople,lastName);
+			// click(SearchPeople);
+			sendKeys(SearchPeople, lastName);
 			common.hideKeyboard();
 			driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + lastName + "')]").click();
 			break;
 		case "iOS":
-			//click(serachEditText);
-			sendKeys(serachEditText,lastName);
-			//driver.getKeyboard().sendKeys(lastName);
+			// click(serachEditText);
+			sendKeys(serachEditText, lastName);
+			// driver.getKeyboard().sendKeys(lastName);
 			click(SearchPeople);
 			break;
 		default:
@@ -1914,109 +1949,152 @@ public class SmokeMethods extends LoginPage {
 		String dateFormated = androidDateFormat.format(dateiOS);
 		return dateFormated;
 	}
-	
-	public void getAbsenceDateForCalendar() throws Throwable {
-		nextWorkingDate = nextWorkingDay();
-		dateAndroid = dateFormat(nextWorkingDate);
-		String monthName[] = dateAndroid.split(" ");
+
+	public void getAbsenceDateForCalendar(String absenceDay) throws Throwable {
+//		nextWorkingDate = nextWorkingDay(absenceDay);
+//		dateAndroid = dateFormat(nextWorkingDate);
+//		String monthName[] = dateAndroid.split(" ");
+//
+//		switch (new GlobalParams().getPlatformName()) {
+//		case "Android":
+//			verifyEventInCalendar(dateAndroid, monthName[0]);
+//			break;
+//		case "iOS":
+//			verifyEventInCalendar(nextWorkingDate, monthName[0]);
+//			break;
+//		default:
+//			throw new Exception("Invalid platform Name");
+//		}
 
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			verifyEventInCalendar(dateAndroid, monthName[0]);
+			nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
 			break;
 		case "iOS":
-			verifyEventInCalendar(nextWorkingDate, monthName[0]);
+			nextWorkingDate = nextWorkingDay(absenceDay, "MM/dd/yyyy");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+		verifyEventInCalendar(nextWorkingDate, nextWorkingDate.split(" ")[0]);
+	}
+
+	public void selectUnfilledUnassignedAbsence(String userToSearch, String absenceDay) throws Throwable {
+//		nextWorkingDate = nextWorkingDay(absenceDay);
+//		dateAndroid = dateFormat(nextWorkingDate);
+//		switch (new GlobalParams().getPlatformName()) {
+//			case "Android":
+//				for(int i=0;i<3;i++) {
+//					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
+//						click(traverseToNextDay);
+//					else
+//						break;
+//				}
+//				waitFortheSpinner1();
+//				androidScrollToElementUsingUiScrollable("text",userToSearch);
+//				break;
+//			case "iOS":
+//				 dateAndroid = dateAndroid.split(" ",2)[1];
+//				for(int i=0;i<=3;i++) {
+//
+//					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(dateAndroid))
+//					{//Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
+//						click(traverseToNextDay);
+//						}
+//					else
+//						break;
+//				}
+//				By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
+//				scrollToElement(unfilledabsenceDate, "up");
+//				click(unfilledabsenceDate, "msg");
+//				break;
+//			default:
+//				throw new Exception("Invalid platform Name");
+//		}
+
+		nextWorkingDate = nextWorkingDay(absenceDay, "MMMM d, yyyy");
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			for (int i = 0; i < 3; i++) {
+				if (!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(nextWorkingDate))
+					click(traverseToNextDay);
+				else
+					break;
+			}
+			waitFortheSpinner1();
+			androidScrollToElementUsingUiScrollable("text", userToSearch);
+			break;
+		case "iOS":
+			nextWorkingDate = nextWorkingDate.split(" ", 2)[1];
+			for (int i = 0; i <= 3; i++) {
+				if (!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(nextWorkingDate)) {// Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
+					click(traverseToNextDay);
+				} else
+					break;
+			}
+			By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
+			scrollToElement(unfilledabsenceDate, "up");
+			click(unfilledabsenceDate, "msg");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
 	}
-	
-	public void selectUnfilledUnassignedAbsence(String userToSearch) throws Throwable {
-		nextWorkingDate = nextWorkingDay();
-		dateAndroid = dateFormat(nextWorkingDate);
-		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-				for(int i=0;i<3;i++) {
-					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
-						click(traverseToNextDay);
-					else
-						break;
-				}
-				waitFortheSpinner1();
-				androidScrollToElementUsingUiScrollable("text",userToSearch);
-				break;
-			case "iOS":
-				 dateAndroid = dateAndroid.split(" ",2)[1];
-				for(int i=0;i<=3;i++) {
-
-					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(dateAndroid))
-					{//Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
-						click(traverseToNextDay);
-						}
-					else
-						break;
-				}
-				By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
-				scrollToElement(unfilledabsenceDate, "up");
-				click(unfilledabsenceDate, "msg");
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
-		}
-
-	}
 
 	public void waitFortheSpinner1() {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(
-				By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
+		wait.until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
 	}
-	
-	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction, List<MobileElement> collectListOf) throws Exception {
-		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();  
-			Dimension size = driver.manage().window().getSize();
-			int startX = (int) (size.width * 0.5);
-			int endX = (int) (size.width * 0.5);
-			int startY = 0;
-			int endY = 0;
-			boolean isFound = false;
 
-			switch (direction) {
-			case "up":
-				endY = (int) (size.height * 0.4);
-				startY = (int) (size.height * 0.6);
+	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction,
+			List<MobileElement> collectListOf) throws Exception {
+		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();
+		Dimension size = driver.manage().window().getSize();
+		int startX = (int) (size.width * 0.5);
+		int endX = (int) (size.width * 0.5);
+		int startY = 0;
+		int endY = 0;
+		boolean isFound = false;
+
+		switch (direction) {
+		case "up":
+			endY = (int) (size.height * 0.4);
+			startY = (int) (size.height * 0.6);
+			break;
+
+		case "down":
+			endY = (int) (size.height * 0.6);
+			startY = (int) (size.height * 0.4);
+			break;
+		}
+
+		for (int i = 0; i < 10; i++) {
+			for (MobileElement mobElement : collectListOf) {
+				listOfElementByScrolling.add(common.getElementText(mobElement));
+			}
+			if (find(elementTill, 1)) {
+				isFound = true;
 				break;
+			} else {
+				swipe(startX, startY, endX, endY, 1000);
+			}
+		}
+		if (!isFound) {
+			throw new Exception("Element not found");
+		}
+		return listOfElementByScrolling;
 
-			case "down":
-				endY = (int) (size.height * 0.6);
-				startY = (int) (size.height * 0.4);
-				break;
-			}
-
-			for (int i = 0; i < 10; i++) {
-				for (MobileElement mobElement : collectListOf) {
-					listOfElementByScrolling.add(common.getElementText(mobElement));
-				}
-				if (find(elementTill, 1)) {
-					isFound = true;
-					break;
-				} else {
-					swipe(startX, startY, endX, endY, 1000);
-				}
-			}
-			if (!isFound) {
-				throw new Exception("Element not found");
-			}
-			return listOfElementByScrolling;
-		
 	}
+
 	public void getListOrderBeforeReorder() throws Throwable {
-		widgetlistbeforeReorder = new ArrayList<String>(getTheOrderListByScrolling(reOrderWidgetbtn,"up",widgetListFromDashboard));
+		widgetlistbeforeReorder = new ArrayList<String>(
+				getTheOrderListByScrolling(reOrderWidgetbtn, "up", widgetListFromDashboard));
 	}
-	
+
 	public void getListOrderAfterReorder() throws Throwable {
-		widgetlistafterReorder = new ArrayList<String>(getTheOrderListByScrolling(reOrderWidgetbtn,"up",widgetListFromDashboard));
+		widgetlistafterReorder = new ArrayList<String>(
+				getTheOrderListByScrolling(reOrderWidgetbtn, "up", widgetListFromDashboard));
 	}
-	
+
 }
