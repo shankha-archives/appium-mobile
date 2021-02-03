@@ -219,7 +219,7 @@ public class SmokeMethods extends LoginPage {
 
 	// click on inbox message
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='FLAlertView_Table']/XCUIElementTypeCell")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[2]")
 	public MobileElement inboxMsg;
 
 	// click on inbox tab
@@ -1125,11 +1125,9 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void viewText() {
-		String msg=getElementText(inboxMsg);
+		String msg=getElementText(inboxMsg).trim();
 		click(inboxMsg);
-		
 		Assert.assertEquals(msg, getElementText(msgData));
-		//Assert.assertTrue("Message is not displayed", getElementText(msgData).length() > 1);
 		utils.log().info("MEssage is displayed");
 	}
 
@@ -1974,7 +1972,7 @@ public class SmokeMethods extends LoginPage {
 	}
 	
 	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction, List<MobileElement> collectListOf) throws Exception {
-		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();  
+		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();
 			Dimension size = driver.manage().window().getSize();
 			int startX = (int) (size.width * 0.5);
 			int endX = (int) (size.width * 0.5);
