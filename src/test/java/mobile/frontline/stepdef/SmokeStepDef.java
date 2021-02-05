@@ -1,10 +1,6 @@
 package mobile.frontline.stepdef;
 
 import java.util.Properties;
-import org.junit.Assert;
-
-import com.mashape.unirest.http.exceptions.UnirestException;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -73,7 +69,7 @@ public class SmokeStepDef {
 	}
 
 	@When("the user launches the app")
-	public void theUserLaunchesTheApp() throws UnirestException {
+	public void theUserLaunchesTheApp() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
 	}
 
