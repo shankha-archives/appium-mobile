@@ -2,6 +2,7 @@ package mobile.frontline.pages;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -37,10 +38,11 @@ public class SmokeMethods extends LoginPage {
 
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	LoginPage loginPage = new LoginPage();
-	JobsMethods jobPage = new JobsMethods();
+
+	//JobsMethods jobPage = new JobsMethods();
+	//TimesheetMethods timesheet = new TimesheetMethods();
+	
 	public TestDataManager testdata = new TestDataManager();
-	String cdate;
 
 	// click //homepage
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences Today']")
@@ -611,6 +613,18 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Absences']")
 	public MobileElement AbsencePageHeader;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_time_sheet_day_total_time")
+	//@iOSXCUITFindBy(accessibility = "")
+	public List<MobileElement> dayTotalTime;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_view_total_amount")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement totalWeekTotalAmount;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/number_of_timesheets_selected")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement totalWeekTimeExpected;
 
 	public String absence_Ename;
 	public String absence_day;
@@ -624,6 +638,7 @@ public class SmokeMethods extends LoginPage {
 	ArrayList<String> widgetlistafterReorder;
 	public String nextWorkingDate;
 	public WebElement scrolledToElement;
+	public String totalExpectedTimeofWeek;
 
 	public SmokeMethods() {
 	}
@@ -1213,6 +1228,7 @@ public class SmokeMethods extends LoginPage {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			isElementdisplayed(tuesday);
+			totalExpectedTimeofWeek = getElementText(totalWeekTotalAmount);
 			break;
 		case "iOS":
 			isElementdisplayed(addTimeSheets);
@@ -1230,16 +1246,14 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void enterTimeSheetdetails() {
+		Assert.assertTrue("Total timesheet  time is not same while submitting", getElementText(totalWeekTimeExpected).contains(totalExpectedTimeofWeek));
 		if (isElementdisplayed(enterPin)) {
-			// click(enterPin);
 			sendKeys(enterPin, testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();
 			click(checkbox);
 		} else {
 			utils.log().info("Digital signature not displayed");
 		}
-		// verifySubmitTimesheet();
-		// common.swipeUpSlowly();
 		click(submitTimesheet);
 	}
 
@@ -1391,11 +1405,14 @@ public class SmokeMethods extends LoginPage {
 	public void addTimeSheet() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.isElementdisplayed(selectDayToFillTimesheet);
-			click(selectDayToFillTimesheet);
+//			common.isElementdisplayed(selectDayToFillTimesheet);
+//			click(selectDayToFillTimesheet);
+			selectCurrentDayForTimesheet();
 			click(addTimeSheets);
 			common.isElementdisplayed(workDetails);
 			Intime = common.getElementText(timeSheetInTime);
+			click(timeSheetOutTime);
+			click(okBtn);
 			click(saveTimesheets);
 			break;
 		case "iOS":
@@ -1412,18 +1429,27 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
+	
+	public void editOutTimeCommentToTimesheet() {
+		timeEntryEditBtnClick();
+		common.isElementdisplayed(workDetails);
+		click(timeSheetOutTime);
+		//timesheet.addHourInExtratTime();
+	}
 
 	public void clickOnEditBtton3() {
 		click(timeInEdit3);
 		click(Done);
 	}
 
-	public void goToEditDeleteTimeSheetOption() throws Exception {
+	public void goToEditDeleteTimeSheetOption() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			common.isElementdisplayed(dailytimeSheetsubmitbtn);
-			timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
-			click(timeSheetInTime);
+			isElementdisplayed(dailytimeSheetsubmitbtn);
+			assertTimeEvent(Intime);
+			scrolledToElement.click();
+//			//timeSheetInTime = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + Intime + "')]");
+//			click(timeSheetInTime);
 			break;
 		case "iOS":
 			common.isElementdisplayed(dailytimeSheetsubmitbtn);
@@ -1434,7 +1460,7 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 
-	public void editTimesheet() throws Throwable {
+	public void editTimesheetForClockOut() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			timeEntryEditBtnClick();
@@ -1844,7 +1870,7 @@ public class SmokeMethods extends LoginPage {
 			// driver.findElementByXPath("//android.widget.TextView[contains(@text,'" +
 			// Intime + "')]").isDisplayed());
 			scrolledToElement.click();
-			editTimesheet();
+			editTimesheetForClockOut();
 			break;
 		case "iOS":
 			clickTimesheetWidget();
@@ -1857,7 +1883,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void assertTimeEvent(String time) throws Throwable {
-		scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime);
+		scrolledToElement = androidScrollToElementUsingUiScrollable("text", time);
 		Assert.assertTrue("Required Time Event is visible ",
 				driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + time + "')]").isDisplayed());
 
@@ -1877,7 +1903,7 @@ public class SmokeMethods extends LoginPage {
 	public void selectOrganization() {
 		common.isElementdisplayed(peopleWidgetOrg);
 		click(peopleWidgetOrg);
-		click(jobPage.contbtn);
+	//	click(jobPage.contbtn);
 	}
 
 	public void clickPeopleWidget() throws Exception {
@@ -1989,31 +2015,7 @@ public class SmokeMethods extends LoginPage {
 
 	}
 
-//	public String dateFormat(String date) throws Throwable {
-//		DateFormat iOSDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-//		DateFormat androidDateFormat = new SimpleDateFormat("MMMM dd, yyyy");
-//		Date dateiOS = iOSDateFormat.parse(date);
-//		String dateFormated = androidDateFormat.format(dateiOS);
-//		return dateFormated;
-//	}
-
-
 	public void getAbsenceDateForCalendar(String absenceDay) throws Throwable {
-//		nextWorkingDate = nextWorkingDay(absenceDay);
-//		dateAndroid = dateFormat(nextWorkingDate);
-//		String monthName[] = dateAndroid.split(" ");
-//
-//		switch (new GlobalParams().getPlatformName()) {
-//		case "Android":
-//			verifyEventInCalendar(dateAndroid, monthName[0]);
-//			break;
-//		case "iOS":
-//			verifyEventInCalendar(nextWorkingDate, monthName[0]);
-//			break;
-//		default:
-//			throw new Exception("Invalid platform Name");
-//		}
-
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
@@ -2028,38 +2030,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void selectUnfilledUnassignedAbsence(String userToSearch, String absenceDay) throws Throwable {
-//		nextWorkingDate = nextWorkingDay(absenceDay);
-//		dateAndroid = dateFormat(nextWorkingDate);
-//		switch (new GlobalParams().getPlatformName()) {
-//			case "Android":
-//				for(int i=0;i<3;i++) {
-//					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(dateAndroid))
-//						click(traverseToNextDay);
-//					else
-//						break;
-//				}
-//				waitFortheSpinner1();
-//				androidScrollToElementUsingUiScrollable("text",userToSearch);
-//				break;
-//			case "iOS":
-//				 dateAndroid = dateAndroid.split(" ",2)[1];
-//				for(int i=0;i<=3;i++) {
-//
-//					if(!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(dateAndroid))
-//					{//Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
-//						click(traverseToNextDay);
-//						}
-//					else
-//						break;
-//				}
-//				By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
-//				scrollToElement(unfilledabsenceDate, "up");
-//				click(unfilledabsenceDate, "msg");
-//				break;
-//			default:
-//				throw new Exception("Invalid platform Name");
-//		}
-
 		nextWorkingDate = nextWorkingDay(absenceDay, "MMMM d, yyyy");
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -2148,4 +2118,22 @@ public class SmokeMethods extends LoginPage {
 				getTheOrderListByScrolling(reOrderWidgetbtn, "up", widgetListFromDashboard));
 	}
 
+	public void weekTotalTime() {
+		isElementdisplayed(monday);
+		int hours=0;
+		int minutes=0;
+		DecimalFormat formatter = new DecimalFormat("00");
+	
+		for (MobileElement mobElement : dayTotalTime) {
+			hours = hours + Integer.parseInt(getElementText(mobElement).split(":")[0]);
+			minutes= minutes +Integer.parseInt(getElementText(mobElement).split(":")[1]);
+		}
+		hours = hours + (minutes/60);
+		minutes = minutes%60;
+		totalExpectedTimeofWeek = hours + ":" +formatter.format(minutes);
+	}
+	
+	public void verifyWeekTotalTime() {
+		Assert.assertEquals(getElementText(totalWeekTotalAmount),totalExpectedTimeofWeek);
+	}
 }
