@@ -475,8 +475,11 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Clock In")
 	public MobileElement clockInbtn;
 
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
+	public MobileElement ScrollToClockInbtn;
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/location_services_permit_access_button")
-	@iOSXCUITFindBy(accessibility = "Enable Location Services")
+	@iOSXCUITFindBy(accessibility = "Enable_Location_Services_Button")
 	public MobileElement permissionGrantbtn;
 
 	@AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
@@ -1809,7 +1812,6 @@ public class SmokeMethods extends LoginPage {
 			click(permissionGrantonlyForApp);
 			break;
 		case "iOS":
-			click(clockInbtn);
 			click(permissionGrantbtn);
 			click(permissionGrantonlyForApp);
 			break;
@@ -1822,8 +1824,18 @@ public class SmokeMethods extends LoginPage {
 		// isElementdisplayed(clockInbtn);
 		// Assert.assertTrue("Clock In button fails to display",
 		// clockInbtn.isDisplayed());
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		click(clockInbtn);
 		isElementdisplayed(clockedInVerification);
+		break;
+			case "iOS":
+				click(clockInbtn);
+				isElementdisplayed(clockedOutBtn);
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickClockOut() throws Throwable {
@@ -1832,23 +1844,43 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clockInVerification() throws Throwable {
-		if (isElementdisplayed(clockInbtn)) {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+		 if (isElementdisplayed(clockInbtn)) {
 			click(clockInbtn);
 			allowClockInOutAcessPermissions();
-			clockInbtn();
+			//clockInbtn();
 		} else if (isElementdisplayed(clockedInVerification)) {
 			clickClockOut();
 			allowClockInOutAcessPermissions();
 			clickClockOut();
-
 			Thread.sleep(45000);
 			isElementdisplayed(clockInbtn);
 			Thread.sleep(30000);
 			isElementdisplayed(clockInbtn);
 			clockInbtn();
-
 		}
-
+      break;
+			case "iOS":
+				common.scrollToElement(ScrollToClockInbtn,"up");
+				if (isElementdisplayed(clockInbtn)) {
+					click(clockInbtn);
+					allowClockInOutAcessPermissions();
+					//clockInbtn();
+				} else if (isElementdisplayed(clockedOutBtn)) {
+					click(clockedOutBtn);
+					allowClockInOutAcessPermissions();
+					click(clockedOutBtn);
+					Thread.sleep(45000);
+					isElementdisplayed(clockInbtn);
+					Thread.sleep(30000);
+					isElementdisplayed(clockInbtn);
+					//clockInbtn();
+				}
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void selectCurrentDayForTimesheet() throws Exception {
@@ -1873,9 +1905,10 @@ public class SmokeMethods extends LoginPage {
 			editTimesheetForClockOut();
 			break;
 		case "iOS":
-			clickTimesheetWidget();
+			utils.log().info("No need to go timesheet section");
+		/*	clickTimesheetWidget();
 			viewDayTimesheets();
-			addTimeSheet();
+			addTimeSheet();*/
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1890,6 +1923,8 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyClockOut() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		isElementdisplayed(timeSheetTimeEventPage);
 		click(backBtn);
 		assertTimeEvent(outTime);
@@ -1897,6 +1932,23 @@ public class SmokeMethods extends LoginPage {
 		isElementdisplayed(clockInbtn);
 		Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
 		utils.log().info("Clocked out successfully");
+		break;
+			case "iOS":
+				isElementdisplayed(clockInbtn);
+				click(clockInbtn);
+				//pullToRefresh();
+				Thread.sleep(45000);
+				isElementdisplayed(clockedOutBtn);
+				common.scrollToElement(clockedOutBtn, "up");
+				Thread.sleep(45000);
+				click(clockedOutBtn);
+				isElementdisplayed(clockInbtn);
+				Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
+				utils.log().info("Clocked out successfully");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	// MOB-4277
