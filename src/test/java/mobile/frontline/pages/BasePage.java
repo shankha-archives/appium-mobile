@@ -5,7 +5,6 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.*;
 import io.appium.java_client.android.AndroidBatteryInfo;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.android.connection.ConnectionState;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.WaitOptions;
@@ -1094,7 +1093,6 @@ public class BasePage {
 	 */
 	public void bgRunningApp() throws Exception {
 		driver.runAppInBackground(Duration.ofSeconds(10));
-		((StartsActivity)driver).currentActivity();
 	}
 
 	/**
