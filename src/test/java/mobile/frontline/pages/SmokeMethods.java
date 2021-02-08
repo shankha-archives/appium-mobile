@@ -20,9 +20,11 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -38,9 +40,8 @@ public class SmokeMethods extends LoginPage {
 
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-
-	//JobsMethods jobPage = new JobsMethods();
-	//TimesheetMethods timesheet = new TimesheetMethods();
+	SmokeMethods smoke;
+	JobsMethods jobs = new JobsMethods();
 	
 	public TestDataManager testdata = new TestDataManager();
 
@@ -514,43 +515,47 @@ public class SmokeMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "DirectoryView_EmployeeCell_0")
 	public MobileElement SearchPeople;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [4]")
-	@iOSXCUITFindBy(accessibility = "Other Phone")
-	public MobileElement OtherPhone;
+//	@AndroidFindBy(xpath = "(//android.widget.TextView) [4]")
+//	@iOSXCUITFindBy(accessibility = "Other Phone")
+//	public MobileElement OtherPhone;
+//
+//	@AndroidFindBy(xpath = "(//android.widget.TextView) [5]")
+//	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
+//	public MobileElement OtherPhoneData;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [5]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
-	public MobileElement OtherPhoneData;
-
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [6]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='ATMobile ATMobile']")
+	//@iOSXCUITFindBy(accessibility = "")
+	public MobileElement fullEmployeeName;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Personal Phone']")
 	@iOSXCUITFindBy(accessibility = "Personal Phone")
 	public MobileElement PersonalPhone;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [7]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='7846948974 ext: 123']")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[4]")
 	public MobileElement PersonalPhoneData;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [8]")
-	@iOSXCUITFindBy(accessibility = "Work Phone")
-	public MobileElement WorkPhone;
+//	@AndroidFindBy(xpath = "(//android.widget.TextView) [8]")
+//	@iOSXCUITFindBy(accessibility = "Work Phone")
+//	public MobileElement WorkPhone;
+//
+//	@AndroidFindBy(xpath = "(//android.widget.TextView) [9]")
+//	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[5]")
+//	public MobileElement WorkPhoneData;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [9]")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[5]")
-	public MobileElement WorkPhoneData;
-
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [10]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Email']")
 	@iOSXCUITFindBy(accessibility = "Work Email")
 	public MobileElement WorkEmail;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [11]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='mohit.singla1@frontlineed.com']")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[6]")
 	public MobileElement WorkEmailData;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [12]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Personal Email']")
 	@iOSXCUITFindBy(accessibility = "Personal Email")
 	public MobileElement PersonalEmail;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView) [12]")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='mohit.singla1@frontlineed.com']")
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[7]")
 	public MobileElement PersonalEmailData;
 
@@ -628,7 +633,17 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/number_of_timesheets_selected")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement totalWeekTimeExpected;
-
+	
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Add a Comment']")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inTimeComment;
+	
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_comment")
+	// @iOSXCUITFindBy(xpath = "")
+	public MobileElement inTimeCommentVerify;
+	
+	
+	
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -1433,13 +1448,21 @@ public class SmokeMethods extends LoginPage {
 		}
 	}
 	
-	public void editOutTimeCommentToTimesheet() {
+	public void editTimeCommentToTimesheet() throws Throwable {
 		timeEntryEditBtnClick();
 		common.isElementdisplayed(workDetails);
-		click(timeSheetOutTime);
-		//timesheet.addHourInExtratTime();
+		sendKeys(inTimeComment, "Automation Smoke Test");
+		Intime = common.getElementText(timeSheetInTime);
+		click(saveTimesheets);
 	}
 
+	public void verifyEditedComment() throws Throwable {
+		isElementDisplayed(timeSheetTimeEventPage);
+		click(backBtn);
+		goToEditDeleteTimeSheetOption();
+		Assert.assertEquals(getElementText(inTimeCommentVerify),"Automation Smoke Test");
+	}
+	
 	public void clickOnEditBtton3() {
 		click(timeInEdit3);
 		click(Done);
@@ -1849,7 +1872,7 @@ public class SmokeMethods extends LoginPage {
 		 if (isElementdisplayed(clockInbtn)) {
 			click(clockInbtn);
 			allowClockInOutAcessPermissions();
-			//clockInbtn();
+			clockInbtn();
 		} else if (isElementdisplayed(clockedInVerification)) {
 			clickClockOut();
 			allowClockInOutAcessPermissions();
@@ -1897,7 +1920,7 @@ public class SmokeMethods extends LoginPage {
 			selectCurrentDayForTimesheet();
 			isElementdisplayed(eventSummary);
 			assertTimeEvent(Intime);
-			// scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime);
+			 scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime);
 			// Assert.assertTrue("Required Time Event is visible ",
 			// driver.findElementByXPath("//android.widget.TextView[contains(@text,'" +
 			// Intime + "')]").isDisplayed());
@@ -1927,6 +1950,7 @@ public class SmokeMethods extends LoginPage {
 			case "Android":
 		isElementdisplayed(timeSheetTimeEventPage);
 		click(backBtn);
+		isElementdisplayed(eventSummary);
 		assertTimeEvent(outTime);
 		click(homeTab);
 		isElementdisplayed(clockInbtn);
@@ -1955,11 +1979,13 @@ public class SmokeMethods extends LoginPage {
 	public void selectOrganization() {
 		common.isElementdisplayed(peopleWidgetOrg);
 		click(peopleWidgetOrg);
-	//	click(jobPage.contbtn);
+		click(jobs.contbtn);
 	}
 
-	public void clickPeopleWidget() throws Exception {
-		common.scrollToElement(PeopleWidget, "up");
+	public void clickPeopleWidget() throws Throwable {
+		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People");
+		scrolledToElement.click();
+		//common.scrollToElement(PeopleWidget, "up");
 		Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
 		utils.log().info("People Widget is displayed");
 		click(PeopleWidget);
@@ -1971,8 +1997,12 @@ public class SmokeMethods extends LoginPage {
 			common.isElementdisplayed(PeopleWidget);
 			// click(SearchPeople);
 			sendKeys(SearchPeople, lastName);
-			common.hideKeyboard();
-			driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + lastName + "')]").click();
+			hideKeyboard();
+			//mk
+		//	driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + lastName + "')]").click();
+			By searchedEmployee = By.xpath("//android.widget.TextView[contains(@text,'" + lastName + "')]");
+			common.scrollToElement(searchedEmployee, "up");
+			common.click(searchedEmployee, "Clicking on searched Employee");
 			break;
 		case "iOS":
 			// click(serachEditText);
@@ -1987,11 +2017,12 @@ public class SmokeMethods extends LoginPage {
 
 	public void verifyContactDetails() {
 		Assert.assertTrue("Work Phone is not displayed",
-				(WorkPhone.isDisplayed() || getElementText(WorkPhoneData).length() > 0 || WorkEmail.isDisplayed()
-						|| getElementText(WorkEmailData).length() > 0) || OtherPhone.isDisplayed()
-						|| getElementText(OtherPhoneData).length() > 0 || PersonalPhone.isDisplayed()
-						|| getElementText(PersonalPhoneData).length() > 0 || PersonalEmail.isDisplayed()
-						|| getElementText(PersonalEmailData).length() > 0);
+				(//WorkPhone.isDisplayed() || getElementText(WorkPhoneData).length() > 0 ||
+				fullEmployeeName.isDisplayed()||
+				WorkEmail.isDisplayed() || getElementText(WorkEmailData).length() > 0) 
+				//|| OtherPhone.isDisplayed()|| getElementText(OtherPhoneData).length() > 0
+				|| PersonalPhone.isDisplayed() || getElementText(PersonalPhoneData).length() > 0 
+				|| PersonalEmail.isDisplayed() || getElementText(PersonalEmailData).length() > 0);
 		utils.log().info("Details are displayed");
 	}
 

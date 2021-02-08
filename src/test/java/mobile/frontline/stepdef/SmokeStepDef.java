@@ -1,6 +1,7 @@
 package mobile.frontline.stepdef;
 
 import java.util.Properties;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,6 +13,7 @@ import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
 import mobile.frontline.pages.SmokeMethods;
+import mobile.frontline.pages.TimesheetMethods;
 
 public class SmokeStepDef {
 
@@ -21,6 +23,8 @@ public class SmokeStepDef {
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
 	public APIServices apiService = new APIServices();
+	public TimesheetMethods timesheetpage = new TimesheetMethods();
+	
 	TestUtils utils = new TestUtils();
 	Properties props;
 
@@ -431,7 +435,8 @@ public class SmokeStepDef {
 
 	@Then("user edits the timesheet")
 	public void userEditsTheTimesheet() throws Throwable {
-		smokePage.editOutTimeCommentToTimesheet();
+		smokePage.editTimeCommentToTimesheet();
+		smokePage.verifyEditedComment();
 	}
 
 	@Then("Delete the timesheet")
@@ -518,7 +523,7 @@ public class SmokeStepDef {
 	}
 
 	@Then("click on People widget")
-	public void clickOnPeopleWidget() throws Exception {
+	public void clickOnPeopleWidget() throws Throwable {
 		smokePage.clickPeopleWidget();
 	}
 
