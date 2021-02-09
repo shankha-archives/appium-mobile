@@ -423,7 +423,7 @@ Scenario: Verify admin assigns substitute and also approve absence
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "next day" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button
-	And Enter admin username "AutomationAdminMOB-4267" and password and click on Sign In button 
+	And Enter admin username "AutomationAdminMOB-4251" and password and click on Sign In button 
 	Then the admin navigates to dashboard page  
 	And Select an unfilled and unassigned absence for "next day"
 	When click on Tap to Assign and select Assign substitute

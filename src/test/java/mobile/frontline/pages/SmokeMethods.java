@@ -172,7 +172,7 @@ public class SmokeMethods extends LoginPage {
 
 	// create absence btn //click
 	@AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
-	@iOSXCUITFindBy(accessibility = "AbsencesThisYearModule_Schedule_Button")
+	@iOSXCUITFindBy(accessibility = "AbsencesModule_Create_Button")
 	public MobileElement createAbsBtn;
 
 	// create absence btn //click
@@ -1191,6 +1191,7 @@ public class SmokeMethods extends LoginPage {
 		String msg = getElementText(inboxMsg).trim();
 		click(inboxMsg);
 		Assert.assertEquals(msg, getElementText(msgData));
+		Assert.assertEquals(getElementText(msgData),"Smoke Test Case of inbox");
 		utils.log().info("MEssage is displayed");
 	}
 
@@ -1807,7 +1808,7 @@ public class SmokeMethods extends LoginPage {
 			clickNext();
 			break;
 		case "iOS":
-			isElementdisplayed(durationPageVerification);
+			isElementdisplayed(selectDuration);
 			click(halfDayDuration);
 //			if (isElementdisplayed(absenceshifttime)) {
 //				absenceshifttime.click();
@@ -2109,7 +2110,7 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		verifyEventInCalendar(nextWorkingDate, nextWorkingDate.split(" ")[0]);
+		verifyEventInCalendar(nextWorkingDate, nextWorkingDay(absenceDay, "MMMM dd, yyyy").split(" ")[0]);
 	}
 
 	public void selectUnfilledUnassignedAbsence(String userToSearch, String absenceDay) throws Throwable {
