@@ -42,7 +42,7 @@ public class SmokeMethods extends LoginPage {
 	BasePage common = new BasePage();
 	SmokeMethods smoke;
 	JobsMethods jobs = new JobsMethods();
-	
+
 	public TestDataManager testdata = new TestDataManager();
 
 	// click //homepage
@@ -354,7 +354,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement addTimeSheets;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
-	@iOSXCUITFindBy(accessibility = "JOBtypeEmp")
+	@iOSXCUITFindBy(accessibility = "EventType_1")
 	public MobileElement workDetails;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_entry_save_button")
@@ -366,7 +366,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeSheetInTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/day_view_submit_time_sheet_button")
-	@iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_Submit_Button")
+	@iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
 	public MobileElement dailytimeSheetsubmitbtn;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_menu_item")
@@ -382,7 +382,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement timeSheetDeletebtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Time Event']")
-	// @iOSXCUITFindBy(accessibility = "")
+	 @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='Time Entry']")
 	public MobileElement timeSheetTimeEventPage;
 
 //	@AndroidFindBy(className = "android.widget.ImageButton")
@@ -524,9 +524,9 @@ public class SmokeMethods extends LoginPage {
 //	public MobileElement OtherPhoneData;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='ATMobile ATMobile']")
-	//@iOSXCUITFindBy(accessibility = "")
+	 @iOSXCUITFindBy(accessibility = "EmployeeDetailView_FullName_StaticText")
 	public MobileElement fullEmployeeName;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Personal Phone']")
 	@iOSXCUITFindBy(accessibility = "Personal Phone")
 	public MobileElement PersonalPhone;
@@ -583,7 +583,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement logoutBtn;
 
 	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
-	@iOSXCUITFindBy(accessibility = "Home")
+	@iOSXCUITFindBy(accessibility = "Week")
 	public MobileElement backBtn;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
@@ -621,29 +621,28 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Absences']")
 	public MobileElement AbsencePageHeader;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_time_sheet_day_total_time")
-	//@iOSXCUITFindBy(accessibility = "")
+	// @iOSXCUITFindBy(accessibility = "")
 	public List<MobileElement> dayTotalTime;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_view_total_amount")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement totalWeekTotalAmount;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/number_of_timesheets_selected")
 	// @iOSXCUITFindBy(xpath = "")
 	public MobileElement totalWeekTimeExpected;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Add a Comment']")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
 	public MobileElement inTimeComment;
 	
+	
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_comment")
-	// @iOSXCUITFindBy(xpath = "")
+	 @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
 	public MobileElement inTimeCommentVerify;
-	
-	
-	
+
 	public String absence_Ename;
 	public String absence_day;
 	public String absence_month;
@@ -1191,7 +1190,7 @@ public class SmokeMethods extends LoginPage {
 		String msg = getElementText(inboxMsg).trim();
 		click(inboxMsg);
 		Assert.assertEquals(msg, getElementText(msgData));
-		Assert.assertEquals(getElementText(msgData),"Smoke Test Case of inbox");
+		Assert.assertEquals(getElementText(msgData), "Smoke Test Case of inbox");
 		utils.log().info("MEssage is displayed");
 	}
 
@@ -1265,7 +1264,8 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void enterTimeSheetdetails() {
-		Assert.assertTrue("Total timesheet  time is not same while submitting", getElementText(totalWeekTimeExpected).contains(totalExpectedTimeofWeek));
+		Assert.assertTrue("Total timesheet  time is not same while submitting",
+				getElementText(totalWeekTimeExpected).contains(totalExpectedTimeofWeek));
 		if (isElementdisplayed(enterPin)) {
 			sendKeys(enterPin, testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();
@@ -1448,22 +1448,45 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-	
+
 	public void editTimeCommentToTimesheet() throws Throwable {
 		timeEntryEditBtnClick();
 		common.isElementdisplayed(workDetails);
 		sendKeys(inTimeComment, "Automation Smoke Test");
-		Intime = common.getElementText(timeSheetInTime);
-		click(saveTimesheets);
+	
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			Intime = common.getElementText(timeSheetInTime);
+			click(saveButton);
+			break;
+		case "iOS":
+			click(saveButton);
+			if (isElementdisplayed(declinebtn)) {
+				click(declinebtn);
+			}
+		
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void verifyEditedComment() throws Throwable {
-		isElementDisplayed(timeSheetTimeEventPage);
-		click(backBtn);
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			isElementDisplayed(timeSheetTimeEventPage);
+			click(backBtn);
+			break;
+		case "iOS":
+			utils.log().info("Verifying the edited comment ");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 		goToEditDeleteTimeSheetOption();
-		Assert.assertEquals(getElementText(inTimeCommentVerify),"Automation Smoke Test");
+		Assert.assertEquals(getElementText(inTimeCommentVerify), "Automation Smoke Test");
 	}
-	
+
 	public void clickOnEditBtton3() {
 		click(timeInEdit3);
 		click(Done);
@@ -1849,16 +1872,16 @@ public class SmokeMethods extends LoginPage {
 		// Assert.assertTrue("Clock In button fails to display",
 		// clockInbtn.isDisplayed());
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-		click(clockInbtn);
-		isElementdisplayed(clockedInVerification);
-		break;
-			case "iOS":
-				click(clockInbtn);
-				isElementdisplayed(clockedOutBtn);
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			click(clockInbtn);
+			isElementdisplayed(clockedInVerification);
+			break;
+		case "iOS":
+			click(clockInbtn);
+			isElementdisplayed(clockedOutBtn);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
 
@@ -1869,46 +1892,46 @@ public class SmokeMethods extends LoginPage {
 
 	public void clockInVerification() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-		 if (isElementdisplayed(clockInbtn)) {
-			click(clockInbtn);
-			allowClockInOutAcessPermissions();
-			clockInbtn();
-		} else if (isElementdisplayed(clockedInVerification)) {
-			clickClockOut();
-			allowClockInOutAcessPermissions();
-			clickClockOut();
-			Thread.sleep(45000);
-			isElementdisplayed(clockInbtn);
-			Thread.sleep(30000);
-			isElementdisplayed(clockInbtn);
-			clockInbtn();
-		}
-      break;
-			case "iOS":
-				common.scrollToElement(ScrollToClockInbtn,"up");
-				if (isElementdisplayed(clockInbtn)) {
-					click(clockInbtn);
-					allowClockInOutAcessPermissions();
-					//clockInbtn();
-				} else if (isElementdisplayed(clockedOutBtn)) {
-					click(clockedOutBtn);
-					allowClockInOutAcessPermissions();
-					click(clockedOutBtn);
-					Thread.sleep(45000);
-					isElementdisplayed(clockInbtn);
-					Thread.sleep(30000);
-					isElementdisplayed(clockInbtn);
-					//clockInbtn();
-				}
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			if (isElementdisplayed(clockInbtn)) {
+				click(clockInbtn);
+				allowClockInOutAcessPermissions();
+				clockInbtn();
+			} else if (isElementdisplayed(clockedInVerification)) {
+				clickClockOut();
+				allowClockInOutAcessPermissions();
+				clickClockOut();
+				Thread.sleep(45000);
+				isElementdisplayed(clockInbtn);
+				Thread.sleep(30000);
+				isElementdisplayed(clockInbtn);
+				clockInbtn();
+			}
+			break;
+		case "iOS":
+			common.scrollToElement(ScrollToClockInbtn, "up");
+			if (isElementdisplayed(clockInbtn)) {
+				click(clockInbtn);
+				allowClockInOutAcessPermissions();
+				// clockInbtn();
+			} else if (isElementdisplayed(clockedOutBtn)) {
+				click(clockedOutBtn);
+				allowClockInOutAcessPermissions();
+				click(clockedOutBtn);
+				Thread.sleep(45000);
+				isElementdisplayed(clockInbtn);
+				Thread.sleep(30000);
+				isElementdisplayed(clockInbtn);
+				// clockInbtn();
+			}
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
 
 	public void selectCurrentDayForTimesheet() throws Exception {
-		nextWorkingDate = nextWorkingDay("current day","M/dd");
+		nextWorkingDate = nextWorkingDay("current day", "M/dd");
 		isElementdisplayed(monday);
 		driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + nextWorkingDate + "')]").click();
 	}
@@ -1921,7 +1944,7 @@ public class SmokeMethods extends LoginPage {
 			selectCurrentDayForTimesheet();
 			isElementdisplayed(eventSummary);
 			assertTimeEvent(Intime);
-			 scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime);
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime);
 			// Assert.assertTrue("Required Time Event is visible ",
 			// driver.findElementByXPath("//android.widget.TextView[contains(@text,'" +
 			// Intime + "')]").isDisplayed());
@@ -1930,9 +1953,9 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			utils.log().info("No need to go timesheet section");
-		/*	clickTimesheetWidget();
-			viewDayTimesheets();
-			addTimeSheet();*/
+			/*
+			 * clickTimesheetWidget(); viewDayTimesheets(); addTimeSheet();
+			 */
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1948,31 +1971,31 @@ public class SmokeMethods extends LoginPage {
 
 	public void verifyClockOut() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
-			case "Android":
-		isElementdisplayed(timeSheetTimeEventPage);
-		click(backBtn);
-		isElementdisplayed(eventSummary);
-		assertTimeEvent(outTime);
-		click(homeTab);
-		isElementdisplayed(clockInbtn);
-		Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
-		utils.log().info("Clocked out successfully");
-		break;
-			case "iOS":
-				isElementdisplayed(clockInbtn);
-				click(clockInbtn);
-				//pullToRefresh();
-				Thread.sleep(45000);
-				isElementdisplayed(clockedOutBtn);
-				common.scrollToElement(clockedOutBtn, "up");
-				Thread.sleep(45000);
-				click(clockedOutBtn);
-				isElementdisplayed(clockInbtn);
-				Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
-				utils.log().info("Clocked out successfully");
-				break;
-			default:
-				throw new Exception("Invalid platform Name");
+		case "Android":
+			isElementdisplayed(timeSheetTimeEventPage);
+			click(backBtn);
+			isElementdisplayed(eventSummary);
+			assertTimeEvent(outTime);
+			click(homeTab);
+			isElementdisplayed(clockInbtn);
+			Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
+			utils.log().info("Clocked out successfully");
+			break;
+		case "iOS":
+			isElementdisplayed(clockInbtn);
+			click(clockInbtn);
+			// pullToRefresh();
+			Thread.sleep(45000);
+			isElementdisplayed(clockedOutBtn);
+			common.scrollToElement(clockedOutBtn, "up");
+			Thread.sleep(45000);
+			click(clockedOutBtn);
+			isElementdisplayed(clockInbtn);
+			Assert.assertTrue("Didnt not get Clocked out", clockInbtn.isDisplayed());
+			utils.log().info("Clocked out successfully");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
 		}
 	}
 
@@ -1984,12 +2007,24 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickPeopleWidget() throws Throwable {
-		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People");
-		scrolledToElement.click();
-		//common.scrollToElement(PeopleWidget, "up");
-		Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
-		utils.log().info("People Widget is displayed");
-		click(PeopleWidget);
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People");
+			scrolledToElement.click();
+			// common.scrollToElement(PeopleWidget, "up");
+			Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
+			utils.log().info("People Widget is displayed");
+			click(PeopleWidget);
+			break;
+		case "iOS":
+			common.scrollToElement(PeopleWidget, "up");
+			Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
+			utils.log().info("People Widget is displayed");
+			click(PeopleWidget);
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void SerachName(String lastName) throws Exception {
@@ -1999,8 +2034,9 @@ public class SmokeMethods extends LoginPage {
 			// click(SearchPeople);
 			sendKeys(SearchPeople, lastName);
 			hideKeyboard();
-			//mk
-		//	driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + lastName + "')]").click();
+			// mk
+			// driver.findElementByXPath("//android.widget.TextView[contains(@text,'" +
+			// lastName + "')]").click();
 			By searchedEmployee = By.xpath("//android.widget.TextView[contains(@text,'" + lastName + "')]");
 			common.scrollToElement(searchedEmployee, "up");
 			common.click(searchedEmployee, "Clicking on searched Employee");
@@ -2017,12 +2053,12 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyContactDetails() {
-		Assert.assertTrue("Work Phone is not displayed",
-				(//WorkPhone.isDisplayed() || getElementText(WorkPhoneData).length() > 0 ||
-				fullEmployeeName.isDisplayed()||
-				WorkEmail.isDisplayed() || getElementText(WorkEmailData).length() > 0) 
-				//|| OtherPhone.isDisplayed()|| getElementText(OtherPhoneData).length() > 0
-				|| PersonalPhone.isDisplayed() || getElementText(PersonalPhoneData).length() > 0 
+		Assert.assertTrue("Work Phone is not displayed", (// WorkPhone.isDisplayed() ||
+															// getElementText(WorkPhoneData).length() > 0 ||
+															 fullEmployeeName.isDisplayed()||
+		WorkEmail.isDisplayed() || getElementText(WorkEmailData).length() > 0)
+				// || OtherPhone.isDisplayed()|| getElementText(OtherPhoneData).length() > 0
+				|| PersonalPhone.isDisplayed() || getElementText(PersonalPhoneData).length() > 0
 				|| PersonalEmail.isDisplayed() || getElementText(PersonalEmailData).length() > 0);
 		utils.log().info("Details are displayed");
 	}
@@ -2124,7 +2160,7 @@ public class SmokeMethods extends LoginPage {
 					break;
 			}
 			waitFortheSpinner1();
-			scrolledToElement =	androidScrollToElementUsingUiScrollable("text", userToSearch);
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", userToSearch);
 			scrolledToElement.click();
 
 			break;
@@ -2150,7 +2186,6 @@ public class SmokeMethods extends LoginPage {
 		wait.until(ExpectedConditions
 				.invisibilityOfElementLocated(By.xpath("//android.widget.ProgressBar[@content-desc='Progress_Bar']")));
 	}
-
 
 	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction,
 			List<MobileElement> collectListOf) throws Exception {
@@ -2204,20 +2239,20 @@ public class SmokeMethods extends LoginPage {
 
 	public void weekTotalTime() {
 		isElementdisplayed(monday);
-		int hours=0;
-		int minutes=0;
+		int hours = 0;
+		int minutes = 0;
 		DecimalFormat formatter = new DecimalFormat("00");
-	
+
 		for (MobileElement mobElement : dayTotalTime) {
 			hours = hours + Integer.parseInt(getElementText(mobElement).split(":")[0]);
-			minutes= minutes +Integer.parseInt(getElementText(mobElement).split(":")[1]);
+			minutes = minutes + Integer.parseInt(getElementText(mobElement).split(":")[1]);
 		}
-		hours = hours + (minutes/60);
-		minutes = minutes%60;
-		totalExpectedTimeofWeek = hours + ":" +formatter.format(minutes);
+		hours = hours + (minutes / 60);
+		minutes = minutes % 60;
+		totalExpectedTimeofWeek = hours + ":" + formatter.format(minutes);
 	}
-	
+
 	public void verifyWeekTotalTime() {
-		Assert.assertEquals(getElementText(totalWeekTotalAmount),totalExpectedTimeofWeek);
+		Assert.assertEquals(getElementText(totalWeekTotalAmount), totalExpectedTimeofWeek);
 	}
 }
