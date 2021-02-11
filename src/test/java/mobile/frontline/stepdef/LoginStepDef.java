@@ -10,7 +10,6 @@ public class LoginStepDef {
 
 	public LoginPage loginPage = new LoginPage();
 	public TestDataManager testdata = new TestDataManager();
-	//private String password;
 
 	//@MOB-3204
 	@When("^The substitute user launches the app$")

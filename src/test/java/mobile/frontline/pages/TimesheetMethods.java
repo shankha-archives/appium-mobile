@@ -18,7 +18,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 
-public class TimesheetMethods extends BasePage {
+public class TimesheetMethods extends LoginPage {
 
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
@@ -73,6 +73,9 @@ public class TimesheetMethods extends BasePage {
 	String InvalidPinMsg;
 	DateFormat dateFormat = new SimpleDateFormat("h:mm");
 
+	public TimesheetMethods() {
+	}
+	
 	public void submitDayTimesheet() throws Exception {
 		isElementdisplayed(timesheetDaySubmitBtn);
 		timesheetDaySubmitBtn.click();
@@ -160,7 +163,7 @@ public class TimesheetMethods extends BasePage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-
+	
 	public void AddTimesheet() throws Throwable {
 		click(smoke.addTimeSheets);
 		common.isElementdisplayed(smoke.workDetails);
@@ -185,6 +188,7 @@ public class TimesheetMethods extends BasePage {
 				else
 					click(am_label);
 			}
+			
 			click(smoke.okBtn);
 			click(smoke.saveTimesheets);
 			if (isElementdisplayed(smoke.okBtn)) {
@@ -195,7 +199,7 @@ public class TimesheetMethods extends BasePage {
 		case "iOS":
 			outTime.click();
 			dragClock();
-			smoke.saveOrderWidgetbtn.click();
+			click(smoke.saveOrderWidgetbtn);
 			click(smoke.saveTimesheets);
 			break;
 		default:

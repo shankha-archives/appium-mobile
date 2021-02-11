@@ -20,33 +20,9 @@ import io.cucumber.junit.CucumberOptions;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@MOB-4227"}
+        ,tags = {"@MOB-4263"}
 )
 
 public class MyRunnerTest {
 
-   /* @BeforeClass
-    public static void initialize() throws Exception {
-        GlobalParams params = new GlobalParams();
-        params.initializeGlobalParams();
-
-        ThreadContext.put("ROUTINGKEY", params.getPlatformName() + "_"
-                + params.getDeviceName());
-
-        new ServerManager().startServer();
-        new DriverManager().initializeDriver();
-    }
-
-    @AfterClass
-    public static void quit() throws IOException {
-        DriverManager driverManager = new DriverManager();
-        if(driverManager.getDriver() != null){
-            driverManager.getDriver().quit();
-            driverManager.setDriver(null);
-       }
-        ServerManager serverManager = new ServerManager();
-        if(serverManager.getServer() != null){
-            serverManager.getServer().stop();
-        }
-    }*/
 }

@@ -12,6 +12,7 @@ import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
 import mobile.frontline.pages.SmokeMethods;
+import mobile.frontline.pages.TimesheetMethods;
 
 public class SmokeStepDef {
 
@@ -21,6 +22,8 @@ public class SmokeStepDef {
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
 	public APIServices apiService = new APIServices();
+	public TimesheetMethods timesheetpage = new TimesheetMethods();
+	
 	TestUtils utils = new TestUtils();
 	Properties props;
 
@@ -177,8 +180,9 @@ public class SmokeStepDef {
 		smokePage.verifyAbsenceDetailPage();
 	}
 
-	 @When("^enter \"([^\"]*)\" select reason date length summary for \"([^\"]*)\"$")
-	 public void enter_something_select_reason_date_length_summary_for_something(String empAbsence, String absenceDay) throws Throwable {// page 1
+	@When("^enter \"([^\"]*)\" select reason date length summary for \"([^\"]*)\"$")
+	public void enter_something_select_reason_date_length_summary_for_something(String empAbsence, String absenceDay)
+			throws Throwable {// page 1
 		smokePage.enterTeachersName(testdata.read_property("testingData", "users", empAbsence));
 		smokePage.selectTeachersName(testdata.read_property("testingData", "users", empAbsence));
 
@@ -309,10 +313,6 @@ public class SmokeStepDef {
 
 	@When("^select reason date length summary for \"([^\"]*)\"$")
 	public void select_reason_date_length_summary_for_something(String absenceDay) throws Throwable {
-
-//		smokePage.selectLocation();
-//		smokePage.clickNext();
-
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
@@ -350,11 +350,6 @@ public class SmokeStepDef {
 		smokePage.viewText();
 	}
 
-	// MOB-4263
-//	@When("click on menu then click on timesheet option")
-//	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
-//		smokePage.clickTimesheetOption();
-//	}
 
 	@Then("click on submit timesheet option")
 	public void clickOnSubmitTimesheetOption() throws Throwable {
@@ -368,40 +363,10 @@ public class SmokeStepDef {
 		smokePage.verifyUndo();
 	}
 
-//	@When("click on reorder widget")
-//	public void clickOnReorderWidget() throws Throwable {
-//		smokePage.clickReorderWidget();
-//		smokePage.draganddrop();
-//	}
-//
-//	@Then("rearrange the widget")
-//	public void rearrangeTheWidget() throws Throwable {
-//		smokePage.saveReorderedWidget();
-//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-//	}
-
 	@Then("verify the order of widgets")
 	public void verifyTheOrderOfWidgets() {
 		smokePage.verifyWidgetsOrder();
 	}
-
-	// MOB-4239
-//	@When("click on reorder widget & get back")
-//	public void click_on_reorder_widget() throws Throwable {
-//		smokePage.clickReorderWidget();
-//		smokePage.goBack();
-//	}
-
-//	@Then("verify all the widgets present")
-//	public void verify_all_the_widgets_present() throws Throwable {
-//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-//		smokePage.verify_widgetsPresent();
-//	}
-//
-//	@And("verify the footer")
-//	public void verify_the_footer() {
-//		smokePage.verify_footerPresent();
-//	}
 
 	// MOB-4261
 	@When("employee clicks on the timesheet widget")
@@ -409,11 +374,11 @@ public class SmokeStepDef {
 		smokePage.clickTimesheetWidget();
 	}
 
-//	@When("open the past day timesheet and add a new time sheet")
-//	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
-//		smokePage.addTimeSheet();
-//		smokePage.goToEditDeleteTimeSheetOption();
-//	}
+	@Then("^Verify total time of the Week$")
+	public void verify_total_time_of_the_week() throws Throwable {
+		smokePage.weekTotalTime();
+		smokePage.verifyWeekTotalTime();
+	}
 
 	@When("click back button and open the past day timesheet and add a new time sheet")
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
@@ -424,7 +389,8 @@ public class SmokeStepDef {
 
 	@Then("user edits the timesheet")
 	public void userEditsTheTimesheet() throws Throwable {
-		smokePage.editTimesheet();
+		smokePage.editTimeCommentToTimesheet();
+		smokePage.verifyEditedComment();
 	}
 
 	@Then("Delete the timesheet")
@@ -471,30 +437,9 @@ public class SmokeStepDef {
 		smokePage.verifyAbsenceConfandDuration();
 	}
 
-	// MOB-4247
-//	@When("click on Absences")
-//	public void clickOnAbsences() throws Throwable {
-//		smokePage.clickOnAbsence();
-//	}
-//
-//	// MOB-4247
-//	@When("click on editable absence and click on Edit tab")
-//	public void click_on_editable_absence_and_click_on_Edit_tab() throws Throwable {
-//		smokePage.editCreatedAbsence();
-//	}
-//
-//	// MOB-4247
-//	@When("edit the absence")
-//	public void edit_the_absence() throws Throwable {
-//		smokePage.saveEditedAbsence();
-//		smokePage.verifyAbsence();
-//	}
-
 	@When("Employee clicks on the clockin btn")
 	public void employeeClicksOnTheClockinBtn() throws Throwable {
 		smokePage.clockInVerification();
-		//loginPage.verify_homeScreen_displayedWithoutReLaunch();
-		//smokePage.clockInbtn();
 	}
 
 	@Then("the user clocks out through timesheet")
@@ -511,7 +456,7 @@ public class SmokeStepDef {
 	}
 
 	@Then("click on People widget")
-	public void clickOnPeopleWidget() throws Exception {
+	public void clickOnPeopleWidget() throws Throwable {
 		smokePage.clickPeopleWidget();
 	}
 
@@ -527,8 +472,6 @@ public class SmokeStepDef {
 
 	@When("click on reorder widget and rearrange the widget")
 	public void clickOnReorderWidgetAndRearrangeTheWidget() throws Throwable {
-		// smokePage.getTheOrderOfWidet();
-
 		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 		smokePage.getListOrderAfterReorder();
 	}
@@ -537,7 +480,6 @@ public class SmokeStepDef {
 	public void click_on_reorder_widget() throws Throwable {
 		smokePage.getListOrderBeforeReorder();
 		smokePage.clickReorderWidget();
-
 	}
 
 	@And("^Rearrange the widets$")
@@ -559,8 +501,6 @@ public class SmokeStepDef {
 
 	@Then("verify all the widgets and footers present")
 	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
-//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-		// smokePage.verify_widgetsPresent();
 		smokePage.verify_footerPresent();
 	}
 
@@ -568,7 +508,7 @@ public class SmokeStepDef {
 	public void clickOnApproveBtnApproveAJob() {
 		smokePage.selectApproveConfirmAbsence();
 	}
- 
+
 	@And("^verify absences page is displayed$")
 	public void verify_absences_page_is_displayed() throws Throwable {
 		smokePage.verifyAbsencesPage();
@@ -584,7 +524,6 @@ public class SmokeStepDef {
 	public void click_on_edit_btn_and_edit_the_absence_for_something(String absenceDay) throws Throwable {
 		smokePage.editCreatedAbsence(absenceDay);
 		smokePage.saveEditedAbsence();
-		// smokePage.verifyAbsence();
 	}
 
 	@Then("^Verify the absence details$")
@@ -598,7 +537,7 @@ public class SmokeStepDef {
 		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
-			apiService.apiGetConfirmationIds(workerID,absenceDay);
+			apiService.apiGetConfirmationIds(workerID, absenceDay);
 			apiService.apiDeleteAbsence();
 		} else
 			utils.log().info("The environment selected is prodution");
@@ -612,13 +551,14 @@ public class SmokeStepDef {
 			apiService.apiTokenGeneration(apiLoginID);
 			apiService.apiGetConfirmationIds(workerID, absenceDay);
 			apiService.apiDeleteAbsence();
-			apiService.apiCreateAbsence(workerID,absenceDay);
+			apiService.apiCreateAbsence(workerID, absenceDay);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
 
 	@Then("^Tap on the day of created absence for \"([^\"]*)\" in the app Calendar$")
-	public void tap_on_the_day_of_created_absence_for_something_in_the_app_calendar(String absenceDay) throws Throwable {
+	public void tap_on_the_day_of_created_absence_for_something_in_the_app_calendar(String absenceDay)
+			throws Throwable {
 		smokePage.getAbsenceDateForCalendar(absenceDay);
 	}
 
@@ -630,7 +570,8 @@ public class SmokeStepDef {
 	@And("^Select an unfilled and unassigned absence for \"([^\"]*)\"$")
 	public void select_an_unfilled_and_unassigned_absence_for_something(String absenceDay) throws Throwable {
 		smokePage.selectAbsenceWidget();
-		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"),absenceDay);
+		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"),
+				absenceDay);
 	}
 
 }

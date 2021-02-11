@@ -30,9 +30,14 @@
 		<AutomationEmployeeMOB-4257>AutomationEmp4257</AutomationEmployeeMOB-4257>
 		<AutomationEmployeeMOB-4233>AutomationEmp4233</AutomationEmployeeMOB-4233>
 		<AutomationEmployeeMOB-4243>AutomationEmp4243</AutomationEmployeeMOB-4243>
+		<AutomationEmployeeMOB-4263>AutomationEmp4263</AutomationEmployeeMOB-4263>
+		<AutomationEmployeeMOB-4261>AutomationEmp4261</AutomationEmployeeMOB-4261>
+		<AutomationEmployeeMOB-4255>AutomationEmp4255</AutomationEmployeeMOB-4255>
 		<AutomationAdminMOB-4249>AutomationAdmin</AutomationAdminMOB-4249>
+		<AutomationAdminMOB-4251>AutomationAdmin4251</AutomationAdminMOB-4251>
 		<AutomationAdminMOB-4267>AutomationAdmin4267</AutomationAdminMOB-4267>
 		<AutomationAdminMOB-6021>AutomationAdmin6021</AutomationAdminMOB-6021>
+		<AutomationAdminMOB-4277>ATMobileAutomation</AutomationAdminMOB-4277>
 		<FrontlinePassword>Global@123</FrontlinePassword>
 
 	</Account>
@@ -45,6 +50,7 @@
 		<AccountingPin>3661</AccountingPin>
 		<APILoginID>report_139984</APILoginID>
 		<APIPin>1212</APIPin>
+		<lastName>ATMobile</lastName>
 		<APIWorkerID_MOB-4245>8576349</APIWorkerID_MOB-4245>
 		<APIWorkerID_MOB-4237>8578828</APIWorkerID_MOB-4237>
 		<APIWorkerID_MOB-4247>8578829</APIWorkerID_MOB-4247>

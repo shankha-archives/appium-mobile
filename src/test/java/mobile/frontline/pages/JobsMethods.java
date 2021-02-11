@@ -14,7 +14,6 @@ import org.junit.Assert;
 public class JobsMethods extends LoginPage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	//LoginPage loginPage = new LoginPage();
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
@@ -46,8 +45,6 @@ public class JobsMethods extends LoginPage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
 	@iOSXCUITFindBy(xpath = "//*[contains(@name, 'Conf')]")
-	// @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeStaticText' AND
-	// name BEGINSWITH 'Conf '")
 	public MobileElement confirmationNumber;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='VeriTime Automation Org 20 - DO NOT USE']")
@@ -61,8 +58,6 @@ public class JobsMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Alphabet School District']")
 	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement chesterorg;
-
-	////////////////////////////////////////////// 555555555
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_right_bubble")
 	// @iOSXCUITFindBy(accessibility = "")
@@ -95,8 +90,6 @@ public class JobsMethods extends LoginPage {
 	public String job_time;
 	public String job_org;
 
-	// String jobs=getElementText(noavailablejobs);
-//#########################################################################################################################
 	public JobsMethods() {
 	}
 
