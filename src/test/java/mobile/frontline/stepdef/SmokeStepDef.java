@@ -1,7 +1,6 @@
 package mobile.frontline.stepdef;
 
 import java.util.Properties;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -314,10 +313,6 @@ public class SmokeStepDef {
 
 	@When("^select reason date length summary for \"([^\"]*)\"$")
 	public void select_reason_date_length_summary_for_something(String absenceDay) throws Throwable {
-
-//		smokePage.selectLocation();
-//		smokePage.clickNext();
-
 		smokePage.absenceReason();
 		smokePage.clickNext();
 		// page 4
@@ -355,11 +350,6 @@ public class SmokeStepDef {
 		smokePage.viewText();
 	}
 
-	// MOB-4263
-//	@When("click on menu then click on timesheet option")
-//	public void clickOnMenuThenClickOnTimesheetOption() throws Throwable {
-//		smokePage.clickTimesheetOption();
-//	}
 
 	@Then("click on submit timesheet option")
 	public void clickOnSubmitTimesheetOption() throws Throwable {
@@ -373,40 +363,10 @@ public class SmokeStepDef {
 		smokePage.verifyUndo();
 	}
 
-//	@When("click on reorder widget")
-//	public void clickOnReorderWidget() throws Throwable {
-//		smokePage.clickReorderWidget();
-//		smokePage.draganddrop();
-//	}
-//
-//	@Then("rearrange the widget")
-//	public void rearrangeTheWidget() throws Throwable {
-//		smokePage.saveReorderedWidget();
-//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-//	}
-
 	@Then("verify the order of widgets")
 	public void verifyTheOrderOfWidgets() {
 		smokePage.verifyWidgetsOrder();
 	}
-
-	// MOB-4239
-//	@When("click on reorder widget & get back")
-//	public void click_on_reorder_widget() throws Throwable {
-//		smokePage.clickReorderWidget();
-//		smokePage.goBack();
-//	}
-
-//	@Then("verify all the widgets present")
-//	public void verify_all_the_widgets_present() throws Throwable {
-//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-//		smokePage.verify_widgetsPresent();
-//	}
-//
-//	@And("verify the footer")
-//	public void verify_the_footer() {
-//		smokePage.verify_footerPresent();
-//	}
 
 	// MOB-4261
 	@When("employee clicks on the timesheet widget")
@@ -419,12 +379,6 @@ public class SmokeStepDef {
 		smokePage.weekTotalTime();
 		smokePage.verifyWeekTotalTime();
 	}
-
-//	@When("open the past day timesheet and add a new time sheet")
-//	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
-//		smokePage.addTimeSheet();
-//		smokePage.goToEditDeleteTimeSheetOption();
-//	}
 
 	@When("click back button and open the past day timesheet and add a new time sheet")
 	public void openThePastDayTimesheetAndAddANewTimeSheet() throws Throwable {
@@ -483,30 +437,9 @@ public class SmokeStepDef {
 		smokePage.verifyAbsenceConfandDuration();
 	}
 
-	// MOB-4247
-//	@When("click on Absences")
-//	public void clickOnAbsences() throws Throwable {
-//		smokePage.clickOnAbsence();
-//	}
-//
-//	// MOB-4247
-//	@When("click on editable absence and click on Edit tab")
-//	public void click_on_editable_absence_and_click_on_Edit_tab() throws Throwable {
-//		smokePage.editCreatedAbsence();
-//	}
-//
-//	// MOB-4247
-//	@When("edit the absence")
-//	public void edit_the_absence() throws Throwable {
-//		smokePage.saveEditedAbsence();
-//		smokePage.verifyAbsence();
-//	}
-
 	@When("Employee clicks on the clockin btn")
 	public void employeeClicksOnTheClockinBtn() throws Throwable {
 		smokePage.clockInVerification();
-		// loginPage.verify_homeScreen_displayedWithoutReLaunch();
-		// smokePage.clockInbtn();
 	}
 
 	@Then("the user clocks out through timesheet")
@@ -539,8 +472,6 @@ public class SmokeStepDef {
 
 	@When("click on reorder widget and rearrange the widget")
 	public void clickOnReorderWidgetAndRearrangeTheWidget() throws Throwable {
-		// smokePage.getTheOrderOfWidet();
-
 		loginPage.verify_homeScreen_displayedWithoutPushVerify();
 		smokePage.getListOrderAfterReorder();
 	}
@@ -549,7 +480,6 @@ public class SmokeStepDef {
 	public void click_on_reorder_widget() throws Throwable {
 		smokePage.getListOrderBeforeReorder();
 		smokePage.clickReorderWidget();
-
 	}
 
 	@And("^Rearrange the widets$")
@@ -571,8 +501,6 @@ public class SmokeStepDef {
 
 	@Then("verify all the widgets and footers present")
 	public void verifyAllTheWidgetsAndFootersPresent() throws Exception {
-//		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-		// smokePage.verify_widgetsPresent();
 		smokePage.verify_footerPresent();
 	}
 
@@ -596,7 +524,6 @@ public class SmokeStepDef {
 	public void click_on_edit_btn_and_edit_the_absence_for_something(String absenceDay) throws Throwable {
 		smokePage.editCreatedAbsence(absenceDay);
 		smokePage.saveEditedAbsence();
-		// smokePage.verifyAbsence();
 	}
 
 	@Then("^Verify the absence details$")

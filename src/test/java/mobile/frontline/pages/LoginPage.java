@@ -15,14 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
-	// JobsMethods jobs = new JobsMethods();
-
-	@AndroidFindBy(xpath = "//android.view.View[@text='Sign in with a Frontline ID']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
-	public MobileElement splashHeader;
 
 	@AndroidFindBy(className = "android.widget.EditText")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[7]/XCUIElementTypeTextField")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
 	public MobileElement username;
 
@@ -47,7 +41,6 @@ public class LoginPage extends BasePage {
 	public MobileElement pinUnlockErr;
 
 	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Frontline - Sign In']/XCUIElementTypeOther[9]/XCUIElementTypeSecureTextField")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
 	public MobileElement password;
 
@@ -122,19 +115,6 @@ public class LoginPage extends BasePage {
 	// ###################################################################
 	public LoginPage() {
 	}
-
-//	public void verify_splashScreen_displayed() {
-//		fluentWait(splashScreen);
-//		isElementDisplayed(splashScreen);
-//		Assert.assertTrue("Splash screen is not displayed", splashScreen.isDisplayed());
-//		utils.log().info("Splash screen Page is displayed");
-//	}
-//
-//	public void verify_emailAddressTextBox() throws InterruptedException {
-//		waitForElementClickable(username);
-//		Assert.assertTrue("Email text box is not displayed", username.isDisplayed());
-//		Thread.sleep(3000);
-//	}
 
 	public void waitFor_loader_disappears() {
 		try {
@@ -228,12 +208,6 @@ public class LoginPage extends BasePage {
 			utils.log().info("Home Page is displayed");
 			break;
 		case "iOS":
-			/*if (isElementdisplayed(bioMatric)) {
-				clickElement(bioMatric);
-				utils.log().info("Biometric pop-up displayed");
-			} else {
-				utils.log().info("Biometric pop-up not displayed");
-			}*/
 			if (isElementdisplayed(PushNotificationAllow)) {
 				clickElement(PushNotificationAllow);
 				utils.log().info("Push Notification pop-up displayed");
@@ -247,7 +221,6 @@ public class LoginPage extends BasePage {
 				utils.log().info("Push Notification pop-up not displayed");
 			}
 			switchToNativeApp();
-			//isElementdisplayed(homePageHeader);
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			utils.log().info("Home Page is displayed");
 			break;
@@ -267,12 +240,6 @@ public class LoginPage extends BasePage {
 			break;
 		case "iOS":
 			switchToNativeApp();
-			/*if (isElementdisplayed(bioMatric)) {
-				clickElement(bioMatric);
-				utils.log().info("Biometric pop-up displayed");
-			} else {
-				utils.log().info("Biometric pop-up not displayed");
-			}*/
 			if(isElementdisplayed(homePageHeader))
 			Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
 			else {

@@ -1,12 +1,11 @@
 package mobile.frontline.pages;
 
-import java.util.ArrayList;
-
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-
 import mobile.Frontline.utils.TestDataManager;
+
+import java.util.ArrayList;
 
 public class ApiMethods {
 

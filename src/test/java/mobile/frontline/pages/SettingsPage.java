@@ -59,7 +59,6 @@ public class SettingsPage extends LoginPage {
 	public MobileElement MenuHeader;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Scheduled Job']")
-//	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement jobDetailDate;
 
@@ -85,10 +84,6 @@ public class SettingsPage extends LoginPage {
 	@AndroidFindBy(xpath = "((//android.widget.LinearLayout)[5]//android.widget.TextView)[1]")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement absenceTextOut;
-	
-//	@AndroidFindBy(xpath = "((//android.widget.RelativeLayout)[7]//android.widget.TextView)[1]")
-////	@iOSXCUITFindBy(accessibility = "")
-//	public MobileElement absenceTextIn;
 	
 	public String job_day;
 	public String job_month;
@@ -248,7 +243,6 @@ public class SettingsPage extends LoginPage {
 	}
 	
 	public void verifyAbsenceIsVisible(String confNumber) throws Throwable {
-		//smoke.androidScrollToElementUsingUiScrollable("text", employeeName);
 		scrollTo(employeeName);
 		absenceName = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + employeeName + "')]");
 		Assert.assertNotEquals(employeeName+ "is not same as No Absences", employeeName, "No Absences");

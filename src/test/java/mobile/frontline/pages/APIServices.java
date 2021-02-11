@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 import org.junit.Assert;
-
 import com.mashape.unirest.http.HttpResponse;
 
 import mobile.Frontline.utils.TestUtils;
