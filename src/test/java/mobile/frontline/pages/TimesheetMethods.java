@@ -166,8 +166,11 @@ public class TimesheetMethods extends LoginPage {
 	
 	public void AddTimesheet() throws Throwable {
 		click(smoke.addTimeSheets);
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		common.isElementdisplayed(smoke.workDetails);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		click(smoke.timeSheetOutTime);
+		System.out.println("#####################################");
 
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -198,9 +201,13 @@ public class TimesheetMethods extends LoginPage {
 			break;
 		case "iOS":
 			outTime.click();
+			System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 			dragClock();
+			System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 			click(smoke.saveOrderWidgetbtn);
+			System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 			click(smoke.saveTimesheets);
+			System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
