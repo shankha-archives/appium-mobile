@@ -107,8 +107,8 @@ public class ApiMethods {
 			String timesheetDay) throws Throwable {
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<String> response = Unirest
-				.post(testdata.read_property("testingData", "users", "BFFBaseURL") + "/api/organizations/" + orgID
-						+ "/products/time-and-attendance/timesheets")
+				.post(testdata.read_property("testingData", "users", "BFFBaseURL")
+						+ "/api/organizations/654527/products/time-and-attendance/timesheets")
 				.queryString("identity", "2-" + testdata.read_property("testingData", "users", workerID))
 				.header("aesoptoken", aesopToken).header("authorization", "Bearer " + bearerToken)
 				.header("Content-Type", "application/json")
@@ -116,7 +116,7 @@ public class ApiMethods {
 						+ "\",\"locationId\": 363692,\"shiftTypeId\": 248822,\"timeClockEvents\":  [{  \"clockIn\": \""
 						+ smokePage.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T" + smokePage.currentDate("HH:mm:ss")
 						+ "\",  \"clockOut\": \"" + smokePage.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T"
-						+ smokePage.currentDate("HH:mm:ss") + "\", \"eventTypeId\": 18305  }]  }]")
+						+ smokePage.currentDate("HH:mm:ss") + "\", \"eventTypeId\": 18305  }]}]")
 				.asString();
 
 		return response;
