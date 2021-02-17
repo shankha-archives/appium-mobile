@@ -70,17 +70,22 @@ public class APIServices {
 				orgID, workerID);
 		Assert.assertEquals(responseGetTimeClockIDs.getStatus(), 200);
 		JSONObject json = new JSONObject(responseGetTimeClockIDs.getBody());
-
+		System.out.println("********* Timesheet 1************");
 		timesheetsID = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
 				.getJSONArray("timesheets").getJSONObject(0).get("id").toString();
+		
+		
+		System.out.println("********* Timesheet 2************");
+		//******************** make changes here***************** 
 		numberOfTimeEvents = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
 				.getJSONArray("timesheets").getJSONObject(0).getJSONArray("timeClockEvents").length();
-
+		System.out.println("********* Timesheet 3************");
 		for (int i = 0; i < numberOfTimeEvents; i++)
+			{System.out.println("********* Timesheet 4************");
 			timeClockEventsIDS.add(json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates")
 					.getJSONObject(0).getJSONArray("timesheets").getJSONObject(0).getJSONArray("timeClockEvents")
 					.getJSONObject(i).get("id").toString());
-		
+			}
 		utils.log().info("Get All timesheet details"+ responseGetTimeClockIDs);
 	}
 
