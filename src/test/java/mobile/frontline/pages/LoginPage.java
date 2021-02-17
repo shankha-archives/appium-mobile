@@ -69,7 +69,7 @@ public class LoginPage extends BasePage {
 	public MobileElement credentialErr;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcome_user_text")
-	@iOSXCUITFindBy(accessibility = "New Version Available_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "What's New_ModuleHeader")
 	public MobileElement homePageHeader;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Select a Role']")

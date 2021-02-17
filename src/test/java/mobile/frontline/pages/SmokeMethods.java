@@ -1361,10 +1361,21 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void verifyEditedComment() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		isElementDisplayed(timeSheetTimeEventPage);
 		click(backBtn,"Click on Back button");
 		goToEditDeleteTimeSheetOption();
 		Assert.assertEquals(getElementText(inTimeCommentVerify), "Automation Smoke Test");
+		break;
+			case "iOS":
+				isElementDisplayed(timeSheetTimeEventPage);
+				goToEditDeleteTimeSheetOption();
+				Assert.assertEquals(getElementText(inTimeCommentVerify), "Automation Smoke Test");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickOnEditBtton3() {
@@ -1775,11 +1786,21 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickPeopleWidget() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People");
 		scrolledToElement.click();
 		Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
 		utils.log().info("People Widget is displayed");
 		click(PeopleWidget,"Click on people widget");
+				break;
+			case "iOS":
+				scrollToElement(PeopleWidget, "up");
+				click(PeopleWidget,"Click on People Widget");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void SerachName(String lastName) throws Exception {
