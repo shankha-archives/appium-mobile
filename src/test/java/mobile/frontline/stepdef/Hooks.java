@@ -48,14 +48,4 @@ public class Hooks {
 			serverManager.getServer().stop();
 		}
 	}
-
-	@AfterClass
-	public void killEmu() {
-		CommandPrompt cmd = new CommandPrompt();
-		try {
-			String killEmu = cmd.runCommand("adb -e emu kill");
-		} catch (InterruptedException | IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
