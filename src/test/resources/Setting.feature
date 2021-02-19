@@ -66,7 +66,7 @@ Scenario: Verify role picker option should not displayed when user account has o
     When click on switch
     Then the user is presented with the org picker
 	   
-@Setting @MOB-6033 @iOSRegression @Regression
+@Setting @MOB-6033 @iOSRegression @Regression @MOB-6034 @AndroidRegression
 Scenario: Denied tab in absences view reads as no upcoming absences
 	When the user launches the app 
 	Then the user click on Get Started Button 

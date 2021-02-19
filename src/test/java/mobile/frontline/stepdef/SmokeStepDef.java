@@ -350,7 +350,6 @@ public class SmokeStepDef {
 		smokePage.viewText();
 	}
 
-
 	@Then("click on submit timesheet option")
 	public void clickOnSubmitTimesheetOption() throws Throwable {
 		smokePage.submitTimesheet();
@@ -576,12 +575,17 @@ public class SmokeStepDef {
 
 	@When("^Verify if timesheet present for an employee and delete it using information \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
 	public void verify_if_timesheet_present_for_an_employee_and_delete_it_using_information_something_something_something_something_something(
-			String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay) throws Throwable {
-		apiService.apiTokenGeneration(apiLoginID);
-		apiService.apiBearerTokenGeneration(automationEmployee);
-		apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
-		apiService.apiDeleteTimeEvents(orgID, workerID);
-		//apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+			String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay)
+			throws Throwable {
+		props = new PropertyManager().getProps();
+		if (!props.getProperty("testdata").contains("prod")) {
+			apiService.apiTokenGeneration(apiLoginID);
+			apiService.apiBearerTokenGeneration(automationEmployee);
+			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
+			apiService.apiDeleteTimeEvents(orgID, workerID);
+			// apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+		} else
+			utils.log().info("The environment selected is prodution");
 	}
 
 }
