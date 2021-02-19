@@ -33,10 +33,6 @@ public class CapabilitiesManager {
                            + File.separator + "resources" + File.separator + "apps" + File.separator + "frontline.apk";
                     utils.log().info("appUrl is" + androidAppUrl);
                     caps.setCapability("app", androidAppUrl);
-//                    caps.setCapability("avd", "Pixel_3_XL_API_29");
-//                    caps.setCapability("avdLaunchTimeout", "240000");
-//                    caps.setCapability("avdReadyTimeout", "240000");
-                   // caps.setCapability("avdArgs","-wipe-data");
                     break;
                 case "iOS":
                     caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, props.getProperty("iOSAutomationName"));
