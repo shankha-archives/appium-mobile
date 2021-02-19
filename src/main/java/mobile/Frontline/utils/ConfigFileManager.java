@@ -50,7 +50,7 @@ public class ConfigFileManager {
     }
     
     public String getReportConfigPath(){
-    	String reportConfigPath = "/Frontline/target/Extent-report/extent-config.xml";
+    	String reportConfigPath = "/Frontline/target/src/main/resources/extent-config.xml";
     	if(reportConfigPath!= null) return reportConfigPath;
     	else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");		
     }

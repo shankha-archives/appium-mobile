@@ -20,11 +20,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -35,8 +33,6 @@ import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestDataManager;
 import mobile.Frontline.utils.TestUtils;
-
-import javax.naming.directory.SearchResult;
 
 public class SmokeMethods extends LoginPage {
 
@@ -734,8 +730,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public String currentDate(String format) throws Exception {
-		DateTimeFormatter dtf;
-		dtf = DateTimeFormatter.ofPattern(format);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
 		return dtf.format(LocalDateTime.now());
 	}
 
@@ -1386,7 +1381,8 @@ public class SmokeMethods extends LoginPage {
 	public void goToEditDeleteTimeSheetOption() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			isElementdisplayed(dailytimeSheetsubmitbtn);
+		//	isElementdisplayed(dailytimeSheetsubmitbtn);
+			isElementdisplayed(eventSummary);
 			assertTimeEvent(Intime);
 			scrolledToElement.click();
 			break;
@@ -1398,7 +1394,7 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-
+	
 	public void editTimesheetForClockOut() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -1904,12 +1900,12 @@ public class SmokeMethods extends LoginPage {
 		nextWorkingDate = nextWorkingDay(absenceDay, "MMMM d, yyyy");
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			for (int i = 0; i < 3; i++) {
-				if (!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(nextWorkingDate))
-					click(traverseToNextDay);
-				else
-					break;
-			}
+//			for (int i = 0; i < 3; i++) {
+//				if (!getElementText(selectDayOFUnfilledUnassignedAbsence).equalsIgnoreCase(nextWorkingDate))
+//					click(traverseToNextDay);
+//				else
+//					break;
+//			}
 			waitFortheSpinner1();
 			scrolledToElement = androidScrollToElementUsingUiScrollable("text", userToSearch);
 			scrolledToElement.click();
@@ -1917,12 +1913,12 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			nextWorkingDate = nextWorkingDate.split(" ", 2)[1];
-			for (int i = 0; i <= 3; i++) {
-				if (!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(nextWorkingDate)) {// Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
-					click(traverseToNextDay);
-				} else
-					break;
-			}
+//			for (int i = 0; i <= 3; i++) {
+//				if (!getElementText(selectDayOFUnfilledUnassignedAbsence).contains(nextWorkingDate)) {// Assert.assertEquals(getElementText(selectDayOFUnfilledUnassignedAbsence),dateAndroid);
+//					click(traverseToNextDay);
+//				} else
+//					break;
+//			}
 			By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
 			scrollToElement(unfilledabsenceDate, "up");
 			click(unfilledabsenceDate, "Clicked on Unfilled Absence Date");

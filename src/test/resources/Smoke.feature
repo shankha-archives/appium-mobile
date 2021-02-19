@@ -73,6 +73,7 @@ Scenario: Verify a user can visit inbox and view messages
 
 @smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke
 Scenario: Verify an employee should be able to clock in and clock out
+	When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-4243" "APIWorkerID_MOB-4243" "APIOrgID" "APILoginID" "current day"
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username "AutomationEmployeeMOB-4243" and password and click on Sign In button 
@@ -81,7 +82,7 @@ Scenario: Verify an employee should be able to clock in and clock out
 	Then the user clocks out through timesheet
 	
 @smoke @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke
-Scenario: Verify an employee can submit a timesheet and then undo a timesheet 
+Scenario: Verify an employee can submit weekly timesheet and then undo a timesheet 
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username "AutomationEmployeeMOB-4263" and password and click on Sign In button 
@@ -191,7 +192,7 @@ Scenario: Verify that admin creates an absence for another user
 	 
 	@AndroidSmoke @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254
 Scenario: Verify admin assigns substitute and also approve absence
-	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "next day" and delete the existing ones
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "current day" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button
 	And Enter admin username "AutomationAdminMOB-4251" and password and click on Sign In button 
