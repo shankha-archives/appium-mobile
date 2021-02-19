@@ -17,10 +17,10 @@
 
 		<protocol>https</protocol>
 		<!-- title of the document -->
-		<documentTitle>Selenix - Extent Reports</documentTitle>
+		<documentTitle>FrontlineMobile - Extent Reports</documentTitle>
 		<!-- report name - displayed at top-nav -->
 
-		<reportName>Selenix Test Reports</reportName>
+		<reportName>FrontlineMobile Test Reports</reportName>
 		<!-- location of charts in the test view -->
 
 		<!-- top, bottom -->

@@ -19,23 +19,23 @@ public class APIServices {
 
 	public void apiTokenGeneration(String apiLoginID) throws Throwable {
 		HttpResponse<String> responseGenerateTokenAPI = apiObject.generateAesopToken(apiLoginID);
-		Assert.assertEquals(responseGenerateTokenAPI.getStatus(), 200);
+		Assert.assertEquals(responseGenerateTokenAPI.getBody(), responseGenerateTokenAPI.getStatus(), 200);
 		JSONObject json = new JSONObject(responseGenerateTokenAPI.getBody());
 		aesoptoken = json.getJSONObject("data").get("token").toString();
-		utils.log().info("Aesop Token"+responseGenerateTokenAPI);
+		utils.log().info("Aesop Token" + responseGenerateTokenAPI.getBody());
 	}
 
 	public void apiGetConfirmationIds(String workerID, String absenceDay) throws Throwable {
 		HttpResponse<String> responseGetAbsenceConfirmationNumberAPI = apiObject.getAbsenceFromDate(aesoptoken,
 				workerID, absenceDay);
-		Assert.assertEquals(responseGetAbsenceConfirmationNumberAPI.getStatus(), 200);
+		Assert.assertEquals(responseGetAbsenceConfirmationNumberAPI.getBody(), responseGetAbsenceConfirmationNumberAPI.getStatus(), 200);
 		JSONObject json = new JSONObject(responseGetAbsenceConfirmationNumberAPI.getBody());
 
 		numberOfAbsence = json.getJSONArray("data").length();
 
 		for (int i = 0; i < numberOfAbsence; i++)
 			confirmationNumbers.add(json.getJSONArray("data").getJSONObject(i).get("id").toString());
-		utils.log().info("Confirmation ids of absences"+responseGetAbsenceConfirmationNumberAPI);
+		utils.log().info("Confirmation ids of absences" + responseGetAbsenceConfirmationNumberAPI.getBody());
 	}
 
 	public void apiDeleteAbsence() throws Throwable {
@@ -43,50 +43,48 @@ public class APIServices {
 			for (String confNumber : confirmationNumbers) {
 				HttpResponse<String> responseAbsenceDelete = apiObject.deleteAbsenceFromConfirmationNumber(confNumber,
 						aesoptoken);
-				Assert.assertEquals(responseAbsenceDelete.getStatus(), 200);
-				utils.log().info("Delete absences"+responseAbsenceDelete);
+				Assert.assertEquals(responseAbsenceDelete.getBody(),responseAbsenceDelete.getStatus(), 200);
+				utils.log().info("Delete absences" + responseAbsenceDelete.getBody());
 			}
 		} else
 			utils.log().info("No Absence Found");
-	
+
 	}
 
 	public void apiCreateAbsence(String workerID, String absenceDay) throws Throwable {
 		HttpResponse<String> responseCreateAbsence = apiObject.createEmployeeAbsence(aesoptoken, workerID, absenceDay);
-		Assert.assertEquals(responseCreateAbsence.getStatus(), 201);
-		utils.log().info("Create absences"+responseCreateAbsence);
+		Assert.assertEquals(responseCreateAbsence.getBody(),responseCreateAbsence.getStatus(), 201);
+		utils.log().info("Create absences" + responseCreateAbsence.getBody());
 	}
 
 	public void apiBearerTokenGeneration(String automationEmployee) throws Throwable {
 		HttpResponse<String> responseGenerateBearerTokenAPI = apiObject.generateBearerToken(automationEmployee);
-		Assert.assertEquals(responseGenerateBearerTokenAPI.getStatus(), 200);
+		Assert.assertEquals(responseGenerateBearerTokenAPI.getBody(),responseGenerateBearerTokenAPI.getStatus(), 200);
 		JSONObject json = new JSONObject(responseGenerateBearerTokenAPI.getBody());
 		bearerToken = json.get("access_token").toString();
-		utils.log().info("Bearer Token"+ responseGenerateBearerTokenAPI);
+		utils.log().info("Bearer Token" + responseGenerateBearerTokenAPI.getBody());
 	}
 
 	public void apiGetTimesheetsForWeek(String timesheetDay, String orgID, String workerID) throws Throwable {
 		HttpResponse<String> responseGetTimeClockIDs = apiObject.getWeekTimesheet(timesheetDay, bearerToken, aesoptoken,
 				orgID, workerID);
-		Assert.assertEquals(responseGetTimeClockIDs.getStatus(), 200);
+		Assert.assertEquals(responseGetTimeClockIDs.getBody(),responseGetTimeClockIDs.getStatus(), 200);
 		JSONObject json = new JSONObject(responseGetTimeClockIDs.getBody());
-		System.out.println("********* Timesheet 1************");
-		timesheetsID = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
-				.getJSONArray("timesheets").getJSONObject(0).get("id").toString();
-		
-		
-		System.out.println("********* Timesheet 2************");
-		//******************** make changes here***************** 
-		numberOfTimeEvents = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
-				.getJSONArray("timesheets").getJSONObject(0).getJSONArray("timeClockEvents").length();
-		System.out.println("********* Timesheet 3************");
-		for (int i = 0; i < numberOfTimeEvents; i++)
-			{System.out.println("********* Timesheet 4************");
-			timeClockEventsIDS.add(json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates")
+
+		if (!json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
+				.getJSONArray("timesheets").isEmpty()) {
+			timesheetsID = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
+					.getJSONArray("timesheets").getJSONObject(0).get("id").toString();
+			numberOfTimeEvents = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates")
 					.getJSONObject(0).getJSONArray("timesheets").getJSONObject(0).getJSONArray("timeClockEvents")
-					.getJSONObject(i).get("id").toString());
-			}
-		utils.log().info("Get All timesheet details"+ responseGetTimeClockIDs);
+					.length();
+			for (int i = 0; i < numberOfTimeEvents; i++)
+				timeClockEventsIDS.add(json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates")
+						.getJSONObject(0).getJSONArray("timesheets").getJSONObject(0).getJSONArray("timeClockEvents")
+						.getJSONObject(i).get("id").toString());
+		}
+		utils.log().info("Get All timesheet details" + responseGetTimeClockIDs.getBody());
+
 	}
 
 	public void apiDeleteTimeEvents(String orgID, String workerID) throws Throwable {
@@ -94,16 +92,17 @@ public class APIServices {
 			for (String timeEventID : timeClockEventsIDS) {
 				HttpResponse<String> responseAbsenceDelete = apiObject.deleteDayTimesheets(bearerToken, aesoptoken,
 						orgID, workerID, timesheetsID, timeEventID);
-				Assert.assertEquals(responseAbsenceDelete.getStatus(), 204);
-				utils.log().info("Delete timesheet"+ responseAbsenceDelete);
+				Assert.assertEquals(responseAbsenceDelete.getBody(),responseAbsenceDelete.getStatus(), 204);
+				utils.log().info("Delete timesheet" + responseAbsenceDelete.getBody());
 			}
 		} else
-			utils.log().info("No Absence Found");
+			utils.log().info("No Timesheet Found");
 	}
-	
+
 	public void apiCreateTimesheet(String orgID, String workerID, String timesheetDay) throws Throwable {
-		HttpResponse<String> responseCreateTimesheet = apiObject.createTimesheet(bearerToken, aesoptoken, orgID, workerID, timesheetDay);
-		Assert.assertEquals(responseCreateTimesheet.getStatus(), 200);
-		utils.log().info("Create timesheet"+ responseCreateTimesheet);
+		HttpResponse<String> responseCreateTimesheet = apiObject.createTimesheet(bearerToken, aesoptoken, orgID,
+				workerID, timesheetDay);
+		Assert.assertEquals(responseCreateTimesheet.getBody(),responseCreateTimesheet.getStatus(), 200);
+		utils.log().info("Create timesheet" + responseCreateTimesheet.getBody());
 	}
 }
