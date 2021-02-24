@@ -25,7 +25,8 @@ public class JobsMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "view_header")
 	public MobileElement availableJobsHeader;
 
-	//@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
+	// @AndroidFindBy(id =
+	// "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Automation CreateJob']")
 	@iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
 	public MobileElement jobslist;
@@ -77,79 +78,65 @@ public class JobsMethods extends LoginPage {
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_duration_date")
 	public MobileElement jobDate;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_time")
-	public MobileElement jobTime;
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_worker_name")
+	public MobileElement jobEmployeeName;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_location")
-	public MobileElement jobOrg;
+	@AndroidFindBy(xpath = "(//android.widget.TextView)[4]")
+	public MobileElement jobEmployeeNameOnJobDescription;
+
+	@AndroidFindBy(xpath = "(//android.widget.TextView)[3]")
+	public MobileElement jobDateOnJobDescription;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='There are no available jobs right now']")
+	public MobileElement jobPageWithNoJob;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
 	public MobileElement homeButton;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@index=3]")
 	public MobileElement AllDistrict;
 
 	public String job_date;
-	public String job_time;
-	public String job_org;
+	public String job_jobEmployeeName;
 	public WebElement scrolledToElement;
-	
+
 	public JobsMethods() {
 	}
 
 	public void clickOnAvailableJobs_displayed() throws Throwable {
-//		switch (new GlobalParams().getPlatformName()) {
-//		case "Android":
-//			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Jobs");
-////			Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
-////			utils.log().info("Available Jobs option is displayed on Home page");
-//			scrolledToElement.click();
-//			break;
-//		case "iOS":
-//			scrollToElement(availableJobs, "up");		
-//			Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
-//			utils.log().info("Available Jobs option is displayed on Home page");
-//			click(availableJobs, "Clicking available job Widget");
-//			break;
-//		default:
-//			throw new Exception("Invalid platform Name");
-//		}
-//		Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
-//		utils.log().info("Available Jobs option is displayed on Home page");
 		click(availableJobs, "Clicking available job Widget");
 		isElementDisplayed(availableJobsHeader);
 		Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
 		utils.log().info("Available Jobs list Page is displayed");
-		
-		storeJobDetails();
 	}
 
 	private void storeJobDetails() {
-		job_date = getElementText(jobDate);
-		job_time = getElementText(jobTime);
-		job_org = getElementText(jobOrg);
+		job_date = getElementText(jobDateOnJobDescription);
+		job_jobEmployeeName = getElementText(jobEmployeeNameOnJobDescription);
 	}
 
 	public void verifyAcceptedJob() {
-		String date = getElementText(jobDate);
-		String time = getElementText(jobTime);
-		String org = getElementText(jobOrg);
+		if (isElementdisplayed(jobPageWithNoJob)) {
+			utils.log().info("Accepted job removed from job page");
+		} else {
+			String date = getElementText(jobDate);
+			String ename = getElementText(jobEmployeeName);
+			Assert.assertTrue("Accepted job still present in the jobs list",
+					!(date == job_date && ename == job_jobEmployeeName));
+			utils.log().info("Accepted job removed from jobs list");
+		}
 
-		Assert.assertTrue("Accepted job still present in the jobs list",
-				!(date == job_date && time == job_time && org == job_org));
-		utils.log().info("Accepted job removed from jobs list");
 	}
 
 	public void clickOnAvailableJobs() throws Throwable {
-		System.out.println("**********************pull down********");
-		scrollDown();
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "automation CreateJob");
 			scrolledToElement.click();
+			storeJobDetails();
 			break;
 		case "iOS":
-			scrollToElement(jobslist, "up");		
+			scrollToElement(jobslist, "up");
 			click(jobslist, "Clicking available job Widget");
 			break;
 		default:
@@ -197,13 +184,13 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public void selectOrg() {
-		fluentWait(veritimeorg);
+		isElementdisplayed(veritimeorg);
 		Assert.assertTrue("Available Organizations are not displayed", veritimeorg.isDisplayed());
 		utils.log().info("Available Organizations are  displayed");
 		click(veritimeorg);
 		click(contbtn);
 
-		fluentWait(SubtituteUser);
+		isElementdisplayed(SubtituteUser);
 		Assert.assertTrue("Available roles are not displayed", SubtituteUser.isDisplayed());
 		utils.log().info("Available roles are  displayed");
 		click(SubtituteUser);
@@ -211,12 +198,12 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public String checkAvailablejob() {
-		fluentWait(availableJobs);
+		isElementdisplayed(availableJobs);
 		common.isElementDisplayed(availableJobs);
 		Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
 		utils.log().info("Available Jobs option is displayed on Home page");
 
-		fluentWait(noavailablejobs);
+		isElementdisplayed(noavailablejobs);
 		//////////// Extract the available jobs
 		String jobs = getElementText(noavailablejobs);
 		return jobs;
@@ -225,15 +212,15 @@ public class JobsMethods extends LoginPage {
 	public void clickSwitchbtn() {
 		click(switchbtn);
 	}
-	
+
 	public void switchToAnotherOrg() {
-		fluentWait(chesterorg);
+		isElementdisplayed(chesterorg);
 		Assert.assertTrue("Available Organizations are not displayed", chesterorg.isDisplayed());
 		utils.log().info("Available Organizations are  displayed");
 		click(chesterorg);
 		click(contbtn);
 
-		fluentWait(SubtituteUser);
+		isElementdisplayed(SubtituteUser);
 		Assert.assertTrue("Available roles are not displayed", SubtituteUser.isDisplayed());
 		utils.log().info("Available roles are  displayed");
 		click(SubtituteUser);
@@ -241,12 +228,12 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public ArrayList<MobileElement> findElements() {
-	List<MobileElement> districts = driver.findElementsByXPath("//android.widget.TextView[@index=3]");
+		List<MobileElement> districts = driver.findElementsByXPath("//android.widget.TextView[@index=3]");
 		return (ArrayList<MobileElement>) districts;
 	}
 
 	public void multiDistrictVerification() {
-		fluentWait(AllDistrict);
+		isElementdisplayed(AllDistrict);
 		ArrayList<MobileElement> district = findElements();
 		ArrayList<String> districtNames = new ArrayList<String>();
 		int count = 0;
