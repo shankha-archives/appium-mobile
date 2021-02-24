@@ -1,11 +1,12 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @regression @jobs @MOB-3325 @ios
-  Scenario: Login with valid credentials
-    When the substitute user launches the app
-    Then the substitute user click on Get Started Button and enter the pin
-    And Enter username and password and click on Sign In button
+  @regression @jobs @MOB-3325 @ios @done
+  Scenario: Verify the success pop up message on accepting a job
+ 	  When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
+    When the user launches the app 
+		Then the user click on Get Started Button
+    And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
     And Click on the job and accept it
@@ -15,8 +16,8 @@ Feature: Jobulator scenarios
       
   @regression @jobs @MOB-3324 @MOB-3326 @test
   Scenario: Success Confirmation Number
-    When the substitute user launches the app
-    Then the substitute user click on Get Started Button and enter the pin
+   When the user launches the app 
+		Then the user click on Get Started Button
     And Enter username and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
@@ -28,8 +29,8 @@ Feature: Jobulator scenarios
       
   @regression @jobs @MOB-4174 
   Scenario: Remove job from Available Jobs list
-    When The substitute user launches the app
-    Then the substitute user click on Get Started Button and enter the pin
+   When the user launches the app 
+		Then the user click on Get Started Button
     And Enter username and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
@@ -40,8 +41,8 @@ Feature: Jobulator scenarios
    
   @regression @MOB-3681
   Scenario: Login with valid credentials
-    When the substitute user launches the app
-    Then the substitute user click on Get Started Button and enter the pin
+    When the user launches the app 
+		Then the user click on Get Started Button
     And Enter multiorg multirole username and password and click on Sign In button
     Then the user choose the sub user of one org and extract the jobs
     When the user choose the sub user of another org and extract the jobs
@@ -49,16 +50,16 @@ Feature: Jobulator scenarios
       
   @regression @MOB-3683
   Scenario: Feature flags access- Multi District User
-    When the substitute user launches the app
-    Then the substitute user click on Get Started Button and enter the pin
+    When the user launches the app 
+		Then the user click on Get Started Button
     And Enter username and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And the dashboard displays all available jobs from all districts
       
   @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS
   Scenario: Login with valid credentials
-    When the substitute user launches the app
-    Then the substitute user click on Get Started Button and enter the pin
+   When the user launches the app 
+		Then the user click on Get Started Button
     And Enter username and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list

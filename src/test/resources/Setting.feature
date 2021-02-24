@@ -1,20 +1,20 @@
-@Regression 
+@Regression
 Feature: Regression scenarios 
 
-@Setting @MOB-4789 @AndroidRegression @MOB-4791 @iOSRegression @Regression 
-Scenario: Show calendar link in substitute Menu 
+@Setting @MOB-4789 @AndroidRegression @MOB-4791 @iOSRegression @Regression @done
+Scenario: Verify calendar link in substitute Menu 
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter username and password and click on Sign In button 
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When click on menu and tap the Calendar link 
 	Then verify the calendar 
 	
-@Setting @MOB-4806 @AndroidRegression @MOB-4805 @iOSRegression @Regression 
+@Setting @MOB-4806 @AndroidRegression @MOB-4805 @iOSRegression @Regression @done
 Scenario: Show Job List tab bar 
 	When the user launches the app 
 	Then the user click on Get Started Button 
-	And Enter username and password and click on Sign In button 
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When click on Avalaible Jobs link 
 	Then verify Job List tab bar for available and accepted jobs 

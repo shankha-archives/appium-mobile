@@ -14,10 +14,10 @@ public class JobsStepDef {
     public String OrgJob1, OrgJob2;
     public TestDataManager testdata = new TestDataManager();
 
-    @Then("^the substitute user click on Get Started Button and enter the pin$")
-    public void the_substitute_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
-        loginPage.clickOnGetStartedBtn();
-    }
+//    @Then("^the substitute user click on Get Started Button and enter the pin$")
+//    public void the_substitute_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
+//        loginPage.clickOnGetStartedBtn();
+//    }
 
     @And("^click on the Available Jobs and view job list$")
     public void click_on_the_available_jobs_and_view_job_list() throws Throwable {

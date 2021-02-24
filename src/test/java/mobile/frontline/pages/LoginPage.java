@@ -1,16 +1,16 @@
 package mobile.frontline.pages;
 
-import mobile.Frontline.utils.GlobalParams;
-import mobile.Frontline.utils.TestUtils;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import mobile.Frontline.utils.GlobalParams;
+import mobile.Frontline.utils.TestUtils;
 
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
@@ -130,7 +130,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void clickOnGetStartedBtn() {
-		common.clickElement(getStarted);
+		click(getStarted, "Clicking on Get Started Button");
 	}
 
 	public void verify_loginPageLoaded() throws InterruptedException {
@@ -268,31 +268,31 @@ public class LoginPage extends BasePage {
 		}
 	}
 	public void verifyNoUserName_errorMessage() {
-		fluentWait(userNameRequired);
+		isElementDisplayed(userNameRequired);
 		Assert.assertTrue("Your username is required error message is not displayed", userNameRequired.isDisplayed());
 		utils.log().info("Your username is required error message is displayed");
 	}
 
 	public void verifyNoPassword_errorMessage() {
-		fluentWait(userPasswordRequired);
+		isElementDisplayed(userPasswordRequired);
 		Assert.assertTrue("Your username is required error message is not displayed", userNameRequired.isDisplayed());
 		utils.log().info("Your username is required error message is displayed");
 	}
 
 	public void rolePickerPageLoads() {
-		fluentWait(rolePickerPageHeader);
+		isElementDisplayed(rolePickerPageHeader);
 		Assert.assertTrue("Role picker page is not displayed", rolePickerPageHeader.isDisplayed());
 		utils.log().info("Role picker page is displayed");
 	}
 
 	public void orgPickerPageLoads() {
-		fluentWait(orgPickerPageHeader);
+		isElementDisplayed(orgPickerPageHeader);
 		Assert.assertTrue("Organization picker page is not displayed", orgPickerPageHeader.isDisplayed());
 		utils.log().info("Organization picker page is displayed");
 	}
 
 	public void verifyNoLoginDialogbox() {
-		fluentWait(noLoginDialogBox);
+		isElementDisplayed(noLoginDialogBox);
 		Assert.assertTrue(
 				"You have not been granted access to any organizations that use the Frontline Insights Platform",
 				noLoginDialogBox.isDisplayed());
@@ -301,19 +301,19 @@ public class LoginPage extends BasePage {
 	}
 
 	public void orgWithOnlySubRole() {
-		fluentWait(orgWithOnlySubRole);
+		isElementDisplayed(orgWithOnlySubRole);
 		clickElement(orgWithOnlySubRole);
 		utils.log().info("Clicked on selected org");
 	}
 
 	public void VerifyMessage() {
-		fluentWait(errorMessageLogin);
+		isElementDisplayed(errorMessageLogin);
 		Assert.assertTrue("This mobile app is not currently available for substitutes",
 				errorMessageLogin.isDisplayed());
 		utils.log().info("Error Dialog box is displayed");
 	}
 
 	public void clickBackBtn() {
-		clickElement(bckBtn);
+		click(bckBtn);
 	}
 }

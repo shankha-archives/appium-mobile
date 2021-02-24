@@ -25,7 +25,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.WaitOptions;
@@ -1852,34 +1851,6 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-	}
-
-	public WebElement androidScrollToElementUsingUiScrollable(String attributeType, String attributeText)
-			throws Throwable {
-		switch (attributeType.toLowerCase()) {
-		case "description":
-			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
-					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().descriptionContains(\""
-							+ attributeText + "\").instance(0))");
-
-		case "resouceid":
-			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
-					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceId(\""
-							+ attributeText + "\").instance(0))");
-
-		case "classname":
-			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
-					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().className(\""
-							+ attributeText + "\").instance(0))");
-
-		case "text":
-			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
-					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
-							+ attributeText + "\").instance(0))");
-		default:
-			throw new Exception("Invalid platform Name");
-		}
-
 	}
 
 	public void getAbsenceDateForCalendar(String absenceDay) throws Throwable {

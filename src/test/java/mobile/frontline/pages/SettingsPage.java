@@ -1,22 +1,17 @@
 package mobile.frontline.pages;
 
-import io.appium.java_client.MobileBy;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.LongPressOptions;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.ElementOption;
-import io.appium.java_client.touch.offset.PointOption;
+import java.time.Duration;
+
 import org.junit.Assert;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
-import org.openqa.selenium.Point;
-
-import java.time.Duration;
 
 public class SettingsPage extends LoginPage {
 
@@ -31,14 +26,14 @@ public class SettingsPage extends LoginPage {
 	public MobileElement calendar;
 
 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
 	public MobileElement availableJobs;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available']")
 	@iOSXCUITFindBy(accessibility = "Available")
 	public MobileElement available;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Accepted']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
 	@iOSXCUITFindBy(accessibility = "Accepted")
 	public MobileElement accepted;
 
@@ -57,41 +52,41 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Menu']")
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
 	public MobileElement MenuHeader;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Scheduled Job']")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement jobDetailDate;
 
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
 	public MobileElement nextScheduledJobWidget;
-  
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_org_role_name")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[1]")
 	public MobileElement orgSelection;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Denied']")
 	@iOSXCUITFindBy(accessibility = "Denied")
 	public MobileElement deniedLeaveBalanceHeader;
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement InTimeEdit;
-	
+
 	@AndroidFindBy(xpath = "(//android.widget.TextView)[1]")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement empName;
-	
+
 	@AndroidFindBy(xpath = "((//android.widget.LinearLayout)[5]//android.widget.TextView)[1]")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement absenceTextOut;
-	
+
 	public String job_day;
 	public String job_month;
 	public String expectedInTime;
 	public String actualInTime;
 	public String employeeName;
 	MobileElement absenceName;
-	
+
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
 		click(smoke.menuTab);
@@ -149,7 +144,7 @@ public class SettingsPage extends LoginPage {
 
 	public void clickOnSendDiagnosticBtn() throws Throwable {
 		click(sendDiagnosticsBtn);
-  switch (new GlobalParams().getPlatformName()) {
+		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			utils.log().info("Diagnostic is sent");
 			break;
@@ -160,41 +155,41 @@ public class SettingsPage extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 	}
-	
+
 	public void viewDetails() {
-		String date = common.getElementText(jobDetailDate); 
-        String[] dateDetails = date.split(", ",2); 
-        dateDetails = dateDetails[1].split(" ",2);
-        job_day = dateDetails[1];
-        job_month = dateDetails[0];
+		String date = common.getElementText(jobDetailDate);
+		String[] dateDetails = date.split(", ", 2);
+		dateDetails = dateDetails[1].split(" ", 2);
+		job_day = dateDetails[1];
+		job_month = dateDetails[0];
 	}
-	
+
 	public void viewInCalendar() throws Exception {
-		smoke.verifyEventInCalendar(job_day,job_month);		
+		smoke.verifyEventInCalendar(job_day, job_month);
 	}
-	
-	public void verifyNextScheduledJobWidget() throws Throwable{
+
+	public void verifyNextScheduledJobWidget() throws Throwable {
 		common.scrollToElement(nextScheduledJobWidget, "up");
 		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
 		utils.log().info("Next Scheduled Job is displayed");
 	}
-	
-	public void verifyUnlockCodePage() throws Throwable{
+
+	public void verifyUnlockCodePage() throws Throwable {
 		Assert.assertTrue("Unlock code page is not displayed", IsElementNotPresent(loginPage.enterUnlockCode));
 		utils.log().info("Unlock code page is not displayed");
 	}
-	
+
 	public void selectOrg() {
 		click(orgSelection);
 		click(jobs.contbtn);
 	}
-	
+
 	public void clickAndVerifyDeniedPanel() throws Throwable {
 		click(deniedLeaveBalanceHeader);
 		String panel = deniedLeaveBalanceHeader.getAttribute("name").toString();
 		Assert.assertEquals(panel, "Denied");
 	}
-	
+
 	public void addTimesheetAndChangeIntime() throws Throwable {
 		click(smoke.addTimeSheets);
 		click(InTimeEdit);
@@ -217,35 +212,38 @@ public class SettingsPage extends LoginPage {
 		click(smoke.okBtn);
 		expectedInTime = getElementText(InTimeEdit);
 	}
-	
+
 	public void verifyInTime() throws Throwable {
 		isElementdisplayed(InTimeEdit);
 		actualInTime = getElementText(InTimeEdit);
-		Assert.assertEquals(expectedInTime+ "is not same as" +actualInTime, expectedInTime, actualInTime);
-		utils.log().info("InTime is not back to default");	
+		Assert.assertEquals(expectedInTime + "is not same as" + actualInTime, expectedInTime, actualInTime);
+		utils.log().info("InTime is not back to default");
 	}
 
-	public void scrollTo(String text){                
-		((AndroidDriver) driver).findElementByAndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""+text+"\").instance(0))");
-	}
-	
+//	public void scrollTo(String text) {
+//		((AndroidDriver) driver).findElementByAndroidUIAutomator(
+//				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+//						+ text + "\").instance(0))");
+//	}
+
 	public void getEmployeeName() {
 		isElementdisplayed(empName);
 		employeeName = getElementText(empName);
 		click(smoke.homeTab);
 	}
-	
-	public void verifyAbsenceOnDashboard() throws Exception {
-		scrollTo("Absences Today");
-		Assert.assertNotEquals(getElementText(absenceTextOut)+ "is not same as No upcoming Absences", getElementText(absenceTextOut), "No upcoming Absences");
+
+	public void verifyAbsenceOnDashboard() throws Throwable {
+		androidScrollToElementUsingUiScrollable("text","Absences Today");
+		Assert.assertNotEquals(getElementText(absenceTextOut) + "is not same as No upcoming Absences",
+				getElementText(absenceTextOut), "No upcoming Absences");
 		utils.log().info("Absences are not visible");
 		click(smoke.absenceWidget);
 	}
-	
+
 	public void verifyAbsenceIsVisible(String confNumber) throws Throwable {
-		scrollTo(employeeName);
+		androidScrollToElementUsingUiScrollable("text",employeeName);
 		absenceName = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + employeeName + "')]");
-		Assert.assertNotEquals(employeeName+ "is not same as No Absences", employeeName, "No Absences");
+		Assert.assertNotEquals(employeeName + "is not same as No Absences", employeeName, "No Absences");
 		utils.log().info("Absences are not visible");
 		click(absenceName);
 		isElementdisplayed(smoke.confirmationNumber);

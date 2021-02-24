@@ -1,29 +1,32 @@
 package mobile.frontline.pages;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import mobile.Frontline.utils.TestUtils;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import mobile.Frontline.utils.GlobalParams;
+import mobile.Frontline.utils.TestUtils;
 
 public class JobsMethods extends LoginPage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
 	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
 	public MobileElement availableJobs;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Jobs']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
 	@iOSXCUITFindBy(accessibility = "view_header")
 	public MobileElement availableJobsHeader;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
+	//@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Automation CreateJob']")
 	@iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
 	public MobileElement jobslist;
 
@@ -89,19 +92,35 @@ public class JobsMethods extends LoginPage {
 	public String job_date;
 	public String job_time;
 	public String job_org;
-
+	public WebElement scrolledToElement;
+	
 	public JobsMethods() {
 	}
 
-	public void clickOnAvailableJobs_displayed() throws Exception {
-		common.scrollToElement(availableJobs, "up");
-		common.isElementDisplayed(availableJobs);
-		Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
-		utils.log().info("Available Jobs option is displayed on Home page");
-		click(availableJobs);
+	public void clickOnAvailableJobs_displayed() throws Throwable {
+//		switch (new GlobalParams().getPlatformName()) {
+//		case "Android":
+//			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Jobs");
+////			Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
+////			utils.log().info("Available Jobs option is displayed on Home page");
+//			scrolledToElement.click();
+//			break;
+//		case "iOS":
+//			scrollToElement(availableJobs, "up");		
+//			Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
+//			utils.log().info("Available Jobs option is displayed on Home page");
+//			click(availableJobs, "Clicking available job Widget");
+//			break;
+//		default:
+//			throw new Exception("Invalid platform Name");
+//		}
+//		Assert.assertTrue("Available Jobs option is not displayed Home page", availableJobs.isDisplayed());
+//		utils.log().info("Available Jobs option is displayed on Home page");
+		click(availableJobs, "Clicking available job Widget");
 		isElementDisplayed(availableJobsHeader);
 		Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
 		utils.log().info("Available Jobs list Page is displayed");
+		
 		storeJobDetails();
 	}
 
@@ -121,12 +140,21 @@ public class JobsMethods extends LoginPage {
 		utils.log().info("Accepted job removed from jobs list");
 	}
 
-	public void clickOnAvailableJobs() {
-		isElementDisplayed(jobslist);
-		Assert.assertTrue("Available Jobs list not displayed", jobslist.isDisplayed());
-		utils.log().info("Available Jobs list is displayed");
-		click(jobslist);
-		utils.log().info("clicked on Job ");
+	public void clickOnAvailableJobs() throws Throwable {
+		System.out.println("**********************pull down********");
+		scrollDown();
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "automation CreateJob");
+			scrolledToElement.click();
+			break;
+		case "iOS":
+			scrollToElement(jobslist, "up");		
+			click(jobslist, "Clicking available job Widget");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickOnAcceptJobsBtn() {
