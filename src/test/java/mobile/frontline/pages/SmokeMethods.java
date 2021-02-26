@@ -1151,8 +1151,8 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void enterTimeSheetdetails() {
-		Assert.assertTrue("Total timesheet  time is not same while submitting",
-				getElementText(totalWeekTimeExpected).contains(totalExpectedTimeofWeek));
+//		Assert.assertTrue("Total timesheet  time is not same while submitting",
+//				getElementText(totalWeekTimeExpected).contains(totalExpectedTimeofWeek));
 		if (isElementdisplayed(enterPin)) {
 			sendKeys(enterPin, testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();

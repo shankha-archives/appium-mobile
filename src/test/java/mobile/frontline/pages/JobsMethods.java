@@ -25,9 +25,8 @@ public class JobsMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "view_header")
 	public MobileElement availableJobsHeader;
 
-	// @AndroidFindBy(id =
-	// "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Automation CreateJob']")
+	 @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
+	//@AndroidFindBy(xpath = "//android.widget.TextView[@text='Automation CreateJob']")
 	@iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
 	public MobileElement jobslist;
 
@@ -108,6 +107,7 @@ public class JobsMethods extends LoginPage {
 		isElementDisplayed(availableJobsHeader);
 		Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
 		utils.log().info("Available Jobs list Page is displayed");
+		swipeDown();
 	}
 
 	private void storeJobDetails() {
@@ -131,7 +131,7 @@ public class JobsMethods extends LoginPage {
 	public void clickOnAvailableJobs() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "automation CreateJob");
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "CreateJob");
 			scrolledToElement.click();
 			storeJobDetails();
 			break;
@@ -159,8 +159,6 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public void clickOnOkBtn_successMsg() {
-		Assert.assertTrue("Okay button is not displayed", successOkBtn.isDisplayed());
-		utils.log().info("Success OK button is displayed");
 		click(successOkBtn);
 		utils.log().info("Click on Success OK button is displayed");
 	}

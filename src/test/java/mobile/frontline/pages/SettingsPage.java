@@ -3,6 +3,7 @@ package mobile.frontline.pages;
 import java.time.Duration;
 
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -53,10 +54,11 @@ public class SettingsPage extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
 	public MobileElement MenuHeader;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Scheduled Job']")
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement jobDetailDate;
 
+	//@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
 	public MobileElement nextScheduledJobWidget;
 
@@ -86,6 +88,7 @@ public class SettingsPage extends LoginPage {
 	public String actualInTime;
 	public String employeeName;
 	MobileElement absenceName;
+	public WebElement scrolledToElement;
 
 	public void openMenuCalendar() {
 		common.isElementDisplayed(smoke.menuTab);
@@ -169,9 +172,21 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void verifyNextScheduledJobWidget() throws Throwable {
-		common.scrollToElement(nextScheduledJobWidget, "up");
-		Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
+		
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job");
+		
+			break;
+		case "iOS":
+			scrollToElement(nextScheduledJobWidget, "up");
+			Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
 		utils.log().info("Next Scheduled Job is displayed");
+		
 	}
 
 	public void verifyUnlockCodePage() throws Throwable {

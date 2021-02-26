@@ -128,6 +128,15 @@ public class LoginPage extends BasePage {
 		isElementDisplayed(splashScreen);
 		Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
 	}
+	
+	public void waitAndverify_splashScreenLoaded() throws Exception {
+		Thread.sleep(30000);
+		isElementDisplayed(splashScreen);
+		Thread.sleep(30000);
+		
+		Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
+	}
+	
 
 	public void clickOnGetStartedBtn() {
 		click(getStarted, "Clicking on Get Started Button");
