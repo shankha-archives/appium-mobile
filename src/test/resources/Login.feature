@@ -51,20 +51,18 @@ Feature: Login scenarios
     When Click on Sign In with Frontline ID button
     Then the substitute navigates to dashboard page
   
-  @regression @MOB-3601 @MultiRoleUser @MultiRole @Android
+  @regression @MOB-3601 @MultiRoleUser @MultiRole @Android @done
   Scenario: Verify substitute has only one enabled organization with multiple roles within that organization
    When the user launches the app 
 	 Then the user click on Get Started Button
-	 And Enter username "multiOrgSubsUser" and password and click on Sign In button
-   #And Enter username and password for multiple roles including substitute and organization and click on Sign In button
+	 And Enter username "AutomationSubMutiRole" and password and click on Sign In button
    Then the user is presented with the role picker
 
-  @regression @MOB-3601 @MultiRoleUser @MultiOrg @Android
+  @regression @MOB-3601 @MultiRoleUser @MultiOrg @Android @done
   Scenario: Verify substitute has multiple enabled organization with multiple roles within that organization
   When the user launches the app 
 	Then the user click on Get Started Button
-  And Enter username "MultiOrgUser" and password and click on Sign In button
-  #And Enter username and password for multiple organization and click on Sign In button
+  And Enter username "AutomationSubMutiRole" and password and click on Sign In button
   Then the user is presented with the org picker
 
   @regression @login @MOB-3682   

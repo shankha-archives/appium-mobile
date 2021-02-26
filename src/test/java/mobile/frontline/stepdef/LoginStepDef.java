@@ -1,10 +1,10 @@
 package mobile.frontline.stepdef;
 
 import io.cucumber.java.en.And;
-import mobile.Frontline.utils.TestDataManager;
-import mobile.frontline.pages.LoginPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import mobile.Frontline.utils.TestDataManager;
+import mobile.frontline.pages.LoginPage;
 
 public class LoginStepDef {
 
@@ -102,22 +102,22 @@ public class LoginStepDef {
 		loginPage.verify_homeScreen_displayed();
 	}
 
-	@And("^Enter username and password for multiple roles including substitute and organization and click on Sign In button$")
-	public void enter_username_and_password_for_multiple_roles_including_substitute_and_organization_and_click_on_sign_in_button()
-			throws Throwable {
-		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "multiOrgSubsUser"));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "multiOrgSubsPass"));
-		loginPage.clickOnLoginBtn();
-	}
+//	@And("^Enter username and password for multiple roles including substitute and organization and click on Sign In button$")
+//	public void enter_username_and_password_for_multiple_roles_including_substitute_and_organization_and_click_on_sign_in_button()
+//			throws Throwable {
+//		loginPage.verify_loginPageLoaded();
+//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "multiOrgSubsUser"));
+//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "multiOrgSubsPass"));
+//		loginPage.clickOnLoginBtn();
+//	}
 
-	@And("^Enter username and password for multiple organization and click on Sign In button$")
-	public void enter_username_and_password_for_multiple_organization_and_click_on_sign_in_button() throws Throwable {
-		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "MultiOrgUser"));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "MultiOrgPass"));
-		loginPage.clickOnLoginBtn();
-	}
+//	@And("^Enter username and password for multiple organization and click on Sign In button$")
+//	public void enter_username_and_password_for_multiple_organization_and_click_on_sign_in_button() throws Throwable {
+//		loginPage.verify_loginPageLoaded();
+//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "MultiOrgUser"));
+//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "MultiOrgPass"));
+//		loginPage.clickOnLoginBtn();
+//	}
 
 	@And("^Enter username and password access No Districts associated with Sub and click on Sign In button$")
 	public void enter_username_and_password_access_no_districts_associated_with_sub_and_click_on_sign_in_button()

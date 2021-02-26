@@ -58,7 +58,7 @@ public class SettingsPage extends LoginPage {
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement jobDetailDate;
 
-	//@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+	// @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
 	public MobileElement nextScheduledJobWidget;
 
@@ -81,6 +81,10 @@ public class SettingsPage extends LoginPage {
 	@AndroidFindBy(xpath = "((//android.widget.LinearLayout)[5]//android.widget.TextView)[1]")
 //	@iOSXCUITFindBy(accessibility = "")
 	public MobileElement absenceTextOut;
+
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@index='1'])[4]")
+	@iOSXCUITFindBy(accessibility = "Denied")
+	public MobileElement todayAbsence;
 
 	public String job_day;
 	public String job_month;
@@ -172,11 +176,11 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void verifyNextScheduledJobWidget() throws Throwable {
-		
+
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job");
-		
+
 			break;
 		case "iOS":
 			scrollToElement(nextScheduledJobWidget, "up");
@@ -186,7 +190,7 @@ public class SettingsPage extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 		utils.log().info("Next Scheduled Job is displayed");
-		
+
 	}
 
 	public void verifyUnlockCodePage() throws Throwable {
@@ -248,7 +252,7 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void verifyAbsenceOnDashboard() throws Throwable {
-		androidScrollToElementUsingUiScrollable("text","Absences Today");
+		androidScrollToElementUsingUiScrollable("text", "Absences Today");
 		Assert.assertNotEquals(getElementText(absenceTextOut) + "is not same as No upcoming Absences",
 				getElementText(absenceTextOut), "No upcoming Absences");
 		utils.log().info("Absences are not visible");
@@ -256,12 +260,16 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void verifyAbsenceIsVisible(String confNumber) throws Throwable {
-		androidScrollToElementUsingUiScrollable("text",employeeName);
+		androidScrollToElementUsingUiScrollable("text", employeeName);
 		absenceName = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + employeeName + "')]");
 		Assert.assertNotEquals(employeeName + "is not same as No Absences", employeeName, "No Absences");
 		utils.log().info("Absences are not visible");
 		click(absenceName);
 		isElementdisplayed(smoke.confirmationNumber);
 		Assert.assertTrue("Confirmation number is not displayed", smoke.confirmationNumber.isDisplayed());
+	}
+
+	public void selectTodaysAbsence() {
+		click(todayAbsence);
 	}
 }

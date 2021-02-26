@@ -128,10 +128,10 @@ public class JobsMethods extends LoginPage {
 
 	}
 
-	public void clickOnAvailableJobs() throws Throwable {
+	public void clickOnAvailableJobs(String jobByEmp) throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "CreateJob");
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", jobByEmp);
 			scrolledToElement.click();
 			storeJobDetails();
 			break;

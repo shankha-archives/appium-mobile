@@ -9,7 +9,6 @@ import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
 import mobile.frontline.pages.SettingsPage;
 import mobile.frontline.pages.SmokeMethods;
-import org.junit.Assert;
 
 public class SettingStepDef {
 
@@ -54,12 +53,20 @@ public class SettingStepDef {
 	}
 
 	// MOB-4803
-	@When("click on available job widget")
-	public void clickOnAvailableJobWidget() throws Throwable {
-		settingsPage.avaialbleJobsLink();
-		jobPage.clickOnAvailableJobs();
-	}
+//	@When("click on available job widget")
+//	public void clickOnAvailableJobWidget() throws Throwable {
+//	//	settingsPage.avaialbleJobsLink();
+//		jobPage.clickOnAvailableJobs_displayed();
+//		jobPage.clickOnAvailableJobs();
+//	}
 
+	@When("^click on job widget and select the job \"([^\"]*)\"$")
+    public void click_on_job_widget_and_select_the_job_something(String jobByEmp) throws Throwable {
+        jobPage.clickOnAvailableJobs_displayed();
+		jobPage.clickOnAvailableJobs(jobByEmp);
+    }
+
+	
 	@When("accept the job")
 	public void acceptTheJob() throws Throwable {
 		settingsPage.viewDetails();
@@ -84,13 +91,13 @@ public class SettingStepDef {
 		settingsPage.verifyUnlockCodePage();
 	}
 
-	@Then("Enter multiorg username and password and click on SignIn button")
-	public void enterMultiorgUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
-		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "multiorglogin"));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "multiorgpass"));
-		loginPage.clickOnLoginBtn();
-	}
+//	@Then("Enter multiorg username and password and click on SignIn button")
+//	public void enterMultiorgUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
+//		loginPage.verify_loginPageLoaded();
+//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "multiorglogin"));
+//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "multiorgpass"));
+//		loginPage.clickOnLoginBtn();
+//	}
 
 	@When("Select the Organization")
 	public void selectTheOrganization() {
@@ -147,4 +154,17 @@ public class SettingStepDef {
 	 public void verify_that_absences_are_visible() throws Throwable {
 	     settingsPage.verifyAbsenceIsVisible(confNumber);
 	 }
+	 
+	// MOB-6030
+		@When("Click on add Absence Widget")
+		public void clickOnAddAbsenceWidget() throws Throwable {
+			smokePage.selectAbsenceWidget();
+			smokePage.verifyAbsencesPage();	
+		}
+
+		@Then("Click on any created absence and verify if crash happens")
+		public void clickOnAnyCreatedAbsenceAndVerifyIfCrashHappens() {
+			settingsPage.selectTodaysAbsence();
+			smokePage.verifyAbsence();
+		}
 }

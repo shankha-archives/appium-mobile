@@ -1,5 +1,6 @@
 package mobile.frontline.stepdef;
 import org.junit.Assert;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,11 +25,19 @@ public class JobsStepDef {
         jobulatorPage.clickOnAvailableJobs_displayed();
     }
 
-    @And("^Click on the job and accept it$")
-    public void click_on_the_job_and_accept_it() throws Throwable {
-        jobulatorPage.clickOnAvailableJobs();
-        jobulatorPage.clickOnAcceptJobsBtn();
+//    @And("^Click on the job and accept it$")
+//    public void click_on_the_job_and_accept_it() throws Throwable {
+//        jobulatorPage.clickOnAvailableJobs(jobByEmp);
+//        jobulatorPage.clickOnAcceptJobsBtn();
+//    }
+    
+    @And("^Click on the job \"([^\"]*)\" and accept it$")
+    public void click_on_the_job_something_and_accept_it(String jobByEmp) throws Throwable {
+    	 jobulatorPage.clickOnAvailableJobs(jobByEmp);
+         jobulatorPage.clickOnAcceptJobsBtn();
+
     }
+
 
     @Then("^the Success Message overlay is displayed$")
     public void the_success_message_overlay_is_displayed() throws Throwable {

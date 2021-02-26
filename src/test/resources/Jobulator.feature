@@ -2,14 +2,14 @@
 Feature: Jobulator scenarios
 
   @regression @jobs @MOB-3325 @iOS @done @Android
-  Scenario: Verify substitute views the success pop up message on accepting a job
+  Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
  	  When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
     When the user waits and launches the app 
 		Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
-    And Click on the job and accept it
+    And Click on the job "CreateJob" and accept it
     Then the Success Message overlay is displayed
     When I click Okay
     Then Success Message is dismissed revealing accepted job details page
@@ -22,7 +22,7 @@ Feature: Jobulator scenarios
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
-    And Click on the job and accept it
+    And Click on the job "CreateJob2" and accept it
     Then the Success Message overlay is displayed
     When I click Okay
     Then Success Message is dismissed revealing accepted job details page
@@ -36,7 +36,7 @@ Feature: Jobulator scenarios
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
-    And Click on the job and accept it
+    And Click on the job "CreateJob3" and accept it
     Then click okay on Success Message overlay
     And visit available jobs page again
     Then verify if accepted job is still present
