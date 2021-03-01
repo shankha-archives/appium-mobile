@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileElement;
@@ -25,8 +26,7 @@ public class JobsMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "view_header")
 	public MobileElement availableJobsHeader;
 
-	 @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
-	//@AndroidFindBy(xpath = "//android.widget.TextView[@text='Automation CreateJob']")
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
 	@iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
 	public MobileElement jobslist;
 
@@ -42,13 +42,13 @@ public class JobsMethods extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Okay")
 	public MobileElement successOkBtn;
 
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Job Detail']")
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='You have accepted this job']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='Job Detail']")
-	public MobileElement jobDetailsHeader;
+	public MobileElement jobDetailsConfirmation;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
 	@iOSXCUITFindBy(xpath = "//*[contains(@name, 'Conf')]")
-	public MobileElement confirmationNumber;
+	public MobileElement confirmationNo;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='VeriTime Automation Org 20 - DO NOT USE']")
 	// @iOSXCUITFindBy(accessibility = "")
@@ -74,16 +74,16 @@ public class JobsMethods extends LoginPage {
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[1]")
 	public MobileElement switchbtn;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_duration_date")
-	public MobileElement jobDate;
+//	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'AutomationEmp CreateJob3')]")
+//	public MobileElement jobEmployeeName;
 
-	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_listing_cell_worker_name")
-	public MobileElement jobEmployeeName;
+//	@AndroidFindBy(xpath = "(//android.widget.TextView[contains(@text, 'AutomationEmp CreateJob3')]/following:: android.widget.TextView)[1]")
+//	public MobileElement jobDate;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView)[4]")
 	public MobileElement jobEmployeeNameOnJobDescription;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView)[3]")
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 	public MobileElement jobDateOnJobDescription;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='There are no available jobs right now']")
@@ -111,20 +111,16 @@ public class JobsMethods extends LoginPage {
 	}
 
 	private void storeJobDetails() {
-		job_date = getElementText(jobDateOnJobDescription);
+		job_date = getElementText(jobDateOnJobDescription).split(", ")[1];
+		// Assert.assertEquals(job_date, "");
 		job_jobEmployeeName = getElementText(jobEmployeeNameOnJobDescription);
 	}
 
 	public void verifyAcceptedJob() {
-		if (isElementdisplayed(jobPageWithNoJob)) {
-			utils.log().info("Accepted job removed from job page");
-		} else {
-			String date = getElementText(jobDate);
-			String ename = getElementText(jobEmployeeName);
-			Assert.assertTrue("Accepted job still present in the jobs list",
-					!(date == job_date && ename == job_jobEmployeeName));
-			utils.log().info("Accepted job removed from jobs list");
-		}
+		By jobDate = By.xpath(
+				"(//android.widget.TextView[@text='AutomationEmp CreateJob3']/following:: android.widget.TextView[@text='"
+						+ job_date + "'])[1]");
+		Assert.assertTrue("Accepted job still present in the jobs list", IsElementNotPresent(jobDate));
 
 	}
 
@@ -154,7 +150,8 @@ public class JobsMethods extends LoginPage {
 
 	public void successMsgPOPUP() {
 		isElementDisplayed(successMsg);
-		Assert.assertTrue("Success message is not displayed", successMsg.isDisplayed());
+		Assert.assertEquals("Success message is not displayed", getElementText(successMsg),
+				"You have Successfully accepted this Job");
 		utils.log().info("Success message is displayed");
 	}
 
@@ -171,13 +168,14 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public void jobDetailsPageLoads() {
-		isElementDisplayed(jobDetailsHeader);
-		Assert.assertTrue("Job Details page is not displayed", jobDetailsHeader.isDisplayed());
+		isElementDisplayed(jobDetailsConfirmation);
+		Assert.assertTrue("Job Details page is not displayed", jobDetailsConfirmation.isDisplayed());
 		utils.log().info("Job Details page is displayed");
 	}
 
-	public void confirmationPresent() {
-		Assert.assertTrue("Confirmation number is not displayed", confirmationNumber.isDisplayed());
+	public void confirmationPresent(String confirmationNumber) {
+		Assert.assertTrue("Confirmation number is not displayed",
+				getElementText(confirmationNo).contains(confirmationNumber));
 		utils.log().info("Confirmation number is displayed");
 	}
 
