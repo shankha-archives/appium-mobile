@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileElement;
@@ -18,7 +19,7 @@ public class JobsMethods extends LoginPage {
 	BasePage common = new BasePage();
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "Jobs_ModuleHeader")
 	public MobileElement availableJobs;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
@@ -31,7 +32,7 @@ public class JobsMethods extends LoginPage {
 	public MobileElement jobslist;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Accept']")
-	@iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Accept']")
+	@iOSXCUITFindBy(accessibility = "JobDetailVC_AcceptButton")
 	public MobileElement jobAcceptBtn;
 
 	@AndroidFindBy(id = "android:id/message")
@@ -87,9 +88,11 @@ public class JobsMethods extends LoginPage {
 	public MobileElement jobDateOnJobDescription;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='There are no available jobs right now']")
+	@iOSXCUITFindBy(accessibility = "There are no available jobs right now")
 	public MobileElement jobPageWithNoJob;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
+	@iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
 	public MobileElement homeButton;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@index=3]")
@@ -136,8 +139,15 @@ public class JobsMethods extends LoginPage {
 			storeJobDetails();
 			break;
 		case "iOS":
-			scrollToElement(jobslist, "up");
-			click(jobslist, "Clicking available job Widget");
+
+
+			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
+			scrollToElement(findJob, "up");
+			click(findJob, "Clicked on on Required Job");
+
+     		//scrollToElement(jobslist, "up");
+
+			//click(jobslist, "Clicking available job Widget");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");

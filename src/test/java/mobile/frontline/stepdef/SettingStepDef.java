@@ -52,14 +52,6 @@ public class SettingStepDef {
 		settingsPage.LongPressOnFrontline_setting();
 	}
 
-	// MOB-4803
-//	@When("click on available job widget")
-//	public void clickOnAvailableJobWidget() throws Throwable {
-//	//	settingsPage.avaialbleJobsLink();
-//		jobPage.clickOnAvailableJobs_displayed();
-//		jobPage.clickOnAvailableJobs();
-//	}
-
 	@When("^click on job widget and select the job \"([^\"]*)\"$")
     public void click_on_job_widget_and_select_the_job_something(String jobByEmp) throws Throwable {
         jobPage.clickOnAvailableJobs_displayed();
@@ -90,14 +82,6 @@ public class SettingStepDef {
 	public void user_verify_unlock_code_page_should_not_displayed() throws Throwable {
 		settingsPage.verifyUnlockCodePage();
 	}
-
-//	@Then("Enter multiorg username and password and click on SignIn button")
-//	public void enterMultiorgUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
-//		loginPage.verify_loginPageLoaded();
-//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "multiorglogin"));
-//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "multiorgpass"));
-//		loginPage.clickOnLoginBtn();
-//	}
 
 	@When("Select the Organization")
 	public void selectTheOrganization() {

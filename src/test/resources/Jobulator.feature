@@ -1,11 +1,12 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @regression @jobs @MOB-3325 @iOS @done @Android
+
+  @regression @jobs @MOB-3325 @iOS @Done @Android
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
- 	  When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
+ 	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
     When the user waits and launches the app 
-		Then the user click on Get Started Button
+	Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
@@ -14,11 +15,11 @@ Feature: Jobulator scenarios
     When I click Okay
     Then Success Message is dismissed revealing accepted job details page
       
-  @regression @jobs @MOB-3324 @MOB-3326 @done @Android @iOS
+  @regression @jobs @MOB-3324 @MOB-3326 @Done @Android @iOS
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
   When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" and delete the existing ones
     When the user waits and launches the app
-		Then the user click on Get Started Button
+	Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
@@ -28,11 +29,11 @@ Feature: Jobulator scenarios
     Then Success Message is dismissed revealing accepted job details page
     Then Verify the confirmation number present on the job details page
       
-  @regression @jobs @MOB-4174 @done @Android @iOS
+  @regression @jobs @MOB-4174 @Done @Android @iOS
   Scenario: Verify substitute cannot view accepted job in job list
    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" and delete the existing ones
     When the user waits and launches the app 
-		Then the user click on Get Started Button
+	Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
@@ -58,7 +59,7 @@ Feature: Jobulator scenarios
     Then the substitute navigates to dashboard page
     And the dashboard displays all available jobs from all districts
       
-  @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS @done
+  @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS @Done
   Scenario: Verify that substitute is able to view job widget and job list
    When the user launches the app 
 		Then the user click on Get Started Button
