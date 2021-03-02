@@ -66,7 +66,7 @@ public class SettingStepDef {
 		jobPage.clickOnOkBtn_successMsg();
 	}
 
-	@Then("go to calender and view the accepted job")
+	@Then("go to calendar and view the accepted job")
 	public void goToCalenderAndViewTheAcceptedJob() throws Exception {
 		settingsPage.viewInCalendar();
 	}

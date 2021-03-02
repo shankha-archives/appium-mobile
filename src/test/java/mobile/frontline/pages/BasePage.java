@@ -604,6 +604,15 @@ public class BasePage {
 		}
 	}
 
+	public boolean IsElementNotPresent(By element) {
+		try {
+			driver.findElement(element).isDisplayed();
+			return false;
+		} catch (NoSuchElementException e) {
+			return true;
+		}
+	}
+	
 	public boolean isElementNotPresent(MobileElement element) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20, 500);
@@ -1337,7 +1346,9 @@ public class BasePage {
 	}
 
 	public void killAndRelaunch() throws Exception {
-		driver.runAppInBackground(Duration.ofSeconds(10));
+		driver.closeApp();
+		Thread.sleep(2000);
+		driver.activateApp("com.frontline.frontlinemobile");
 	}
 
 	public boolean isElementEnabled(MobileElement ele) {

@@ -19,6 +19,7 @@ Feature: Login scenarios
     And the substitute enter "invalid" "invalidpass" password
     When Click on Sign In with Frontline ID button
     Then Incorrect username and password error message displays
+    
   @regression @login @noCredentials @MOB-3206 @MOB-3145 @ios @Android @Done
   Scenario: Verify substitute user couldnt login without credentials
     When the user launches the app
@@ -26,6 +27,7 @@ Feature: Login scenarios
     Then the substitute user is taken to the Login Page
     When Click on Sign In with Frontline ID button
     Then Error message displays to the substitute users
+    
   @regression @login @validlogin @MOB-3206 @MOB-3145 @ios @Android @Done
   Scenario: Verify substitute user can successfully login with valid credentials
     When the user launches the app
@@ -36,13 +38,14 @@ Feature: Login scenarios
     When Click on Sign In with Frontline ID button
     Then the substitute navigates to dashboard page
 
-  @regression @MOB-3601 @MultiRoleUser @MultiRole @Android @Done
+@regression @MOB-3601 @MultiRoleUser @MultiRole @Android @Done
   Scenario: Verify when a user is associated with multiple roles and single organization it should display role picker
     When the user launches the app
     Then the user click on Get Started Button
     And Enter username "AutomationSubMutiRole" and password and click on Sign In button
     Then the user is presented with the role picker
-  @regression @MOB-3601 @MultiRoleUser @MultiOrg @Android @Done
+ 
+ @regression @MOB-3601 @MultiRoleUser @MultiOrg @Android @Done
   Scenario: Verify when a user is associated with multiple roles and multiple organization it should display org picker
     When the user launches the app
     Then the user click on Get Started Button
@@ -54,4 +57,4 @@ Feature: Login scenarios
    When the user launches the app 
 	 Then the user click on Get Started Button
    And Enter username "noOrgUsername" and password and click on Sign In button
-    Then the system presents a dialog
+   Then the system presents a dialog

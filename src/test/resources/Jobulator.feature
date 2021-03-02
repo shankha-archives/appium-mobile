@@ -1,23 +1,22 @@
 @jobs
 Feature: Jobulator scenarios
 
-
   @regression @jobs @MOB-3325 @iOS @Done @Android
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
- 	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
+   	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
     When the user waits and launches the app 
-	Then the user click on Get Started Button
+	  Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
     And Click on the job "CreateJob" and accept it
     Then the Success Message overlay is displayed
-    When I click Okay
+    When Clicked on Okay
     Then Success Message is dismissed revealing accepted job details page
       
   @regression @jobs @MOB-3324 @MOB-3326 @Done @Android @iOS
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
-  When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" and delete the existing ones
+  When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" and delete the existing absence
     When the user waits and launches the app
 	Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button
@@ -25,13 +24,13 @@ Feature: Jobulator scenarios
     And click on the Available Jobs and view job list
     And Click on the job "CreateJob2" and accept it
     Then the Success Message overlay is displayed
-    When I click Okay
+    When Clicked on Okay
     Then Success Message is dismissed revealing accepted job details page
     Then Verify the confirmation number present on the job details page
       
   @regression @jobs @MOB-4174 @Done @Android @iOS
   Scenario: Verify substitute cannot view accepted job in job list
-   When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" and delete the existing ones
+   When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" and delete the existing absence
     When the user waits and launches the app 
 	Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
@@ -42,7 +41,7 @@ Feature: Jobulator scenarios
     And visit available jobs page again
     Then verify if accepted job is still present
    
-  @regression @MOB-3681
+   @MOB-3681
   Scenario: Login with valid credentials
     When the user launches the app 
 		Then the user click on Get Started Button
@@ -51,7 +50,7 @@ Feature: Jobulator scenarios
     When the user choose the sub user of another org and extract the jobs
     Then verify the jobs
       
-  @regression @MOB-3683
+   @MOB-3683
   Scenario: Feature flags access- Multi District User
     When the user launches the app 
 		Then the user click on Get Started Button
@@ -61,7 +60,7 @@ Feature: Jobulator scenarios
       
   @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS @Done
   Scenario: Verify that substitute is able to view job widget and job list
-   When the user launches the app 
+   When the user launches the app
 		Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
     Then the substitute navigates to dashboard page

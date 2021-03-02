@@ -16,7 +16,8 @@ public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
 
-	@AndroidFindBy(className = "android.widget.EditText")
+//	@AndroidFindBy(className = "android.widget.EditText")
+	@AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
 	public MobileElement username;
 
@@ -40,7 +41,8 @@ public class LoginPage extends BasePage {
 	@iOSXCUITFindBy(accessibility = "You may not have access yet.")
 	public MobileElement pinUnlockErr;
 
-	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
+//	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
+	@AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
 	public MobileElement password;
 
@@ -161,17 +163,19 @@ public class LoginPage extends BasePage {
 	}
 
 	public void enterPassword(String userPassword) {
-		password.click();
-		driver.getKeyboard().sendKeys(userPassword);
+//		password.click();
+//		driver.getKeyboard().sendKeys(userPassword);
+		enterValueInTextField(password, userPassword);
 	}
 
 	public void enterUserPassword_onLoginPage(String userPassword) throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 			case "Android":
 				hideKeyboard();
-				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
-				password.click();
-				driver.getKeyboard().sendKeys(userPassword);
+//				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
+//				password.click();
+//				driver.getKeyboard().sendKeys(userPassword);
+				enterValueInTextField(password, userPassword);
 				break;
 			case "iOS":
 				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
@@ -202,7 +206,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void verifyInvalidCredentials_errorMessage() {
-		fluentWait(credentialErr);
+		isElementDisplayed(credentialErr);
 		Assert.assertTrue("No Invalid Credentials error message is displayed", credentialErr.isDisplayed());
 		utils.log().info(" 'Invalid Credentials' error message is displayed");
 	}

@@ -95,20 +95,20 @@ public class SettingsPage extends LoginPage {
 	public WebElement scrolledToElement;
 
 	public void openMenuCalendar() {
-		common.isElementDisplayed(smoke.menuTab);
-		click(smoke.menuTab);
-		common.isElementDisplayed(calendar);
-		click(calendar);
+		//common.isElementDisplayed(smoke.menuTab);
+		click(smoke.menuTab, "Click on Menu Link");
+		//common.isElementDisplayed(calendar);
+		click(calendar, "Click on Calendar in menu Link");
 	}
 
 	public void verifyCalendar() {
-		common.isElementDisplayed(calendar);
+		isElementDisplayed(calendar);
 		Assert.assertTrue("Calendar Page is not displayed", calendar.isDisplayed());
 		utils.log().info("Calendar Page is displayed");
 	}
 
 	public void avaialbleJobsLink() throws Throwable {
-		common.scrollToElement(availableJobs, "up");
+		scrollToElement(availableJobs, "up");
 		click(availableJobs);
 	}
 
@@ -142,9 +142,9 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void LongPressOnFrontline_setting() throws Throwable {
-		common.isElementdisplayed(MenuHeader);
+		isElementdisplayed(MenuHeader);
 		longPress();
-		common.isElementdisplayed(diagnosticsHeader);
+		isElementdisplayed(diagnosticsHeader);
 		Assert.assertTrue("Diagnostic Header is not displayed", diagnosticsHeader.isDisplayed());
 		utils.log().info("Diagnostic Header is displayed");
 	}
