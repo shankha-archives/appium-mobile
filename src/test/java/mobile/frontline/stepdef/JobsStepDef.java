@@ -122,4 +122,10 @@ public class JobsStepDef {
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
+	
+	@And("^Verify the created jobs are available in the list$")
+    public void verify_the_created_jobs_are_available_in_the_list() throws Throwable {
+		jobulatorPage.verifyCreatedJobsAreVisibleintheList();
+    }
+
 }
