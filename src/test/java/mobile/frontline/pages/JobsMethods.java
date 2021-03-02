@@ -80,8 +80,8 @@ public class JobsMethods extends LoginPage {
 //	@AndroidFindBy(xpath = "(//android.widget.TextView[contains(@text, 'AutomationEmp CreateJob3')]/following:: android.widget.TextView)[1]")
 //	public MobileElement jobDate;
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView)[4]")
-	public MobileElement jobEmployeeNameOnJobDescription;
+//	@AndroidFindBy(xpath = "(//android.widget.TextView)[4]")
+//	public MobileElement jobEmployeeNameOnJobDescription;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
 	public MobileElement jobDateOnJobDescription;
@@ -98,7 +98,7 @@ public class JobsMethods extends LoginPage {
 	public MobileElement AllDistrict;
 
 	public String job_date;
-	public String job_jobEmployeeName;
+	//public String job_jobEmployeeName;
 	public WebElement scrolledToElement;
 
 	public JobsMethods() {
@@ -115,7 +115,7 @@ public class JobsMethods extends LoginPage {
 	private void storeJobDetails() {
 		job_date = getElementText(jobDateOnJobDescription).split(", ")[1];
 		// Assert.assertEquals(job_date, "");
-		job_jobEmployeeName = getElementText(jobEmployeeNameOnJobDescription);
+		//job_jobEmployeeName = getElementText(jobEmployeeNameOnJobDescription);
 	}
 
 	public void verifyAcceptedJob() {

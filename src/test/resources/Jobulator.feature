@@ -1,7 +1,7 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @regression @jobs @MOB-3325 @iOS @Done @Android
+  @AndroidRegression @MOB-3325 @Done 
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
    	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" and delete the existing ones
     When the user waits and launches the app 
@@ -14,7 +14,7 @@ Feature: Jobulator scenarios
     When Clicked on Okay
     Then Success Message is dismissed revealing accepted job details page
       
-  @regression @jobs @MOB-3324 @MOB-3326 @Done @Android @iOS
+  @AndroidRegression  @MOB-3324 @MOB-3326 @Done
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
   When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" and delete the existing absence
     When the user waits and launches the app
@@ -28,9 +28,9 @@ Feature: Jobulator scenarios
     Then Success Message is dismissed revealing accepted job details page
     Then Verify the confirmation number present on the job details page
       
-  @regression @jobs @MOB-4174 @Done @Android @iOS
+  @AndroidRegression  @MOB-4174 @Done
   Scenario: Verify substitute cannot view accepted job in job list
-   When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" and delete the existing absence
+   When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" and delete the existing ones
     When the user waits and launches the app 
 	Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
@@ -58,7 +58,7 @@ Feature: Jobulator scenarios
     Then the substitute navigates to dashboard page
     And the dashboard displays all available jobs from all districts
       
-  @regression @jobs @MOB-4173 @MOB-4172 @Android @iOS @Done
+    @MOB-4173 @MOB-4172 @Done
   Scenario: Verify that substitute is able to view job widget and job list
    When the user launches the app
 		Then the user click on Get Started Button

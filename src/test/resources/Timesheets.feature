@@ -1,7 +1,7 @@
 @timesheet
 Feature: Timesheet scenarios 
 
-@MOB-5210 @MOB-5255 @MOB-5257 @AndroidRegression @MOB-5209 @MOB-5254 @MOB-5256 @iOSRegression
+@MOB-5210 @MOB-5255 @MOB-5257  @MOB-5209 @MOB-5254 @MOB-5256 
 Scenario: Timesheet day view, add and edit
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -11,7 +11,7 @@ Scenario: Timesheet day view, add and edit
 	And open the past day timesheet and add a new time sheet 
 	Then user edits the timesheet	
 
-@MOB-5208 @AndroidRegression @MOB-5207 @iOSRegression
+@MOB-5208  @MOB-5207 
 Scenario: Timesheet week view
  	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -19,7 +19,7 @@ Scenario: Timesheet week view
 	Then the employee navigates to dashboard page 
 	And click on timesheets widget and view timesheets
 
-@MOB-5259 @AndroidRegression @MOB-5258 @iOSRegression
+@MOB-5259  @MOB-5258 
 Scenario: Submit Timesheets
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -29,7 +29,7 @@ Scenario: Submit Timesheets
 	Then click on submit timesheet option 
 	And undo the timesheet
 
-@MOB-5577 @AndroidRegression
+@MOB-5577 
 Scenario: Timesheets Submission Day View
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -38,7 +38,7 @@ Scenario: Timesheets Submission Day View
 	When employee clicks on the timesheet widget
 	Then click on day and submit day timesheet option 
 
-@MOB-5595 @AndroidRegression @MOB-5596 @iOSRegression
+@MOB-5595  @MOB-5596 
 	Scenario: Dark Mode for Timesheets
 	When the user launches the app
 	Then the user click on Get Started Button
@@ -50,7 +50,7 @@ Scenario: Timesheets Submission Day View
 	When click on timesheet option
 	Then Take the screenshot
 	
-@MOB-5568 @AndroidRegression @MOB-5569 @iOSRegression
+@MOB-5568  @MOB-5569 
 Scenario: Submit time sheets no timesheets to add state
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -60,7 +60,7 @@ Scenario: Submit time sheets no timesheets to add state
 	Then click on submit timesheet option
 	And verify no timesheet added and no submit btn is displayed 
 	
-@MOB-5580 @iOSRegression @MOB-5581 @AndroidRegression
+@MOB-5580  @MOB-5581 
 Scenario: Timesheet widget not updating after time events are added/removed
 	 When the user launches the app 
 	Then the user click on Get Started Button 
@@ -71,7 +71,7 @@ Scenario: Timesheet widget not updating after time events are added/removed
 	And Delete the timesheet
 	Then verify the deleted timesheet
 	
-@MOB-5587 @AndroidRegression @MOB-5586 @iOSRegression
+@MOB-5587  @MOB-5586 
 Scenario: Automate editing of timesheet to delete clock in entry
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -82,7 +82,7 @@ Scenario: Automate editing of timesheet to delete clock in entry
 	Then user edits the timesheet 
 	And Delete the timesheet
 	
-@MOB-5578 @AndroidRegression @MOB-5579 @iOSRegression
+@MOB-5578  @MOB-5579 
 Scenario: Timesheet Submission Week View
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -92,7 +92,7 @@ Scenario: Timesheet Submission Week View
 	And Add a new timesheet
 	Then verify work total time this week to be greater than zero
 
-@MOB-5574 @iOSRegression @MOB-5575 @AndroidRegression
+@MOB-5574  @MOB-5575 
 Scenario: Timesheets unsubmit Week view
 	When the user launches the app
 	Then the user click on Get Started Button
@@ -101,7 +101,7 @@ Scenario: Timesheets unsubmit Week view
 	When employee clicks on the timesheet widget
 	Then Timesheets is not submitted
 
-@MOB-5206 @AndroidRegression @MOB-5205 @iOSRegression
+@MOB-5206  @MOB-5205 
 Scenario: Timesheets landing page
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -112,7 +112,7 @@ Scenario: Timesheets landing page
 	Then click on submit timesheet option 
 	And verify timesheets submit btn not displayed
 	
-@MOB-5203 @iOSRegression @MOB-5204 @AndroidRegression
+@MOB-5203  @MOB-5204 
 Scenario: Timesheet Widget
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -121,7 +121,7 @@ Scenario: Timesheet Widget
 	And user verify the current pay period of timesheet on dashboard 
 	And Add a new timesheet
 	
-@MOB-4794 @iOSRegression @MOB-5718 @AndroidRegression
+@MOB-4794  @MOB-5718 
 Scenario: View More Link should be present under Absence Widget
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -129,7 +129,7 @@ Scenario: View More Link should be present under Absence Widget
 	Then the employee navigates to dashboard page
 	And Verify the View More link under Absence Widget
 	
-@MOB-5585 @AndroidRegression @MOB-5584 @iOSRegression
+@MOB-5585  @MOB-5584 
 Scenario: Make mobile error status code for incorrect pin when submitting a timesheet
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -139,7 +139,7 @@ Scenario: Make mobile error status code for incorrect pin when submitting a time
 	When Click on submit btn with wrong entering pin
 	Then verify the invaid pin message
 	
-@MOB-5541 @iOSRegression @MOB-5551 @AndroidRegression
+@MOB-5541  @MOB-5551 
 Scenario: Undo Button working on Day view
  	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -149,7 +149,7 @@ Scenario: Undo Button working on Day view
 	Then click on submit timesheet option
 	And undo the timesheet
 	
-@MOB-5583 @iOSRegression @MOB-5582 @AndroidRegression
+@MOB-5583  @MOB-5582 
 Scenario: Format timesheet display in accordance with durationFormat
  	When the user launches the app 
 	Then the user click on Get Started Button 
