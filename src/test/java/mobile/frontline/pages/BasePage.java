@@ -1,8 +1,53 @@
 package mobile.frontline.pages;
 
+import static io.appium.java_client.touch.WaitOptions.waitOptions;
+import static io.appium.java_client.touch.offset.PointOption.point;
+import static java.time.Duration.ofMillis;
+
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.NoSuchSessionException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.google.common.base.Function;
 import com.google.common.collect.ImmutableMap;
-import io.appium.java_client.*;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.FindsByAndroidUIAutomator;
+import io.appium.java_client.InteractsWithApps;
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidBatteryInfo;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.connection.ConnectionState;
@@ -13,29 +58,6 @@ import mobile.Frontline.utils.CommandPrompt;
 import mobile.Frontline.utils.DriverManager;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.Utils;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.touch.TouchActions;
-import org.openqa.selenium.remote.RemoteWebElement;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
-
-import static io.appium.java_client.touch.WaitOptions.waitOptions;
-import static io.appium.java_client.touch.offset.PointOption.point;
-import static java.time.Duration.ofMillis;
 
 //import com.aventstack.extentreports.Status;
 //import io.appium.java_client.android.AndroidKeyCode;
@@ -45,7 +67,7 @@ public class BasePage {
 	public static int LOAD_TIMEOUT = 50;
 	int generic_timeOutInMiliSeconds = 5000;
 	private CommandPrompt cmd = new CommandPrompt();
-	
+
 	public AppiumDriver<MobileElement> driver;
 	Utils utils = new Utils();
 
@@ -332,7 +354,7 @@ public class BasePage {
 		}
 		return val;
 	}
-	
+
 	public boolean isElementFoundForRecovery(MobileElement ele) {
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		boolean val;
@@ -582,6 +604,15 @@ public class BasePage {
 		}
 	}
 
+	public boolean IsElementNotPresent(By element) {
+		try {
+			driver.findElement(element).isDisplayed();
+			return false;
+		} catch (NoSuchElementException e) {
+			return true;
+		}
+	}
+	
 	public boolean isElementNotPresent(MobileElement element) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20, 500);
@@ -997,7 +1028,7 @@ public class BasePage {
 		System.out.println("Current context" + driver.getContext());
 	}
 
-	public String currentTime(){
+	public String currentTime() {
 		DateFormat dateFormat = new SimpleDateFormat("h:mm");
 		String dateString = dateFormat.format(new Date()).toString();
 		return dateString;
@@ -1218,7 +1249,7 @@ public class BasePage {
 	public boolean isElementDisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 60);
+			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			val = ele.isDisplayed();
 		} catch (Exception e) {
@@ -1230,7 +1261,7 @@ public class BasePage {
 	public boolean isElementdisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 60);
+			WebDriverWait wait = new WebDriverWait(driver, 30);
 			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			val = ele.isDisplayed();
 		} catch (Exception e) {
@@ -1315,7 +1346,9 @@ public class BasePage {
 	}
 
 	public void killAndRelaunch() throws Exception {
-		driver.runAppInBackground(Duration.ofSeconds(10));
+		driver.closeApp();
+		Thread.sleep(2000);
+		driver.activateApp("com.frontline.frontlinemobile");
 	}
 
 	public boolean isElementEnabled(MobileElement ele) {
@@ -1456,4 +1489,31 @@ public class BasePage {
 		return appStatus;
 	}
 
+	public WebElement androidScrollToElementUsingUiScrollable(String attributeType, String attributeText)
+			throws Throwable {
+		switch (attributeType.toLowerCase()) {
+		case "description":
+			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().descriptionContains(\""
+							+ attributeText + "\").instance(0))");
+
+		case "resouceid":
+			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().resourceId(\""
+							+ attributeText + "\").instance(0))");
+
+		case "classname":
+			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().className(\""
+							+ attributeText + "\").instance(0))");
+
+		case "text":
+			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(
+					"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+							+ attributeText + "\").instance(0))");
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+
+	}
 }

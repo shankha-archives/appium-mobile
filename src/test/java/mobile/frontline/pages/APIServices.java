@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 import org.junit.Assert;
+
 import com.mashape.unirest.http.HttpResponse;
 
 import mobile.Frontline.utils.TestUtils;
@@ -51,10 +52,13 @@ public class APIServices {
 
 	}
 
-	public void apiCreateAbsence(String workerID, String absenceDay) throws Throwable {
+	public String apiCreateAbsence(String workerID, String absenceDay) throws Throwable {
 		HttpResponse<String> responseCreateAbsence = apiObject.createEmployeeAbsence(aesoptoken, workerID, absenceDay);
 		Assert.assertEquals(responseCreateAbsence.getBody(),responseCreateAbsence.getStatus(), 201);
+		JSONObject json = new JSONObject(responseCreateAbsence.getBody());
+		String confirmationNumber = json.getJSONObject("data").get("absrId").toString();
 		utils.log().info("Create absences" + responseCreateAbsence.getBody());
+		return confirmationNumber;
 	}
 
 	public void apiBearerTokenGeneration(String automationEmployee) throws Throwable {

@@ -19,11 +19,18 @@
 		<MultiOrgPass>FLultra1!</MultiOrgPass>
 		<NoDistrictUser>stageNoOrg</NoDistrictUser>
 		<NoDistrictPass>frontline1!</NoDistrictPass>
-		
+		<noOrgUsername>stageNoOrg</noOrgUsername>
+		<noOrgPassword>frontline1!</noOrgPassword>
 		
 		<AutomationEmployeeMOB-4245>Automation4245</AutomationEmployeeMOB-4245>
 		<AutomationSubsMOB-4269>AutomationSubs4275</AutomationSubsMOB-4269>
 		<AutomationSubsMOB-4265>AutomationSubs4265</AutomationSubsMOB-4265>
+		<AutomationSubsJobOperations>AutomationSubJobs</AutomationSubsJobOperations>
+		<AutomationSubsJobOperations2>AutomationSubJobs2</AutomationSubsJobOperations2>
+		<AutomationSubsJobOperations3>AutomationSubJobs3</AutomationSubsJobOperations3>
+		<AutomationSubsJobOperations4>AutomationSubJobs4</AutomationSubsJobOperations4>
+		<AutomationSubMutiRole>multirole</AutomationSubMutiRole>
+		<AutomationSubMutiOrg>MOB_Sub_3601</AutomationSubMutiOrg>
 		<AutomationEmployeeMOB-4237>AutomationEmp4237</AutomationEmployeeMOB-4237>
 		<AutomationEmployeeMOB-4247>AutomationEmp4247</AutomationEmployeeMOB-4247>
 		<AutomationEmployeeMOB-4227>Automation4227</AutomationEmployeeMOB-4227>
@@ -59,6 +66,10 @@
 		<APIWorkerID_MOB-4233>8576352</APIWorkerID_MOB-4233>
 		<APIWorkerID_MOB-4261>8579376</APIWorkerID_MOB-4261>
 		<APIWorkerID_MOB-4243>8579087</APIWorkerID_MOB-4243>
+		<APIWorkerIDCreateJobs>8582024</APIWorkerIDCreateJobs>
+		<APIWorkerIDCreateJobs2>8582884</APIWorkerIDCreateJobs2>
+		<APIWorkerIDCreateJobs3>8582926</APIWorkerIDCreateJobs3>
+		<APIWorkerIDCreateJobs4>8583500</APIWorkerIDCreateJobs4>
 		<APIOrgID>654527</APIOrgID>
 		<APISchoolID>363692</APISchoolID>
 		<APIReasonID>397078</APIReasonID>

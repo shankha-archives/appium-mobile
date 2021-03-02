@@ -1,6 +1,7 @@
 package mobile.frontline.stepdef;
 
 import java.util.Properties;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -74,6 +75,11 @@ public class SmokeStepDef {
 	@When("the user launches the app")
 	public void theUserLaunchesTheApp() throws Throwable {
 		loginPage.verify_splashScreenLoaded();
+	}
+
+	@When("^the user waits and launches the app$")
+	public void the_user_waits_and_launches_the_app() throws Throwable {
+		loginPage.waitAndverify_splashScreenLoaded();
 	}
 
 	@Then("^the admin user click on Get Started Button and enter the pin$")

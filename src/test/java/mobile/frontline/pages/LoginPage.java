@@ -1,22 +1,23 @@
 package mobile.frontline.pages;
 
-import mobile.Frontline.utils.GlobalParams;
-import mobile.Frontline.utils.TestUtils;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import mobile.Frontline.utils.GlobalParams;
+import mobile.Frontline.utils.TestUtils;
+
 public class LoginPage extends BasePage {
 	TestUtils utils = new TestUtils();
 	BasePage common = new BasePage();
 
-	@AndroidFindBy(className = "android.widget.EditText")
+//	@AndroidFindBy(className = "android.widget.EditText")
+	@AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
 	public MobileElement username;
 
@@ -40,7 +41,8 @@ public class LoginPage extends BasePage {
 	@iOSXCUITFindBy(accessibility = "You may not have access yet.")
 	public MobileElement pinUnlockErr;
 
-	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
+//	@AndroidFindBy(xpath = "(//*[android.widget.EditText])[2]")
+	@AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
 	public MobileElement password;
 
@@ -128,9 +130,18 @@ public class LoginPage extends BasePage {
 		isElementDisplayed(splashScreen);
 		Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
 	}
+	
+	public void waitAndverify_splashScreenLoaded() throws Exception {
+		Thread.sleep(30000);
+		isElementDisplayed(splashScreen);
+		Thread.sleep(30000);
+		
+		Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
+	}
+	
 
 	public void clickOnGetStartedBtn() {
-		common.clickElement(getStarted);
+		click(getStarted, "Clicking on Get Started Button");
 	}
 
 	public void verify_loginPageLoaded() throws InterruptedException {
@@ -152,17 +163,19 @@ public class LoginPage extends BasePage {
 	}
 
 	public void enterPassword(String userPassword) {
-		password.click();
-		driver.getKeyboard().sendKeys(userPassword);
+//		password.click();
+//		driver.getKeyboard().sendKeys(userPassword);
+		enterValueInTextField(password, userPassword);
 	}
 
 	public void enterUserPassword_onLoginPage(String userPassword) throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 			case "Android":
 				hideKeyboard();
-				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
-				password.click();
-				driver.getKeyboard().sendKeys(userPassword);
+//				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
+//				password.click();
+//				driver.getKeyboard().sendKeys(userPassword);
+				enterValueInTextField(password, userPassword);
 				break;
 			case "iOS":
 				Assert.assertTrue("Password text box is not displayed", password.isDisplayed());
@@ -193,7 +206,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void verifyInvalidCredentials_errorMessage() {
-		fluentWait(credentialErr);
+		isElementDisplayed(credentialErr);
 		Assert.assertTrue("No Invalid Credentials error message is displayed", credentialErr.isDisplayed());
 		utils.log().info(" 'Invalid Credentials' error message is displayed");
 	}
@@ -268,31 +281,31 @@ public class LoginPage extends BasePage {
 		}
 	}
 	public void verifyNoUserName_errorMessage() {
-		fluentWait(userNameRequired);
+		isElementDisplayed(userNameRequired);
 		Assert.assertTrue("Your username is required error message is not displayed", userNameRequired.isDisplayed());
 		utils.log().info("Your username is required error message is displayed");
 	}
 
 	public void verifyNoPassword_errorMessage() {
-		fluentWait(userPasswordRequired);
+		isElementDisplayed(userPasswordRequired);
 		Assert.assertTrue("Your username is required error message is not displayed", userNameRequired.isDisplayed());
 		utils.log().info("Your username is required error message is displayed");
 	}
 
 	public void rolePickerPageLoads() {
-		fluentWait(rolePickerPageHeader);
+		isElementDisplayed(rolePickerPageHeader);
 		Assert.assertTrue("Role picker page is not displayed", rolePickerPageHeader.isDisplayed());
 		utils.log().info("Role picker page is displayed");
 	}
 
 	public void orgPickerPageLoads() {
-		fluentWait(orgPickerPageHeader);
+		isElementDisplayed(orgPickerPageHeader);
 		Assert.assertTrue("Organization picker page is not displayed", orgPickerPageHeader.isDisplayed());
 		utils.log().info("Organization picker page is displayed");
 	}
 
 	public void verifyNoLoginDialogbox() {
-		fluentWait(noLoginDialogBox);
+		isElementDisplayed(noLoginDialogBox);
 		Assert.assertTrue(
 				"You have not been granted access to any organizations that use the Frontline Insights Platform",
 				noLoginDialogBox.isDisplayed());
@@ -301,19 +314,19 @@ public class LoginPage extends BasePage {
 	}
 
 	public void orgWithOnlySubRole() {
-		fluentWait(orgWithOnlySubRole);
+		isElementDisplayed(orgWithOnlySubRole);
 		clickElement(orgWithOnlySubRole);
 		utils.log().info("Clicked on selected org");
 	}
 
 	public void VerifyMessage() {
-		fluentWait(errorMessageLogin);
+		isElementDisplayed(errorMessageLogin);
 		Assert.assertTrue("This mobile app is not currently available for substitutes",
 				errorMessageLogin.isDisplayed());
 		utils.log().info("Error Dialog box is displayed");
 	}
 
 	public void clickBackBtn() {
-		clickElement(bckBtn);
+		click(bckBtn);
 	}
 }
