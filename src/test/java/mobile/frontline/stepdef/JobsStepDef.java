@@ -35,12 +35,6 @@ public class JobsStepDef {
 		jobulatorPage.clickOnAvailableJobs_displayed();
 	}
 
-//    @And("^Click on the job and accept it$")
-//    public void click_on_the_job_and_accept_it() throws Throwable {
-//        jobulatorPage.clickOnAvailableJobs(jobByEmp);
-//        jobulatorPage.clickOnAcceptJobsBtn();
-//    }
-
 	@And("^Click on the job \"([^\"]*)\" and accept it$")
 	public void click_on_the_job_something_and_accept_it(String jobByEmp) throws Throwable {
 		jobulatorPage.clickOnAvailableJobs(jobByEmp);

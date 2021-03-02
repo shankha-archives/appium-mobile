@@ -1249,7 +1249,7 @@ public class BasePage {
 	public boolean isElementDisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 60);
 			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			val = ele.isDisplayed();
 		} catch (Exception e) {
@@ -1261,7 +1261,7 @@ public class BasePage {
 	public boolean isElementdisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 60);
 			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			val = ele.isDisplayed();
 		} catch (Exception e) {

@@ -45,6 +45,8 @@
 		<AutomationAdminMOB-4267>AutomationAdmin4267</AutomationAdminMOB-4267>
 		<AutomationAdminMOB-6021>AutomationAdmin6021</AutomationAdminMOB-6021>
 		<AutomationAdminMOB-4277>ATMobileAutomation</AutomationAdminMOB-4277>
+		<AutomationSubMutiRole>multirole</AutomationSubMutiRole>
+		<AutomationSubMutiOrg>MOB_Sub_3601</AutomationSubMutiOrg>
 		<FrontlinePassword>Global@123</FrontlinePassword>
 
 	</Account>
