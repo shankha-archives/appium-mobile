@@ -12,7 +12,7 @@ Scenario: Verify user remains login when application sent to background or gets 
 	And The user kill and relaunch the application 
 	Then the employee navigates to dashboard page
 
-@smoke @MOB-4269 @MOB-4270 @AndroidSmoke @iOSSmoke @AndroidRegression
+@MOB-4269 @MOB-4270 @AndroidSmoke @iOSSmoke @AndroidRegression
 Scenario: Verify the user toggle the Dark mode 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -26,7 +26,7 @@ Scenario: Verify the user toggle the Dark mode
 	Then Verify the dark mode button
 
 ##	//change leaves through aPI or web, then check the balance Not valid for ios
-@MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @prod @AndroidRegression
+@MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @AndroidRegression
 Scenario: View leave balances and check available days 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -52,7 +52,7 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then verify the absence detail page 
 
 ##	//text validation //one admin user is missing
-@MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @sprint8 @AndroidRegression
+@MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @AndroidRegression
 Scenario: Verify a user can visit inbox and view messages 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -81,7 +81,7 @@ Scenario: Verify an employee should be able to clock in and clock out
 	When Employee clicks on the clockin btn 
 	Then the user clocks out through timesheet
 	
-@smoke @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression
+ @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression
 Scenario: Verify an employee can submit weekly timesheet and then undo a timesheet 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -93,7 +93,7 @@ Scenario: Verify an employee can submit weekly timesheet and then undo a timeshe
 	Then click on submit timesheet option
 	And undo the timesheet
 	
-@smoke @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression
+ @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression
 Scenario: Verify an employee can view week of timesheets 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -101,7 +101,7 @@ Scenario: Verify an employee can view week of timesheets
 	Then the employee navigates to dashboard page 
 	And click on timesheets widget and view timesheets 
 
-@MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmoke @sprint8iOS @AndroidRegression
+@MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmokes @AndroidRegression
 Scenario: Verify an employee can edit and delete the time from the timesheet 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -112,7 +112,7 @@ Scenario: Verify an employee can edit and delete the time from the timesheet
 	Then user edits the timesheet 
 	And Delete the timesheet 
 
-@MOB-4277 @AndroidSmoke @MOB-4278 @prod @iOSSmoke @AndroidRegression
+@MOB-4277 @AndroidSmoke @MOB-4278 @iOSSmoke @AndroidRegression
 Scenario: The user with directory access can view the full directory list and details 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -147,7 +147,7 @@ Scenario: Need to rearrange the widgets on the dashboard
 	Then Verify the order of widgets and footers present 
 	And verify the order of widgets 
 
-@smoke @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke @AndroidRegression
+@MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke @AndroidRegression
 Scenario: Verify employee can create absence
 	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" for "next day" and delete them
 	When the user launches the app 
