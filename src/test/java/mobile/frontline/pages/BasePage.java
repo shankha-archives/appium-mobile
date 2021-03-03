@@ -463,7 +463,7 @@ public class BasePage {
 	 * @param webby WebElement
 	 */
 	public WebElement fluentWait(final WebElement webby) {
-		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(10, TimeUnit.SECONDS)
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(60, TimeUnit.SECONDS)
 				.pollingEvery(500, TimeUnit.MILLISECONDS).ignoring(NoSuchElementException.class)
 				.ignoring(TimeoutException.class);
 		WebElement foo = wait.until(new Function<WebDriver, WebElement>() {

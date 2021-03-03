@@ -365,7 +365,7 @@ public class SmokeStepDef {
 	@Then("undo the timesheet")
 	public void undoTheTimesheet() throws Exception {
 		smokePage.undoTimesheet();
-		//smokePage.verifyUndo();
+		smokePage.verifyUndo();
 	}
 
 	@Then("verify the order of widgets")
