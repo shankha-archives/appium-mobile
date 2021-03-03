@@ -27,7 +27,7 @@ public class Hooks {
 
 		new ServerManager().startServer();
 		new DriverManager().initializeDriver();
-		new VideoManager().startRecording();
+	//	new VideoManager().startRecording();
 	}
 
 	@After
