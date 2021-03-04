@@ -46,7 +46,7 @@ public class SmokeStepDef {
 
 	@And("^The user kill and relaunch the application$")
 	public void the_user_kill_and_relaunch_the_application() throws Throwable {
-		basePage.killAndRelaunch();
+		basePage.bgRunningApp();
 	}
 
 	// @MOB-4229

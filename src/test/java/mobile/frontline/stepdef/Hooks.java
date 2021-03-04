@@ -27,7 +27,7 @@ public class Hooks {
 
 		new ServerManager().startServer();
 		new DriverManager().initializeDriver();
-		new VideoManager().startRecording();
+	//	new VideoManager().startRecording();
 	}
 
 	@After
@@ -37,7 +37,7 @@ public class Hooks {
 			byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png", scenario.getName());
 		}
-		new VideoManager().stopRecording(scenario.getName());
+	//	new VideoManager().stopRecording(scenario.getName());
 		DriverManager driverManager = new DriverManager();
 		if (driverManager.getDriver() != null) {
 			driverManager.getDriver().quit();
