@@ -97,8 +97,14 @@ public class JobsMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.TextView[@index=3]")
 	public MobileElement AllDistrict;
 
+//	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
+//	public MobileElement joblistValidation1;
+//
+//	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
+//	public MobileElement joblistValidation2;
+
 	public String job_date;
-	//public String job_jobEmployeeName;
+	// public String job_jobEmployeeName;
 	public WebElement scrolledToElement;
 
 	public JobsMethods() {
@@ -115,7 +121,7 @@ public class JobsMethods extends LoginPage {
 	private void storeJobDetails() {
 		job_date = getElementText(jobDateOnJobDescription).split(", ")[1];
 		// Assert.assertEquals(job_date, "");
-		//job_jobEmployeeName = getElementText(jobEmployeeNameOnJobDescription);
+		// job_jobEmployeeName = getElementText(jobEmployeeNameOnJobDescription);
 	}
 
 	public void verifyAcceptedJob() {
@@ -123,7 +129,6 @@ public class JobsMethods extends LoginPage {
 				"(//android.widget.TextView[@text='AutomationEmp CreateJob3']/following:: android.widget.TextView[@text='"
 						+ job_date + "'])[1]");
 		Assert.assertTrue("Accepted job still present in the jobs list", IsElementNotPresent(jobDate));
-
 	}
 
 	public void clickOnAvailableJobs(String jobByEmp) throws Throwable {
@@ -135,14 +140,13 @@ public class JobsMethods extends LoginPage {
 			break;
 		case "iOS":
 
-
 			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
 			scrollToElement(findJob, "up");
 			click(findJob, "Clicked on on Required Job");
 
-     		//scrollToElement(jobslist, "up");
+			// scrollToElement(jobslist, "up");
 
-			//click(jobslist, "Clicking available job Widget");
+			// click(jobslist, "Clicking available job Widget");
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -262,4 +266,29 @@ public class JobsMethods extends LoginPage {
 		Assert.assertTrue("It is not an multi district account", districts.size() > 1);
 	}
 
+	public void verifyCreatedJobsAreVisibleintheList() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			isElementdisplayed(jobslist);
+			androidScrollToElementUsingUiScrollable("text", "AutomationEmp 4173");
+			By jobDate = By.xpath(
+					"(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='"
+							+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+			Assert.assertTrue("Created Job is visible in the list", IsElementPresent(jobDate));
+			androidScrollToElementUsingUiScrollable("text", "AutomationEmp 4172");
+			jobDate = By.xpath(
+					"(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='"
+							+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+			Assert.assertTrue("Created Job is visible in the list", IsElementPresent(jobDate));
+			break;
+		case "iOS":
+
+//			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'AutomationEmp 4173')]");
+//			scrollToElement(findJob, "up");
+//			click(findJob, "Clicked on on Required Job");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+	}
 }

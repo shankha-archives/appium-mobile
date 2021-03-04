@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -1515,5 +1518,33 @@ public class BasePage {
 			throw new Exception("Invalid platform Name");
 		}
 
+	}
+	
+	public String currentDate(String format) throws Exception {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
+		return dtf.format(LocalDateTime.now());
+	}
+
+	public String nextWorkingDay(String absenceDay, String format) throws Exception {
+		String cdate = currentDate(format);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateFormat.parse(cdate));
+		switch (absenceDay) {
+		case "next day":
+			c.add(Calendar.DAY_OF_YEAR, 1);
+			while (c.get(c.DAY_OF_WEEK) == 7 || c.get(c.DAY_OF_WEEK) == 1)
+				c.add(Calendar.DAY_OF_YEAR, 1);
+			break;
+		case "current day":
+			c.add(Calendar.DAY_OF_YEAR, 0);
+			break;
+		case "past day":
+			break;
+		default:
+			throw new Exception("Invalid date");
+		}
+		return dateFormat.format(c.getTime());
 	}
 }

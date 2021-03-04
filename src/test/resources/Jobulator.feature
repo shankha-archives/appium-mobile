@@ -58,11 +58,13 @@ Feature: Jobulator scenarios
     Then the substitute navigates to dashboard page
     And the dashboard displays all available jobs from all districts
       
-    @MOB-4173 @MOB-4172 @iOSRegression
-  Scenario: Verify that substitute is able to view job widget and job list
-   When the user launches the app
-		Then the user click on Get Started Button
-    And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
-    Then the substitute navigates to dashboard page
-    And click on the Available Jobs and view job list
-  
+@MOB-4173 @MOB-4172 @Done @AndroidRegression
+  Scenario: Verify that substitute is able to view job widget and jobs in job list
+  When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4173" for "next day" and delete the existing absence
+  When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4172" for "next day" and delete the existing absence
+  When the user waits and launches the app
+	Then the user click on Get Started Button
+  And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
+  Then the substitute navigates to dashboard page
+  And click on the Available Jobs and view job list
+  And Verify the created jobs are available in the list

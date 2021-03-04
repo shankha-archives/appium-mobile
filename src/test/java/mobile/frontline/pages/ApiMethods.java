@@ -3,16 +3,14 @@ package mobile.frontline.pages;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+
 import mobile.Frontline.utils.TestDataManager;
-
-import java.util.ArrayList;
-
-import org.junit.Assert;
 
 public class ApiMethods {
 
 	public TestDataManager testdata = new TestDataManager();
-	SmokeMethods smokePage = new SmokeMethods();
+	//SmokeMethods smokePage = new SmokeMethods();
+	BasePage common = new BasePage();
 
 	public HttpResponse<String> generateAesopToken(String apiLoginID) throws UnirestException {
 		Unirest.setTimeouts(0, 0);
@@ -31,8 +29,8 @@ public class ApiMethods {
 		HttpResponse<String> response = Unirest
 				.get(testdata.read_property("testingData", "users", "BaseURL") + "/api/v1.0/Workers/"
 						+ testdata.read_property("testingData", "users", workerID) + "/AbsenceRequests")
-				.queryString("startDate", smokePage.nextWorkingDay(absenceDay, "MM/dd/yyyy"))
-				.queryString("endDate", smokePage.nextWorkingDay(absenceDay, "MM/dd/yyyy"))
+				.queryString("startDate", common.nextWorkingDay(absenceDay, "MM/dd/yyyy"))
+				.queryString("endDate", common.nextWorkingDay(absenceDay, "MM/dd/yyyy"))
 				.header("Accept", "application/json").header("AesopToken", token).asString();
 		return response;
 	}
@@ -56,7 +54,7 @@ public class ApiMethods {
 				.header("AesopToken", token)
 				.body("{\"needSub\" : true, \"worker\":{  \"id\":"
 						+ testdata.read_property("testingData", "users", workerID) + " }, \"absences\":[ { \"date\":\""
-						+ smokePage.nextWorkingDay(absenceDay, "MM/dd/yyyy") + "\", \"institution\":{ \"id\":"
+						+ common.nextWorkingDay(absenceDay, "MM/dd/yyyy") + "\", \"institution\":{ \"id\":"
 						+ testdata.read_property("testingData", "users", "APISchoolID")
 						+ "   }, \"entitlement\":{ \"id\":"
 						+ testdata.read_property("testingData", "users", "APIReasonID")
@@ -83,7 +81,7 @@ public class ApiMethods {
 				.get(testdata.read_property("testingData", "users", "BFFBaseURL") + "/api/organizations/"
 						+ testdata.read_property("testingData", "users", orgID)
 						+ "/products/time-and-attendance/timesheets/summary")
-				.queryString("startOfWorkWeek", smokePage.nextWorkingDay(timesheetDay, "yyyy-MM-dd"))
+				.queryString("startOfWorkWeek", common.nextWorkingDay(timesheetDay, "yyyy-MM-dd"))
 				.queryString("numberOfWeeks", "1").queryString("includeDetails", "true")
 				.queryString("identity", "2-" + testdata.read_property("testingData", "users", workerID))
 				.header("authorization", "Bearer " + bearerToken).header("aesoptoken", aesopToken).asString();
@@ -112,11 +110,11 @@ public class ApiMethods {
 				.queryString("identity", "2-" + testdata.read_property("testingData", "users", workerID))
 				.header("aesoptoken", aesopToken).header("authorization", "Bearer " + bearerToken)
 				.header("Content-Type", "application/json")
-				.body("[{\"date\": \"" + smokePage.nextWorkingDay(timesheetDay, "yyyy-MM-dd")
+				.body("[{\"date\": \"" + common.nextWorkingDay(timesheetDay, "yyyy-MM-dd")
 						+ "\",\"locationId\": 363692,\"shiftTypeId\": 248822,\"timeClockEvents\":  [{  \"clockIn\": \""
-						+ smokePage.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T" + smokePage.currentDate("HH:mm:ss")
-						+ "\",  \"clockOut\": \"" + smokePage.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T"
-						+ smokePage.currentDate("HH:mm:ss") + "\", \"eventTypeId\": 18305  }]}]")
+						+ common.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T" + common.currentDate("HH:mm:ss")
+						+ "\",  \"clockOut\": \"" + common.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T"
+						+ common.currentDate("HH:mm:ss") + "\", \"eventTypeId\": 18305  }]}]")
 				.asString();
 
 		return response;
