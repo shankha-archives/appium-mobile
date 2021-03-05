@@ -43,7 +43,6 @@ Feature: Jobulator scenarios
   
 @MOB-3681 @AndroidRegression
   Scenario: Verify that substitute user is able to view all job information from all organizations
-  	When the user launches the app
   	When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "next day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app
@@ -52,15 +51,15 @@ Feature: Jobulator scenarios
     Then the user choose the sub role of one org and verify the created jobs
     When the user choose the sub role of another org and verify the created jobs
       
-@MOB-3683
+@MOB-3683 @AndroidRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
   	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
   	When the user waits and launches the app 
 		Then the user click on Get Started Button
     When Enter username "AutomationSubsMOB-3683" and password and click on Sign In button
     Then the substitute navigates to dashboard page
-    #And the dashboard displays all available jobs from all districts
+    And the dashboard displays all available jobs from all districts
       
 @MOB-4173 @MOB-4172 @Done @AndroidRegression
   Scenario: Verify that substitute is able to view job widget and jobs in job list

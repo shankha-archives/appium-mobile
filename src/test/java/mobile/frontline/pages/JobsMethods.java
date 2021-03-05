@@ -1,6 +1,9 @@
 package mobile.frontline.pages;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Assert;
@@ -102,6 +105,12 @@ public class JobsMethods extends LoginPage {
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='GL_Performance_50468ED78-1019-4F46-97AB-801A3C4AC5'])[1]")
 	public MobileElement jobSchoolValidationOrg2;
 
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='ChildCareCenter'])[1]")
+	public MobileElement jobSchoolMultidistrict1;
+
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp2 3683']/following:: android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
+	public MobileElement jobSchoolMultidistrict2;
+	
 	public String job_date;
 	// public String job_jobEmployeeName;
 	public WebElement scrolledToElement;
@@ -217,6 +226,13 @@ public class JobsMethods extends LoginPage {
 //		click(contbtn);
 	}
 
+	public String changeDateFormat(String dateToBeFormated, String formatOriginal, String formatTarget) throws Exception {
+	DateFormat originalFormat = new SimpleDateFormat(formatOriginal);
+	DateFormat targetFormat = new SimpleDateFormat(formatTarget);
+	Date date = originalFormat.parse(dateToBeFormated);
+	return targetFormat.format(date);
+	}
+	
 	public void checkAvailablejob() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -224,13 +240,15 @@ public class JobsMethods extends LoginPage {
 
 			By jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='"
-							+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+			utils.log().info("jobDate");
+			
 			scrollToElement(jobDate, "up");
 			Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolValidationOrg1));
 			
 			 jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='"
-							+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
 			 scrollToElement(jobDate, "up");
 			 Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolValidationOrg2));
 			break;
@@ -270,30 +288,20 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public void multiDistrictVerification() throws Exception {
-//		isElementdisplayed(AllDistrict);
-//		ArrayList<MobileElement> district = findElements();
-//		ArrayList<String> districtNames = new ArrayList<String>();
-//		int count = 0;
-//		for (MobileElement districtName : district) {
-//			String dname = getElementText(districtName);
-//			districtNames.add(dname);
-//		}
-//		HashSet<String> districts = new HashSet(districtNames);
-//		Assert.assertTrue("It is not an multi district account", districts.size() > 1);
 		switch (new GlobalParams().getPlatformName()) {
 	case "Android":
 		isElementdisplayed(jobslist);
 		By jobDate = By.xpath(
-				"(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='"
-						+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+				"(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='"
+						+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
 		scrollToElement(jobDate, "up");
-		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
+		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolMultidistrict1));
 		
 		jobDate = By.xpath(
-				"(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='"
-						+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+				"(//android.widget.TextView[@text='AutomationEmp2 3683']/following:: android.widget.TextView[@text='"
+						+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
 		scrollToElement(jobDate, "up");
-		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
+		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolMultidistrict2));
 		break;
 	case "iOS":
 
@@ -312,13 +320,13 @@ public class JobsMethods extends LoginPage {
 			isElementdisplayed(jobslist);
 			By jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='"
-							+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
 			scrollToElement(jobDate, "up");
 			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
 			
 			jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='"
-							+ nextWorkingDay("next day", "MMMM dd") + "'])[1]");
+							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
 			scrollToElement(jobDate, "up");
 			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
 			break;
