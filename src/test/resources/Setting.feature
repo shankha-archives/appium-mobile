@@ -1,7 +1,7 @@
 @Settings
 Feature: Regression scenarios 
 
-@Setting @MOB-4789  @MOB-4791 @iOSRegression  @done 
+@Setting @MOB-4789  @MOB-4791 @done
 Scenario: Verify calendar link in substitute Menu 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -10,7 +10,7 @@ Scenario: Verify calendar link in substitute Menu
 	When click on menu and tap the Calendar link 
 	Then verify the calendar 
 	
-@Setting @MOB-4806  @MOB-4805 @iOSRegression  @done 
+@Setting @MOB-4806  @MOB-4805 @done
 Scenario: Verify Job List tab bar in substitutes page 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -19,7 +19,7 @@ Scenario: Verify Job List tab bar in substitutes page
 	When click on Avalaible Jobs link 
 	Then verify Job List tab bar for available and accepted jobs 
 	
-@Setting @MOB-4809  @MOB-4810 @iOSRegression  @done 
+@Setting @MOB-4809  @MOB-4810 @done
 Scenario: Verify that substitute user is allowed to submit diagnostic data 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -40,7 +40,7 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 	And accept the job
 	Then go to calendar and view the accepted job 
   
-@Setting @MOB-4808  @MOB-4807 @iOSRegression  @done 
+@Setting @MOB-4808  @MOB-4807 @done
 Scenario: Verify that a substitute can view next scheduled Job widget
 	 When the user launches the app 
 	 Then the user click on Get Started Button
@@ -49,14 +49,14 @@ Scenario: Verify that a substitute can view next scheduled Job widget
 	 Then the substitute navigates to dashboard page 
 	 Then The user moves to Next Scheduled Job widget and verify it
 	   
-@Setting @MOB-4796  @MOB-4797 @iOSRegression  @done 
+@Setting @MOB-4796  @MOB-4797 @done
 Scenario: Verify that Unlock Code page is removed from the application
 	When the user launches the app 
 	Then the user click on Get Started Button
 	Then the substitute user is taken to the Login Page
 	And the user verify that Unlock code page should not displayed
 	
-@Setting @MOB-6023  @MOB-6024 @iOSRegression  @multiOrg @done
+@Setting @MOB-6023  @MOB-6024 @multiOrg @done
 Scenario: Verify role picker option should not displayed when user account has only one role
     When the user launches the app 
 	Then the user click on Get Started Button 
@@ -67,7 +67,7 @@ Scenario: Verify role picker option should not displayed when user account has o
     When click on switch
     Then the user is presented with the org picker
 	   
-@Setting @MOB-6033 @iOSRegression  @MOB-6034  @done 
+@Setting @MOB-6033 @MOB-6034  @done
 Scenario: Verify that in employee user no upcoming absences tab is renamed as Denied tab in available Leave Balances widget
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -87,7 +87,7 @@ Scenario: Verify an employee can view same Intime event value in Timesheet even 
 	And The user minimize and relaunch the application
 	Then Verify that InTime should not changes
 
-@Setting @MOB-6025 @iOSRegression  @done 
+@Setting @MOB-6025   @done
 Scenario: Verify that application is able to open Login page on app startup or log-off
 	When the user launches the app 
 	Then the user click on Get Started Button

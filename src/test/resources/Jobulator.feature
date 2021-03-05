@@ -1,7 +1,7 @@
 @jobs
 Feature: Jobulator scenarios
 
-@AndroidRegression @MOB-3325 @Done 
+  @AndroidRegression @MOB-3325 @iOSRegression
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
    	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app 
@@ -14,7 +14,7 @@ Feature: Jobulator scenarios
     When Clicked on Okay
     Then Success Message is dismissed revealing accepted job details page
       
-@AndroidRegression  @MOB-3324 @MOB-3326 @Done
+  @AndroidRegression  @MOB-3324 @MOB-3326 @iOSRegression
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
   	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing absence
     When the user waits and launches the app
@@ -28,7 +28,7 @@ Feature: Jobulator scenarios
     Then Success Message is dismissed revealing accepted job details page
     Then Verify the confirmation number present on the job details page
       
-@AndroidRegression  @MOB-4174 @Done
+  @AndroidRegression  @MOB-4174 @iOSRegression
   Scenario: Verify substitute cannot view accepted job in job list
    	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app 
@@ -72,4 +72,3 @@ Feature: Jobulator scenarios
   	Then the substitute navigates to dashboard page
   	And click on the Available Jobs and view job list
   	And Verify the created jobs are available in the list
-  

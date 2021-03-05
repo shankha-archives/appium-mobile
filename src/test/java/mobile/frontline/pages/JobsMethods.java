@@ -160,11 +160,23 @@ public class JobsMethods extends LoginPage {
 		utils.log().info("clicked on Accept button");
 	}
 
-	public void successMsgPOPUP() {
+	public void successMsgPOPUP() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		isElementDisplayed(successMsg);
 		Assert.assertEquals("Success message is not displayed", getElementText(successMsg),
 				"You have Successfully accepted this Job");
 		utils.log().info("Success message is displayed");
+		break;
+			case "iOS":
+				isElementDisplayed(successMsg);
+				Assert.assertEquals("Success message is not displayed", getElementText(successMsg),
+						"You have successfully accepted this job.");
+				utils.log().info("Success message is displayed");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clickOnOkBtn_successMsg() {
