@@ -85,6 +85,7 @@
 		<APIReasonID>397078</APIReasonID>
 		<APISchoolID_GLorg5>363693</APISchoolID_GLorg5>
 		<APIReasonID_GLorg5>402355</APIReasonID_GLorg5>
+		<APISchoolID_ChildCare>363767</APISchoolID_ChildCare>
 		<BaseURL>https://aesopapistage.flqa.net</BaseURL>
 		<BFFBaseURL>https://mobile-bff.ss.frontlineeducation.com</BFFBaseURL>
 	</testingData>
