@@ -25,6 +25,7 @@
 		<AutomationEmployeeMOB-4245>Automation4245</AutomationEmployeeMOB-4245>
 		<AutomationSubsMOB-4269>AutomationSubs4275</AutomationSubsMOB-4269>
 		<AutomationSubsMOB-4265>AutomationSubs4265</AutomationSubsMOB-4265>
+		<AutomationSubsMOB-3683>AutomationSub3683</AutomationSubsMOB-3683>
 		<AutomationSubsJobOperations>AutomationSubJobs</AutomationSubsJobOperations>
 		<AutomationSubsJobOperations2>AutomationSubJobs2</AutomationSubsJobOperations2>
 		<AutomationSubsJobOperations3>AutomationSubJobs3</AutomationSubsJobOperations3>
@@ -58,6 +59,7 @@
 		<absenceKeyword>AbsReason</absenceKeyword>
 		<AccountingPin>3661</AccountingPin>
 		<APILoginID>report_139984</APILoginID>
+		<APILoginID_GLorg5>report_139985</APILoginID_GLorg5>
 		<APIPin>1212</APIPin>
 		<lastName>ATMobile</lastName>
 		<APIWorkerID_MOB-4245>8576349</APIWorkerID_MOB-4245>
@@ -68,15 +70,21 @@
 		<APIWorkerID_MOB-4233>8576352</APIWorkerID_MOB-4233>
 		<APIWorkerID_MOB-4261>8579376</APIWorkerID_MOB-4261>
 		<APIWorkerID_MOB-4243>8579087</APIWorkerID_MOB-4243>
+		<APIWorkerID_MOB-3683_District1>8584506</APIWorkerID_MOB-3683_District1>
+		<APIWorkerID_MOB-3683_District2>8583467</APIWorkerID_MOB-3683_District2>
 		<APIWorkerIDCreateJobs>8582024</APIWorkerIDCreateJobs>
 		<APIWorkerIDCreateJobs2>8582884</APIWorkerIDCreateJobs2>
 		<APIWorkerIDCreateJobs3>8582926</APIWorkerIDCreateJobs3>
 		<APIWorkerIDCreateJobs4>8583500</APIWorkerIDCreateJobs4>
 		<APIWorkerID_MOB-4173>8583629</APIWorkerID_MOB-4173>
 		<APIWorkerID_MOB-4172>8583639</APIWorkerID_MOB-4172>
+		<APIWorkerID_MOB-3681_GLorg5>8583685</APIWorkerID_MOB-3681_GLorg5>
+		<APIWorkerID_MOB-3681>8583686</APIWorkerID_MOB-3681>
 		<APIOrgID>654527</APIOrgID>
 		<APISchoolID>363692</APISchoolID>
 		<APIReasonID>397078</APIReasonID>
+		<APISchoolID_GLorg5>363693</APISchoolID_GLorg5>
+		<APIReasonID_GLorg5>402355</APIReasonID_GLorg5>
 		<BaseURL>https://aesopapistage.flqa.net</BaseURL>
 		<BFFBaseURL>https://mobile-bff.ss.frontlineeducation.com</BFFBaseURL>
 	</testingData>

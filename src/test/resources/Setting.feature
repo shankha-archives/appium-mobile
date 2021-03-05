@@ -31,7 +31,7 @@ Scenario: Verify that substitute user is allowed to submit diagnostic data
 		
 @Setting @MOB-4803   @done 
 Scenario: Verify a substitute can view accepted job in-app Calendar
-	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" and delete the existing ones 
+	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones 
 	When the user waits and launches the app  
 	Then the user click on Get Started Button 
 	And Enter username "AutomationSubsJobOperations4" and password and click on Sign In button 
