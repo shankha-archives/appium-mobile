@@ -37,7 +37,7 @@ Scenario: View leave balances and check available days
 
 @MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke @AndroidRegression
 Scenario: Entered text should be searchable when user perform search operation 
-	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "next day" and delete the existing ones
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username "AutomationEmployeeMOB-4233" and password and click on Sign In button 
@@ -160,7 +160,7 @@ Scenario: Verify employee can create absence
 	
 @MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke @AndroidRegression
 Scenario: Verify created absence is displayed in calendar
-	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "next day" and delete the existing ones
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username "AutomationEmployeeMOB-4237" and password and click on Sign In button 
@@ -170,7 +170,7 @@ Scenario: Verify created absence is displayed in calendar
 	
 @MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke @AndroidRegression
 Scenario: Verify user is able to edit the absence
-	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" for "next day" and delete the existing ones
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username "AutomationEmployeeMOB-4247" and password and click on Sign In button 
@@ -192,7 +192,7 @@ Scenario: Verify that admin creates an absence for another user
 	 
 	@AndroidSmoke @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254 @AndroidRegression
 Scenario: Verify admin assigns substitute and also approve absence
-	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "current day" and delete the existing ones
+	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "current day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When the user launches the app 
 	Then the user click on Get Started Button
 	And Enter admin username "AutomationAdminMOB-4251" and password and click on Sign In button 

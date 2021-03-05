@@ -28,13 +28,13 @@ public class SmokeStepDef {
 	TestUtils utils = new TestUtils();
 	Properties props;
 
-	@And("^Enter username and password and click on Sign In button$")
-	public void enter_username_and_password_and_click_on_sign_in_button() throws Throwable {
-		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "substitutelogin"));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "substitutepass"));
-		loginPage.clickOnLoginBtn();
-	}
+//	@And("^Enter username and password and click on Sign In button$")
+//	public void enter_username_and_password_and_click_on_sign_in_button() throws Throwable {
+//		loginPage.verify_loginPageLoaded();
+//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "substitutelogin"));
+//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "substitutepass"));
+//		loginPage.clickOnLoginBtn();
+//	}
 
 	@And("^Enter username \"([^\"]*)\" and password and click on Sign In button$")
 	public void enter_username_something_and_password_and_click_on_sign_in_button(String username) throws Throwable {
@@ -548,15 +548,15 @@ public class SmokeStepDef {
 			utils.log().info("The environment selected is prodution");
 	}
 
-	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete the existing ones$")
-	public void create_absence_for_employee_something_with_workerid_something_for_something_and_delete_the_existing_ones(
-			String apiLoginID, String workerID, String absenceDay) throws Throwable {
+	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing ones$")
+	public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_ones(
+			String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
 		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
 			apiService.apiGetConfirmationIds(workerID, absenceDay);
 			apiService.apiDeleteAbsence();
-			apiService.apiCreateAbsence(workerID, absenceDay);
+			apiService.apiCreateAbsence(workerID, absenceDay, schoolID, reasonID);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
@@ -589,7 +589,7 @@ public class SmokeStepDef {
 			apiService.apiBearerTokenGeneration(automationEmployee);
 			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
 			apiService.apiDeleteTimeEvents(orgID, workerID);
-			// apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+			//apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}

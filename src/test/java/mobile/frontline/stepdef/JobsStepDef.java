@@ -2,8 +2,6 @@ package mobile.frontline.stepdef;
 
 import java.util.Properties;
 
-import org.junit.Assert;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,7 +16,7 @@ public class JobsStepDef {
 
 	public LoginPage loginPage = new LoginPage();
 	public JobsMethods jobulatorPage = new JobsMethods();
-	public String OrgJob1, OrgJob2;
+	// public String OrgJob1, OrgJob2;
 	public TestDataManager testdata = new TestDataManager();
 	public APIServices apiService = new APIServices();
 	Properties props;
@@ -79,30 +77,33 @@ public class JobsStepDef {
 		jobulatorPage.confirmationPresent(confirmationNumber);
 	}
 
-	@And("^Enter multiorg multirole username and password and click on Sign In button$")
-	public void enter_multiorg_multirole_username_and_password_and_click_on_sign_in_button() throws Throwable {
-		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "MultiOrgUser"));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "MultiOrgPass"));
-		loginPage.clickOnLoginBtn();
-	}
+//	@And("^Enter multiorg multirole username and password and click on Sign In button$")
+//	public void enter_multiorg_multirole_username_and_password_and_click_on_sign_in_button() throws Throwable {
+//		loginPage.verify_loginPageLoaded();
+//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "MultiOrgUser"));
+//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "MultiOrgPass"));
+//		loginPage.clickOnLoginBtn();
+//	}	
 
-	@Then("^the user choose the sub user of one org and extract the jobs$")
-	public void the_user_choose_the_sub_user_of_one_org_and_extract_the_jobs() {
+	@Then("^the user choose the sub role of one org and verify the created jobs$")
+	public void the_user_choose_the_sub_role_of_one_org_and_verify_the_created_jobs() throws Throwable {
 		jobulatorPage.selectOrg();
-		OrgJob1 = jobulatorPage.checkAvailablejob();
+		jobulatorPage.clickOnAvailableJobs_displayed();
+		jobulatorPage.checkAvailablejob();
+		jobulatorPage.clickOnHomeButton();
 	}
-
-	@When("^the user choose the sub user of another org and extract the jobs$")
-	public void the_user_choose_the_sub_user_of_another_org_and_extract_the_jobs() {
+	
+	@When("^the user choose the sub role of another org and verify the created jobs$")
+	public void the_user_choose_the_sub_role_of_another_org_and_verify_the_created_jobs() throws Throwable {
+		jobulatorPage.clickSwitchbtn();
 		jobulatorPage.switchToAnotherOrg();
-		OrgJob2 = jobulatorPage.checkAvailablejob();
+		jobulatorPage.clickOnAvailableJobs_displayed();
+		jobulatorPage.checkAvailablejob();
 	}
-
-	@Then("^verify the jobs$")
-	public void verify_the_jobs() {
-		Assert.assertEquals(OrgJob1, OrgJob2);
-	}
+//	@Then("^verify the jobs$")
+//	public void verify_the_jobs() {
+//		Assert.assertEquals(OrgJob1, OrgJob2);
+//	}
 
 	@And("^the dashboard displays all available jobs from all districts$")
 	public void the_dashboard_displays_all_available_jobs_from_all_districts() throws Throwable {
@@ -110,22 +111,35 @@ public class JobsStepDef {
 		jobulatorPage.multiDistrictVerification();
 	}
 
-	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete the existing absence$")
-	public void create_absence_for_employee_something_with_workerid_something_for_something_and_delete_the_existing_absence(
-			String apiLoginID, String workerID, String absenceDay) throws Throwable {
+//	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete the existing absence$")
+//	public void create_absence_for_employee_something_with_workerid_something_for_something_and_delete_the_existing_absence(
+//			String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
+//		props = new PropertyManager().getProps();
+//		if (!props.getProperty("testdata").contains("prod")) {
+//			apiService.apiTokenGeneration(apiLoginID);
+//			apiService.apiGetConfirmationIds(workerID, absenceDay);
+//			apiService.apiDeleteAbsence();
+//			confirmationNumber = apiService.apiCreateAbsence(workerID, absenceDay, schoolID, reasonID);
+//		} else
+//			utils.log().info("The environment selected is prodution");
+//	}
+
+	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing absence$")
+	public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_absence(
+			String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
 		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
 			apiService.apiGetConfirmationIds(workerID, absenceDay);
 			apiService.apiDeleteAbsence();
-			confirmationNumber = apiService.apiCreateAbsence(workerID, absenceDay);
+			confirmationNumber = apiService.apiCreateAbsence(workerID, absenceDay, schoolID, reasonID);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
-	
+
 	@And("^Verify the created jobs are available in the list$")
-    public void verify_the_created_jobs_are_available_in_the_list() throws Throwable {
+	public void verify_the_created_jobs_are_available_in_the_list() throws Throwable {
 		jobulatorPage.verifyCreatedJobsAreVisibleintheList();
-    }
+	}
 
 }

@@ -45,7 +45,7 @@ public class ApiMethods {
 		return response;
 	}
 
-	public HttpResponse<String> createEmployeeAbsence(String token, String workerID, String absenceDay)
+	public HttpResponse<String> createEmployeeAbsence(String token, String workerID, String absenceDay, String schoolID, String reasonID)
 			throws Throwable {
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<String> response = Unirest
@@ -55,9 +55,9 @@ public class ApiMethods {
 				.body("{\"needSub\" : true, \"worker\":{  \"id\":"
 						+ testdata.read_property("testingData", "users", workerID) + " }, \"absences\":[ { \"date\":\""
 						+ common.nextWorkingDay(absenceDay, "MM/dd/yyyy") + "\", \"institution\":{ \"id\":"
-						+ testdata.read_property("testingData", "users", "APISchoolID")
+						+ testdata.read_property("testingData", "users", schoolID)
 						+ "   }, \"entitlement\":{ \"id\":"
-						+ testdata.read_property("testingData", "users", "APIReasonID")
+						+ testdata.read_property("testingData", "users", reasonID)
 						+ " }, \"shiftType\":1, \"absenceStartTime\":\"09:00 AM\", \"absenceEndTime\":\"03:00 PM\"  } ]}")
 				.asString();
 		return response;
