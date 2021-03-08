@@ -3,6 +3,7 @@ package mobile.frontline.pages;
 import java.time.Duration;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import io.appium.java_client.MobileElement;
@@ -97,15 +98,17 @@ public class SettingsPage extends LoginPage {
 	public void openMenuCalendar() {
 		//common.isElementDisplayed(smoke.menuTab);
 		click(smoke.menuTab, "Click on Menu Link");
-		//common.isElementDisplayed(calendar);
-		click(calendar, "Click on Calendar in menu Link");
-	}
-
-	public void verifyCalendar() {
 		isElementDisplayed(calendar);
 		Assert.assertTrue("Calendar Page is not displayed", calendar.isDisplayed());
-		utils.log().info("Calendar Page is displayed");
+		//common.isElementDisplayed(calendar);
+//		click(calendar, "Click on Calendar in menu Link");
 	}
+
+//	public void verifyCalendar() {
+//		isElementDisplayed(calendar);
+//		Assert.assertTrue("Calendar Page is not displayed", calendar.isDisplayed());
+//		utils.log().info("Calendar Page is displayed");
+//	}
 
 	public void avaialbleJobsLink() throws Throwable {
 		scrollToElement(availableJobs, "up");
@@ -153,7 +156,11 @@ public class SettingsPage extends LoginPage {
 		click(sendDiagnosticsBtn);
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			utils.log().info("Diagnostic is sent");
+			Thread.sleep(2000);
+			WebElement toastView = driver.findElement(By.xpath("//android.widget.Toast[1]"));
+			String actualDiagnosticMsg = toastView.getAttribute("name");
+			Assert.assertEquals("Diagnostic is not sent", "Diagnostics sent!",actualDiagnosticMsg);
+			utils.log().info("Diagnostic is sent :"+ actualDiagnosticMsg);
 			break;
 		case "iOS":
 			click(smoke.okay);
