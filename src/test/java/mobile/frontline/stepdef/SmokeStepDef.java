@@ -10,20 +10,20 @@ import mobile.Frontline.utils.TestDataManager;
 import mobile.Frontline.utils.TestUtils;
 import mobile.frontline.pages.APIServices;
 import mobile.frontline.pages.BasePage;
-import mobile.frontline.pages.JobsMethods;
+//import mobile.frontline.pages.JobsMethods;
 import mobile.frontline.pages.LoginPage;
 import mobile.frontline.pages.SmokeMethods;
-import mobile.frontline.pages.TimesheetMethods;
+//import mobile.frontline.pages.TimesheetMethods;
 
 public class SmokeStepDef {
 
 	public LoginPage loginPage = new LoginPage();
-	public JobsMethods jobulatorPage = new JobsMethods();
+	//public JobsMethods jobulatorPage = new JobsMethods();
 	public BasePage basePage = new BasePage();
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
 	public APIServices apiService = new APIServices();
-	public TimesheetMethods timesheetpage = new TimesheetMethods();
+	//public TimesheetMethods timesheetpage = new TimesheetMethods();
 
 	TestUtils utils = new TestUtils();
 	Properties props;
