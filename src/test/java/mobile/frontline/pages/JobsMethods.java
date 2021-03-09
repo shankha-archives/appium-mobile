@@ -232,21 +232,15 @@ public class JobsMethods extends LoginPage {
 		utils.log().info("Available Organizations are  displayed");
 		click(associatedOrgForSub1);
 		click(contbtn);
-
-//		isElementdisplayed(SubtituteUser);
-//		Assert.assertTrue("Available roles are not displayed", SubtituteUser.isDisplayed());
-//		utils.log().info("Available roles are  displayed");
-//		click(SubtituteUser);
-//		click(contbtn);
 	}
 
 	public String changeDateFormat(String dateToBeFormated, String formatOriginal, String formatTarget) throws Exception {
-	DateFormat originalFormat = new SimpleDateFormat(formatOriginal);
-	DateFormat targetFormat = new SimpleDateFormat(formatTarget);
-	Date date = originalFormat.parse(dateToBeFormated);
-	return targetFormat.format(date);
+		DateFormat originalFormat = new SimpleDateFormat(formatOriginal);
+		DateFormat targetFormat = new SimpleDateFormat(formatTarget);
+		Date date = originalFormat.parse(dateToBeFormated);
+		return targetFormat.format(date);
 	}
-	
+
 	public void checkAvailablejob() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":

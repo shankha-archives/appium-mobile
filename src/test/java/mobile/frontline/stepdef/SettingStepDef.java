@@ -52,24 +52,24 @@ public class SettingStepDef {
 		settingsPage.LongPressOnFrontline_setting();
 	}
 
-	@When("^click on job widget and select the job \"([^\"]*)\"$")
-    public void click_on_job_widget_and_select_the_job_something(String jobByEmp) throws Throwable {
-        jobPage.clickOnAvailableJobs_displayed();
-		jobPage.clickOnAvailableJobs(jobByEmp);
-    }
+//	@When("^click on job widget and select the job \"([^\"]*)\"$")
+//    public void click_on_job_widget_and_select_the_job_something(String jobByEmp) throws Throwable {
+//        jobPage.clickOnAvailableJobs_displayed();
+//		jobPage.clickOnAvailableJobs(jobByEmp);
+//    }
 
 	
-	@When("accept the job")
-	public void acceptTheJob() throws Throwable {
-		settingsPage.viewDetails();
-		jobPage.clickOnAcceptJobsBtn();
-		jobPage.clickOnOkBtn_successMsg();
-	}
+//	@When("accept the job")
+//	public void acceptTheJob() throws Throwable {
+//		settingsPage.viewDetails();
+//		jobPage.clickOnAcceptJobsBtn();
+//		jobPage.clickOnOkBtn_successMsg();
+//	}
 
-	@Then("go to calendar and view the accepted job")
-	public void goToCalenderAndViewTheAcceptedJob() throws Exception {
-		settingsPage.viewInCalendar();
-	}
+//	@Then("go to calendar and view the accepted job")
+//	public void goToCalenderAndViewTheAcceptedJob() throws Exception {
+//		settingsPage.viewInCalendar();
+//	}
 
 	// 4808
 	@Then("^The user moves to Next Scheduled Job widget and verify it")
@@ -85,7 +85,7 @@ public class SettingStepDef {
 
 	@When("Select the Organization")
 	public void selectTheOrganization() {
-		settingsPage.selectOrg();
+		jobPage.selectOrg();
 	}
 
 	@When("click on switch")
@@ -151,4 +151,15 @@ public class SettingStepDef {
 			settingsPage.selectTodaysAbsence();
 			smokePage.verifyAbsence();
 		}
+
+	@Then("go to calendar and view the accepted job for {string}")
+	public void goToCalendarAndViewTheAcceptedJobFor(String absenceDay) throws Exception {
+		settingsPage.viewInCalendar(absenceDay);
+	}
+
+	@When("Select other Organization")
+	public void selectOtherOrganization() {
+		jobPage.switchToAnotherOrg();
+	}
 }
+

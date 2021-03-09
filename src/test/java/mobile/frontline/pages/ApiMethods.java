@@ -119,4 +119,15 @@ public class ApiMethods {
 
 		return response;
 	}
+
+	public HttpResponse<String> acceptJobinSubstitute( String  confirmationNumber, String bearerToken, String orgID) throws Throwable {
+		Unirest.setTimeouts(0, 0);
+		HttpResponse<String> response = Unirest.post("https://aesopapistage.flqa.net/api/v1.0/Substitutes/AcceptJob")
+				.queryString("vacancyId", confirmationNumber)
+				.queryString("tenantId",testdata.read_property("testingData", "users", orgID))
+				.header("Accept", "application/json")
+				.header("Authorization", "Bearer "+bearerToken)
+				.asString();
+		return response;
+	}
 }

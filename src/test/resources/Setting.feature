@@ -1,7 +1,6 @@
 @Settings
 Feature: Regression scenarios 
 
-# verify Calendar text in menu
 @Setting @MOB-4789  @MOB-4791  @AndroidRegression
 Scenario: Verify calendar link in substitute Menu 
 	When the user launches the app 
@@ -18,8 +17,7 @@ Scenario: Verify Job List tab bar in substitutes page
 	Then the substitute navigates to dashboard page 
 	When click on Avalaible Jobs link 
 	Then verify Job List tab bar for available and accepted jobs 
-	
-	# verify toast msg
+
 @Setting @MOB-4809  @MOB-4810   @AndroidRegression
 Scenario: Verify that substitute user is allowed to submit diagnostic data 
 	When the user launches the app 
@@ -31,18 +29,17 @@ Scenario: Verify that substitute user is allowed to submit diagnostic data
 	Then User click on the send Diagnostics option and click on Okay button 
 		
   ##Accept job through API -> only very through calendar
-@Setting @MOB-4803   @done 
+@Setting @MOB-4803 @AndroidRegression
 Scenario: Verify a substitute can view accepted job in-app Calendar
-	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones 
-	When the user waits and launches the app  
-	Then the user click on Get Started Button 
-	And Enter username "AutomationSubsJobOperations4" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	When click on job widget and select the job "CreateJob4"
-	And accept the job
-	Then go to calendar and view the accepted job 
+	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" with "APISchoolID" "APIReasonID" and delete the existing absence
+	When Substitute accepts the job with required details "AutomationSubsJobOperations4" "APIXrefIDOrg1"
+	When the user waits and launches the app
+	Then the user click on Get Started Button
+	And Enter username "AutomationSubsJobOperations4" and password and click on Sign In button
+	Then the substitute navigates to dashboard page
+	Then go to calendar and view the accepted job for "next day"
   
-@Setting @MOB-4808  @MOB-4807 @done
+@Setting @MOB-4808  @MOB-4807 @AndroidRegression
 Scenario: Verify that a substitute can view next scheduled Job widget
 	 When the user launches the app 
 	 Then the user click on Get Started Button
@@ -60,7 +57,7 @@ Scenario: Verify that Unlock Code page is removed from the application
 	And the user verify that Unlock code page should not displayed
 	
 	#verify for both orgs
-@Setting @MOB-6023  @MOB-6024 @multiOrg @done
+@Setting @MOB-6023  @MOB-6024 @multiOrg @AndroidRegression
 Scenario: Verify role picker option should not displayed when user account has only one role
     When the user launches the app 
 	Then the user click on Get Started Button 
@@ -69,7 +66,8 @@ Scenario: Verify role picker option should not displayed when user account has o
     When Select the Organization
     Then the substitute navigates to dashboard page
     When click on switch
-    Then the user is presented with the org picker
+	When Select other Organization
+	Then the substitute navigates to dashboard page
 	
 	#remove   
 @Setting @MOB-6033 @MOB-6034  @done
@@ -81,7 +79,7 @@ Scenario: Verify that in employee user no upcoming absences tab is renamed as De
 	And click on Available Leave Balances and view leave balances
 	Then click and verify the Denied panel
 	
-@Setting @MOB-6019 @done 
+@Setting @MOB-6019 @AndroidRegression
 Scenario: Verify an employee can view same Intime event value in Timesheet even after relaunching the app
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -113,7 +111,8 @@ Scenario: Verify application does not crashe after tapping on todays absence tab
 	When Click on add Absence Widget
 	Then Click on any created absence and verify if crash happens 
 
-@Setting @MOB-6021   @done
+	# remove covered in @MOB-4251
+@Setting @MOB-6021 @done
 Scenario: Verify absences should be visible in Absences Today widget
 	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4257" for "current day" and delete them
 	When the user launches the app 
