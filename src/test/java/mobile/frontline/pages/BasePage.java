@@ -274,6 +274,40 @@ public class BasePage {
 		return element;
 	}
 
+	public By scrollToElement_iOS(By element, String direction) throws Exception {
+		Dimension size = driver.manage().window().getSize();
+		int startX = (int) (size.width * 0.5);
+		int endX = (int) (size.width * 0.5);
+		int startY = 0;
+		int endY = 0;
+		boolean isFound = false;
+
+		switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.5);
+				startY = (int) (size.height * 0.8);
+				break;
+
+			case "down":
+				endY = (int) (size.height * 0.6);
+				startY = (int) (size.height * 0.4);
+				break;
+		}
+
+		for (int i = 0; i < 20; i++) {
+			if (find(element, 5)) {
+				isFound = true;
+				break;
+			} else {
+				swipe(startX, startY, endX, endY, 1000);
+			}
+		}
+		if (!isFound) {
+			throw new Exception("Element not found");
+		}
+		return element;
+	}
+
 	public boolean find(final MobileElement element, int timeout) {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
