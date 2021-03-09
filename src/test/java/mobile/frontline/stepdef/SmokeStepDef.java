@@ -593,5 +593,4 @@ public class SmokeStepDef {
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
-
 }

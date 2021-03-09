@@ -87,6 +87,10 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Denied")
 	public MobileElement todayAbsence;
 
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
+	@iOSXCUITFindBy(accessibility = "EventType_1")
+	public MobileElement workDetails;
+
 	public String job_day;
 	public String job_month;
 	public String expectedInTime;
@@ -178,16 +182,16 @@ public class SettingsPage extends LoginPage {
 		job_month = dateDetails[0];
 	}
 
-	public void viewInCalendar() throws Exception {
-		smoke.verifyEventInCalendar(job_day, job_month);
+	public void viewInCalendar(String absenceDay) throws Exception {
+		smoke.verifyEventInCalendar(nextWorkingDay(absenceDay, "MMMM dd, yyyy"), nextWorkingDay(absenceDay, "MMMM dd, yyyy").split(" ")[0]);
+		isElementdisplayed(jobDetailDate);
+		Assert.assertTrue("Confirmation number is not displayed", getElementText(jobDetailDate).contains(nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
 	}
 
 	public void verifyNextScheduledJobWidget() throws Throwable {
-
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job");
-
 			break;
 		case "iOS":
 			scrollToElement(nextScheduledJobWidget, "up");
@@ -197,7 +201,6 @@ public class SettingsPage extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 		utils.log().info("Next Scheduled Job is displayed");
-
 	}
 
 	public void verifyUnlockCodePage() throws Throwable {
@@ -218,6 +221,7 @@ public class SettingsPage extends LoginPage {
 
 	public void addTimesheetAndChangeIntime() throws Throwable {
 		click(smoke.addTimeSheets);
+		isElementdisplayed(workDetails);
 		click(InTimeEdit);
 		int inTime = Integer.parseInt(common.getElementText(timesheet.outTime));
 		int changeHourClock = inTime;

@@ -18,7 +18,7 @@ Feature: Jobulator scenarios
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
   	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing absence
     When the user waits and launches the app
-		Then the user click on Get Started Button
+    Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button
     Then the substitute navigates to dashboard page
     And click on the Available Jobs and view job list
@@ -46,7 +46,7 @@ Feature: Jobulator scenarios
   	When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "next day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app
-		Then the user click on Get Started Button
+    Then the user click on Get Started Button
     When Enter username "AutomationSubMutiOrg" and password and click on Sign In button
     Then the user choose the sub role of one org and verify the created jobs
     When the user choose the sub role of another org and verify the created jobs

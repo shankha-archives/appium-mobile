@@ -23,10 +23,6 @@ public class JobsStepDef {
 	TestUtils utils = new TestUtils();
 
 	String confirmationNumber;
-//    @Then("^the substitute user click on Get Started Button and enter the pin$")
-//    public void the_substitute_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
-//        loginPage.clickOnGetStartedBtn();
-//    }
 
 	@And("^click on the Available Jobs and view job list$")
 	public void click_on_the_available_jobs_and_view_job_list() throws Throwable {
@@ -77,14 +73,6 @@ public class JobsStepDef {
 		jobulatorPage.confirmationPresent(confirmationNumber);
 	}
 
-//	@And("^Enter multiorg multirole username and password and click on Sign In button$")
-//	public void enter_multiorg_multirole_username_and_password_and_click_on_sign_in_button() throws Throwable {
-//		loginPage.verify_loginPageLoaded();
-//		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", "MultiOrgUser"));
-//		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "MultiOrgPass"));
-//		loginPage.clickOnLoginBtn();
-//	}	
-
 	@Then("^the user choose the sub role of one org and verify the created jobs$")
 	public void the_user_choose_the_sub_role_of_one_org_and_verify_the_created_jobs() throws Throwable {
 		jobulatorPage.selectOrg();
@@ -100,29 +88,12 @@ public class JobsStepDef {
 		jobulatorPage.clickOnAvailableJobs_displayed();
 		jobulatorPage.checkAvailablejob();
 	}
-//	@Then("^verify the jobs$")
-//	public void verify_the_jobs() {
-//		Assert.assertEquals(OrgJob1, OrgJob2);
-//	}
 
 	@And("^the dashboard displays all available jobs from all districts$")
 	public void the_dashboard_displays_all_available_jobs_from_all_districts() throws Throwable {
 		jobulatorPage.clickOnAvailableJobs_displayed();
 		jobulatorPage.multiDistrictVerification();
 	}
-
-//	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete the existing absence$")
-//	public void create_absence_for_employee_something_with_workerid_something_for_something_and_delete_the_existing_absence(
-//			String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
-//		props = new PropertyManager().getProps();
-//		if (!props.getProperty("testdata").contains("prod")) {
-//			apiService.apiTokenGeneration(apiLoginID);
-//			apiService.apiGetConfirmationIds(workerID, absenceDay);
-//			apiService.apiDeleteAbsence();
-//			confirmationNumber = apiService.apiCreateAbsence(workerID, absenceDay, schoolID, reasonID);
-//		} else
-//			utils.log().info("The environment selected is prodution");
-//	}
 
 	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing absence$")
 	public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_absence(
@@ -142,4 +113,13 @@ public class JobsStepDef {
 		jobulatorPage.verifyCreatedJobsAreVisibleintheList();
 	}
 
+	@When("Substitute accepts the job with required details {string} {string}")
+	public void substituteAcceptsTheJobWithRequiredDetails(String tokenUser, String xrefOrgID) throws Throwable {
+		props = new PropertyManager().getProps();
+		if (!props.getProperty("testdata").contains("prod")) {
+			apiService.apiBearerTokenGeneration(tokenUser);
+			apiService.apiAcceptSubstituteJob(confirmationNumber, xrefOrgID);
+		} else
+			utils.log().info("The environment selected is prodution");
+	}
 }

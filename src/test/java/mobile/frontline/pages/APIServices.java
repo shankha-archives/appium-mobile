@@ -2,6 +2,7 @@ package mobile.frontline.pages;
 
 import java.util.ArrayList;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONObject;
 import org.junit.Assert;
 
@@ -109,5 +110,11 @@ public class APIServices {
 				workerID, timesheetDay);
 		Assert.assertEquals(responseCreateTimesheet.getBody(),responseCreateTimesheet.getStatus(), 200);
 		utils.log().info("Create timesheet" + responseCreateTimesheet.getBody());
+	}
+
+	public void apiAcceptSubstituteJob(String orgID, String confirmationNumber) throws Throwable {
+		HttpResponse<String> responseAcceptSubstituteJob =apiObject.acceptJobinSubstitute(orgID, bearerToken, confirmationNumber);
+		Assert.assertEquals(responseAcceptSubstituteJob.getBody(),responseAcceptSubstituteJob.getStatus(), 200);
+		utils.log().info("Accept substitute job" + responseAcceptSubstituteJob.getBody());
 	}
 }
