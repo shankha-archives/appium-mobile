@@ -1,7 +1,7 @@
 @Settings
 Feature: Regression scenarios 
 
-@Setting @MOB-4789  @MOB-4791  @AndroidRegression
+@Setting @MOB-4789  @MOB-4791  @AndroidRegression @iOSRegression
 Scenario: Verify calendar link in substitute Menu 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -9,16 +9,16 @@ Scenario: Verify calendar link in substitute Menu
 	Then the substitute navigates to dashboard page 
 	When click on menu and tap the Calendar link 
 	
-@Setting @MOB-4806  @MOB-4805  @AndroidRegression
+@Setting @MOB-4806  @MOB-4805  @AndroidRegression @iOSRegression
 Scenario: Verify Job List tab bar in substitutes page 
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
-	When click on Avalaible Jobs link 
-	Then verify Job List tab bar for available and accepted jobs 
+	When click on Avalaible Jobs link
+	Then verify Job List tab bar for available and accepted jobs
 
-@Setting @MOB-4809  @MOB-4810   @AndroidRegression
+@Setting @MOB-4809  @MOB-4810 @AndroidRegression @iOSRegression
 Scenario: Verify that substitute user is allowed to submit diagnostic data 
 	When the user launches the app 
 	Then the user click on Get Started Button 
@@ -39,7 +39,7 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 	Then the substitute navigates to dashboard page
 	Then go to calendar and view the accepted job for "next day"
   
-@Setting @MOB-4808  @MOB-4807 @AndroidRegression
+@Setting @MOB-4808  @MOB-4807 @AndroidRegression @iOSRegression
 Scenario: Verify that a substitute can view next scheduled Job widget
 	 When the user launches the app 
 	 Then the user click on Get Started Button
@@ -57,7 +57,7 @@ Scenario: Verify that Unlock Code page is removed from the application
 	And the user verify that Unlock code page should not displayed
 	
 	#verify for both orgs
-@Setting @MOB-6023  @MOB-6024 @multiOrg @AndroidRegression
+@Setting @MOB-6023  @MOB-6024 @multiOrg @AndroidRegression @iOSRegression
 Scenario: Verify role picker option should not displayed when user account has only one role
     When the user launches the app 
 	Then the user click on Get Started Button 

@@ -27,7 +27,7 @@ public class SettingsPage extends LoginPage {
 	@iOSXCUITFindBy(accessibility = "Calendar")
 	public MobileElement calendar;
 
-	@iOSXCUITFindBy(accessibility = "Available Jobs_ModuleHeader")
+	@iOSXCUITFindBy(accessibility = "Jobs_Module_Title_StaticText")
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
 	public MobileElement availableJobs;
 
@@ -36,7 +36,7 @@ public class SettingsPage extends LoginPage {
 	public MobileElement available;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-	@iOSXCUITFindBy(accessibility = "Accepted")
+	@iOSXCUITFindBy(accessibility = "Scheduled")
 	public MobileElement accepted;
 
 	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[2]")
