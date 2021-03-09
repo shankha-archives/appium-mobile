@@ -61,7 +61,7 @@ Feature: Jobulator scenarios
     Then the substitute navigates to dashboard page
     And the dashboard displays all available jobs from all districts
       
-@MOB-4173 @MOB-4172 @Done @AndroidRegression
+@MOB-4173 @MOB-4172 @Done @AndroidRegression @iOSRegression
   Scenario: Verify that substitute is able to view job widget and jobs in job list
   	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4173" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
   	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4172" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
