@@ -53,7 +53,7 @@ public class JobsMethods extends LoginPage {
 	public MobileElement confirmationNo;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView)[2]")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[1]")
 	public MobileElement associatedOrgForSub1;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
@@ -61,7 +61,7 @@ public class JobsMethods extends LoginPage {
 	public MobileElement SubtituteUser;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView)[3]")
-	// @iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]")
 	public MobileElement associatedOrgForSub2;
 
 //	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_right_bubble")
@@ -119,12 +119,26 @@ public class JobsMethods extends LoginPage {
 	}
 
 	public void clickOnAvailableJobs_displayed() throws Throwable {
-		click(availableJobs, "Clicking available job Widget");
-		isElementDisplayed(availableJobsHeader);
-		Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
-		utils.log().info("Available Jobs list Page is displayed");
-		swipeDown();
-	}
+        switch (new GlobalParams().getPlatformName()) {
+           case "Android":
+            click(availableJobs, "Clicking available job Widget");
+            isElementDisplayed(availableJobsHeader);
+            Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
+            utils.log().info("Available Jobs list Page is displayed");
+            swipeDown();
+            break;
+            case "iOS":
+                verify_homeScreen_displayed();
+                click(availableJobs, "Clicking available job Widget");
+                isElementDisplayed(availableJobsHeader);
+                Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
+                utils.log().info("Available Jobs list Page is displayed");
+                swipeDown();
+                break;
+            default:
+                throw new Exception("Invalid platform Name");
+        }
+    }
 
 	private void storeJobDetails() {
 		job_date = getElementText(jobDateOnJobDescription).split(", ")[1];
@@ -325,10 +339,19 @@ public class JobsMethods extends LoginPage {
 			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
 			break;
 		case "iOS":
+			isElementdisplayed(jobslist);
+			By jobDate_iOS = By.xpath(
+					"((//XCUIElementTypeStaticText[@label = 'AutomationEmp 4173'])[1]/following::XCUIElementTypeStaticText[@label = " +
+							"'"+ nextWorkingDay("next day", "MMMM d") + " • 8:00 AM'])[1]");
+			scrollToElement_iOS(jobDate_iOS, "up");
+			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS));
 
-//			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'AutomationEmp 4173')]");
-//			scrollToElement(findJob, "up");
-//			click(findJob, "Clicked on on Required Job");
+			jobDate_iOS = By.xpath(
+					"((//XCUIElementTypeStaticText[@label = 'AutomationEmp 4172'])[1]/following::XCUIElementTypeStaticText[@label = " +
+							"'"+ nextWorkingDay("next day", "MMMM d") + " • 8:00 AM'])[1]");
+			scrollToElement_iOS(jobDate_iOS, "up");
+			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS));
+
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
