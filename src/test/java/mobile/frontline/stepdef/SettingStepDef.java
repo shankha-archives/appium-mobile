@@ -26,11 +26,6 @@ public class SettingStepDef {
 		settingsPage.openMenuCalendar();
 	}
 
-//	@Then("^verify the calendar$")
-//	public void verify_the_calendar() throws Throwable {
-//		settingsPage.verifyCalendar();
-//	}
-
 	@When("^click on Avalaible Jobs link")
 	public void click_on_available_jobs_link() throws Throwable {
 		settingsPage.avaialbleJobsLink();
