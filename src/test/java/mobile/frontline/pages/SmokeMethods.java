@@ -386,7 +386,11 @@ public class SmokeMethods extends LoginPage {
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_two")
 	@iOSXCUITFindBy(accessibility = "EventView_Absence_Other")
-	public MobileElement eventTitle;
+	public MobileElement eventTitle_absences;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_two")
+	@iOSXCUITFindBy(accessibility = "EventView_Job_Other")
+	public MobileElement eventTitle_job;
 
 	// page 6 verification
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
@@ -1537,6 +1541,7 @@ public class SmokeMethods extends LoginPage {
 
 	public void clickCalender() throws Exception {
 		verifyEventInCalendar(absence_day, absence_month);
+		clickOnEvent_absences();
 	}
 
 	public void verifyEventInCalendar(String absence_day, String absence_month) throws Exception {
@@ -1570,12 +1575,16 @@ public class SmokeMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		clickOnEvent();
 	}
 
-	public void clickOnEvent() throws Exception {
-		common.isElementdisplayed(eventTitle);
-		click(eventTitle,"Clicked on Event Title");
+	public void clickOnEvent_absences() throws Exception {
+		common.isElementdisplayed(eventTitle_absences);
+		click(eventTitle_absences,"Clicked on Event Title");
+	}
+
+	public void clickOnEvent_job() throws Exception {
+		common.isElementdisplayed(eventTitle_job);
+		click(eventTitle_job,"Clicked on Event Title");
 	}
 
 	public void selectDateForEdit(String absenceDay) throws Throwable {
@@ -1861,6 +1870,7 @@ public class SmokeMethods extends LoginPage {
 			throw new Exception("Invalid platform Name");
 		}
 		verifyEventInCalendar(nextWorkingDate, nextWorkingDay(absenceDay, "MMMM dd, yyyy").split(" ")[0]);
+		clickOnEvent_absences();
 	}
 
 	public void selectUnfilledUnassignedAbsence(String userToSearch, String absenceDay) throws Throwable {

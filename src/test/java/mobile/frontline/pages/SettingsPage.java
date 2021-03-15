@@ -56,7 +56,7 @@ public class SettingsPage extends LoginPage {
 	public MobileElement MenuHeader;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
-//	@iOSXCUITFindBy(accessibility = "")
+	@iOSXCUITFindBy(accessibility = "JobDetailDayView_JobDate_Label")
 	public MobileElement jobDetailDate;
 
 	// @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
@@ -183,9 +183,23 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void viewInCalendar(String absenceDay) throws Exception {
-		smoke.verifyEventInCalendar(nextWorkingDay(absenceDay, "MMMM dd, yyyy"), nextWorkingDay(absenceDay, "MMMM dd, yyyy").split(" ")[0]);
-		isElementdisplayed(jobDetailDate);
-		Assert.assertTrue("Confirmation number is not displayed", getElementText(jobDetailDate).contains(nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				smoke.verifyEventInCalendar(nextWorkingDay(absenceDay, "MMMM dd, yyyy"), nextWorkingDay(absenceDay, "MMMM dd, yyyy").split(" ")[0]);
+				smoke.clickOnEvent_job();
+				isElementdisplayed(jobDetailDate);
+				Assert.assertTrue("Confirmation number is not displayed", getElementText(jobDetailDate).contains(nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+				break;
+			case "iOS":
+				smoke.verifyEventInCalendar(nextWorkingDay(absenceDay, "MM/dd/yyyy"), nextWorkingDay(absenceDay, "MMMM dd, yyyy").split(" ")[0]);
+				smoke.clickOnEvent_job();
+				isElementdisplayed(jobDetailDate);
+				Assert.assertTrue("Confirmation number is not displayed", getElementText(jobDetailDate).contains(nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
+		utils.log().info("Next Scheduled Job is displayed");
 	}
 
 	public void verifyNextScheduledJobWidget() throws Throwable {
