@@ -250,14 +250,14 @@ public class JobsMethods extends LoginPage {
 					"(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='"
 							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
 			utils.log().info("jobDate");
-			
-			scrollToElement(jobDate, "up");
+
+			scrollToElement_iOS(jobDate, "up");
 			Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolValidationOrg1));
 			
 			 jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='"
 							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-			 scrollToElement(jobDate, "up");
+			scrollToElement_iOS(jobDate, "up");
 			 Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolValidationOrg2));
 			break;
 		case "iOS":
@@ -302,13 +302,13 @@ public class JobsMethods extends LoginPage {
 		By jobDate = By.xpath(
 				"(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='"
 						+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-		scrollToElement(jobDate, "up");
+		scrollToElement_iOS(jobDate, "up");
 		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolMultidistrict1));
 		
 		jobDate = By.xpath(
 				"(//android.widget.TextView[@text='AutomationEmp2 3683']/following:: android.widget.TextView[@text='"
 						+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-		scrollToElement(jobDate, "up");
+		scrollToElement_iOS(jobDate, "up");
 		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolMultidistrict2));
 		break;
 	case "iOS":
@@ -329,13 +329,13 @@ public class JobsMethods extends LoginPage {
 			By jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='"
 							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-			scrollToElement(jobDate, "up");
+			scrollToElement_iOS(jobDate, "up");
 			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
 			
 			jobDate = By.xpath(
 					"(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='"
 							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-			scrollToElement(jobDate, "up");
+			scrollToElement_iOS(jobDate, "up");
 			Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
 			break;
 		case "iOS":

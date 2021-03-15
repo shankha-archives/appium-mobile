@@ -6,13 +6,15 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import mobile.Frontline.utils.TestDataManager;
 
+
+import java.io.IOException;
+
 public class ApiMethods {
 
 	public TestDataManager testdata = new TestDataManager();
-	//SmokeMethods smokePage = new SmokeMethods();
 	BasePage common = new BasePage();
 
-	public HttpResponse<String> generateAesopToken(String apiLoginID) throws UnirestException {
+	public HttpResponse<String> generateAesopToken(String apiLoginID) throws UnirestException, IOException {
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<String> response = Unirest
 				.post(testdata.read_property("testingData", "users", "BaseURL") + "/api/v1.0/Login")
@@ -127,6 +129,19 @@ public class ApiMethods {
 				.queryString("tenantId",testdata.read_property("testingData", "users", orgID))
 				.header("Accept", "application/json")
 				.header("Authorization", "Bearer "+bearerToken)
+				.asString();
+		return response;
+	}
+
+	public HttpResponse<String> undoSubmittedTimesheets(String bearerToken, String aesopToken, String orgID, String workerID, String bodyString ) throws UnirestException {
+		Unirest.setTimeouts(0, 0);
+		HttpResponse<String> response = Unirest.put(testdata.read_property("testingData", "users", "BFFBaseURL")
+				+"/api/organizations/"+testdata.read_property("testingData", "users", orgID)+"/products/time-and-attendance/timesheets/reset")
+				.queryString("identity", "2-" + testdata.read_property("testingData", "users", workerID))
+				.header("Content-Type", "application/json")
+				.header("Authorization", "Bearer "+bearerToken)
+				.header("aesoptoken", aesopToken)
+				.body(bodyString)
 				.asString();
 		return response;
 	}

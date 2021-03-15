@@ -591,11 +591,14 @@ public class SmokeMethods extends LoginPage {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Add a Comment']")
 	@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
 	public MobileElement inTimeComment;
-	
-	
+
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_comment")
 	 @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
 	public MobileElement inTimeCommentVerify;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/timesheet_day_text")
+	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
+	public MobileElement timesheetDayView;
 
 	public String absence_Ename;
 	public String absence_day;
@@ -1101,7 +1104,6 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickTimesheetWidget() throws Throwable {
-
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Timesheets");
@@ -1839,6 +1841,7 @@ public class SmokeMethods extends LoginPage {
 	public void clickOnBack() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
+			isElementdisplayed(timesheetDayView);
 			click(backBtn,"Click on Back button");
 			break;
 		case "iOS":

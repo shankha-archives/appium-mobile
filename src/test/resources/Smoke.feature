@@ -193,10 +193,10 @@ Scenario: Verify that admin creates an absence for another user
 	@AndroidSmoke @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254 @AndroidRegression @iOSRegression
 Scenario: Verify admin assigns substitute and also approve absence
 	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "current day" with "APISchoolID" "APIReasonID" and delete the existing ones
-	When the user launches the app 
+	When the user launches the app
 	Then the user click on Get Started Button
-	And Enter admin username "AutomationAdminMOB-4251" and password and click on Sign In button 
-	Then the admin navigates to dashboard page  
+	And Enter admin username "AutomationAdminMOB-4251" and password and click on Sign In button
+	Then the admin navigates to dashboard page
 	And Select an unfilled and unassigned absence for "next day"
 	When click on Tap to Assign and select Assign substitute
 	And click Assign again to confirm
