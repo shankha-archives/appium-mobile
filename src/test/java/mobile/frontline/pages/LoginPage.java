@@ -90,7 +90,7 @@ public class LoginPage extends BasePage {
 	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement homePageBottom;
 
-	// @AndroidFindBy(xpath = "")
+	 @AndroidFindBy(id = "com.frontline.frontlinemobile:id/error_description")
 	// @iOSXCUITFindBy(accessibility = "")
 	public MobileElement noLoginDialogBox;
 
@@ -306,9 +306,8 @@ public class LoginPage extends BasePage {
 
 	public void verifyNoLoginDialogbox() {
 		isElementDisplayed(noLoginDialogBox);
-		Assert.assertTrue(
-				"You have not been granted access to any organizations that use the Frontline Insights Platform",
-				noLoginDialogBox.isDisplayed());
+		Assert.assertEquals("You have been granted access to any organizations that use the Frontline Insights Platform",
+				common.getElementText(noLoginDialogBox),"You have not been granted access to any organizations that use the Frontline Insights Platform.");
 		utils.log().info(
 				"You have not been granted access to any organizations that use the Frontline Insights Platform is displayed");
 	}

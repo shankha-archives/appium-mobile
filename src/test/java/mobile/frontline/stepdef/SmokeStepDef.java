@@ -381,6 +381,7 @@ public class SmokeStepDef {
 
 	@Then("^Verify total time of the Week$")
 	public void verify_total_time_of_the_week() throws Throwable {
+		smokePage.clickOnBack();
 		smokePage.weekTotalTime();
 		smokePage.verifyWeekTotalTime();
 	}
@@ -589,7 +590,7 @@ public class SmokeStepDef {
 			apiService.apiBearerTokenGeneration(automationEmployee);
 			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
 			apiService.apiDeleteTimeEvents(orgID, workerID);
-			//apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+			apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}

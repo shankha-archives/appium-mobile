@@ -1,6 +1,7 @@
 package mobile.frontline.pages;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
@@ -59,8 +60,12 @@ public class TimesheetMethods extends LoginPage {
 	public MobileElement viewMore;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_view_total_amount")
-	// @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
+	 @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
 	public MobileElement totalWeekTotalAmount;
+
+	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_day_view_total_amount")
+	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
+	public MobileElement dayTotalTimesheet;
 
 	@iOSXCUITFindBy(accessibility = "Invalid PIN")
 	public MobileElement inValidPin;
@@ -68,8 +73,8 @@ public class TimesheetMethods extends LoginPage {
 	MobileElement currentTimesheet;
 	String OutTime;
 	String Intime;
-	String weekTotal;
 	Date d;
+	String weekTotal, weekTotalBefore, weekTotalActual, dayTotalTime, totalExpectedTimeofWeek;
 	String InvalidPinMsg;
 	DateFormat dateFormat = new SimpleDateFormat("h:mm");
 
@@ -77,10 +82,10 @@ public class TimesheetMethods extends LoginPage {
 	}
 	
 	public void submitDayTimesheet() throws Exception {
-		isElementdisplayed(timesheetDaySubmitBtn);
-		timesheetDaySubmitBtn.click();
-		isElementdisplayed(smoke.submitTimesheet);
-		smoke.submitTimesheet.click();
+			isElementdisplayed(timesheetDaySubmitBtn);
+			timesheetDaySubmitBtn.click();
+			isElementdisplayed(smoke.submitTimesheet);
+			smoke.submitTimesheet.click();
 	}
 
 	public void verifySubmission() {
@@ -96,8 +101,9 @@ public class TimesheetMethods extends LoginPage {
 	}
 
 	public void verifySubmitTimesheetBtnNotDisplayed() {
-		if (isElementdisplayed(smoke.submittimesheetsbtn))
-			Assert.assertTrue("Submit timesheet option is not displayed", !smoke.submittimesheetsbtn.isDisplayed());
+		//if (isElementdisplayed(smoke.submittimesheetsbtn))
+		isElementdisplayed(smoke.tuesday);
+			Assert.assertTrue("Submit timesheet option is not displayed", isElementNotPresent(smoke.submittimesheetsbtn));
 	}
 
 	public String addNewTimesheet() throws Throwable {
@@ -166,7 +172,8 @@ public class TimesheetMethods extends LoginPage {
 	
 	public void AddTimesheet() throws Throwable {
 		click(smoke.addTimeSheets);
-		common.isElementdisplayed(smoke.workDetails);
+		//smokePage.clockOutThroughTimesheet();
+		isElementdisplayed(smoke.workDetails);
 		click(smoke.timeSheetOutTime);
 
 		switch (new GlobalParams().getPlatformName()) {
@@ -191,10 +198,10 @@ public class TimesheetMethods extends LoginPage {
 			
 			click(smoke.okBtn);
 			click(smoke.saveTimesheets);
-			if (isElementdisplayed(smoke.okBtn)) {
-				click(smoke.okBtn);
-				click(smoke.backBtn);
-			}
+//			if (isElementdisplayed(smoke.okBtn)) {
+//				click(smoke.okBtn);
+//				click(smoke.backBtn);
+//			}
 			break;
 		case "iOS":
 			outTime.click();
@@ -209,23 +216,21 @@ public class TimesheetMethods extends LoginPage {
 
 	public void verifyWeekTime() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
-
 		case "Android":
 			click(smoke.homeTab);
 			common.scrollToElement(totalWeekTime, "up");
 			weekTotal = common.getElementText(totalWeekTime);
-			d = dateFormat.parse(weekTotal);
+			Assert.assertEquals("Week total on dashboard is not same as on Timesheet page", weekTotal, weekTotalActual);
 			break;
 
 		case "iOS":
 			isElementdisplayed(totalWeekTime);
 			weekTotal = totalWeekTime.getAttribute("name").toString();
-			d = dateFormat.parse(weekTotal);
+			//d = dateFormat.parse(weekTotal);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		Assert.assertNotEquals(d, dateFormat.parse("0:00"));
 		utils.log().info("Total time of the week is displayed");
 	}
 
@@ -319,5 +324,30 @@ public class TimesheetMethods extends LoginPage {
 		d = dateFormat.parse(weekTotal);
 		Assert.assertTrue("Time is in h:mm format", !(d == null));
 		utils.log().info("Timesheet Date Format");
+	}
+	public void getInitialWeekTotal(){
+		isElementdisplayed(smoke.monday);
+		weekTotalBefore = getElementText(totalWeekTotalAmount);
+		//utils.log().info("weekTotalBefore"+weekTotalBefore);
+	}
+
+	public void calculateTotalTimeAfterAddingTimesheet(){
+		dayTotalTime = getElementText(dayTotalTimesheet);
+		int hours = 0;
+		int minutes = 0;
+		DecimalFormat formatter = new DecimalFormat("00");
+			hours = hours + Integer.parseInt(dayTotalTime.split(":")[0])+ Integer.parseInt(weekTotalBefore.split(":")[0]);
+			minutes = minutes + Integer.parseInt(dayTotalTime.split(":")[1])+ Integer.parseInt(weekTotalBefore.split(":")[1]);
+		hours = hours + (minutes/60);
+		minutes = minutes%60;
+		totalExpectedTimeofWeek = hours + ":" +formatter.format(minutes);
+
+
+	//	weekTotalAfter = getElementText(totalWeekTotalAmount);
+	}
+	public void validateTotalTimeAfterAddingTimesheet() throws InterruptedException {
+		isElementdisplayed(smoke.monday);
+		 weekTotalActual = getElementText(totalWeekTotalAmount);
+		Assert.assertEquals("Total time in the timesheets is incorrect", weekTotalActual,totalExpectedTimeofWeek);
 	}
 }
