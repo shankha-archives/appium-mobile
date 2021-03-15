@@ -89,9 +89,9 @@ Scenario: Verify an employee can submit weekly timesheet and then undo a timeshe
 	Then the employee navigates to dashboard page 
 	When employee clicks on the timesheet widget
 	And Add a new timesheet
-	Then Verify total time of the Week
-	Then click on submit timesheet option
-	And undo the timesheet
+	#Then Verify total time of the Week
+	#Then click on submit timesheet option
+	#And undo the timesheet
 	
  @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression
 Scenario: Verify an employee can view week of timesheets 

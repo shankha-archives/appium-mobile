@@ -51,7 +51,7 @@ Feature: Jobulator scenarios
     Then the user choose the sub role of one org and verify the created jobs
     When the user choose the sub role of another org and verify the created jobs
       
-@MOB-3683 @AndroidRegression
+@MOB-3683 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
   	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones

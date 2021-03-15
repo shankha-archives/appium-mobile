@@ -106,9 +106,11 @@ public class JobsMethods extends LoginPage {
 	public MobileElement jobSchoolValidationOrg2;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='ChildCareCenter'])[1]")
+	@iOSXCUITFindBy(xpath = "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3683'])[1]/following::XCUIElementTypeStaticText[@label = 'ChildCareCenter'])[1]")
 	public MobileElement jobSchoolMultidistrict1;
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp2 3683']/following:: android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
+	@iOSXCUITFindBy(xpath = "((//XCUIElementTypeStaticText[@label = 'AutomationEmp2 3683'])[1]/following::XCUIElementTypeStaticText[@label = 'GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
 	public MobileElement jobSchoolMultidistrict2;
 	
 	public String job_date;
@@ -312,10 +314,19 @@ public class JobsMethods extends LoginPage {
 		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolMultidistrict2));
 		break;
 	case "iOS":
+		isElementdisplayed(jobslist);
+		By jobDate_iOS = By.xpath(
+				"((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3683'])[1]/following::XCUIElementTypeStaticText[@label = " +
+						"'"+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d")+ " • 7:00 AM'])[1]");
+		scrollToElement_iOS(jobDate_iOS, "up");
+		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS)||IsElementPresent(jobSchoolMultidistrict1));
 
-//		By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'AutomationEmp 4173')]");
-//		scrollToElement(findJob, "up");
-//		click(findJob, "Clicked on on Required Job");
+		jobDate_iOS = By.xpath(
+				"((//XCUIElementTypeStaticText[@label = 'AutomationEmp2 3683'])[1]/following::XCUIElementTypeStaticText[@label = " +
+				"'"+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+
+		scrollToElement_iOS(jobDate_iOS, "up");
+		Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS)||IsElementPresent(jobSchoolMultidistrict2));
 		break;
 	default:
 		throw new Exception("Invalid platform Name");
