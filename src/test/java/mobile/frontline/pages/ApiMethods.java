@@ -104,19 +104,19 @@ public class ApiMethods {
 	}
 
 	public HttpResponse<String> createTimesheet(String bearerToken, String aesopToken, String orgID, String workerID,
-			String timesheetDay) throws Throwable {
+			String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable {
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<String> response = Unirest
 				.post(testdata.read_property("testingData", "users", "BFFBaseURL")
-						+ "/api/organizations/654527/products/time-and-attendance/timesheets")
+						+ "/api/organizations/"+testdata.read_property("testingData", "users", orgID)+"/products/time-and-attendance/timesheets")
 				.queryString("identity", "2-" + testdata.read_property("testingData", "users", workerID))
 				.header("aesoptoken", aesopToken).header("authorization", "Bearer " + bearerToken)
 				.header("Content-Type", "application/json")
 				.body("[{\"date\": \"" + common.nextWorkingDay(timesheetDay, "yyyy-MM-dd")
-						+ "\",\"locationId\": 363692,\"shiftTypeId\": 248822,\"timeClockEvents\":  [{  \"clockIn\": \""
+						+ "\",\"locationId\": "+testdata.read_property("testingData", "users", locationID)+",\"shiftTypeId\": "+testdata.read_property("testingData", "users", shiftID)+",\"timeClockEvents\":  [{  \"clockIn\": \""
 						+ common.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T" + common.currentDate("HH:mm:ss")
 						+ "\",  \"clockOut\": \"" + common.nextWorkingDay(timesheetDay, "yyyy-MM-dd") + "T"
-						+ common.currentDate("HH:mm:ss") + "\", \"eventTypeId\": 18305  }]}]")
+						+ common.currentDate("HH:mm:ss") + "\", \"eventTypeId\": "+testdata.read_property("testingData", "users", eventID)+"  }]}]")
 				.asString();
 
 		return response;
