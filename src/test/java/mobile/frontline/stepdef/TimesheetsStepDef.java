@@ -152,6 +152,7 @@ public class TimesheetsStepDef {
 
 	@When("Undo submitted timesheets {string} {string} {string} {string} {string} {string} {string} {string}")
 	public void undoSubmittedTimesheets(String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable{
+		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
 			apiService.apiBearerTokenGeneration(automationEmployee);
