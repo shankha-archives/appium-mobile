@@ -94,8 +94,8 @@ public class TimesheetsStepDef {
 		timesheetPage.submitTimesheetsWithIncorrectPin();
 	}
 
-	@Then("^verify the invaid pin message$")
-	public void verify_the_invaid_pin_message() throws Throwable {
+	@Then("^verify the invalid pin message$")
+	public void verify_the_invalid_pin_message() throws Throwable {
 		timesheetPage.toastMessge();
 	}
 
@@ -116,8 +116,8 @@ public class TimesheetsStepDef {
 		timesheetPage.validateTotalTimeAfterAddingTimesheet();
 	}
 
-	@Then("Get the initail week total time")
-	public void getTheInitailWeekTotalTime() {
+	@Then("Get the initial week total time")
+	public void getTheInitialWeekTotalTime() {
 		timesheetPage.getInitialWeekTotal();
 	}
 
@@ -133,19 +133,35 @@ public class TimesheetsStepDef {
 		smokePage.addTimeSheet();
 	}
 
-    @When("Undo submitted timesheets {string} {string} {string} {string} {string}")
-    public void undoSubmittedTimesheets(String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay) throws Throwable {
-		props = new PropertyManager().getProps();
+//    @When("Undo submitted timesheets {string} {string} {string} {string} {string}")
+//    public void undoSubmittedTimesheets(String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay) throws Throwable {
+//		props = new PropertyManager().getProps();
+//		if (!props.getProperty("testdata").contains("prod")) {
+//			apiService.apiTokenGeneration(apiLoginID);
+//			apiService.apiBearerTokenGeneration(automationEmployee);
+//		//	apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
+//		//	apiService.apiDeleteTimeEvents(orgID, workerID);
+//		//	apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+//			apiService.apiUndoSubmittedTimesheets(timesheetDay, orgID, workerID);
+//			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
+//			apiService.apiDeleteTimeEvents(orgID, workerID);
+//			apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+//		} else
+//			utils.log().info("The environment selected is prodution");
+//	}
+
+	@When("Undo submitted timesheets {string} {string} {string} {string} {string} {string} {string} {string}")
+	public void undoSubmittedTimesheets(String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable{
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiTokenGeneration(apiLoginID);
 			apiService.apiBearerTokenGeneration(automationEmployee);
-		//	apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
-		//	apiService.apiDeleteTimeEvents(orgID, workerID);
-		//	apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+			//	apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
+			//	apiService.apiDeleteTimeEvents(orgID, workerID);
+			//	apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
 			apiService.apiUndoSubmittedTimesheets(timesheetDay, orgID, workerID);
 			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
 			apiService.apiDeleteTimeEvents(orgID, workerID);
-			apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+			apiService.apiCreateTimesheet(orgID, workerID, timesheetDay, locationID, shiftID, eventID);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}
