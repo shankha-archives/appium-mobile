@@ -91,7 +91,7 @@ public class LoginPage extends BasePage {
 	public MobileElement homePageBottom;
 
 	 @AndroidFindBy(id = "com.frontline.frontlinemobile:id/error_description")
-	// @iOSXCUITFindBy(accessibility = "")
+	 @iOSXCUITFindBy(accessibility = "You have not been granted access to any organizations that use the Frontline Insights Platform.")
 	public MobileElement noLoginDialogBox;
 
 	// @AndroidFindBy(xpath = "")
