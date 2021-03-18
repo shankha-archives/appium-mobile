@@ -1295,6 +1295,19 @@ public class BasePage {
 		return val;
 	}
 
+	public boolean isElementDisplayed(MobileElement ele, String msg) {
+		boolean val = false;
+		try {
+			utils.log().info(msg +" Locator:" + ele);
+			WebDriverWait wait = new WebDriverWait(driver, 60);
+			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
+			val = ele.isDisplayed();
+		} catch (Exception e) {
+			val = false;
+		}
+		return val;
+	}
+
 	public boolean isElementdisplayed(MobileElement ele) {
 		boolean val = false;
 		try {
@@ -1358,6 +1371,18 @@ public class BasePage {
 
 	public void enterValueInTextField(MobileElement ele, String keysToSend) {
 		try {
+			if (isElementdisplayed(ele)) {
+				ele.click();
+				ele.clear();
+				ele.sendKeys(keysToSend);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public void enterValueInTextField(MobileElement ele, String keysToSend, String msg) {
+		try {
+			utils.log().info(msg+ " Locator :"+ ele);
 			if (isElementdisplayed(ele)) {
 				ele.click();
 				ele.clear();
