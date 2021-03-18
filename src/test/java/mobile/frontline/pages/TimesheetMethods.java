@@ -76,7 +76,7 @@ public class TimesheetMethods extends LoginPage {
 	Date d;
 	String weekTotal, weekTotalBefore, weekTotalActual, dayTotalTime, totalExpectedTimeofWeek;
 	String InvalidPinMsg;
-	DateFormat dateFormat = new SimpleDateFormat("h:mm");
+	//DateFormat dateFormat = new SimpleDateFormat("h:mm");
 
 	public TimesheetMethods() {
 	}
@@ -285,7 +285,7 @@ public class TimesheetMethods extends LoginPage {
 		click(smoke.enterPin);
 		driver.getKeyboard().sendKeys("3661");
 		hideKeyboard();
-		click(smoke.checkbox);
+//		click(smoke.checkbox);
 		click(smoke.submitTimesheet);
 	}
 
@@ -309,9 +309,9 @@ public class TimesheetMethods extends LoginPage {
 
 	public void verifyTimeFormat() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
-
 		case "Android":
-			weekTotal = common.getElementText(totalWeekTotalAmount);
+			isElementdisplayed(dayTotalTimesheet);
+			dayTotalTime = common.getElementText(dayTotalTimesheet);
 			break;
 
 		case "iOS":
@@ -321,8 +321,8 @@ public class TimesheetMethods extends LoginPage {
 		default:
 			throw new Exception("Invalid platform Name");
 		}
-		d = dateFormat.parse(weekTotal);
-		Assert.assertTrue("Time is in h:mm format", !(d == null));
+		//d = dateFormat.parse(weekTotal);
+		Assert.assertTrue("Time is not in h.mm format",dayTotalTime.equals("1.00") );
 		utils.log().info("Timesheet Date Format");
 	}
 	public void getInitialWeekTotal(){

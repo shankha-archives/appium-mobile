@@ -88,7 +88,7 @@ Scenario: Verify an employee can submit weekly timesheet and then undo a timeshe
 	And Enter employee username "AutomationEmployeeMOB-4263" and password and click on Sign In button 
 	Then the employee navigates to dashboard page 
 	When employee clicks on the timesheet widget
-	 And Add a new timesheet
+	And Add a new timesheet
 	Then Verify total time of the Week
 	Then click on submit timesheet option
 	And undo the timesheet

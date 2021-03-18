@@ -8,11 +8,9 @@ import io.cucumber.java.en.When;
 import mobile.Frontline.utils.PropertyManager;
 import mobile.Frontline.utils.TestDataManager;
 import mobile.Frontline.utils.TestUtils;
-import mobile.frontline.pages.APIServices;
-import mobile.frontline.pages.BasePage;
+import mobile.frontline.pages.*;
 //import mobile.frontline.pages.JobsMethods;
-import mobile.frontline.pages.LoginPage;
-import mobile.frontline.pages.SmokeMethods;
+
 //import mobile.frontline.pages.TimesheetMethods;
 
 public class SmokeStepDef {
@@ -23,6 +21,7 @@ public class SmokeStepDef {
 	public TestDataManager testdata = new TestDataManager();
 	public SmokeMethods smokePage = new SmokeMethods();
 	public APIServices apiService = new APIServices();
+	public LoginScreen loginMethods = new LoginScreen();
 	//public TimesheetMethods timesheetpage = new TimesheetMethods();
 
 	TestUtils utils = new TestUtils();
@@ -36,13 +35,7 @@ public class SmokeStepDef {
 //		loginPage.clickOnLoginBtn();
 //	}
 
-	@And("^Enter username \"([^\"]*)\" and password and click on Sign In button$")
-	public void enter_username_something_and_password_and_click_on_sign_in_button(String username) throws Throwable {
-		loginPage.verify_loginPageLoaded();
-		loginPage.enterUserID_OnLoginPage(testdata.read_property("Account", "valid", username));
-		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "FrontlinePassword"));
-		loginPage.clickOnLoginBtn();
-	}
+
 
 	@And("^The user kill and relaunch the application$")
 	public void the_user_kill_and_relaunch_the_application() throws Throwable {
@@ -72,10 +65,7 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
-	@When("the user launches the app")
-	public void theUserLaunchesTheApp() throws Throwable {
-		loginPage.verify_splashScreenLoaded();
-	}
+
 
 	@When("^the user waits and launches the app$")
 	public void the_user_waits_and_launches_the_app() throws Throwable {
@@ -277,10 +267,7 @@ public class SmokeStepDef {
 		smokePage.pullToRefresh();
 	}
 
-	@Then("the user click on Get Started Button")
-	public void user_click_on_get_started_button() throws Throwable {
-		loginPage.clickOnGetStartedBtn();
-	}
+
 
 	@Then("Enter employee username and password and click on Sign In button")
 	public void enterEmployeeUsernameAndPasswordAndClickOnSignInButton() throws Throwable {
@@ -589,7 +576,21 @@ public class SmokeStepDef {
 			apiService.apiBearerTokenGeneration(automationEmployee);
 			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
 			apiService.apiDeleteTimeEvents(orgID, workerID);
-			apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+			//apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
+		} else
+			utils.log().info("The environment selected is prodution");
+	}
+
+	@When("Verify if timesheet present for an employee delete and create it using information {string} {string} {string} {string} {string} {string} {string} {string}")
+	public void verifyIfTimesheetPresentForAnEmployeedeleteandcreateItUsingInformation
+			(String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable {
+		props = new PropertyManager().getProps();
+		if (!props.getProperty("testdata").contains("prod")) {
+			apiService.apiTokenGeneration(apiLoginID);
+			apiService.apiBearerTokenGeneration(automationEmployee);
+			apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
+			apiService.apiDeleteTimeEvents(orgID, workerID);
+			apiService.apiCreateTimesheet(orgID, workerID, timesheetDay, locationID, shiftID, eventID);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}

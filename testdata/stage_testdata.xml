@@ -45,6 +45,8 @@
 		<AutomationEmployeeMOB-5578>AutomationEmp5578</AutomationEmployeeMOB-5578>
 		<AutomationEmployeeMOB-5577>AutomationEmp5577</AutomationEmployeeMOB-5577>
 		<AutomationEmployeeMOB-5568>AutomationEmp5568</AutomationEmployeeMOB-5568>
+		<AutomationEmployeeMOB-5583>AutomationEmp5583</AutomationEmployeeMOB-5583>
+		<AutomationEmployeeMOB-5584>AutomationEmp_5584</AutomationEmployeeMOB-5584>
 		<AutomationAdminMOB-4249>AutomationAdmin</AutomationAdminMOB-4249>
 		<AutomationAdminMOB-4251>AutomationAdmin4251</AutomationAdminMOB-4251>
 		<AutomationAdminMOB-4267>AutomationAdmin4267</AutomationAdminMOB-4267>
@@ -62,6 +64,7 @@
 		<AccountingPin>3661</AccountingPin>
 		<APILoginID>report_139984</APILoginID>
 		<APILoginID_GLorg5>report_139985</APILoginID_GLorg5>
+		<APILoginID_Aut3>report_140001</APILoginID_Aut3>
 		<APIPin>1212</APIPin>
 		<lastName>ATMobile</lastName>
 		<APIWorkerID_MOB-4245>8576349</APIWorkerID_MOB-4245>
@@ -75,6 +78,7 @@
 		<APIWorkerID_MOB-5378>8584863</APIWorkerID_MOB-5378>
 		<APIWorkerID_MOB-5577>8584910</APIWorkerID_MOB-5577>
 		<APIWorkerID_MOB-5568>8585615</APIWorkerID_MOB-5568>
+		<APIWorkerID_MOB-5583>8586082</APIWorkerID_MOB-5583>
 		<APIWorkerID_MOB-3683_District1>8584506</APIWorkerID_MOB-3683_District1>
 		<APIWorkerID_MOB-3683_District2>8583467</APIWorkerID_MOB-3683_District2>
 		<APIWorkerIDCreateJobs>8582024</APIWorkerIDCreateJobs>
@@ -86,12 +90,19 @@
 		<APIWorkerID_MOB-3681_GLorg5>8583685</APIWorkerID_MOB-3681_GLorg5>
 		<APIWorkerID_MOB-3681>8583686</APIWorkerID_MOB-3681>
 		<APIOrgID>654527</APIOrgID>
+		<APIOrgID_Aut3>673870</APIOrgID_Aut3>
 		<APIXrefIDOrg1>139984</APIXrefIDOrg1>
 		<APISchoolID>363692</APISchoolID>
 		<APIReasonID>397078</APIReasonID>
 		<APISchoolID_GLorg5>363693</APISchoolID_GLorg5>
 		<APIReasonID_GLorg5>402355</APIReasonID_GLorg5>
 		<APISchoolID_ChildCare>363767</APISchoolID_ChildCare>
+		<locationID_Org1>363692</locationID_Org1>
+		<shiftID_Org1>248822</shiftID_Org1>
+		<eventID_Org1>18305</eventID_Org1>
+		<locationID_Org2>363815</locationID_Org2>
+		<shiftID_Org2>253077</shiftID_Org2>
+		<eventID_Org2>21978</eventID_Org2>
 		<BaseURL>https://aesopapistage.flqa.net</BaseURL>
 		<BFFBaseURL>https://mobile-bff.ss.frontlineeducation.com</BFFBaseURL>
 	</testingData>

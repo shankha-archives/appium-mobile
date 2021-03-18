@@ -11,12 +11,52 @@ import com.mashape.unirest.http.HttpResponse;
 import mobile.Frontline.utils.TestUtils;
 
 public class APIServices {
+	public void apiCreateTimesheet(String orgID, String workerID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable {
+		HttpResponse<String> responseCreateTimesheet = apiObject.createTimesheet(bearerToken, aesoptoken, orgID,
+				workerID, timesheetDay, locationID, shiftID, eventID);
+		Assert.assertEquals(printPrettyResponse(responseCreateTimesheet.getBody()),responseCreateTimesheet.getStatus(), 200);
+		utils.log().info("Create timesheet" + printPrettyResponse(responseCreateTimesheet.getBody()));
+	}
+
+	public void apiAcceptSubstituteJob(String orgID, String confirmationNumber) throws Throwable {
+		HttpResponse<String> responseAcceptSubstituteJob =apiObject.acceptJobinSubstitute(orgID, bearerToken, confirmationNumber);
+		Assert.assertEquals(printPrettyResponse(responseAcceptSubstituteJob.getBody()),responseAcceptSubstituteJob.getStatus(), 200);
+		utils.log().info("Accept substitute job" + printPrettyResponse(responseAcceptSubstituteJob.getBody()));
+	}
+	public void apiUndoSubmittedTimesheets(String timesheetDay,String orgID, String workerID) throws Throwable {
+		HttpResponse<String> responseGetTimeClockIDs = apiObject.getWeekTimesheet(timesheetDay, bearerToken, aesoptoken,
+				orgID, workerID);
+		Assert.assertEquals(printPrettyResponse(responseGetTimeClockIDs.getBody()),responseGetTimeClockIDs.getStatus(), 200);
+		JSONObject json = new JSONObject(printPrettyResponse(responseGetTimeClockIDs.getBody()));
+		JSONObject json1 = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0);
+		if (!json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
+				.getJSONArray("timesheets").isEmpty()) {
+			json1.remove("minutesPerRole");
+			json1.remove("date");
+			json1.remove("status");
+			json1.getJSONArray("timesheets").getJSONObject(0).remove("isPayrollLocked");
+			json1.getJSONArray("timesheets").getJSONObject(0).remove("leaveEvents");
+			json1.getJSONArray("timesheets").getJSONObject(0).remove("status");
+			json1.getJSONArray("timesheets").getJSONObject(0).remove("totalPaidScheduledTimeInMinutes");
+			json1.getJSONArray("timesheets").getJSONObject(0).remove("totalScheduledTimeInMinutes");
+			json1.remove("totalPaidScheduledTimeInMinutes");
+			json1.remove("totalPaidTimeInMinutes");
+			json1.remove("totalScheduledTimeInMinutes");
+			utils.log().info(json1);
+
+			HttpResponse<String> responseUndoTimesheet = apiObject.undoSubmittedTimesheets(bearerToken, aesoptoken, orgID, workerID, json1.toString());
+			Assert.assertEquals(printPrettyResponse(responseUndoTimesheet.getBody()), responseUndoTimesheet.getStatus(), 204);
+		}
+		else
+			utils.log().info("There is no timesheet in the day");
+	}
 
 	public ApiMethods apiObject = new ApiMethods();
 	TestUtils utils = new TestUtils();
 	ArrayList<String> confirmationNumbers = new ArrayList<String>();
 	ArrayList<String> timeClockEventsIDS = new ArrayList<String>();
 	int numberOfAbsence, numberOfTimeEvents;
+
 	String aesoptoken, bearerToken, timesheetsID;
 
 	public void apiTokenGeneration(String apiLoginID) throws Throwable {
@@ -110,45 +150,5 @@ public class APIServices {
 			}
 		} else
 			utils.log().info("No Timesheet Found");
-	}
-
-	public void apiCreateTimesheet(String orgID, String workerID, String timesheetDay) throws Throwable {
-		HttpResponse<String> responseCreateTimesheet = apiObject.createTimesheet(bearerToken, aesoptoken, orgID,
-				workerID, timesheetDay);
-		Assert.assertEquals(printPrettyResponse(responseCreateTimesheet.getBody()),responseCreateTimesheet.getStatus(), 200);
-		utils.log().info("Create timesheet" + printPrettyResponse(responseCreateTimesheet.getBody()));
-	}
-
-	public void apiAcceptSubstituteJob(String orgID, String confirmationNumber) throws Throwable {
-		HttpResponse<String> responseAcceptSubstituteJob =apiObject.acceptJobinSubstitute(orgID, bearerToken, confirmationNumber);
-		Assert.assertEquals(printPrettyResponse(responseAcceptSubstituteJob.getBody()),responseAcceptSubstituteJob.getStatus(), 200);
-		utils.log().info("Accept substitute job" + printPrettyResponse(responseAcceptSubstituteJob.getBody()));
-	}
-	public void apiUndoSubmittedTimesheets(String timesheetDay,String orgID, String workerID) throws Throwable {
-		HttpResponse<String> responseGetTimeClockIDs = apiObject.getWeekTimesheet(timesheetDay, bearerToken, aesoptoken,
-				orgID, workerID);
-		Assert.assertEquals(printPrettyResponse(responseGetTimeClockIDs.getBody()),responseGetTimeClockIDs.getStatus(), 200);
-		JSONObject json = new JSONObject(printPrettyResponse(responseGetTimeClockIDs.getBody()));
-		JSONObject json1 = json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0);
-		if (!json.getJSONArray("weekSummaries").getJSONObject(0).getJSONArray("dates").getJSONObject(0)
-				.getJSONArray("timesheets").isEmpty()) {
-			json1.remove("minutesPerRole");
-			json1.remove("date");
-			json1.remove("status");
-			json1.getJSONArray("timesheets").getJSONObject(0).remove("isPayrollLocked");
-			json1.getJSONArray("timesheets").getJSONObject(0).remove("leaveEvents");
-			json1.getJSONArray("timesheets").getJSONObject(0).remove("status");
-			json1.getJSONArray("timesheets").getJSONObject(0).remove("totalPaidScheduledTimeInMinutes");
-			json1.getJSONArray("timesheets").getJSONObject(0).remove("totalScheduledTimeInMinutes");
-			json1.remove("totalPaidScheduledTimeInMinutes");
-			json1.remove("totalPaidTimeInMinutes");
-			json1.remove("totalScheduledTimeInMinutes");
-			utils.log().info(json1);
-
-			HttpResponse<String> responseUndoTimesheet = apiObject.undoSubmittedTimesheets(bearerToken, aesoptoken, orgID, workerID, json1.toString());
-			Assert.assertEquals(printPrettyResponse(responseUndoTimesheet.getBody()), responseUndoTimesheet.getStatus(), 204);
-		}
-		else
-			utils.log().info("There is no timesheet in the day");
 	}
 }

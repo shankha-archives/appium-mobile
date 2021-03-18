@@ -35,7 +35,7 @@ Feature: Timesheet scenarios
 	#submit: week page, day page, undo
 	@MOB-5577 @AndroidRegression @iOSRegression
 	Scenario: Verify an employee user can submit day timesheet
-		When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day"
+		When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
 		Then the user click on Get Started Button
 		And Enter employee username "AutomationEmployeeMOB-5577" and password and click on Sign In button
@@ -59,7 +59,7 @@ Feature: Timesheet scenarios
 	# delete-> add api/manual-> undo verify-> submit-> verify add-> undo
 	@MOB-5568  @MOB-5569 @AndroidRegression
 	Scenario: Verify an employee cannot add new timeevent when timesheet is in submit state
-		When Undo submitted timesheets "AutomationEmployeeMOB-5568" "APIWorkerID_MOB-5568" "APIOrgID" "APILoginID" "current day"
+		When Undo submitted timesheets "AutomationEmployeeMOB-5568" "APIWorkerID_MOB-5568" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
 		Then the user click on Get Started Button
 		And Enter employee username "AutomationEmployeeMOB-5568" and password and click on Sign In button
@@ -95,13 +95,13 @@ Feature: Timesheet scenarios
 	#get value -> add time -> get total value... should increase
 	@MOB-5578  @MOB-5579 @AndroidRegression
 	Scenario: Verify when an employee adds a timeevent the total time on the dashboard should increase
-		When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-5578" "APIWorkerID_MOB-5378" "APIOrgID" "APILoginID" "current day"
+		When Verify if timesheet present for an employee delete and create it using information "AutomationEmployeeMOB-5578" "APIWorkerID_MOB-5378" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
 		Then the user click on Get Started Button
 		And Enter employee username "AutomationEmployeeMOB-5578" and password and click on Sign In button
 		Then the employee navigates to dashboard page
 		When employee clicks on the timesheet widget
-		Then Get the initail week total time
+		Then Get the initial week total time
 		And Add a new timesheet
 		Then Verify Week Total after adding a timesheet
 		And Verify the Timesheet total on dashboard
@@ -138,7 +138,7 @@ Feature: Timesheet scenarios
 		And user verify the current pay period of timesheet on dashboard
 		And Add a new timesheet
 
-	#transfer to other file: create multiple absence
+	#only for ios
 	@MOB-4794  @MOB-5718
 	Scenario: View More Link should be present under Absence Widget
 		When the user launches the app
@@ -148,17 +148,17 @@ Feature: Timesheet scenarios
 		And Verify the View More link under Absence Widget
 
 	#GL_5 org
-	@MOB-5585  @MOB-5584
-	Scenario: Make mobile error status code for incorrect pin when submitting a timesheet
+	@MOB-5585  @MOB-5584 @AndroidRegression
+	Scenario: Verify the message when employee enters wrong pin while submiting timesheet
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username and password and click on Sign In button
+		And Enter employee username "AutomationEmployeeMOB-5584" and password and click on Sign In button
 		Then the employee navigates to dashboard page
 		When employee clicks on the timesheet widget
 		When Click on submit btn with wrong entering pin
-		Then verify the invaid pin message
+		Then verify the invalid pin message
 
-	#remove
+#	#remove
 	@MOB-5541  @MOB-5551
 	Scenario: Undo Button working on Day view
 		When the user launches the app
@@ -170,11 +170,13 @@ Feature: Timesheet scenarios
 		And undo the timesheet
 
 	#how to convert time format..
-	@MOB-5583  @MOB-5582
-	Scenario: Format timesheet display in accordance with durationFormat
+	@MOB-5583  @MOB-5582 @AndroidRegression
+	Scenario: Verify that an employee can view timesheet display with decimal durationFormat
+		When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-5583" "APIWorkerID_MOB-5583" "APIOrgID_Aut3" "APILoginID_Aut3" "current day"
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username and password and click on Sign In button
+		And Enter employee username "AutomationEmployeeMOB-5583" and password and click on Sign In button
 		Then the employee navigates to dashboard page
 		And click on timesheets widget and view timesheets
+		And Add a new timesheet
 		Then verify the time format
