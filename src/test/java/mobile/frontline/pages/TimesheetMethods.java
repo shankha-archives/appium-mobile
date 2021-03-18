@@ -28,7 +28,7 @@ public class TimesheetMethods extends LoginPage {
 	SmokeMethods smoke = new SmokeMethods();
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/day_view_submit_time_sheet_button")
-	// @iOSXCUITFindBy(xpath = "")
+	@iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
 	public MobileElement timesheetDaySubmitBtn;
 
 	@AndroidFindBy(id = "android:id/message")
@@ -204,8 +204,8 @@ public class TimesheetMethods extends LoginPage {
 //			}
 			break;
 		case "iOS":
-			outTime.click();
-			dragClock();
+			//outTime.click();
+			//dragClock();
 			click(smoke.saveOrderWidgetbtn);
 			click(smoke.saveTimesheets);
 			break;

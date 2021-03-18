@@ -163,9 +163,9 @@ public class JobsMethods extends LoginPage {
 			storeJobDetails();
 			break;
 		case "iOS":
-
+			Thread.sleep(1000);
 			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
-			scrollToElement(findJob, "up");
+			scrollToElement_iOS(findJob, "up");
 			click(findJob, "Clicked on on Required Job");
 
 			// scrollToElement(jobslist, "up");

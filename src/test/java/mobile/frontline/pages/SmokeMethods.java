@@ -270,11 +270,11 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement submitTimesheet;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_undo_submission_text")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Undo Submission'])[1]")
+	@iOSXCUITFindBy(accessibility = "TimesheetSummaryView_UndoContainer_View")
 	public MobileElement undoSubmission;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_icon")
-	@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Undo Submission'])[1]")
+	@iOSXCUITFindBy(accessibility = "TimesheetSummaryView_UndoContainer_View")
 	public MobileElement undoicon;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_time_sheets_button")
@@ -302,18 +302,25 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement dragableEle;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'TUE')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_0")
 	public MobileElement tuesday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'MON')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_6")
 	public MobileElement monday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'WED')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_1")
 	public MobileElement wednesday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'THU')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_2")
 	public MobileElement thursday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'FRI')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_3")
 	public MobileElement friday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'SAT')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_4")
 	public MobileElement saturday;
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'SUN')]")
+	@iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_5")
 	public MobileElement sunday;
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Day Total']")
@@ -601,7 +608,7 @@ public class SmokeMethods extends LoginPage {
 	public MobileElement inTimeCommentVerify;
 
 	@AndroidFindBy(id = "com.frontline.frontlinemobile:id/timesheet_day_text")
-	//@iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
+	@iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
 	public MobileElement timesheetDayView;
 
 	public String absence_Ename;
@@ -655,6 +662,7 @@ public class SmokeMethods extends LoginPage {
 			break;
 		case "iOS":
 			utils.log().info("Create Absence Page 1 is displayed");
+			isElementdisplayed(serachEditText);
 			break;
 		default:
 			throw new Exception("Invalid platform Name");
@@ -1155,13 +1163,13 @@ public class SmokeMethods extends LoginPage {
 	public void enterTimeSheetdetails() {
 //		Assert.assertTrue("Total timesheet  time is not same while submitting",
 //				getElementText(totalWeekTimeExpected).contains(totalExpectedTimeofWeek));
-		if (isElementdisplayed(enterPin)) {
+	/*	if (isElementdisplayed(enterPin)) {
 			sendKeys(enterPin, testdata.read_property("testingData", "users", "AccountingPin"));
 			hideKeyboard();
 			click(checkbox, "Clicked on PIN checkbox");
 		} else {
 			utils.log().info("Digital signature not displayed");
-		}
+		}*/
 		click(submitTimesheet,"Clicked on submit submit timesheet");
 	}
 
@@ -1171,17 +1179,40 @@ public class SmokeMethods extends LoginPage {
 		click(undobtn,"Clicked on undo button");
 	}
 
-	public void verifyUndoBtn() {
+	public void verifyUndoBtn() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		isElementdisplayed(undoSubmission);
 		Assert.assertTrue("Undo timesheet option is not displayed", undoSubmission.isDisplayed());
 		utils.log().info("Undo timesheet option is not displayed");
+		break;
+			case "iOS":
+				isElementdisplayed(declinebtn);
+				click(declinebtn,"Clicked on undo decline button");
+				isElementdisplayed(undoSubmission);
+				Assert.assertTrue("Undo timesheet option is not displayed", undoSubmission.isDisplayed());
+				utils.log().info("Undo timesheet option is not displayed");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
-	public void verifyUndo() {
+	public void verifyUndo() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		isElementdisplayed(declinebtn);
 		click(declinebtn,"Clicked on undo decline button");
 		verifySubmitTimesheetBtn();
 		utils.log().info("Submit timesheet option is not displayed");
+				break;
+			case "iOS":
+				verifySubmitTimesheetBtn();
+				utils.log().info("Submit timesheet option is not displayed");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	// change sendkeys method here
@@ -1719,9 +1750,21 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void selectCurrentDayForTimesheet() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
 		nextWorkingDate = nextWorkingDay("current day", "M/dd");
 		isElementdisplayed(monday);
 		driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + nextWorkingDate + "')]").click();
+				break;
+			case "iOS":
+				nextWorkingDate = nextWorkingDay("current day", "M/dd");
+			isElementdisplayed(tuesday);
+			driver.findElementByXPath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDate + "')]").click();
+
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
 	}
 
 	public void clockOutThroughTimesheet() throws Throwable {
@@ -1854,6 +1897,7 @@ public class SmokeMethods extends LoginPage {
 			click(backBtn,"Click on Back button");
 			break;
 		case "iOS":
+			isElementdisplayed(timesheetDayView);
 			click(week,"Click on week");
 			break;
 		default:
@@ -1900,7 +1944,7 @@ public class SmokeMethods extends LoginPage {
 //					break;
 //			}
 			By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
-			scrollToElement(unfilledabsenceDate, "up");
+			scrollToElement_iOS(unfilledabsenceDate, "up");
 			click(unfilledabsenceDate, "Clicked on Unfilled Absence Date");
 			break;
 		default:
