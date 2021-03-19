@@ -4,6 +4,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
+import org.junit.Assert;
 
 public class Homescreen extends BasePage{
 
@@ -16,6 +17,14 @@ public class Homescreen extends BasePage{
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Okay']")
     public MobileElement PushNotificationOK;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
+    @iOSXCUITFindBy(accessibility = "Jobs_ModuleHeader")
+    public MobileElement availableJobs;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home']")
+    @iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
+    public MobileElement homeButton;
 
     public Homescreen(){
 
@@ -48,5 +57,19 @@ public class Homescreen extends BasePage{
         public void clickPushNotificationOK(){
         click(PushNotificationOK,"Push Notification pop-up displayed");
         }
+
+        public void clickJobWidget() throws Exception {
+            if ((new GlobalParams().getPlatformName()).contains("Android"))
+                    click(availableJobs, "Clicking available job Widget");
+            else {
+                verify_homeScreen_displayed();
+                click(availableJobs, "Clicking available job Widget");
+            }
+
+        }
+    public void clickOnHomeButton() {
+        click(homeButton);
     }
+
+}
 
