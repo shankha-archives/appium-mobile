@@ -142,6 +142,7 @@ public class JobsMethods extends LoginPage {
         }
     }
 
+
     private void storeJobDetails() {
         job_date = getElementText(jobDateOnJobDescription).split(", ")[1];
         // Assert.assertEquals(job_date, "");
@@ -243,27 +244,121 @@ public class JobsMethods extends LoginPage {
         return targetFormat.format(date);
     }
 
-    public void checkAvailablejob() throws Throwable {
-        switch (new GlobalParams().getPlatformName()) {
-            case "Android":
-                isElementdisplayed(jobslist);
+	public void verifyAcceptedJob() {
+		By jobDate = By.xpath(
+				"(//android.widget.TextView[@text='AutomationEmp CreateJob3']/following:: android.widget.TextView[@text='"
+						+ job_date + "'])[1]");
+		Assert.assertTrue("Accepted job still present in the jobs list", IsElementNotPresent(jobDate));
+	}
 
-                By jobDate = By.xpath(
-                        "(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='"
-                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-                utils.log().info("jobDate");
+	public void clickOnAvailableJobs(String jobByEmp) throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", jobByEmp);
+			scrolledToElement.click();
+			storeJobDetails();
+			break;
+		case "iOS":
+			Thread.sleep(1000);
+			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
+			scrollToElement_iOS(findJob, "up");
+			click(findJob, "Clicked on on Required Job");
 
-                scrollToElement_iOS(jobDate, "up");
-                Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg1));
+			// scrollToElement(jobslist, "up");
 
-                jobDate = By.xpath(
-                        "(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='"
-                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-                scrollToElement_iOS(jobDate, "up");
-                Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
-                break;
-            case "iOS":
+			// click(jobslist, "Clicking available job Widget");
+			break;
+		default:
+			throw new Exception("Invalid platform Name");
+		}
+	}
 
+	public void clickOnAcceptJobsBtn() {
+		isElementDisplayed(jobAcceptBtn);
+		Assert.assertTrue("Accept job btn is not displayed", jobAcceptBtn.isDisplayed());
+		utils.log().info("Accept job btn is displayed");
+		click(jobAcceptBtn);
+		utils.log().info("clicked on Accept button");
+	}
+
+	public void successMsgPOPUP() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+		isElementDisplayed(successMsg);
+		Assert.assertEquals("Success message is not displayed", getElementText(successMsg),
+				"You have Successfully accepted this Job");
+		utils.log().info("Success message is displayed");
+		break;
+			case "iOS":
+				isElementDisplayed(successMsg);
+				Assert.assertEquals("Success message is not displayed", getElementText(successMsg),
+						"You have successfully accepted this job.");
+				utils.log().info("Success message is displayed");
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
+	}
+
+	public void clickOnOkBtn_successMsg() {
+		click(successOkBtn);
+		utils.log().info("Click on Success OK button is displayed");
+	}
+
+	public void clickOnHomeButton() {
+		Assert.assertTrue("Home button is not displayed", homeButton.isDisplayed());
+		utils.log().info("Home button is displayed");
+		click(homeButton);
+		utils.log().info("Click on Home button is displayed");
+	}
+
+	public void jobDetailsPageLoads() {
+		isElementDisplayed(jobDetailsConfirmation);
+		Assert.assertTrue("Job Details page is not displayed", jobDetailsConfirmation.isDisplayed());
+		utils.log().info("Job Details page is displayed");
+	}
+
+	public void confirmationPresent(String confirmationNumber) {
+		Assert.assertTrue("Confirmation number is not displayed",
+				getElementText(confirmationNo).contains(confirmationNumber));
+		utils.log().info("Confirmation number is displayed");
+	}
+
+	public void selectOrg() {
+		isElementdisplayed(associatedOrgForSub1);
+		Assert.assertTrue("Available Organizations are not displayed", associatedOrgForSub1.isDisplayed());
+		utils.log().info("Available Organizations are  displayed");
+		click(associatedOrgForSub1);
+		click(contbtn);
+	}
+
+	public String changeDateFormat(String dateToBeFormated, String formatOriginal, String formatTarget) throws Exception {
+		DateFormat originalFormat = new SimpleDateFormat(formatOriginal);
+		DateFormat targetFormat = new SimpleDateFormat(formatTarget);
+		Date date = originalFormat.parse(dateToBeFormated);
+		return targetFormat.format(date);
+	}
+
+	public void checkAvailablejob() throws Throwable {
+		switch (new GlobalParams().getPlatformName()) {
+		case "Android":
+			isElementdisplayed(jobslist);
+
+			By jobDate = By.xpath(
+					"(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='"
+							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+			utils.log().info("jobDate");
+
+			scrollToElement_iOS(jobDate, "up");
+			Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolValidationOrg1));
+			
+			 jobDate = By.xpath(
+					"(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='"
+							+ changeDateFormat( nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+			scrollToElement_iOS(jobDate, "up");
+			 Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate)||IsElementPresent(jobSchoolValidationOrg2));
+			break;
+		case "iOS":
 //			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'AutomationEmp 4173')]");
 //			scrollToElement(findJob, "up");
 //			click(findJob, "Clicked on on Required Job");

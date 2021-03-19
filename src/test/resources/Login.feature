@@ -51,7 +51,7 @@ Feature: Login scenarios
     And Enter username "AutomationSubMutiOrg" and password and click on Sign In button
     Then the user is presented with the org picker
 
-  @MOB-3682 @AndroidRegression
+  @MOB-3682 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user has no access to districts
    When the user launches the app
     Then the user click on Get Started Button

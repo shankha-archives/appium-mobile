@@ -565,8 +565,7 @@ public class SmokeStepDef {
 	@And("^Select an unfilled and unassigned absence for \"([^\"]*)\"$")
 	public void select_an_unfilled_and_unassigned_absence_for_something(String absenceDay) throws Throwable {
 		smokePage.selectAbsenceWidget();
-		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"),
-				absenceDay);
+		smokePage.selectUnfilledUnassignedAbsence(testdata.read_property("testingData", "users", "UnFilledUnassigned"),absenceDay);
 	}
 
 	@When("^Verify if timesheet present for an employee and delete it using information \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")

@@ -33,7 +33,7 @@ Feature: Timesheet scenarios
 		And undo the timesheet
 
 	#submit: week page, day page, undo
-	@MOB-5577 @AndroidRegression
+	@MOB-5577 @AndroidRegression @iOSRegression
 	Scenario: Verify an employee user can submit day timesheet
 		When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
