@@ -1606,4 +1606,11 @@ public class BasePage {
 		}
 		return dateFormat.format(c.getTime());
 	}
+
+	public String changeDateFormat(String dateToBeFormated, String formatOriginal, String formatTarget) throws Exception {
+		DateFormat originalFormat = new SimpleDateFormat(formatOriginal);
+		DateFormat targetFormat = new SimpleDateFormat(formatTarget);
+		Date date = originalFormat.parse(dateToBeFormated);
+		return targetFormat.format(date);
+	}
 }

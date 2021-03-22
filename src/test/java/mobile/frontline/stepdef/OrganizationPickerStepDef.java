@@ -13,4 +13,16 @@ public class OrganizationPickerStepDef {
         //loginPage.orgPickerPageLoads();
         Assert.assertTrue("Organization picker is not displayed",orgPickerScreen.orgPickerPageLoads());
     }
+
+    @Then("The user choose the one organization")
+    public void theUserChooseTheOneOrganization() {
+        orgPickerScreen.clickFirstOrganization();
+        orgPickerScreen.clickContinueBtn();
+    }
+
+    @Then("The user choose the second organization")
+    public void theUserChooseTheSecondOrganization() {
+        orgPickerScreen.clickSecondOrganization();
+        orgPickerScreen.clickContinueBtn();
+    }
 }

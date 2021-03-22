@@ -29,4 +29,19 @@ public class JobPageStepDef {
         //jobulatorPage.verifyAcceptedJob();
         Assert.assertTrue("Accepted job still present in the jobs list", jobsScreen.verifyAcceptedJob());
     }
+
+    @Then("Verify the created jobs")
+    public void verifyTheCreatedJobs() throws Throwable {
+        jobsScreen.checkAvailablejob();
+    }
+
+    @Then("Verify available jobs from all districts")
+    public void verifyAvailableJobsFromAllDistricts() throws Exception {
+        jobsScreen.multiDistrictVerification();
+    }
+
+    @And("Verify the created jobs are available in the list")
+    public void verifyTheCreatedJobsAreAvailableInTheList() throws Throwable {
+        jobsScreen.verifyCreatedJobsAreVisibleintheList();
+    }
 }

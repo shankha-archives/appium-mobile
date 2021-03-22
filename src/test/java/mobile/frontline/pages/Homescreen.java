@@ -26,6 +26,10 @@ public class Homescreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
     public MobileElement homeButton;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[1]")
+    public MobileElement switchbtn;
+
     public Homescreen(){
 
     }
@@ -67,8 +71,11 @@ public class Homescreen extends BasePage{
             }
 
         }
-    public void clickOnHomeButton() {
+    public void clickOnHomeButton() throws InterruptedException {
         click(homeButton);
+    }
+    public void clickSwitchbtn() {
+        click(switchbtn);
     }
 
 }

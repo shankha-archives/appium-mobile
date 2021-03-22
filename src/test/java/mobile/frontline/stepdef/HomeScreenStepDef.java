@@ -25,7 +25,12 @@ public class HomeScreenStepDef {
     }
 
     @And("Navigate to dashboard")
-    public void navigateToDashboard() {
+    public void navigateToDashboard() throws InterruptedException {
         homescreen.clickOnHomeButton();
+    }
+
+    @And("Click on switch btn")
+    public void clickOnSwitchBtn() {
+        homescreen.clickSwitchbtn();
     }
 }
