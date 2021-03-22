@@ -1,15 +1,17 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @AndroidRegression @MOB-3325 @iOSRegression
+  @AndroidRegression @MOB-3325 @iOSRegression @abc
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
    	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app 
-	  Then the user click on Get Started Button
+    Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
     Then the substitute navigates to dashboard page
-    And click on the Available Jobs and view job list
-    And Click on the job "CreateJob" and accept it
+    And click on the Available Jobs
+    And view job list
+    And Click on the job "CreateJob"
+    And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
     Then Success Message is dismissed revealing accepted job details page
@@ -21,8 +23,10 @@ Feature: Jobulator scenarios
     Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button
     Then the substitute navigates to dashboard page
-    And click on the Available Jobs and view job list
-    And Click on the job "CreateJob2" and accept it
+    And click on the Available Jobs
+    And view job list
+    And Click on the job "CreateJob2"
+    And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
     Then Success Message is dismissed revealing accepted job details page
@@ -32,13 +36,21 @@ Feature: Jobulator scenarios
   Scenario: Verify substitute cannot view accepted job in job list
    	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app 
-		Then the user click on Get Started Button
+    Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
     Then the substitute navigates to dashboard page
-    And click on the Available Jobs and view job list
-    And Click on the job "CreateJob3" and accept it
-    Then click okay on Success Message overlay
-    And visit available jobs page again
+#    And click on the Available Jobs and view job list
+    And click on the Available Jobs
+    And view job list
+    And Click on the job "CreateJob3"
+    And accept the job
+    Then the Success Message overlay is displayed
+    When Clicked on Okay
+#    Then click okay on Success Message overlay
+    And Navigate to dashboard
+    And click on the Available Jobs
+    And view job list
+#    And visit available jobs page again
     Then verify if accepted job is still present
   
 @MOB-3681 @AndroidRegression @iOSRegression

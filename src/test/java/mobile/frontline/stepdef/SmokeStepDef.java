@@ -9,6 +9,7 @@ import mobile.Frontline.utils.PropertyManager;
 import mobile.Frontline.utils.TestDataManager;
 import mobile.Frontline.utils.TestUtils;
 import mobile.frontline.pages.*;
+import org.junit.Assert;
 //import mobile.frontline.pages.JobsMethods;
 
 //import mobile.frontline.pages.TimesheetMethods;
@@ -69,7 +70,8 @@ public class SmokeStepDef {
 
 	@When("^the user waits and launches the app$")
 	public void the_user_waits_and_launches_the_app() throws Throwable {
-		loginPage.waitAndverify_splashScreenLoaded();
+		Assert.assertTrue("Waiting and searching for get started",loginMethods.waitAndverify_splashScreenLoaded());
+		//loginPage.waitAndverify_splashScreenLoaded();
 	}
 
 	@Then("^the admin user click on Get Started Button and enter the pin$")

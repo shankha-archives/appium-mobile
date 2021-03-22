@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
+import org.junit.Assert;
 
 public class LoginScreen extends BasePage {
 
@@ -126,5 +127,15 @@ public class LoginScreen extends BasePage {
 //                getElementText(noLoginDialogBox),"You have not been granted access to any organizations that use the Frontline Insights Platform.");
 //        utils.log().info(
 //                "You have not been granted access to any organizations that use the Frontline Insights Platform is displayed");
+    }
+
+
+    public boolean waitAndverify_splashScreenLoaded() throws Exception {
+        Thread.sleep(30000);
+        isElementDisplayed(splashScreen);
+        Thread.sleep(30000);
+
+        return splashScreen.isDisplayed();
+       // Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
     }
 }
