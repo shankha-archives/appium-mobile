@@ -68,11 +68,7 @@ public class SmokeStepDef {
 
 
 
-	@When("^the user waits and launches the app$")
-	public void the_user_waits_and_launches_the_app() throws Throwable {
-		Assert.assertTrue("Waiting and searching for get started",loginMethods.waitAndverify_splashScreenLoaded());
-		//loginPage.waitAndverify_splashScreenLoaded();
-	}
+
 
 	@Then("^the admin user click on Get Started Button and enter the pin$")
 	public void the_admin_user_click_on_get_started_button_and_enter_the_pin() throws Throwable {
@@ -538,18 +534,7 @@ public class SmokeStepDef {
 			utils.log().info("The environment selected is prodution");
 	}
 
-	@When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing ones$")
-	public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_ones(
-			String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
-		props = new PropertyManager().getProps();
-		if (!props.getProperty("testdata").contains("prod")) {
-			apiService.apiTokenGeneration(apiLoginID);
-			apiService.apiGetConfirmationIds(workerID, absenceDay);
-			apiService.apiDeleteAbsence();
-			apiService.apiCreateAbsence(workerID, absenceDay, schoolID, reasonID);
-		} else
-			utils.log().info("The environment selected is prodution");
-	}
+
 
 	@Then("^Tap on the day of created absence for \"([^\"]*)\" in the app Calendar$")
 	public void tap_on_the_day_of_created_absence_for_something_in_the_app_calendar(String absenceDay)
