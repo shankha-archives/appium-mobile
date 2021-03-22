@@ -12,15 +12,6 @@ public class APIStepDef {
     Properties props;
     TestUtils utils = new TestUtils();
     public APIServices apiService = new APIServices();
-//    private String confirmationNumber;
-//
-//    public String getConfirmationNumber() {
-//        return confirmationNumber;
-//    }
-//
-//    public void setConfirmationNumber(String confNumber) {
-//        this.confirmationNumber = confNumber;
-//    }
 
     @When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing absence$")
     public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_absence(

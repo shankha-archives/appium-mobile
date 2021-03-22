@@ -60,18 +60,32 @@ Feature: Jobulator scenarios
     When the user waits and launches the app
     Then the user click on Get Started Button
     When Enter username "AutomationSubMutiOrg" and password and click on Sign In button
-    Then the user choose the sub role of one org and verify the created jobs
-    When the user choose the sub role of another org and verify the created jobs
+    Then The user choose the one organization
+    Then the substitute navigates to dashboard page
+    When click on the Available Jobs
+    Then Verify the created jobs
+    When Navigate to dashboard
+    And Click on switch btn
+    Then The user choose the second organization
+    Then the substitute navigates to dashboard page
+    When click on the Available Jobs
+    And view job list
+    Then Verify the created jobs
+#    Then the user choose the sub role of one org and verify the created jobs
+#    When the user choose the sub role of another org and verify the created jobs
       
 @MOB-3683 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
   	When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
   	When the user waits and launches the app 
-		Then the user click on Get Started Button
+    Then the user click on Get Started Button
     When Enter username "AutomationSubsMOB-3683" and password and click on Sign In button
     Then the substitute navigates to dashboard page
-    And the dashboard displays all available jobs from all districts
+    When click on the Available Jobs
+    And view job list
+    Then Verify available jobs from all districts
+#    And the dashboard displays all available jobs from all districts
       
 @MOB-4173 @MOB-4172 @Done @AndroidRegression @iOSRegression
   Scenario: Verify that substitute is able to view job widget and jobs in job list
@@ -81,5 +95,7 @@ Feature: Jobulator scenarios
 	Then the user click on Get Started Button
   	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
   	Then the substitute navigates to dashboard page
-  	And click on the Available Jobs and view job list
+    And click on the Available Jobs
+    And view job list
+#  	And click on the Available Jobs and view job list
   	And Verify the created jobs are available in the list
