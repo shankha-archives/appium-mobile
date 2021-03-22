@@ -42,6 +42,12 @@ public class LoginStepDef {
 		//loginPage.verify_splashScreenLoaded();
 	}
 
+	@When("^the user waits and launches the app$")
+	public void the_user_waits_and_launches_the_app() throws Throwable {
+		Assert.assertTrue("Waiting and searching for get started",loginMethods.waitAndverify_splashScreenLoaded());
+		//loginPage.waitAndverify_splashScreenLoaded();
+	}
+
 	@Then("the user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
 		//loginPage.clickOnGetStartedBtn();
