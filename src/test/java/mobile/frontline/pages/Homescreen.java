@@ -66,7 +66,7 @@ public class Homescreen extends BasePage{
             if ((new GlobalParams().getPlatformName()).contains("Android"))
                     click(availableJobs, "Clicking available job Widget");
             else {
-                verify_homeScreen_displayed();
+              //  verify_homeScreen_displayed();
                 click(availableJobs, "Clicking available job Widget");
             }
 

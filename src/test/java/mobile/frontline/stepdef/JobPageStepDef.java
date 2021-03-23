@@ -14,7 +14,7 @@ public class JobPageStepDef {
     @And("view job list")
     public void viewJobList() throws Throwable {
         Assert.assertTrue("Job Screen is displayed",jobsScreen.verifyJobPageDisplayed());
-        basePage.scrollDown();
+       // basePage.scrollDown();
     }
 
     @And("Click on the job {string}")
