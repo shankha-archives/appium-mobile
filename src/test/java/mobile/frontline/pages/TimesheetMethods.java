@@ -307,7 +307,7 @@ public class TimesheetMethods extends LoginPage {
 		Assert.assertEquals(InvalidPinMsg, "Invalid PIN");
 	}
 
-	public void verifyTimeFormat() throws Exception {
+	public void verifyDecimalFormat() throws Exception {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
 			isElementdisplayed(dayTotalTimesheet);
@@ -349,5 +349,24 @@ public class TimesheetMethods extends LoginPage {
 		isElementdisplayed(smoke.monday);
 		 weekTotalActual = getElementText(totalWeekTotalAmount);
 		Assert.assertEquals("Total time in the timesheets is incorrect", weekTotalActual,totalExpectedTimeofWeek);
+	}
+
+	public void verifyTimeFormat() throws Exception {
+		switch (new GlobalParams().getPlatformName()) {
+			case "Android":
+				isElementdisplayed(dayTotalTimesheet);
+				dayTotalTime = common.getElementText(dayTotalTimesheet);
+				break;
+
+			case "iOS":
+				isElementdisplayed(totalWeekTime);
+				weekTotal = totalWeekTime.getAttribute("name").toString();
+				break;
+			default:
+				throw new Exception("Invalid platform Name");
+		}
+		//d = dateFormat.parse(weekTotal);
+		Assert.assertTrue("Time is not in h:mm format",dayTotalTime.equals("1:00") );
+		utils.log().info("Timesheet Date Format");
 	}
 }

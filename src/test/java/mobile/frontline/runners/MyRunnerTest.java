@@ -20,7 +20,7 @@ import io.cucumber.junit.CucumberOptions;
         ,dryRun=false
         ,monochrome=true
         ,strict=true
-        ,tags = {"@login"}
+        ,tags = {"@MOB-7529"}
 )
 
 public class MyRunnerTest {

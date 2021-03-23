@@ -69,59 +69,59 @@ Scenario: Verify role picker option should not displayed when user account has o
 	When Select other Organization
 	Then the substitute navigates to dashboard page
 	
-	#remove   
-@Setting @MOB-6033 @MOB-6034  @done
-Scenario: Verify that in employee user no upcoming absences tab is renamed as Denied tab in available Leave Balances widget
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter employee username "AutomationEmployeeMOB-4255" and password and click on Sign In button 
-	Then the employee navigates to dashboard page
-	And click on Available Leave Balances and view leave balances
-	Then click and verify the Denied panel
+#	#remove
+#@Setting @MOB-6033 @MOB-6034  @done
+#Scenario: Verify that in employee user no upcoming absences tab is renamed as Denied tab in available Leave Balances widget
+#	When the user launches the app
+#	Then the user click on Get Started Button
+#	And Enter employee username "AutomationEmployeeMOB-4255" and password and click on Sign In button
+#	Then the employee navigates to dashboard page
+#	And click on Available Leave Balances and view leave balances
+#	Then click and verify the Denied panel
 	
 @Setting @MOB-6019 @AndroidRegression
 Scenario: Verify an employee can view same Intime event value in Timesheet even after relaunching the app
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter employee username "AutomationEmployeeMOB-4263" and password and click on Sign In button 
-	Then the employee navigates to dashboard page
+	Then the user navigates to dashboard page
 	When employee clicks on the timesheet widget
 	Then click on add timesheet and change InTime
 	And The user minimize and relaunch the application
 	Then Verify that InTime should not changes
 
-#Remove ?// covered in dark mode
-@Setting @MOB-6025 @done
-Scenario: Verify that application is able to open Login page on app startup or log-off
-	When the user launches the app 
-	Then the user click on Get Started Button
-	Then The user verifies that Login page is displayed 
-	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	And  logouts out from the application
-	Then Verify that Login page is displayed after logout
-	
-	#Remove // already covered in assign absence
-@Setting @MOB-6030  @done 
-Scenario: Verify application does not crashe after tapping on todays absence tab in admin user
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter admin username and password and click on Sign In button 
-	Then the admin navigates to dashboard page 
-	When Click on add Absence Widget
-	Then Click on any created absence and verify if crash happens 
-
-	# remove covered in @MOB-4251
-@Setting @MOB-6021 @done
-Scenario: Verify absences should be visible in Absences Today widget
-	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4257" for "current day" and delete them
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter username "AutomationAdminMOB-6021" and password and click on Sign In button 
-	Then the admin navigates to dashboard page
-	And click on the absences then add absence
-	When enter "Emp-4257" select reason date length summary for "current day"
-	Then submit absence and verify the alert
-	Then Click on View Absence and move to dashboard
-	Then Move to absence today widget and verify the absence
-	Then Verify that absences are visible
+##Remove ?// covered in dark mode
+#@Setting @MOB-6025 @done
+#Scenario: Verify that application is able to open Login page on app startup or log-off
+#	When the user launches the app
+#	Then the user click on Get Started Button
+#	Then The user verifies that Login page is displayed
+#	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
+#	Then the substitute navigates to dashboard page
+#	And  logouts out from the application
+#	Then Verify that Login page is displayed after logout
+#
+#	#Remove // already covered in assign absence
+#@Setting @MOB-6030  @done
+#Scenario: Verify application does not crashe after tapping on todays absence tab in admin user
+#	When the user launches the app
+#	Then the user click on Get Started Button
+#	And Enter admin username and password and click on Sign In button
+#	Then the admin navigates to dashboard page
+#	When Click on add Absence Widget
+#	Then Click on any created absence and verify if crash happens
+#
+#	# remove covered in @MOB-4251
+#@Setting @MOB-6021 @done
+#Scenario: Verify absences should be visible in Absences Today widget
+#	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4257" for "current day" and delete them
+#	When the user launches the app
+#	Then the user click on Get Started Button
+#	And Enter username "AutomationAdminMOB-6021" and password and click on Sign In button
+#	Then the admin navigates to dashboard page
+#	And click on the absences then add absence
+#	When enter "Emp-4257" select reason date length summary for "current day"
+#	Then submit absence and verify the alert
+#	Then Click on View Absence and move to dashboard
+#	Then Move to absence today widget and verify the absence
+#	Then Verify that absences are visible

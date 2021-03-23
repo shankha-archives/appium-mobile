@@ -47,6 +47,7 @@
 		<AutomationEmployeeMOB-5568>AutomationEmp5568</AutomationEmployeeMOB-5568>
 		<AutomationEmployeeMOB-5583>AutomationEmp5583</AutomationEmployeeMOB-5583>
 		<AutomationEmployeeMOB-5584>AutomationEmp_5584</AutomationEmployeeMOB-5584>
+		<AutomationEmployeeMOB-7529>AutomationEmp7529</AutomationEmployeeMOB-7529>
 		<AutomationAdminMOB-4249>AutomationAdmin</AutomationAdminMOB-4249>
 		<AutomationAdminMOB-4251>AutomationAdmin4251</AutomationAdminMOB-4251>
 		<AutomationAdminMOB-4267>AutomationAdmin4267</AutomationAdminMOB-4267>
@@ -87,6 +88,8 @@
 		<APIWorkerIDCreateJobs4>8583500</APIWorkerIDCreateJobs4>
 		<APIWorkerID_MOB-4173>8583629</APIWorkerID_MOB-4173>
 		<APIWorkerID_MOB-4172>8583639</APIWorkerID_MOB-4172>
+		<APIWorkerID_MOB-5583>8586082</APIWorkerID_MOB-5583>
+		<APIWorkerID_MOB-7529>8587192</APIWorkerID_MOB-7529>
 		<APIWorkerID_MOB-3681_GLorg5>8583685</APIWorkerID_MOB-3681_GLorg5>
 		<APIWorkerID_MOB-3681>8583686</APIWorkerID_MOB-3681>
 		<APIOrgID>654527</APIOrgID>
