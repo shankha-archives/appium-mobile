@@ -21,9 +21,11 @@ public class JobsScreen extends BasePage {
     public MobileElement jobslist;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
+    @iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@label = 'AutomationEmp 3681'])[1]/following::XCUIElementTypeStaticText[@label='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
     public MobileElement jobSchoolValidationOrg1;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='GL_Performance_50468ED78-1019-4F46-97AB-801A3C4AC5'])[1]")
+    @iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@label = 'AutomationEmpOrg5 3681'])[1]/following::XCUIElementTypeStaticText[@label='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
     public MobileElement jobSchoolValidationOrg2;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='ChildCareCenter'])[1]")
@@ -62,13 +64,22 @@ public class JobsScreen extends BasePage {
         }
     }
 
-    public boolean verifyAcceptedJob() {
+    public boolean verifyAcceptedJob() throws Exception {
+        if (new GlobalParams().getPlatformName().contains("Android")) {
         By jobDate = By.xpath(
                 "(//android.widget.TextView[@text='AutomationEmp CreateJob3']/following:: android.widget.TextView[@text='"
                         + JobDetailScreen.job_date + "'])[1]");
         return IsElementNotPresent(jobDate);
         // Assert.assertTrue("Accepted job still present in the jobs list", IsElementNotPresent(jobDate));
+        } else {
+            By jobDate = By.xpath("((//XCUIElementTypeStaticText[@label = 'AutomationEmp CreateJob3'])[1]/following::XCUIElementTypeStaticText[@label = " +
+                    "'" +changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+
+            return IsElementNotPresent(jobDate);
+
+        }
     }
+
 
     public void checkAvailablejob() throws Throwable {
         if (new GlobalParams().getPlatformName().contains("Android")) {
@@ -88,13 +99,24 @@ public class JobsScreen extends BasePage {
             scrollToElement_iOS(jobDate, "up");
             Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
         } else {
-//			By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'AutomationEmp 4173')]");
-//			scrollToElement(findJob, "up");
-//			click(findJob, "Clicked on on Required Job");
-            //throw new Exception("Invalid platform Name");
+
+                isElementdisplayed(jobslist);
+
+                By jobDate = By.xpath(
+                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3681'])[1]/following::XCUIElementTypeStaticText[@label = " +
+                                        "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+            scrollToElement_iOS(jobDate, "up");
+
+                Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg1));
+
+                jobDate =  By.xpath(
+                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmpOrg5 3681'])[1]/following::XCUIElementTypeStaticText[@label = " +
+                                "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+            scrollToElement_iOS(jobDate, "up");
+                     Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
+            }
         }
 
-    }
 
     public void multiDistrictVerification() throws Exception {
         switch (new GlobalParams().getPlatformName()) {
