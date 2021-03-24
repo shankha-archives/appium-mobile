@@ -34,6 +34,10 @@ public class Homescreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Menu_TabBar_Button")
     public MobileElement menuTab;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
+    @iOSXCUITFindBy(accessibility = "Available Leave Balances_ModuleHeader")
+    public MobileElement availableLeaveBalance;
+
     public Homescreen(){
 
     }
@@ -91,6 +95,17 @@ public class Homescreen extends BasePage{
     public void clickOnMenuTab() {
        // Assert.assertTrue("Menu tab is not displayed", menuTab.isDisplayed());
         click(menuTab, "Clicked on Menu Tab");
+    }
+
+    public void clickOnAvailableLeaveBalanceWidget() throws Exception {
+        scrollToElement(availableLeaveBalance, "up");
+//        Assert.assertTrue("Available Leave Balances is not displayed on Home page",
+//                availableLeaveBalance.isDisplayed());
+//        utils.log().info("Available Leave Balances is displayed on Home page");
+        click(availableLeaveBalance);
+//        isElementdisplayed(availableLeaveBalanceHeader);
+//        Assert.assertTrue("Available Leave Balance page is not displayed", availableLeaveBalanceHeader.isDisplayed());
+//        utils.log().info("Available Leave Balance Page is displayed");
     }
 
 }

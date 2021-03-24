@@ -104,7 +104,7 @@ public  APIStepDef api = new APIStepDef();
 		props = new PropertyManager().getProps();
 		if (!props.getProperty("testdata").contains("prod")) {
 			apiService.apiBearerTokenGeneration(tokenUser);
-			//apiService.apiAcceptSubstituteJob(confirmationNumber, xrefOrgID);
+			apiService.apiAcceptSubstituteJob(APIServices.confirmationNumber, xrefOrgID);
 		} else
 			utils.log().info("The environment selected is prodution");
 	}

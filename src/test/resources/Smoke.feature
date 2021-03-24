@@ -21,11 +21,17 @@ Scenario: Verify the user toggle the Dark mode
 #	When the user clicks on Menu tab and click on Settings
 	When the user clicks on Menu tab
 	And Click on Settings
-	Then Verify the dark mode btn and toggle the Dark Mode and Logout from app
-	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	When the user clicks on Menu tab and click on Settings 
-	Then Verify the dark mode button
+	Then Verify the dark mode btn is OFF
+	When Toggle the Dark Mode
+	And Logout from app
+#	Then Verify the dark mode btn and toggle the Dark Mode and Logout from app
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
+	Then the substitute navigates to dashboard page
+	When the user clicks on Menu tab
+	And Click on Settings
+#	When the user clicks on Menu tab and click on Settings
+#	Then Verify the dark mode button
+	Then Verify the dark mode button is ON
 
 ##	//change leaves through aPI or web, then check the balance Not valid for ios
 @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @AndroidRegression
@@ -34,7 +40,9 @@ Scenario: View leave balances and check available days
 	Then the user click on Get Started Button
 	And Enter username "AutomationEmployeeMOB-4255" and password and click on Sign In button
 	Then the user navigates to dashboard page
-	And click on Available Leave Balances and view leave balances 
+	When click on Available Leave Balances
+	Then View leave balance screen
+#	And click on Available Leave Balances and view leave balances
 	Then verify available days
 
 @MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke @AndroidRegression @iOSRegression

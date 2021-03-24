@@ -54,4 +54,9 @@ public class HomeScreenStepDef {
     public void theUserClicksOnMenuTab() {
         homescreen.clickOnMenuTab();
     }
+
+    @When("click on Available Leave Balances")
+    public void clickOnAvailableLeaveBalances() throws Exception {
+        homescreen.clickOnAvailableLeaveBalanceWidget();
+    }
 }
