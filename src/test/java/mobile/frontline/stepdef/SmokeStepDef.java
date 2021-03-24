@@ -38,16 +38,10 @@ public class SmokeStepDef {
 
 
 
-	@And("^The user kill and relaunch the application$")
-	public void the_user_kill_and_relaunch_the_application() throws Throwable {
-		basePage.bgRunningApp();
-	}
+
 
 	// @MOB-4229
-	@And("^The user minimize and relaunch the application$")
-	public void the_user_minimize_and_relaunch_the_application() throws Throwable {
-		basePage.bgRunningApp();
-	}
+
 
 	@And("^Enter admin username and password and click on Sign In button$")
 	public void enter_admin_username_and_password_and_click_on_sign_in_button() throws Throwable {
@@ -292,10 +286,7 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
-	@Then("the employee navigates to dashboard page")
-	public void theEmployeeNavigatesToDashboardPage() throws Throwable {
-		loginPage.verify_homeScreen_displayedWithoutPushVerify();
-	}
+
 
 	@And("^click on the create absences$")
 	public void click_on_the_create_absences() throws Throwable {

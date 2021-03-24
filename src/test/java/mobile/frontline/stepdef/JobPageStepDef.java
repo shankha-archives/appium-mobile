@@ -44,4 +44,19 @@ public class JobPageStepDef {
     public void verifyTheCreatedJobsAreAvailableInTheList() throws Throwable {
         jobsScreen.verifyCreatedJobsAreVisibleintheList();
     }
+
+    @Then("Verify the created jobs {string} is present")
+    public void verifyTheCreatedJobsIsPresent(String employeeName) throws Exception {
+        jobsScreen.verifyJobIsAvailable(employeeName);
+    }
+
+    @And("Verify job list on Jobs page")
+    public void verifyJobListOnJobsPage() {
+        Assert.assertTrue("Job is not present in the list",jobsScreen.verifyJobListPresent());
+    }
+
+    @And("Verify school {string} is associated with {string}")
+    public void verifySchoolIsAssociatedWith(String schoolName, String employeeName) throws Exception {
+        Assert.assertTrue("Job with associated school is not present in the list",jobsScreen.checkSchoolisPresent(schoolName, employeeName));
+    }
 }

@@ -5,12 +5,15 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.Homescreen;
+import org.jsoup.Connection;
 
 public class HomeScreenStepDef {
 
     public Homescreen homescreen = new Homescreen();
-
+    public BasePage basePage = new BasePage();
 
 
     @Then("^the substitute navigates to dashboard page$")
@@ -32,5 +35,28 @@ public class HomeScreenStepDef {
     @And("Click on switch btn")
     public void clickOnSwitchBtn() {
         homescreen.clickSwitchbtn();
+    }
+    @Then("the user navigates to dashboard page")
+    public void theUserNavigatesToDashboardPage() throws Throwable {
+        homescreen.verify_homeScreen_displayedWithoutPushVerify();
+    }
+    @And("^The user minimize and relaunch the application$")
+    public void the_user_minimize_and_relaunch_the_application() throws Throwable {
+        basePage.bgRunningApp();
+    }
+
+    @And("^The user kill and relaunch the application$")
+    public void the_user_kill_and_relaunch_the_application() throws Throwable {
+        basePage.bgRunningApp();
+    }
+
+    @When("the user clicks on Menu tab")
+    public void theUserClicksOnMenuTab() {
+        homescreen.clickOnMenuTab();
+    }
+
+    @When("click on Available Leave Balances")
+    public void clickOnAvailableLeaveBalances() throws Exception {
+        homescreen.clickOnAvailableLeaveBalanceWidget();
     }
 }
