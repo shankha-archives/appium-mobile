@@ -9,8 +9,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-//import static mobile.frontline.pages.APIServices.*;
-
 public class JobsScreen extends BasePage {
 
     public TestDataManager testdata = new TestDataManager();
@@ -28,7 +26,7 @@ public class JobsScreen extends BasePage {
     public MobileElement jobSchoolValidationOrg1;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='GL_Performance_50468ED78-1019-4F46-97AB-801A3C4AC5'])[1]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@label = 'AutomationEmpOrg5 3681'])[1]/following::XCUIElementTypeStaticText[@label='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
+    @iOSXCUITFindBy(xpath ="//XCUIElementTypeStaticText[@label = 'AutomationEmpOrg5 3681'])[1]/following::XCUIElementTypeStaticText[@label='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
     public MobileElement jobSchoolValidationOrg2;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='ChildCareCenter'])[1]")
@@ -113,6 +111,7 @@ public class JobsScreen extends BasePage {
         }
     }
 
+
     public void checkAvailablejob() throws Throwable {
         if (new GlobalParams().getPlatformName().contains("Android")) {
 
@@ -146,7 +145,6 @@ public class JobsScreen extends BasePage {
             Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
         }
     }
-
 
     public void multiDistrictVerification() throws Exception {
         switch (new GlobalParams().getPlatformName()) {
