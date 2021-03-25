@@ -205,7 +205,7 @@ public class SettingsPage extends LoginPage {
 	public void verifyNextScheduledJobWidget() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job");
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job","Scrolling to the next Scheduled Job widget ");
 			break;
 		case "iOS":
 			scrollToElement(nextScheduledJobWidget, "up");
@@ -277,7 +277,7 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void verifyAbsenceOnDashboard() throws Throwable {
-		androidScrollToElementUsingUiScrollable("text", "Absences Today");
+		androidScrollToElementUsingUiScrollable("text", "Absences Today", "Scrolling to the absence widget");
 		Assert.assertNotEquals(getElementText(absenceTextOut) + "is not same as No upcoming Absences",
 				getElementText(absenceTextOut), "No upcoming Absences");
 		utils.log().info("Absences are not visible");
@@ -285,7 +285,7 @@ public class SettingsPage extends LoginPage {
 	}
 
 	public void verifyAbsenceIsVisible(String confNumber) throws Throwable {
-		androidScrollToElementUsingUiScrollable("text", employeeName);
+		androidScrollToElementUsingUiScrollable("text", employeeName,"scrolling to employee absence");
 		absenceName = driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + employeeName + "')]");
 		Assert.assertNotEquals(employeeName + "is not same as No Absences", employeeName, "No Absences");
 		utils.log().info("Absences are not visible");

@@ -44,7 +44,7 @@ public class JobsScreen extends BasePage {
 
 
     public boolean verifyJobPageDisplayed() throws Throwable {
-        return isElementDisplayed(availableJobsHeader);
+        return isElementDisplayed(availableJobsHeader, "Waiting for job page header");
 //                isElementDisplayed(availableJobsHeader);
 //                Assert.assertTrue("Available Jobs list page is not displayed", availableJobsHeader.isDisplayed());
 //
@@ -54,13 +54,13 @@ public class JobsScreen extends BasePage {
     public void clickOnAvailableJobs(String jobByEmp) throws Throwable {
 
         if (new GlobalParams().getPlatformName().contains("Android")) {
-            scrolledToElement = androidScrollToElementUsingUiScrollable("text", jobByEmp);
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", jobByEmp, "Scrolling to  the required job");
             scrolledToElement.click();
         }
         // storeJobDetails();
         else {
             By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
-            scrollToElement(findJob, "up");
+            scrollToElement(findJob, "up","Scrolling to the required job");
             click(findJob, "Clicking on on Required Job");
         }
     }
@@ -88,11 +88,11 @@ public class JobsScreen extends BasePage {
     public boolean checkSchoolisPresent(String schoolName, String employeeName) throws Exception {
         if (new GlobalParams().getPlatformName().contains("Android")) {
             By employeeSchool = By.xpath("(//android.widget.TextView[@text='" + employeeName + "']/following:: android.widget.TextView[@text='" + testdata.read_property("testingData", "users", schoolName) + "'])[1]");
-            return isElementPresent(scrollToElement_iOS(employeeSchool, "up"));
+            return isElementPresent(scrollToElement_iOS(employeeSchool, "up","Scrolling to the required job"));
             //return isElementPresent(employeeSchool);
         } else {
             By employeeSchool = By.xpath("//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label='" + testdata.read_property("Account", "valid", schoolName) + "'])[1]");
-            return isElementPresent(scrollToElement_iOS(employeeSchool, "up"));
+            return isElementPresent(scrollToElement_iOS(employeeSchool, "up", "Scrolling to the required job"));
         }
     }
 
@@ -102,120 +102,120 @@ public class JobsScreen extends BasePage {
             By jobDate = By.xpath(
                     "(//android.widget.TextView[@text='" + employeeName + "']/following:: android.widget.TextView[@text='"
                             + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-            return isElementPresent(scrollToElement_iOS(jobDate, "up"));
+            return isElementPresent(scrollToElement_iOS(jobDate, "up", "Scrolling to the required job"));
         } else {
             By jobDate = By.xpath(
                     "((//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label = " +
                             "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
-            return isElementPresent(scrollToElement_iOS(jobDate, "up"));
+            return isElementPresent(scrollToElement_iOS(jobDate, "up", "Scrolling to the required job"));
         }
     }
 
-
-    public void checkAvailablejob() throws Throwable {
-        if (new GlobalParams().getPlatformName().contains("Android")) {
-
-
-            By jobDate = By.xpath(
-                    "(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='"
-                            + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-
-            scrollToElement_iOS(jobDate, "up");
-            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) && IsElementPresent(jobSchoolValidationOrg1));
-
-            jobDate = By.xpath(
-                    "(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='"
-                            + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-            scrollToElement_iOS(jobDate, "up");
-            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
-        } else {
-
-
-            By jobDate = By.xpath(
-                    "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3681'])[1]/following::XCUIElementTypeStaticText[@label = " +
-                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
-            scrollToElement_iOS(jobDate, "up");
-
-            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg1));
-
-            jobDate = By.xpath(
-                    "((//XCUIElementTypeStaticText[@label = 'AutomationEmpOrg5 3681'])[1]/following::XCUIElementTypeStaticText[@label = " +
-                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
-            scrollToElement_iOS(jobDate, "up");
-            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
-        }
-    }
-
-    public void multiDistrictVerification() throws Exception {
-        switch (new GlobalParams().getPlatformName()) {
-            case "Android":
-
-                By jobDate = By.xpath(
-                        "(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='"
-                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-                scrollToElement_iOS(jobDate, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolMultidistrict1));
-
-                jobDate = By.xpath(
-                        "(//android.widget.TextView[@text='AutomationEmp2 3683']/following:: android.widget.TextView[@text='"
-                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-                scrollToElement_iOS(jobDate, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolMultidistrict2));
-                break;
-            case "iOS":
-
-                By jobDate_iOS = By.xpath(
-                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3683'])[1]/following::XCUIElementTypeStaticText[@label = " +
-                                "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 7:00 AM'])[1]");
-                scrollToElement_iOS(jobDate_iOS, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS) || IsElementPresent(jobSchoolMultidistrict1));
-
-                jobDate_iOS = By.xpath(
-                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp2 3683'])[1]/following::XCUIElementTypeStaticText[@label = " +
-                                "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
-
-                scrollToElement_iOS(jobDate_iOS, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS) || IsElementPresent(jobSchoolMultidistrict2));
-                break;
-            default:
-                throw new Exception("Invalid platform Name");
-        }
-    }
-
-    public void verifyCreatedJobsAreVisibleintheList() throws Throwable {
-        switch (new GlobalParams().getPlatformName()) {
-            case "Android":
-
-                By jobDate = By.xpath(
-                        "(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='"
-                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-                scrollToElement_iOS(jobDate, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
-
-                jobDate = By.xpath(
-                        "(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='"
-                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-                scrollToElement_iOS(jobDate, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
-                break;
-            case "iOS":
-
-                By jobDate_iOS = By.xpath(
-                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 4173'])[1]/following::XCUIElementTypeStaticText[@label = " +
-                                "'" + nextWorkingDay("next day", "MMMM d") + " • 8:00 AM'])[1]");
-                scrollToElement_iOS(jobDate_iOS, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS));
-
-                jobDate_iOS = By.xpath(
-                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 4172'])[1]/following::XCUIElementTypeStaticText[@label = " +
-                                "'" + nextWorkingDay("next day", "MMMM d") + " • 8:00 AM'])[1]");
-                scrollToElement_iOS(jobDate_iOS, "up");
-                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS));
-
-                break;
-            default:
-                throw new Exception("Invalid platform Name");
-        }
-    }
+//
+//    public void checkAvailablejob() throws Throwable {
+//        if (new GlobalParams().getPlatformName().contains("Android")) {
+//
+//
+//            By jobDate = By.xpath(
+//                    "(//android.widget.TextView[@text='AutomationEmp 3681']/following:: android.widget.TextView[@text='"
+//                            + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+//
+//            scrollToElement_iOS(jobDate, "up");
+//            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) && IsElementPresent(jobSchoolValidationOrg1));
+//
+//            jobDate = By.xpath(
+//                    "(//android.widget.TextView[@text='AutomationEmpOrg5 3681']/following:: android.widget.TextView[@text='"
+//                            + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+//            scrollToElement_iOS(jobDate, "up");
+//            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
+//        } else {
+//
+//
+//            By jobDate = By.xpath(
+//                    "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3681'])[1]/following::XCUIElementTypeStaticText[@label = " +
+//                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+//            scrollToElement_iOS(jobDate, "up");
+//
+//            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg1));
+//
+//            jobDate = By.xpath(
+//                    "((//XCUIElementTypeStaticText[@label = 'AutomationEmpOrg5 3681'])[1]/following::XCUIElementTypeStaticText[@label = " +
+//                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+//            scrollToElement_iOS(jobDate, "up");
+//            Assert.assertTrue("Created Job is visible in the Substitutes list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolValidationOrg2));
+//        }
+//    }
+//
+//    public void multiDistrictVerification() throws Exception {
+//        switch (new GlobalParams().getPlatformName()) {
+//            case "Android":
+//
+//                By jobDate = By.xpath(
+//                        "(//android.widget.TextView[@text='AutomationEmp 3683']/following:: android.widget.TextView[@text='"
+//                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+//                scrollToElement_iOS(jobDate, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolMultidistrict1));
+//
+//                jobDate = By.xpath(
+//                        "(//android.widget.TextView[@text='AutomationEmp2 3683']/following:: android.widget.TextView[@text='"
+//                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+//                scrollToElement_iOS(jobDate, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate) || IsElementPresent(jobSchoolMultidistrict2));
+//                break;
+//            case "iOS":
+//
+//                By jobDate_iOS = By.xpath(
+//                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 3683'])[1]/following::XCUIElementTypeStaticText[@label = " +
+//                                "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 7:00 AM'])[1]");
+//                scrollToElement_iOS(jobDate_iOS, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS) || IsElementPresent(jobSchoolMultidistrict1));
+//
+//                jobDate_iOS = By.xpath(
+//                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp2 3683'])[1]/following::XCUIElementTypeStaticText[@label = " +
+//                                "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+//
+//                scrollToElement_iOS(jobDate_iOS, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS) || IsElementPresent(jobSchoolMultidistrict2));
+//                break;
+//            default:
+//                throw new Exception("Invalid platform Name");
+//        }
+//    }
+//
+//    public void verifyCreatedJobsAreVisibleintheList() throws Throwable {
+//        switch (new GlobalParams().getPlatformName()) {
+//            case "Android":
+//
+//                By jobDate = By.xpath(
+//                        "(//android.widget.TextView[@text='AutomationEmp 4173']/following:: android.widget.TextView[@text='"
+//                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+//                scrollToElement_iOS(jobDate, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
+//
+//                jobDate = By.xpath(
+//                        "(//android.widget.TextView[@text='AutomationEmp 4172']/following:: android.widget.TextView[@text='"
+//                                + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+//                scrollToElement_iOS(jobDate, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate));
+//                break;
+//            case "iOS":
+//
+//                By jobDate_iOS = By.xpath(
+//                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 4173'])[1]/following::XCUIElementTypeStaticText[@label = " +
+//                                "'" + nextWorkingDay("next day", "MMMM d") + " • 8:00 AM'])[1]");
+//                scrollToElement_iOS(jobDate_iOS, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS));
+//
+//                jobDate_iOS = By.xpath(
+//                        "((//XCUIElementTypeStaticText[@label = 'AutomationEmp 4172'])[1]/following::XCUIElementTypeStaticText[@label = " +
+//                                "'" + nextWorkingDay("next day", "MMMM d") + " • 8:00 AM'])[1]");
+//                scrollToElement_iOS(jobDate_iOS, "up");
+//                Assert.assertTrue("Created Job is not visible in the list", IsElementPresent(jobDate_iOS));
+//
+//                break;
+//            default:
+//                throw new Exception("Invalid platform Name");
+//        }
+//    }
 
 }

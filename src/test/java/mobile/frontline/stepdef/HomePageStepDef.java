@@ -9,8 +9,9 @@ import io.cucumber.java.en.When;
 import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.Homescreen;
 import org.jsoup.Connection;
+import org.junit.Assert;
 
-public class HomeScreenStepDef {
+public class HomePageStepDef {
 
     public Homescreen homescreen = new Homescreen();
     public BasePage basePage = new BasePage();
@@ -36,9 +37,10 @@ public class HomeScreenStepDef {
     public void clickOnSwitchBtn() {
         homescreen.clickSwitchbtn();
     }
+
     @Then("the user navigates to dashboard page")
     public void theUserNavigatesToDashboardPage() throws Throwable {
-        homescreen.verify_homeScreen_displayedWithoutPushVerify();
+        Assert.assertTrue("The dashboard is not loaded"  ,homescreen.verify_homeScreen_displayedWithoutPushVerify());
     }
     @And("^The user minimize and relaunch the application$")
     public void the_user_minimize_and_relaunch_the_application() throws Throwable {
@@ -58,5 +60,13 @@ public class HomeScreenStepDef {
     @When("click on Available Leave Balances")
     public void clickOnAvailableLeaveBalances() throws Exception {
         homescreen.clickOnAvailableLeaveBalanceWidget();
+    }
+
+
+    @When("click on the inbox")
+    public void clickOnTheInbox() throws Throwable {
+//        smokePage.clickInbox();
+        homescreen.clickInbox();
+       // smokePage.verifyInboxPage();
     }
 }

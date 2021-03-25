@@ -206,6 +206,41 @@ public class BasePage {
 		return m;
 	}
 
+	public MobileElement scrollToElement(MobileElement element, String direction, String msg) throws Exception {
+		utils.log().info(msg +" "+element);
+		Dimension size = driver.manage().window().getSize();
+		int startX = (int) (size.width * 0.5);
+		int endX = (int) (size.width * 0.5);
+		int startY = 0;
+		int endY = 0;
+		boolean isFound = false;
+
+		switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.4);
+				startY = (int) (size.height * 0.6);
+				break;
+
+			case "down":
+				endY = (int) (size.height * 0.6);
+				startY = (int) (size.height * 0.4);
+				break;
+		}
+
+		for (int i = 0; i < 10; i++) {
+			if (find(element, 1)) {
+				isFound = true;
+				break;
+			} else {
+				swipe(startX, startY, endX, endY, 1000);
+			}
+		}
+		if (!isFound) {
+			throw new Exception("Element not found");
+		}
+		return element;
+	}
+
 	public MobileElement scrollToElement(MobileElement element, String direction) throws Exception {
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
@@ -274,6 +309,41 @@ public class BasePage {
 		return element;
 	}
 
+	public By scrollToElement(By element, String direction, String msg) throws Exception {
+		utils.log().info(msg +" "+element);
+		Dimension size = driver.manage().window().getSize();
+		int startX = (int) (size.width * 0.5);
+		int endX = (int) (size.width * 0.5);
+		int startY = 0;
+		int endY = 0;
+		boolean isFound = false;
+
+		switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.4);
+				startY = (int) (size.height * 0.6);
+				break;
+
+			case "down":
+				endY = (int) (size.height * 0.6);
+				startY = (int) (size.height * 0.4);
+				break;
+		}
+
+		for (int i = 0; i < 5; i++) {
+			if (find(element, 5)) {
+				isFound = true;
+				break;
+			} else {
+				swipe(startX, startY, endX, endY, 1000);
+			}
+		}
+		if (!isFound) {
+			throw new Exception("Element not found");
+		}
+		return element;
+	}
+
 	public By scrollToElement_iOS(By element, String direction) throws Exception {
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
@@ -307,6 +377,42 @@ public class BasePage {
 		}
 		return element;
 	}
+
+	public By scrollToElement_iOS(By element, String direction, String msg) throws Exception {
+		utils.log().info(msg +" "+element);
+		Dimension size = driver.manage().window().getSize();
+		int startX = (int) (size.width * 0.5);
+		int endX = (int) (size.width * 0.5);
+		int startY = 0;
+		int endY = 0;
+		boolean isFound = false;
+
+		switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.5);
+				startY = (int) (size.height * 0.8);
+				break;
+
+			case "down":
+				endY = (int) (size.height * 0.6);
+				startY = (int) (size.height * 0.4);
+				break;
+		}
+
+		for (int i = 0; i < 20; i++) {
+			if (find(element, 5)) {
+				isFound = true;
+				break;
+			} else {
+				swipe(startX, startY, endX, endY, 1000);
+			}
+		}
+		if (!isFound) {
+			throw new Exception("Element not found");
+		}
+		return element;
+	}
+
 
 	public boolean find(final MobileElement element, int timeout) {
 		try {
@@ -1358,6 +1464,20 @@ public class BasePage {
 		return elementText;
 	}
 
+	public String getElementText(MobileElement ele, String msg) {
+		utils.log().info(msg +": "+ ele);
+		String elementText = "";
+		try {
+			if (isElementDisplayed(ele)) {
+				elementText = ele.getText();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		utils.log().info("The text Shows:" + elementText);
+		return elementText;
+	}
+
 	public void clearTextField(MobileElement ele) {
 		try {
 			if (isElementDisplayed(ele)) {
@@ -1551,8 +1671,9 @@ public class BasePage {
 		return appStatus;
 	}
 
-	public WebElement androidScrollToElementUsingUiScrollable(String attributeType, String attributeText)
+	public WebElement androidScrollToElementUsingUiScrollable(String attributeType, String attributeText, String msg)
 			throws Throwable {
+		utils.log().info(msg);
 		switch (attributeType.toLowerCase()) {
 		case "description":
 			return ((AndroidDriver) driver).findElementByAndroidUIAutomator(

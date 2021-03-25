@@ -159,7 +159,7 @@ public class JobsMethods extends LoginPage {
     public void clickOnAvailableJobs(String jobByEmp) throws Throwable {
         switch (new GlobalParams().getPlatformName()) {
             case "Android":
-                scrolledToElement = androidScrollToElementUsingUiScrollable("text", jobByEmp);
+                scrolledToElement = androidScrollToElementUsingUiScrollable("text", jobByEmp,"");
                 scrolledToElement.click();
                 storeJobDetails();
                 break;
@@ -167,7 +167,7 @@ public class JobsMethods extends LoginPage {
 
                 By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
                 scrollToElement(findJob, "up");
-                click(findJob, "Clicked on on Required Job");
+                click(findJob, "Clicking on on Required Job");
 
                 // scrollToElement(jobslist, "up");
 

@@ -20,15 +20,15 @@ public class SettingScreen extends BasePage {
     }
 
     public String verifyDarkModeBtn() throws Exception {
-        isElementDisplayed(darkMode);
-        return getElementText(darkMode);
+        isElementDisplayed(darkMode,"Waiting for dask mode btn to be visible");
+        return getElementText(darkMode, "Extracting text msg of dark mode btn");
     }
 
     public void clickDarkModeBtn() {
-        click(darkMode);
+        click(darkMode, "Clicking dark mode button");
     }
 
     public void clickLogoutbtn() {
-        click(logoutBtn, "logout btn");
+        click(logoutBtn, "Clicking on logout btn");
     }
 }

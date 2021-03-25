@@ -18,7 +18,7 @@ Feature: Jobulator scenarios
 
   @AndroidRegression  @MOB-3324 @MOB-3326 @iOSRegression
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
-    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing absence
+    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app
     Then the user click on Get Started Button
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button

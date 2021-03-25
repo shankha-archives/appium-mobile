@@ -632,7 +632,7 @@ public class SmokeMethods extends LoginPage {
 
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Absences Today");
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Absences Today", "Scrolling to absence today widget");
 			scrolledToElement.click();
 			break;
 		case "iOS":
@@ -772,7 +772,7 @@ public class SmokeMethods extends LoginPage {
 		case "Android":
 			nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
 			verifyAsbsenceDatePage();
-			scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate);
+			scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate,"Scrolling to the require date");
 			scrolledToElement.click();
 			break;
 		case "iOS":
@@ -1022,7 +1022,7 @@ public class SmokeMethods extends LoginPage {
 	public void clickCreateAbs() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Create Absence");
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Create Absence","Scrolling to create absence btn");
 			scrolledToElement.click();
 			break;
 		case "iOS":
@@ -1118,7 +1118,7 @@ public class SmokeMethods extends LoginPage {
 	public void clickTimesheetWidget() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Timesheets");
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Timesheets","Scrolling to timesheet widget");
 			scrolledToElement.click();
 			utils.log().info("Clicked on Timesheet button");
 			break;
@@ -1221,8 +1221,8 @@ public class SmokeMethods extends LoginPage {
 		isElementdisplayed(searchBar);
 		Assert.assertTrue("search Bar option is not displayed", searchBar.isDisplayed());
 		searchResultText = searchText;
-		utils.log().info("Searched text is : " + searchResultText);
-		click(searchBar,"Clicked on Search Bar");
+		//utils.log().info("Searched text is : " + searchResultText);
+		click(searchBar,"Clicking on Search Bar");
 		clearTextField(searchBar);
 		sendKeys(searchBar, searchText);
 	}
@@ -1623,7 +1623,7 @@ public class SmokeMethods extends LoginPage {
 	public void selectDateForEdit(String absenceDay) throws Throwable {
 		verifyAsbsenceDatePage();
 		nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
-		scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate);
+		scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate, "scrolling to the required date");
 		scrolledToElement.click();
 	}
 
@@ -1707,7 +1707,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void clickClockOut() throws Throwable {
-		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Clock Out");
+		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Clock Out", "Scrolling to the clock out btn");
 		scrolledToElement.click();
 	}
 
@@ -1775,7 +1775,7 @@ public class SmokeMethods extends LoginPage {
 			selectCurrentDayForTimesheet();
 			isElementdisplayed(eventSummary);
 			assertTimeEvent(Intime);
-			 scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime);
+			 scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime, "Scrolling to the required timeevent");
 			scrolledToElement.click();
 			editTimesheetForClockOut();
 			break;
@@ -1788,7 +1788,7 @@ public class SmokeMethods extends LoginPage {
 	}
 
 	public void assertTimeEvent(String time) throws Throwable {
-		scrolledToElement = androidScrollToElementUsingUiScrollable("text", time);
+		scrolledToElement = androidScrollToElementUsingUiScrollable("text", time, "Scrolling to the required timeevent");
 		Assert.assertTrue("Required Time Event is visible ",
 				driver.findElementByXPath("//android.widget.TextView[contains(@text,'" + time + "')]").isDisplayed());
 
@@ -1833,7 +1833,7 @@ public class SmokeMethods extends LoginPage {
 	public void clickPeopleWidget() throws Throwable {
 		switch (new GlobalParams().getPlatformName()) {
 			case "Android":
-		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People");
+		scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People", "Scrolling to the people's widget");
 		scrolledToElement.click();
 		Assert.assertTrue("People Widget is not displayed", PeopleWidget.isDisplayed());
 		utils.log().info("People Widget is displayed");
@@ -1931,7 +1931,7 @@ public class SmokeMethods extends LoginPage {
 //					break;
 //			}
 			waitFortheSpinner1();
-			scrolledToElement = androidScrollToElementUsingUiScrollable("text", userToSearch);
+			scrolledToElement = androidScrollToElementUsingUiScrollable("text", userToSearch, "Scrolling to the required person to be searched");
 			scrolledToElement.click();
 
 			break;

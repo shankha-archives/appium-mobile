@@ -52,14 +52,20 @@ Scenario: Entered text should be searchable when user perform search operation
 	Then the user click on Get Started Button
 	And Enter username "AutomationEmployeeMOB-4233" and password and click on Sign In button
 	Then the user navigates to dashboard page
-	When click on menu bar 
-	Then enter the search text in bar and click on result 
-	And verify the search result 
-	Then click on the home button to navigate back to dashboard 
-	When click on menu bar 
-	Then enter the absence search text in bar 
-	And click the absence search result 
-	Then verify the absence detail page 
+	When the user clicks on Menu tab
+#	When click on menu bar
+	Then Enter search text "searchText"
+	When Click on calendar search result
+#	Then enter the search text in bar and click on result
+	And verify calendar the search result "searchText"
+#	Then click on the home button to navigate back to dashboard
+	Then Navigate to dashboard
+	Then the user navigates to dashboard page
+	When the user clicks on Menu tab
+	Then Enter search text "absenceKeyword"
+#	Then enter the absence search text in bar
+	And click the absence search result
+	Then verify the absence detail page
 
 ##	//text validation //one admin user is missing
 @MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @AndroidRegression @iOSRegression
@@ -68,19 +74,28 @@ Scenario: Verify a user can visit inbox and view messages
 	Then the user click on Get Started Button 
 	And Enter username "AutomationSubsMOB-4265" and password and click on Sign In button
 	Then the substitute navigates to dashboard page
-	When click on the inbox 
-	Then view the message in the inbox 
-	And  logouts out from the application
-	And Enter employee username "AutomationEmployeeMOB-4257" and password and click on Sign In button
-	And Enter employee username "AutomationEmployeeMOB-4257" and password and click on Sign In button
+	When click on the inbox
+	And Verify inbox screen is display
+	And Click on inbox alert
+	Then Verify the inbox message
+	When the user clicks on Menu tab
+	And Click on Settings
+	And Logout from app
+	And Enter username "AutomationEmployeeMOB-4257" and password and click on Sign In button
 	Then the user navigates to dashboard page
-	When click on the inbox 
-	Then view the message in the inbox 
-	And  logouts out from the application
-	And Enter admin username "AutomationAdminMOB-4267" and password and click on Sign In button
-	Then the admin navigates to dashboard page 
-	When click on the inbox 
-	Then view the message in the inbox 
+	When click on the inbox
+	And Verify inbox screen is display
+	And Click on inbox alert
+	Then Verify the inbox message
+	When the user clicks on Menu tab
+	And Click on Settings
+	And Logout from app
+	And Enter username "AutomationAdminMOB-4267" and password and click on Sign In button
+	Then the user navigates to dashboard page
+	When click on the inbox
+	And Verify inbox screen is display
+	And Click on inbox alert
+	Then Verify the inbox message
 
 @smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
 Scenario: Verify an employee should be able to clock in and clock out

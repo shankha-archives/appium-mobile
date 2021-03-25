@@ -41,14 +41,14 @@ public class OrgPickerScreen extends BasePage{
 //    }
 
     public void clickFirstOrganization(){
-        click(associatedOrgForSub1);
+        click(associatedOrgForSub1, "Clicking on to the organization");
     }
     public void clickContinueBtn(){
-        click(contbtn);
+        click(contbtn, "Clicking on continue btn");
     }
 
     public void clickSecondOrganization() {
-        click(associatedOrgForSub2);
+        click(associatedOrgForSub2, "Clicking on to the organization");
     }
 
 }
