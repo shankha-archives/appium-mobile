@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.frontline.pages.MenuScreen;
 
-public class MenuLinksStepDef {
+public class MenuLinksScreenStepDef {
 
     public MenuScreen menuScreen  = new MenuScreen();
 

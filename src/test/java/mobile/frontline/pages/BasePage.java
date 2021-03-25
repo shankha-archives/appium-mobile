@@ -788,7 +788,9 @@ public class BasePage {
 	 */
 	public boolean IsElementPresent(By by) {
 		try {
-			driver.findElement(by);
+			WebDriverWait wait = new WebDriverWait(driver, 20, 500);
+			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(by)));
+			//driver.findElement(by);
 			return true;
 		} catch (NoSuchElementException e) {
 			return false;

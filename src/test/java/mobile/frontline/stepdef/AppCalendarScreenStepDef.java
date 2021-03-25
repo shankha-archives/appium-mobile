@@ -4,7 +4,7 @@ import io.cucumber.java.en.And;
 import mobile.frontline.pages.AppCalendarScreen;
 import org.junit.Assert;
 
-public class AppCalendarStepDef {
+public class AppCalendarScreenStepDef {
 
     AppCalendarScreen appCalendarScreen = new AppCalendarScreen();
 

@@ -11,7 +11,7 @@ import mobile.frontline.pages.Homescreen;
 import org.jsoup.Connection;
 import org.junit.Assert;
 
-public class HomePageStepDef {
+public class HomePageScreenStepDef {
 
     public Homescreen homescreen = new Homescreen();
     public BasePage basePage = new BasePage();
@@ -19,7 +19,7 @@ public class HomePageStepDef {
 
     @Then("^the substitute navigates to dashboard page$")
     public void the_substitute_navigates_to_dashboard_page() throws Throwable {
-        homescreen.verify_homeScreen_displayed();
+       Assert.assertTrue( "Dashboard header page is not displayed",homescreen.verify_homeScreen_displayed());
         //loginPage.verify_homeScreen_displayed();
     }
 
@@ -68,5 +68,31 @@ public class HomePageStepDef {
 //        smokePage.clickInbox();
         homescreen.clickInbox();
        // smokePage.verifyInboxPage();
+    }
+
+    @When("The employee clicks on clockin btn")
+    public void theEmployeeClicksOnClockinBtn() throws Exception {
+        homescreen.clickClockInBtn();
+    }
+
+    @And("Approve the required permissions")
+    public void approveTheRequiredPermissions() {
+        homescreen.clickOnAllowLocationAccess();
+        homescreen.clickAllowPermissionPopUp();
+    }
+
+    @Then("Verify the employee is clocked in")
+    public void verifyTheEmployeeIsClockedIn() throws Exception {
+        homescreen.verifyClockIn();
+    }
+
+    @When("The user navigates to timesheet widget")
+    public void theUserNavigatesToTimesheetWidget() throws Throwable {
+        homescreen.clickTimesheetWidget();
+    }
+
+    @And("Verify the timesheet is clocked out")
+    public void verifyTheTimesheetIsClockedOut() throws Exception {
+      Assert.assertTrue(  "The time sheet did not get clocked out",homescreen.verifyClockInBtn());
     }
 }

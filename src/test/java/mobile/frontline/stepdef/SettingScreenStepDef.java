@@ -7,7 +7,7 @@ import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.SettingScreen;
 import org.junit.Assert;
 
-public class SettingsStepDef {
+public class SettingScreenStepDef {
 
     SettingScreen settingScreen = new SettingScreen();
 

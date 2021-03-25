@@ -6,7 +6,7 @@ import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsScreen;
 import org.junit.Assert;
 
-public class JobPageStepDef {
+class JobScreenStepDef {
 
     public JobsScreen jobsScreen = new JobsScreen();
     public BasePage basePage = new BasePage();
@@ -32,17 +32,17 @@ public class JobPageStepDef {
 
     @Then("Verify the created jobs")
     public void verifyTheCreatedJobs() throws Throwable {
-        jobsScreen.checkAvailablejob();
+      //  jobsScreen.checkAvailablejob();
     }
 
     @Then("Verify available jobs from all districts")
     public void verifyAvailableJobsFromAllDistricts() throws Exception {
-        jobsScreen.multiDistrictVerification();
+     //   jobsScreen.multiDistrictVerification();
     }
 
     @And("Verify the created jobs are available in the list")
     public void verifyTheCreatedJobsAreAvailableInTheList() throws Throwable {
-        jobsScreen.verifyCreatedJobsAreVisibleintheList();
+      //  jobsScreen.verifyCreatedJobsAreVisibleintheList();
     }
 
     @Then("Verify the created jobs {string} is present")
