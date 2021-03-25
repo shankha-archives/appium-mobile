@@ -38,20 +38,20 @@ public class JobDetailScreen extends BasePage {
 
     public void storeJobDetails() {
         if (new GlobalParams().getPlatformName().contains("Android")) {
-             job_date = getElementText(jobDateOnJobDescription).split(", ")[1];
+             job_date = getElementText(jobDateOnJobDescription, "Extracting job date from job detail page").split(", ")[1];
             //return job_date;
         }
        // return null;
     }
 
     public void clickOnAcceptJobsBtn() {
-        Assert.assertTrue("Accept job btn is not displayed", isElementDisplayed(jobAcceptBtn));
+        Assert.assertTrue("Accept job btn is not displayed", isElementDisplayed(jobAcceptBtn, "Waiting for accept job btn"));
         click(jobAcceptBtn, "Accept job btn is displayed");
     }
 
     public String successMsgPOPUP() throws Exception {
-        isElementDisplayed(successMsg);
-        return getElementText(successMsg);
+        isElementDisplayed(successMsg, "Waiting from accept job success message");
+        return getElementText(successMsg, "Extracting job success message");
     }
     public void clickOnOkBtn_successMsg() {
         click(successOkBtn,"Clicking on Success OK button is displayed");
@@ -59,7 +59,7 @@ public class JobDetailScreen extends BasePage {
 
     public boolean jobAcceptConfirmationMsg() {
 
-        return  isElementDisplayed(jobDetailsConfirmation);
+        return  isElementDisplayed(jobDetailsConfirmation, "Waiting for confirmation number to be displayed");
 //        isElementDisplayed(jobDetailsConfirmation);
 //        Assert.assertTrue("Job Details page is not displayed", jobDetailsConfirmation.isDisplayed());
 //        utils.log().info("Job Details page is displayed");
@@ -68,8 +68,8 @@ public class JobDetailScreen extends BasePage {
     public boolean confirmationPresent() {
 //        Assert.assertTrue("Confirmation number is not displayed",
 //                getElementText(confirmationNo).contains(APIServices.confirmationNumber));
-
-        return getElementText(confirmationNo).contains(APIServices.confirmationNumber);
+        isElementDisplayed(confirmationNo, "Waiting for confirmation number to be displayed");
+        return getElementText(confirmationNo, "Extracting confirmation number").contains(APIServices.confirmationNumber);
     }
 
 }

@@ -107,11 +107,6 @@ public class SmokeStepDef {
 		smokePage.clickOnAvailableLeaveBalance_displayed();
 	}
 
-	@Then("^verify available days$")
-	public void verify_available_days() throws Throwable {
-		smokePage.verify_availableDays();
-	}
-
 	@And("^click on the absences then add absence$")
 	public void click_on_the_absences_then_add_absence() throws Throwable {
 		smokePage.selectAbsenceWidget();
@@ -158,15 +153,9 @@ public class SmokeStepDef {
 		smokePage.enterSearchText(testdata.read_property("testingData", "users", "absenceKeyword"));
 	}
 
-	@And("^click the absence search result$")
-	public void click_the_absence_search_result() throws Throwable {
-		smokePage.click_searchResult();
-	}
 
-	@Then("^verify the absence detail page$")
-	public void verify_the_absence_detail_page() throws Throwable {
-		smokePage.verifyAbsenceDetailPage();
-	}
+
+
 
 	@When("^enter \"([^\"]*)\" select reason date length summary for \"([^\"]*)\"$")
 	public void enter_something_select_reason_date_length_summary_for_something(String empAbsence, String absenceDay)
@@ -321,11 +310,7 @@ public class SmokeStepDef {
 	}
 
 	// MOB-4265
-	@When("click on the inbox")
-	public void clickOnTheInbox() throws Throwable {
-		smokePage.clickInbox();
-		smokePage.verifyInboxPage();
-	}
+
 
 	@Then("view the message in the inbox")
 	public void viewTheMessageInTheInbox() {
