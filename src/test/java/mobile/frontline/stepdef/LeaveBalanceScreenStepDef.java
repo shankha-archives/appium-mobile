@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import mobile.frontline.pages.LeaveBalanceScreen;
 import org.junit.Assert;
 
-public class LeaveBalanceStepDef {
+public class LeaveBalanceScreenStepDef {
 
     LeaveBalanceScreen leaveBalanceScreen = new LeaveBalanceScreen();
 

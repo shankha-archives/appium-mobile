@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import mobile.frontline.pages.RolePickerScreen;
 import org.junit.Assert;
 
-public class RolePickerStepDef {
+class RolePickerScreenStepDef {
 
     public RolePickerScreen rolePickerScreen = new RolePickerScreen();
 

@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import mobile.frontline.pages.AbsenceDetailScreen;
 import org.junit.Assert;
 
-public class AbsenceDetailStepDef {
+public class AbsenceDetailScreenStepDef {
 
     AbsenceDetailScreen absenceDetailScreen = new AbsenceDetailScreen();
 

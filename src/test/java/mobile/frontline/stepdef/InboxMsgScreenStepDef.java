@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import mobile.frontline.pages.InboxMsgScreen;
 import org.junit.Assert;
 
-public class InboxMsgPageStepDef {
+public class InboxMsgScreenStepDef {
     InboxMsgScreen inboxMsgScreen = new InboxMsgScreen();
 
     @Then("Verify the inbox message")

@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import mobile.frontline.pages.OrgPickerScreen;
 import org.junit.Assert;
 
-public class OrganizationPickerStepDef {
+public class OrganizationPickerScreenStepDef {
 
     public OrgPickerScreen orgPickerScreen = new OrgPickerScreen();
 

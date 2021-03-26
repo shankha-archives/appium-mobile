@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import mobile.frontline.pages.InboxScreen;
 import org.junit.Assert;
 
-public class InboxPageStepDef {
+public class InboxScreenStepDef {
 
     InboxScreen inboxScreen = new InboxScreen();
 
@@ -18,4 +18,5 @@ public class InboxPageStepDef {
     public void clickOnInboxAlert() {
         inboxScreen.clickInboxAlert();
     }
+
 }

@@ -7,7 +7,7 @@ import mobile.Frontline.utils.TestDataManager;
 import mobile.frontline.pages.*;
 import org.junit.Assert;
 
-public class LoginStepDef {
+public class LoginScreenStepDef {
 
 	public LoginPage loginPage = new LoginPage();
 	public TestDataManager testdata = new TestDataManager();

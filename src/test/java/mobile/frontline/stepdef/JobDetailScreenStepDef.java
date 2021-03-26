@@ -7,7 +7,7 @@ import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.JobDetailScreen;
 import org.junit.Assert;
 
-public class JobDetailPageStepDef {
+public class JobDetailScreenStepDef {
 
     public JobDetailScreen jobDetailScreen = new JobDetailScreen();
 

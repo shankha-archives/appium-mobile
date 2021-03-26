@@ -97,15 +97,31 @@ Scenario: Verify a user can visit inbox and view messages
 	And Click on inbox alert
 	Then Verify the inbox message
 
-@smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
+@smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke @AndroidRegression
 Scenario: Verify an employee should be able to clock in and clock out
 	When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-4243" "APIWorkerID_MOB-4243" "APIOrgID" "APILoginID" "current day"
 	When the user launches the app 
 	Then the user click on Get Started Button
-	And Enter employee username "AutomationEmployeeMOB-4243" and password and click on Sign In button
+	And Enter username "AutomationEmployeeMOB-4243" and password and click on Sign In button
 	Then the user navigates to dashboard page
-	When Employee clicks on the clockin btn 
-	Then the user clocks out through timesheet
+	When The employee clicks on clockin btn
+	And Approve the required permissions
+	When The employee clicks on clockin btn
+	Then Verify the employee is clocked in
+	When The user navigates to timesheet widget
+#	When Employee clicks on the clockin btn
+	And Select the current day
+	And Verify time event is visible
+	And Click on time event
+	And Click on edit timesheet btn
+	Then edit the timesheet outtime
+	When Navigate back to dayView
+	And Verify time event is visible
+	Then Verify the added event
+	And Navigate to dashboard
+	Then the user navigates to dashboard page
+	And Verify the timesheet is clocked out
+#	Then the user clocks out through timesheet
 	
  @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
 Scenario: Verify an employee can submit weekly timesheet and then undo a timesheet 
