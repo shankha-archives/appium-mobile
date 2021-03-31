@@ -22,7 +22,7 @@ public class JobsStepDef {
 	public JobsScreen jobsScreen = new JobsScreen();
 	public BasePage basePage = new BasePage();
 	public JobDetailScreen jobDetailScreen = new JobDetailScreen();
-public  APIStepDef api = new APIStepDef();
+	public  APIStepDef api = new APIStepDef();
 
 	Properties props;
 	TestUtils utils = new TestUtils();

@@ -150,22 +150,7 @@ public class TimesheetsStepDef {
 //			utils.log().info("The environment selected is prodution");
 //	}
 
-    @When("Undo submitted timesheets {string} {string} {string} {string} {string} {string} {string} {string}")
-    public void undoSubmittedTimesheets(String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable {
-        props = new PropertyManager().getProps();
-        if (!props.getProperty("testdata").contains("prod")) {
-            apiService.apiTokenGeneration(apiLoginID);
-            apiService.apiBearerTokenGeneration(automationEmployee);
-            //	apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
-            //	apiService.apiDeleteTimeEvents(orgID, workerID);
-            //	apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
-            apiService.apiUndoSubmittedTimesheets(timesheetDay, orgID, workerID);
-            apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
-            apiService.apiDeleteTimeEvents(orgID, workerID);
-            apiService.apiCreateTimesheet(orgID, workerID, timesheetDay, locationID, shiftID, eventID);
-        } else
-            utils.log().info("The environment selected is prodution");
-    }
+
 
     @Then("verify the decimal format")
     public void verifyTheDecimalFormat() throws Exception {
