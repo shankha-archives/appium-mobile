@@ -1485,12 +1485,12 @@ public class SmokeMethods extends LoginPage {
                 click(okBtn, "Clicked on Ok Button");
                 break;
             case "iOS":
-                if (isElementdisplayed(timeSheetInTime)) {
-                    click(timeSheetInTime, "Clicked on Timesheet In Time");
-                }
-                if (isElementdisplayed(PushNotificationOK)) {
-                    click(PushNotificationOK, "Clicked ok button on Push Notification confirmation popup");
-                }
+//                if (isElementdisplayed(timeSheetInTime)) {
+//                    click(timeSheetInTime, "Clicked on Timesheet In Time");
+//                }
+//                if (isElementdisplayed(PushNotificationOK)) {
+//                    click(PushNotificationOK, "Clicked ok button on Push Notification confirmation popup");
+//                }
                 isElementdisplayed(dailytimeSheetedittbtn);
                 click(timeSheetDeletebtn, "Click on Timesheet Delete button");
                 click(okay, "Click on Ok button ");

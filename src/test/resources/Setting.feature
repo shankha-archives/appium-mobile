@@ -31,7 +31,7 @@ Scenario: Verify that substitute user is allowed to submit diagnostic data
   ##Accept job through API -> only very through calendar
 @Setting @MOB-4803 @AndroidRegression @iOSRegression
 Scenario: Verify a substitute can view accepted job in-app Calendar
-	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" with "APISchoolID" "APIReasonID" and delete the existing absence
+	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When Substitute accepts the job with required details "AutomationSubsJobOperations4" "APIXrefIDOrg1"
 	When the user waits and launches the app
 	Then the user click on Get Started Button

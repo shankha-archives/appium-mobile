@@ -1,6 +1,7 @@
 package mobile.frontline.stepdef;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.frontline.pages.TimeEventScreen;
 import org.junit.Assert;
@@ -19,5 +20,16 @@ TimeEventScreen timeEventScreen = new TimeEventScreen();
     public void navigateBackToDayView() {
         Assert.assertTrue("Edit btn is not displayed",timeEventScreen.verifyEditbtnVisible());
         timeEventScreen.navigateToDayView();
+    }
+
+    @And("Verify the added comment")
+    public void verifyTheAddedComment() throws Throwable {
+        Assert.assertEquals("The comment displayed is not matching",timeEventScreen.verifyEditedComment(), "Automation Smoke Test");;
+    }
+
+    @When("Delete time event")
+    public void deleteTimeEvent() throws Throwable {
+        timeEventScreen.clickDeleteTimesheet();
+        timeEventScreen.clickOkPopUp();
     }
 }

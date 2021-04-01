@@ -4,8 +4,9 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
+import sun.security.mscapi.CPublicKey;
 
-public class TimeEntryScreen extends BasePage{
+public class TimeEntryScreen extends BasePage {
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
     @iOSXCUITFindBy(accessibility = "EventType_1")
@@ -26,53 +27,87 @@ public class TimeEntryScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Save")
     public MobileElement saveButton;
 
+    @AndroidFindBy(id = "android:id/hours")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel[1]")
+    public MobileElement outTimeEntry;
+
+    @AndroidFindBy(id = "android:id/am_label")
+    // @iOSXCUITFindBy(xpath = "")
+    public MobileElement am_label;
+
+    @AndroidFindBy(id = "android:id/pm_label")
+    // @iOSXCUITFindBy(xpath = "")
+    public MobileElement pm_label;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
+    @iOSXCUITFindBy(accessibility = "Done")
+    public MobileElement saveOrderWidgetbtn;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[@text='Add a Comment']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
+    public MobileElement inTimeComment;
+
     public static String outTime;
 
-    public TimeEntryScreen(){}
-
-    public boolean verifyWorkDetails(){
-        return  isElementdisplayed(workDetails);
+    public TimeEntryScreen() {
     }
 
-    public void clickOutTimesheet(){
+    public boolean verifyWorkDetails() {
+        return isElementdisplayed(workDetails);
+    }
+
+    public void clickOutTimesheet() {
         click(timeSheetOutTime, "Clicked on Timesheet out time");
     }
 
-    public void clickOkPopup(){
-        click(okBtn, "Clicked on Ok Button ");
-    }
+//    public void clickOkPopup() {
+//        click(okBtn, "Clicked on Ok Button ");
+//    }
 
-    public void getOutTimeText(){
+    public void getOutTimeText() {
         outTime = getElementText(timeSheetOutTime);
     }
 
-    public void clickSaveTimesheet(){
-        click(saveTimesheets, "Clicked on Save Timesheet button");
+    public void clickSaveTimesheet() {
+        click(saveTimesheets, "Clicking on Save Timesheet button");
     }
 
-//    public void editTimesheetForClockOut() throws Throwable {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//
-//                isElementdisplayed(workDetails);
-//                click(timeSheetOutTime, "Clicked on Timesheet out time");
-//                click(okBtn, "Clicked on Ok Button ");
-//                outTime = getElementText(timeSheetOutTime);
-//                click(saveTimesheets, "Clicked on Save Timesheet button");
-//                break;
-//            case "iOS":
-////                timeEntryEditBtnClick();
-////                clickonEditButton1();
-////                clickonEditButton2();
-////                AddTextonCommentSection();
-//                click(saveButton, "Clicked on Save Timesheet button");
-////                if (isElementdisplayed(declinebtn)) {
-////                    click(declinebtn, "Clicked on Decline button");
-////                }
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//    }
+    public void addAnHourToTimesheets() {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+
+            String OutTime = getElementText(outTimeEntry);
+            int out = Integer.parseInt(OutTime);
+            int changeHourClock = out;
+            if (out == 12)
+                out = 1;
+            else
+                out = out + 1;
+            driver.findElementByXPath(
+                    "//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + out + "']")
+                    .click();
+
+            if (changeHourClock == 11) {
+                if (Boolean.parseBoolean(am_label.getAttribute("checked").toString()))
+                    click(pm_label);
+                else
+                    click(am_label);
+            }
+        } else {
+            //outTime.click();
+            //dragClock();
+        }
+    }
+
+    public void clickOkonOuttime() {
+        if ((new GlobalParams().getPlatformName()).contains("Android"))
+            click(okBtn, "Clicking on OK btn");
+        else
+            click(saveOrderWidgetbtn, "Clicking on save out time btn");
+
+    }
+    public void editTimeCommentToTimesheet() throws Throwable {
+        sendKeys(inTimeComment, "Automation Smoke Test","Sending text to the timesheet comment box");
+    }
+
 
 }

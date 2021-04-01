@@ -21,6 +21,22 @@ public class TimesheetDayViewScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Not Now")
     public MobileElement declinebtn;
 
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/menu_item_add_time")
+    @iOSXCUITFindBy(accessibility = "Add Time")
+    public MobileElement addTimeSheets;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/timesheet_day_text")
+    @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
+    public MobileElement timesheetDayView;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    @iOSXCUITFindBy(accessibility = "Week")
+    public MobileElement backBtn;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/no_time_events")
+   // @iOSXCUITFindBy(accessibility = "")
+    public MobileElement noTimeEvent;
+
     public TimesheetDayViewScreen(){
 
     }
@@ -35,6 +51,21 @@ public class TimesheetDayViewScreen extends BasePage{
     public boolean verifyTimeEvent(){
         //Assert.assertTrue("Required Time Event is visible ",
           return IsElementPresent(By.xpath("//android.widget.TextView[contains(@text,'" + TimeEntryScreen.outTime + "')]"));
+    }
 
+    public void clickAddTimeEvent(){
+        click(addTimeSheets, "Clicking on add time event btn");
+    }
+
+    public boolean waitForDayViewScreen(){
+        return isElementDisplayed(timesheetDayView, "Waiting for timesheet Day view age");
+    }
+
+    public void clickBackBtn(){
+        click(backBtn,"Clicking on back btn to navigate to week view page");
+    }
+
+    public boolean verifyNoTimeEventExist(){
+       return isElementDisplayed(noTimeEvent,"Waiting for for the no time event banner");
     }
 }
