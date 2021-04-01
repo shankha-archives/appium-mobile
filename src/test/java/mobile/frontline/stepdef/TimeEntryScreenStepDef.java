@@ -48,4 +48,8 @@ public class TimeEntryScreenStepDef {
         timeEntryScreen.editTimeCommentToTimesheet();
     }
 
+    @Then("Verify the pop up that timesheet is not editable")
+    public void verifyThePopUpThatTimesheetIsNotEditable() {
+        Assert.assertEquals("The timesheet is not submitted","The timesheet requested is not in an editable state", timeEntryScreen.timesheetNonEditablePopup());;
+    }
 }

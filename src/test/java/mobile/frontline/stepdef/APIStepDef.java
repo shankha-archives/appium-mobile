@@ -71,4 +71,18 @@ public class APIStepDef {
         } else
             utils.log().info("The environment selected is prodution");
     }
+
+    @When("Verify if timesheet present for an employee delete and create it using information {string} {string} {string} {string} {string} {string} {string} {string}")
+    public void verifyIfTimesheetPresentForAnEmployeedeleteandcreateItUsingInformation
+            (String automationEmployee, String workerID, String orgID, String apiLoginID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable {
+        props = new PropertyManager().getProps();
+        if (!props.getProperty("testdata").contains("prod")) {
+            apiService.apiTokenGeneration(apiLoginID);
+            apiService.apiBearerTokenGeneration(automationEmployee);
+            apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
+            apiService.apiDeleteTimeEvents(orgID, workerID);
+            apiService.apiCreateTimesheet(orgID, workerID, timesheetDay, locationID, shiftID, eventID);
+        } else
+            utils.log().info("The environment selected is prodution");
+    }
 }

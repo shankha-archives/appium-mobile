@@ -94,19 +94,9 @@ public class TimesheetsStepDef {
         timesheetPage.submitTimesheetsWithIncorrectPin();
     }
 
-    @Then("^verify the invalid pin message$")
-    public void verify_the_invalid_pin_message() throws Throwable {
-        timesheetPage.toastMessge();
-    }
-
     @And("^Navigate to menu links$")
     public void navigate_to_menu_links() throws Throwable {
         timesheetPage.clickBack();
-    }
-
-    @Then("^verify the time format$")
-    public void verify_the_time_format() throws Throwable {
-        timesheetPage.verifyTimeFormat();
     }
 
     @Then("Verify Week Total after adding a timesheet")
@@ -114,17 +104,6 @@ public class TimesheetsStepDef {
         timesheetPage.calculateTotalTimeAfterAddingTimesheet();
         smokePage.clickOnBack();
         timesheetPage.validateTotalTimeAfterAddingTimesheet();
-    }
-
-    @Then("Get the initial week total time")
-    public void getTheInitialWeekTotalTime() {
-        timesheetPage.getInitialWeekTotal();
-    }
-
-
-    @And("Verify the Timesheet total on dashboard")
-    public void verifyTheTimesheetTotalOnDashboard() throws Exception {
-        timesheetPage.verifyWeekTime();
     }
 
     @And("Select a day and add timesheet")
@@ -150,10 +129,4 @@ public class TimesheetsStepDef {
 //			utils.log().info("The environment selected is prodution");
 //	}
 
-
-
-    @Then("verify the decimal format")
-    public void verifyTheDecimalFormat() throws Exception {
-        timesheetPage.verifyDecimalFormat();
-    }
 }

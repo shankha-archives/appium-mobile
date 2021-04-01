@@ -55,19 +55,19 @@ public class TimesheetWeekViewScreen extends BasePage {
     public MobileElement declinebtn;
 
     public static String totalExpectedTimeofWeek;
-
+    public static String initialWeekTotalTime;
     public TimesheetWeekViewScreen() {
     }
 
     public void selectCurrentDayForTimesheet() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             // String nextWorkingDate = nextWorkingDay("current day", "M/dd");
-            isElementdisplayed(monday);
+            //isElementdisplayed(monday);
             click(By.xpath("//android.widget.TextView[contains(@text,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
             //click();
         } else {
             //   String nextWorkingDate = nextWorkingDay("current day", "M/dd");
-            isElementdisplayed(tuesday);
+           // isElementdisplayed(tuesday);
             //driver.findElementByXPath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDate + "')]").click();
             click(By.xpath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
         }
@@ -75,7 +75,7 @@ public class TimesheetWeekViewScreen extends BasePage {
 
     public void weekTotalTime() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            isElementdisplayed(monday);
+            //isElementDisplayed(monday, "Waiting for Monday ");
             int hours = 0;
             int minutes = 0;
             DecimalFormat formatter = new DecimalFormat("00");
@@ -88,11 +88,21 @@ public class TimesheetWeekViewScreen extends BasePage {
             minutes = minutes % 60;
             totalExpectedTimeofWeek = hours + ":" + formatter.format(minutes);
         } else
-            totalExpectedTimeofWeek = getElementText(totalWeekTotalAmount);
+            totalExpectedTimeofWeek = getElementText(totalWeekTotalAmount,"Extracting total time of the week");
     }
 
+//    public void getTotalExpectedTimeofWeek1() throws InterruptedException {
+//        isElementDisplayed(totalWeekTotalAmount);
+//        isElementDisplayed(monday);
+//        //Thread.sleep(10000);
+//        initialWeekTotalTime = getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
+//        Assert.assertEquals(initialWeekTotalTime,"   12");
+//       // return getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
+//    }
+
     public String getTotalExpectedTimeofWeek() {
-        return getElementText(totalWeekTotalAmount);
+        //initialWeekTotalTime = getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
+         return getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
     }
 
     public void clickWeekTimesheetSubmitBtn(){
@@ -106,7 +116,7 @@ public class TimesheetWeekViewScreen extends BasePage {
     }
 
     public void declinePopUp() {
-        isElementdisplayed(declinebtn);
+       if( isElementDisplayed(declinebtn, "Waiting for decline pop up"))
         click(declinebtn, "Clicking on undo decline button");
     }
 

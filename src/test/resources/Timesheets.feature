@@ -38,10 +38,15 @@ Feature: Timesheet scenarios
 		When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username "AutomationEmployeeMOB-5577" and password and click on Sign In button
+		And Enter username "AutomationEmployeeMOB-5577" and password and click on Sign In button
 		Then the user navigates to dashboard page
-		When employee clicks on the timesheet widget
-		Then Submit day timesheet option and verify submission
+#		When employee clicks on the timesheet widget
+		When The user navigates to timesheet widget
+		And Select the current day
+		Then Click on submit day timesheet
+		Then Click on submit timesheet
+		And Verify submission of timesheet
+#		Then Submit day timesheet option and verify submission
 
 #	#remove
 #	@MOB-5595  @MOB-5596
@@ -62,11 +67,21 @@ Feature: Timesheet scenarios
 		When Undo submitted timesheets "AutomationEmployeeMOB-5568" "APIWorkerID_MOB-5568" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username "AutomationEmployeeMOB-5568" and password and click on Sign In button
+		And Enter username "AutomationEmployeeMOB-5568" and password and click on Sign In button
 		Then the user navigates to dashboard page
-		When employee clicks on the timesheet widget
-		Then click on submit timesheet option
-		And verify no timesheet added and no submit btn is displayed
+#		When employee clicks on the timesheet widget
+		When The user navigates to timesheet widget
+#		Then click on submit timesheet option
+		When Click on submit week timesheet option
+		Then Click on submit timesheet
+		And Verify submission of timesheet
+		And Select the current day
+		And Click on add new time event
+		And Wait for time entry page to load
+		Then edit the timesheet outtime
+		And Save timeevent
+		Then Verify the pop up that timesheet is not editable
+#		And verify no timesheet added and no submit btn is displayed
 
 #	#remove #done in smoke
 #	@MOB-5580  @MOB-5581
@@ -98,12 +113,25 @@ Feature: Timesheet scenarios
 		When Verify if timesheet present for an employee delete and create it using information "AutomationEmployeeMOB-5578" "APIWorkerID_MOB-5378" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username "AutomationEmployeeMOB-5578" and password and click on Sign In button
+		And Enter username "AutomationEmployeeMOB-5578" and password and click on Sign In button
 		Then the user navigates to dashboard page
-		When employee clicks on the timesheet widget
-		Then Get the initial week total time
-		And Add a new timesheet
-		Then Verify Week Total after adding a timesheet
+#		When employee clicks on the timesheet widget
+		When The user navigates to timesheet widget
+		Then Get the total week total time
+#		And Add a new timesheet
+		And Select the current day
+		And Click on add new time event
+		And Wait for time entry page to load
+		Then Add one hour of out time to the event
+		And Click ok after adding out time event
+		And Save timeevent
+		When Calculating the total week time value
+		When Navigate back to week View
+		Then Get the total week total time
+		And Verify the total time with the calculated time
+#		Then Verify Week Total after adding a timesheet
+		And Navigate to dashboard
+		Then the user navigates to dashboard page
 		And Verify the Timesheet total on dashboard
 
 #	#remove
@@ -152,10 +180,14 @@ Feature: Timesheet scenarios
 	Scenario: Verify the message when employee enters wrong pin while submiting timesheet
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username "AutomationEmployeeMOB-5584" and password and click on Sign In button
+		And Enter username "AutomationEmployeeMOB-5584" and password and click on Sign In button
 		Then the user navigates to dashboard page
-		When employee clicks on the timesheet widget
-		When Click on submit btn with wrong entering pin
+		When The user navigates to timesheet widget
+		Then Verify days of the week
+		When Click on submit week timesheet option
+		And Enter digital pin
+		Then Click on submit timesheet
+#		When Click on submit btn with wrong entering pin
 		Then verify the invalid pin message
 
 ##	#remove
@@ -175,10 +207,17 @@ Feature: Timesheet scenarios
 		When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-5583" "APIWorkerID_MOB-5583" "APIOrgID_Aut3" "APILoginID_Aut3" "current day"
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username "AutomationEmployeeMOB-5583" and password and click on Sign In button
+		And Enter username "AutomationEmployeeMOB-5583" and password and click on Sign In button
 		Then the user navigates to dashboard page
-		And click on timesheets widget and view timesheets
-		And Add a new timesheet
+		When The user navigates to timesheet widget
+		Then Verify days of the week
+		And Select the current day
+		And Click on add new time event
+		And Wait for time entry page to load
+		Then Add one hour of out time to the event
+		And Click ok after adding out time event
+		And Save timeevent
+#		And Add a new timesheet
 		Then verify the decimal format
 
 	@MOB-7529 @AndroidRegression
@@ -186,9 +225,15 @@ Feature: Timesheet scenarios
 		When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-7529" "APIWorkerID_MOB-7529" "APIOrgID" "APILoginID" "current day"
 		When the user launches the app
 		Then the user click on Get Started Button
-		And Enter employee username "AutomationEmployeeMOB-7529" and password and click on Sign In button
+		And Enter username "AutomationEmployeeMOB-7529" and password and click on Sign In button
 		Then the user navigates to dashboard page
-		And click on timesheets widget and view timesheets
-		And Add a new timesheet
+		When The user navigates to timesheet widget
+		Then Verify days of the week
+		And Select the current day
+		And Click on add new time event
+		And Wait for time entry page to load
+		Then Add one hour of out time to the event
+		And Click ok after adding out time event
+		And Save timeevent
 		Then verify the time format
 

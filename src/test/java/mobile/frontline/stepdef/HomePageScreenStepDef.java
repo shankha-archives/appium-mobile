@@ -95,4 +95,9 @@ public class HomePageScreenStepDef {
     public void verifyTheTimesheetIsClockedOut() throws Exception {
       Assert.assertTrue(  "The time sheet did not get clocked out",homescreen.verifyClockInBtn());
     }
+
+    @And("Verify the Timesheet total on dashboard")
+    public void verifyTheTimesheetTotalOnDashboard() throws Exception {
+        Assert.assertEquals("Total time on dashboard and total time is not equal",TimesheetWeekViewScreenStepDef.initialWeekTotalTime,homescreen.verifyWeekTime());
+    }
 }
