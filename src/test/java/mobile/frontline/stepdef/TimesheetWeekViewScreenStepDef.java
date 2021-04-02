@@ -1,5 +1,6 @@
 package mobile.frontline.stepdef;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,14 +10,17 @@ import org.junit.Assert;
 public class TimesheetWeekViewScreenStepDef {
 
     TimesheetWeekViewScreen timesheetWeekViewScreen = new TimesheetWeekViewScreen();
+    public static String initialWeekTotalTime;
 
     @And("Select the current day")
     public void selectTheCurrentDay() throws Exception {
+        Assert.assertTrue("Tuesday timesheet is not displayed",  timesheetWeekViewScreen.verifyTuesday());
         timesheetWeekViewScreen.selectCurrentDayForTimesheet();
     }
 
     @Then("Calculate the week total")
     public void calculateTheWeekTotal() throws Exception {
+        Assert.assertTrue("Tuesday timesheet is not displayed",  timesheetWeekViewScreen.verifyTuesday());
         timesheetWeekViewScreen.weekTotalTime();
     }
 
@@ -43,7 +47,7 @@ public class TimesheetWeekViewScreenStepDef {
 
     @Then("Verify undo timesheet")
     public void verifyUndoTimesheet() {
-        timesheetWeekViewScreen.verifySubmitTimesheetBtn();
+      Assert.assertTrue( "Timesheet did not go in submit state" ,timesheetWeekViewScreen.verifySubmitTimesheetBtn());
     }
 
     @Then("Verify days of the week")
@@ -57,4 +61,17 @@ public class TimesheetWeekViewScreenStepDef {
         Assert.assertTrue("Friday timesheet is not displayed",  timesheetWeekViewScreen.verifyFriday());
     }
 
+    @Then("Get the total week total time")
+    public void getTheTotalWeekTotalTime() throws InterruptedException {
+      //  timesheetPage.getInitialWeekTotal();
+        Assert.assertTrue("Tuesday timesheet is not displayed",  timesheetWeekViewScreen.verifyTuesday());
+//        Thread.sleep(10000);
+        initialWeekTotalTime =  timesheetWeekViewScreen.getTotalExpectedTimeofWeek();
+//        Assert.assertEquals(initialWeekTotalTime,"123");
+    }
+
+    @And("Verify the total time with the calculated time")
+    public void verifyTheTotalTimeWithTheCalculatedTime() {
+        Assert.assertEquals("The calculated time and total time is not equal",initialWeekTotalTime,TimesheetDayViewScreenStepDef.actualTime);
+    }
 }

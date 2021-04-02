@@ -5,11 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.TimesheetDayViewScreen;
+import mobile.frontline.pages.TimesheetWeekViewScreen;
 import org.junit.Assert;
 
 public class TimesheetDayViewScreenStepDef {
 
     TimesheetDayViewScreen timesheetDayViewScreen = new TimesheetDayViewScreen();
+    public static String actualTime;
 
     @And("Verify time event is visible")
     public void verifyTimeEventIsVisible() {
@@ -23,7 +25,7 @@ public class TimesheetDayViewScreenStepDef {
 
     @Then("Verify the added event")
     public void verifyTheAddedEvent() {
-        timesheetDayViewScreen.verifyTimeEvent();
+        Assert.assertTrue("The time event is not displayed",timesheetDayViewScreen.verifyTimeEvent());
     }
 
     @And("Click on add new time event")
@@ -41,4 +43,32 @@ public class TimesheetDayViewScreenStepDef {
     public void verifyDeletedTimeEvent() {
         Assert.assertTrue("No time event pop up is not displayed", timesheetDayViewScreen.verifyNoTimeEventExist());
     }
+
+    @Then("Click on submit day timesheet")
+    public void clickOnSubmitDayTimesheet() {
+        timesheetDayViewScreen.clickSubmitDayTimesheetBtn();
+    }
+
+    @And("Verify submission of timesheet")
+    public void verifySubmissionOfTimesheet() {
+        Assert.assertTrue("Day Timesheet is not submitted", timesheetDayViewScreen.verifySubmission());;
+    }
+
+    @When("Calculating the total week time value")
+    public void calculatingTheTotalWeekTimeValue() throws InterruptedException {
+        Assert.assertTrue("There is no timeevent", timesheetDayViewScreen.verifyTimeEventPresent());
+        actualTime = timesheetDayViewScreen.calculateTotalTimeAfterAddingTimesheet();
+    }
+
+    @Then("verify the decimal format")
+    public void verifyTheDecimalFormat() throws Exception {
+        Assert.assertTrue("Time is not in h.mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1.00") );  ;
+    }
+
+    @Then("^verify the time format$")
+    public void verify_the_time_format() throws Throwable {
+        Assert.assertTrue("Time is not in h:mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1:00") );  ;
+     //   timesheetDayViewScreen.verifyTimeFormat();
+    }
+
 }

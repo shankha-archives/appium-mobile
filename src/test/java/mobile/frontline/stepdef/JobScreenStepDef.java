@@ -57,7 +57,7 @@ public class JobScreenStepDef {
 
         @Then("Verify the created jobs {string} is present")
         public void verifyTheCreatedJobsIsPresent(String employeeName) throws Exception {
-            jobsScreen.verifyJobIsAvailable(employeeName);
+          Assert.assertTrue( "The required jobs are not present", jobsScreen.verifyJobIsAvailable(employeeName));
         }
 
         @And("Verify job list on Jobs page")

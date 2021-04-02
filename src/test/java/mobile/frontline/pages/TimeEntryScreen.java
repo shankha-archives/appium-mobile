@@ -4,6 +4,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
+import org.junit.Assert;
 import sun.security.mscapi.CPublicKey;
 
 public class TimeEntryScreen extends BasePage {
@@ -46,6 +47,10 @@ public class TimeEntryScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Add a Comment']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
     public MobileElement inTimeComment;
+
+    @AndroidFindBy(id = "android:id/message")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name='Error']")
+    public MobileElement timesheetErrorMessage;
 
     public static String outTime;
 
@@ -109,5 +114,8 @@ public class TimeEntryScreen extends BasePage {
         sendKeys(inTimeComment, "Automation Smoke Test","Sending text to the timesheet comment box");
     }
 
+    public String timesheetNonEditablePopup() {
+        return getElementText(timesheetErrorMessage,"Fetching the timesheet error pop up");
+    }
 
 }

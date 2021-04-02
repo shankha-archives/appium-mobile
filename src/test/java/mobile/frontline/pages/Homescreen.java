@@ -74,6 +74,9 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Timesheets_ModuleHeader")
     public MobileElement timesheetsbtn;
 
+    @AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]/android.widget.TextView")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
+    public MobileElement totalWeekTime;
 
     public static String inTime;
     public WebElement scrolledToElement;
@@ -184,10 +187,10 @@ public class Homescreen extends BasePage {
 
     public boolean verifyClockInBtn() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-          return   isElementDisplayed(clockInbtn, "Clicking on Clock In button");
+            return isElementDisplayed(clockInbtn, "Clicking on Clock In button");
         else {
             scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
-           return isElementDisplayed(clockInbtn, "Click on Clock In button");
+            return isElementDisplayed(clockInbtn, "Click on Clock In button");
         }
     }
 
@@ -201,19 +204,15 @@ public class Homescreen extends BasePage {
 
     public boolean verifyClockIn() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-            return isElementdisplayed(clockedInVerification);
+            return isElementDisplayed(clockedInVerification, "Waiting for clocked in bubble");
         else {
             scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
-            return isElementdisplayed(clockedOutBtn);
+            return isElementDisplayed(clockedOutBtn,"Waiting for clockout btn");
         }
     }
 
-    public void verifyClockOutBtn() {
-
-    }
-
     public void getInTimeOfTimeClock() {
-        inTime = getElementText(clockedInTime).substring(1);
+        inTime = getElementText(clockedInTime,"Extracting the value of clock in time text").substring(1);
     }
 
 
@@ -227,98 +226,18 @@ public class Homescreen extends BasePage {
         }
     }
 
-
-//    public void clockOutThroughTimesheet() throws Throwable {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//                Intime = common.getElementText(clockedInTime).substring(1);
-//                clickTimesheetWidget();
-//                selectCurrentDayForTimesheet();
-//                isElementdisplayed(eventSummary);
-//                assertTimeEvent(Intime);
-//                scrolledToElement = androidScrollToElementUsingUiScrollable("text", Intime, "Scrolling to the required timeevent");
-//                scrolledToElement.click();
-//                editTimesheetForClockOut();
+    public String verifyWeekTime() throws Exception {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            // click(smoke.homeTab);
+            scrollToElement(totalWeekTime, "up","Scrolling to the total week time on dashboard");
+            return getElementText(totalWeekTime,"Extracting the value of total week time");
+//                Assert.assertEquals("Week total on dashboard is not same as on Timesheet page", weekTotal, weekTotalActual);
 //                break;
-//            case "iOS":
-//                utils.log().info("No need to go timesheet section");
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//    }
-
-//    public void allowClockInOutAcessPermissions() throws Throwable {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//                isElementdisplayed(permissionGrantbtn);
-//                click(permissionGrantbtn,"Click on permission Grant button");
-//                isElementdisplayed(permissionGrantonlyForApp);
-//                click(permissionGrantonlyForApp,"Click on permission Grant button only for app");
-//                break;
-//            case "iOS":
-//                click(permissionGrantbtn,"Click on permission Grant button");
-//                click(permissionGrantonlyForApp,"Click on permission Grant button only for app");
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//    }
-//
-//
-//    public void clockInVerification() throws Throwable {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-////                if (isElementdisplayed(clockInbtn)) {
-//                    click(clockInbtn,"Click on Clock In button");
-//              //      allowClockInOutAcessPermissions();
-//             //       clockInbtn();
-////                } else if (isElementdisplayed(clockedInVerification)) {
-////                    clickClockOut();
-////                    allowClockInOutAcessPermissions();
-////                    clickClockOut();
-////                    Thread.sleep(45000);
-////                    isElementdisplayed(clockInbtn);
-////                    Thread.sleep(30000);
-////                    isElementdisplayed(clockInbtn);
-////                    clockInbtn();
-////                }
-//                break;
-//            case "iOS":
-//                scrollToElement(ScrollToClockInbtn,"up", "Scrolling up to clockin btn");
-////                if (isElementdisplayed(clockInbtn)) {
-//                    click(clockInbtn,"Click on Clock In button");
-////                    allowClockInOutAcessPermissions();
-////                } else if (isElementdisplayed(clockedOutBtn)) {
-////                    click(clockedOutBtn,"Click on Clocked out button");
-////                    allowClockInOutAcessPermissions();
-////                    click(clockedOutBtn,"Click on Clock out button");
-////                    Thread.sleep(45000);
-////                    isElementdisplayed(clockInbtn);
-////                    Thread.sleep(30000);
-////                    isElementdisplayed(clockInbtn);
-////                }
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//    }
-//
-//    public void clockInbtn() throws Throwable {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//                click(clockInbtn,"Clicked on In Time button");
-//                isElementdisplayed(clockedInVerification);
-//                break;
-//            case "iOS":
-//                click(clockInbtn,"Clicked on Clock In Button");
-//                isElementdisplayed(clockedOutBtn);
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//    }
-//
+        } else {
+            isElementDisplayed(totalWeekTime, "Waiting for total week time to display on dashboard");
+            return totalWeekTime.getAttribute("name").toString();
+            //d = dateFormat.parse(weekTotal);
+        }
+    }
 
 }
-
