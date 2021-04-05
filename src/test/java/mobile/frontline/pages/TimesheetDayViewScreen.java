@@ -66,7 +66,7 @@ public class TimesheetDayViewScreen extends BasePage{
 
     public boolean verifyTimeEvent(){
         //Assert.assertTrue("Required Time Event is visible ",
-          return IsElementPresent(By.xpath("//android.widget.TextView[contains(@text,'" + TimeEntryScreen.outTime + "')]"));
+        return isElementDisplayed(timeEvent,"Waiting for the time event to display");
     }
 
     public void clickAddTimeEvent(){

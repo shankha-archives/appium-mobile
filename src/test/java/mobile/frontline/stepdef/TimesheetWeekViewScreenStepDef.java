@@ -72,6 +72,6 @@ public class TimesheetWeekViewScreenStepDef {
 
     @And("Verify the total time with the calculated time")
     public void verifyTheTotalTimeWithTheCalculatedTime() {
-        Assert.assertEquals("The calculated time and total time is not equal",initialWeekTotalTime,TimesheetDayViewScreenStepDef.actualTime);
+        Assert.assertEquals("The calculated time and total time is not equal",TimesheetDayViewScreenStepDef.actualTime,initialWeekTotalTime);
     }
 }

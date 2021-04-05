@@ -26,13 +26,13 @@ public class SubmitTimesheetScreen extends BasePage {
     public MobileElement inValidPin;
 
     public void submitTimesheet() {
-        click(submitTimesheet, "Clicked on submit submit timesheet");
+        click(submitTimesheet, "Clicking on submit timesheet");
     }
 
     public void clickUndoTimesheet() throws Exception {
         // verifyUndoBtn();
         // click(undoicon, "Clicked on undo timesheet icon");
-        click(undobtn, "Clicked on undo button");
+        click(undobtn, "Clicking on undo button");
     }
 
     public void enterTimesheetsWithIncorrectPin() {
@@ -44,7 +44,6 @@ public class SubmitTimesheetScreen extends BasePage {
     public String toastMessge() throws Exception {
 
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-
             Thread.sleep(2000);
             WebElement toastView = driver.findElement(By.xpath("//android.widget.Toast[1]"));
             return toastView.getAttribute("name");
