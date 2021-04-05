@@ -15,21 +15,27 @@ public class TimesheetWeekViewScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'TUE')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_0")
     public MobileElement tuesday;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'MON')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_6")
     public MobileElement monday;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'WED')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_1")
     public MobileElement wednesday;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'THU')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_2")
     public MobileElement thursday;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'FRI')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_3")
     public MobileElement friday;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'SAT')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_4")
     public MobileElement saturday;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'SUN')]")
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_5")
     public MobileElement sunday;
@@ -106,7 +112,7 @@ public class TimesheetWeekViewScreen extends BasePage {
     }
 
     public void clickWeekTimesheetSubmitBtn(){
-        click(submittimesheetsbtn, "Clicked on submit timesheet button");
+        click(submittimesheetsbtn, "Clicking on submit timesheet button");
     }
 
     public void clickUndoWeekTimesheet() throws Exception {

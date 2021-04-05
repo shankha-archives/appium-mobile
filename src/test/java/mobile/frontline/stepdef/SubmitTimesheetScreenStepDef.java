@@ -25,7 +25,7 @@ SubmitTimesheetScreen submitTimesheetScreen = new SubmitTimesheetScreen();
 
     @Then("^verify the invalid pin message$")
     public void verify_the_invalid_pin_message() throws Throwable {
-        Assert.assertEquals("The message for invalid pin is incorrect",submitTimesheetScreen.toastMessge(), "Invalid PIN"); ;
+        Assert.assertEquals("The message for invalid pin is incorrect","Invalid PIN", submitTimesheetScreen.toastMessge()); ;
     }
 
 }
