@@ -5,7 +5,12 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import org.junit.Assert;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class Homescreen extends BasePage {
 
@@ -78,8 +83,30 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
     public MobileElement totalWeekTime;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='People']")
+    @iOSXCUITFindBy(accessibility = "People_ModuleHeader")
+    public MobileElement PeopleWidget;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
+    @iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
+    public MobileElement reOrderWidgetbtn;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_title")
+    @iOSXCUITFindBy(xpath = "//	XCUIElementTypeButton[contains(@name, 'ModuleHeader')]")
+    public List<MobileElement> widgetListFromDashboard;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@text = 'Create Absence']")
+    @iOSXCUITFindBy(accessibility = "AbsencesModule_Create_Button")
+    public MobileElement createAbsBtn;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences Today']")
+    @iOSXCUITFindBy(accessibility = "Absences Today_ModuleHeader")
+    public MobileElement absenceWidget;
+
     public static String inTime;
     public WebElement scrolledToElement;
+    public static ArrayList<String> widgetlistbeforeReorder;
+    public static ArrayList<String> widgetlistafterReorder;
 
     public Homescreen() {
 
@@ -207,12 +234,12 @@ public class Homescreen extends BasePage {
             return isElementDisplayed(clockedInVerification, "Waiting for clocked in bubble");
         else {
             scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
-            return isElementDisplayed(clockedOutBtn,"Waiting for clockout btn");
+            return isElementDisplayed(clockedOutBtn, "Waiting for clockout btn");
         }
     }
 
     public void getInTimeOfTimeClock() {
-        inTime = getElementText(clockedInTime,"Extracting the value of clock in time text").substring(1);
+        inTime = getElementText(clockedInTime, "Extracting the value of clock in time text").substring(1);
     }
 
 
@@ -229,8 +256,8 @@ public class Homescreen extends BasePage {
     public String verifyWeekTime() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             // click(smoke.homeTab);
-            scrollToElement(totalWeekTime, "up","Scrolling to the total week time on dashboard");
-            return getElementText(totalWeekTime,"Extracting the value of total week time");
+            scrollToElement(totalWeekTime, "up", "Scrolling to the total week time on dashboard");
+            return getElementText(totalWeekTime, "Extracting the value of total week time");
 //                Assert.assertEquals("Week total on dashboard is not same as on Timesheet page", weekTotal, weekTotalActual);
 //                break;
         } else {
@@ -240,4 +267,48 @@ public class Homescreen extends BasePage {
         }
     }
 
+    public void clickPeopleWidget() throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People", "Scrolling to the people's widget");
+            scrolledToElement.click();
+            // click(PeopleWidget, "Click on people widget");
+        } else {
+            scrollToElement(PeopleWidget, "up");
+            click(PeopleWidget, "Clicking on People Widget");
+        }
+    }
+
+    public void getListOrderBeforeReorder() throws Throwable {
+        widgetlistbeforeReorder = new ArrayList<String>(
+                getTheOrderListByScrolling(reOrderWidgetbtn, "up", widgetListFromDashboard));
+    }
+
+    public void clickReorderWidget() {
+        click(reOrderWidgetbtn, "Clicking on reorder widget btn");
+    }
+
+    public void getListOrderAfterReorder() throws Throwable {
+        widgetlistafterReorder = new ArrayList<String>(
+                getTheOrderListByScrolling(reOrderWidgetbtn, "up", widgetListFromDashboard));
+    }
+
+    public void clickCreateAbs() throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Create Absence", "Scrolling to create absence btn");
+            scrolledToElement.click();
+        } else {
+            scrollToElement(createAbsBtn, "up");
+            click(createAbsBtn,"Clicking on create absence btn");
+        }
+    }
+
+    public void clickAbsencesWidget() throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Absences Today", "Scrolling to absence today widget");
+            scrolledToElement.click();
+        } else {
+            scrollToElement(absenceWidget, "up");
+            click(absenceWidget, "Clicking on Absence Widget");
+        }
+    }
 }

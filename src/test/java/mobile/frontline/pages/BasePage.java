@@ -13,13 +13,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
@@ -1735,5 +1729,45 @@ public class BasePage {
 		DateFormat targetFormat = new SimpleDateFormat(formatTarget);
 		Date date = originalFormat.parse(dateToBeFormated);
 		return targetFormat.format(date);
+	}
+
+	public LinkedHashSet<String> getTheOrderListByScrolling(MobileElement elementTill, String direction,
+															List<MobileElement> collectListOf) throws Exception {
+		LinkedHashSet<String> listOfElementByScrolling = new LinkedHashSet<String>();
+		Dimension size = driver.manage().window().getSize();
+		int startX = (int) (size.width * 0.5);
+		int endX = (int) (size.width * 0.5);
+		int startY = 0;
+		int endY = 0;
+		boolean isFound = false;
+
+		switch (direction) {
+			case "up":
+				endY = (int) (size.height * 0.4);
+				startY = (int) (size.height * 0.6);
+				break;
+
+			case "down":
+				endY = (int) (size.height * 0.6);
+				startY = (int) (size.height * 0.4);
+				break;
+		}
+
+		for (int i = 0; i < 10; i++) {
+			for (MobileElement mobElement : collectListOf) {
+				listOfElementByScrolling.add(getElementText(mobElement));
+			}
+			if (find(elementTill, 1)) {
+				isFound = true;
+				break;
+			} else {
+				swipe(startX, startY, endX, endY, 1000);
+			}
+		}
+		if (!isFound) {
+			throw new Exception("Element not found");
+		}
+		return listOfElementByScrolling;
+
 	}
 }

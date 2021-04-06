@@ -1854,9 +1854,9 @@ public class SmokeMethods extends LoginPage {
             case "Android":
                 common.isElementdisplayed(PeopleWidget);
                 sendKeys(SearchPeople, lastName);
-                hideKeyboard();
+                //hideKeyboard();
                 By searchedEmployee = By.xpath("//android.widget.TextView[contains(@text,'" + lastName + "')]");
-                common.scrollToElement(searchedEmployee, "up");
+               // common.scrollToElement(searchedEmployee, "up");
                 common.click(searchedEmployee, "Clicking on searched Employee");
                 break;
             case "iOS":

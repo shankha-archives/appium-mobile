@@ -275,13 +275,6 @@ public class SmokeStepDef {
 		loginPage.clickOnLoginBtn();
 	}
 
-
-
-	@And("^click on the create absences$")
-	public void click_on_the_create_absences() throws Throwable {
-		smokePage.clickCreateAbs();
-	}
-
 	@When("^select reason date length summary for \"([^\"]*)\"$")
 	public void select_reason_date_length_summary_for_something(String absenceDay) throws Throwable {
 		smokePage.absenceReason();
@@ -329,10 +322,7 @@ public class SmokeStepDef {
 		smokePage.verifyUndo();
 	}
 
-	@Then("verify the order of widgets")
-	public void verifyTheOrderOfWidgets() {
-		smokePage.verifyWidgetsOrder();
-	}
+
 
 	// MOB-4261
 	@When("employee clicks on the timesheet widget")
@@ -422,10 +412,7 @@ public class SmokeStepDef {
 		smokePage.selectOrganization();
 	}
 
-	@Then("click on People widget")
-	public void clickOnPeopleWidget() throws Throwable {
-		smokePage.clickPeopleWidget();
-	}
+
 
 	@When("search for a person")
 	public void searchForAPerson() throws Exception {
@@ -476,11 +463,6 @@ public class SmokeStepDef {
 		smokePage.selectApproveConfirmAbsence();
 	}
 
-	@And("^verify absences page is displayed$")
-	public void verify_absences_page_is_displayed() throws Throwable {
-		smokePage.verifyAbsencesPage();
-	}
-
 	@Then("click on the home button to navigate back to dashboard")
 	public void clickOnTheHomeButtonToNavigateBackToDashboard() throws Exception {
 		smokePage.clickOnHomeButtonFooter();
@@ -497,20 +479,6 @@ public class SmokeStepDef {
 	public void verify_the_absence_details() throws Throwable {
 		smokePage.verifyAbsenceConfandDuration();
 	}
-
-	@When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete them$")
-	public void verify_if_absences_present_for_employee_something_with_workerid_something_for_something_and_delete_them(
-			String apiLoginID, String workerID, String absenceDay) throws Throwable {
-		props = new PropertyManager().getProps();
-		if (!props.getProperty("testdata").contains("prod")) {
-			apiService.apiTokenGeneration(apiLoginID);
-			apiService.apiGetConfirmationIds(workerID, absenceDay);
-			apiService.apiDeleteAbsence();
-		} else
-			utils.log().info("The environment selected is prodution");
-	}
-
-
 
 	@Then("^Tap on the day of created absence for \"([^\"]*)\" in the app Calendar$")
 	public void tap_on_the_day_of_created_absence_for_something_in_the_app_calendar(String absenceDay)
