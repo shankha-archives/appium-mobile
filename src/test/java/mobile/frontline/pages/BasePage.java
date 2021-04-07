@@ -18,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.imageio.ImageIO;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoSuchElementException;
@@ -94,12 +95,14 @@ public class BasePage {
 	}
 
 	public void click(MobileElement e, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
 		waitForVisibility(e);
 		utils.log().info(msg);
 		e.click();
 	}
 
 	public void click(By e, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
 		waitForVisibility(e);
 		utils.log().info(msg);
 		driver.findElement(e).click();
@@ -111,6 +114,7 @@ public class BasePage {
 	}
 
 	public void sendKeys(MobileElement e, String txt, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
 		waitForVisibility(e);
 		utils.log().info(msg);
 		e.sendKeys(txt);
@@ -127,6 +131,7 @@ public class BasePage {
 	}
 
 	public String getText(MobileElement e, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
 		String txt;
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -143,6 +148,7 @@ public class BasePage {
 	}
 
 	public String getText(By e, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
 		String txt;
 		switch (new GlobalParams().getPlatformName()) {
 		case "Android":
@@ -201,6 +207,7 @@ public class BasePage {
 	}
 
 	public MobileElement scrollToElement(MobileElement element, String direction, String msg) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ element);
 		utils.log().info(msg +" "+element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
@@ -304,6 +311,7 @@ public class BasePage {
 	}
 
 	public By scrollToElement(By element, String direction, String msg) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ element);
 		utils.log().info(msg +" "+element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
@@ -373,6 +381,7 @@ public class BasePage {
 	}
 
 	public By scrollToElement_iOS(By element, String direction, String msg) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ element);
 		utils.log().info(msg +" "+element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
@@ -1398,6 +1407,7 @@ public class BasePage {
 	}
 
 	public boolean isElementDisplayed(MobileElement ele, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 		boolean val = false;
 		try {
 			utils.log().info(msg +" Locator:" + ele);
@@ -1461,6 +1471,7 @@ public class BasePage {
 	}
 
 	public String getElementText(MobileElement ele, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 		utils.log().info(msg +": "+ ele);
 		String elementText = "";
 		try {
@@ -1497,6 +1508,7 @@ public class BasePage {
 		}
 	}
 	public void enterValueInTextField(MobileElement ele, String keysToSend, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 		try {
 			utils.log().info(msg+ " Locator :"+ ele);
 			if (isElementdisplayed(ele)) {
@@ -1669,6 +1681,7 @@ public class BasePage {
 
 	public WebElement androidScrollToElementUsingUiScrollable(String attributeType, String attributeText, String msg)
 			throws Throwable {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ attributeText);
 		utils.log().info(msg);
 		switch (attributeType.toLowerCase()) {
 		case "description":

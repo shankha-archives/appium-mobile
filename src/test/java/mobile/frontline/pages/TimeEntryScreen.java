@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class TimeEntryScreen extends BasePage {
 
@@ -61,7 +62,7 @@ public class TimeEntryScreen extends BasePage {
     }
 
     public void clickOutTimesheet() {
-        click(timeSheetOutTime, "Clicked on Timesheet out time");
+        click(timeSheetOutTime, "Clicking on Timesheet out time");
     }
 
 //    public void clickOkPopup() {
@@ -79,22 +80,21 @@ public class TimeEntryScreen extends BasePage {
     public void addAnHourToTimesheets() {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
 
-            String OutTime = getElementText(outTimeEntry);
+            String OutTime = getElementText(outTimeEntry, "Extracting out time text");
             int out = Integer.parseInt(OutTime);
             int changeHourClock = out;
             if (out == 12)
                 out = 1;
             else
                 out = out + 1;
-            driver.findElementByXPath(
-                    "//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + out + "']")
-                    .click();
+            By selectTime= By.xpath("//android.widget.RadialTimePickerView.RadialPickerTouchHelper[@content-desc='" + out + "']");
+                click(selectTime,"Clicking on radial time picker");
 
             if (changeHourClock == 11) {
                 if (Boolean.parseBoolean(am_label.getAttribute("checked").toString()))
-                    click(pm_label);
+                    click(pm_label, "Clicking on PM label");
                 else
-                    click(am_label);
+                    click(am_label,"Clicking on AM label");
             }
         } else {
             //outTime.click();
