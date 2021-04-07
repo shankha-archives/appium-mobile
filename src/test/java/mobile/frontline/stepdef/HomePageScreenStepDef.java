@@ -100,4 +100,40 @@ public class HomePageScreenStepDef {
     public void verifyTheTimesheetTotalOnDashboard() throws Exception {
         Assert.assertEquals("Total time on dashboard and total time is not equal",TimesheetWeekViewScreenStepDef.initialWeekTotalTime,homescreen.verifyWeekTime());
     }
+
+    @Then("click on People widget")
+    public void clickOnPeopleWidget() throws Throwable {
+        homescreen.clickPeopleWidget();
+    }
+
+    @When("Fetch the list of widgets before reordering")
+    public void fetchTheListOfWidgetsBeforeReordering() throws Throwable {
+        homescreen.getListOrderBeforeReorder();
+    }
+
+    @When("Click on reorder widget button")
+    public void clickOnReorderWidgetButton() {
+        homescreen.clickReorderWidget();
+    }
+
+    @When("Fetch the list of widgets after reordering")
+    public void fetchTheListOfWidgetsAfterReordering() throws Throwable {
+        homescreen.getListOrderAfterReorder();
+    }
+
+    @Then("verify the order of widgets")
+    public void verifyTheOrderOfWidgets() {
+        Assert.assertNotEquals("The widgets order did not change",Homescreen.widgetlistbeforeReorder, Homescreen.widgetlistafterReorder);
+      //  homescreen.verifyWidgetsOrder();
+    }
+
+    @And("^click on the create absences$")
+    public void click_on_the_create_absences() throws Throwable {
+        homescreen.clickCreateAbs();
+    }
+
+    @When("Click on absences today widget")
+    public void clickOnAbsencesTodayWidget() throws Throwable {
+        homescreen.clickAbsencesWidget();
+    }
 }

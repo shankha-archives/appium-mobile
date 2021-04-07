@@ -85,4 +85,16 @@ public class APIStepDef {
         } else
             utils.log().info("The environment selected is prodution");
     }
+
+    @When("^Verify if absences present for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" and delete them$")
+    public void verify_if_absences_present_for_employee_something_with_workerid_something_for_something_and_delete_them(
+            String apiLoginID, String workerID, String absenceDay) throws Throwable {
+        props = new PropertyManager().getProps();
+        if (!props.getProperty("testdata").contains("prod")) {
+            apiService.apiTokenGeneration(apiLoginID);
+            apiService.apiGetConfirmationIds(workerID, absenceDay);
+            apiService.apiDeleteAbsence();
+        } else
+            utils.log().info("The environment selected is prodution");
+    }
 }

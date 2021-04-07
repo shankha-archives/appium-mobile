@@ -65,11 +65,11 @@ public class JobDetailScreen extends BasePage {
 //        utils.log().info("Job Details page is displayed");
     }
 
-    public boolean confirmationPresent() {
+    public String confirmationPresent() {
 //        Assert.assertTrue("Confirmation number is not displayed",
 //                getElementText(confirmationNo).contains(APIServices.confirmationNumber));
         isElementDisplayed(confirmationNo, "Waiting for confirmation number to be displayed");
-        return getElementText(confirmationNo, "Extracting confirmation number").contains(APIServices.confirmationNumber);
+        return getElementText(confirmationNo, "Extracting confirmation number");
     }
 
 }
