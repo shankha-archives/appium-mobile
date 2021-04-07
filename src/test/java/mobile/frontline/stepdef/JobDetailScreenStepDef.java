@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.GlobalParams;
+import mobile.frontline.pages.APIServices;
 import mobile.frontline.pages.JobDetailScreen;
 import org.junit.Assert;
 
@@ -43,7 +44,7 @@ public class JobDetailScreenStepDef {
     }
     @Then("^Verify the confirmation number present on the job details page$")
     public void verify_the_confirmation_number_present_on_the_job_details_page() throws Throwable {
-        Assert.assertTrue("Confirmation number is not displayed", jobDetailScreen.confirmationPresent());
+        Assert.assertTrue("Confirmation number is not displayed", jobDetailScreen.confirmationPresent().contains(APIServices.confirmationNumber));
         //jobulatorPage.confirmationPresent(apiService.getConfirmationNumber());
     }
 

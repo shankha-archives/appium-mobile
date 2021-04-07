@@ -5,7 +5,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import org.junit.Assert;
-import sun.security.mscapi.CPublicKey;
 
 public class TimeEntryScreen extends BasePage {
 
@@ -69,9 +68,9 @@ public class TimeEntryScreen extends BasePage {
 //        click(okBtn, "Clicked on Ok Button ");
 //    }
 
-    public void getOutTimeText() {
-        outTime = getElementText(timeSheetOutTime);
-    }
+//    public void getOutTimeText() {
+//        outTime = getElementText(timeSheetOutTime);
+//    }
 
     public void clickSaveTimesheet() {
         click(saveTimesheets, "Clicking on Save Timesheet button");

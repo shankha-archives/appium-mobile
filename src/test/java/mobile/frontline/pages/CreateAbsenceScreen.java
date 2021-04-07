@@ -113,8 +113,8 @@ public class CreateAbsenceScreen extends BasePage {
         } else {
             nextWorkingDate = nextWorkingDay(absenceDay, "MM/dd/yyyy");
             By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");
-            scrollToElement(absenceDate, "up");
-            click(absenceDate, "Clicked on Absence Date");
+            scrollToElement(absenceDate, "up","Scrolling to the required date");
+            click(absenceDate, "Clicking on Absence Date");
         }
     }
 
@@ -153,11 +153,11 @@ public class CreateAbsenceScreen extends BasePage {
     }
 
     public void clickSaveAbsence() {
-        click(saveChanges, "Click on Save changes button");
+        click(saveChanges, "Clicking on Save changes button");
     }
 
     public void clickViewAbsence() {
-        click(viewAbsence, "Click on view Absence");
+        click(viewAbsence, "Clicking on view Absence");
     }
 
     public boolean verifyWhoPage() {
@@ -183,12 +183,12 @@ public class CreateAbsenceScreen extends BasePage {
 
     public void selectTeachersName(String teacher) throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            isElementdisplayed(selectReqName);
+            isElementDisplayed(selectReqName,"Waiting for the required employee name to appear");
             By teacherNameAndroid = By.xpath("//android.widget.TextView[contains(@text,'" + teacher + "')]");
             scrollToElement(teacherNameAndroid, "up");
             click(teacherNameAndroid, "Clicking Teacher name");
         } else {
-            isElementdisplayed(whoAbsencePageWaittoClickCaret);
+            isElementDisplayed(whoAbsencePageWaittoClickCaret,"Waiting for the text to appear");
             By teacherName = By.xpath("//XCUIElementTypeButton[contains(@name,'" + teacher + "')]");
             click(Done, "Clicking on Done button");
             scrollToElement(teacherName, "up");

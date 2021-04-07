@@ -35,10 +35,11 @@ public class EmployeeAppCalendarScreen extends BasePage {
 
     }
 
-    public boolean verifySearchResult(String searchResultText) throws Exception {
+    public String verifySearchResult() throws Exception {
         isElementDisplayed(calendar, "Waiting for application calendar to display");
 //        Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
-        return getElementText(calendar, "Getting text of App Calendar").equalsIgnoreCase(testdata.read_property("testingData", "users", searchResultText));
+        return getElementText(calendar,"Getting text of App Calendar");
+      //  return getElementText(calendar, "Getting text of App Calendar").equalsIgnoreCase(testdata.read_property("testingData", "users", searchResultText));
         //  Assert.assertTrue("Entered text does not match", getElementText(calendar).equalsIgnoreCase(testdata.read_property("testingData", "users", searchResultText)));
         // utils.log().info("Entered text matches with result");
     }

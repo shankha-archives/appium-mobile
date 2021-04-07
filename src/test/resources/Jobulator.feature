@@ -1,7 +1,7 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @AndroidRegression @MOB-3325 @iOSRegression @abc
+  @AndroidRegression @MOB-3325 @iOSRegression
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
     When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app

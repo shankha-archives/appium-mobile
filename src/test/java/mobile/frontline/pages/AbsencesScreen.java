@@ -42,13 +42,13 @@ public class AbsencesScreen extends BasePage {
             scrolledToElement.click();
         } else {
             By unfilledabsenceDate = By.xpath("//XCUIElementTypeStaticText[@name = '" + userToSearch + "']");
-            scrollToElement_iOS(unfilledabsenceDate, "up");
+            scrollToElement_iOS(unfilledabsenceDate, "up","Scrolling to the required person to be searched");
             click(unfilledabsenceDate, "Clicking on Unfilled Absence Date");
         }
     }
 
     public boolean verifyAbsencesPage() {
-       return isElementdisplayed(AbsencePageHeader);
+       return isElementDisplayed(AbsencePageHeader,"Waiting for absence header to display");
 //        Assert.assertTrue("Absences page is not displayed", AbsencePageHeader.isDisplayed());
 //        utils.log().info("Absences page is not displayed");
     }

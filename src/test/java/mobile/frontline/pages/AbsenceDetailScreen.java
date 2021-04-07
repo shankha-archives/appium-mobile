@@ -57,7 +57,7 @@ public class AbsenceDetailScreen extends BasePage{
     public String verifyEditedDuration(){
        // Assert.assertTrue("Half Day Duration is not displayed", getElementText(durationHalfDay).contains("Half Day"));
 
-        return  getElementText(durationHalfDay);
+        return  getElementText(durationHalfDay,"Extracting half day duration text");
     }
 
     public void click_tapToAssign() {
@@ -74,7 +74,7 @@ public class AbsenceDetailScreen extends BasePage{
     public void clickConfirmAssignSubstitute() {
 //        isElementdisplayed(confirmAssignSub);
 //        Assert.assertTrue("Confirm substitute btn is not displayed", confirmAssignSub.isDisplayed());
-        click(confirmAssignSub, "Clicked on Confirm Assign Substitute");
+        click(confirmAssignSub, "Clicking on Confirm Assign Substitute");
     }
 
     public void clickApproveBtnOnAbsence() {
