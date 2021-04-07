@@ -75,21 +75,25 @@ public class BasePage {
 	}
 
 	public void waitForVisibility(MobileElement e) {
+		ExtentCucumberAdapter.addTestStepLog("Locator: "+ e);
 		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
 		wait.until(ExpectedConditions.visibilityOf(e));
 	}
 
 	public void waitForVisibility(By e) {
+		ExtentCucumberAdapter.addTestStepLog("Locator: "+ e);
 		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(e));
 	}
 
 	public void clear(MobileElement e) {
+		ExtentCucumberAdapter.addTestStepLog("Locator: "+ e);
 		waitForVisibility(e);
 		e.clear();
 	}
 
 	public void click(MobileElement e) {
+		ExtentCucumberAdapter.addTestStepLog("Click element: Locator: "+ e);
 		waitForVisibility(e);
 		e.click();
 	}
@@ -109,6 +113,7 @@ public class BasePage {
 	}
 
 	public void sendKeys(MobileElement e, String txt) {
+		ExtentCucumberAdapter.addTestStepLog( "SendKeys "+txt+"  Locator: "+ e);
 		waitForVisibility(e);
 		e.sendKeys(txt);
 	}
@@ -121,11 +126,13 @@ public class BasePage {
 	}
 
 	public String getAttribute(MobileElement e, String attribute) {
+		ExtentCucumberAdapter.addTestStepLog( "Attribute value"+attribute+" Locator: "+ e);
 		waitForVisibility(e);
 		return e.getAttribute(attribute);
 	}
 
 	public String getAttribute(By e, String attribute) {
+		ExtentCucumberAdapter.addTestStepLog("Attribute value"+attribute + "Locator: "+ e);
 		waitForVisibility(e);
 		return driver.findElement(e).getAttribute(attribute);
 	}
@@ -165,10 +172,12 @@ public class BasePage {
 	}
 
 	public void closeApp() {
+		ExtentCucumberAdapter.addTestStepLog("Close Application");
 		((InteractsWithApps) driver).closeApp();
 	}
 
 	public void launchApp() {
+		ExtentCucumberAdapter.addTestStepLog("Launching Application");
 		((InteractsWithApps) driver).launchApp();
 	}
 
@@ -207,7 +216,7 @@ public class BasePage {
 	}
 
 	public MobileElement scrollToElement(MobileElement element, String direction, String msg) throws Exception {
-		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ element);
+		ExtentCucumberAdapter.addTestStepLog(msg + "Direction: "+ direction+" Locator: "+ element);
 		utils.log().info(msg +" "+element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
@@ -243,6 +252,7 @@ public class BasePage {
 	}
 
 	public MobileElement scrollToElement(MobileElement element, String direction) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog(  "Direction: "+ direction+" Locator: "+ element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
 		int endX = (int) (size.width * 0.5);
@@ -277,6 +287,7 @@ public class BasePage {
 	}
 
 	public By scrollToElement(By element, String direction) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("Direction: "+ direction+" Locator: "+ element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
 		int endX = (int) (size.width * 0.5);
@@ -311,6 +322,7 @@ public class BasePage {
 	}
 
 	public By scrollToElement(By element, String direction, String msg) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Direction: "+ direction+" Locator: "+ element);
 		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ element);
 		utils.log().info(msg +" "+element);
 		Dimension size = driver.manage().window().getSize();
@@ -347,6 +359,7 @@ public class BasePage {
 	}
 
 	public By scrollToElement_iOS(By element, String direction) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog( "Direction: "+ direction+" Locator: "+ element);
 		Dimension size = driver.manage().window().getSize();
 		int startX = (int) (size.width * 0.5);
 		int endX = (int) (size.width * 0.5);
@@ -482,6 +495,7 @@ public class BasePage {
 	}
 
 	public boolean isElementFound(MobileElement ele) {
+		ExtentCucumberAdapter.addTestStepLog( "Locator: "+ ele);
 		boolean val = false;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 40);
@@ -502,6 +516,7 @@ public class BasePage {
 	}
 
 	public boolean isElementFoundForRecovery(MobileElement ele) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ ele);
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		boolean val;
 		try {
@@ -668,6 +683,7 @@ public class BasePage {
 	 * @param element is the mobile element
 	 */
 	public void clickElement(MobileElement element) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ element);
 		element.click();
 	}
 
@@ -728,6 +744,7 @@ public class BasePage {
 	 * @param element
 	 */
 	public Boolean IsElementPresent(MobileElement element) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ element);
 		try {
 			element.isDisplayed();
 			return true;
@@ -742,6 +759,7 @@ public class BasePage {
 	 * @param element
 	 */
 	public boolean IsElementNotPresent(MobileElement element) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ element);
 		try {
 			element.isDisplayed();
 			return false;
@@ -751,6 +769,7 @@ public class BasePage {
 	}
 
 	public boolean IsElementNotPresent(By element) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ element);
 		try {
 			driver.findElement(element).isDisplayed();
 			return false;
@@ -760,6 +779,7 @@ public class BasePage {
 	}
 	
 	public boolean isElementNotPresent(MobileElement element) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ element);
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20, 500);
 			wait.until(ExpectedConditions.invisibilityOf(element));
@@ -773,6 +793,7 @@ public class BasePage {
 	 * Return true if elements are present else return false //* @param list
 	 */
 	public boolean IsElementsPresent(List<MobileElement> element) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ element);
 		boolean value = false;
 		try {
 			if (element.size() > 0) {
@@ -790,6 +811,7 @@ public class BasePage {
 	 * @param by
 	 */
 	public boolean IsElementPresent(By by) {
+		ExtentCucumberAdapter.addTestStepLog(" Locator: "+ by);
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 20, 500);
 			wait.until(ExpectedConditions.invisibilityOf(driver.findElement(by)));
