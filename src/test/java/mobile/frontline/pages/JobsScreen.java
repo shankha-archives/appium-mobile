@@ -37,6 +37,14 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "((//XCUIElementTypeStaticText[@label = 'AutomationEmp2 3683'])[1]/following::XCUIElementTypeStaticText[@label = 'GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344'])[1]")
     public MobileElement jobSchoolMultidistrict2;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available']")
+    @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement available;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
+    @iOSXCUITFindBy(accessibility = "Scheduled")
+    public MobileElement accepted;
+
     public WebElement scrolledToElement;
 
     public JobsScreen() {
@@ -110,6 +118,16 @@ public class JobsScreen extends BasePage {
             return isElementPresent(scrollToElement_iOS(jobDate, "up", "Scrolling to the required job"));
         }
     }
+
+    public boolean verifyAcceptedTab(){
+          return   isElementDisplayed(accepted,"Waiting for accepted job tab to be visible ");
+    }
+
+    public boolean veriFyAvailableTab(){
+        return isElementDisplayed(available,"Waiting for available job tab to be visible");
+    }
+
+
 
 //
 //    public void checkAvailablejob() throws Throwable {

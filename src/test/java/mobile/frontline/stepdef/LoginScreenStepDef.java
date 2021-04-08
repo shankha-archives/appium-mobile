@@ -176,6 +176,11 @@ public class LoginScreenStepDef {
 
 	}
 
+	@And("^the user verify that Unlock code page should not displayed")
+	public void user_verify_unlock_code_page_should_not_displayed() throws Throwable {
+		Assert.assertTrue("Unlock code page is displayed", loginMethods.verifyUnlockCodePage());
+	}
+
 //	@When("^user selects the org with only role as sub$")
 //	public void user_selects_the_org_with_only_role_as_sub() throws Throwable {
 //		loginPage.orgWithOnlySubRole();

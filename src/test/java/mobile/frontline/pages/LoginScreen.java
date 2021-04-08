@@ -51,6 +51,10 @@ public class LoginScreen extends BasePage {
     // @iOSXCUITFindBy(accessibility = "")
     public MobileElement noLoginDialogBox;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter Unlock Code']")
+    @iOSXCUITFindBy(accessibility = "Enter Unlock Code")
+    public MobileElement enterUnlockCode;
+
     public LoginScreen() {
     }
 
@@ -138,5 +142,11 @@ public class LoginScreen extends BasePage {
 
         return  isElementDisplayed(splashScreen,"Waiting for splash screen to display");
         // Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
+    }
+
+    public boolean verifyUnlockCodePage() throws Throwable {
+        return IsElementNotPresent(enterUnlockCode);
+
+       // utils.log().info("Unlock code page is not displayed");
     }
 }

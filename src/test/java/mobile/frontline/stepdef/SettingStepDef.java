@@ -67,16 +67,9 @@ public class SettingStepDef {
 //	}
 
 	// 4808
-	@Then("^The user moves to Next Scheduled Job widget and verify it")
-	public void user_verifies_next_scheduled_job_widget() throws Throwable {
-		settingsPage.verifyNextScheduledJobWidget();
-	}
+
 
 	// 4796
-	@And("^the user verify that Unlock code page should not displayed")
-	public void user_verify_unlock_code_page_should_not_displayed() throws Throwable {
-		settingsPage.verifyUnlockCodePage();
-	}
 
 	@When("Select the Organization")
 	public void selectTheOrganization() {

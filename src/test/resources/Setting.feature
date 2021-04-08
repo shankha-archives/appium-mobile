@@ -7,7 +7,10 @@ Scenario: Verify calendar link in substitute Menu
 	Then the user click on Get Started Button 
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
-	When click on menu and tap the Calendar link 
+#	When click on menu and tap the Calendar link
+	When the user clicks on Menu tab
+	When Click on calendar search result
+	And verify calendar the search result "searchText"
 	
 @Setting @MOB-4806  @MOB-4805  @AndroidRegression @iOSRegression
 Scenario: Verify Job List tab bar in substitutes page 
@@ -16,17 +19,23 @@ Scenario: Verify Job List tab bar in substitutes page
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then the substitute navigates to dashboard page 
 	When click on Avalaible Jobs link
-	Then verify Job List tab bar for available and accepted jobs
+	Then Verify available job tab
+	And Verify accepted job tab
+#	Then verify Job List tab bar for available and accepted jobs
 
 @Setting @MOB-4809  @MOB-4810 @AndroidRegression @iOSRegression
 Scenario: Verify that substitute user is allowed to submit diagnostic data 
 	When the user launches the app 
 	Then the user click on Get Started Button 
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
-	When click on menu bar 
-	And Long press on Frontline Logo at bottom of the screen 
-	Then User click on the send Diagnostics option and click on Okay button 
+	Then the substitute navigates to dashboard page
+	When the user clicks on Menu tab
+#	When click on menu bar
+	And Long press on Frontline Logo
+	And User click on the send Diagnostics btn
+	Then Verify the toast message of sent diagnostic
+#	And Long press on Frontline Logo at bottom of the screen
+#	Then User click on the send Diagnostics option and click on Okay button
 		
   ##Accept job through API -> only very through calendar
 @Setting @MOB-4803 @AndroidRegression @iOSRegression
@@ -37,7 +46,16 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 	Then the user click on Get Started Button
 	And Enter username "AutomationSubsJobOperations4" and password and click on Sign In button
 	Then the substitute navigates to dashboard page
-	Then go to calendar and view the accepted job for "next day"
+	When the user clicks on Menu tab
+#	When click on menu bar
+	When Click on calendar search result
+#	Then enter the search text in bar and click on result
+	And verify calendar the search result "searchText"
+	Then Choose the required month "next day"
+	And Click on the event day "next day"
+	And Tap on substitutes job event
+	Then Verify the job event details "next day"
+#	Then go to calendar and view the accepted job for "next day"
   
 @Setting @MOB-4808  @MOB-4807 @AndroidRegression @iOSRegression
 Scenario: Verify that a substitute can view next scheduled Job widget
@@ -63,10 +81,12 @@ Scenario: Verify role picker option should not displayed when user account has o
 	Then the user click on Get Started Button 
 	And Enter username "AutomationSubMutiOrg" and password and click on Sign In button 
     Then the user is presented with the org picker
-    When Select the Organization
+#    When Select the Organization
+	Then The user choose the one organization
     Then the substitute navigates to dashboard page
-    When click on switch
-	When Select other Organization
+#    When click on switch
+	And Click on switch btn
+	Then The user choose the second organization
 	Then the substitute navigates to dashboard page
 	
 #	#remove
@@ -81,14 +101,23 @@ Scenario: Verify role picker option should not displayed when user account has o
 	
 @Setting @MOB-6019 @AndroidRegression
 Scenario: Verify an employee can view same Intime event value in Timesheet even after relaunching the app
-	When the user launches the app 
-	Then the user click on Get Started Button 
-	And Enter employee username "AutomationEmployeeMOB-4263" and password and click on Sign In button 
+	When the user launches the app
+	Then the user click on Get Started Button
+	And Enter username "AutomationEmployeeMOB-4263" and password and click on Sign In button
 	Then the user navigates to dashboard page
-	When employee clicks on the timesheet widget
-	Then click on add timesheet and change InTime
+	When The user navigates to timesheet widget
+	And Select the current day
+	And Click on add new time event
+	And Wait for time entry page to load
+#	Then Add one hour of out time to the event
+	Then Add one hour to in time of the event
+	And Click ok after adding out time event
+	And Get the changes in time
+#	When employee clicks on the timesheet widget
+#	Then click on add timesheet and change InTime
 	And The user minimize and relaunch the application
-	Then Verify that InTime should not changes
+	And Verify in time after relaunching application
+#	Then Verify that InTime should not changes
 
 ##Remove ?// covered in dark mode
 #@Setting @MOB-6025 @done

@@ -52,7 +52,11 @@ public class TimeEntryScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name='Error']")
     public MobileElement timesheetErrorMessage;
 
-    public static String outTime;
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
+//	@iOSXCUITFindBy(accessibility = "")
+    public MobileElement inTimeEdit;
+
+//    public static String outTime;
 
     public TimeEntryScreen() {
     }
@@ -116,5 +120,14 @@ public class TimeEntryScreen extends BasePage {
     public String timesheetNonEditablePopup() {
         return getElementText(timesheetErrorMessage,"Fetching the timesheet error pop up");
     }
+
+    public String getInTime(){
+        return getElementText(inTimeEdit,"Getting in TimeText");
+    }
+
+    public void clickIntimeLink(){
+        click(inTimeEdit,"Clicking on intime");
+    }
+
 
 }
