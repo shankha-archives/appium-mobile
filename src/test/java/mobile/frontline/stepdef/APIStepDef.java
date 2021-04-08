@@ -97,4 +97,14 @@ public class APIStepDef {
         } else
             utils.log().info("The environment selected is prodution");
     }
+
+    @When("Substitute accepts the job with required details {string} {string}")
+    public void substituteAcceptsTheJobWithRequiredDetails(String tokenUser, String xrefOrgID) throws Throwable {
+        props = new PropertyManager().getProps();
+        if (!props.getProperty("testdata").contains("prod")) {
+            apiService.apiBearerTokenGeneration(tokenUser);
+            apiService.apiAcceptSubstituteJob(APIServices.confirmationNumber, xrefOrgID);
+        } else
+            utils.log().info("The environment selected is prodution");
+    }
 }

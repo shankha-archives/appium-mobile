@@ -136,4 +136,9 @@ public class HomePageScreenStepDef {
     public void clickOnAbsencesTodayWidget() throws Throwable {
         homescreen.clickAbsencesWidget();
     }
+
+    @Then("^The user moves to Next Scheduled Job widget and verify it")
+    public void user_verifies_next_scheduled_job_widget() throws Throwable {
+        homescreen.verifyNextScheduledJobWidget();
+    }
 }

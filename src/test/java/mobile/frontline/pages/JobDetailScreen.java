@@ -31,6 +31,10 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Conf')]")
     public MobileElement confirmationNo;
 
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+    @iOSXCUITFindBy(accessibility = "JobDetailDayView_JobDate_Label")
+    public MobileElement jobDetailDate;
+
     public static String job_date;
 
     public JobDetailScreen() {
@@ -70,6 +74,12 @@ public class JobDetailScreen extends BasePage {
 //                getElementText(confirmationNo).contains(APIServices.confirmationNumber));
         isElementDisplayed(confirmationNo, "Waiting for confirmation number to be displayed");
         return getElementText(confirmationNo, "Extracting confirmation number");
+    }
+
+    public String verifyJobDate() {
+        isElementDisplayed(jobDetailDate,"Waiting for job date details to display");
+        return getElementText(jobDetailDate,"Extracting job date text");
+      //  Assert.assertTrue("Confirmation number is not displayed", getElementText(jobDetailDate).contains(nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
     }
 
 }

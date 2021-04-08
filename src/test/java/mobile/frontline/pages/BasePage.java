@@ -827,6 +827,7 @@ public class BasePage {
 	 * Swipe Down
 	 */
 	public void swipeDown() {
+		ExtentCucumberAdapter.addTestStepLog("Swiping down ");
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
 		int startY = (int) (size.height * .2);
@@ -847,6 +848,7 @@ public class BasePage {
 	 * Swipe Up
 	 */
 	public void swipeUp() {
+		ExtentCucumberAdapter.addTestStepLog("Swiping up");
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
 		int startY = (int) (size.height * .8);
@@ -864,6 +866,7 @@ public class BasePage {
 	}
 
 	public void swipeUpSlowly() {
+		ExtentCucumberAdapter.addTestStepLog("Swiping up slowly");
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
 		int startY = (int) (size.height * .6);
@@ -918,6 +921,7 @@ public class BasePage {
 	 */
 
 	public void swipeUpElement(MobileElement element, int duration) {
+		ExtentCucumberAdapter.addTestStepLog("Direction: up" + "Locator: "+ element);
 		int topY = element.getLocation().getY();
 		int bottomY = topY + element.getSize().getHeight();
 		int centerX = element.getLocation().getX() + (element.getSize().getWidth() / 2);
@@ -931,6 +935,7 @@ public class BasePage {
 	 * Scroll Up Screen
 	 */
 	public void scrollUp() {
+		ExtentCucumberAdapter.addTestStepLog("Scrolling up");
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
 		int startY = (int) (size.height * .8);
@@ -951,6 +956,7 @@ public class BasePage {
 	 * Scroll Down Screen
 	 */
 	public void scrollDown() {
+		ExtentCucumberAdapter.addTestStepLog("Scrolling down");
 		Dimension size = driver.manage().window().getSize();
 		int startX = size.width / 2;
 		int startY = (int) (size.height * .2);
@@ -971,6 +977,7 @@ public class BasePage {
 	 * Swipe Right
 	 */
 	public void swipeRight() {
+		ExtentCucumberAdapter.addTestStepLog("Swiping Right");
 		Dimension size = driver.manage().window().getSize();
 		int startx = (int) (size.width * 0.05);
 		int endx = (int) (size.width * 0.50);
@@ -991,6 +998,7 @@ public class BasePage {
 	 * Swipe Left
 	 */
 	public void swipeLeft() {
+		ExtentCucumberAdapter.addTestStepLog("Swiping Left");
 		Dimension size = driver.manage().window().getSize();
 		int startx = (int) (size.width * 0.50);
 		int endx = (int) (size.width * 0.05);
@@ -1156,6 +1164,7 @@ public class BasePage {
 	 * Switch from WebView to Native
 	 */
 	public void switchToNativeApp() {
+		ExtentCucumberAdapter.addTestStepLog("Switching to native app");
 		Set<String> contextNames = driver.getContextHandles();
 		for (String contextName : contextNames) {
 			if (contextName.contains("NATIVE")) {
@@ -1201,6 +1210,7 @@ public class BasePage {
 	public String currentTime() {
 		DateFormat dateFormat = new SimpleDateFormat("h:mm");
 		String dateString = dateFormat.format(new Date()).toString();
+		ExtentCucumberAdapter.addTestStepLog("Getting current time"+ dateString);
 		return dateString;
 	}
 
@@ -1208,6 +1218,7 @@ public class BasePage {
 	 * method to set the default webview context
 	 */
 	public void switchToWebView() {
+		ExtentCucumberAdapter.addTestStepLog("Switching to Web view ");
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
@@ -1240,6 +1251,7 @@ public class BasePage {
 	}
 
 	public boolean isElementPresent(By by) {
+		ExtentCucumberAdapter.addTestStepLog("Locator"+ by);
 		try {
 			driver.findElement(by);
 			return true;
@@ -1269,6 +1281,7 @@ public class BasePage {
 	 */
 
 	public void installApkFromDevices(String deviceID, String app_package) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("installing apk from devices");
 		cmd.runCommand("adb -s " + deviceID + " -r install " + app_package);
 	}
 
@@ -1279,6 +1292,7 @@ public class BasePage {
 	 * @throws Exception
 	 */
 	public void closeRunningApp(String deviceID, String app_package) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("Closing running application");
 		cmd.runCommand("adb -s " + deviceID + " shell am force-stop " + app_package);
 	}
 
@@ -1286,6 +1300,7 @@ public class BasePage {
 	 * This method close the running app from the devices attached
 	 */
 	public void closeRunningApp() throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("Close Running application");
 		driver.closeApp();
 	}
 
@@ -1293,6 +1308,7 @@ public class BasePage {
 	 * This method close the running app from the devices attached
 	 */
 	public void bgRunningApp() throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("Run application in background");
 		driver.runAppInBackground(Duration.ofSeconds(10));
 	}
 
@@ -1302,6 +1318,7 @@ public class BasePage {
 	 * @param app_package
 	 */
 	public void closeRunningApp(String app_package) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("Close application using package");
 		Map<String, Object> params = new HashMap<>();
 
 		params.put("command", "am force-stop " + app_package);
@@ -1316,6 +1333,7 @@ public class BasePage {
 	 * @throws Exception
 	 */
 	public void launchApp(String deviceID, String app_package, String app_activity) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("LAunch Application");
 		cmd.runCommand("adb -s " + deviceID + " shell am start " + app_package + "/" + app_activity);
 	}
 
@@ -1325,6 +1343,7 @@ public class BasePage {
 	 * @param app_package
 	 */
 	public void launchApp(String app_package) throws Exception {
+		ExtentCucumberAdapter.addTestStepLog("Launch application using package"+ app_package);
 		driver.activateApp(app_package);
 	}
 
@@ -1417,6 +1436,7 @@ public class BasePage {
 	}
 
 	public boolean isElementDisplayed(MobileElement ele) {
+		ExtentCucumberAdapter.addTestStepLog("Waiting for element to display. Locator"+ ele);
 		boolean val = false;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 60);
@@ -1443,6 +1463,7 @@ public class BasePage {
 	}
 
 	public boolean isElementdisplayed(MobileElement ele) {
+		ExtentCucumberAdapter.addTestStepLog("Locator: "+ ele);
 		boolean val = false;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 60);
@@ -1480,6 +1501,7 @@ public class BasePage {
 	}
 
 	public String getElementText(MobileElement ele) {
+		ExtentCucumberAdapter.addTestStepLog("Locator: "+ ele);
 		String elementText = "";
 		try {
 			if (isElementDisplayed(ele)) {
@@ -1508,6 +1530,7 @@ public class BasePage {
 	}
 
 	public void clearTextField(MobileElement ele) {
+		ExtentCucumberAdapter.addTestStepLog(  "Clearing text field:  Locator: "+ ele);
 		try {
 			if (isElementDisplayed(ele)) {
 				ele.click();
@@ -1733,6 +1756,7 @@ public class BasePage {
 	
 	public String currentDate(String format) throws Exception {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
+		ExtentCucumberAdapter.addTestStepLog( "Current date: "+ dtf.format(LocalDateTime.now()));
 		return dtf.format(LocalDateTime.now());
 	}
 
@@ -1756,6 +1780,7 @@ public class BasePage {
 		default:
 			throw new Exception("Invalid date");
 		}
+		ExtentCucumberAdapter.addTestStepLog( "Next working day: "+ dateFormat.format(c.getTime()));
 		return dateFormat.format(c.getTime());
 	}
 

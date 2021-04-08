@@ -98,14 +98,4 @@ public class JobsStepDef {
 //	public void verify_the_created_jobs_are_available_in_the_list() throws Throwable {
 //		jobulatorPage.verifyCreatedJobsAreVisibleintheList();
 //	}
-
-	@When("Substitute accepts the job with required details {string} {string}")
-	public void substituteAcceptsTheJobWithRequiredDetails(String tokenUser, String xrefOrgID) throws Throwable {
-		props = new PropertyManager().getProps();
-		if (!props.getProperty("testdata").contains("prod")) {
-			apiService.apiBearerTokenGeneration(tokenUser);
-			apiService.apiAcceptSubstituteJob(APIServices.confirmationNumber, xrefOrgID);
-		} else
-			utils.log().info("The environment selected is prodution");
-	}
 }

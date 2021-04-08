@@ -5,12 +5,14 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.APIServices;
+import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobDetailScreen;
 import org.junit.Assert;
 
 public class JobDetailScreenStepDef {
 
     public JobDetailScreen jobDetailScreen = new JobDetailScreen();
+    public BasePage common = new BasePage();
 
     @And("accept the job")
     public void acceptTheJob() {
@@ -48,5 +50,8 @@ public class JobDetailScreenStepDef {
         //jobulatorPage.confirmationPresent(apiService.getConfirmationNumber());
     }
 
-
+    @Then("Verify the job event details {string}")
+    public void verifyTheJobEventDetails(String absenceDay) throws Exception {
+        Assert.assertTrue("Confirmation number is not displayed", jobDetailScreen.verifyJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+    }
 }

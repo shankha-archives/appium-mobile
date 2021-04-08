@@ -10,6 +10,7 @@ import org.junit.Assert;
 public class TimeEntryScreenStepDef {
 
     TimeEntryScreen timeEntryScreen = new TimeEntryScreen();
+    String expectedInTime;
 
     @Then("edit the timesheet outtime")
     public void editTheTimesheetOuttime() {
@@ -52,4 +53,21 @@ public class TimeEntryScreenStepDef {
     public void verifyThePopUpThatTimesheetIsNotEditable() {
         Assert.assertEquals("The timesheet is not submitted","The timesheet requested is not in an editable state", timeEntryScreen.timesheetNonEditablePopup());;
     }
+
+    @Then("Add one hour to in time of the event")
+    public void addOneHourToInTimeOfTheEvent() {
+        timeEntryScreen.clickIntimeLink();
+        timeEntryScreen.addAnHourToTimesheets();
+    }
+
+    @And("Get the changes in time")
+    public void getTheChangesInTime() {
+       expectedInTime = timeEntryScreen.getInTime();
+    }
+
+    @And("Verify in time after relaunching application")
+    public void verifyInTimeAfterRelaunchingApplication() {
+        Assert.assertEquals("", expectedInTime, timeEntryScreen.getInTime());
+    }
+
 }

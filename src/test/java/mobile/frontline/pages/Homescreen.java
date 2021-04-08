@@ -103,6 +103,10 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Absences Today_ModuleHeader")
     public MobileElement absenceWidget;
 
+    // @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
+    public MobileElement nextScheduledJobWidget;
+
     public static String inTime;
     public WebElement scrolledToElement;
     public static ArrayList<String> widgetlistbeforeReorder;
@@ -298,7 +302,7 @@ public class Homescreen extends BasePage {
             scrolledToElement.click();
         } else {
             scrollToElement(createAbsBtn, "up");
-            click(createAbsBtn,"Clicking on create absence btn");
+            click(createAbsBtn, "Clicking on create absence btn");
         }
     }
 
@@ -309,6 +313,15 @@ public class Homescreen extends BasePage {
         } else {
             scrollToElement(absenceWidget, "up");
             click(absenceWidget, "Clicking on Absence Widget");
+        }
+    }
+
+    public void verifyNextScheduledJobWidget() throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android"))
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
+        else {
+            scrollToElement(nextScheduledJobWidget, "up");
+            Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
         }
     }
 }
