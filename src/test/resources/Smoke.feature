@@ -227,7 +227,7 @@ Feature: Smoke scenarios
     When the user clicks on Menu tab
     And Click on Settings
     And Logout from app
-    And  logouts out from the application
+#    And  logouts out from the application
     And Enter username "AutomationEmployeeMOB-4257" and password and click on Sign In button
     Then the user navigates to dashboard page
     When Fetch the list of widgets before reordering
@@ -294,7 +294,7 @@ Feature: Smoke scenarios
 
   @MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify user is able to edit the absence
-#    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user launches the app
     Then the user click on Get Started Button
     And Enter username "AutomationEmployeeMOB-4247" and password and click on Sign In button
