@@ -53,5 +53,6 @@ public class AbsenceDetailScreenStepDef {
     @Then("Click on approve btn and click ok")
     public void clickOnApproveBtnAndClickOk() {
         absenceDetailScreen.clickApproveBtnOnAbsence();
+        absenceDetailScreen.clickonOkBtn();
     }
 }
