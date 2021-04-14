@@ -1,7 +1,7 @@
 @jobs
 Feature: Jobulator scenarios
 
-  @AndroidRegression @MOB-3325 @iOSRegression @ads
+  @AndroidRegression @MOB-3325 @iOSRegression
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
     When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user waits and launches the app
@@ -53,7 +53,7 @@ Feature: Jobulator scenarios
 #    And visit available jobs page again
     Then verify if accepted job is still present
 
-  @MOB-3681 @AndroidRegression @iOSRegression @ads
+  @MOB-3681 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view all job information from all organizations
     When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "next day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
@@ -85,7 +85,7 @@ Feature: Jobulator scenarios
 #    Then the user choose the sub role of one org and verify the created jobs
 #    When the user choose the sub role of another org and verify the created jobs
 
-  @MOB-3683 @AndroidRegression @iOSRegression @ads
+  @MOB-3683 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones

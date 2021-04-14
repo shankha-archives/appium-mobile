@@ -23,18 +23,6 @@ public class LeaveBalanceScreen extends BasePage {
     }
 
     public String verify_availableDays() throws Exception {
-        if( (new GlobalParams().getPlatformName()).contains("Android")) {
-
             return getElementText(availableDays, "Extracting available leaves");
-//            String leaveBalance = getElementText(availableDays);
-//            Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalance) >= 0);
-//            utils.log().info("Available Days are valid");
-        }
-        else{
-            return null;
-//                isElementdisplayed(absenceBtn);
-//                Assert.assertTrue("Absence button is not displayed", absenceBtn.isDisplayed());
-//                utils.log().info("Absence button is displayed");
-        }
     }
 }
