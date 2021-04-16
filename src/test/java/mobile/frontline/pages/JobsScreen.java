@@ -68,7 +68,7 @@ public class JobsScreen extends BasePage {
         // storeJobDetails();
         else {
             By findJob = By.xpath("//XCUIElementTypeStaticText[contains(@label,'" + jobByEmp + "')]");
-            scrollToElement(findJob, "up","Scrolling to the required job");
+            scrollToElement_iOS(findJob, "up");
             click(findJob, "Clicking on on Required Job");
         }
     }
@@ -99,7 +99,7 @@ public class JobsScreen extends BasePage {
             return isElementPresent(scrollToElement_iOS(employeeSchool, "up","Scrolling to the required job"));
             //return isElementPresent(employeeSchool);
         } else {
-            By employeeSchool = By.xpath("//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label='" + testdata.read_property("Account", "valid", schoolName) + "'])[1]");
+            By employeeSchool = By.xpath("((//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label='" + testdata.read_property("testingData", "users", schoolName) + "'])[1]");
             return isElementPresent(scrollToElement_iOS(employeeSchool, "up", "Scrolling to the required job"));
         }
     }

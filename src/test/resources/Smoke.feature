@@ -282,7 +282,7 @@ Feature: Smoke scenarios
     Then the user navigates to dashboard page
     When the user clicks on Menu tab
 #	When click on menu bar
-    When Click on calendar search result
+    When Click on calendar in menu link
 #	Then enter the search text in bar and click on result
     And verify calendar the search result "searchText"
     Then Choose the required month "next day"
@@ -301,7 +301,8 @@ Feature: Smoke scenarios
     Then the user navigates to dashboard page
     When the user clicks on Menu tab
 #	When click on menu bar
-    When Click on calendar search result
+    When Click on calendar in menu link
+#    When Click on calendar search result
 #	Then enter the search text in bar and click on result
     And verify calendar the search result "searchText"
     Then Choose the required month "next day"

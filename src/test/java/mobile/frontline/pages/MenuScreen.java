@@ -40,6 +40,10 @@ public class MenuScreen extends BasePage{
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/send_diagnostics_button")
     public MobileElement sendDiagnosticsBtn;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
+    @iOSXCUITFindBy(accessibility = "Calendar_MenuOption")
+    public MobileElement calendarLink;
+
     @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement okay;
 
@@ -49,13 +53,13 @@ public class MenuScreen extends BasePage{
 
     public void clickSettingsOption() throws Exception {
         scrollToElement(settings, "up", "Scrolling to the settings menu link");
-       // Assert.assertTrue("Settings tab is not displayed", settings.isDisplayed());
+        // Assert.assertTrue("Settings tab is not displayed", settings.isDisplayed());
         click(settings, "Clicking on setting btn");
     }
 
     public void enterSearchText(String searchText) {
         isElementDisplayed(searchBar,"Waiting for search bar to be visible");
-       // Assert.assertTrue("search Bar option is not displayed", searchBar.isDisplayed());
+        // Assert.assertTrue("search Bar option is not displayed", searchBar.isDisplayed());
         //searchResultText = searchText;
         //utils.log().info("Searched text is : " + searchResultText);
         click(searchBar,"Clicking on Search Bar");
@@ -64,7 +68,7 @@ public class MenuScreen extends BasePage{
     }
 
     public void clickOnCalendarResult() {
-      //  Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
+        //  Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
         click(searchResult, "Clicking on calendar Search Result");
     }
 
@@ -92,9 +96,8 @@ public class MenuScreen extends BasePage{
     }
 
     public void clickSendDiagnosticsBtn(){
-      click(sendDiagnosticsBtn,"Clicking on send diagnostics btn");
+        click(sendDiagnosticsBtn,"Clicking on send diagnostics btn");
     }
-
 
     public String getSendDiagnosticToastMsg() throws Throwable {
         if( (new GlobalParams().getPlatformName()).contains("Android")) {
@@ -105,9 +108,14 @@ public class MenuScreen extends BasePage{
 //                Assert.assertEquals("Diagnostic is not sent", "Diagnostics sent!",actualDiagnosticMsg);
 //                utils.log().info("Diagnostic is sent :"+ actualDiagnosticMsg);
         }else {
-                click(okay);
-                return null;
+            click(okay);
+            return null;
 
         }
+    }
+
+    public void clickOnCalendarLink() {
+        //  Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
+        click(calendarLink, "Clicking on calendar link");
     }
 }
