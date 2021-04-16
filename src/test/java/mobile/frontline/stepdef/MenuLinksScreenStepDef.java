@@ -46,4 +46,9 @@ public class MenuLinksScreenStepDef {
     public void verifyTheToastMessageOfSentDiagnostic() throws Throwable {
         Assert.assertEquals("Diagnostic is not sent", "Diagnostics sent!",menuScreen.getSendDiagnosticToastMsg());
     }
+
+    @When("Click on calendar in menu link")
+    public void clickOnCalendarInMenuLink() {
+        menuScreen.clickOnCalendarLink();
+    }
 }

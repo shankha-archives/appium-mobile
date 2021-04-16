@@ -59,7 +59,7 @@ public class CreateAbsenceScreenStepDef {
     @And("Edit absence day {string} and click next")
     public void editAbsenceDayAndClickNext(String absenceDay) throws Throwable {
         Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.verifyAsbsenceDatePage()) ;
-        createAbsenceScreen.selectDate(absenceDay);
+        createAbsenceScreen.editDate(absenceDay);
         createAbsenceScreen.clickNext();
     }
 

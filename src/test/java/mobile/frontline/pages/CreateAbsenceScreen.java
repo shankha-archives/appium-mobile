@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 public class CreateAbsenceScreen extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Why?']")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText[1])[2]")
+    @iOSXCUITFindBy(accessibility = "Why?")
     public MobileElement absenceReasonVerification;
 
     @AndroidFindBy(xpath = "(//android.widget.LinearLayout)[4]")
@@ -23,11 +23,11 @@ public class CreateAbsenceScreen extends BasePage {
     public MobileElement forwardCaret;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='When?']")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText[1])[2]")
+    @iOSXCUITFindBy(accessibility = "When?")
     public MobileElement datePageVerification;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='How Long?']")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText[1])[2]")
+    @iOSXCUITFindBy(accessibility = "How Long?")
     public MobileElement durationPageVerification;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_full_day")
@@ -35,10 +35,11 @@ public class CreateAbsenceScreen extends BasePage {
     public MobileElement selectDuration;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText[1])[2]")
+    @iOSXCUITFindBy(accessibility = "Substitute")
     public MobileElement subAssignPageVerification;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Review']")
+    @iOSXCUITFindBy(accessibility = "Review")
     public MobileElement reviewPageVerification;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
@@ -62,6 +63,7 @@ public class CreateAbsenceScreen extends BasePage {
     public MobileElement viewAbsence;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Who?']")
+    @iOSXCUITFindBy(accessibility = "Who?")
     public MobileElement absenceRequiredFor;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/search_view_edit_text")
@@ -115,6 +117,18 @@ public class CreateAbsenceScreen extends BasePage {
             By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");
             scrollToElement(absenceDate, "up","Scrolling to the required date");
             click(absenceDate, "Clicking on Absence Date");
+        }
+    }
+
+    public void editDate(String absenceDay) throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
+            scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate, "Scrolling to the require date");
+            scrolledToElement.click();
+        } else {
+            nextWorkingDate = nextWorkingDay(absenceDay, "MM/dd/yyyy");
+            By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");
+            scrollToElement(absenceDate, "up","Scrolling to the required date");
         }
     }
 
@@ -199,6 +213,4 @@ public class CreateAbsenceScreen extends BasePage {
     public boolean waitForForwardBtn() {
         return isElementDisplayed(whoAbsencePageWaittoClickCaret, "Waiting for who absence page to display");
     }
-
-
 }
