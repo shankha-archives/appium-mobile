@@ -42,16 +42,17 @@ public class LoginScreenStepDef {
 		//loginPage.verify_splashScreenLoaded();
 	}
 
-	@When("^the user waits and launches the app$")
+	@When("^The user waits and launches the app$")
 	public void the_user_waits_and_launches_the_app() throws Throwable {
 		Assert.assertTrue("Waiting and searching for get started",loginMethods.waitAndverify_splashScreenLoaded());
 		//loginPage.waitAndverify_splashScreenLoaded();
 	}
 
-	@Then("the user click on Get Started Button")
+	@Then("The user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
 		//loginPage.clickOnGetStartedBtn();
 		loginMethods.clickOnGetStartedBtn();
+
 	}
 
 	@Then("^the substitute user is taken to the Login Page$")
@@ -67,6 +68,7 @@ public class LoginScreenStepDef {
 //		loginPage.enterUserPassword_onLoginPage(testdata.read_property("Account", "valid", "FrontlinePassword"));
 //		loginPage.clickOnLoginBtn();
 		loginMethods.loginToApplication(testdata.read_property("Account", "valid", username),testdata.read_property("Account", "valid", "FrontlinePassword") );
+		//Thread.sleep(10000);
 	}
 
 //	@When("^the substitute user launches the app$")

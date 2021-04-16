@@ -15,6 +15,12 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "JobDetailVC_AcceptButton")
     public MobileElement jobAcceptBtn;
 
+    //My Method
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    public MobileElement jobRejectBtn;
+    //@iOSXCUITFindBy(accessibility = "JobDetailVC_AcceptButton")
+
+
     @AndroidFindBy(id = "android:id/message")
     @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
     public MobileElement successMsg;
@@ -53,10 +59,19 @@ public class JobDetailScreen extends BasePage {
         click(jobAcceptBtn, "Accept job btn is displayed");
     }
 
+
+    //My method
+    public void clickOnRejectJobsBtn() {
+        Assert.assertTrue("Reject job btn is not displayed", isElementDisplayed(jobRejectBtn, "Waiting for Reject job btn"));
+        click(jobRejectBtn, "Reject job btn is displayed");
+
+    }
+
     public String successMsgPOPUP() throws Exception {
         isElementDisplayed(successMsg, "Waiting from accept job success message");
         return getElementText(successMsg, "Extracting job success message");
     }
+
     public void clickOnOkBtn_successMsg() {
         click(successOkBtn,"Clicking on Success OK button is displayed");
     }

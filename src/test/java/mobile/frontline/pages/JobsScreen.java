@@ -105,18 +105,18 @@ public class JobsScreen extends BasePage {
     }
 
     public boolean verifyJobIsAvailable(String employeeName) throws Exception {
-
+        By jobDate;
         if (new GlobalParams().getPlatformName().contains("Android")) {
-            By jobDate = By.xpath(
+            jobDate = By.xpath(
                     "(//android.widget.TextView[@text='" + employeeName + "']/following:: android.widget.TextView[@text='"
                             + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
-            return isElementPresent(scrollToElement_iOS(jobDate, "up", "Scrolling to the required job"));
+            //return isElementPresent(scrollToElement_iOS(jobDate, "up", "Scrolling to the required job"));
         } else {
-            By jobDate = By.xpath(
+            jobDate = By.xpath(
                     "((//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label = " +
                             "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
-            return isElementPresent(scrollToElement_iOS(jobDate, "up", "Scrolling to the required job"));
         }
+        return scrollToVerifyElement(jobDate, "up", "Scrolling to the required job");
     }
 
     public boolean verifyAcceptedTab(){

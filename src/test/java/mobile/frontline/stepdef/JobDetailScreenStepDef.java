@@ -21,6 +21,22 @@ public class JobDetailScreenStepDef {
         jobDetailScreen.clickOnAcceptJobsBtn();
     }
 
+    //Reject Method
+    @And("reject the job")
+    public void rejectTheJob() throws InterruptedException {
+        //  String jobDate = jobDetailScreen.storeJobDetails();
+        jobDetailScreen.storeJobDetails();
+        jobDetailScreen.clickOnRejectJobsBtn();
+    }
+
+    @And("Confirm the Reject job Popup")
+    public void confirmRejectPopup() throws InterruptedException {
+
+        jobDetailScreen.clickOnOkBtn_successMsg();
+
+        Thread.sleep(10000);
+    }
+
     @Then("^the Success Message overlay is displayed$")
     public void the_success_message_overlay_is_displayed() throws Throwable {
         //jobulatorPage.successMsgPOPUP();
