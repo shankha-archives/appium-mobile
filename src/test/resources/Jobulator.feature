@@ -130,6 +130,7 @@ Feature: Jobulator scenarios
     And View job list
     And Click on the job "AutomationEmp 7775"
     And Reject the job
+    And Validate the Reject Popup Message
     And Confirm the Reject job Popup
     And View job list
     Then Validate Rejected job "AutomationEmp 7777" is not visible in Job List
