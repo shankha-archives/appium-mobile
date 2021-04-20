@@ -1,17 +1,26 @@
 package mobile.frontline.pages;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+
+import java.time.Duration;
 
 public class TimeEntryScreen extends BasePage {
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
     @iOSXCUITFindBy(accessibility = "EventType_1")
     public MobileElement workDetails;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[2]")
+    public MobileElement timeSheetOutTimeEditState;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[3]")
@@ -25,6 +34,7 @@ public class TimeEntryScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Add")
     public MobileElement saveTimesheets;
 
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_entry_save_button")
     @iOSXCUITFindBy(accessibility = "Save")
     public MobileElement saveButton;
 
@@ -49,12 +59,16 @@ public class TimeEntryScreen extends BasePage {
     public MobileElement inTimeComment;
 
     @AndroidFindBy(id = "android:id/message")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeAlert[@name='Error']")
+    @iOSXCUITFindBy(accessibility = "The timesheet requested is not in an editable state")
     public MobileElement timesheetErrorMessage;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
 //	@iOSXCUITFindBy(accessibility = "")
     public MobileElement inTimeEdit;
+
+    @AndroidFindBy(id = "android:id/hours")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel[1]")
+    public MobileElement outTime;
 
 //    public static String outTime;
 
@@ -62,10 +76,14 @@ public class TimeEntryScreen extends BasePage {
     }
 
     public boolean verifyWorkDetails() {
-        return isElementdisplayed(workDetails);
+        return isElementDisplayed(workDetails,"Waiting for work detail page to load");
     }
 
-    public void clickOutTimesheet() {
+    public void clickOutTimesheetinEditState() {
+        click(timeSheetOutTimeEditState, "Clicking on Timesheet out time");
+    }
+
+    public void clickOutTimesheet(){
         click(timeSheetOutTime, "Clicking on Timesheet out time");
     }
 
@@ -79,6 +97,10 @@ public class TimeEntryScreen extends BasePage {
 
     public void clickSaveTimesheet() {
         click(saveTimesheets, "Clicking on Save Timesheet button");
+    }
+
+    public void clickSaveEditedTimesheet() {
+        click(saveButton, "Clicking on Save Timesheet button");
     }
 
     public void addAnHourToTimesheets() {
@@ -103,6 +125,11 @@ public class TimeEntryScreen extends BasePage {
         } else {
             //outTime.click();
             //dragClock();
+                TouchAction action = new TouchAction(driver);
+                int dragX = outTime.getLocation().x + (outTime.getSize().width / 2);
+                int dragY = outTime.getLocation().y + (outTime.getSize().height / 2);
+                action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
+                        .moveTo(PointOption.point(dragX, dragY - 50)).release().perform();
         }
     }
 

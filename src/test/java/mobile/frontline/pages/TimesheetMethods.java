@@ -205,7 +205,7 @@ public class TimesheetMethods extends LoginPage {
 			break;
 		case "iOS":
 			//outTime.click();
-			//dragClock();
+			dragClock();
 			click(smoke.saveOrderWidgetbtn);
 			click(smoke.saveTimesheets);
 			break;

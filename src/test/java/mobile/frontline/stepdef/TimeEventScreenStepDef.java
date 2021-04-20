@@ -3,6 +3,7 @@ package mobile.frontline.stepdef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.TimeEventScreen;
 import org.junit.Assert;
 
@@ -18,8 +19,10 @@ TimeEventScreen timeEventScreen = new TimeEventScreen();
 
     @When("Navigate back to dayView")
     public void navigateBackToDayView() {
-        Assert.assertTrue("Edit btn is not displayed",timeEventScreen.verifyEditbtnVisible());
-        timeEventScreen.navigateToDayView();
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            Assert.assertTrue("Edit btn is not displayed",timeEventScreen.verifyEditbtnVisible());
+            timeEventScreen.navigateToDayView();
+        }
     }
 
     @And("Verify the added comment")

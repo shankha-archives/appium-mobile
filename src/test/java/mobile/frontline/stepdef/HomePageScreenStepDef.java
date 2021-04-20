@@ -86,7 +86,7 @@ public class HomePageScreenStepDef {
 
     @Then("Verify the employee is clocked in")
     public void verifyTheEmployeeIsClockedIn() throws Exception {
-        homescreen.verifyClockIn();
+        Assert.assertTrue(  "The time sheet did not get clocked out",homescreen.verifyClockIn());
     }
 
     @When("The user navigates to timesheet widget")
