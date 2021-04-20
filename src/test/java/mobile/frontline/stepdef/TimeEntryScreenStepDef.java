@@ -15,11 +15,10 @@ public class TimeEntryScreenStepDef {
     @Then("edit the timesheet outtime")
     public void editTheTimesheetOuttime() {
 //      Assert.assertTrue("Work details did not load",timeEntryScreen.verifyWorkDetails());
-        timeEntryScreen.clickOutTimesheet();
+        timeEntryScreen.clickOutTimesheetinEditState();
         timeEntryScreen.clickOkonOuttime();
 
     }
-
 
     @And("Wait for time entry page to load")
     public void waitForTimeEntryPageToLoad() {
@@ -35,7 +34,11 @@ public class TimeEntryScreenStepDef {
     @And("Save timeevent")
     public void saveTimeevent() throws InterruptedException {
         timeEntryScreen.clickSaveTimesheet();
-      //  Thread.sleep(10000);
+    }
+
+    @Then("Save edited timeevent")
+    public void saveEditedTimeevent() throws InterruptedException {
+        timeEntryScreen.clickSaveEditedTimesheet();
     }
 
     @And("Click ok after adding out time event")

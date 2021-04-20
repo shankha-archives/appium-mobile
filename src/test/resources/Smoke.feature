@@ -34,7 +34,7 @@ Feature: Smoke scenarios
     Then Verify the dark mode button is ON
 
 ##	//change leaves through aPI or web, then check the balance Not valid for ios
-  @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @AndroidRegression
+  @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: View leave balances and check available days
     When the user launches the app
     Then the user click on Get Started Button
@@ -116,7 +116,7 @@ Feature: Smoke scenarios
     And Click on edit timesheet btn
     And Wait for time entry page to load
     Then edit the timesheet outtime
-    And Save timeevent
+    And Save edited timeevent
     When Navigate back to dayView
     And Verify time event is visible
     Then Verify the added event
@@ -133,7 +133,7 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4263" and password and click on Sign In button
     Then the user navigates to dashboard page
     When The user navigates to timesheet widget
-#    When employee clicks on the timesheet widget
+#    When employee clicks on the timesheet
     And Select the current day
     And Click on add new time event
     And Wait for time entry page to load
@@ -147,6 +147,7 @@ Feature: Smoke scenarios
 #   Then Verify total time of the Week
     When Click on submit week timesheet option
     Then Click on submit timesheet
+    When Decline review pop up
 #   Then click on submit timesheet option
     When Click on undo week timesheet btn
     Then Click on undo option
@@ -183,8 +184,10 @@ Feature: Smoke scenarios
     And Click on edit timesheet btn
     And Wait for time entry page to load
     When The comment is edited to the time event
-    And Save timeevent
+    And Save edited timeevent
+#    And Save timeevent
     When Navigate back to dayView
+    When Decline review pop up
     And Verify time event is visible
     Then Verify the added event
     And Click on time event

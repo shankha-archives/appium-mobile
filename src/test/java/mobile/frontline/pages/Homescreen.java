@@ -53,7 +53,7 @@ public class Homescreen extends BasePage {
     public MobileElement clockInbtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='CLOCKED IN']")
-    @iOSXCUITFindBy(accessibility = "Clock Out")
+    @iOSXCUITFindBy(accessibility = "Dashboard_TimeClock_Status_Image")
     public MobileElement clockedInVerification;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
@@ -80,7 +80,7 @@ public class Homescreen extends BasePage {
     public MobileElement timesheetsbtn;
 
     @AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]/android.widget.TextView")
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[3]")
+    @iOSXCUITFindBy(accessibility = "Dashboard_Timesheet_Total_Hour_Label")
     public MobileElement totalWeekTime;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='People']")
@@ -158,6 +158,7 @@ public class Homescreen extends BasePage {
     public boolean verify_homeScreen_displayedWithoutPushVerify() throws Exception {
         Thread.sleep(8000);
         switchToNativeApp();
+        swipeDown();
         return isElementDisplayed(homePageHeader, "Waiting for header page to load");
     }
 
@@ -211,7 +212,7 @@ public class Homescreen extends BasePage {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(clockInbtn, "Clicking on Clock In button");
         else {
-            scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
+            //scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
             click(clockInbtn, "Click on Clock In button");
         }
     }
@@ -234,12 +235,12 @@ public class Homescreen extends BasePage {
     }
 
     public boolean verifyClockIn() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android"))
+//        if ((new GlobalParams().getPlatformName()).contains("Android"))
             return isElementDisplayed(clockedInVerification, "Waiting for clocked in bubble");
-        else {
-            scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
-            return isElementDisplayed(clockedOutBtn, "Waiting for clockout btn");
-        }
+//        else {
+//            scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
+//            return isElementDisplayed(clockedOutBtn, "Waiting for clockout btn");
+//        }
     }
 
     public void getInTimeOfTimeClock() {
@@ -258,17 +259,8 @@ public class Homescreen extends BasePage {
     }
 
     public String verifyWeekTime() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            // click(smoke.homeTab);
             scrollToElement(totalWeekTime, "up", "Scrolling to the total week time on dashboard");
             return getElementText(totalWeekTime, "Extracting the value of total week time");
-//                Assert.assertEquals("Week total on dashboard is not same as on Timesheet page", weekTotal, weekTotalActual);
-//                break;
-        } else {
-            isElementDisplayed(totalWeekTime, "Waiting for total week time to display on dashboard");
-            return totalWeekTime.getAttribute("name").toString();
-            //d = dateFormat.parse(weekTotal);
-        }
     }
 
     public void clickPeopleWidget() throws Throwable {

@@ -25,7 +25,7 @@ public class TimeEventScreen extends BasePage {
     public MobileElement timeSheetDeletebtn;
 
     @AndroidFindBy(id = "android:id/button1")
-    @iOSXCUITFindBy(accessibility = "Yes")
+    @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement okBtn;
 
     public TimeEventScreen() {
