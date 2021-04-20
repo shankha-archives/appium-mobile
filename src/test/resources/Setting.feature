@@ -18,7 +18,7 @@ Scenario: Verify Job List tab bar in substitutes page
 	Then The user click on Get Started Button
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
 	Then The substitute navigates to dashboard page
-	When click on Avalaible Jobs link
+	When click on Available Jobs link
 	Then Verify available job tab
 	And Verify accepted job tab
 #	Then verify Job List tab bar for available and accepted jobs
