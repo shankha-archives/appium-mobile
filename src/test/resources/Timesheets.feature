@@ -37,7 +37,7 @@ Feature: Timesheet scenarios
 	Scenario: Verify an employee user can submit day timesheet
 		When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
-		Then the user click on Get Started Button
+		Then The user click on Get Started Button
 		And Enter username "AutomationEmployeeMOB-5577" and password and click on Sign In button
 		Then the user navigates to dashboard page
 #		When employee clicks on the timesheet widget
@@ -66,7 +66,7 @@ Feature: Timesheet scenarios
 	Scenario: Verify an employee cannot add new timeevent when timesheet is in submit state
 		When Undo submitted timesheets "AutomationEmployeeMOB-5568" "APIWorkerID_MOB-5568" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
-		Then the user click on Get Started Button
+		Then The user click on Get Started Button
 		And Enter username "AutomationEmployeeMOB-5568" and password and click on Sign In button
 		Then the user navigates to dashboard page
 #		When employee clicks on the timesheet widget
@@ -112,7 +112,7 @@ Feature: Timesheet scenarios
 	Scenario: Verify when an employee adds a timeevent the total time on the dashboard should increase
 		When Verify if timesheet present for an employee delete and create it using information "AutomationEmployeeMOB-5578" "APIWorkerID_MOB-5378" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
-		Then the user click on Get Started Button
+		Then The user click on Get Started Button
 		And Enter username "AutomationEmployeeMOB-5578" and password and click on Sign In button
 		Then the user navigates to dashboard page
 #		When employee clicks on the timesheet widget
@@ -179,7 +179,7 @@ Feature: Timesheet scenarios
 	@MOB-5585  @MOB-5584 @AndroidRegression @iOSRegression
 	Scenario: Verify the message when employee enters wrong pin while submiting timesheet
 		When the user launches the app
-		Then the user click on Get Started Button
+		Then The user click on Get Started Button
 		And Enter username "AutomationEmployeeMOB-5584" and password and click on Sign In button
 		Then the user navigates to dashboard page
 		When The user navigates to timesheet widget
@@ -206,7 +206,7 @@ Feature: Timesheet scenarios
 	Scenario: Verify that an employee can view timesheet display with decimal durationFormat
 		When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-5583" "APIWorkerID_MOB-5583" "APIOrgID_Aut3" "APILoginID_Aut3" "current day"
 		When the user launches the app
-		Then the user click on Get Started Button
+		Then The user click on Get Started Button
 		And Enter username "AutomationEmployeeMOB-5583" and password and click on Sign In button
 		Then the user navigates to dashboard page
 		When The user navigates to timesheet widget
@@ -224,7 +224,7 @@ Feature: Timesheet scenarios
 	Scenario: Verify that an employee can view timesheet display with time durationFormat
 		When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-7529" "APIWorkerID_MOB-7529" "APIOrgID" "APILoginID" "current day"
 		When the user launches the app
-		Then the user click on Get Started Button
+		Then The user click on Get Started Button
 		And Enter username "AutomationEmployeeMOB-7529" and password and click on Sign In button
 		Then the user navigates to dashboard page
 		When The user navigates to timesheet widget

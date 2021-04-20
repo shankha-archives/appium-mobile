@@ -4,9 +4,9 @@ Feature: Regression scenarios
 @Setting @MOB-4789  @MOB-4791  @AndroidRegression @iOSRegression
 Scenario: Verify calendar link in substitute Menu 
 	When the user launches the app 
-	Then the user click on Get Started Button 
+	Then The user click on Get Started Button
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
+	Then The substitute navigates to dashboard page
 #	When click on menu and tap the Calendar link
 	When the user clicks on Menu tab
 	When Click on calendar search result
@@ -15,9 +15,9 @@ Scenario: Verify calendar link in substitute Menu
 @Setting @MOB-4806  @MOB-4805  @AndroidRegression @iOSRegression
 Scenario: Verify Job List tab bar in substitutes page 
 	When the user launches the app 
-	Then the user click on Get Started Button 
+	Then The user click on Get Started Button
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page 
+	Then The substitute navigates to dashboard page
 	When click on Avalaible Jobs link
 	Then Verify available job tab
 	And Verify accepted job tab
@@ -26,9 +26,9 @@ Scenario: Verify Job List tab bar in substitutes page
 @Setting @MOB-4809  @MOB-4810 @AndroidRegression @iOSRegression
 Scenario: Verify that substitute user is allowed to submit diagnostic data 
 	When the user launches the app 
-	Then the user click on Get Started Button 
+	Then The user click on Get Started Button
 	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	Then the substitute navigates to dashboard page
+	Then The substitute navigates to dashboard page
 	When the user clicks on Menu tab
 #	When click on menu bar
 	And Long press on Frontline Logo
@@ -42,10 +42,10 @@ Scenario: Verify that substitute user is allowed to submit diagnostic data
 Scenario: Verify a substitute can view accepted job in-app Calendar
 	When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs4" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When Substitute accepts the job with required details "AutomationSubsJobOperations4" "APIXrefIDOrg1"
-	When the user waits and launches the app
-	Then the user click on Get Started Button
+	When The user waits and launches the app
+	Then The user click on Get Started Button
 	And Enter username "AutomationSubsJobOperations4" and password and click on Sign In button
-	Then the substitute navigates to dashboard page
+	Then The substitute navigates to dashboard page
 	When the user clicks on Menu tab
 #	When click on menu bar
 	When Click on calendar search result
@@ -60,17 +60,17 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 @Setting @MOB-4808  @MOB-4807 @AndroidRegression @iOSRegression
 Scenario: Verify that a substitute can view next scheduled Job widget
 	 When the user launches the app 
-	 Then the user click on Get Started Button
+	 Then The user click on Get Started Button
 	 Then the substitute user is taken to the Login Page 
 	 And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button 
-	 Then the substitute navigates to dashboard page 
+	 Then The substitute navigates to dashboard page
 	 Then The user moves to Next Scheduled Job widget and verify it
 	
 	#Remove   
 @Setting @MOB-4796  @MOB-4797 @done
 Scenario: Verify that Unlock Code page is removed from the application
 	When the user launches the app 
-	Then the user click on Get Started Button
+	Then The user click on Get Started Button
 	Then the substitute user is taken to the Login Page
 	And the user verify that Unlock code page should not displayed
 	
@@ -78,16 +78,16 @@ Scenario: Verify that Unlock Code page is removed from the application
 @Setting @MOB-6023  @MOB-6024 @multiOrg @AndroidRegression @iOSRegression
 Scenario: Verify role picker option should not displayed when user account has only one role
     When the user launches the app 
-	Then the user click on Get Started Button 
+	Then The user click on Get Started Button
 	And Enter username "AutomationSubMutiOrg" and password and click on Sign In button 
     Then the user is presented with the org picker
 #    When Select the Organization
 	Then The user choose the one organization
-    Then the substitute navigates to dashboard page
+    Then The substitute navigates to dashboard page
 #    When click on switch
 	And Click on switch btn
 	Then The user choose the second organization
-	Then the substitute navigates to dashboard page
+	Then The substitute navigates to dashboard page
 	
 #	#remove
 #@Setting @MOB-6033 @MOB-6034  @done
@@ -102,7 +102,7 @@ Scenario: Verify role picker option should not displayed when user account has o
 @Setting @MOB-6019 @AndroidRegression
 Scenario: Verify an employee can view same Intime event value in Timesheet even after relaunching the app
 	When the user launches the app
-	Then the user click on Get Started Button
+	Then The user click on Get Started Button
 	And Enter username "AutomationEmployeeMOB-4263" and password and click on Sign In button
 	Then the user navigates to dashboard page
 	When The user navigates to timesheet widget
