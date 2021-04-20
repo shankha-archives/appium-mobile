@@ -26,7 +26,7 @@ public class SettingStepDef {
 		settingsPage.openMenuCalendar();
 	}
 
-	@When("^click on Avalaible Jobs link")
+	@When("^click on Available Jobs link")
 	public void click_on_available_jobs_link() throws Throwable {
 		settingsPage.avaialbleJobsLink();
 	}
