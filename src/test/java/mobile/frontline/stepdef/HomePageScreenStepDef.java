@@ -17,15 +17,18 @@ public class HomePageScreenStepDef {
     public BasePage basePage = new BasePage();
 
 
-    @Then("^the substitute navigates to dashboard page$")
+    @Then("^The substitute navigates to dashboard page$")
     public void the_substitute_navigates_to_dashboard_page() throws Throwable {
        Assert.assertTrue( "Dashboard header page is not displayed",homescreen.verify_homeScreen_displayed());
-        //loginPage.verify_homeScreen_displayed();
-    }
 
-    @And("click on the Available Jobs")
+    }
+        //loginPage.verify_homeScreen_displayed();
+
+
+    @And("Click on the Available Jobs")
     public void clickOnTheAvailableJobs() throws Exception {
         homescreen.clickJobWidget();
+
     }
 
     @And("Navigate to dashboard")

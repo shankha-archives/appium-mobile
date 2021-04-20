@@ -21,6 +21,19 @@ public class JobDetailScreenStepDef {
         jobDetailScreen.clickOnAcceptJobsBtn();
     }
 
+
+    @And("Reject the job")
+    public void rejectTheJob() throws Exception {
+        jobDetailScreen.clickOnRejectJobsBtn();
+
+    }
+
+    
+    @And("Confirm the Reject job Popup")
+    public void confirmRejectPopup() throws Exception {
+        jobDetailScreen.clickOnOkBtn_successMsg();
+            }
+
     @Then("^the Success Message overlay is displayed$")
     public void the_success_message_overlay_is_displayed() throws Throwable {
         //jobulatorPage.successMsgPOPUP();
@@ -53,5 +66,14 @@ public class JobDetailScreenStepDef {
     @Then("Verify the job event details {string}")
     public void verifyTheJobEventDetails(String absenceDay) throws Exception {
         Assert.assertTrue("Confirmation number is not displayed", jobDetailScreen.verifyJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+    }
+
+    @And("Validate the Reject Popup Message")
+    public void validateTheRejectPopup() throws Exception {
+        jobDetailScreen.rejectMsgPopUp();
+        Assert.assertEquals("Success message is not displayed", jobDetailScreen.rejectMsgPopUp(),
+                "Are you sure you want to reject this job?");
+
+
     }
 }
