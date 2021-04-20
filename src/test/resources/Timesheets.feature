@@ -108,7 +108,7 @@ Feature: Timesheet scenarios
 #		And Delete the timesheet
 
 	#get value -> add time -> get total value... should increase
-	@MOB-5578  @MOB-5579 @AndroidRegression
+	@MOB-5578  @MOB-5579 @AndroidRegression @iOSRegression
 	Scenario: Verify when an employee adds a timeevent the total time on the dashboard should increase
 		When Verify if timesheet present for an employee delete and create it using information "AutomationEmployeeMOB-5578" "APIWorkerID_MOB-5378" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
 		When the user launches the app
