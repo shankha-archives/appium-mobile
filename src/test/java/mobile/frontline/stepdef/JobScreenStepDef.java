@@ -11,7 +11,7 @@ public class JobScreenStepDef {
     public JobsScreen jobsScreen = new JobsScreen();
     public BasePage basePage = new BasePage();
 
-    @Then("view job list")
+    @Then("View job list")
     public void viewJobList() throws Throwable {
         Assert.assertTrue("Job Screen is displayed", jobsScreen.verifyJobPageDisplayed());
     }
@@ -80,5 +80,11 @@ public class JobScreenStepDef {
     @And("Verify accepted job tab")
     public void verifyAcceptedJobTab() {
         Assert.assertTrue("Accepted job tab is not displayed", jobsScreen.verifyAcceptedTab());
+    }
+
+
+    @Then("Validate Rejected job {string} is not visible in Job List")
+    public void validateRejectedJobIsNotVisibleInJobList(String employeeName) throws Exception {
+        Assert.assertFalse("The required job is present", jobsScreen.verifyJobIsAvailable(employeeName));
     }
 }
