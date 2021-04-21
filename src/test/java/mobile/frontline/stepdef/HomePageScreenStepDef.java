@@ -96,7 +96,7 @@ public class HomePageScreenStepDef {
 
     @And("Verify the timesheet is clocked out")
     public void verifyTheTimesheetIsClockedOut() throws Exception {
-      Assert.assertTrue(  "The time sheet did not get clocked out",homescreen.verifyClockInBtn());
+      Assert.assertTrue("The time sheet did not get clocked out",homescreen.verifyClockInBtn());
     }
 
     @And("Verify the Timesheet total on dashboard")

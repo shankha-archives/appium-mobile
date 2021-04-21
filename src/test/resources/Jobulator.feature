@@ -58,7 +58,6 @@ Feature: Jobulator scenarios
     When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "next day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
-#    When the user launches the app
     Then The user click on Get Started Button
     When Enter username "AutomationSubMutiOrg" and password and click on Sign In button
     Then The user choose the one organization
@@ -134,6 +133,3 @@ Feature: Jobulator scenarios
     And Confirm the Reject job Popup
     And View job list
     Then Validate Rejected job "AutomationEmp 7777" is not visible in Job List
-
-
-

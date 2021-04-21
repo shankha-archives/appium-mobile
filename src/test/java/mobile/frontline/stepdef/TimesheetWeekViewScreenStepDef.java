@@ -22,7 +22,7 @@ public class TimesheetWeekViewScreenStepDef {
 
     @Then("Calculate the week total")
     public void calculateTheWeekTotal() throws Exception {
-        Assert.assertTrue("Tuesday timesheet is not displayed",  timesheetWeekViewScreen.verifyTuesday());
+        Assert.assertTrue("Monday timesheet is not displayed",  timesheetWeekViewScreen.verifyMonday());
         timesheetWeekViewScreen.weekTotalTime();
     }
 
@@ -33,9 +33,8 @@ public class TimesheetWeekViewScreenStepDef {
 
     @When("Click on submit week timesheet option")
     public void clickOnSubmitWeekTimesheetOption() throws InterruptedException {
-       // Assert.assertTrue("Tuesday timesheet is not displayed",  timesheetWeekViewScreen.verifyTuesday());
+        Assert.assertTrue("Monday timesheet is not displayed",  timesheetWeekViewScreen.verifyMonday());
         timesheetWeekViewScreen.clickWeekTimesheetSubmitBtn();
-       // Thread.sleep(10000);
     }
 
     @When("Click on undo week timesheet btn")

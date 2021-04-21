@@ -1,11 +1,8 @@
 package mobile.frontline.stepdef;
-
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.PropertyManager;
 import mobile.Frontline.utils.TestUtils;
 import mobile.frontline.pages.APIServices;
-
 import java.util.Properties;
 
 public class APIStepDef {
@@ -67,7 +64,7 @@ public class APIStepDef {
             apiService.apiUndoSubmittedTimesheets(timesheetDay, orgID, workerID);
             apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
             apiService.apiDeleteTimeEvents(orgID, workerID);
-           // apiService.apiCreateTimesheet(orgID, workerID, timesheetDay, locationID, shiftID, eventID);
+            apiService.apiCreateTimesheet(orgID, workerID, timesheetDay, locationID, shiftID, eventID);
         } else
             utils.log().info("The environment selected is prodution");
     }
