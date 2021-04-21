@@ -119,6 +119,19 @@ Scenario: Verify an employee can view same Intime event value in Timesheet even 
 	And Verify in time after relaunching application
 #	Then Verify that InTime should not changes
 
+
+ #Feedback Story Mob 6665
+@MOB-6665 @AndroidRegression
+Scenario: Verify substitute user can reject available job and dont see that job in available job list
+	When the user launches the app
+	Then The user click on Get Started Button
+	And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
+	Then The substitute navigates to dashboard page
+	When the user clicks on Menu tab
+	Then the user clicks on Feedback
+	Then Validate Feedback Header
+
+
 ##Remove ?// covered in dark mode
 #@Setting @MOB-6025 @done
 #Scenario: Verify that application is able to open Login page on app startup or log-off

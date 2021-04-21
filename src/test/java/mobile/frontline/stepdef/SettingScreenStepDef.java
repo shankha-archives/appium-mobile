@@ -36,4 +36,16 @@ public class SettingScreenStepDef {
         else
             Assert.assertEquals("1", settingScreen.verifyDarkModeBtn());
     }
+
+    @Then("the user clicks on Feedback")
+    public void theUserClicksOnFeedBack() {
+        settingScreen.clickFeedBackBtn();
+
+    }
+
+    @Then("Validate Feedback Header")
+    public void validateFeedbackHeader() throws InterruptedException {
+        Assert.assertEquals("Validating FeedBack Header Title", "Frontline Education would love to hear from you!", settingScreen.validateFeedBackHeaderBtn());
+
+    }
 }
