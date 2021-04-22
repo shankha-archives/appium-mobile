@@ -51,4 +51,14 @@ public class MenuLinksScreenStepDef {
     public void clickOnCalendarInMenuLink() {
         menuScreen.clickOnCalendarLink();
     }
+
+    @Then("The user clicks on Feedback")
+    public void theUserClicksOnFeedBack() {
+        menuScreen.clickFeedBackBtn();
+    }
+
+    @Then("Validate Feedback Header")
+    public void validateFeedbackHeader() throws InterruptedException {
+       Assert.assertTrue(  "Unable to Locate Feedback Header",menuScreen.waitForFeedbackHeader());
+    }
 }

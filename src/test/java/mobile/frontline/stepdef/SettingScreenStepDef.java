@@ -36,4 +36,5 @@ public class SettingScreenStepDef {
         else
             Assert.assertEquals("1", settingScreen.verifyDarkModeBtn());
     }
+
 }

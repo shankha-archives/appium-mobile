@@ -55,11 +55,6 @@ public class HomePageScreenStepDef {
         basePage.bgRunningApp();
     }
 
-    @When("the user clicks on Menu tab")
-    public void theUserClicksOnMenuTab() {
-        homescreen.clickOnMenuTab();
-    }
-
     @When("click on Available Leave Balances")
     public void clickOnAvailableLeaveBalances() throws Exception {
         homescreen.clickOnAvailableLeaveBalanceWidget();
@@ -143,5 +138,10 @@ public class HomePageScreenStepDef {
     @Then("^The user moves to Next Scheduled Job widget and verify it")
     public void user_verifies_next_scheduled_job_widget() throws Throwable {
         homescreen.verifyNextScheduledJobWidget();
+    }
+
+    @When("the user clicks on Menu tab")
+    public void theUserClicksOnMenuTab() {
+        homescreen.clickOnMenuTab();
     }
 }

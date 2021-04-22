@@ -8,7 +8,6 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestDataManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -23,6 +22,16 @@ public class MenuScreen extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Search Frontline Mobile']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField[@name='Search Frontline Mobile']")
     public MobileElement searchBar;
+
+    // click on Feedback
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
+    //@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
+    public MobileElement feedback;
+
+    // click on Feedback Header
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Frontline Education would love to hear from you!']")
+    //@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
+    public MobileElement feedbackHeader;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Calendar_NavSearchResult']")
@@ -118,4 +127,15 @@ public class MenuScreen extends BasePage{
         //  Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
         click(calendarLink, "Clicking on calendar link");
     }
+
+    //Mob-6665
+    public void clickFeedBackBtn() {
+        click(feedback, "Clicking Feedback button");
+    }
+
+    //Mob-6665
+    public boolean waitForFeedbackHeader() {
+        return isElementDisplayed(feedbackHeader, "Waiting for feedback header");
+    }
+
 }

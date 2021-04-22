@@ -3,8 +3,6 @@ package mobile.frontline.pages;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import mobile.Frontline.utils.GlobalParams;
-import org.junit.Assert;
 
 public class SettingScreen extends BasePage {
 
@@ -31,4 +29,5 @@ public class SettingScreen extends BasePage {
     public void clickLogoutbtn() {
         click(logoutBtn, "Clicking on logout btn");
     }
+
 }
