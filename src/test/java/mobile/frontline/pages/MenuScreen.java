@@ -25,12 +25,12 @@ public class MenuScreen extends BasePage{
 
     // click on Feedback
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
-    //@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
+    @iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
     public MobileElement feedback;
 
     // click on Feedback Header
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Frontline Education would love to hear from you!']")
-    //@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
+    @iOSXCUITFindBy(accessibility = "Frontline Education would love to hear from you.")
     public MobileElement feedbackHeader;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
