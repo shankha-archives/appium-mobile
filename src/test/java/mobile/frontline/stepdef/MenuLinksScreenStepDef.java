@@ -59,6 +59,6 @@ public class MenuLinksScreenStepDef {
 
     @Then("Validate Feedback Header")
     public void validateFeedbackHeader() throws InterruptedException {
-       Assert.assertTrue(  "Unable to Locate Feedback Header",menuScreen.validateFeedBackHeader());
+       Assert.assertTrue(  "Unable to Locate Feedback Header",menuScreen.waitForFeedbackHeader());
     }
 }
