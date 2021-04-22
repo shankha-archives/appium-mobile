@@ -120,8 +120,8 @@ Scenario: Verify an employee can view same Intime event value in Timesheet even 
 #	Then Verify that InTime should not changes
 
 
- #Feedback Story Mob 6665
-@MOB-6665 @AndroidRegression
+ #Feedback Story MOB 6665 MOB 6666
+@MOB-6665 @MOB-6666 @AndroidRegression @iOSRegression
 Scenario: Verify substitute user can validate Feedback form heading.
 	When the user launches the app
 	Then The user click on Get Started Button
