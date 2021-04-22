@@ -44,6 +44,10 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Inbox_TabBar_Button")
     public MobileElement inboxTab;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
+    @iOSXCUITFindBy(accessibility = "Menu_TabBar_Button")
+    public MobileElement menuTab;
+
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Clock In']")
     @iOSXCUITFindBy(accessibility = "Clock In")
     public MobileElement clockInbtn;
@@ -308,5 +312,9 @@ public class Homescreen extends BasePage {
             scrollToElement(nextScheduledJobWidget, "up");
             Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
         }
+    }
+
+    public void clickOnMenuTab() {
+        click(menuTab, "Clicking on Menu Tab");
     }
 }

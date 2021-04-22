@@ -128,7 +128,7 @@ Scenario: Verify substitute user can validate Feedback form heading.
 	And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
 	Then The substitute navigates to dashboard page
 	When the user clicks on Menu tab
-	Then the user clicks on Feedback
+	Then The user clicks on Feedback
 	Then Validate Feedback Header
 
 

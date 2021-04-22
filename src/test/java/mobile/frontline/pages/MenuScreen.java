@@ -8,7 +8,6 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestDataManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -33,10 +32,6 @@ public class MenuScreen extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Frontline Education would love to hear from you!']")
     //@iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
     public MobileElement feedbackHeader;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
-    @iOSXCUITFindBy(accessibility = "Menu_TabBar_Button")
-    public MobileElement menuTab;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Calendar_NavSearchResult']")
@@ -133,19 +128,15 @@ public class MenuScreen extends BasePage{
         click(calendarLink, "Clicking on calendar link");
     }
 
-    public void clickOnMenuTab() {
-         click(menuTab, "Clicking on Menu Tab");
-    }
-
     //Mob-6665
     public void clickFeedBackBtn() {
         click(feedback, "Clicking Feedback button");
     }
 
     //Mob-6665
-    public String validateFeedBackHeaderBtn() {
-        //return isElementdisplayed(feedbackHeader);
-        return getElementText(feedbackHeader, "Extracting FeedBack Header ");
+    public boolean validateFeedBackHeaderBtn() {
+        return isElementdisplayed(feedbackHeader);
+        //return getElementText(feedbackHeader, "Extracting FeedBack Header ");
     }
 
 }
