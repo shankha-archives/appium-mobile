@@ -55,11 +55,6 @@ public class HomePageScreenStepDef {
         basePage.bgRunningApp();
     }
 
-    @When("the user clicks on Menu tab")
-    public void theUserClicksOnMenuTab() {
-        homescreen.clickOnMenuTab();
-    }
-
     @When("click on Available Leave Balances")
     public void clickOnAvailableLeaveBalances() throws Exception {
         homescreen.clickOnAvailableLeaveBalanceWidget();

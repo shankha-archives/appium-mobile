@@ -51,4 +51,19 @@ public class MenuLinksScreenStepDef {
     public void clickOnCalendarInMenuLink() {
         menuScreen.clickOnCalendarLink();
     }
+
+    @When("the user clicks on Menu tab")
+    public void theUserClicksOnMenuTab() {
+        menuScreen.clickOnMenuTab();
+    }
+    //6665 remove
+    @Then("the user clicks on Feedback")
+    public void theUserClicksOnFeedBack() {
+        menuScreen.clickFeedBackBtn();
+    }
+
+    @Then("Validate Feedback Header")
+    public void validateFeedbackHeader() throws InterruptedException {
+        Assert.assertEquals("Validating FeedBack Header Title", "Frontline Education would love to hear from you!", menuScreen.validateFeedBackHeaderBtn());
+    }
 }

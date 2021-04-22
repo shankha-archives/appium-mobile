@@ -36,10 +36,6 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[1]")
     public MobileElement switchbtn;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Menu']")
-    @iOSXCUITFindBy(accessibility = "Menu_TabBar_Button")
-    public MobileElement menuTab;
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
     @iOSXCUITFindBy(accessibility = "Available Leave Balances_ModuleHeader")
     public MobileElement availableLeaveBalance;
@@ -188,10 +184,7 @@ public class Homescreen extends BasePage {
         click(switchbtn, "Clicking on switch btn");
     }
 
-    public void clickOnMenuTab() {
-        // Assert.assertTrue("Menu tab is not displayed", menuTab.isDisplayed());
-        click(menuTab, "Clicking on Menu Tab");
-    }
+
 
     public void clickOnAvailableLeaveBalanceWidget() throws Exception {
         scrollToElement(availableLeaveBalance, "up", "Scrolling to available leave balances");

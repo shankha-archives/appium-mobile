@@ -122,7 +122,7 @@ Scenario: Verify an employee can view same Intime event value in Timesheet even 
 
  #Feedback Story Mob 6665
 @MOB-6665 @AndroidRegression
-Scenario: Verify substitute user can reject available job and dont see that job in available job list
+Scenario: Verify substitute user can validate Feedback form heading.
 	When the user launches the app
 	Then The user click on Get Started Button
 	And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
