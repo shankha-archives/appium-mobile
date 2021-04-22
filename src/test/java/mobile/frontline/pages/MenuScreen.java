@@ -134,9 +134,8 @@ public class MenuScreen extends BasePage{
     }
 
     //Mob-6665
-    public boolean validateFeedBackHeaderBtn() {
-        return isElementdisplayed(feedbackHeader);
-        //return getElementText(feedbackHeader, "Extracting FeedBack Header ");
+    public boolean validateFeedBackHeader() {
+        return isElementDisplayed(feedbackHeader, "Clicking on FeedBack Header");
     }
 
 }
