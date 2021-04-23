@@ -51,7 +51,8 @@ Feature: Jobulator scenarios
     And Click on the Available Jobs
     And View job list
 #    And visit available jobs page again
-    Then verify if accepted job is still present
+    Then Validate job "CreateJob3" is not visible in Job List
+#    Then verify if accepted job is still present
 
   @MOB-3681 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view all job information from all organizations
@@ -132,4 +133,4 @@ Feature: Jobulator scenarios
     And Validate the Reject Popup Message
     And Confirm the Reject job Popup
     And View job list
-    Then Validate Rejected job "AutomationEmp 7777" is not visible in Job List
+    Then Validate job "AutomationEmp 7777" is not visible in Job List

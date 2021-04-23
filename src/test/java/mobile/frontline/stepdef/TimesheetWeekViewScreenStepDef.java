@@ -33,7 +33,7 @@ public class TimesheetWeekViewScreenStepDef {
 
     @When("Click on submit week timesheet option")
     public void clickOnSubmitWeekTimesheetOption() throws InterruptedException {
-        Assert.assertTrue("Monday timesheet is not displayed",  timesheetWeekViewScreen.verifyMonday());
+        Assert.assertTrue("Friday timesheet is not displayed",  timesheetWeekViewScreen.verifyFriday());
         timesheetWeekViewScreen.clickWeekTimesheetSubmitBtn();
     }
 
