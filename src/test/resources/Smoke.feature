@@ -97,7 +97,7 @@ Feature: Smoke scenarios
     And Click on inbox alert
     Then Verify the inbox message
 
-  @smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke @AndroidRegression
+  @smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify an employee should be able to clock in and clock out
     When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-4243" "APIWorkerID_MOB-4243" "APIOrgID" "APILoginID" "current day"
     When the user launches the app
@@ -155,7 +155,7 @@ Feature: Smoke scenarios
     Then Verify undo timesheet
 #    And undo the timesheet
 
-  @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression
+  @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify an employee can view week of timesheets
     When the user launches the app
     Then The user click on Get Started Button

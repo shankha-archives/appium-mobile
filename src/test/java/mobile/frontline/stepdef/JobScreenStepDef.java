@@ -83,8 +83,8 @@ public class JobScreenStepDef {
     }
 
 
-    @Then("Validate Rejected job {string} is not visible in Job List")
-    public void validateRejectedJobIsNotVisibleInJobList(String employeeName) throws Exception {
+    @Then("Validate job {string} is not visible in Job List")
+    public void validateJobIsNotVisibleInJobList(String employeeName) throws Exception {
         Assert.assertFalse("The required job is present", jobsScreen.verifyJobIsAvailable(employeeName));
     }
 }
