@@ -56,6 +56,10 @@ public class MenuScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement okay;
 
+    @iOSXCUITFindBy(accessibility = "Your diagnostic information has been successfully sent.")
+    public MobileElement diagnosticPopup;
+
+
     public TestDataManager testdata = new TestDataManager();
 
     public MenuScreen(){}
@@ -87,20 +91,16 @@ public class MenuScreen extends BasePage{
 
     public void longPressFrontlineLogo() throws Exception {
         TouchAction action = new TouchAction(driver);
-        switch (new GlobalParams().getPlatformName()) {
-            case "Android":
-                int startX = frontlineLogo.getLocation().getX();
-                int startY = frontlineLogo.getLocation().getY();
-                action.press(PointOption.point(startX, startY)).perform();
-                break;
-            case "iOS":
+        if( (new GlobalParams().getPlatformName()).contains("Android")) {
+            int startX = frontlineLogo.getLocation().getX();
+            int startY = frontlineLogo.getLocation().getY();
+            action.press(PointOption.point(startX, startY)).perform();
+        }
+        else{
                 int dragX = frontlineLogo.getLocation().x + (frontlineLogo.getSize().width / 2);
                 int dragY = frontlineLogo.getLocation().y + (frontlineLogo.getSize().height / 2);
                 action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
                         .release().perform();
-                break;
-            default:
-                throw new Exception("Invalid platform Name");
         }
     }
 
@@ -110,16 +110,15 @@ public class MenuScreen extends BasePage{
 
     public String getSendDiagnosticToastMsg() throws Throwable {
         if( (new GlobalParams().getPlatformName()).contains("Android")) {
-
             Thread.sleep(2000);
             WebElement toastView = driver.findElement(By.xpath("//android.widget.Toast[1]"));
             return toastView.getAttribute("name");
 //                Assert.assertEquals("Diagnostic is not sent", "Diagnostics sent!",actualDiagnosticMsg);
 //                utils.log().info("Diagnostic is sent :"+ actualDiagnosticMsg);
         }else {
-            click(okay);
-            return null;
-
+           isElementDisplayed(diagnosticPopup,"Waiting for diagnostic pop to load");
+           return getElementText(diagnosticPopup, "Extracting text from diagnostics pop up");
+//            click(okay);
         }
     }
 

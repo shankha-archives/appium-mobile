@@ -184,7 +184,7 @@ Feature: Timesheet scenarios
 		And Enter username "AutomationEmployeeMOB-5583" and password and click on Sign In button
 		Then the user navigates to dashboard page
 		When The user navigates to timesheet widget
-		Then Verify days of the week
+#		Then Verify days of the week
 		When Click on submit week timesheet option
 		And Enter digital pin
 		Then Click on submit timesheet

@@ -9,7 +9,8 @@ Scenario: Verify calendar link in substitute Menu
 	Then The substitute navigates to dashboard page
 #	When click on menu and tap the Calendar link
 	When the user clicks on Menu tab
-	When Click on calendar search result
+#	When Click on calendar search result
+	When Click on calendar in menu link
 	And verify calendar the search result "searchText"
 	
 @Setting @MOB-4806  @MOB-4805  @AndroidRegression @iOSRegression
@@ -48,7 +49,8 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 	Then The substitute navigates to dashboard page
 	When the user clicks on Menu tab
 #	When click on menu bar
-	When Click on calendar search result
+#	When Click on calendar search result
+	When Click on calendar in menu link
 #	Then enter the search text in bar and click on result
 	And verify calendar the search result "searchText"
 	Then Choose the required month "next day"
