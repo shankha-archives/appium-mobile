@@ -15,7 +15,6 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "JobDetailVC_AcceptButton")
     public MobileElement jobAcceptBtn;
 
-    //MOB-7775
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
     public MobileElement jobRejectBtn;
 
@@ -23,10 +22,9 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
     public MobileElement successMsg;
 
-      //MOB-7775
-      @AndroidFindBy(id = "android:id/message")
-      @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
-     public MobileElement rejectDialogMsg;
+    @AndroidFindBy(id = "android:id/message")
+    @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
+    public MobileElement rejectDialogMsg;
 
     @AndroidFindBy(id = "android:id/button1")
     @iOSXCUITFindBy(accessibility = "Okay")
@@ -51,55 +49,44 @@ public class JobDetailScreen extends BasePage {
 
     public void storeJobDetails() {
         if (new GlobalParams().getPlatformName().contains("Android")) {
-             job_date = getElementText(jobDateOnJobDescription, "Extracting job date from job detail page").split(", ")[1];
-            //return job_date;
+            job_date = getElementText(jobDateOnJobDescription, "Extracting job date from job detail page").split(", ")[1];
         }
-       // return null;
     }
 
     public void clickOnAcceptJobsBtn() {
-       // Assert.assertTrue("Accept job btn is not displayed", isElementDisplayed(jobAcceptBtn, "Waiting for accept job btn"));
         click(jobAcceptBtn, "Clicking on Accept job button");
     }
 
-     //MOB-7775
     public void clickOnRejectJobsBtn() {
         click(jobRejectBtn, "Clicking on Reject btn");
-             }
+    }
 
-    public String successMsgPOPUP() throws Exception {
+    public String successMsgPOPUP() {
         isElementDisplayed(successMsg, "Waiting from accept job success message");
         return getElementText(successMsg, "Extracting job success message");
     }
 
-    public String rejectMsgPopUp() throws Exception {
+    public String rejectMsgPopUp() {
         isElementDisplayed(rejectDialogMsg, "Waiting from reject job  message popup");
         return getElementText(rejectDialogMsg, "Extracting job Reject message");
     }
 
     public void clickOnOkBtn_successMsg() {
-        click(successOkBtn,"Clicking on Success OK button is displayed");
+        click(successOkBtn, "Clicking on Success OK button is displayed");
     }
 
     public boolean jobAcceptConfirmationMsg() {
-
-        return  isElementDisplayed(jobDetailsConfirmation, "Waiting for confirmation number to be displayed");
-//        isElementDisplayed(jobDetailsConfirmation);
-//        Assert.assertTrue("Job Details page is not displayed", jobDetailsConfirmation.isDisplayed());
-//        utils.log().info("Job Details page is displayed");
+        return isElementDisplayed(jobDetailsConfirmation, "Waiting for confirmation number to be displayed");
     }
 
     public String confirmationPresent() {
-//        Assert.assertTrue("Confirmation number is not displayed",
-//                getElementText(confirmationNo).contains(APIServices.confirmationNumber));
         isElementDisplayed(confirmationNo, "Waiting for confirmation number to be displayed");
         return getElementText(confirmationNo, "Extracting confirmation number");
     }
 
-    public String verifyJobDate() {
-        isElementDisplayed(jobDetailDate,"Waiting for job date details to display");
-        return getElementText(jobDetailDate,"Extracting job date text");
-      //  Assert.assertTrue("Confirmation number is not displayed", getElementText(jobDetailDate).contains(nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+    public String getJobDate() {
+        isElementDisplayed(jobDetailDate, "Waiting for job date details to display");
+        return getElementText(jobDetailDate, "Extracting job date text");
     }
 
 }

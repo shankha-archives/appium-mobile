@@ -5,23 +5,6 @@
 		<invalidpass>admin123</invalidpass>
 	</Account>
 	<Account type="valid">
-		<substitutelogin>StageSubRupa</substitutelogin>
-		<substitutepass>M0b113fl</substitutepass>
-		<adminlogin>purpleadmin</adminlogin>
-		<adminpass>M0b113fl</adminpass>
-		<teacherlogin>stageteachtroy</teacherlogin>
-		<teacherpass>M0b113fl</teacherpass>
-		<inboxteachlogin>stageteachstanley</inboxteachlogin>
-		<inboxteachpass>M0b113fl</inboxteachpass>
-		<multiOrgSubsUser>alexaOrgMultirole</multiOrgSubsUser>
-		<multiOrgSubsPass>FLultra1!</multiOrgSubsPass>
-		<MultiOrgUser>stageMultiMulti</MultiOrgUser>
-		<MultiOrgPass>FLultra1!</MultiOrgPass>
-		<NoDistrictUser>stageNoOrg</NoDistrictUser>
-		<NoDistrictPass>frontline1!</NoDistrictPass>
-		<noOrgUsername>stageNoOrg</noOrgUsername>
-		<noOrgPassword>frontline1!</noOrgPassword>
-		
 		<AutomationEmployeeMOB-4245>Automation4245</AutomationEmployeeMOB-4245>
 		<AutomationSubsMOB-4269>AutomationSubs4275</AutomationSubsMOB-4269>
 		<AutomationSubsMOB-4265>AutomationSubs4265</AutomationSubsMOB-4265>

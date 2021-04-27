@@ -92,15 +92,11 @@ public class TimesheetDayViewScreen extends BasePage {
 
     public boolean verifySubmission() {
         return isElementDisplayed(undoicon, "Waiting for Undo btn to be displayed");
-//        Assert.assertTrue("Day Timesheet is submitted", smoke.undoicon.isDisplayed());
-//        utils.log().info("Day Timesheet is not submitted");
     }
 
-    public String calculateTotalTimeAfterAddingTimesheet() throws InterruptedException {
+    public String calculateTotalTimeAfterAddingTimesheet() {
         isElementDisplayed(dayTotalTimesheet, "waiting for day time event total");
-       // Assert.assertEquals(TimesheetWeekViewScreen.initialWeekTotalTime, "  ");
         String dayTotalTime = getElementText(dayTotalTimesheet, "Extracting day total timesheet text");
-       // Assert.assertEquals(dayTotalTime, " w ");
         int hours = 0;
         int minutes = 0;
         DecimalFormat formatter = new DecimalFormat("00");
@@ -108,36 +104,11 @@ public class TimesheetDayViewScreen extends BasePage {
         minutes = minutes + Integer.parseInt(dayTotalTime.split(":")[1]) + Integer.parseInt(TimesheetWeekViewScreenStepDef.initialWeekTotalTime.split(":")[1]);
         hours = hours + (minutes / 60);
         minutes = minutes % 60;
-//        totalActualTimeofWeek = hours + ":" +formatter.format(minutes);
         return (hours + ":" + formatter.format(minutes));
-
-
-        //	weekTotalAfter = getElementText(totalWeekTotalAmount);
-//        return null;
     }
 
-    public String verifyTimeFormat() throws Exception {
+    public String verifyTimeFormat() {
         isElementDisplayed(dayTotalTimesheet, "Waiting for day total of timesheet to display");
         return getElementText(dayTotalTimesheet, "Extracting values of day timesheet total");
     }
-
-
-//    public void verifyTimeFormat() throws Exception {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//                isElementdisplayed(dayTotalTimesheet);
-//                dayTotalTime = common.getElementText(dayTotalTimesheet);
-//                break;
-//
-//            case "iOS":
-//                isElementdisplayed(totalWeekTime);
-//                weekTotal = totalWeekTime.getAttribute("name").toString();
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//        //d = dateFormat.parse(weekTotal);
-//        Assert.assertTrue("Time is not in h:mm format",dayTotalTime.equals("1:00") );
-//        utils.log().info("Timesheet Date Format");
-//    }
 }

@@ -13,7 +13,6 @@ public class SubstituteAppCalendarScreen extends BasePage{
     public SubstituteAppCalendarScreen(){}
 
     public void clickOnEvent_job() throws Exception {
-       // isElementdisplayed(eventTitle_job);
         click(eventTitle_job, "Clicking on Event Title");
     }
 }

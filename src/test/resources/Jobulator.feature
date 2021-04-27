@@ -39,20 +39,16 @@ Feature: Jobulator scenarios
     Then The user click on Get Started Button
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
     Then The substitute navigates to dashboard page
-#    And click on the Available Jobs and view job list
     And Click on the Available Jobs
     And View job list
     And Click on the job "CreateJob3"
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
-#    Then click okay on Success Message overlay
     And Navigate to dashboard
     And Click on the Available Jobs
     And View job list
-#    And visit available jobs page again
     Then Validate job "CreateJob3" is not visible in Job List
-#    Then verify if accepted job is still present
 
   @MOB-3681 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view all job information from all organizations
@@ -69,7 +65,6 @@ Feature: Jobulator scenarios
      And Verify school "schoolNameOrg4" is associated with "AutomationEmp 3681"
     Then Verify the created jobs "AutomationEmpOrg5 3681" is present
     And Verify school "schoolNameOrg5" is associated with "AutomationEmpOrg5 3681"
-#    Then Verify the created jobs
      When Navigate to dashboard
     And Click on switch btn
     Then The user choose the second organization
@@ -81,9 +76,6 @@ Feature: Jobulator scenarios
     And Verify school "schoolNameOrg4" is associated with "AutomationEmp 3681"
     Then Verify the created jobs "AutomationEmpOrg5 3681" is present
     And Verify school "schoolNameOrg5" is associated with "AutomationEmpOrg5 3681"
-#    Then Verify the created jobs
-#    Then the user choose the sub role of one org and verify the created jobs
-#    When the user choose the sub role of another org and verify the created jobs
 
   @MOB-3683 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
@@ -100,8 +92,6 @@ Feature: Jobulator scenarios
     And Verify school "schoolNameOrg4_OtherDistrict" is associated with "AutomationEmp 3683"
     Then Verify the created jobs "AutomationEmp2 3683" is present
     And Verify school "schoolNameOrg4" is associated with "AutomationEmp2 3683"
-#    Then Verify available jobs from all districts
-#    And the dashboard displays all available jobs from all districts
 
   @MOB-4173 @MOB-4172 @Done @AndroidRegression @iOSRegression
   Scenario: Verify that substitute is able to view job widget and jobs in job list
@@ -116,8 +106,6 @@ Feature: Jobulator scenarios
     And Verify job list on Jobs page
     Then Verify the created jobs "AutomationEmp 4173" is present
     Then Verify the created jobs "AutomationEmp 4172" is present
-#  	And click on the Available Jobs and view job list
-#    And Verify the created jobs are available in the list
 
   @MOB-7775 @AndroidRegression
   Scenario: Verify substitute user can reject available job and dont see that job in available job list

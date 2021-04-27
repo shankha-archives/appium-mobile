@@ -45,12 +45,10 @@ public class TimeEventScreen extends BasePage {
 
     public String verifyEditedComment() throws Throwable {
         return getElementText(inTimeCommentVerify, "Getting text of the added comment");
-        // Assert.assertEquals(getElementText(inTimeCommentVerify), "Automation Smoke Test");
     }
 
     public void clickDeleteTimesheet() throws Throwable {
         click(timeSheetDeletebtn, "Clicking on Timesheet Delete Button");
-
     }
 
     public void clickOkPopUp() {

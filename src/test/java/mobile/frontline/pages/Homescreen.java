@@ -120,40 +120,15 @@ public class Homescreen extends BasePage {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             Thread.sleep(8000);
             switchToNativeApp();
-            //  isElementdisplayed(homePageHeader);
         } else {
             if (isElementDisplayed(PushNotificationAllow, "Waiting for Push notification Allow pop-up"))
                 clickPushNotificationAllow();
-//             else
-//                utils.log().info("Push Notification pop-up not displayed");
-
             if (isElementDisplayed(PushNotificationOK, "Waiting for Push notification OK pop-up"))
                 clickPushNotificationOK();
-//            else
-//                utils.log().info("Push Notification pop-up not displayed");
             switchToNativeApp();
         }
         return isElementDisplayed(homePageHeader, "Waiting for header page to load");
     }
-
-
-//    public void verify_homeScreen_displayedWithoutReLaunch() throws Exception {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//                isElementdisplayed(homePageHeader);
-//                Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-//                utils.log().info("Home Page is displayed");
-//                break;
-//            case "iOS":
-//                if(isElementdisplayed(homePageHeader))
-//                    Assert.assertTrue("Home Page is not displayed", homePageHeader.isDisplayed());
-//                else {
-//                    utils.log().info("Home Page displayed");}
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
-//    }
 
     public boolean verify_homeScreen_displayedWithoutPushVerify() throws Exception {
         Thread.sleep(8000);
@@ -174,10 +149,8 @@ public class Homescreen extends BasePage {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(availableJobs, "Clicking available job Widget");
         else {
-            //  verify_homeScreen_displayed();
             click(availableJobs, "Clicking available job Widget");
         }
-
     }
 
     public void clickOnHomeButton() throws InterruptedException {
@@ -189,16 +162,9 @@ public class Homescreen extends BasePage {
     }
 
 
-
     public void clickOnAvailableLeaveBalanceWidget() throws Exception {
         scrollToElement(availableLeaveBalance, "up", "Scrolling to available leave balances");
-//        Assert.assertTrue("Available Leave Balances is not displayed on Home page",
-//                availableLeaveBalance.isDisplayed());
-//        utils.log().info("Available Leave Balances is displayed on Home page");
         click(availableLeaveBalance, "Clicking on available leave balance widget");
-//        isElementdisplayed(availableLeaveBalanceHeader);
-//        Assert.assertTrue("Available Leave Balance page is not displayed", availableLeaveBalanceHeader.isDisplayed());
-//        utils.log().info("Available Leave Balance Page is displayed");
     }
 
     public void clickInbox() {
@@ -208,13 +174,11 @@ public class Homescreen extends BasePage {
     public void clickClockInBtn() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(clockInbtn, "Clicking on Clock In button");
-        else {
-            //scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
+        else
             click(clockInbtn, "Click on Clock In button");
-        }
     }
 
-    public boolean verifyClockInBtn() throws Exception {
+    public boolean waitClockInBtn() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             return isElementDisplayed(clockInbtn, "Clicking on Clock In button");
         else {
@@ -231,19 +195,9 @@ public class Homescreen extends BasePage {
         click(permissionGrantonlyForApp, "Click on permission Grant button only for app");
     }
 
-    public boolean verifyClockIn() throws Exception {
-//        if ((new GlobalParams().getPlatformName()).contains("Android"))
-            return isElementDisplayed(clockedInVerification, "Waiting for clocked in bubble");
-//        else {
-//            scrollToElement(ScrollToClockInbtn, "up", "Scrolling up to clockin btn");
-//            return isElementDisplayed(clockedOutBtn, "Waiting for clockout btn");
-//        }
+    public boolean waitClockInVerifictionBubble() throws Exception {
+        return isElementDisplayed(clockedInVerification, "Waiting for clocked in bubble");
     }
-
-    public void getInTimeOfTimeClock() {
-        inTime = getElementText(clockedInTime, "Extracting the value of clock in time text").substring(1);
-    }
-
 
     public void clickTimesheetWidget() throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
@@ -255,16 +209,15 @@ public class Homescreen extends BasePage {
         }
     }
 
-    public String verifyWeekTime() throws Exception {
-            scrollToElement(totalWeekTime, "up", "Scrolling to the total week time on dashboard");
-            return getElementText(totalWeekTime, "Extracting the value of total week time");
+    public String getWeekTimeText() throws Exception {
+        scrollToElement(totalWeekTime, "up", "Scrolling to the total week time on dashboard");
+        return getElementText(totalWeekTime, "Extracting the value of total week time");
     }
 
     public void clickPeopleWidget() throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "People", "Scrolling to the people's widget");
             scrolledToElement.click();
-            // click(PeopleWidget, "Click on people widget");
         } else {
             scrollToElement(PeopleWidget, "up");
             click(PeopleWidget, "Clicking on People Widget");
@@ -305,13 +258,11 @@ public class Homescreen extends BasePage {
         }
     }
 
-    public void verifyNextScheduledJobWidget() throws Throwable {
+    public void waitNextScheduledJobWidget() throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
-        else {
+        else
             scrollToElement(nextScheduledJobWidget, "up");
-            Assert.assertTrue("Next Scheduled Job is not displayed", nextScheduledJobWidget.isDisplayed());
-        }
     }
 
     public void clickOnMenuTab() {

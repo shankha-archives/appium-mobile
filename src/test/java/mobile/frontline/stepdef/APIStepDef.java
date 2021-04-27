@@ -11,19 +11,6 @@ public class APIStepDef {
     TestUtils utils = new TestUtils();
     public APIServices apiService = new APIServices();
 
-//    @When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing absence$")
-//    public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_absence(
-//            String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
-//        props = new PropertyManager().getProps();
-//        if (!props.getProperty("testdata").contains("prod")) {
-//            apiService.apiTokenGeneration(apiLoginID);
-//            apiService.apiGetConfirmationIds(workerID, absenceDay);
-//            apiService.apiDeleteAbsence();
-//            apiService.apiCreateAbsence(workerID, absenceDay, schoolID, reasonID);
-//        } else
-//            utils.log().info("The environment selected is prodution");
-//    }
-
     @When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing ones$")
     public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_ones(
             String apiLoginID, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
@@ -47,7 +34,6 @@ public class APIStepDef {
             apiService.apiBearerTokenGeneration(automationEmployee);
             apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
             apiService.apiDeleteTimeEvents(orgID, workerID);
-            //apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
         } else
             utils.log().info("The environment selected is prodution");
     }
@@ -58,9 +44,6 @@ public class APIStepDef {
         if (!props.getProperty("testdata").contains("prod")) {
             apiService.apiTokenGeneration(apiLoginID);
             apiService.apiBearerTokenGeneration(automationEmployee);
-            //	apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
-            //	apiService.apiDeleteTimeEvents(orgID, workerID);
-            //	apiService.apiCreateTimesheet(orgID, workerID, timesheetDay);
             apiService.apiUndoSubmittedTimesheets(timesheetDay, orgID, workerID);
             apiService.apiGetTimesheetsForWeek(timesheetDay, orgID, workerID);
             apiService.apiDeleteTimeEvents(orgID, workerID);

@@ -75,13 +75,11 @@ public class BasePage {
 	}
 
 	public void waitForVisibility(MobileElement e) {
-		ExtentCucumberAdapter.addTestStepLog("Locator: "+ e);
 		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
 		wait.until(ExpectedConditions.visibilityOf(e));
 	}
 
 	public void waitForVisibility(By e) {
-		ExtentCucumberAdapter.addTestStepLog("Locator: "+ e);
 		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(e));
 	}

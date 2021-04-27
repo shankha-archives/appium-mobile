@@ -66,21 +66,15 @@ public class TimesheetWeekViewScreen extends BasePage {
 
     public static String totalExpectedTimeofWeek;
     public static String initialWeekTotalTime;
+
     public TimesheetWeekViewScreen() {
     }
 
     public void selectCurrentDayForTimesheet() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            // String nextWorkingDate = nextWorkingDay("current day", "M/dd");
-            //isElementdisplayed(monday);
+        if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(By.xpath("//android.widget.TextView[contains(@text,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
-            //click();
-        } else {
-            //   String nextWorkingDate = nextWorkingDay("current day", "M/dd");
-           // isElementdisplayed(tuesday);
-            //driver.findElementByXPath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDate + "')]").click();
+        else
             click(By.xpath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
-        }
     }
 
     public void weekTotalTime() throws Exception {
@@ -88,9 +82,6 @@ public class TimesheetWeekViewScreen extends BasePage {
         int minutes = 0;
         DecimalFormat formatter = new DecimalFormat("00");
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            //isElementDisplayed(monday, "Waiting for Monday ");
-
-
             for (MobileElement mobElement : dayTotalTime) {
                 hours = hours + Integer.parseInt(getElementText(mobElement).split(":")[0]);
                 minutes = minutes + Integer.parseInt(getElementText(mobElement).split(":")[1]);
@@ -99,97 +90,69 @@ public class TimesheetWeekViewScreen extends BasePage {
             minutes = minutes % 60;
             totalExpectedTimeofWeek = hours + ":" + formatter.format(minutes);
         } else {
-            for (int i=0;i<=6;i++) {
-                if(i==5) scrollWeekDays();
-//                {
-//                        TouchAction action = new TouchAction(driver);
-//                        int dragX = saturday.getLocation().x + (saturday.getSize().width / 2);
-//                        int dragY = saturday.getLocation().y + (saturday.getSize().height / 2);
-//                        action.press(PointOption.point(dragX, dragY)).waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
-//                                .moveTo(PointOption.point(dragX, dragY - 150)).release().perform();
-//                }
-                MobileElement ele = driver.findElementByAccessibilityId("TimesheetDashboard_TableViewCell_Hours_Label_"+i);
+            for (int i = 0; i <= 6; i++) {
+                if (i == 5) scrollWeekDays();
+                MobileElement ele = driver.findElementByAccessibilityId("TimesheetDashboard_TableViewCell_Hours_Label_" + i);
                 hours = hours + Integer.parseInt(getElementText(ele).split(":")[0]);
                 minutes = minutes + Integer.parseInt(getElementText(ele).split(":")[1]);
-               // Assert.assertEquals(hours+ " " +minutes,"456");
             }
             hours = hours + (minutes / 60);
             minutes = minutes % 60;
             totalExpectedTimeofWeek = hours + ":" + formatter.format(minutes);
-           // Assert.assertEquals(totalExpectedTimeofWeek,"456");
-            //totalExpectedTimeofWeek = getElementText(totalWeekTotalAmount, "Extracting total time of the week");
         }
     }
 
-//    public void getTotalExpectedTimeofWeek1() throws InterruptedException {
-//        isElementDisplayed(totalWeekTotalAmount);
-//        isElementDisplayed(monday);
-//        //Thread.sleep(10000);
-//        initialWeekTotalTime = getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
-//        Assert.assertEquals(initialWeekTotalTime,"   12");
-//       // return getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
-//    }
-
     public String getTotalExpectedTimeofWeek() {
-        //initialWeekTotalTime = getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
-         return getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
+        return getElementText(totalWeekTotalAmount, "Extracting the total time of the week");
     }
 
-    public void clickWeekTimesheetSubmitBtn(){
+    public void clickWeekTimesheetSubmitBtn() {
         click(submittimesheetsbtn, "Clicking on submit timesheet button");
     }
 
     public void clickUndoWeekTimesheet() throws Exception {
-       // verifyUndoBtn();
         click(undoicon, "Clicked on undo timesheet icon");
-       // click(undobtn, "Clicked on undo button");
     }
 
     public void declinePopUp() {
-       if( isElementDisplayed(declinebtn, "Waiting for decline pop up"))
-        click(declinebtn, "Clicking on undo decline button");
+        if (isElementDisplayed(declinebtn, "Waiting for decline pop up"))
+            click(declinebtn, "Clicking on undo decline button");
     }
 
     public boolean verifySubmitTimesheetBtn() {
-       return isElementDisplayed(submittimesheetsbtn, "Waiting for submit timesheet btn");
+        return isElementDisplayed(submittimesheetsbtn, "Waiting for submit timesheet btn");
     }
 
     public boolean verifyMonday() {
-       return isElementDisplayed(monday, "Waiting for Monday to display");
-       // Assert.assertTrue("Monday timesheet is not displayed", monday.isDisplayed());
+        return isElementDisplayed(monday, "Waiting for Monday to display");
     }
 
     public boolean verifySunday() {
-       return isElementDisplayed(sunday, "Waiting for Sunday to display");
-      //  Assert.assertTrue("Sunday timesheet is not displayed", sunday.isDisplayed());
+        return isElementDisplayed(sunday, "Waiting for Sunday to display");
     }
 
     public boolean verifySaturday() {
         scrollWeekDays();
-      return  isElementDisplayed(saturday, "Waiting for Saturday to display");
-     //   Assert.assertTrue("Saturday timesheet is not displayed", saturday.isDisplayed());
+        return isElementDisplayed(saturday, "Waiting for Saturday to display");
     }
 
     public boolean verifyTuesday() {
-       return isElementDisplayed(tuesday,"Waiting for Tuesday to display");
-      //  Assert.assertTrue("Tuesday timesheet is not displayed", tuesday.isDisplayed());
+        return isElementDisplayed(tuesday, "Waiting for Tuesday to display");
     }
 
     public boolean verifyWednesday() {
-      return  isElementDisplayed(wednesday,"Waiting for Wednesday to display");
-     //   Assert.assertTrue("Wednesday timesheet is not displayed", wednesday.isDisplayed());
+        return isElementDisplayed(wednesday, "Waiting for Wednesday to display");
     }
 
     public boolean verifyThrusday() {
-    return  isElementDisplayed(thursday,"Waiting for Thursday to display");
-      //  Assert.assertTrue("Thursday timesheet is not displayed", thursday.isDisplayed());
+        return isElementDisplayed(thursday, "Waiting for Thursday to display");
     }
 
     public boolean verifyFriday() {
-        return isElementDisplayed(friday,"Waiting for Friday to display");
-      //  Assert.assertTrue("Friday timesheet is not displayed", friday.isDisplayed());
+        return isElementDisplayed(friday, "Waiting for Friday to display");
     }
-    public void scrollWeekDays(){
+
+    public void scrollWeekDays() {
         TouchAction action = new TouchAction(driver);
         int dragX = friday.getLocation().x + (friday.getSize().width / 2);
         int dragY = friday.getLocation().y + (friday.getSize().height / 2);

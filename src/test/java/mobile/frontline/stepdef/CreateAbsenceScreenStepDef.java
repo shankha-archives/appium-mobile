@@ -14,21 +14,21 @@ public class CreateAbsenceScreenStepDef {
 
     @When("Select absence reason and click on next btn")
     public void selectAbsenceReasonAndClickOnNext() throws Exception {
-        Assert.assertTrue("Create Absence Page 3 is not displayed", createAbsenceScreen.verifyAsbsenceReasonPage()) ;
+        Assert.assertTrue("Create Absence Page 3 is not displayed", createAbsenceScreen.waitForAsbsenceReasonPage()) ;
         createAbsenceScreen.absenceReason();
         createAbsenceScreen.clickNext();
     }
 
     @And("Select absence day {string} and click on next btn")
     public void selectAbsenceDayAndClickOnNextBtn(String absenceDay) throws Throwable {
-        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.verifyAsbsenceDatePage()) ;
+        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
         createAbsenceScreen.selectDate(absenceDay);
         createAbsenceScreen.clickNext();
     }
 
     @And("Select absence duration and click on next btn")
     public void selectAbsenceDurationAndClickOnNextBtn() throws Exception {
-        Assert.assertTrue("Create Absence Page 5 is not displayed", createAbsenceScreen.verifyAsbsenceDuratioPage()) ;
+        Assert.assertTrue("Create Absence Page 5 is not displayed", createAbsenceScreen.waitForAsbsenceDuratioPage()) ;
         createAbsenceScreen.selectDuration();
         createAbsenceScreen.clickNext();
     }
@@ -41,31 +41,31 @@ public class CreateAbsenceScreenStepDef {
 
     @And("Click on submit absence")
     public void clickOnSubmitAbsence() throws Exception {
-        Assert.assertTrue(  "Create Absence Page 6 is not displayed",createAbsenceScreen.verifyReviewAbsencePage());
+        Assert.assertTrue(  "Create Absence Page 6 is not displayed",createAbsenceScreen.waitForReviewAbsencePage());
         createAbsenceScreen.submitAbsence();
     }
 
     @Then("Verify the absence creation pop up")
     public void verifyTheAbsenceCreationPopUp() {
-      Assert.assertTrue("Create Absence pop up message is not displayed",createAbsenceScreen.verifyAbsenceCreationPopup());
+      Assert.assertTrue("Create Absence pop up message is not displayed",createAbsenceScreen.waitForAbsenceCreationPopup());
     }
 
     @And("Verify absence reason page and click next")
     public void verifyAbsenceReasonPageAndClickNext() throws InterruptedException {
-        Assert.assertTrue("Create Absence Page 3 is not displayed", createAbsenceScreen.verifyAsbsenceReasonPage()) ;
+        Assert.assertTrue("Create Absence Page 3 is not displayed", createAbsenceScreen.waitForAsbsenceReasonPage()) ;
         createAbsenceScreen.clickNext();
     }
 
     @And("Edit absence day {string} and click next")
     public void editAbsenceDayAndClickNext(String absenceDay) throws Throwable {
-        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.verifyAsbsenceDatePage()) ;
+        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
         createAbsenceScreen.editDate(absenceDay);
         createAbsenceScreen.clickNext();
     }
 
     @And("Verify absence duration and click next")
     public void verifyAbsenceDurationAndClickNext() throws Exception {
-        Assert.assertTrue("Create Absence Page 5 is not displayed", createAbsenceScreen.verifyAsbsenceDuratioPage()) ;
+        Assert.assertTrue("Create Absence Page 5 is not displayed", createAbsenceScreen.waitForAsbsenceDuratioPage()) ;
         createAbsenceScreen.editDuration();
         createAbsenceScreen.clickNext();
     }
@@ -82,7 +82,7 @@ public class CreateAbsenceScreenStepDef {
 
     @And("Enter and select employee name {string} and click on next")
     public void enterAndSelectEmployeeNameAndClickOnNext(String empAbsence) throws Throwable {
-        Assert.assertTrue("Create Absence Page 1 is not displayed",  createAbsenceScreen.verifyWhoPage());
+        Assert.assertTrue("Create Absence Page 1 is not displayed",  createAbsenceScreen.waitForWhoPage());
         createAbsenceScreen.enterTeachersName(testdata.read_property("testingData", "users", empAbsence));
         createAbsenceScreen.selectTeachersName(testdata.read_property("testingData", "users", empAbsence));
         Assert.assertTrue("Who text is not displayed", createAbsenceScreen.waitForForwardBtn());

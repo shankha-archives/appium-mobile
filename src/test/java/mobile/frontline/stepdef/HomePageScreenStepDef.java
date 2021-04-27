@@ -1,14 +1,10 @@
 package mobile.frontline.stepdef;
 
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.Homescreen;
-import org.jsoup.Connection;
 import org.junit.Assert;
 
 public class HomePageScreenStepDef {
@@ -19,10 +15,10 @@ public class HomePageScreenStepDef {
 
     @Then("^The substitute navigates to dashboard page$")
     public void the_substitute_navigates_to_dashboard_page() throws Throwable {
-       Assert.assertTrue( "Dashboard header page is not displayed",homescreen.verify_homeScreen_displayed());
+        Assert.assertTrue("Dashboard header page is not displayed", homescreen.verify_homeScreen_displayed());
 
     }
-        //loginPage.verify_homeScreen_displayed();
+    //loginPage.verify_homeScreen_displayed();
 
 
     @And("Click on the Available Jobs")
@@ -43,8 +39,9 @@ public class HomePageScreenStepDef {
 
     @Then("the user navigates to dashboard page")
     public void theUserNavigatesToDashboardPage() throws Throwable {
-        Assert.assertTrue("The dashboard is not loaded"  ,homescreen.verify_homeScreen_displayedWithoutPushVerify());
+        Assert.assertTrue("The dashboard is not loaded", homescreen.verify_homeScreen_displayedWithoutPushVerify());
     }
+
     @And("^The user minimize and relaunch the application$")
     public void the_user_minimize_and_relaunch_the_application() throws Throwable {
         basePage.bgRunningApp();
@@ -60,12 +57,9 @@ public class HomePageScreenStepDef {
         homescreen.clickOnAvailableLeaveBalanceWidget();
     }
 
-
     @When("click on the inbox")
-    public void clickOnTheInbox() throws Throwable {
-//        smokePage.clickInbox();
+    public void clickOnTheInbox() {
         homescreen.clickInbox();
-       // smokePage.verifyInboxPage();
     }
 
     @When("The employee clicks on clockin btn")
@@ -81,7 +75,7 @@ public class HomePageScreenStepDef {
 
     @Then("Verify the employee is clocked in")
     public void verifyTheEmployeeIsClockedIn() throws Exception {
-        Assert.assertTrue(  "The time sheet did not get clocked out",homescreen.verifyClockIn());
+        Assert.assertTrue("The time sheet did not get clocked out", homescreen.waitClockInVerifictionBubble());
     }
 
     @When("The user navigates to timesheet widget")
@@ -91,12 +85,12 @@ public class HomePageScreenStepDef {
 
     @And("Verify the timesheet is clocked out")
     public void verifyTheTimesheetIsClockedOut() throws Exception {
-      Assert.assertTrue("The time sheet did not get clocked out",homescreen.verifyClockInBtn());
+        Assert.assertTrue("The time sheet did not get clocked out", homescreen.waitClockInBtn());
     }
 
     @And("Verify the Timesheet total on dashboard")
     public void verifyTheTimesheetTotalOnDashboard() throws Exception {
-        Assert.assertEquals("Total time on dashboard and total time is not equal",TimesheetWeekViewScreenStepDef.initialWeekTotalTime,homescreen.verifyWeekTime());
+        Assert.assertEquals("Total time on dashboard and total time is not equal", TimesheetWeekViewScreenStepDef.initialWeekTotalTime, homescreen.getWeekTimeText());
     }
 
     @Then("click on People widget")
@@ -121,8 +115,7 @@ public class HomePageScreenStepDef {
 
     @Then("verify the order of widgets")
     public void verifyTheOrderOfWidgets() {
-        Assert.assertNotEquals("The widgets order did not change",Homescreen.widgetlistbeforeReorder, Homescreen.widgetlistafterReorder);
-      //  homescreen.verifyWidgetsOrder();
+        Assert.assertNotEquals("The widgets order did not change", Homescreen.widgetlistbeforeReorder, Homescreen.widgetlistafterReorder);
     }
 
     @And("^click on the create absences$")
@@ -137,7 +130,7 @@ public class HomePageScreenStepDef {
 
     @Then("^The user moves to Next Scheduled Job widget and verify it")
     public void user_verifies_next_scheduled_job_widget() throws Throwable {
-        homescreen.verifyNextScheduledJobWidget();
+        homescreen.waitNextScheduledJobWidget();
     }
 
     @When("the user clicks on Menu tab")

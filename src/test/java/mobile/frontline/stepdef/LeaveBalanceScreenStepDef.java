@@ -10,12 +10,11 @@ public class LeaveBalanceScreenStepDef {
 
     @Then("View leave balance screen")
     public void viewLeaveBalanceScreen() {
-       Assert.assertTrue("Available Leave Balance page is not displayed", leaveBalanceScreen.verfyLeaveBalanceHeader());
+       Assert.assertTrue("Available Leave Balance page is not displayed", leaveBalanceScreen.waitLeaveBalanceHeader());
     }
 
     @Then("^verify available days$")
     public void verify_available_days() throws Throwable {
-       // smokePage.verify_availableDays();
-        Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalanceScreen.verify_availableDays()) >= 0);
+        Assert.assertTrue("Available Leaves are invalid", Float.parseFloat(leaveBalanceScreen.get_availableDays()) >= 0);
     }
 }
