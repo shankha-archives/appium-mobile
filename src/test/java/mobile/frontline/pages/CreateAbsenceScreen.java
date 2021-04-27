@@ -87,9 +87,8 @@ public class CreateAbsenceScreen extends BasePage {
     public CreateAbsenceScreen() {
     }
 
-    public boolean verifyAsbsenceReasonPage() {
+    public boolean waitForAsbsenceReasonPage() {
         return isElementDisplayed(absenceReasonVerification, "Waiting for absence reason page");
-//        Assert.assertTrue("Create Absence Page 3 is not displayed", absenceReasonVerification.isDisplayed());
     }
 
     public void absenceReason() throws Exception {
@@ -100,11 +99,8 @@ public class CreateAbsenceScreen extends BasePage {
         click(forwardCaret, "Clicking forward btn");
     }
 
-    public boolean verifyAsbsenceDatePage() {
+    public boolean waitForAsbsenceDatePage() {
         return isElementDisplayed(datePageVerification, "Waiting for date page to display");
-//        isElementdisplayed(datePageVerification);
-//        Assert.assertTrue("Create Absence Page 4 is not displayed", datePageVerification.isDisplayed());
-//        utils.log().info("Create Absence Page 4 is displayed");
     }
 
     public void selectDate(String absenceDay) throws Throwable {
@@ -132,10 +128,8 @@ public class CreateAbsenceScreen extends BasePage {
         }
     }
 
-    public boolean verifyAsbsenceDuratioPage() {
+    public boolean waitForAsbsenceDuratioPage() {
         return isElementDisplayed(durationPageVerification, "Waiting for duration page to load");
-//        Assert.assertTrue("Create Absence Page 5 is not displayed", durationPageVerification.isDisplayed());
-//        utils.log().info("Create Absence Page 5 is displayed");
     }
 
     public void selectDuration() throws Exception {
@@ -144,10 +138,9 @@ public class CreateAbsenceScreen extends BasePage {
 
     public boolean substituteAssignPageVerification() throws Exception {
         return isElementDisplayed(subAssignPageVerification, "Waiting for assign substitute page to display");
-        //   Assert.assertTrue("Create Absence Page 5 is not displayed", subAssignPageVerification.isDisplayed());
     }
 
-    public boolean verifyReviewAbsencePage() {
+    public boolean waitForReviewAbsencePage() {
         return isElementDisplayed(reviewPageVerification, "Waiting for review page to display");
     }
 
@@ -155,11 +148,8 @@ public class CreateAbsenceScreen extends BasePage {
         click(submitAbsence, "Clicking on submit absence");
     }
 
-    public boolean verifyAbsenceCreationPopup() {
+    public boolean waitForAbsenceCreationPopup() {
         return isElementDisplayed(createdAbsenceVerificationMsg,"Waiting for absence verification messgae");
-//        Assert.assertTrue("Create Absence pop up message is not displayed",
-//                createdAbsenceVerificationMsg.isDisplayed());
-//        utils.log().info("Create Absence pop up message is displayed");
     }
 
     public void editDuration() {
@@ -174,24 +164,11 @@ public class CreateAbsenceScreen extends BasePage {
         click(viewAbsence, "Clicking on view Absence");
     }
 
-    public boolean verifyWhoPage() {
+    public boolean waitForWhoPage() {
         return isElementDisplayed(absenceRequiredFor,"Waiting for selecting employee page ");
-//        Assert.assertTrue("Create Absence Page 1 is not displayed", absenceRequiredFor.isDisplayed());
-//        utils.log().info("Create Absence Page 1 is displayed");
     }
 
     public void enterTeachersName(String teacher) throws Exception {
-//        switch (new GlobalParams().getPlatformName()) {
-//            case "Android":
-//                verifyWhoPage();
-//                break;
-//            case "iOS":
-//                utils.log().info("Create Absence Page 1 is displayed");
-//                isElementdisplayed(serachEditText);
-//                break;
-//            default:
-//                throw new Exception("Invalid platform Name");
-//        }
         sendKeys(serachEditText, teacher, "Entering the employee's name for which absence is created");
     }
 

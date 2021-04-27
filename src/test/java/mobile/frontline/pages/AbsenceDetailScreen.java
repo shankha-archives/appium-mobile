@@ -5,7 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.junit.Assert;
 
-public class AbsenceDetailScreen extends BasePage{
+public class AbsenceDetailScreen extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Conf')]")
@@ -40,50 +40,42 @@ public class AbsenceDetailScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Yes")
     public MobileElement okBtn;
 
-    public AbsenceDetailScreen(){}
+    public AbsenceDetailScreen() {
+    }
 
     public boolean verifydisplayConfirmationNumber() {
         return isElementDisplayed(confirmationNumber, "Waiting for confirmation number to be displayed");
     }
 
-    public String verifyAbsenceDetails() {
-       return getElementText(confirmationNumber,"Extracting confirmation number");
+    public String getAbsenceDetails() {
+        return getElementText(confirmationNumber, "Extracting confirmation number");
     }
 
-    public void clickEditAbsenceBtn(){
+    public void clickEditAbsenceBtn() {
         click(editTab, "Clicking on edit tab");
     }
 
-    public String verifyEditedDuration(){
-       // Assert.assertTrue("Half Day Duration is not displayed", getElementText(durationHalfDay).contains("Half Day"));
-
-        return  getElementText(durationHalfDay,"Extracting half day duration text");
+    public String verifyEditedDuration() {
+        return getElementText(durationHalfDay, "Extracting half day duration text");
     }
 
     public void click_tapToAssign() {
-        //isElementdisplayed(assignSubstitute);
         click(assignSubstitute, "Clicking on Assign Substitute");
     }
 
     public void assignSubstitute() {
-//        isElementdisplayed(selectSubstitute);
-//        Assert.assertTrue("Select substitute btn is not displayed", selectSubstitute.isDisplayed());
         click(selectSubstitute, "Clicking on Select Substitute");
     }
 
     public void clickConfirmAssignSubstitute() {
-//        isElementdisplayed(confirmAssignSub);
-//        Assert.assertTrue("Confirm substitute btn is not displayed", confirmAssignSub.isDisplayed());
-        click(confirmAssignSub, "Clicking on Confirm Assign Substitute");
+         click(confirmAssignSub, "Clicking on Confirm Assign Substitute");
     }
 
     public void clickApproveBtnOnAbsence() {
-        // isElementdisplayed(approvebtn);
         click(approvebtn, "Cliking on Approve button");
     }
 
     public void clickonOkBtn() {
-        // isElementdisplayed(okBtn);
         click(okBtn, "Clicking on Ok Button");
     }
 }

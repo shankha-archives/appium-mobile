@@ -17,7 +17,7 @@ public class SettingScreen extends BasePage {
     public SettingScreen() {
     }
 
-    public String verifyDarkModeBtn() throws Exception {
+    public String getDarkModeBtn() throws Exception {
         isElementDisplayed(darkMode,"Waiting for dask mode btn to be visible");
         return getElementText(darkMode, "Extracting text msg of dark mode btn");
     }

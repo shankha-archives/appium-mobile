@@ -10,7 +10,6 @@ public class RolePickerScreenStepDef {
 
     @Then("^the user is presented with the role picker$")
     public void role_picker_page_displayed() throws Throwable {
-        //loginPage.rolePickerPageLoads();
         Assert.assertTrue("Role picker is not displayed", rolePickerScreen.rolePickerPageLoads());
     }
 }

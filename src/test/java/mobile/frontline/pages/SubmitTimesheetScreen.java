@@ -30,19 +30,15 @@ public class SubmitTimesheetScreen extends BasePage {
     }
 
     public void clickUndoTimesheet() throws Exception {
-        // verifyUndoBtn();
-        // click(undoicon, "Clicked on undo timesheet icon");
         click(undobtn, "Clicking on undo button");
     }
 
     public void enterTimesheetsWithIncorrectPin() {
         sendKeys(enterPin, "3661", "Entering digital Pin");
-        //driver.getKeyboard().sendKeys("3661");
         hideKeyboard();
     }
 
     public String toastMessge() throws Exception {
-
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             Thread.sleep(2000);
             WebElement toastView = driver.findElement(By.xpath("//android.widget.Toast[1]"));
@@ -50,8 +46,6 @@ public class SubmitTimesheetScreen extends BasePage {
         } else {
             isElementDisplayed(inValidPin,"Waiting for invalid pip pop up");
             return getElementText(inValidPin);
-
         }
-        //
     }
 }

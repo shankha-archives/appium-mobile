@@ -28,7 +28,6 @@ public class MenuLinksScreenStepDef {
 
     @And("^click the absence search result$")
     public void click_the_absence_search_result() throws Throwable {
-        //   smokePage.click_searchResult();
         menuScreen.clickOnAbsenceSearchResult();
     }
 

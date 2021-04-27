@@ -22,7 +22,6 @@ public class PeopleScreen extends BasePage{
     public void enterLastNameTobeSearched(String lastName){
         if( (new GlobalParams().getPlatformName()).contains("Android")){
             sendKeys(searchPeople, lastName, "Entering last name of the person to be searched");
-//            hideKeyboard();
         }
         else
             sendKeys(serachEditText, lastName, "Entering last name of the person to be searched");
@@ -32,7 +31,6 @@ public class PeopleScreen extends BasePage{
 
         if( (new GlobalParams().getPlatformName()).contains("Android")){
             By searchedEmployee = By.xpath("//android.widget.TextView[contains(@text,'" + lastName + "')]");
-           // scrollToElement(searchedEmployee, "up");
             click(searchedEmployee, "Clicking on searched Employee");
         }
         else

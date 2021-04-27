@@ -5,7 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.junit.Assert;
 
-public class OrgPickerScreen extends BasePage{
+public class OrgPickerScreen extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select an Organization']")
     @iOSXCUITFindBy(accessibility = "Select an Organization")
@@ -23,27 +23,18 @@ public class OrgPickerScreen extends BasePage{
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]")
     public MobileElement associatedOrgForSub2;
 
-  public  OrgPickerScreen(){}
+    public OrgPickerScreen() {
+    }
 
     public boolean orgPickerPageLoads() {
-//        isElementDisplayed(orgPickerPageHeader);
-//        Assert.assertTrue("Organization picker page is not displayed", orgPickerPageHeader.isDisplayed());
-//        utils.log().info("Organization picker page is displayed");
-        return isElementDisplayed(orgPickerPageHeader,"Waiting for Organization picker page to load") ;
+        return isElementDisplayed(orgPickerPageHeader, "Waiting for Organization picker page to load");
     }
 
-//    public void selectOrg() {
-//        isElementdisplayed(associatedOrgForSub1);
-//        Assert.assertTrue("Available Organizations are not displayed", associatedOrgForSub1.isDisplayed());
-//        utils.log().info("Available Organizations are  displayed");
-//        click(associatedOrgForSub1);
-//        click(contbtn);
-//    }
-
-    public void clickFirstOrganization(){
+    public void clickFirstOrganization() {
         click(associatedOrgForSub1, "Clicking on to the organization btn");
     }
-    public void clickContinueBtn(){
+
+    public void clickContinueBtn() {
         click(contbtn, "Clicking on continue btn");
     }
 

@@ -24,17 +24,17 @@ public class SettingScreenStepDef {
     @Then("Verify the dark mode btn is OFF")
     public void verifyTheDarkModeBtnIsOFF() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-            Assert.assertEquals("OFF", settingScreen.verifyDarkModeBtn());
+            Assert.assertEquals("OFF", settingScreen.getDarkModeBtn());
         else
-            Assert.assertEquals("0", settingScreen.verifyDarkModeBtn());
+            Assert.assertEquals("0", settingScreen.getDarkModeBtn());
     }
 
     @Then("Verify the dark mode button is ON")
     public void verifyTheDarkModeButtonIsON() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-            Assert.assertEquals("ON", settingScreen.verifyDarkModeBtn());
+            Assert.assertEquals("ON", settingScreen.getDarkModeBtn());
         else
-            Assert.assertEquals("1", settingScreen.verifyDarkModeBtn());
+            Assert.assertEquals("1", settingScreen.getDarkModeBtn());
     }
 
 }

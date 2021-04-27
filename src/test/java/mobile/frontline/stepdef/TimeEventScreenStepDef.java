@@ -11,7 +11,6 @@ public class TimeEventScreenStepDef {
 
 TimeEventScreen timeEventScreen = new TimeEventScreen();
 
-
     @And("Click on edit timesheet btn")
     public void clickOnEditTimesheetBtn() {
         timeEventScreen.timeEntryEditBtnClick();

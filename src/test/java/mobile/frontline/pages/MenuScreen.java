@@ -23,12 +23,10 @@ public class MenuScreen extends BasePage{
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField[@name='Search Frontline Mobile']")
     public MobileElement searchBar;
 
-    // click on Feedback
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Feedback']")
     @iOSXCUITFindBy(accessibility = "Feedback_MenuOption")
     public MobileElement feedback;
 
-    // click on Feedback Header
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Frontline Education would love to hear from you!']")
     @iOSXCUITFindBy(accessibility = "Frontline Education would love to hear from you.")
     public MobileElement feedbackHeader;
@@ -66,22 +64,17 @@ public class MenuScreen extends BasePage{
 
     public void clickSettingsOption() throws Exception {
         scrollToElement(settings, "up", "Scrolling to the settings menu link");
-        // Assert.assertTrue("Settings tab is not displayed", settings.isDisplayed());
         click(settings, "Clicking on setting btn");
     }
 
     public void enterSearchText(String searchText) {
         isElementDisplayed(searchBar,"Waiting for search bar to be visible");
-        // Assert.assertTrue("search Bar option is not displayed", searchBar.isDisplayed());
-        //searchResultText = searchText;
-        //utils.log().info("Searched text is : " + searchResultText);
         click(searchBar,"Clicking on Search Bar");
         clearTextField(searchBar);
         sendKeys(searchBar, testdata.read_property("testingData", "users", searchText), "Entering result to be searched");
     }
 
     public void clickOnCalendarResult() {
-        //  Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
         click(searchResult, "Clicking on calendar Search Result");
     }
 
@@ -113,26 +106,20 @@ public class MenuScreen extends BasePage{
             Thread.sleep(2000);
             WebElement toastView = driver.findElement(By.xpath("//android.widget.Toast[1]"));
             return toastView.getAttribute("name");
-//                Assert.assertEquals("Diagnostic is not sent", "Diagnostics sent!",actualDiagnosticMsg);
-//                utils.log().info("Diagnostic is sent :"+ actualDiagnosticMsg);
         }else {
            isElementDisplayed(diagnosticPopup,"Waiting for diagnostic pop to load");
            return getElementText(diagnosticPopup, "Extracting text from diagnostics pop up");
-//            click(okay);
         }
     }
 
     public void clickOnCalendarLink() {
-        //  Assert.assertTrue("search Result option is not displayed", searchResult.isDisplayed());
         click(calendarLink, "Clicking on calendar link");
     }
 
-    //Mob-6665
     public void clickFeedBackBtn() {
         click(feedback, "Clicking Feedback button");
     }
 
-    //Mob-6665
     public boolean waitForFeedbackHeader() {
         return isElementDisplayed(feedbackHeader, "Waiting for feedback header");
     }

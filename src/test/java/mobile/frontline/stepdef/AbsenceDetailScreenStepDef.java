@@ -14,15 +14,13 @@ public class AbsenceDetailScreenStepDef {
     @Then("^verify the absence detail page$")
     public void verify_the_absence_detail_page() throws Throwable {
         Assert.assertTrue("Confirmation number is not displayed", absenceDetailScreen.verifydisplayConfirmationNumber());
-       // smokePage.verifyAbsenceDetailPage();
     }
 
     @And("Verify absence confirmation number")
     public void verifyAbsenceConfirmationNumber() {
         Assert.assertTrue("Confirmation number is not displayed", absenceDetailScreen.verifydisplayConfirmationNumber());
-        Assert.assertTrue("The confirmation numbers are different",absenceDetailScreen.verifyAbsenceDetails().contains(APIServices.confirmationNumber));
+        Assert.assertTrue("The confirmation numbers are different",absenceDetailScreen.getAbsenceDetails().contains(APIServices.confirmationNumber));
     }
-
 
     @When("Click on edit absence")
     public void clickOnEditAbsence() {

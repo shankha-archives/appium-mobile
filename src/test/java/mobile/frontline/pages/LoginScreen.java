@@ -9,8 +9,6 @@ import org.junit.Assert;
 
 public class LoginScreen extends BasePage {
 
-    TestUtils utils = new TestUtils();
-
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Get Started']")
     public MobileElement getStarted;
@@ -58,8 +56,7 @@ public class LoginScreen extends BasePage {
     public LoginScreen() {
     }
 
-    public boolean verifySplashScreenLoaded() {
-        //  isElementDisplayed(splashScreen, "Searching for text: Work without limits");
+    public boolean waitSplashScreenLoaded() {
         return isElementDisplayed(splashScreen, "Searching for text: Work without limits");
     }
 
@@ -69,17 +66,14 @@ public class LoginScreen extends BasePage {
 
     public boolean verify_loginPageLoaded() {
         switchToWebView();
-//        isElementDisplayed(loginPageHeader);
         return isElementDisplayed(loginPageHeader, "Waiting for login page to load");
     }
 
     public void enterUserName(String userName) {
-        // isElementDisplayed(username);
         enterValueInTextField(username, userName, "Entering user name");
     }
 
     public void enterUserPassword(String userPassword) throws Exception {
-        // isElementDisplayed(password);
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             hideKeyboard();
             enterValueInTextField(password, userPassword, "Entering user password");
@@ -99,19 +93,15 @@ public class LoginScreen extends BasePage {
             click(loginBtn, "Clicking on Login Button");
     }
 
-    public boolean verifyInvalidCredentials_errorMessage() {
-        // isElementDisplayed(credentialErr);
+    public boolean waitForInvalidCredentials_errorMessage() {
         return isElementDisplayed(credentialErr, "Waiting for invalid credentials error");
     }
 
-
-    public boolean verifyNoUserName_errorMessage() {
-        //isElementDisplayed(userNameRequired);
+    public boolean waitNoUserName_errorMessage() {
         return isElementDisplayed(userNameRequired, "Searching for username field error");
     }
 
-    public boolean verifyNoPassword_errorMessage() {
-        // isElementDisplayed(userPasswordRequired);
+    public boolean waitNoPassword_errorMessage() {
         return isElementDisplayed(userPasswordRequired, "Searching for password error");
     }
 
@@ -121,32 +111,22 @@ public class LoginScreen extends BasePage {
             enterUserPassword(password);
             clickOnLoginBtn();
         }
-//        else
-//            utils.log().info("Login page didnt appear");
     }
 
-    public String verifyNoLoginDialogbox() {
+    public String waitNoLoginDialogbox() {
         isElementDisplayed(noLoginDialogBox, "Waiting for the error dialog box");
         return getElementText(noLoginDialogBox, "Extracting the error message");
-//        Assert.assertEquals("You have been granted access to any organizations that use the Frontline Insights Platform",
-//                getElementText(noLoginDialogBox),"You have not been granted access to any organizations that use the Frontline Insights Platform.");
-//        utils.log().info(
-//                "You have not been granted access to any organizations that use the Frontline Insights Platform is displayed");
     }
-
 
     public boolean waitAndverify_splashScreenLoaded() throws Exception {
         Thread.sleep(30000);
-        isElementDisplayed(splashScreen,"Waiting for splash screen to display");
+        isElementDisplayed(splashScreen, "Waiting for splash screen to display");
         Thread.sleep(30000);
 
-        return  isElementDisplayed(splashScreen,"Waiting for splash screen to display");
-        // Assert.assertTrue("Splash Screen is not displayed", splashScreen.isDisplayed());
+        return isElementDisplayed(splashScreen, "Waiting for splash screen to display");
     }
 
-    public boolean verifyUnlockCodePage() throws Throwable {
+    public boolean waitUnlockCodePage() throws Throwable {
         return IsElementNotPresent(enterUnlockCode);
-
-       // utils.log().info("Unlock code page is not displayed");
     }
 }

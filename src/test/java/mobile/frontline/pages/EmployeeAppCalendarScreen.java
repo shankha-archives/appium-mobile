@@ -28,20 +28,13 @@ public class EmployeeAppCalendarScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "EventView_Absence_Other")
     public MobileElement eventTitle_absences;
 
-//    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText)[2]")
-//    public MobileElement monthVerify;
-
     public EmployeeAppCalendarScreen() {
 
     }
 
-    public String verifySearchResult() throws Exception {
+    public String waitForSearchResult() throws Exception {
         isElementDisplayed(calendar, "Waiting for application calendar to display");
-//        Assert.assertTrue("calendar is not displayed", calendar.isDisplayed());
-        return getElementText(calendar,"Getting text of App Calendar");
-      //  return getElementText(calendar, "Getting text of App Calendar").equalsIgnoreCase(testdata.read_property("testingData", "users", searchResultText));
-        //  Assert.assertTrue("Entered text does not match", getElementText(calendar).equalsIgnoreCase(testdata.read_property("testingData", "users", searchResultText)));
-        // utils.log().info("Entered text matches with result");
+        return getElementText(calendar, "Getting text of App Calendar");
     }
 
     public void getRequiredMonthInCalendar(String absence_month) throws Exception {
@@ -73,7 +66,6 @@ public class EmployeeAppCalendarScreen extends BasePage {
     }
 
     public void clickOnEvent_absences() throws Exception {
-      //  isElementdisplayed(eventTitle_absences);
         click(eventTitle_absences, "Clicking on Event Title");
     }
 }

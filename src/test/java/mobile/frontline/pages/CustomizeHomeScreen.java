@@ -9,7 +9,7 @@ import io.appium.java_client.touch.offset.PointOption;
 
 import java.time.Duration;
 
-public class CustomizeHomeScreen extends BasePage{
+public class CustomizeHomeScreen extends BasePage {
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/drag_handle")
     @iOSXCUITFindBy(accessibility = "Reorder New Version Available")
@@ -19,7 +19,8 @@ public class CustomizeHomeScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "Done")
     public MobileElement saveOrderWidgetbtn;
 
-   public CustomizeHomeScreen(){}
+    public CustomizeHomeScreen() {
+    }
 
     public void rearrangeWidget() throws Throwable {
         TouchAction action = new TouchAction(driver);

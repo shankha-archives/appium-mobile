@@ -70,8 +70,6 @@ public class TimeEntryScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel[1]")
     public MobileElement outTime;
 
-//    public static String outTime;
-
     public TimeEntryScreen() {
     }
 
@@ -87,14 +85,6 @@ public class TimeEntryScreen extends BasePage {
         click(timeSheetOutTime, "Clicking on Timesheet out time");
     }
 
-//    public void clickOkPopup() {
-//        click(okBtn, "Clicked on Ok Button ");
-//    }
-
-//    public void getOutTimeText() {
-//        outTime = getElementText(timeSheetOutTime);
-//    }
-
     public void clickSaveTimesheet() {
         click(saveTimesheets, "Clicking on Save Timesheet button");
     }
@@ -105,7 +95,6 @@ public class TimeEntryScreen extends BasePage {
 
     public void addAnHourToTimesheets() {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-
             String OutTime = getElementText(outTimeEntry, "Extracting out time text");
             int out = Integer.parseInt(OutTime);
             int changeHourClock = out;
@@ -123,8 +112,6 @@ public class TimeEntryScreen extends BasePage {
                     click(am_label,"Clicking on AM label");
             }
         } else {
-            //outTime.click();
-            //dragClock();
                 TouchAction action = new TouchAction(driver);
                 int dragX = outTime.getLocation().x + (outTime.getSize().width / 2);
                 int dragY = outTime.getLocation().y + (outTime.getSize().height / 2);
@@ -138,7 +125,6 @@ public class TimeEntryScreen extends BasePage {
             click(okBtn, "Clicking on OK btn");
         else
             click(saveOrderWidgetbtn, "Clicking on save out time btn");
-
     }
     public void editTimeCommentToTimesheet() throws Throwable {
         sendKeys(inTimeComment, "Automation Smoke Test","Sending text to the timesheet comment box");
@@ -155,6 +141,4 @@ public class TimeEntryScreen extends BasePage {
     public void clickIntimeLink(){
         click(inTimeEdit,"Clicking on intime");
     }
-
-
 }

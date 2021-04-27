@@ -12,7 +12,7 @@ public class InboxMsgScreen extends BasePage {
 
     public InboxMsgScreen() { }
 
-    public String validateInboxMsg() {
+    public String getInboxMsg() {
         return getElementText(msgData, "Extracting inbox alert message");
     }
 }

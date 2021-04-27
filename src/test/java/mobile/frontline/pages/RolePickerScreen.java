@@ -13,9 +13,6 @@ public class RolePickerScreen extends BasePage{
     public RolePickerScreen(){}
 
     public boolean rolePickerPageLoads() {
-//        isElementDisplayed(rolePickerPageHeader);
-//        Assert.assertTrue("Role picker page is not displayed", rolePickerPageHeader.isDisplayed());
-//        utils.log().info("Role picker page is displayed");
         return isElementDisplayed(rolePickerPageHeader,"Searcing for role picker header");
     }
 }

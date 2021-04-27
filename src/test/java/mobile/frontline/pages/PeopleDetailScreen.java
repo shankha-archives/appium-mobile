@@ -5,7 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.junit.Assert;
 
-public class PeopleDetailScreen extends BasePage{
+public class PeopleDetailScreen extends BasePage {
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='ATMobile ATMobile']")
     @iOSXCUITFindBy(accessibility = "EmployeeDetailView_FullName_StaticText")
@@ -35,16 +35,34 @@ public class PeopleDetailScreen extends BasePage{
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[7]")
     public MobileElement PersonalEmailData;
 
-    public PeopleDetailScreen(){}
+    public PeopleDetailScreen() {
+    }
 
-    public void verifyContactDetails() {
-        Assert.assertTrue("Work Phone is not displayed", (// WorkPhone.isDisplayed() ||
-                // getElementText(WorkPhoneData).length() > 0 ||
-                fullEmployeeName.isDisplayed() ||
-                        WorkEmail.isDisplayed() || getElementText(WorkEmailData).length() > 0)
-                // || OtherPhone.isDisplayed()|| getElementText(OtherPhoneData).length() > 0
-                || PersonalPhone.isDisplayed() || getElementText(PersonalPhoneData).length() > 0
-                || PersonalEmail.isDisplayed() || getElementText(PersonalEmailData).length() > 0);
-        utils.log().info("Details are displayed");
+    public boolean waitForEmployeeName(){
+      return isElementDisplayed(fullEmployeeName,"Waiting for employee name to display");
+    }
+
+    public boolean waitWorkEmail(){
+       return isElementDisplayed(WorkEmail,"Waiting for work email detail to display");
+    }
+
+    public String getWorkEmailText(){
+       return getElementText(WorkEmailData,"Extracting work email data");
+    }
+
+    public boolean waitPersonalPhone(){
+       return isElementDisplayed(PersonalPhone,"Waiting for personal phone detail to display");
+    }
+
+    public String getPersonalPhoneText(){
+        return getElementText(PersonalPhoneData,"Extracting personal phone data");
+    }
+
+    public boolean waitPersonalEmail(){
+        return isElementDisplayed(PersonalEmail,"Waiting for personal email detail to display");
+    }
+
+    public String getPersonalEmailText(){
+        return getElementText(PersonalEmailData,"Extracting personal email data");
     }
 }

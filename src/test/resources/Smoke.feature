@@ -18,22 +18,17 @@ Feature: Smoke scenarios
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
     Then The substitute navigates to dashboard page
-#	When the user clicks on Menu tab and click on Settings
     When the user clicks on Menu tab
     And Click on Settings
     Then Verify the dark mode btn is OFF
     When Toggle the Dark Mode
     And Logout from app
-#	Then Verify the dark mode btn and toggle the Dark Mode and Logout from app
     And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
     Then The substitute navigates to dashboard page
     When the user clicks on Menu tab
     And Click on Settings
-#	When the user clicks on Menu tab and click on Settings
-#	Then Verify the dark mode button
     Then Verify the dark mode button is ON
 
-##	//change leaves through aPI or web, then check the balance Not valid for ios
   @MOB-4255 @AndroidSmoke @MOB-4256 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: View leave balances and check available days
     When the user launches the app
@@ -42,7 +37,6 @@ Feature: Smoke scenarios
     Then the user navigates to dashboard page
     When click on Available Leave Balances
     Then View leave balance screen
-#	And click on Available Leave Balances and view leave balances
     Then verify available days
 
   @MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke @AndroidRegression @iOSRegression
@@ -53,21 +47,16 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4233" and password and click on Sign In button
     Then the user navigates to dashboard page
     When the user clicks on Menu tab
-#	When click on menu bar
     Then Enter search text "searchText"
     When Click on calendar search result
-#	Then enter the search text in bar and click on result
     And verify calendar the search result "searchText"
-#	Then click on the home button to navigate back to dashboard
     Then Navigate to dashboard
     Then the user navigates to dashboard page
     When the user clicks on Menu tab
     Then Enter search text "absenceKeyword"
-#	Then enter the absence search text in bar
     And click the absence search result
     Then verify the absence detail page
 
-##	//text validation //one admin user is missing
   @MOB-4257 @MOB-4265 @MOB-4267 @AndroidSmoke @MOB-4258 @MOB-4266 @MOB-4268 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify a user can visit inbox and view messages
     When the user launches the app
@@ -109,7 +98,6 @@ Feature: Smoke scenarios
     When The employee clicks on clockin btn
     Then Verify the employee is clocked in
     When The user navigates to timesheet widget
-#	When Employee clicks on the clockin btn
     And Select the current day
     And Verify time event is visible
     And Click on time event
@@ -123,7 +111,6 @@ Feature: Smoke scenarios
     And Navigate to dashboard
     Then the user navigates to dashboard page
     And Verify the timesheet is clocked out
-#	Then the user clocks out through timesheet
 
   @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify an employee can submit weekly timesheet and then undo a timesheet
@@ -133,27 +120,22 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4263" and password and click on Sign In button
     Then the user navigates to dashboard page
     When The user navigates to timesheet widget
-#    When employee clicks on the timesheet
     And Select the current day
     And Click on add new time event
     And Wait for time entry page to load
     Then Add one hour of out time to the event
     And Click ok after adding out time event
     And Save timeevent
-#    And Add a new timesheet
     When Navigate back to week View
     Then Calculate the week total
     And Verify the total time of the week
-#   Then Verify total time of the Week
     When Click on submit week timesheet option
     Then Click on submit timesheet
     When Decline review pop up
-#   Then click on submit timesheet option
     When Click on undo week timesheet btn
     Then Click on undo option
     When Decline review pop up
     Then Verify undo timesheet
-#    And undo the timesheet
 
   @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify an employee can view week of timesheets
@@ -163,7 +145,6 @@ Feature: Smoke scenarios
     Then the user navigates to dashboard page
     When The user navigates to timesheet widget
     Then Verify days of the week
-#    And click on timesheets widget and view timesheets
 
   @MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmokes @AndroidRegression @iOSRegression
   Scenario: Verify an employee can edit and delete the time from the timesheet
@@ -173,7 +154,6 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4261" and password and click on Sign In button
     Then the user navigates to dashboard page
     When The user navigates to timesheet widget
-#    When employee clicks on the timesheet widget
     And Select the current day
     And Click on add new time event
     And Wait for time entry page to load
@@ -185,7 +165,6 @@ Feature: Smoke scenarios
     And Wait for time entry page to load
     When The comment is edited to the time event
     And Save edited timeevent
-#    And Save timeevent
     When Navigate back to dayView
     When Decline review pop up
     And Verify time event is visible
@@ -194,9 +173,6 @@ Feature: Smoke scenarios
     And Verify the added comment
     When Delete time event
     Then Verify deleted time event
-#     And open the past day timesheet and add a new time sheet
-#  Then user edits the timesheet
-#    And Delete the timesheet
 
   @MOB-4277 @AndroidSmoke @MOB-4278 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: The user with directory access can view the full directory list and details
@@ -207,8 +183,6 @@ Feature: Smoke scenarios
     And click on People widget
     When Enter the last name of the person to be searched
     And Click on the searched person
-#    When search for a person
-#    Then user details are displayed
     Then Verify user details are displayed
 
   @MOB-4242 @MOB-4240 @MOB-4239 @MOB-4241 @iOSSmoke @AndroidSmoke @AndroidRegression
@@ -219,29 +193,22 @@ Feature: Smoke scenarios
     Then The substitute navigates to dashboard page
     When Fetch the list of widgets before reordering
     When Click on reorder widget button
-#    When Click on reorder widget
     And Change the widget order
     And Click on save arranged widgets button
-#    And Rearrange the widets
     Then the user navigates to dashboard page
     When Fetch the list of widgets after reordering
-#    Then Verify the order of widgets and footers present
     Then verify the order of widgets
     When the user clicks on Menu tab
     And Click on Settings
     And Logout from app
-#    And  logouts out from the application
     And Enter username "AutomationEmployeeMOB-4257" and password and click on Sign In button
     Then the user navigates to dashboard page
     When Fetch the list of widgets before reordering
     When Click on reorder widget button
-#    When Click on reorder widget
     And Change the widget order
     And Click on save arranged widgets button
-#    And Rearrange the widets
     Then the user navigates to dashboard page
     When Fetch the list of widgets after reordering
-#    Then Verify the order of widgets and footers present
     Then verify the order of widgets
     When the user clicks on Menu tab
     And Click on Settings
@@ -250,13 +217,10 @@ Feature: Smoke scenarios
     Then the user navigates to dashboard page
     When Fetch the list of widgets before reordering
     When Click on reorder widget button
-#    When Click on reorder widget
     And Change the widget order
     And Click on save arranged widgets button
-#    And Rearrange the widets
     Then the user navigates to dashboard page
     When Fetch the list of widgets after reordering
-#    Then Verify the order of widgets and footers present
     Then verify the order of widgets
 
   @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
@@ -273,8 +237,6 @@ Feature: Smoke scenarios
     And Select if the substitute required and click on next btn
     And Click on submit absence
     Then Verify the absence creation pop up
-#    When select reason date length summary for "next day"
-#    Then submit absence and verify the alert
 
   @MOB-4237 @MOB-4238 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify created absence is displayed in calendar
@@ -284,16 +246,12 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4237" and password and click on Sign In button
     Then the user navigates to dashboard page
     When the user clicks on Menu tab
-#	When click on menu bar
     When Click on calendar in menu link
-#	Then enter the search text in bar and click on result
     And verify calendar the search result "searchText"
     Then Choose the required month "next day"
     And Click on the event day "next day"
     And Tap on the event title
-#    Then Tap on the day of created absence for "next day" in the app Calendar
     And Verify absence confirmation number
-#    And Verify the absence in Calendar
 
   @MOB-4247 @MOB-4248 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify user is able to edit the absence
@@ -303,10 +261,7 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4247" and password and click on Sign In button
     Then the user navigates to dashboard page
     When the user clicks on Menu tab
-#	When click on menu bar
     When Click on calendar in menu link
-#    When Click on calendar search result
-#	Then enter the search text in bar and click on result
     And verify calendar the search result "searchText"
     Then Choose the required month "next day"
     And Click on the event day "next day"
@@ -319,9 +274,6 @@ Feature: Smoke scenarios
     And Click on save edited absence
     Then Click on view absence btb
     And Verify the edited absence details
-#    Then Tap on the day of created absence for "next day" in the app Calendar
-#    When Click on edit btn and edit the absence for "next day"
-#    Then Verify the absence details
 
   @MOB-4249 @AndroidSmoke @MOB-4250 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Verify that admin creates an absence for another user
@@ -339,9 +291,6 @@ Feature: Smoke scenarios
     And Select if the substitute required and click on next btn
     And Click on submit absence
     Then Verify the absence creation pop up
-#    And click on the absences then add absence
-#    When enter "Emp-4249" select reason date length summary for "next day"
-#    Then submit absence and verify the alert
 
   @AndroidSmoke @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254 @AndroidRegression @iOSRegression
   Scenario: Verify admin assigns substitute and also approve absence
@@ -356,8 +305,4 @@ Feature: Smoke scenarios
     And Select Substitute to assign absence
     And Click Assign again to confirm
     Then Click on approve btn and click ok
-#    And Select an unfilled and unassigned absence for "next day"
-#    When click on Tap to Assign and select Assign substitute
-#    And click Assign again to confirm
-#    Then click on approve btn approve a job
     And verify absences page is displayed

@@ -14,10 +14,8 @@ public class TimeEntryScreenStepDef {
 
     @Then("edit the timesheet outtime")
     public void editTheTimesheetOuttime() {
-//      Assert.assertTrue("Work details did not load",timeEntryScreen.verifyWorkDetails());
         timeEntryScreen.clickOutTimesheetinEditState();
         timeEntryScreen.clickOkonOuttime();
-
     }
 
     @And("Wait for time entry page to load")
@@ -54,7 +52,8 @@ public class TimeEntryScreenStepDef {
 
     @Then("Verify the pop up that timesheet is not editable")
     public void verifyThePopUpThatTimesheetIsNotEditable() {
-        Assert.assertEquals("The timesheet is not submitted","The timesheet requested is not in an editable state", timeEntryScreen.timesheetNonEditablePopup());;
+        Assert.assertEquals("The timesheet is not submitted", "The timesheet requested is not in an editable state", timeEntryScreen.timesheetNonEditablePopup());
+        ;
     }
 
     @Then("Add one hour to in time of the event")
@@ -65,7 +64,7 @@ public class TimeEntryScreenStepDef {
 
     @And("Get the changes in time")
     public void getTheChangesInTime() {
-       expectedInTime = timeEntryScreen.getInTime();
+        expectedInTime = timeEntryScreen.getInTime();
     }
 
     @And("Verify in time after relaunching application")

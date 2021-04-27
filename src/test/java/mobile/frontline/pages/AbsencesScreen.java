@@ -49,7 +49,5 @@ public class AbsencesScreen extends BasePage {
 
     public boolean verifyAbsencesPage() {
        return isElementDisplayed(AbsencePageHeader,"Waiting for absence header to display");
-//        Assert.assertTrue("Absences page is not displayed", AbsencePageHeader.isDisplayed());
-//        utils.log().info("Absences page is not displayed");
     }
 }

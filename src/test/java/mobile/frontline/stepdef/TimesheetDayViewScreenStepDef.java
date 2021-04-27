@@ -68,7 +68,6 @@ public class TimesheetDayViewScreenStepDef {
     @Then("^verify the time format$")
     public void verify_the_time_format() throws Throwable {
         Assert.assertTrue("Time is not in h:mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1:00") );  ;
-     //   timesheetDayViewScreen.verifyTimeFormat();
     }
 
 }

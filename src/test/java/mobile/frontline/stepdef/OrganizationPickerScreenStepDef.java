@@ -10,7 +10,6 @@ public class OrganizationPickerScreenStepDef {
 
     @Then("^the user is presented with the org picker$")
     public void org_picker_page_displayed() throws Throwable {
-        //loginPage.orgPickerPageLoads();
         Assert.assertTrue("Organization picker is not displayed",orgPickerScreen.orgPickerPageLoads());
     }
 

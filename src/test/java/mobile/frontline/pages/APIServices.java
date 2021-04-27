@@ -22,14 +22,6 @@ public class APIServices {
 	public static String confirmationNumber ;
 	String aesoptoken, bearerToken, timesheetsID;
 
-//	public String getConfirmationNumber() {
-//		return confirmationNumber;
-//	}
-//
-//	public void setConfirmationNumber(String confNumber) {
-//		this.confirmationNumber = confNumber;
-//	}
-
 	public void apiTokenGeneration(String apiLoginID) throws Throwable {
 		HttpResponse<String> responseGenerateTokenAPI = apiObject.generateAesopToken(apiLoginID);
 		Assert.assertEquals(printPrettyResponse(responseGenerateTokenAPI.getBody()), responseGenerateTokenAPI.getStatus(), 200);
@@ -43,7 +35,6 @@ public class APIServices {
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		JsonParser jp = new JsonParser();
 		JsonElement je = jp.parse(String.valueOf(response));
-		//String prettyJsonString = gson.toJson(je);
 		return gson.toJson(je);
 	}
 
