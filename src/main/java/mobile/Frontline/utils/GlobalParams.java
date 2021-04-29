@@ -8,6 +8,9 @@ public class GlobalParams {
     private static ThreadLocal<String> chromeDriverPort = new ThreadLocal<String>();
     private static ThreadLocal<String> wdaLocalPort = new ThreadLocal<String>();
     private static ThreadLocal<String> webkitDebugProxyPort = new ThreadLocal<String>();
+    private static ThreadLocal<String> environmentName = new ThreadLocal<String>();
+    private static ThreadLocal<String> OSversion = new ThreadLocal<String>();
+    private static String testName ;
 
     public void setPlatformName(String platformName1){
         platformName.set(platformName1);
@@ -15,6 +18,22 @@ public class GlobalParams {
 
     public String getPlatformName(){
         return platformName.get();
+    }
+
+    public void setEnvironmentName(String envrionmentName){
+        environmentName.set(envrionmentName);
+    }
+
+    public String getEnvironmentName(){
+        return environmentName.get();
+    }
+
+    public void setOSversion(String OSversion1){
+        OSversion.set(OSversion1);
+    }
+
+    public String getOSversion(){
+        return OSversion.get();
     }
 
     public String getUDID() {
@@ -65,12 +84,21 @@ public class GlobalParams {
         webkitDebugProxyPort.set(webkitDebugProxyPort2);
     }
 
+    public String gettestName() {
+        return testName;
+    }
+
+    public void settestName(String testName) {
+        this.testName = testName;
+    }
+
     public void initializeGlobalParams(){
         GlobalParams params = new GlobalParams();
         params.setPlatformName(System.getProperty("platformName", "Android"));
         params.setUDID(System.getProperty("udid", "emulator-5554"));
-        params.setDeviceName(System.getProperty("deviceName", "OnePlus"));
-
+        params.setDeviceName(System.getProperty("deviceName", "Google Pixel 3"));
+        params.setEnvironmentName(System.getProperty("environmentName","Local"));
+        params.setOSversion(System.getProperty("osVersion","9.0"));
         switch(params.getPlatformName()){
             case "Android":
                 params.setSystemPort(System.getProperty("systemPort", "10000"));

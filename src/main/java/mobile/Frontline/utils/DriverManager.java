@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class DriverManager {
     private static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
@@ -26,14 +27,22 @@ public class DriverManager {
         if(driver == null){
             try{
                 utils.log().info("initializing Appium driver");
-                switch(params.getPlatformName()){
-                    case "Android":
-                        driver = new AndroidDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
-                        break;
-                    case "iOS":
-                        driver = new IOSDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
-                        break;
+                String platformName = params.getPlatformName();
+                String environment = params.getEnvironmentName();
+                if ( platformName.equalsIgnoreCase("Android") && environment.equalsIgnoreCase("Local")) {
+                    driver = new AndroidDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
+                } else if ( platformName.equalsIgnoreCase("Android") && environment.equalsIgnoreCase("Cloud")) {
+                    driver = new AndroidDriver(new URL("https://shivanigoel2:mqHqBsyZUne4UwBTip7F@hub-cloud.browserstack.com/wd/hub"), new CapabilitiesManager().getCaps());
                 }
+
+//                switch(params.getPlatformName()){
+//                    case "Android":
+//                        driver = new AndroidDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
+//                        break;
+//                    case "iOS":
+//                        driver = new IOSDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
+//                        break;
+//                }
                 if(driver == null){
                     throw new Exception("driver is null. ABORT!!!");
                 }
