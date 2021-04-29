@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONObject;
 import org.junit.Assert;
 import com.mashape.unirest.http.HttpResponse;
@@ -166,5 +167,19 @@ public class APIServices {
 			utils.log().info("No Timesheet Found");
 			ExtentCucumberAdapter.addTestStepLog("No Timesheet Found");
 		}
+	}
+
+	public void apiPassStatusUpdate(String sessionID) throws UnirestException {
+		HttpResponse<String> responsePassStatusUpdate = apiObject.passTestResult(sessionID);
+		Assert.assertEquals(printPrettyResponse(responsePassStatusUpdate.getBody()),responsePassStatusUpdate.getStatus(), 200);
+		utils.log().info("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
+		ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
+	}
+
+	public void apiFailStatusUpdate(String sessionID) throws UnirestException {
+		HttpResponse<String> responseFailStatusUpdate = apiObject.failTestResult(sessionID);
+		Assert.assertEquals(printPrettyResponse(responseFailStatusUpdate.getBody()),responseFailStatusUpdate.getStatus(), 200);
+		utils.log().info("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
+		ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
 	}
 }

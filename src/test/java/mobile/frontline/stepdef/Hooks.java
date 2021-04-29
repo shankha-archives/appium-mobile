@@ -6,6 +6,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import mobile.Frontline.utils.*;
+import mobile.frontline.pages.APIServices;
+import mobile.frontline.pages.ApiMethods;
 import org.apache.logging.log4j.ThreadContext;
 import org.junit.AfterClass;
 import org.openqa.selenium.OutputType;
@@ -18,6 +20,7 @@ public class Hooks {
 	CapabilitiesManager caps = new CapabilitiesManager();
 	public String testName;
 	GlobalParams params = new GlobalParams();
+	APIServices apiServices = new APIServices();
 
 	@Before
 	public void initialize(Scenario scenario) throws Exception {
@@ -41,23 +44,11 @@ public class Hooks {
 			byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png", scenario.getName());
 
-			if(params.getEnvironmentName().contains("Cloud")) {
-				Unirest.setTimeouts(0, 0);
-				HttpResponse<String> response = Unirest.put("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionID + ".json")
-						.header("Content-Type", "application/json")
-						.header("Authorization", "Basic c2hpdmFuaWdvZWwyOm1xSHFCc3laVW5lNFV3QlRpcDdG")
-						.body("{\"status\":\"failed\", \"reason\":\"Element not found on the login page\"}")
-						.asString();
-			}
+			if(params.getEnvironmentName().contains("Cloud"))
+				apiServices.apiFailStatusUpdate(sessionID);
 		}
-		else if(params.getEnvironmentName().contains("Cloud")) {
-			Unirest.setTimeouts(0, 0);
-			HttpResponse<String> response = Unirest.put("https://api-cloud.browserstack.com/app-automate/sessions/"+sessionID+".json")
-					.header("Content-Type", "application/json")
-					.header("Authorization", "Basic c2hpdmFuaWdvZWwyOm1xSHFCc3laVW5lNFV3QlRpcDdG")
-					.body("{\"status\":\"passed\", \"reason\":\"Test Case has Passed\"}")
-					.asString();
-		}
+		else if(params.getEnvironmentName().contains("Cloud"))
+			apiServices.apiPassStatusUpdate(sessionID);
 
 		if (driverManager.getDriver() != null) {
 			driverManager.getDriver().quit();
