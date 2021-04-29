@@ -137,4 +137,5 @@ public class HomePageScreenStepDef {
     public void theUserClicksOnMenuTab() {
         homescreen.clickOnMenuTab();
     }
+
 }
