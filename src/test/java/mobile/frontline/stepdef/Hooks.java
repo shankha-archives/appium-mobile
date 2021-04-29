@@ -25,9 +25,9 @@ public class Hooks {
 		testName = scenario.getName();
 		GlobalParams params = new GlobalParams();
 		params.initializeGlobalParams();
-
+		params.settestName(testName);
 		ThreadContext.put("ROUTINGKEY", params.getPlatformName() + "_" + params.getDeviceName());
-
+		System.out.println("test name:  "+testName);
 		new ServerManager().startServer();
 		new DriverManager().initializeDriver();
 	}
