@@ -32,7 +32,12 @@ public class DriverManager {
                 if ( platformName.equalsIgnoreCase("Android") && environment.equalsIgnoreCase("Local")) {
                     driver = new AndroidDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
                 } else if ( platformName.equalsIgnoreCase("Android") && environment.equalsIgnoreCase("Cloud")) {
-                    driver = new AndroidDriver(new URL("https://shivanigoel2:mqHqBsyZUne4UwBTip7F@hub-cloud.browserstack.com/wd/hub"), new CapabilitiesManager().getCaps());
+                    driver = new AndroidDriver(new URL("https://"+System.getenv("BROWSERSTACK_USERNAME")+":"+System.getenv("BROWSERSTACK_ACCESS_KEY")+"@hub-cloud.browserstack.com/wd/hub"), new CapabilitiesManager().getCaps());
+                }
+                else if ( platformName.equalsIgnoreCase("iOS") && environment.equalsIgnoreCase("Local")) {
+                    driver = new IOSDriver(new ServerManager().getServer().getUrl(), new CapabilitiesManager().getCaps());
+                } else if ( platformName.equalsIgnoreCase("iOS") && environment.equalsIgnoreCase("Cloud")) {
+                    driver = new IOSDriver(new URL("https://"+System.getenv("BROWSERSTACK_USERNAME")+":"+System.getenv("BROWSERSTACK_ACCESS_KEY")+"@hub-cloud.browserstack.com/wd/hub"), new CapabilitiesManager().getCaps());
                 }
 
 //                switch(params.getPlatformName()){

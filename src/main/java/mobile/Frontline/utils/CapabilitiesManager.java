@@ -36,7 +36,7 @@ public class CapabilitiesManager {
                 caps.setCapability("os_version", params.getOSversion());
 
             }
-            else if (params.getEnvironmentName().equalsIgnoreCase("Local") || params.getPlatformName().equalsIgnoreCase("Android"))
+            else if (params.getEnvironmentName().equalsIgnoreCase("Local") && params.getPlatformName().equalsIgnoreCase("Android"))
             {     caps.setCapability(MobileCapabilityType.PLATFORM_NAME, params.getPlatformName());
             caps.setCapability(MobileCapabilityType.UDID, params.getUDID());
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, params.getDeviceName());
@@ -52,7 +52,7 @@ public class CapabilitiesManager {
             utils.log().info("appUrl is" + androidAppUrl);
             caps.setCapability("app", androidAppUrl);
         }
-        else if(params.getEnvironmentName().equalsIgnoreCase("Local")||params.getPlatformName().equalsIgnoreCase("iOS"))
+        else if(params.getEnvironmentName().equalsIgnoreCase("Local") && params.getPlatformName().equalsIgnoreCase("iOS"))
         {    caps.setCapability(MobileCapabilityType.PLATFORM_NAME, params.getPlatformName());
         caps.setCapability(MobileCapabilityType.UDID, params.getUDID());
         caps.setCapability(MobileCapabilityType.DEVICE_NAME, params.getDeviceName());
