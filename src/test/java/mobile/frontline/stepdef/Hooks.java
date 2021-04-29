@@ -50,7 +50,7 @@ public class Hooks {
 						.asString();
 			}
 		}
-		if(params.getEnvironmentName().contains("Cloud")) {
+		else if(params.getEnvironmentName().contains("Cloud")) {
 			Unirest.setTimeouts(0, 0);
 			HttpResponse<String> response = Unirest.put("https://api-cloud.browserstack.com/app-automate/sessions/"+sessionID+".json")
 					.header("Content-Type", "application/json")
