@@ -16,9 +16,6 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "view_header")
     public MobileElement availableJobsHeader;
 
-    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
-    public MobileElement backFromAcceptedJob;
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
     //@iOSXCUITFindBy(accessibility = "view_header")
     public MobileElement scheduledJobHeader;
@@ -135,11 +132,7 @@ public class JobsScreen extends BasePage {
         return isElementDisplayed(available, "Waiting for available job tab to be visible");
     }
 
-    public void waitForScheduledJobPageDisplayed() throws Throwable {
+    public void clickOnScheduledJobPageHeader() throws Throwable {
         click(scheduledJobHeader, "Clicking on Scheduled job page header");
-    }
-
-    public void backButtonToJob() throws Throwable {
-        click(backFromAcceptedJob , "Waiting for Navigating back to Jobs");
     }
 }

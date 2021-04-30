@@ -30,6 +30,9 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement successOkBtn;
 
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
+    public MobileElement backFromAcceptedJob;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='You have accepted this job']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='Job Detail']")
     public MobileElement jobDetailsConfirmation;
@@ -87,6 +90,10 @@ public class JobDetailScreen extends BasePage {
     public String getJobDate() {
         isElementDisplayed(jobDetailDate, "Waiting for job date details to display");
         return getElementText(jobDetailDate, "Extracting job date text");
+    }
+
+    public void backButtonToAvailableJobScreen() throws Throwable {
+        click(backFromAcceptedJob , "Waiting for Navigating back to Jobs");
     }
 
 }

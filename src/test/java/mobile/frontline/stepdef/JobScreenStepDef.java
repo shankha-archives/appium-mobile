@@ -45,7 +45,6 @@ public class JobScreenStepDef {
         Assert.assertTrue("The required jobs are not present", jobsScreen.waitForJobIsAvailable(employeeName));
     }
 
-    //waitForJobIsScheduledTab
     @And("Verify job list on Jobs page")
     public void verifyJobListOnJobsPage() {
         Assert.assertTrue("Job is not present in the list", jobsScreen.waitForJobListPresent());
@@ -66,22 +65,14 @@ public class JobScreenStepDef {
         Assert.assertTrue("Accepted job tab is not displayed", jobsScreen.waitForAcceptedTab());
     }
 
-
     @Then("Validate job {string} is not visible in Job List")
     public void validateJobIsNotVisibleInJobList(String employeeName) throws Exception {
         Assert.assertFalse("The required job is present", jobsScreen.waitForJobIsAvailable(employeeName));
     }
 
-
     @And("Click on the Scheduled Jobs")
     public void clickOnTheScheduledJobs() throws Throwable {
-        jobsScreen.waitForScheduledJobPageDisplayed();
-
-    }
-
-    @And("Navigate Back toward Scheduled Jobs")
-    public void navigateBackTowardScheduledJobs() throws Throwable {
-        jobsScreen.backButtonToJob();
+        jobsScreen.clickOnScheduledJobPageHeader();
     }
 
     @Then("Verify the created jobs is present in Scheduled jobs")

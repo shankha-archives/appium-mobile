@@ -68,4 +68,10 @@ public class JobDetailScreenStepDef {
         Assert.assertEquals("Success message is not displayed", jobDetailScreen.rejectMsgPopUp(),
                 "Are you sure you want to reject this job?");
     }
+
+    @And("Navigate Back toward Scheduled Jobs")
+    public void navigateBackTowardScheduledJobs() throws Throwable {
+        jobDetailScreen.backButtonToAvailableJobScreen();
+    }
+
 }
