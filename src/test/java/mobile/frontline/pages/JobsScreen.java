@@ -44,10 +44,6 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Available")
     public MobileElement available;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-    @iOSXCUITFindBy(accessibility = "Scheduled")
-    public MobileElement accepted;
-
     public WebElement scrolledToElement;
 
     public JobsScreen() {
@@ -125,7 +121,7 @@ public class JobsScreen extends BasePage {
     }
 
     public boolean waitForAcceptedTab() {
-        return isElementDisplayed(accepted, "Waiting for accepted job tab to be visible ");
+        return isElementDisplayed(scheduledJobHeader, "Waiting for accepted job tab to be visible ");
     }
 
     public boolean waitForAvailableTab() {
