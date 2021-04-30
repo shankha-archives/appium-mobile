@@ -122,3 +122,22 @@ Feature: Jobulator scenarios
     And Confirm the Reject job Popup
     And View job list
     Then Validate job "AutomationEmp 7777" is not visible in Job List
+
+  @MOB-6680 @AndroidRegression
+  Scenario: Verify substitute can Accept job and check it in scheduled jobs List
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-6680" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When The user waits and launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationSubsMOB-6680" and password and click on Sign In button
+    Then The substitute navigates to dashboard page
+    And Click on the Available Jobs
+    And View job list
+    And Click on the job "6680 AutomationE_"
+    And accept the job
+    Then the Success Message overlay is displayed
+    When Clicked on Okay
+    And Navigate Back toward Scheduled Jobs
+    And Click on the Scheduled Jobs
+    And Verify job list on Jobs page
+    Then Verify the created jobs is present in Scheduled jobs
+

@@ -5,7 +5,6 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestDataManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -16,6 +15,10 @@ public class JobsScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
     @iOSXCUITFindBy(accessibility = "view_header")
     public MobileElement availableJobsHeader;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
+    //@iOSXCUITFindBy(accessibility = "view_header")
+    public MobileElement scheduledJobHeader;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
     @iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
@@ -107,11 +110,29 @@ public class JobsScreen extends BasePage {
         return scrollToVerifyElement(jobDate, "up", "Scrolling to the required job");
     }
 
+    public boolean waitForJobInScheduledTab() throws Exception {
+        By jobDate;
+        if (new GlobalParams().getPlatformName().contains("Android")) {
+            jobDate = By.xpath(
+                    "(//android.widget.TextView[@text='"
+                            + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
+        } else {
+            jobDate = By.xpath(
+                    "((//XCUIElementTypeStaticText[@label = " +
+                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+        }
+        return scrollToVerifyElement(jobDate, "up", "Scrolling to the required job");
+    }
+
     public boolean waitForAcceptedTab() {
         return isElementDisplayed(accepted, "Waiting for accepted job tab to be visible ");
     }
 
     public boolean waitForAvailableTab() {
         return isElementDisplayed(available, "Waiting for available job tab to be visible");
+    }
+
+    public void clickOnScheduledJobPageHeader() throws Throwable {
+        click(scheduledJobHeader, "Clicking on Scheduled job page header");
     }
 }
