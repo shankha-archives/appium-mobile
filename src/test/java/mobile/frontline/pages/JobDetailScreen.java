@@ -31,6 +31,7 @@ public class JobDetailScreen extends BasePage {
     public MobileElement successOkBtn;
 
     @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
+    @iOSXCUITFindBy(accessibility = "Back")
     public MobileElement backFromAcceptedJob;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='You have accepted this job']")

@@ -17,7 +17,7 @@ public class JobsScreen extends BasePage {
     public MobileElement availableJobsHeader;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-    //@iOSXCUITFindBy(accessibility = "view_header")
+    @iOSXCUITFindBy(accessibility = "Scheduled")
     public MobileElement scheduledJobHeader;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
