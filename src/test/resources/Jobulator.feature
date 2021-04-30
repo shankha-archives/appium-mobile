@@ -123,7 +123,7 @@ Feature: Jobulator scenarios
     And View job list
     Then Validate job "AutomationEmp 7777" is not visible in Job List
 
-  @MOB-6680 @AndroidRegression
+  @MOB-6680 @MOB-6679 @AndroidRegression @iOSRegression
   Scenario: Verify substitute can Accept job and check it in scheduled jobs List
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-6680" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app

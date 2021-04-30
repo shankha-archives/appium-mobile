@@ -17,7 +17,7 @@ public class JobsScreen extends BasePage {
     public MobileElement availableJobsHeader;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-    //@iOSXCUITFindBy(accessibility = "view_header")
+    @iOSXCUITFindBy(accessibility = "Scheduled")
     public MobileElement scheduledJobHeader;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
@@ -43,10 +43,6 @@ public class JobsScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available']")
     @iOSXCUITFindBy(accessibility = "Available")
     public MobileElement available;
-
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-    @iOSXCUITFindBy(accessibility = "Scheduled")
-    public MobileElement accepted;
 
     public WebElement scrolledToElement;
 
@@ -125,7 +121,7 @@ public class JobsScreen extends BasePage {
     }
 
     public boolean waitForAcceptedTab() {
-        return isElementDisplayed(accepted, "Waiting for accepted job tab to be visible ");
+        return isElementDisplayed(scheduledJobHeader, "Waiting for accepted job tab to be visible ");
     }
 
     public boolean waitForAvailableTab() {
