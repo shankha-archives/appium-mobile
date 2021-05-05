@@ -23,12 +23,16 @@ public class JobDetailScreenStepDef {
     @And("Reject the job")
     public void rejectTheJob() throws Exception {
         jobDetailScreen.clickOnRejectJobsBtn();
-
     }
 
     @And("Confirm the Reject job Popup")
     public void confirmRejectPopup() throws Exception {
         jobDetailScreen.clickOnOkBtn_successMsg();
+    }
+
+    @And("Click on Reject job Popup button")
+    public void confirmRejectiOSPopup() throws Exception {
+        jobDetailScreen.clickOnOkRejectBtn_successMsg();
     }
 
     @Then("^the Success Message overlay is displayed$")
