@@ -107,7 +107,7 @@ Feature: Jobulator scenarios
     Then Verify the created jobs "AutomationEmp 4173" is present
     Then Verify the created jobs "AutomationEmp 4172" is present
 
-  @MOB-7775 @AndroidRegression
+  @MOB-7775 @MOB-6673 @iOSRegression @AndroidRegression
   Scenario: Verify substitute user can reject available job and dont see that job in available job list
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-7775" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
@@ -122,22 +122,6 @@ Feature: Jobulator scenarios
     And Confirm the Reject job Popup
     And View job list
     Then Validate job "AutomationEmp 7777" is not visible in Job List
-
-  @MOB-6673 @iOSRegression
-  Scenario: Verify substitute user can reject available job and dont see that job in available job list
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-6673" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
-    When The user waits and launches the app
-    Then The user click on Get Started Button
-    And Enter username "AutomationSubsMOB-6673" and password and click on Sign In button
-    Then The substitute navigates to dashboard page
-    And Click on the Available Jobs
-    And View job list
-    And Click on the job "AutomationE_ 6673"
-    And Reject the job
-    And Validate the Reject Popup Message
-    And Click on Reject job Popup button
-    And View job list
-    Then Validate job "AutomationE_ 6673" is not visible in Job List
 
   @MOB-6680 @MOB-6679 @AndroidRegression @iOSRegression
   Scenario: Verify substitute can Accept job and check it in scheduled jobs List
