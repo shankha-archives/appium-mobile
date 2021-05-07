@@ -86,7 +86,7 @@ Feature: Timesheet scenarios
 
   @MOB-7529 @AndroidRegression @iOSRegression
   Scenario: Verify that an employee can view timesheet display with time durationFormat
-    When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-7529" "APIWorkerID_MOB-7529" "APIOrgID" "APILoginID" "current day"
+    #When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-7529" "APIWorkerID_MOB-7529" "APIOrgID" "APILoginID" "current day"
     When the user launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationEmployeeMOB-7529" and password and click on Sign In button

@@ -450,7 +450,7 @@ public class BasePage {
 				break;
 		}
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 15; i++) {
 			if (find(element, 5)) {
 				isFound = true;
 				break;
