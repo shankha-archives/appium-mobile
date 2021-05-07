@@ -57,10 +57,10 @@ Feature: Timesheet scenarios
 
   @MOB-5585  @MOB-5584 @AndroidRegression @iOSRegression
   Scenario: Verify the message when employee enters wrong pin while submiting timesheet
-    When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-5583" "APIWorkerID_MOB-5583" "APIOrgID_Aut3" "APILoginID_Aut3" "current day"
+    When Verify if timesheet present for an employee delete and create it using information "AutomationEmployeeMOB-5584" "APIWorkerID_MOB-5584" "APIOrgID_Aut3" "APILoginID_Aut3" "current day" "locationID_Org3" "shiftID_Org3" "eventID_Org3"
     When the user launches the app
     Then The user click on Get Started Button
-    And Enter username "AutomationEmployeeMOB-5583" and password and click on Sign In button
+    And Enter username "AutomationEmployeeMOB-5584" and password and click on Sign In button
     Then the user navigates to dashboard page
     When The user navigates to timesheet widget
     When Click on submit week timesheet option

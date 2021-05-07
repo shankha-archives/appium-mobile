@@ -46,6 +46,13 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "JobDetailDayView_JobDate_Label")
     public MobileElement jobDetailDate;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='AutomationEmp 8328']")
+    public MobileElement jobDetailEmployee;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344']")
+    public MobileElement jobDetailSchoolName;
+
+
     public static String job_date;
 
     public JobDetailScreen() {
@@ -94,7 +101,15 @@ public class JobDetailScreen extends BasePage {
     }
 
     public void backButtonToAvailableJobScreen() throws Throwable {
-        click(backFromAcceptedJob , "Waiting for Navigating back to Jobs");
+        click(backFromAcceptedJob , "Clicking on Navigating back to Jobs");
+    }
+
+    public boolean waitForEmployeeName() {
+        return  isElementDisplayed(jobDetailEmployee, "Waiting for job employee name details to display");
+    }
+
+    public boolean waitForSchoolName() {
+        return  isElementDisplayed(jobDetailSchoolName, "Waiting for job school name details to display");
     }
 
 }
