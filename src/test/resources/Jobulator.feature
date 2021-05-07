@@ -141,3 +141,14 @@ Feature: Jobulator scenarios
     And Verify job list on Jobs page
     Then Verify the created jobs is present in Scheduled jobs
 
+  @MOB-8328 @AndroidRegression
+  Scenario: Verify job details on job detail page
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8328" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When The user waits and launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationSubsMOB-8328" and password and click on Sign In button
+    Then The substitute navigates to dashboard page
+    And Click on the Available Jobs
+    And View job list
+    And Click on the job "AutomationEmp 8328"
+    Then Validate the job detail page "next day"
