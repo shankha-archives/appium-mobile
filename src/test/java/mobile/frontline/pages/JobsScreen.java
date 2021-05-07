@@ -114,8 +114,8 @@ public class JobsScreen extends BasePage {
                             + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
         } else {
             jobDate = By.xpath(
-                    "((//XCUIElementTypeStaticText[@label = " +
-                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+                    "//XCUIElementTypeStaticText[@label = " +
+                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM d") + " • 8:00 AM']");
         }
         return scrollToVerifyElement(jobDate, "up", "Scrolling to the required job");
     }
