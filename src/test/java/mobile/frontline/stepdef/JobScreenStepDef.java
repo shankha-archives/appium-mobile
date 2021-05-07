@@ -20,26 +20,6 @@ public class JobScreenStepDef {
         jobsScreen.clickOnAvailableJobs(jobByEmp);
     }
 
-    @Then("^verify if accepted job is still present$")
-    public void verify_if_accepted_job_is_still_present() throws Throwable {
-        Assert.assertTrue("Accepted job still present in the jobs list", jobsScreen.waitForAcceptedJob());
-    }
-
-//    @Then("Verify the created jobs")
-//    public void verifyTheCreatedJobs() throws Throwable {
-//        //  jobsScreen.checkAvailablejob();
-//    }
-//
-//    @Then("Verify available jobs from all districts")
-//    public void verifyAvailableJobsFromAllDistricts() throws Exception {
-//        //   jobsScreen.multiDistrictVerification();
-//    }
-//
-//    @And("Verify the created jobs are available in the list")
-//    public void verifyTheCreatedJobsAreAvailableInTheList() throws Throwable {
-//        //  jobsScreen.verifyCreatedJobsAreVisibleintheList();
-//    }
-
     @Then("Verify the created jobs {string} is present")
     public void verifyTheCreatedJobsIsPresent(String employeeName) throws Exception {
         Assert.assertTrue("The required jobs are not present", jobsScreen.waitForJobIsAvailable(employeeName));
@@ -78,5 +58,10 @@ public class JobScreenStepDef {
     @Then("Verify the created jobs is present in Scheduled jobs")
     public void verifyTheCreatedJobsIsPresentInScheduledJos() throws Exception {
         Assert.assertTrue("Accepted job is not displayed In Scheduled Tab",jobsScreen.waitForJobInScheduledTab());
+    }
+
+    @And("Click on the job {string} with absence {string}")
+    public void clickOnTheJobWithAbsence(String employeeName, String jobDate) throws Exception {
+        jobsScreen.clickOnAvailableJob(employeeName, jobDate);
     }
 }

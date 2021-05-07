@@ -150,5 +150,5 @@ Feature: Jobulator scenarios
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    And Click on the job "AutomationEmp 8328"
+    And Click on the job "AutomationEmp 8328" with absence "next day"
     Then Validate the job detail page "next day"
