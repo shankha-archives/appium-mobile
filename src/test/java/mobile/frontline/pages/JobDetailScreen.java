@@ -16,14 +16,19 @@ public class JobDetailScreen extends BasePage {
     public MobileElement jobAcceptBtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    @iOSXCUITFindBy(accessibility = "Reject")
     public MobileElement jobRejectBtn;
 
     @AndroidFindBy(id = "android:id/message")
     @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
     public MobileElement successMsg;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    @iOSXCUITFindBy(accessibility = "Reject Job")
+    public MobileElement jobRejectConfirmBtn;
+
     @AndroidFindBy(id = "android:id/message")
-    @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Are you sure you want to reject this job?']")
     public MobileElement rejectDialogMsg;
 
     @AndroidFindBy(id = "android:id/button1")
@@ -78,6 +83,11 @@ public class JobDetailScreen extends BasePage {
     public void clickOnOkBtn_successMsg() {
         click(successOkBtn, "Clicking on Success OK button is displayed");
     }
+
+    public void clickOnOkRejectBtn_successMsg() {
+        click(jobRejectConfirmBtn, "Clicking on Success OK button is displayed");
+    }
+
 
     public boolean jobAcceptConfirmationMsg() {
         return isElementDisplayed(jobDetailsConfirmation, "Waiting for confirmation number to be displayed");

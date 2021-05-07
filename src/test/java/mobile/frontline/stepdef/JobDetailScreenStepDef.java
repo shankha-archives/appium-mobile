@@ -20,15 +20,17 @@ public class JobDetailScreenStepDef {
         jobDetailScreen.clickOnAcceptJobsBtn();
     }
 
-    @And("Reject the job")
-    public void rejectTheJob() throws Exception {
-        jobDetailScreen.clickOnRejectJobsBtn();
-
-    }
-
     @And("Confirm the Reject job Popup")
     public void confirmRejectPopup() throws Exception {
-        jobDetailScreen.clickOnOkBtn_successMsg();
+       // jobDetailScreen.clickOnOkBtn_successMsg();
+        if (new GlobalParams().getPlatformName().contains("Android"))
+        {
+            jobDetailScreen.clickOnOkBtn_successMsg();
+        }
+        else
+            {
+            jobDetailScreen.clickOnOkRejectBtn_successMsg();
+        }
     }
 
     @Then("^the Success Message overlay is displayed$")
@@ -72,6 +74,11 @@ public class JobDetailScreenStepDef {
     @And("Navigate Back toward Scheduled Jobs")
     public void navigateBackTowardScheduledJobs() throws Throwable {
         jobDetailScreen.backButtonToAvailableJobScreen();
+    }
+
+    @And("Reject the job")
+    public void rejectTheJob() throws Exception {
+        jobDetailScreen.clickOnRejectJobsBtn();
     }
 
 }
