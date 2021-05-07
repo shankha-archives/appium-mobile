@@ -107,7 +107,7 @@ Feature: Jobulator scenarios
     Then Verify the created jobs "AutomationEmp 4173" is present
     Then Verify the created jobs "AutomationEmp 4172" is present
 
-  @MOB-7775 @AndroidRegression
+  @MOB-7775 @MOB-6673 @iOSRegression @AndroidRegression
   Scenario: Verify substitute user can reject available job and dont see that job in available job list
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-7775" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
