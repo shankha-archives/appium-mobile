@@ -11,6 +11,7 @@ public class HomePageScreenStepDef {
 
     public Homescreen homescreen = new Homescreen();
     public BasePage basePage = new BasePage();
+    public static String initailWeekTotal;
 
 
     @Then("^The substitute navigates to dashboard page$")
@@ -138,4 +139,18 @@ public class HomePageScreenStepDef {
         homescreen.clickOnMenuTab();
     }
 
+    @When("The user click on Add timesheet btn on dashboard")
+    public void theUserClickOnAddTimesheetBtnOnDashboard() throws Throwable {
+        homescreen.clickAddTimeBtn();
+    }
+
+    @When("Get the week total time from dashboard before adding timesheet")
+    public void getTheWeekTotalTimeFromDashboardBeforeAddingTimesheet() throws Exception {
+      initailWeekTotal =  homescreen.getWeekTimeText();
+    }
+
+    @And("Verify week total time from dashboard after adding timesheet")
+    public void verifyWeekTotalTimeFromDashboardAfterAddingTimesheet() throws Exception {
+        Assert.assertEquals("The calculated time and total time is not equal", homescreen.calculateTotalTime(), homescreen.getWeekTimeText());
+    }
 }

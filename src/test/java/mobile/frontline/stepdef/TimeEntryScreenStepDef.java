@@ -44,7 +44,6 @@ public class TimeEntryScreenStepDef {
         timeEntryScreen.clickOkonOuttime();
     }
 
-
     @When("The comment is edited to the time event")
     public void theCommentIsEditedToTheTimeEvent() throws Throwable {
         timeEntryScreen.editTimeCommentToTimesheet();
@@ -53,7 +52,6 @@ public class TimeEntryScreenStepDef {
     @Then("Verify the pop up that timesheet is not editable")
     public void verifyThePopUpThatTimesheetIsNotEditable() {
         Assert.assertEquals("The timesheet is not submitted", "The timesheet requested is not in an editable state", timeEntryScreen.timesheetNonEditablePopup());
-        ;
     }
 
     @Then("Add one hour to in time of the event")
