@@ -50,7 +50,7 @@ Feature: Jobulator scenarios
     And View job list
     Then Validate job "CreateJob3" is not visible in Job List
 
-  @MOB-3681 @AndroidRegression @iOSRegression @Failed
+  @MOB-3681 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view all job information from all organizations
     When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "next day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
@@ -77,7 +77,7 @@ Feature: Jobulator scenarios
     Then Verify the created jobs "AutomationEmpOrg5 3681" is present
     #And Verify school "schoolNameOrg5" is associated with "AutomationEmpOrg5 3681"
 
-  @MOB-3683 @AndroidRegression @iOSRegression @Failed
+  @MOB-3683 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
