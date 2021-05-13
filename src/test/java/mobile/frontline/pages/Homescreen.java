@@ -1,15 +1,13 @@
 package mobile.frontline.pages;
-
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
-import org.junit.Assert;
-import org.openqa.selenium.Dimension;
+import mobile.frontline.stepdef.HomePageScreenStepDef;
+import mobile.frontline.stepdef.TimesheetWeekViewScreenStepDef;
 import org.openqa.selenium.WebElement;
-
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 
 public class Homescreen extends BasePage {
@@ -67,14 +65,6 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Allow Once")
     public MobileElement permissionGrantonlyForApp;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Clock Out']")
-    @iOSXCUITFindBy(accessibility = "Clock Out")
-    public MobileElement clockedOutBtn;
-
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/clock_in_time_text_widget")
-    // @iOSXCUITFindBy(accessibility = "")
-    public MobileElement clockedInTime;
-
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Timesheets']")
     @iOSXCUITFindBy(accessibility = "Timesheets_ModuleHeader")
     public MobileElement timesheetsbtn;
@@ -111,6 +101,7 @@ public class Homescreen extends BasePage {
     public WebElement scrolledToElement;
     public static ArrayList<String> widgetlistbeforeReorder;
     public static ArrayList<String> widgetlistafterReorder;
+
 
     public Homescreen() {
 
@@ -262,10 +253,30 @@ public class Homescreen extends BasePage {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
         else
-            scrollToElement(nextScheduledJobWidget, "up");
+            scrollToElement(nextScheduledJobWidget, "up","Scrolling to next schedule job wid");
     }
 
     public void clickOnMenuTab() {
         click(menuTab, "Clicking on Menu Tab");
+    }
+
+    public void clickAddTimeBtn() throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android")) {
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Add Time", "Scrolling to the Add time btn ");
+            scrolledToElement.click();
+        }
+        else{}
+         //   scrollToElement(nextScheduledJobWidget, "up","Scrolling to next schedule job wid");
+    }
+
+    public String calculateTotalTime(){
+            int hours = 0;
+            int minutes = 0;
+            DecimalFormat formatter = new DecimalFormat("00");
+            hours = hours + Integer.parseInt(HomePageScreenStepDef.initailWeekTotal.split(":")[0])+1;
+            minutes = minutes + Integer.parseInt(HomePageScreenStepDef.initailWeekTotal.split(":")[1]);
+            hours = hours + (minutes / 60);
+            minutes = minutes % 60;
+            return (hours + ":" + formatter.format(minutes));
     }
 }

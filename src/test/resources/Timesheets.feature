@@ -100,3 +100,16 @@ Feature: Timesheet scenarios
     And Save timeevent
     Then verify the time format
 
+  @MOB-8452 @AndroidRegression
+  Scenario: Verify that after adding timesheet from dashboard the total time in widget should inrease
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-8452" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    When Get the week total time from dashboard before adding timesheet
+    When The user click on Add timesheet btn on dashboard
+    And Wait for time entry page to load
+    Then Add one hour of out time to the event
+    And Click ok after adding out time event
+    And Save timeevent
+    And Verify week total time from dashboard after adding timesheet
