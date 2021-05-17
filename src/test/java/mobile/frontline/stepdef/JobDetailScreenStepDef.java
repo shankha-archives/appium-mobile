@@ -82,8 +82,11 @@ public class JobDetailScreenStepDef {
     @Then("Validate the job detail page {string}")
     public void validateTheJobDetailPage(String absenceDay) throws Exception {
         Assert.assertTrue("Correct employee name is not displayed", jobDetailScreen.waitForEmployeeName());
-        Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
         Assert.assertTrue("Correct school name is not displayed", jobDetailScreen.waitForSchoolName());
+        if (new GlobalParams().getPlatformName().contains("Android"))
+            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+        else
+            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM d, yyyy")));
     }
 
     @And("Reject the job")
