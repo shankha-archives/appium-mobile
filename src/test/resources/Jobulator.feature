@@ -141,7 +141,7 @@ Feature: Jobulator scenarios
     And Verify job list on Jobs page
     Then Verify the created jobs is present in Scheduled jobs
 
-  @MOB-8328 @AndroidRegression
+  @MOB-8328 @MOB-8443 @AndroidRegression @iOSRegression
   Scenario: Verify job details on job detail page
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8328" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app

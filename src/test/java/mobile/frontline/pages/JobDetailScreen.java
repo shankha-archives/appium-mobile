@@ -52,11 +52,12 @@ public class JobDetailScreen extends BasePage {
     public MobileElement jobDetailDate;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='AutomationEmp 8328']")
+    @iOSXCUITFindBy(xpath="//XCUIElementTypeStaticText[@value='AutomationEmp 8328']")
     public MobileElement jobDetailEmployee;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344']")
     public MobileElement jobDetailSchoolName;
-
 
     public static String job_date;
 
