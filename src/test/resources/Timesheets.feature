@@ -102,6 +102,7 @@ Feature: Timesheet scenarios
 
   @MOB-8452 @AndroidRegression
   Scenario: Verify that after adding timesheet from dashboard the total time in widget should inrease
+    When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-8452" "APIWorkerID_MOB-8452" "APIOrgID" "APILoginID" "current day"
     When the user launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationEmployeeMOB-8452" and password and click on Sign In button

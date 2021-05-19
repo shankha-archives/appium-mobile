@@ -103,13 +103,13 @@ public class CreateAbsenceScreen extends BasePage {
         return isElementDisplayed(datePageVerification, "Waiting for date page to display");
     }
 
-    public void selectDate(String absenceDay) throws Throwable {
+    public void selectDate(String absenceDay, String amount) throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
+            nextWorkingDate = workingDay(absenceDay, "MMMM dd, yyyy", Integer.parseInt(amount));
             scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate, "Scrolling to the require date");
             scrolledToElement.click();
         } else {
-            nextWorkingDate = nextWorkingDay(absenceDay, "MM/dd/yyyy");
+            nextWorkingDate = workingDay(absenceDay, "MM/dd/yyyy", Integer.parseInt(amount));
             By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");
             scrollToElement(absenceDate, "up","Scrolling to the required date");
             click(absenceDate, "Clicking on Absence Date");

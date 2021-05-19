@@ -1820,6 +1820,30 @@ public class BasePage {
 		return dateFormat.format(c.getTime());
 	}
 
+	public String workingDay(String absenceDay, String format, int amount) throws Exception {
+		String cdate = currentDate(format);
+		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+
+		Calendar c = Calendar.getInstance();
+		c.setTime(dateFormat.parse(cdate));
+		switch (absenceDay) {
+			case "upcoming day":
+				c.add(Calendar.DAY_OF_YEAR, amount);
+				while (c.get(c.DAY_OF_WEEK) == 7 || c.get(c.DAY_OF_WEEK) == 1)
+					c.add(Calendar.DAY_OF_YEAR, 1);
+				break;
+			case "current day":
+				c.add(Calendar.DAY_OF_YEAR, 0);
+				break;
+			case "past day":
+				break;
+			default:
+				throw new Exception("Invalid date");
+		}
+		ExtentCucumberAdapter.addTestStepLog( "Next working day: "+ dateFormat.format(c.getTime()));
+		return dateFormat.format(c.getTime());
+	}
+
 	public String changeDateFormat(String dateToBeFormated, String formatOriginal, String formatTarget) throws Exception {
 		DateFormat originalFormat = new SimpleDateFormat(formatOriginal);
 		DateFormat targetFormat = new SimpleDateFormat(formatTarget);
