@@ -232,7 +232,7 @@ Feature: Smoke scenarios
     Then the user navigates to dashboard page
     And click on the create absences
     When Select absence reason and click on next btn
-    And Select absence day "next day" and click on next btn
+    And Select absence day "next day" "1" and click on next btn
     And Select absence duration and click on next btn
     And Select if the substitute required and click on next btn
     And Click on submit absence

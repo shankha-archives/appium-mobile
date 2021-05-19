@@ -94,7 +94,7 @@ Scenario: Verify an employee can view same Intime event value in Timesheet even 
 	And Verify in time after relaunching application
 
 @MOB-6665 @MOB-6666 @AndroidRegression @iOSRegression
-Scenario: Verify substitute user can validate Feedback form heading.
+Scenario: Verify substitute user can validate Feedback form heading
 	When the user launches the app
 	Then The user click on Get Started Button
 	And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
@@ -102,3 +102,21 @@ Scenario: Verify substitute user can validate Feedback form heading.
 	When the user clicks on Menu tab
 	Then The user clicks on Feedback
 	Then Validate Feedback Header
+
+	@MOB-8595 @AndroidRegression
+	Scenario: Verify employee user is able to create multiday absence
+#		When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-8595" workerid "APIWorkerID_MOB-8595" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+		When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-8595" for "upcoming day" and delete them
+		When the user launches the app
+		Then The user click on Get Started Button
+		And Enter username "AutomationEmployeeMOB-8595" and password and click on Sign In button
+		Then the user navigates to dashboard page
+		And click on the create absences
+		When Select absence reason and click on next btn
+		And Select absence day "upcoming day"  "1"
+		And Select absence day "upcoming day"  "2"
+		And click on next btn
+		And Select absence duration and click on next btn
+		And Select if the substitute required and click on next btn
+		And Click on submit absence
+		Then Verify the absence creation pop up
