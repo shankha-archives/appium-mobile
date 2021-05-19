@@ -19,10 +19,10 @@ public class CreateAbsenceScreenStepDef {
         createAbsenceScreen.clickNext();
     }
 
-    @And("Select absence day {string} and click on next btn")
-    public void selectAbsenceDayAndClickOnNextBtn(String absenceDay) throws Throwable {
+    @And("Select absence day {string} {string} and click on next btn")
+    public void selectAbsenceDayAndClickOnNextBtn(String absenceDay, String count) throws Throwable {
         Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
-        createAbsenceScreen.selectDate(absenceDay);
+        createAbsenceScreen.selectDate(absenceDay, count);
         createAbsenceScreen.clickNext();
     }
 
@@ -86,6 +86,17 @@ public class CreateAbsenceScreenStepDef {
         createAbsenceScreen.enterTeachersName(testdata.read_property("testingData", "users", empAbsence));
         createAbsenceScreen.selectTeachersName(testdata.read_property("testingData", "users", empAbsence));
         Assert.assertTrue("Who text is not displayed", createAbsenceScreen.waitForForwardBtn());
+        createAbsenceScreen.clickNext();
+    }
+
+    @And("Select absence day {string}  {string}")
+    public void selectAbsenceDay(String absenceDay, String count) throws Throwable {
+        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
+        createAbsenceScreen.selectDate(absenceDay, count);
+    }
+
+    @And("click on next btn")
+    public void clickOnNextBtn() throws InterruptedException {
         createAbsenceScreen.clickNext();
     }
 }

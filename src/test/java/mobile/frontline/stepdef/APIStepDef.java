@@ -87,4 +87,18 @@ public class APIStepDef {
         } else
             utils.log().info("The environment selected is prodution");
     }
+
+    @When("Create multiday absence for employee {string} with user {string} workerid {string} for {string} with {string} {string} and delete the existing ones")
+    public void createMultidayAbsenceForEmployeeWithUserWorkeridForWithAndDeleteTheExistingOnes
+            (String apiLoginID,String automationEmployee, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
+        props = new PropertyManager().getProps();
+        if (!props.getProperty("testdata").contains("prod")) {
+            apiService.apiTokenGeneration(apiLoginID);
+            apiService.apiBearerTokenGeneration(automationEmployee);
+            apiService.apiGetConfirmationIds(workerID, absenceDay);
+            apiService.apiDeleteAbsence();
+            apiService.apiCreateMultidayAbsence (workerID, schoolID, reasonID,  absenceDay);
+        } else
+            utils.log().info("The environment selected is prodution");
+    }
 }
