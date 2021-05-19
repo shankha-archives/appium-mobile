@@ -70,7 +70,7 @@ public class Homescreen extends BasePage {
     public MobileElement timesheetsbtn;
 
     @AndroidFindBy(xpath = "//android.widget.RelativeLayout[contains(@content-desc,'Total Time This Week')]/android.widget.TextView")
-    @iOSXCUITFindBy(accessibility = "Dashboard_Timesheet_Total_Hour_Label")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Dashboard_Timesheet_Total_Hour_Label']")
     public MobileElement totalWeekTime;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='People']")
@@ -97,16 +97,17 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
     public MobileElement nextScheduledJobWidget;
 
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='TimesheetsModule_AddTime_Button'][1]")
+    public MobileElement addTimeButtonTimesheet;
+
     public static String inTime;
     public WebElement scrolledToElement;
     public static ArrayList<String> widgetlistbeforeReorder;
     public static ArrayList<String> widgetlistafterReorder;
 
-
     public Homescreen() {
 
     }
-
     public boolean verify_homeScreen_displayed() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             Thread.sleep(8000);
@@ -265,8 +266,11 @@ public class Homescreen extends BasePage {
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Add Time", "Scrolling to the Add time btn ");
             scrolledToElement.click();
         }
-        else{}
-         //   scrollToElement(nextScheduledJobWidget, "up","Scrolling to next schedule job wid");
+        else{
+            scrollToElement(addTimeButtonTimesheet, "up","Scrolling to Add Time button");
+            click(addTimeButtonTimesheet,"Clicking on Add Button");
+        }
+
     }
 
     public String calculateTotalTime(){

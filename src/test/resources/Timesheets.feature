@@ -100,8 +100,8 @@ Feature: Timesheet scenarios
     And Save timeevent
     Then verify the time format
 
-  @MOB-8452 @AndroidRegression
-  Scenario: Verify that after adding timesheet from dashboard the total time in widget should inrease
+  @MOB-8452 @MOB-8641 @AndroidRegression @iOSRegression
+  Scenario: Verify that after adding timesheet from dashboard the total time in widget should increase
     When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-8452" "APIWorkerID_MOB-8452" "APIOrgID" "APILoginID" "current day"
     When the user launches the app
     Then The user click on Get Started Button
