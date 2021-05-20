@@ -104,7 +104,8 @@ Scenario: Verify substitute user can validate Feedback form heading
 	Then Validate Feedback Header
 
 @MOB-8595 @AndroidRegression @MOB-8725 @iOSRegression
-	Scenario: Verify employee user is able to create multiday absence
+Scenario: Verify employee user is able to create multiday absence
+#	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-8595" workerid "APIWorkerID_MOB-8595" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
 	When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-8595" for "upcoming day" and delete them
 	When the user launches the app
 	Then The user click on Get Started Button
