@@ -47,7 +47,7 @@ public class CreateAbsenceScreen extends BasePage {
     public MobileElement submitAbsence;
 
     @AndroidFindBy(id = "android:id/message")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your absence was created successfully.']")
+    @iOSXCUITFindBy(accessibility ="Your absence was created successfully.")
     public MobileElement createdAbsenceVerificationMsg;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_half_day_pm")
