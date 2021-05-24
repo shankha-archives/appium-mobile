@@ -48,21 +48,21 @@ public class ServerManager {
                         + params.getDeviceName() + File.separator + "Server.log")));
     }
 
-    public AppiumDriverLocalService MacGetAppiumService() {
-        GlobalParams params = new GlobalParams();
-        HashMap<String, String> environment = new HashMap<String, String>();
-       // environment.put("PATH", "/Program Files/Java/jdk1.8.0_181/Contents/Home/bin:D:/sdk-tools-windows-4333796/tools:D:/sdk-tools-windows-4333796/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" + System.getenv("PATH"));
-       // environment.put("ANDROID_HOME", "D:/sdk-tools-windows-4333796");
-        //environment.put("JAVA_HOME", "/Program Files/Java/jdk1.8.0_181/Contents/Home");
-        return AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
-                .usingDriverExecutable(new File(getClass().getResource(props.getProperty("node_path")).getPath()))
-                //.usingDriverExecutable(new File("C:/Program Files/nodejs/node"))
-                .withAppiumJS((new File(getClass().getResource(props.getProperty("aapium_path")).getPath())))
-               // .withAppiumJS(new File("Users/Rupa.kumari/AppData/Roaming/npm/node_modules/appium/build/lib/main.js"))
-                .usingAnyFreePort()
-                .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-                .withEnvironment(environment)
-                .withLogFile(new File(params.getPlatformName() + "_"
-                        + params.getDeviceName() + File.separator + "Server.log")));
-    }
+//    public AppiumDriverLocalService MacGetAppiumService() {
+//        GlobalParams params = new GlobalParams();
+//        HashMap<String, String> environment = new HashMap<String, String>();
+//       // environment.put("PATH", "/Program Files/Java/jdk1.8.0_181/Contents/Home/bin:D:/sdk-tools-windows-4333796/tools:D:/sdk-tools-windows-4333796/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin" + System.getenv("PATH"));
+//       // environment.put("ANDROID_HOME", "D:/sdk-tools-windows-4333796");
+//        //environment.put("JAVA_HOME", "/Program Files/Java/jdk1.8.0_181/Contents/Home");
+//        return AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+//                .usingDriverExecutable(new File(getClass().getResource(props.getProperty("node_path")).getPath()))
+//                //.usingDriverExecutable(new File("C:/Program Files/nodejs/node"))
+//                .withAppiumJS((new File(getClass().getResource(props.getProperty("aapium_path")).getPath())))
+//               // .withAppiumJS(new File("Users/Rupa.kumari/AppData/Roaming/npm/node_modules/appium/build/lib/main.js"))
+//                .usingAnyFreePort()
+//                .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
+//                .withEnvironment(environment)
+//                .withLogFile(new File(params.getPlatformName() + "_"
+//                        + params.getDeviceName() + File.separator + "Server.log")));
+//    }
 }

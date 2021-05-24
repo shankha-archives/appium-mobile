@@ -75,6 +75,16 @@ public class JobsScreen extends BasePage {
         }
     }
 
+    public boolean checkJobDurationisPresent(String duration, String employeeName) throws Exception {
+        if (new GlobalParams().getPlatformName().contains("Android")) {
+            By jobDuration = By.xpath("(//android.widget.TextView[@text='" + employeeName + "']/following:: android.widget.TextView[@text='" + duration + "'])[1]");
+            return isElementPresent(scrollToElement_iOS(jobDuration, "up", "Scrolling to the required job"));
+        } else {
+            By jobDuration = By.xpath("((//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label='" + duration + "'])[1]");
+            return isElementPresent(scrollToElement_iOS(jobDuration, "up", "Scrolling to the required job"));
+        }
+    }
+
     public boolean waitForJobIsAvailable(String employeeName) throws Exception {
         By jobDate;
         if (new GlobalParams().getPlatformName().contains("Android")) {

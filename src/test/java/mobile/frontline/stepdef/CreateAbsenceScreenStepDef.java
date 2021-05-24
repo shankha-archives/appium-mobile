@@ -19,12 +19,12 @@ public class CreateAbsenceScreenStepDef {
         createAbsenceScreen.clickNext();
     }
 
-    @And("Select absence day {string} {string} and click on next btn")
-    public void selectAbsenceDayAndClickOnNextBtn(String absenceDay, String count) throws Throwable {
-        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
-        createAbsenceScreen.selectDate(absenceDay, count);
-        createAbsenceScreen.clickNext();
-    }
+//    @And("Select absence day {string} {string} and click on next btn")
+//    public void selectAbsenceDayAndClickOnNextBtn(String absenceDay, String count) throws Throwable {
+//        Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
+//        createAbsenceScreen.selectDate(absenceDay, count);
+//        createAbsenceScreen.clickNext();
+//    }
 
     @And("Select absence duration and click on next btn")
     public void selectAbsenceDurationAndClickOnNextBtn() throws Exception {

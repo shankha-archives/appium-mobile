@@ -64,4 +64,9 @@ public class JobScreenStepDef {
     public void clickOnTheJobWithAbsence(String employeeName, String jobDate) throws Exception {
         jobsScreen.clickOnAvailableJob(employeeName, jobDate);
     }
+
+    @And("Verify the job duration {string} {string}")
+    public void verifyTheJobDuration(String employeeName, String duration) throws Exception {
+        Assert.assertTrue("Job is not available in joblist",jobsScreen.checkJobDurationisPresent(duration, employeeName));
+    }
 }

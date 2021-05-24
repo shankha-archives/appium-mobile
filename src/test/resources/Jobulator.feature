@@ -3,7 +3,7 @@ Feature: Jobulator scenarios
 
   @AndroidRegression @MOB-3325 @iOSRegression
   Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
-    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
@@ -18,7 +18,7 @@ Feature: Jobulator scenarios
 
   @AndroidRegression  @MOB-3324 @MOB-3326 @iOSRegression
   Scenario: Verify substitute views the success Confirmation Number on accepting a job
-    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs2" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsJobOperations2" and password and click on Sign In button
@@ -34,7 +34,7 @@ Feature: Jobulator scenarios
 
   @AndroidRegression  @MOB-4174 @iOSRegression
   Scenario: Verify substitute cannot view accepted job in job list
-    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerIDCreateJobs3" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
@@ -52,8 +52,8 @@ Feature: Jobulator scenarios
 
   @MOB-3681 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view all job information from all organizations
-    When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "next day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-3681_GLorg5" for "upcoming day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3681" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     When Enter username "AutomationSubMutiOrg" and password and click on Sign In button
@@ -79,8 +79,8 @@ Feature: Jobulator scenarios
 
   @MOB-3683 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute user is able to view jobs of multiple districts
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "next day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District1" for "upcoming day" with "APISchoolID_ChildCare" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-3683_District2" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     When Enter username "AutomationSubsMOB-3683" and password and click on Sign In button
@@ -95,8 +95,8 @@ Feature: Jobulator scenarios
 
   @MOB-4173 @MOB-4172 @Done @AndroidRegression @iOSRegression
   Scenario: Verify that substitute is able to view job widget and jobs in job list
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4173" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4172" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4173" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4172" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
@@ -109,7 +109,7 @@ Feature: Jobulator scenarios
 
   @MOB-7775 @MOB-6673 @iOSRegression @AndroidRegression
   Scenario: Verify substitute user can reject available job and dont see that job in available job list
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-7775" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-7775" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
@@ -125,7 +125,7 @@ Feature: Jobulator scenarios
 
   @MOB-6680 @MOB-6679 @AndroidRegression @iOSRegression
   Scenario: Verify substitute can Accept job and check it in scheduled jobs List
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-6680" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-6680" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-6680" and password and click on Sign In button
@@ -143,7 +143,7 @@ Feature: Jobulator scenarios
 
   @MOB-8328 @MOB-8443 @AndroidRegression @iOSRegression
   Scenario: Verify job details on job detail page
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8328" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8328" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-8328" and password and click on Sign In button
@@ -152,3 +152,20 @@ Feature: Jobulator scenarios
     And View job list
     And Click on the job "AutomationEmp 8328" with absence "next day"
     Then Validate the job detail page "next day"
+
+  @MOB-6028 @AndroidRegression
+  Scenario: Substitute can accept multiday absence
+	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-6028" workerid "APIWorkerID_MOB-6028" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When The user waits and launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationSubsMOB-6028" and password and click on Sign In button
+    Then The substitute navigates to dashboard page
+    And Click on the Available Jobs
+    And View job list
+    Then Verify the created jobs "AutomationEmp 6028" is present
+    And Verify the job duration "AutomationEmp 6028" "2 Days"
+    And Click on the job "AutomationEmp 6028"
+    And accept the job
+    Then the Success Message overlay is displayed
+    When Clicked on Okay
+    Then Verify the job event details
