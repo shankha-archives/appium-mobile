@@ -155,7 +155,7 @@ Feature: Jobulator scenarios
 
   @MOB-6028 @AndroidRegression
   Scenario: Substitute can accept multiday absence
-	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-6028" workerid "APIWorkerID_MOB-6028" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-6028" workerid "APIWorkerID_MOB-6028" for "upcoming day" with "APISchoolID" "APIReasonID" days "1" "2" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-6028" and password and click on Sign In button
@@ -168,4 +168,4 @@ Feature: Jobulator scenarios
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
-    Then Verify the job event details
+    Then Verify the job event details for "upcoming day" "1" "2"

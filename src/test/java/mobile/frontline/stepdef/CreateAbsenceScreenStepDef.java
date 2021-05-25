@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.TestDataManager;
+import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.CreateAbsenceScreen;
 import org.junit.Assert;
 
@@ -11,6 +12,7 @@ public class CreateAbsenceScreenStepDef {
 
     CreateAbsenceScreen createAbsenceScreen= new CreateAbsenceScreen();
     public TestDataManager testdata = new TestDataManager();
+    BasePage basePage = new BasePage();
 
     @When("Select absence reason and click on next btn")
     public void selectAbsenceReasonAndClickOnNext() throws Exception {
@@ -92,7 +94,9 @@ public class CreateAbsenceScreenStepDef {
     @And("Select absence day {string}  {string}")
     public void selectAbsenceDay(String absenceDay, String count) throws Throwable {
         Assert.assertTrue("Create Absence Page 4 is not displayed", createAbsenceScreen.waitForAsbsenceDatePage()) ;
-        createAbsenceScreen.selectDate(absenceDay, count);
+       if(count.equals("2")&&basePage.workingDay("current day","EEE", 0).equals("Fri"))
+        count = "4";
+       createAbsenceScreen.selectDate(absenceDay, count);
     }
 
     @And("click on next btn")

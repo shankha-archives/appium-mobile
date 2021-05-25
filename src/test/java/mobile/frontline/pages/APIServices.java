@@ -183,8 +183,8 @@ public class APIServices {
 		ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
 	}
 
-	public void apiCreateMultidayAbsence(String workerID, String schoolID, String reasonID, String absenceDay) throws Exception {
-		HttpResponse<String> responseCreateMultidayAbsence = apiObject.createMultiDayAbsence(bearerToken, aesoptoken,workerID,schoolID,reasonID, absenceDay);
+	public void apiCreateMultidayAbsence(String workerID, String schoolID, String reasonID, String absenceDay, String startDay, String endDay) throws Exception {
+		HttpResponse<String> responseCreateMultidayAbsence = apiObject.createMultiDayAbsence(bearerToken, aesoptoken,workerID,schoolID,reasonID, absenceDay, startDay, endDay);
 		Assert.assertEquals(printPrettyResponse(responseCreateMultidayAbsence.getBody()),responseCreateMultidayAbsence.getStatus(), 200);
 		utils.log().info("Multi day create absence:" + printPrettyResponse(responseCreateMultidayAbsence.getBody()));
 		ExtentCucumberAdapter.addTestStepLog("Multi day create absence:" + printPrettyResponse(responseCreateMultidayAbsence.getBody()));

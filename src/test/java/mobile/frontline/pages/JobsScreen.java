@@ -62,7 +62,7 @@ public class JobsScreen extends BasePage {
     }
 
     public boolean waitForJobListPresent() {
-        return isElementdisplayed(jobslist);
+        return isElementDisplayed(jobslist,"Waiting for joblist to display");
     }
 
     public boolean checkSchoolisPresent(String schoolName, String employeeName) throws Exception {

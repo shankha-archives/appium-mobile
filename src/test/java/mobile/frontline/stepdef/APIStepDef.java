@@ -3,6 +3,8 @@ import io.cucumber.java.en.When;
 import mobile.Frontline.utils.PropertyManager;
 import mobile.Frontline.utils.TestUtils;
 import mobile.frontline.pages.APIServices;
+import mobile.frontline.pages.BasePage;
+
 import java.util.Properties;
 
 public class APIStepDef {
@@ -10,6 +12,7 @@ public class APIStepDef {
     Properties props;
     TestUtils utils = new TestUtils();
     public APIServices apiService = new APIServices();
+    BasePage basePage = new BasePage();
 
     @When("^Create absence for employee \"([^\"]*)\" with workerid \"([^\"]*)\" for \"([^\"]*)\" with \"([^\"]*)\" \"([^\"]*)\" and delete the existing ones$")
     public void create_absence_for_employee_something_with_workerid_something_for_something_with_something_something_and_delete_the_existing_ones(
@@ -88,16 +91,18 @@ public class APIStepDef {
             utils.log().info("The environment selected is prodution");
     }
 
-    @When("Create multiday absence for employee {string} with user {string} workerid {string} for {string} with {string} {string} and delete the existing ones")
-    public void createMultidayAbsenceForEmployeeWithUserWorkeridForWithAndDeleteTheExistingOnes
-            (String apiLoginID,String automationEmployee, String workerID, String absenceDay, String schoolID, String reasonID) throws Throwable {
+    @When("Create multiday absence for employee {string} with user {string} workerid {string} for {string} with {string} {string} days {string} {string} and delete the existing ones")
+    public void createMultidayAbsenceForEmployeeWithUserWorkeridForWithDaysAndDeleteTheExistingOnes
+            (String apiLoginID,String automationEmployee, String workerID, String absenceDay, String schoolID, String reasonID, String startDay, String endDay) throws Throwable {
         props = new PropertyManager().getProps();
         if (!props.getProperty("testdata").contains("prod")) {
             apiService.apiTokenGeneration(apiLoginID);
             apiService.apiBearerTokenGeneration(automationEmployee);
             apiService.apiGetConfirmationIds(workerID, absenceDay);
             apiService.apiDeleteAbsence();
-            apiService.apiCreateMultidayAbsence (workerID, schoolID, reasonID,  absenceDay);
+            if(endDay.equals("2")&&basePage.workingDay("current day","EEE", 0).equals("Fri"))
+                endDay = "4";
+            apiService.apiCreateMultidayAbsence (workerID, schoolID, reasonID,  absenceDay, startDay, endDay);
         } else
             utils.log().info("The environment selected is prodution");
     }
