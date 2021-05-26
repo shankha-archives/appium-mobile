@@ -17,7 +17,7 @@ public class LeaveBalanceScreen extends BasePage {
     public MobileElement availableDays;
 
     public boolean waitLeaveBalanceHeader(){
-        return  isElementdisplayed(availableLeaveBalanceHeader);
+        return  isElementDisplayed(availableLeaveBalanceHeader,"Waiting for leave balance header to display");
     }
 
     public String get_availableDays() throws Exception {

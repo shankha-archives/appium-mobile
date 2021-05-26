@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 
 public class JobDetailScreen extends BasePage {
 
@@ -121,6 +122,20 @@ public class JobDetailScreen extends BasePage {
 
     public boolean waitForSchoolName() {
         return  isElementDisplayed(jobDetailSchoolName, "Waiting for job school name details to display");
+    }
+
+    public boolean waitForJobDate(String absenceDay, String amount) throws Exception {
+        By jobDate;
+        if (new GlobalParams().getPlatformName().contains("Android"))
+            jobDate = By.xpath(
+                    "//android.widget.TextView[contains(@text,'"
+                            + changeDateFormat(workingDay(absenceDay, "MM/dd/yyyy",Integer.parseInt(amount)), "MM/dd/yyyy", "MMMM dd") + "')]");
+        else
+            jobDate = By.xpath(
+                    "//XCUIElementTypeStaticText[@label = " +
+                            "'" + changeDateFormat(nextWorkingDay("next day", "MM/d/yyyy"), "MM/d/yyyy", "MMMM d") + " • 8:00 AM'])[1]");
+
+        return isElementDisplayed(jobDate,  "Waiting for the required job");
     }
 
 }

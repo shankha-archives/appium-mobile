@@ -62,7 +62,7 @@ public class JobsScreen extends BasePage {
     }
 
     public boolean waitForJobListPresent() {
-        return isElementdisplayed(jobslist);
+        return isElementDisplayed(jobslist,"Waiting for joblist to display");
     }
 
     public boolean checkSchoolisPresent(String schoolName, String employeeName) throws Exception {
@@ -72,6 +72,16 @@ public class JobsScreen extends BasePage {
         } else {
             By employeeSchool = By.xpath("((//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label='" + testdata.read_property("testingData", "users", schoolName) + "'])[1]");
             return isElementPresent(scrollToElement_iOS(employeeSchool, "up", "Scrolling to the required job"));
+        }
+    }
+
+    public boolean checkJobDurationisPresent(String duration, String employeeName) throws Exception {
+        if (new GlobalParams().getPlatformName().contains("Android")) {
+            By jobDuration = By.xpath("(//android.widget.TextView[@text='" + employeeName + "']/following:: android.widget.TextView[@text='" + duration + "'])[1]");
+            return isElementPresent(scrollToElement_iOS(jobDuration, "up", "Scrolling to the required job"));
+        } else {
+            By jobDuration = By.xpath("((//XCUIElementTypeStaticText[@label = '" + employeeName + "'])[1]/following::XCUIElementTypeStaticText[@label='" + duration + "'])[1]");
+            return isElementPresent(scrollToElement_iOS(jobDuration, "up", "Scrolling to the required job"));
         }
     }
 

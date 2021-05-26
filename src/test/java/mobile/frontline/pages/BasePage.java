@@ -1498,13 +1498,13 @@ public class BasePage {
 		return val;
 	}
 
-	public boolean isElementdisplayed(MobileElement ele) {
-		ExtentCucumberAdapter.addTestStepLog("Locator: "+ ele);
+	public boolean isElementDisplayed(By ele, String msg) {
+		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 		boolean val = false;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 60);
-			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
-			val = ele.isDisplayed();
+			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(driver.findElement(ele))));
+			val = driver.findElement(ele).isDisplayed();
 		} catch (Exception e) {
 			val = false;
 		}
@@ -1579,7 +1579,7 @@ public class BasePage {
 
 	public void enterValueInTextField(MobileElement ele, String keysToSend) {
 		try {
-			if (isElementdisplayed(ele)) {
+			if (isElementDisplayed(ele)) {
 				ele.click();
 				ele.clear();
 				ele.sendKeys(keysToSend);
@@ -1592,7 +1592,7 @@ public class BasePage {
 		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 		try {
 			utils.log().info(msg+ " Locator :"+ ele);
-			if (isElementdisplayed(ele)) {
+			if (isElementDisplayed(ele)) {
 				ele.click();
 				ele.clear();
 				ele.sendKeys(keysToSend);

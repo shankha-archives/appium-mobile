@@ -12,7 +12,7 @@ import org.junit.Assert;
 public class JobDetailScreenStepDef {
 
     public JobDetailScreen jobDetailScreen = new JobDetailScreen();
-    public BasePage common = new BasePage();
+    public BasePage basePage = new BasePage();
 
     @And("accept the job")
     public void acceptTheJob() {
@@ -59,13 +59,13 @@ public class JobDetailScreenStepDef {
         Assert.assertTrue("Confirmation number is not displayed", jobDetailScreen.confirmationPresent().contains(APIServices.confirmationNumber));
     }
 
-    @Then("Verify the job event details {string}")
-    public void verifyTheJobEventDetails(String absenceDay) throws Exception {
-        if (new GlobalParams().getPlatformName().contains("Android"))
-            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
-        else
-            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM d, yyyy")));
-    }
+//    @Then("Verify the job event details {string}")
+//    public void verifyTheJobEventDetails(String absenceDay) throws Exception {
+//        if (new GlobalParams().getPlatformName().contains("Android"))
+//            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+//        else
+//            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM d, yyyy")));
+//    }
 
     @And("Validate the Reject Popup Message")
     public void validateTheRejectPopup() throws Exception {
@@ -84,9 +84,9 @@ public class JobDetailScreenStepDef {
         Assert.assertTrue("Correct employee name is not displayed", jobDetailScreen.waitForEmployeeName());
         Assert.assertTrue("Correct school name is not displayed", jobDetailScreen.waitForSchoolName());
         if (new GlobalParams().getPlatformName().contains("Android"))
-            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(basePage.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
         else
-            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(common.nextWorkingDay(absenceDay, "MMMM d, yyyy")));
+            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(basePage.nextWorkingDay(absenceDay, "MMMM d, yyyy")));
     }
 
     @And("Reject the job")
@@ -94,4 +94,11 @@ public class JobDetailScreenStepDef {
         jobDetailScreen.clickOnRejectJobsBtn();
     }
 
+    @Then("Verify the job event details for {string} {string} {string}")
+    public void verifyTheJobEventDetailsFor(String absenceDay, String startDay, String endDay) throws Exception {
+        Assert.assertTrue("The date didnt get displayed",jobDetailScreen.waitForJobDate(absenceDay,startDay));
+        if(endDay.equals("2")&&basePage.workingDay("current day","EEE", 0).equals("Fri"))
+            endDay = "4";
+        Assert.assertTrue("The date didnt get displayed",jobDetailScreen.waitForJobDate(absenceDay,endDay));
+    }
 }

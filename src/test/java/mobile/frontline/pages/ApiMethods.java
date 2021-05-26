@@ -3,7 +3,6 @@ package mobile.frontline.pages;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-
 import mobile.Frontline.utils.TestDataManager;
 
 
@@ -56,7 +55,7 @@ public class ApiMethods {
                 .header("AesopToken", token)
                 .body("{\"needSub\" : true, \"worker\":{  \"id\":"
                         + testdata.read_property("testingData", "users", workerID) + " }, \"absences\":[ { \"date\":\""
-                        + common.nextWorkingDay(absenceDay, "MM/dd/yyyy") + "\", \"institution\":{ \"id\":"
+                        + common.workingDay(absenceDay, "MM/dd/yyyy",1) + "\", \"institution\":{ \"id\":"
                         + testdata.read_property("testingData", "users", schoolID)
                         + "   }, \"entitlement\":{ \"id\":"
                         + testdata.read_property("testingData", "users", reasonID)
@@ -166,17 +165,16 @@ public class ApiMethods {
         return response;
     }
 
-    public HttpResponse<String> createMultiDayAbsence(String bearerToken, String aesopToken, String workerID, String schoolID, String reasonID, String absenceDay) throws Exception {
+    public HttpResponse<String> createMultiDayAbsence(String bearerToken, String aesopToken, String workerID, String schoolID, String reasonID, String absenceDay, String startDay, String endDay) throws Exception {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.post(testdata.read_property("testingData", "users", "BFFBaseURL") + "/api/absenceRequest/v2/create")
                 .header("Authorization", "Bearer " + bearerToken)
                 .header("Accept", "application/json")
                 .header("AesopToken", aesopToken)
                 .header("Content-Type", "application/json")
-                //.header("Cookie", "incap_ses_742_2496337=l4LbCj9zBmMjslZtXh1MCgvJnGAAAAAA60SZ/Z1b/RwlW3RuQrtWpA==; nlbi_2496337=JcXKQLRB1muBQzRe6bl9vAAAAAB1SSgH55hS9egT1ehppk26; visid_incap_2496337=YmOY9TPFTnOQFrlMmBHNQe2dhmAAAAAAQUIPAAAAAABhdSymyOcCP0cHEO1LiQvr; incap_ses_742_2496337=YYiwRIEfhGzT6VdtXh1MCgbVnGAAAAAAOTxT8OktVjPZiqR5gxN+dw==; nlbi_2496337=JcXKQLRB1muBQzRe6bl9vAAAAAB1SSgH55hS9egT1ehppk26; visid_incap_2496337=YmOY9TPFTnOQFrlMmBHNQe2dhmAAAAAAQUIPAAAAAABhdSymyOcCP0cHEO1LiQvr")
-                .body("{\"absences\": [{\"absenceEndTime\": \"03:00 PM\",\"absenceStartTime\": \"08:00 AM\",\"date\": \"" + common.workingDay(absenceDay, "MM/dd/yyyy", 1) + " \",\"entitlementId\": " + testdata.read_property("testingData", "users", reasonID) + ",\"id\": 0,\"institutionId\": " + testdata.read_property("testingData", "users", schoolID)
+                .body("{\"absences\": [{\"absenceEndTime\": \"03:00 PM\",\"absenceStartTime\": \"08:00 AM\",\"date\": \"" + common.workingDay(absenceDay, "MM/dd/yyyy", Integer.parseInt(startDay)) + " \",\"entitlementId\": " + testdata.read_property("testingData", "users", reasonID) + ",\"id\": 0,\"institutionId\": " + testdata.read_property("testingData", "users", schoolID)
                         + ",\"nonPayTime\": 0,\"shiftType\": 1,\"substituteEndTime\": \"03:00 PM\",\"substituteShiftType\": 1,\"substituteStartTime\": \"08:00 AM\",\"timesAreLinked\": true}, "
-                        + "{\"absenceEndTime\": \"03:00 PM\",\"absenceStartTime\": \"08:00 AM\",\"date\": \""+ common.workingDay(absenceDay, "MM/dd/yyyy", 2) +"\",\"entitlementId\": "+ testdata.read_property("testingData", "users", reasonID)+",\"id\": 0,\"institutionId\": "+ testdata.read_property("testingData", "users", schoolID)
+                        + "{\"absenceEndTime\": \"03:00 PM\",\"absenceStartTime\": \"08:00 AM\",\"date\": \""+ common.workingDay(absenceDay, "MM/dd/yyyy", Integer.parseInt(endDay)) +"\",\"entitlementId\": "+ testdata.read_property("testingData", "users", reasonID)+",\"id\": 0,\"institutionId\": "+ testdata.read_property("testingData", "users", schoolID)
                         + ",\"nonPayTime\": 0,\"shiftType\": 1,\"substituteEndTime\": \"03:00 PM\",\"substituteShiftType\": 1,\"substituteStartTime\": \"08:00 AM\",\"timesAreLinked\": true}],\"id\": 0,\"lastUpdated\": \""+common.workingDay("current day", "MMMM dd, yyyy", 0)+" 12:53:32 PM\","
                         + "\"needSub\": true,\"notes\": \"\",\"notesToAdmin\": \"\",\"selectableDOW\": [false, true, true, true, true, true, false],\"shouldLockAbsence\": false,\"worker\": \""+testdata.read_property("testingData", "users", workerID)+"\"}")
                 .asString();
