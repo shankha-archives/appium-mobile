@@ -97,6 +97,9 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Next Scheduled Job_ModuleHeader']")
     public MobileElement nextScheduledJobWidget;
 
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Scheduled']")
+    public MobileElement nextScheduledJobInWidget;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='TimesheetsModule_AddTime_Button'][1]")
     public MobileElement addTimeButtonTimesheet;
 
@@ -255,6 +258,13 @@ public class Homescreen extends BasePage {
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
         else
             scrollToElement(nextScheduledJobWidget, "up","Scrolling to next schedule job wid");
+    }
+
+    public void waitNextScheduledJobInWidget() throws Throwable {
+        if ((new GlobalParams().getPlatformName()).contains("Android"))
+            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
+        else
+            scrollToElement(nextScheduledJobInWidget, "up","Scrolling to next schedule job wid");
     }
 
     public void clickOnMenuTab() {
