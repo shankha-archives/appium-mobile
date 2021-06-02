@@ -170,21 +170,22 @@ Feature: Jobulator scenarios
     When Clicked on Okay
     Then Verify the job event details for "upcoming day" "1" "2"
 
-
+  #This Scenario may Fail for iOS as there is Caching Known Issue deu to which data dont reflect quicky.
   @MOB-8750 @iOSRegression
   Scenario: Verify substitute can Accept job and check in next schedule widget
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-7775" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8751" for "current day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
-    And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
+    And Enter username "AutomationSubsMOB-8750" and password and click on Sign In button
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    And Click on the job "AutomationEmp 7775"
+    And Click on the job "AutomationEmp 8751"
     And accept the job
     Then the Success Message overlay is displayed
     And Clicked on Okay
     And Navigate Back toward Scheduled Jobs
     And Navigate to dashboard
-    Then The user moves to Next Scheduled Job widget and verify scheduledJob
+    Then The user moves to Next Scheduled Job widget and verify it
+    And The user verify most recent Job in Next Scheduled Job widget
 
