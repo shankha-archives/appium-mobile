@@ -97,6 +97,7 @@ public class Homescreen extends BasePage {
     public MobileElement nextScheduledJobWidget;
 
     @iOSXCUITFindBy(accessibility = "Scheduled")
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/accepted_status_text")
     public MobileElement nextScheduledJobInWidget;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='TimesheetsModule_AddTime_Button'][1]")
@@ -110,6 +111,7 @@ public class Homescreen extends BasePage {
     public Homescreen() {
 
     }
+
     public boolean verify_homeScreen_displayed() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             Thread.sleep(8000);
@@ -256,14 +258,11 @@ public class Homescreen extends BasePage {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
         else
-            scrollToElement(nextScheduledJobWidget, "up","Scrolling to next schedule job wid");
+            scrollToElement(nextScheduledJobWidget, "up", "Scrolling to next schedule job wid");
     }
 
     public void waitNextScheduledJobInWidget() throws Throwable {
-        if ((new GlobalParams().getPlatformName()).contains("Android"))
-            scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
-        else
-            scrollToElement(nextScheduledJobInWidget, "up","Scrolling to next schedule job wid");
+        scrollToElement(nextScheduledJobInWidget, "up", "Scrolling to next schedule job widget");
     }
 
     public void clickOnMenuTab() {
@@ -274,22 +273,21 @@ public class Homescreen extends BasePage {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Add Time", "Scrolling to the Add time btn ");
             scrolledToElement.click();
-        }
-        else{
-            scrollToElement(addTimeButtonTimesheet, "up","Scrolling to Add Time button");
-            click(addTimeButtonTimesheet,"Clicking on Add Button");
+        } else {
+            scrollToElement(addTimeButtonTimesheet, "up", "Scrolling to Add Time button");
+            click(addTimeButtonTimesheet, "Clicking on Add Button");
         }
 
     }
 
-    public String calculateTotalTime(){
-            int hours = 0;
-            int minutes = 0;
-            DecimalFormat formatter = new DecimalFormat("00");
-            hours = hours + Integer.parseInt(HomePageScreenStepDef.initailWeekTotal.split(":")[0])+1;
-            minutes = minutes + Integer.parseInt(HomePageScreenStepDef.initailWeekTotal.split(":")[1]);
-            hours = hours + (minutes / 60);
-            minutes = minutes % 60;
-            return (hours + ":" + formatter.format(minutes));
+    public String calculateTotalTime() {
+        int hours = 0;
+        int minutes = 0;
+        DecimalFormat formatter = new DecimalFormat("00");
+        hours = hours + Integer.parseInt(HomePageScreenStepDef.initailWeekTotal.split(":")[0]) + 1;
+        minutes = minutes + Integer.parseInt(HomePageScreenStepDef.initailWeekTotal.split(":")[1]);
+        hours = hours + (minutes / 60);
+        minutes = minutes % 60;
+        return (hours + ":" + formatter.format(minutes));
     }
 }
