@@ -14,6 +14,7 @@
 		<AutomationSubsMOB-6673>AutomationS_6673</AutomationSubsMOB-6673>
 		<AutomationSubsMOB-6028>AutomationSub6028</AutomationSubsMOB-6028>
 		<AutomationSubsMOB-5593>AutomationSub5593</AutomationSubsMOB-5593>
+		<AutomationSubsMOB-8750>AutomationSub8750</AutomationSubsMOB-8750>
 		<AutomationSubsJobOperations>AutomationSubJobs</AutomationSubsJobOperations>
 		<AutomationSubsJobOperations2>AutomationSubJobs2</AutomationSubsJobOperations2>
 		<AutomationSubsJobOperations3>AutomationSubJobs3</AutomationSubsJobOperations3>
@@ -39,6 +40,7 @@
 		<AutomationEmployeeMOB-7529>AutomationEmp7529</AutomationEmployeeMOB-7529>
 		<AutomationEmployeeMOB-8452>AutomationEmpl8452</AutomationEmployeeMOB-8452>
 		<AutomationEmployeeMOB-8595>AutomationEmp8595</AutomationEmployeeMOB-8595>
+		<AutomationEmployeeMOB-8751>AutomationEmp8751</AutomationEmployeeMOB-8751>
 		<AutomationEmployeeMOB-6028>AutomationEmp6028</AutomationEmployeeMOB-6028>
 		<AutomationAdminMOB-4249>AutomationAdmin</AutomationAdminMOB-4249>
 		<AutomationAdminMOB-4251>AutomationAdmin4251</AutomationAdminMOB-4251>
@@ -89,6 +91,7 @@
 		<APIWorkerID_MOB-3681_GLorg5>8583685</APIWorkerID_MOB-3681_GLorg5>
 		<APIWorkerID_MOB-3681>8583686</APIWorkerID_MOB-3681>
 		<APIWorkerID_MOB-7775>8590980</APIWorkerID_MOB-7775>
+		<APIWorkerID_MOB-8751>8742172</APIWorkerID_MOB-8751>
 		<APIWorkerID_MOB-6680>8735640</APIWorkerID_MOB-6680>
 		<APIWorkerID_MOB-5584>8585805</APIWorkerID_MOB-5584>
 		<APIWorkerID_MOB-8328>8738103</APIWorkerID_MOB-8328>
