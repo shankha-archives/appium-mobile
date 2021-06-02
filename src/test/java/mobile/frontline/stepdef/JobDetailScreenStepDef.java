@@ -44,7 +44,7 @@ public class JobDetailScreenStepDef {
         }
     }
 
-    @When("^Clicked on Okay$")
+    @And("^Clicked on Okay$")
     public void i_click_okay() throws Throwable {
         jobDetailScreen.clickOnOkBtn_successMsg();
     }

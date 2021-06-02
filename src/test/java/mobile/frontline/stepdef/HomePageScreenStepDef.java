@@ -134,6 +134,10 @@ public class HomePageScreenStepDef {
         homescreen.waitNextScheduledJobWidget();
     }
 
+    @Then("^The user verify most recent Job in Next Scheduled Job widget")
+    public void user_verifies_next_scheduled_job() throws Throwable {
+        homescreen.waitNextScheduledJobInWidget();
+    }
     @When("the user clicks on Menu tab")
     public void theUserClicksOnMenuTab() {
         homescreen.clickOnMenuTab();
