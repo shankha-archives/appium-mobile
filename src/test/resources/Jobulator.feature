@@ -170,7 +170,7 @@ Feature: Jobulator scenarios
     When Clicked on Okay
     Then Verify the job event details for "upcoming day" "1" "2"
 
-  #This Scenario may Fail for iOS as there is Caching Known Issue deu to which data dont reflect quicky.
+  #This Scenario may Fail for iOS as there is Caching Known Issue deu to which data not reflecting quicky.
   @MOB-8750 @iOSRegression
   Scenario: Verify substitute can Accept job and check in next schedule widget
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8751" for "current day" with "APISchoolID" "APIReasonID" and delete the existing ones
