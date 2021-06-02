@@ -259,12 +259,11 @@ public class Homescreen extends BasePage {
             scrollToElement(nextScheduledJobWidget, "up","Scrolling to next schedule job wid");
     }
 
-    public boolean waitNextScheduledJobInWidget() throws Throwable {
+    public void waitNextScheduledJobInWidget() throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
             scrolledToElement = androidScrollToElementUsingUiScrollable("text", "Next Scheduled Job", "Scrolling to the next Scheduled Job widget ");
         else
             scrollToElement(nextScheduledJobInWidget, "up","Scrolling to next schedule job wid");
-           return false;
     }
 
     public void clickOnMenuTab() {

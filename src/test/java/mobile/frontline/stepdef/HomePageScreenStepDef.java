@@ -136,8 +136,7 @@ public class HomePageScreenStepDef {
 
     @Then("^The user verify most recent Job in Next Scheduled Job widget")
     public void user_verifies_next_scheduled_job() throws Throwable {
-        Assert.assertTrue("Job not present in Next Scheduled Widget ", homescreen.waitNextScheduledJobInWidget());
-
+        homescreen.waitNextScheduledJobInWidget();
     }
     @When("the user clicks on Menu tab")
     public void theUserClicksOnMenuTab() {

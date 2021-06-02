@@ -184,7 +184,6 @@ Feature: Jobulator scenarios
     And accept the job
     Then the Success Message overlay is displayed
     And Clicked on Okay
-    And Navigate Back toward Scheduled Jobs
     And Navigate to dashboard
     Then The user moves to Next Scheduled Job widget and verify it
     And The user verify most recent Job in Next Scheduled Job widget
