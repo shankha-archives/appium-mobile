@@ -153,19 +153,18 @@ Feature: Jobulator scenarios
     And Click on the job "AutomationEmp 8328" with absence "next day"
     Then Validate the job detail page "next day"
 
-    #employee needs to be created
-  @MOB-6028 @AndroidRegression
+  @MOB-6028 @AndroidRegression @MOB-9079
   Scenario: Substitute can accept multiday absence
-	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-6028" workerid "APIWorkerID_MOB-6028" for "upcoming day" with "APISchoolID" "APIReasonID" days "1" "2" and delete the existing ones
+	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-9079" workerid "APIWorkerID_MOB-9079" for "upcoming day" with "APISchoolID" "APIReasonID" days "1" "2" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
-    And Enter username "AutomationSubsMOB-6028" and password and click on Sign In button
+    And Enter username "AutomationSubsMOB-9079" and password and click on Sign In button
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    Then Verify the created jobs "AutomationEmp 6028" is present
-    And Verify the job duration "AutomationEmp 6028" "2 Days"
-    And Click on the job "AutomationEmp 6028"
+    #Then Verify the created jobs "AutomationEmp 9079" is present
+    #And Verify the job duration "AutomationEmp 9079" "2 Days"
+    And Click on the job "AutomationEmp 9079"
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
