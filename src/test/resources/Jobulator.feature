@@ -93,7 +93,7 @@ Feature: Jobulator scenarios
     Then Verify the created jobs "AutomationEmp2 3683" is present
     #And Verify school "schoolNameOrg4" is associated with "AutomationEmp2 3683"
 
-  @MOB-4173 @MOB-4172 @Done @AndroidRegression @iOSRegression
+  @MOB-4173 @MOB-4172 @AndroidRegression @iOSRegression
   Scenario: Verify that substitute is able to view job widget and jobs in job list
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4173" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4172" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
@@ -153,7 +153,7 @@ Feature: Jobulator scenarios
     And Click on the job "AutomationEmp 8328" with absence "next day"
     Then Validate the job detail page "next day"
 
-  @MOB-6028 @AndroidRegression @MOB-9079
+  @MOB-6028 @AndroidRegression @MOB-9079 @iOSRegression
   Scenario: Substitute can accept multiday absence
 	When Create multiday absence for employee "APILoginID" with user "AutomationEmployeeMOB-9079" workerid "APIWorkerID_MOB-9079" for "upcoming day" with "APISchoolID" "APIReasonID" days "1" "2" and delete the existing ones
     When The user waits and launches the app
@@ -170,7 +170,7 @@ Feature: Jobulator scenarios
     When Clicked on Okay
     Then Verify the job event details for "upcoming day" "1" "2"
 
-  @MOB-5593 @AndroidRegression
+  @MOB-5593 @AndroidRegression @MOB-9169 @iOSRegression
   Scenario: Accept job in one org substitute and verify in scheduled jobs of other org substitute
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-5593" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
@@ -193,7 +193,7 @@ Feature: Jobulator scenarios
     Then Verify the created jobs is present in Scheduled jobs
 
   #This Scenario may Fail for iOS as there is Caching Known Issue deu to which data not reflecting quicky.
-  @MOB-8750 @iOSRegression
+  @MOB-8750 @iOSRegression @MOB-9143 @AndroidRegression
   Scenario: Verify substitute can Accept job and check in next schedule widget
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-8751" for "current day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
