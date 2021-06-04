@@ -170,7 +170,7 @@ Feature: Jobulator scenarios
     When Clicked on Okay
     Then Verify the job event details for "upcoming day" "1" "2"
 
-  @MOB-5593 @AndroidRegression
+  @MOB-5593 @AndroidRegression @MOB-9169 @iOSRegression
   Scenario: Accept job in one org substitute and verify in scheduled jobs of other org substitute
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-5593" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When The user waits and launches the app
