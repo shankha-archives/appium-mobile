@@ -14,15 +14,23 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		m4B512Be86JRHzeCp7S3VL/6zYs=
+		idbLgZAq4vEcYWuqJJ974VME2ZY=
 		</data>
 		<key>Base.lproj/CheckAbsences.intentdefinition</key>
 		<data>
-		PfG7hNt0w4spkDHO9K9EC5KWjfI=
+		CqyA2Yyp/t8Bb+vm64Iwx+5X+7E=
+		</data>
+		<key>Base.lproj/JobSortingOptionsCell.nib</key>
+		<data>
+		ZSNZpW7BbupeURBYwNVpS69i+Og=
+		</data>
+		<key>Base.lproj/JobsSortByView.nib</key>
+		<data>
+		yhoDatpz/5Q9ZswaicYKze1htdE=
 		</data>
 		<key>Base.lproj/Main.storyboardc/9h4-6R-N4u-view-qB7-ZZ-kCS.nib</key>
 		<data>
-		EsIGqBM+seqjxSE8UGQbpz26rs4=
+		m/w4/9EjqD4PI1gmAbPTncBwSRk=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
@@ -30,7 +38,7 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-9h4-6R-N4u.nib</key>
 		<data>
-		73dU4FYVwNNYXpIcX+7aUpXstSA=
+		wLQT5hNIYmrO9k1U5muLUmRfA0g=
 		</data>
 		<key>Font Awesome 5 Brands-Regular-400.otf</key>
 		<data>
@@ -52,6 +60,14 @@
 		<data>
 		GyLxf9w4Bw3lDm0as6Mtpxqi2Bk=
 		</data>
+		<key>Frameworks/libswiftCloudKit.dylib</key>
+		<data>
+		zWV7GuvCkyAQ4+njAqti2TCFB1Q=
+		</data>
+		<key>Frameworks/libswiftContacts.dylib</key>
+		<data>
+		PjApZAlQATEApg9BXVvEOL2bBX8=
+		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
 		rrAp64iPhUL40XQR7JlGMDIZaMA=
@@ -72,6 +88,10 @@
 		<data>
 		dccNAYDUBxOzns3c+W4XRSmf1Ps=
 		</data>
+		<key>Frameworks/libswiftCoreLocation.dylib</key>
+		<data>
+		GMi1JxCYZe10XWexHCK2KQ5T2Lo=
+		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
 		XJGVexKAsC220QzBQHwL6VS/whc=
@@ -84,9 +104,21 @@
 		<data>
 		WclOTQyDfPDOGEjZboBz+yfxGVQ=
 		</data>
+		<key>Frameworks/libswiftGLKit.dylib</key>
+		<data>
+		VUB59UJHyJahGwF2bUHv82TwR1E=
+		</data>
+		<key>Frameworks/libswiftIntents.dylib</key>
+		<data>
+		7RqrnXQ9Cduc93e7QO3LDJfA/n8=
+		</data>
 		<key>Frameworks/libswiftMetal.dylib</key>
 		<data>
 		q6qpoqLxtRrru4zloX0b0xHIJVw=
+		</data>
+		<key>Frameworks/libswiftModelIO.dylib</key>
+		<data>
+		G+090t+MKu3CUOur1WjaEClGHbA=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
@@ -96,6 +128,10 @@
 		<data>
 		OzOL7prTxnOJwhTRps72jdhagI4=
 		</data>
+		<key>Frameworks/libswiftSpriteKit.dylib</key>
+		<data>
+		kyUyi846M+DXRgsWbNEE5eFFXBo=
+		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
 		G10/WJel9vPNJjANFC1WEM1Jno0=
@@ -104,17 +140,21 @@
 		<data>
 		oMpvzHAVfevcqm0jDkhUpqLzhXg=
 		</data>
+		<key>Frameworks/libswiftsimd.dylib</key>
+		<data>
+		WoLHcJyyeGsSyBZmaAdBuP9inFQ=
+		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
 		NE6yyuBG+XNmposLm9PXPHDzavA=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Gu4JGxn066Tqa0j9G3V6XpgvvhA=
+		4CmMgEIxZCtAU/AzM7SqOQL1Eeo=
 		</data>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		doEjn7BvNaVymYfz+jJ0IO5loPw=
+		xLpJGRR5hOXqpVzSQIPgjGfBMvM=
 		</data>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -122,7 +162,7 @@
 		</data>
 		<key>LaunchScreen.storyboardc/LoadingViewController.nib</key>
 		<data>
-		hGQqIsOCnqqPcqLGtxLDsFR/hEw=
+		LylVhwb5rGnSuDgQJv8O5Tyw3/o=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -130,13 +170,13 @@
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Assets.car</key>
 		<data>
-		H6ngN7xISG0UX30wkwWyqB9PeGY=
+		PvPB6WnyN+3GJyNZDOGl8t6NeYc=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pwJ4r79MPR1UGZJIlnCQr6/YB6U=
+			gtoM5QRnTFAAOM23YiCvF251Sl0=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -147,15 +187,15 @@
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Frontline Mobile Intents</key>
 		<data>
-		6L9eHWNqk6628chILa+eBmnDVyo=
+		6Oss1BexMK/cCR1DuzxJruTXZoQ=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Info.plist</key>
 		<data>
-		BzrFuYVXbEUaQ99alFDfbgcQ0hY=
+		R63uziX5ui1d0Hbc6piW4yaTzyk=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/_CodeSignature/CodeResources</key>
 		<data>
-		FTe4ORtqRjDwMceu00DreFPFz3Q=
+		9xvJUreN8Yr27etzCge6f1W4IGc=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/en.lproj/CheckAbsences.strings</key>
 		<dict>
@@ -170,7 +210,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HlWGsq+9VxfY7Ee2zzgaPVnjzj0=
+			xm5pSst/klhauPoN0udK5KfKLOo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -188,20 +228,20 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tzO9gXWPhOwPn9PDOmRMeTkakM0=
+			DJ72J/v3ZGrWKf9VApbpiYsafmg=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Assets.car</key>
 		<data>
-		8F7C4WjSH6sNWyGEjBx2pCrNzOQ=
+		PvPB6WnyN+3GJyNZDOGl8t6NeYc=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gkOAgm4lUqxFdpLfh1DNuRYV4kc=
+			sCNPS/79l9zRyA+OiIduTdyGxyo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -219,7 +259,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			m2/62oz1nZnwnCxVIP8p2cPGyt4=
+			fpf31GuZDyCGKQJZ3IlUztShgzo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -228,7 +268,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cNu8ip/uUT0Os+qnwZWHdIzA7Qo=
+			SSUBKfJXufnF7h14xpE7dboWmR8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -239,15 +279,15 @@
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Frontline Mobile IntentsUI</key>
 		<data>
-		kNmZeCeSxrH43GoWniXvX/D0cXw=
+		WFTyzJRuXKZB7InEJlzO8jKhfsA=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Info.plist</key>
 		<data>
-		hPcRAqoeGAI772kcCyRdpW3mUCk=
+		RMoo4lhveDegQFCS2xHqZ/1JNbY=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/_CodeSignature/CodeResources</key>
 		<data>
-		MikD/KxSBUiv2fzqhh5UpfvOrY0=
+		XK2sV5LhNUoowsNjFSCAYY9b3XM=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/en.lproj/CheckAbsences.strings</key>
 		<dict>
@@ -262,7 +302,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HlWGsq+9VxfY7Ee2zzgaPVnjzj0=
+			xm5pSst/klhauPoN0udK5KfKLOo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -280,11 +320,39 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tzO9gXWPhOwPn9PDOmRMeTkakM0=
+			DJ72J/v3ZGrWKf9VApbpiYsafmg=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>SubscriptionDetailTableViewCell.nib</key>
+		<data>
+		qGMIauYnd4IPH/B3XulGskPI8/E=
+		</data>
+		<key>SubscriptionDetailsViewController.nib</key>
+		<data>
+		ZfkRkg9aJUspddWuzrQXYZrT3VY=
+		</data>
+		<key>SubscriptionHeaderTableViewCell.nib</key>
+		<data>
+		H9QDaBNgEwuAIR6E+jUu3RjZzT0=
+		</data>
+		<key>SubscriptionPlanCollectionViewCell.nib/objects-12.3+.nib</key>
+		<data>
+		ZR3oVL0xNAyGMhYO5xt5vdtzAuY=
+		</data>
+		<key>SubscriptionPlanCollectionViewCell.nib/runtime.nib</key>
+		<data>
+		w0Ehgdi8hp1ApqSQC050NwIoxSE=
+		</data>
+		<key>SubscriptionPurchaseViewController.nib/objects-14.0+.nib</key>
+		<data>
+		pyg9v6OScSDb6IvgMyH5Dv5MHPQ=
+		</data>
+		<key>SubscriptionPurchaseViewController.nib/runtime.nib</key>
+		<data>
+		oLEAtSpfstqulZarjzciL4kcl4k=
+		</data>
 		<key>Timesheets.mom</key>
 		<data>
 		Zp+jAlfbdlnTUL8iJcbktDPh1nc=
@@ -298,11 +366,29 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>en.lproj/JobSortingOptionsCell.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xbm/exwDoVK1yhM7rG2PhKNiefM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>en.lproj/JobsSortByView.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cR08nd5G7idFvfWJOHpNneWRb9E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HlWGsq+9VxfY7Ee2zzgaPVnjzj0=
+			xm5pSst/klhauPoN0udK5KfKLOo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -316,11 +402,29 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>es.lproj/JobSortingOptionsCell.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xbm/exwDoVK1yhM7rG2PhKNiefM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>es.lproj/JobsSortByView.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			cR08nd5G7idFvfWJOHpNneWRb9E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>es.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tzO9gXWPhOwPn9PDOmRMeTkakM0=
+			DJ72J/v3ZGrWKf9VApbpiYsafmg=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -355,21 +459,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zbpdGIvRviTYut2wma8+7e3R8QFH4XK15XE1a98iOzI=
+			4k0Ds9rNW2Ti60NDhliQnMqEVz+N4jz9CS/8K4AQsHc=
 			</data>
 		</dict>
 		<key>Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0qvmNHkuItonT1+lKx4cqfCruijr/PxIkyMOtpcscvA=
+			wh7pGb7c26WeaP3DFOICfv5R3z31S35Q16ljT+nrwXw=
+			</data>
+		</dict>
+		<key>Base.lproj/JobSortingOptionsCell.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			doh6N/4TUqRknsu8PZqRs9URkLwpu6hl/9mj6h14Cls=
+			</data>
+		</dict>
+		<key>Base.lproj/JobsSortByView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			sa2y9FuTOr1aoL/bM0yse/0BFhiJY6qtQ6BMTglmPAI=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/9h4-6R-N4u-view-qB7-ZZ-kCS.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			v8dlRE6hsfpllmJ+JPJnMKITnBPhWLqKpOGghY/yVhg=
+			DrOlBaH8LGKBPD3kuD/RrRwVAzaIv5PC0s9Q+5MyDMk=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
@@ -383,7 +501,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			b9rvPJtp9Bn87EYznPnHxEOgOTKee/Rgx2HWr15jCQI=
+			RCC7+2hXP+JsTjagbPFlALLIpi7rZRmj/DBrlHLIJmA=
 			</data>
 		</dict>
 		<key>Font Awesome 5 Brands-Regular-400.otf</key>
@@ -421,6 +539,20 @@
 			7NcvMZEKjuJyb9F71Fm+JvIwd58/PtX2nr+CnksS52g=
 			</data>
 		</dict>
+		<key>Frameworks/libswiftCloudKit.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			RaD6FZWLKUYVVx/4Cm/zJnkvTkVPYiYTmGh+IoDv6Tk=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftContacts.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BfBUuIGRZi6DYeeAlVecFLMlV5udeFgxV36ybBhvg1s=
+			</data>
+		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<dict>
 			<key>hash2</key>
@@ -456,6 +588,13 @@
 			yd4z45rFP5ibtGizpvCVNJ3AoMhTSP9AnIyUKk/JVGc=
 			</data>
 		</dict>
+		<key>Frameworks/libswiftCoreLocation.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			I430RKmMGhsrGAnn25OPS3EcLck+xsi9NrCX2HT5gTw=
+			</data>
+		</dict>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<dict>
 			<key>hash2</key>
@@ -477,11 +616,32 @@
 			6SyHvvl3dAOzLH6bFEeF41TPcUHS3iYOdFK7I0FEU6M=
 			</data>
 		</dict>
+		<key>Frameworks/libswiftGLKit.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dkanPOO8gpRS7W8ttK5M1182HeaZhiNPoEjx52cshIU=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftIntents.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hM8LoGtCdL/kg9qWEvA2Xmoj2rXBWrIp2RRUHrwJIJU=
+			</data>
+		</dict>
 		<key>Frameworks/libswiftMetal.dylib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
 			Y51e3klbWCwDOKopGL7Z5cieD4LriiLn9IJFA0FvLTs=
+			</data>
+		</dict>
+		<key>Frameworks/libswiftModelIO.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AWwybZgKdXqUSDx1I/0tbFjii1j6cT9oRQV1wm4LINw=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
@@ -498,6 +658,13 @@
 			zB0hL5hCB758QPCoQtMOfmCnOq42iXWoTwQdcBU2G1U=
 			</data>
 		</dict>
+		<key>Frameworks/libswiftSpriteKit.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			n2QrPTUlNJSiHWYjZwD2/zNB4VjAo5ywFGdb4Fd5sZc=
+			</data>
+		</dict>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<dict>
 			<key>hash2</key>
@@ -512,6 +679,13 @@
 			KnKo8oZ57w7czhNeCWrd3UlEmiHIpnQ5qjzRz88lPuE=
 			</data>
 		</dict>
+		<key>Frameworks/libswiftsimd.dylib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			+g4HtACkRnZQNjsul0cYKfn4bi+BCKZLd8UwqYiwsv8=
+			</data>
+		</dict>
 		<key>GoogleService-Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -523,7 +697,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h32lCw2d+eA1JZf/99ggFFfghQdaWIPKOqLbTfmUb+E=
+			rAmDrXrpY5WGbJFEpXabfB+eLQ+sxiyVT9TVEGfk5bc=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
@@ -537,21 +711,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PA0qP/Syi5GjoP5xhlfG6wSUCiQ5CYIzUfuDRU6q4XU=
+			L2h4U4sOVt+HktjYDF7hmwTzIMkaKt5fJStpsRYLG08=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			d4X0iCnZAZhyZJmrabHVBd947OZmYEmrXMwhg60C2mw=
+			N7CewJpf3EbESOQ0CNeHvGIFcHm3fI+R/WVHD4I3Ai4=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cz3kS7bhDTERiLCBTxXSU6ugFybd7qksAouaz9CO3pA=
+			4bgKm9Js9pgHXOKWil6KBViwpQms29iBUExUVeiuI1U=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -567,21 +741,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tNm/YYTbrZ0+YsY3dXo6LiuENFTJviR4H7CKQLVweSY=
+			zFccE5oko+g+6qa+Xl6xVwD/pf8TiElNrKLJOW3ZGbo=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			R1co9GBP5OUEZlyGmFcSa5M6iulVRo5TPojjCfjElOQ=
+			cDvE69kNQKbQMYdd0ZeL9kUAHzT1UqPN42nAiW6Y+fs=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xD55qIAh0l6c2B5QD1WT7iF+lJiIkicr6LLf2Zj6uKU=
+			CmmZRYOP9TPK79cMvKOl6BINQCPAqt26RYKIEeaBM/A=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/en.lproj/CheckAbsences.strings</key>
@@ -597,7 +771,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0wWcpgWYjAc2Xaji7zgpjkR+qyvG4lDKiGM/U1gEZnk=
+			9UKWA9q2mjIz9ZSZ8z5J9lDBjbeEdohGSZFURV+Gmuo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -615,7 +789,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fEdnUpvzKUlEIdDLkQJnxAJZ1iEsXTEdqtd7Bu4iBuU=
+			h8yt7iRz+vD+jD8pqvB335KipV9HhDkcOzRlJ7QkC2k=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -624,14 +798,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3FUxM7MuKJXIp32eMtDobbtWPC+EB81akF3rgt+SY4s=
+			N7CewJpf3EbESOQ0CNeHvGIFcHm3fI+R/WVHD4I3Ai4=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CFd+/OC5gMvVyiQ4M4v1qlU2EgwfbopXCEmWSDBgD3E=
+			e7wutgJGWvCvGOcL501dFodA6L00MI68gsO4I4028dU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -649,7 +823,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			epiSjobBzKlUDBZfjFru9FfeG6nwp6gsCXUxY63EeYQ=
+			5jXdBG2swY0vSgZadoHkzk2UD27tT/yM+oezjIsqBog=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -658,7 +832,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			MmfsLwotKmENzAvsEDUI+yBrJXd01lsHNaZhC6XHhzA=
+			DrNIYNv2aziw8CSXCA0CBb6TiYl3lUwo1JpDPKD3euM=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -674,21 +848,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0QUHj1HaLhgl3CSa8qdKSBltt75zzRw9VVzrqXxJPbQ=
+			rA+Fmq69OAJPZ2fsXoscuHeOUHXmGziXzzHiPsqWqJE=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VJ0O6syrundZj+TFGv8gCK767cy42S/ReDRlRAB8h9M=
+			x5Noy63EmIdAdt3G5u+F7Xh7m97Zb8wc6PyzXmRsezM=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			7M/HV34mMPuv+QDOnZNa1bpqUm3jt3Qfi4eFcssY3S8=
+			EAJDN/dP/e54Pl6jqJ7qXxuWTdWGJ9pwOiz+KDV+nWw=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/en.lproj/CheckAbsences.strings</key>
@@ -704,7 +878,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0wWcpgWYjAc2Xaji7zgpjkR+qyvG4lDKiGM/U1gEZnk=
+			9UKWA9q2mjIz9ZSZ8z5J9lDBjbeEdohGSZFURV+Gmuo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -722,10 +896,59 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			fEdnUpvzKUlEIdDLkQJnxAJZ1iEsXTEdqtd7Bu4iBuU=
+			h8yt7iRz+vD+jD8pqvB335KipV9HhDkcOzRlJ7QkC2k=
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>SubscriptionDetailTableViewCell.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			h/gIbzOhVqrellPZxsKBzG/bDJRanuGJcfJlMc5TsMU=
+			</data>
+		</dict>
+		<key>SubscriptionDetailsViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0hvC2n8RZNpdixtFOLK/zsW0v++MbU04hBtpOi7jurQ=
+			</data>
+		</dict>
+		<key>SubscriptionHeaderTableViewCell.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ONKIcsQcp0BdLsbwQJbmok21GW879xtgdc9dZkN7q8o=
+			</data>
+		</dict>
+		<key>SubscriptionPlanCollectionViewCell.nib/objects-12.3+.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			VPH6lpoPX5ma0SncUsIivv6uejkQWwMHRjN7GjDOdmQ=
+			</data>
+		</dict>
+		<key>SubscriptionPlanCollectionViewCell.nib/runtime.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			E3VYdwi8RUrNAAL/ZRhO0AUuCq7RZkA+XHk+BEBWHfU=
+			</data>
+		</dict>
+		<key>SubscriptionPurchaseViewController.nib/objects-14.0+.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			QaqykmfBgHWiAMOQavw+BgLEZOu6Fo3d2J58/ma48kE=
+			</data>
+		</dict>
+		<key>SubscriptionPurchaseViewController.nib/runtime.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6+TdhG36uVGyP1a6UDqcZObnlcvpYyPuGbWjbOdN5Cw=
+			</data>
 		</dict>
 		<key>Timesheets.mom</key>
 		<dict>
@@ -743,11 +966,29 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>en.lproj/JobSortingOptionsCell.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oZ0ewQQAbOpM9x5c+UqIKIvr9HEh+DbnEdX0QESPAqU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>en.lproj/JobsSortByView.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OgxW4YZLyWyD87m/Shx3io0djSG4VM30AoRCiXSNZU8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0wWcpgWYjAc2Xaji7zgpjkR+qyvG4lDKiGM/U1gEZnk=
+			9UKWA9q2mjIz9ZSZ8z5J9lDBjbeEdohGSZFURV+Gmuo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -761,11 +1002,29 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>es.lproj/JobSortingOptionsCell.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			oZ0ewQQAbOpM9x5c+UqIKIvr9HEh+DbnEdX0QESPAqU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>es.lproj/JobsSortByView.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			OgxW4YZLyWyD87m/Shx3io0djSG4VM30AoRCiXSNZU8=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
 		<key>es.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fEdnUpvzKUlEIdDLkQJnxAJZ1iEsXTEdqtd7Bu4iBuU=
+			h8yt7iRz+vD+jD8pqvB335KipV9HhDkcOzRlJ7QkC2k=
 			</data>
 			<key>optional</key>
 			<true/>

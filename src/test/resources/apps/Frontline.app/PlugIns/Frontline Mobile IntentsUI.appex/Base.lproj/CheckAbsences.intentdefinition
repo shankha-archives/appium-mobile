@@ -5,15 +5,15 @@
 	<key>INEnums</key>
 	<array/>
 	<key>INIntentDefinitionModelVersion</key>
-	<string>1.1</string>
+	<string>1.0</string>
 	<key>INIntentDefinitionNamespace</key>
-	<string>kqpqdQ</string>
+	<string>rpZP60</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>19G73</string>
+	<string>20F71</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>11E708</string>
+	<string>12D4e</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>11.6</string>
+	<string>12.4</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -54,6 +54,8 @@
 					<dict>
 						<key>INIntentParameterMetadataCapitalization</key>
 						<string>Sentences</string>
+						<key>INIntentParameterMetadataDefaultValueID</key>
+						<string>Ps95rr</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>schoolLocation</string>
