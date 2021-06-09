@@ -1,6 +1,7 @@
 package mobile.frontline.stepdef;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import mobile.frontline.pages.SubstituteAppCalendarScreen;
 
 public class SubstituteAppCalendarScreenStepDef {
