@@ -37,4 +37,8 @@ public class SettingScreenStepDef {
             Assert.assertEquals("1", settingScreen.getDarkModeBtn());
     }
 
+    @When("Click on subscription detail button")
+    public void clickOnSubscriptionDetailButton() throws InterruptedException {
+        settingScreen.clickSubscriptionDetailBtn();
+    }
 }
