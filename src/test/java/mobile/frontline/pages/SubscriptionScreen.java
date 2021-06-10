@@ -23,22 +23,22 @@ public class SubscriptionScreen extends BasePage{
     public MobileElement subscriptionValidity;
 
     public String getSubscriptionHeadLine() throws Exception {
-        isElementDisplayed(subscriptionHeadLine, "Waiting for dask mode btn to be visible");
-        return getElementText(subscriptionHeadLine, "Extracting text msg of dark mode btn");
+        isElementDisplayed(subscriptionHeadLine, "Waiting for HeadLine to be visible");
+        return getElementText(subscriptionHeadLine, "Extracting text msg of HeadLine");
     }
 
     public String getsubscriptionPlan() throws Exception {
-        isElementDisplayed(subscriptionPlan, "Waiting for dask mode btn to be visible");
-        return getElementText(subscriptionPlan, "Extracting text msg of dark mode btn");
+        isElementDisplayed(subscriptionPlan, "Waiting for Plan to be visible");
+        return getElementText(subscriptionPlan, "Extracting text msg of Plan");
     }
 
     public String getSubscriptionStatus() throws Exception {
-        isElementDisplayed(subscriptionStatus, "Waiting for dask mode btn to be visible");
-        return getElementText(subscriptionStatus, "Extracting text msg of dark mode btn");
+        isElementDisplayed(subscriptionStatus, "Waiting for Status to be visible");
+        return getElementText(subscriptionStatus, "Extracting text msg of Status");
     }
 
     public String getSubscriptionValidity() throws Exception {
-        isElementDisplayed(subscriptionValidity, "Waiting for dask mode btn to be visible");
-        return getElementText(subscriptionValidity, "Extracting text msg of dark mode btn");
+        isElementDisplayed(subscriptionValidity, "Waiting for validy to be visible");
+        return getElementText(subscriptionValidity, "Extracting text msg of validy");
     }
 }
