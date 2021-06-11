@@ -7,7 +7,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class SubscriptionScreen extends BasePage{
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/subscription_header_line1")
-  //  @iOSXCUITFindBy(accessibility = "darkMode")
+    @iOSXCUITFindBy(accessibility = "SubscriptionHeaderView_Title_Label")
     public MobileElement subscriptionHeadLine;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_plan_value")
@@ -15,11 +15,11 @@ public class SubscriptionScreen extends BasePage{
     public MobileElement subscriptionPlan;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_status_value")
-    //  @iOSXCUITFindBy(accessibility = "darkMode")
+    @iOSXCUITFindBy(accessibility = "SubscriptionDetailTableViewCell_Description_Label_Active")
     public MobileElement subscriptionStatus;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
-    //  @iOSXCUITFindBy(accessibility = "darkMode")
+    @iOSXCUITFindBy(accessibility = "SubscriptionHeaderView_Validity_Label")
     public MobileElement subscriptionValidity;
 
     public String getSubscriptionHeadLine() throws Exception {
