@@ -10,11 +10,18 @@ public class SubscriptionScreenStepDef {
     SubscriptionScreen subscriptionScreen = new SubscriptionScreen();
     BasePage basePage = new BasePage();
 
-    @Then("Validate the Subscription details Screen")
+    @Then("Validate the active Subscription details Screen")
     public void validateTheSubscriptionDetailsScreen() throws Exception {
         Assert.assertEquals("The subscription is inactive",subscriptionScreen.getSubscriptionHeadLine(),"You're the Best!");
         Assert.assertEquals("The subscription is active with other plan",subscriptionScreen.getsubscriptionPlan(),"Yearly");
         Assert.assertEquals("The subscription is expired",subscriptionScreen.getSubscriptionStatus(),"Active");
         Assert.assertEquals("The subscription is expiry date is different",subscriptionScreen.getSubscriptionValidity(), basePage.changeDateFormat(basePage.workingDay("current day","MM/dd/yyyy",0), "MM/dd/yyyy", "MMMM dd, YYYY") );
+    }
+
+    @Then("Validate the expired Subscription details Screen")
+    public void validateTheExpiredSubscriptionDetailsScreen() throws Exception {
+        Assert.assertEquals("The subscription is active",subscriptionScreen.getSubscriptionHeadLine(),"Oh No!");
+        Assert.assertEquals("The subscription is inactive with other plan",subscriptionScreen.getsubscriptionPlan(),"Yearly");
+        Assert.assertEquals("The subscription is Active",subscriptionScreen.getSubscriptionStatus(),"Expired");
     }
 }

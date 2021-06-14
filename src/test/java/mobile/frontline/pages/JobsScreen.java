@@ -28,6 +28,26 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Available")
     public MobileElement available;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Job']")
+   // @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement jobSortBtn;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/sort_by_header")
+    // @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement sortByPopUp;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_date_selection_text")
+    // @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement jobDateFilter;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_check")
+    // @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement jobDateSelection;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_date_selection_text")
+    // @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement postDateFilter;
+
     public WebElement scrolledToElement;
 
     public JobsScreen() {
@@ -123,5 +143,30 @@ public class JobsScreen extends BasePage {
 
     public void clickOnScheduledJobPageHeader() throws Throwable {
         click(scheduledJobHeader, "Clicking on Scheduled job page header");
+    }
+
+    public void clickJobSortBtn(){
+        click(jobSortBtn, "Clicking on Job sort filter btn");
+    }
+
+    public boolean waitForJobDateFilter() {
+        return isElementDisplayed(jobDateFilter, "Waiting for job Date Filter to be visible ");
+    }
+
+    public boolean waitForSortByPopUp() {
+        return isElementDisplayed(sortByPopUp, "Waiting for SortBy Pop Up to be visible ");
+    }
+
+    public boolean waitForJobDateSelection() {
+        return isElementDisplayed(jobDateSelection, "Waiting for Job Date Selection to be visible ");
+    }
+
+    public String getPostDateDetails() throws Exception {
+        isElementDisplayed(postDateFilter, "Waiting for Post Date Details to be visible");
+        return getElementText(postDateFilter, "Extracting text details of post date filter");
+    }
+
+    public void clickPostJobFilterOption(){
+        click(postDateFilter, "Clicking on post Date Filter filter btn");
     }
 }
