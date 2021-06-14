@@ -2,6 +2,7 @@ package mobile.frontline.stepdef;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.JobsScreen;
 import org.junit.Assert;
@@ -68,5 +69,23 @@ public class JobScreenStepDef {
     @And("Verify the job duration {string} {string}")
     public void verifyTheJobDuration(String employeeName, String duration) throws Exception {
         Assert.assertTrue("Job is not available in joblist",jobsScreen.checkJobDurationisPresent(duration, employeeName));
+    }
+
+    @And("Click on sort filter btn")
+    public void clickOnSortFilterBtn() {
+        jobsScreen.clickJobSortBtn();
+    }
+
+    @Then("Validate the sort by pop up")
+    public void validateTheSortByPopUp() throws Exception {
+        Assert.assertTrue("Job is not available in joblist",jobsScreen.waitForSortByPopUp());
+        Assert.assertTrue("Job is not available in joblist",jobsScreen.waitForJobDateFilter());
+        Assert.assertTrue("Job is not available in joblist",jobsScreen.waitForJobDateSelection());
+        Assert.assertEquals("The subscription is inactive with other plan",jobsScreen.getPostDateDetails(),"Post Date (Premium)");
+    }
+
+    @When("Click on post job filter")
+    public void clickOnPostJobFilter() {
+        jobsScreen.clickPostJobFilterOption();
     }
 }
