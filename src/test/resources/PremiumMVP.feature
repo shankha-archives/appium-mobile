@@ -1,7 +1,7 @@
 @premiumMvp
 Feature: Premium MVP scenarios
 
-  @MOB-8144
+  @MOB-8144 @MOB-8184
   Scenario: Verify subscription detail page after purchase
     When the user launches the app
     Then The user click on Get Started Button

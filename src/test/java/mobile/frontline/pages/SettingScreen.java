@@ -15,7 +15,7 @@ public class SettingScreen extends BasePage {
     public MobileElement logoutBtn;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/subscription_details")
-    //  @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Log Out']")
+    @iOSXCUITFindBy(accessibility = "Subscription Details")
     public MobileElement subscriptionDetailBtn;
 
     public SettingScreen() {
