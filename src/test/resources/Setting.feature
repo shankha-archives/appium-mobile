@@ -43,10 +43,10 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 	When the user clicks on Menu tab
 	When Click on calendar in menu link
 	And verify calendar the search result "searchText"
-	Then Choose the required month "next day"
-	And Click on the event day "next day"
+	Then Choose the required month "upcoming day"
+	And Click on the event day "upcoming day"
 	And Tap on substitutes job event
-	Then Validate the job detail page "next day"
+	Then Validate the job detail page "upcoming day"
 
 @Setting @MOB-4808  @MOB-4807 @AndroidRegression @iOSRegression
 Scenario: Verify that a substitute can view next scheduled Job widget

@@ -52,8 +52,8 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "JobDetailDayView_JobDate_Label")
     public MobileElement jobDetailDate;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='AutomationEmp 8328']")
-    @iOSXCUITFindBy(xpath="//XCUIElementTypeStaticText[@value='AutomationEmp 8328']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Create Job4']")
+    @iOSXCUITFindBy(xpath="//XCUIElementTypeStaticText[@value='Create Job4']")
     public MobileElement jobDetailEmployee;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='GL_Performance_4CF65528C-ACCA-4ED7-9E19-D8C553C344']")

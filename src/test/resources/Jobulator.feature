@@ -10,7 +10,7 @@ Feature: Jobulator scenarios
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    And Click on the job "CreateJob"
+    And Click on the job "Create Job"
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
@@ -25,7 +25,7 @@ Feature: Jobulator scenarios
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    And Click on the job "CreateJob2"
+    And Click on the job "Create Job2"
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
@@ -41,7 +41,7 @@ Feature: Jobulator scenarios
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    And Click on the job "CreateJob3"
+    And Click on the job "Create Job3"
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay
@@ -132,7 +132,7 @@ Feature: Jobulator scenarios
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
     And View job list
-    And Click on the job "6680 AutomationE_"
+    And Click on the job "AutomationE 6680"
     And accept the job
     Then the Success Message overlay is displayed
     When Clicked on Okay

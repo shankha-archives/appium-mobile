@@ -84,9 +84,9 @@ public class JobDetailScreenStepDef {
         Assert.assertTrue("Correct employee name is not displayed", jobDetailScreen.waitForEmployeeName());
         Assert.assertTrue("Correct school name is not displayed", jobDetailScreen.waitForSchoolName());
         if (new GlobalParams().getPlatformName().contains("Android"))
-            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(basePage.nextWorkingDay(absenceDay, "MMMM dd, yyyy")));
+            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(basePage.workingDay(absenceDay, "MMMM dd, yyyy",1)));
         else
-            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(basePage.nextWorkingDay(absenceDay, "MMMM d, yyyy")));
+            Assert.assertTrue("Job date is not displayed", jobDetailScreen.getJobDate().contains(basePage.workingDay(absenceDay, "MMMM d, yyyy",1)));
     }
 
     @And("Reject the job")
