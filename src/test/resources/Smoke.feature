@@ -41,7 +41,7 @@ Feature: Smoke scenarios
 
   @MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke @AndroidRegression @iOSRegression
   Scenario: Entered text should be searchable when user perform search operation
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "next day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationEmployeeMOB-4233" and password and click on Sign In button
@@ -296,7 +296,7 @@ Feature: Smoke scenarios
 
   @AndroidSmoke @iOSSmoke @MOB-4251 @MOB-4252 @MOB-4253 @MOB-4254 @AndroidRegression @iOSRegression
   Scenario: Verify admin assigns substitute and also approve absence
-    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "current day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When the user launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationAdminMOB-4251" and password and click on Sign In button
