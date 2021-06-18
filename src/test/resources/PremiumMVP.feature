@@ -23,3 +23,15 @@ Feature: Premium MVP scenarios
     Then Validate the sort by pop up
     When Click on post job filter
     Then Validate the expired Subscription details Screen
+
+  #This iOS story may Fail on Simulator.
+  @MOB-8029
+  Scenario: Verify Free Trail Page for new substitute
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationSubsMOB-8029" and password and click on Sign In button
+    Then The substitute navigates to dashboard page
+    And Click on the Available Jobs
+    And Click on Job Filter
+    And Click on Post Date Premium button
+    Then Validate the Subscription Free Trail Screen

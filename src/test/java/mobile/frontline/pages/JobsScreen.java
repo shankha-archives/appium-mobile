@@ -48,6 +48,14 @@ public class JobsScreen extends BasePage {
     // @iOSXCUITFindBy(accessibility = "Available")
     public MobileElement postDateFilter;
 
+    //@AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
+    @iOSXCUITFindBy(accessibility = "JobFilter_Text")
+    public MobileElement jobFilter;
+
+    //@AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
+    @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
+    public MobileElement postDatePremium;
+
     public WebElement scrolledToElement;
 
     public JobsScreen() {
@@ -168,5 +176,12 @@ public class JobsScreen extends BasePage {
 
     public void clickPostJobFilterOption(){
         click(postDateFilter, "Clicking on post Date Filter filter btn");
+    }
+
+    public void clickOnJobFilterIcon() throws Throwable {
+        click(jobFilter, "Clicking on job Filter icon");
+    }
+    public void clickOnPostDatePremiumIcon() {
+        click(postDatePremium , "Clicking on Post Date Premium icon");
     }
 }
