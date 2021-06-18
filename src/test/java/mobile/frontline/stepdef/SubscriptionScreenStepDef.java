@@ -24,4 +24,11 @@ public class SubscriptionScreenStepDef {
         Assert.assertEquals("The subscription is inactive with other plan",subscriptionScreen.getsubscriptionPlan(),"Yearly");
         Assert.assertEquals("The subscription is Active",subscriptionScreen.getSubscriptionStatus(),"Expired");
     }
+
+    @Then("Validate the Subscription Free Trail Screen")
+    public void validateTheSubscriptionFreeTrailScreen() {
+        Assert.assertEquals("The Free Trail subscription is Availed",subscriptionScreen.getFreeTrial(),"14 days Free Trial");
+        Assert.assertEquals("The Free Trail subscription is no more Active",subscriptionScreen.getFreeTrailBodyStatus(),"Supercharge your job search.");
+        Assert.assertEquals("The Free Trail subscription is Ended",subscriptionScreen.getFreeTrailEnd(),"Billed After 14 days");
+    }
 }

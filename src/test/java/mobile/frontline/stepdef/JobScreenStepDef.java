@@ -88,4 +88,13 @@ public class JobScreenStepDef {
     public void clickOnPostJobFilter() {
         jobsScreen.clickPostJobFilterOption();
     }
+
+    @And("Click on Job Filter")
+    public void clickOnJobFilter() throws Throwable {
+        jobsScreen.clickOnJobFilterIcon();
+    }
+    @And("Click on Post Date Premium button")
+    public void clickOnPostDatePremium() {
+        jobsScreen.clickOnPostDatePremiumIcon();
+    }
 }

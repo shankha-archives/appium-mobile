@@ -11,7 +11,7 @@ public class SubscriptionScreen extends BasePage{
     public MobileElement subscriptionHeadLine;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_plan_value")
-    //  @iOSXCUITFindBy(accessibility = "darkMode")
+    //@iOSXCUITFindBy(accessibility = "darkMode")
     public MobileElement subscriptionPlan;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_status_value")
@@ -21,6 +21,18 @@ public class SubscriptionScreen extends BasePage{
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
     @iOSXCUITFindBy(accessibility = "SubscriptionHeaderView_Validity_Label")
     public MobileElement subscriptionValidity;
+
+    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
+    @iOSXCUITFindBy(accessibility = "SubscriptionPurchase_trailDaysLabel")
+    public MobileElement freeTrailValidity;
+
+    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
+    @iOSXCUITFindBy(accessibility = "SubscriptionPurchase_BilledDurationHeader.")
+    public MobileElement freeTrailEndBilling;
+
+    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
+    @iOSXCUITFindBy(accessibility = "SubscriptionPurchase_TrailSubstringLabel.")
+    public MobileElement freeTrailBodyMessage;
 
     public String getSubscriptionHeadLine() throws Exception {
         isElementDisplayed(subscriptionHeadLine, "Waiting for HeadLine to be visible");
@@ -40,5 +52,18 @@ public class SubscriptionScreen extends BasePage{
     public String getSubscriptionValidity() throws Exception {
         isElementDisplayed(subscriptionValidity, "Waiting for validy to be visible");
         return getElementText(subscriptionValidity, "Extracting text msg of validy");
+    }
+
+    public String getFreeTrial() {
+        isElementDisplayed(freeTrailValidity, "Waiting for Free Trail validity to be visible");
+        return getElementText(freeTrailValidity, "Extracting text msg of free Trail ");
+    }
+    public String getFreeTrailEnd() {
+        isElementDisplayed(freeTrailEndBilling, "Waiting for Free Trail validity to be visible");
+        return getElementText(freeTrailEndBilling, "Extracting text msg of free Trail End Date");
+    }
+    public String getFreeTrailBodyStatus() {
+        isElementDisplayed(freeTrailBodyMessage, "Waiting for Free Trail validity to be visible");
+        return getElementText(freeTrailBodyMessage, "Extracting text msg of Free Trail body");
     }
 }
