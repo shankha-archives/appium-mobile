@@ -109,7 +109,7 @@ public class JobScreenStepDef {
         Assert.assertEquals("The post job header is not displayed",jobsScreen.getPostJobHeader(),"Most Recently Posted");
     }
 
-    @And("Validate the up\\/down arrows")
+    @And("Validate the up down arrows")
     public void validateTheUpDownArrows() {
         Assert.assertTrue("Job filter up down arrow is not displayed",jobsScreen.waitForUpDownArrow());
     }

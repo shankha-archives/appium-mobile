@@ -41,10 +41,10 @@ Feature: Premium MVP scenarios
     When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-6670" for "upcoming day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
-    And Enter username "AutomationSubsMOB-8091" and password and click on Sign In button
+    And Enter username "AutomationSubsMOB-6670" and password and click on Sign In button
     Then The substitute navigates to dashboard page
     And Click on the Available Jobs
-    And Validate the up/down arrows
+    And Validate the up down arrows
     And Click on sort filter btn
     When Validate the job selected filter
     When Click on post job filter
