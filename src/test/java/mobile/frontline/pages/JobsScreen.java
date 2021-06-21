@@ -29,8 +29,12 @@ public class JobsScreen extends BasePage {
     public MobileElement available;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Job']")
-   // @iOSXCUITFindBy(accessibility = "Available")
+    @iOSXCUITFindBy(accessibility = "JobFilter_Text")
     public MobileElement jobSortBtn;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Post']")
+    @iOSXCUITFindBy(accessibility = "JobFilter_Text")
+    public MobileElement postSortBtn;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/sort_by_header")
     // @iOSXCUITFindBy(accessibility = "Available")
@@ -44,17 +48,21 @@ public class JobsScreen extends BasePage {
     // @iOSXCUITFindBy(accessibility = "Available")
     public MobileElement jobDateSelection;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_date_selection_text")
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_check")
     // @iOSXCUITFindBy(accessibility = "Available")
+    public MobileElement postDateSelection;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_date_selection_text")
+    @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
     public MobileElement postDateFilter;
 
-    //@AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-    @iOSXCUITFindBy(accessibility = "JobFilter_Text")
-    public MobileElement jobFilter;
+    @AndroidFindBy(xpath = "(//android.widget.TextView[@index=0])[5]")
+   // @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
+    public MobileElement upDownArrowBtn;
 
-    //@AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
-    @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
-    public MobileElement postDatePremium;
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_header_text")
+    // @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
+    public MobileElement postJobHeader;
 
     public WebElement scrolledToElement;
 
@@ -157,6 +165,10 @@ public class JobsScreen extends BasePage {
         click(jobSortBtn, "Clicking on Job sort filter btn");
     }
 
+    public void clickPostSortBtn(){
+        click(postSortBtn, "Clicking on Post sort filter btn");
+    }
+
     public boolean waitForJobDateFilter() {
         return isElementDisplayed(jobDateFilter, "Waiting for job Date Filter to be visible ");
     }
@@ -169,6 +181,10 @@ public class JobsScreen extends BasePage {
         return isElementDisplayed(jobDateSelection, "Waiting for Job Date Selection to be visible ");
     }
 
+    public boolean waitForPostDateSelection() {
+        return isElementDisplayed(postDateSelection, "Waiting for Job Date Selection to be visible ");
+    }
+
     public String getPostDateDetails() throws Exception {
         isElementDisplayed(postDateFilter, "Waiting for Post Date Details to be visible");
         return getElementText(postDateFilter, "Extracting text details of post date filter");
@@ -178,10 +194,13 @@ public class JobsScreen extends BasePage {
         click(postDateFilter, "Clicking on post Date Filter filter btn");
     }
 
-    public void clickOnJobFilterIcon() throws Throwable {
-        click(jobFilter, "Clicking on job Filter icon");
+    public boolean waitForUpDownArrow(){
+       return isElementDisplayed(upDownArrowBtn, "Waiting for up down arrow visibility");
     }
-    public void clickOnPostDatePremiumIcon() {
-        click(postDatePremium , "Clicking on Post Date Premium icon");
+
+    public String getPostJobHeader() throws Exception {
+        isElementDisplayed(postJobHeader, "Waiting for Post job header to be visible");
+        return getElementText(postJobHeader, "Extracting text details of post date header filter");
     }
+
 }
