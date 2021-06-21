@@ -89,12 +89,28 @@ public class JobScreenStepDef {
         jobsScreen.clickPostJobFilterOption();
     }
 
-    @And("Click on Job Filter")
-    public void clickOnJobFilter() throws Throwable {
-        jobsScreen.clickOnJobFilterIcon();
+    @When("Validate the job selected filter")
+    public void validateTheJobSelectedFilter() {
+        Assert.assertTrue("Job is not available in joblist",jobsScreen.waitForJobDateSelection());
     }
-    @And("Click on Post Date Premium button")
-    public void clickOnPostDatePremium() {
-        jobsScreen.clickOnPostDatePremiumIcon();
+
+    @When("Validate the post selected filter")
+    public void validateThePostSelectedFilter() {
+        Assert.assertTrue("Job is not available in joblist",jobsScreen.waitForPostDateSelection());
+    }
+
+    @And("Click on post sort filter btn")
+    public void clickOnPostSortFilterBtn() {
+        jobsScreen.clickPostSortBtn();
+    }
+
+    @Then("Verify sort by post header")
+    public void verifySortByPostHeader() throws Exception {
+        Assert.assertEquals("The post job header is not displayed",jobsScreen.getPostJobHeader(),"Most Recently Posted");
+    }
+
+    @And("Validate the up\\/down arrows")
+    public void validateTheUpDownArrows() {
+        Assert.assertTrue("Job filter up down arrow is not displayed",jobsScreen.waitForUpDownArrow());
     }
 }
