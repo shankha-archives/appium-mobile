@@ -25,7 +25,6 @@ public class HomePageScreenStepDef {
     @And("Click on the Available Jobs")
     public void clickOnTheAvailableJobs() throws Exception {
         homescreen.clickJobWidget();
-
     }
 
     @And("Navigate to dashboard")

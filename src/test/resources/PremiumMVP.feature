@@ -25,7 +25,8 @@ Feature: Premium MVP scenarios
     Then Validate the expired Subscription details Screen
 
   #This iOS story may Fail on Simulator.
-  @MOB-8029 @iOS
+  #If the device has previously subscribed any user, then the status of this account will also become active
+  @MOB-8029 @iOS @MOB-8036 @android
   Scenario: Verify Free Trail Page for new substitute
     When the user launches the app
     Then The user click on Get Started Button
