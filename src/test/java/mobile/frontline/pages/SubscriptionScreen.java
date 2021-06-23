@@ -22,15 +22,15 @@ public class SubscriptionScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "SubscriptionHeaderView_Validity_Label")
     public MobileElement subscriptionValidity;
 
-    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/free_trail_text")
     @iOSXCUITFindBy(accessibility = "SubscriptionPurchase_trailDaysLabel")
     public MobileElement freeTrailValidity;
 
-    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/billed_status_message")
     @iOSXCUITFindBy(accessibility = "SubscriptionPurchase_BilledDurationHeader.")
     public MobileElement freeTrailEndBilling;
 
-    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/tv_validity_value")
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/supercharge_job_text")
     @iOSXCUITFindBy(accessibility = "SubscriptionPurchase_TrailSubstringLabel.")
     public MobileElement freeTrailBodyMessage;
 
