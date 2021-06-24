@@ -12,7 +12,7 @@ Feature: Premium MVP scenarios
     When Click on subscription detail button
     Then Validate the active Subscription details Screen
 
-  @MOB-8091 @android
+  @MOB-8091 @MOB-8099 @android @iOS
   Scenario: Verify expired premium subscription feature set
     When the user launches the app
     Then The user click on Get Started Button

@@ -37,15 +37,14 @@ public class JobsScreen extends BasePage {
     public MobileElement postSortBtn;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/sort_by_header")
-    // @iOSXCUITFindBy(accessibility = "Available")
+    @iOSXCUITFindBy(accessibility = "Sort By")
     public MobileElement sortByPopUp;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_date_selection_text")
-    // @iOSXCUITFindBy(accessibility = "Available")
+    @iOSXCUITFindBy(accessibility = "Job Date")
     public MobileElement jobDateFilter;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_check")
-    // @iOSXCUITFindBy(accessibility = "Available")
     public MobileElement jobDateSelection;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_check")
