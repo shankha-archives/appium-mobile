@@ -37,8 +37,8 @@ Feature: Premium MVP scenarios
     When Click on post job filter
     Then Validate the Subscription Free Trail Screen
 
-  @MOB-6670 @android
-  Scenario: Verify Jobs Display by Job and Post Date
+  @MOB-6670 @android @MOB-6668
+  Scenario: Verify Available Jobs Display by Job and Post Date
     When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-6670" for "upcoming day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When The user waits and launches the app
     Then The user click on Get Started Button
