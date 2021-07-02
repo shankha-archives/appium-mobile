@@ -45,10 +45,11 @@ public class JobsScreen extends BasePage {
     public MobileElement jobDateFilter;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_check")
+    @iOSXCUITFindBy(accessibility = "JobSort_Title_Description_Label")
     public MobileElement jobDateSelection;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_check")
-    // @iOSXCUITFindBy(accessibility = "Available")
+    @iOSXCUITFindBy(accessibility = "JobSort_Title_Description_Label")
     public MobileElement postDateSelection;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_date_selection_text")
@@ -56,11 +57,11 @@ public class JobsScreen extends BasePage {
     public MobileElement postDateFilter;
 
     @AndroidFindBy(xpath = "(//android.widget.TextView[@index=0])[5]")
-   // @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
+    @iOSXCUITFindBy(accessibility = "JobSort_Icon")
     public MobileElement upDownArrowBtn;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_header_text")
-    // @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
+    @iOSXCUITFindBy(accessibility = "Most Recently Posted")
     public MobileElement postJobHeader;
 
     public WebElement scrolledToElement;
