@@ -52,3 +52,27 @@ Feature: Premium MVP scenarios
     Then Verify sort by post header
     And Click on post sort filter btn
     And Validate the post selected filter
+
+  @MOB-6672 @android
+  Scenario: Verify Scheduled Jobs Display by Job and Post Date
+    When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-6672" for "upcoming day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
+    When The user waits and launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationSubsMOB-6672" and password and click on Sign In button
+    Then The substitute navigates to dashboard page
+    And Click on the Available Jobs
+    And Verify job list on Jobs page
+    And Click on the job "AutomationEmp 6672"
+    And accept the job
+    Then the Success Message overlay is displayed
+    When Clicked on Okay
+    When Navigate to dashboard
+    When Click on the Available Jobs
+    And Click on the Scheduled Jobs
+    And Validate the up down arrows
+    And Click on sort filter btn
+    When Validate the job selected filter
+    When Click on post job filter
+    Then Verify sort by post header
+    And Click on post sort filter btn
+    And Validate the post selected filter
