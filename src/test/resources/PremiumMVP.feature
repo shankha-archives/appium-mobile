@@ -53,7 +53,7 @@ Feature: Premium MVP scenarios
     And Click on post sort filter btn
     And Validate the post selected filter
 
-  @MOB-6672 @android
+  @MOB-6672 @android @MOB-6671 @iOS
   Scenario: Verify Scheduled Jobs Display by Job and Post Date
     When Create absence for employee "APILoginID_GLorg5" with workerid "APIWorkerID_MOB-6672" for "upcoming day" with "APISchoolID_GLorg5" "APIReasonID_GLorg5" and delete the existing ones
     When Substitute accepts the job with required details "AutomationSubsMOB-6672" "APIXrefIDOrg2"
