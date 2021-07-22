@@ -96,4 +96,11 @@ public class CreateAbsenceScreenStepDef {
     public void clickOnNextBtn() throws InterruptedException {
         createAbsenceScreen.clickNext();
     }
+
+    @And("Select custom absence duration and click on next btn")
+    public void selectCustomAbsenceDurationAndClickOnNextBtn() throws Exception {
+        Assert.assertTrue("Create Absence Page is not displayed", createAbsenceScreen.waitForAsbsenceDuratioPage()) ;
+        createAbsenceScreen.selectCustomDuration();
+        createAbsenceScreen.clickNext();
+    }
 }

@@ -34,6 +34,10 @@ public class CreateAbsenceScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "CreateAbsence_FullDay_Button")
     public MobileElement selectDuration;
 
+    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_full_day")
+    @iOSXCUITFindBy(accessibility = "CreateAbsence_Custom_Button")
+    public MobileElement selectCustomDuration;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
     @iOSXCUITFindBy(accessibility = "Substitute")
     public MobileElement subAssignPageVerification;
@@ -134,6 +138,10 @@ public class CreateAbsenceScreen extends BasePage {
 
     public void selectDuration() throws Exception {
         click(selectDuration, "Clicking on full day duration");
+    }
+
+    public void selectCustomDuration() throws Exception {
+        click(selectCustomDuration, "Clicking on full day duration");
     }
 
     public boolean substituteAssignPageVerification() throws Exception {
