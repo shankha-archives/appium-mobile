@@ -308,3 +308,20 @@ Feature: Smoke scenarios
     And Click Assign again to confirm
     Then Click on approve btn and click ok
     And verify absences page is displayed
+
+   #IDM server is down Ticket "OPS-17893" so using AutomationEmployeeMOB-4245 will create AutomationEmp_9814 once IDM is Up
+  @MOB-9814 @iOSRegression @iOSSmoke
+  Scenario: Verify employee can create custom absence
+    When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" for "upcoming day" and delete them
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-4245" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    And click on the create absences
+    When Select absence reason and click on next btn
+    And Select absence day "upcoming day"  "1"
+    And click on next btn
+    And Select custom absence duration and click on next btn
+    And Select if the substitute required and click on next btn
+    And Click on submit absence
+    Then Verify the absence creation pop up
