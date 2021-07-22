@@ -141,7 +141,7 @@ public class CreateAbsenceScreen extends BasePage {
     }
 
     public void selectCustomDuration() throws Exception {
-        click(selectCustomDuration, "Clicking on full day duration");
+        click(selectCustomDuration, "Clicking on custom day duration");
     }
 
     public boolean substituteAssignPageVerification() throws Exception {
