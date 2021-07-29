@@ -56,7 +56,11 @@ public class CreateAbsenceScreen extends BasePage {
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_half_day_pm")
     @iOSXCUITFindBy(accessibility = "CreateAbsence_HalfDayPM_Button")
-    public MobileElement halfDayDuration;
+    public MobileElement halfDaypmDuration;
+
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_half_day_am")
+    @iOSXCUITFindBy(accessibility = "CreateAbsence_HalfDayAM_Button")
+    public MobileElement halfDayamDuration;
 
     @AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit_Absence']")
@@ -160,8 +164,8 @@ public class CreateAbsenceScreen extends BasePage {
         return isElementDisplayed(createdAbsenceVerificationMsg,"Waiting for absence verification messgae");
     }
 
-    public void editDuration() {
-        click(halfDayDuration, "Clicking on half day duration btn");
+    public void clickHalfDayPMDuration() {
+        click(halfDaypmDuration, "Clicking on half day duration btn");
     }
 
     public void clickSaveAbsence() {
@@ -197,5 +201,9 @@ public class CreateAbsenceScreen extends BasePage {
 
     public boolean waitForForwardBtn() {
         return isElementDisplayed(whoAbsencePageWaittoClickCaret, "Waiting for who absence page to display");
+    }
+
+    public void clickHalfDayAMDuration() {
+        click(halfDayamDuration, "Clicking on half day duration btn");
     }
 }
