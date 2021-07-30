@@ -61,7 +61,7 @@ public class CreateAbsenceScreenStepDef {
     @And("Verify absence duration and click next")
     public void verifyAbsenceDurationAndClickNext() throws Exception {
         Assert.assertTrue("Create Absence Page 5 is not displayed", createAbsenceScreen.waitForAsbsenceDuratioPage()) ;
-        createAbsenceScreen.editDuration();
+        createAbsenceScreen.clickHalfDayPMDuration();
         createAbsenceScreen.clickNext();
     }
 
@@ -101,6 +101,13 @@ public class CreateAbsenceScreenStepDef {
     public void selectCustomAbsenceDurationAndClickOnNextBtn() throws Exception {
         Assert.assertTrue("Create Absence Page is not displayed", createAbsenceScreen.waitForAsbsenceDuratioPage()) ;
         createAbsenceScreen.selectCustomDuration();
+        createAbsenceScreen.clickNext();
+    }
+
+    @And("Select half day am absence duration and click on next btn")
+    public void selectHalfDayAmAbsenceDurationAndClickOnNextBtn() throws InterruptedException {
+        Assert.assertTrue("Create Absence Page 5 is not displayed", createAbsenceScreen.waitForAsbsenceDuratioPage()) ;
+        createAbsenceScreen.clickHalfDayAMDuration();
         createAbsenceScreen.clickNext();
     }
 }
