@@ -34,7 +34,7 @@ public class CreateAbsenceScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "CreateAbsence_FullDay_Button")
     public MobileElement selectDuration;
 
-    //@AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_full_day")
+    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_custom")
     @iOSXCUITFindBy(accessibility = "CreateAbsence_Custom_Button")
     public MobileElement selectCustomDuration;
 
