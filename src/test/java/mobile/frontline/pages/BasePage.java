@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
@@ -66,7 +67,8 @@ public class BasePage {
 	int generic_timeOutInMiliSeconds = 5000;
 	private CommandPrompt cmd = new CommandPrompt();
 
-	public AppiumDriver<MobileElement> driver;
+	//public AppiumDriver<MobileElement> driver;
+	static public AppiumDriver<MobileElement> driver;
 	Utils utils = new Utils();
 
 	public BasePage() {
@@ -1254,21 +1256,49 @@ public class BasePage {
 	 * method to set the default webview context
 	 */
 	public void switchToWebView() {
-		ExtentCucumberAdapter.addTestStepLog("Switching to Web view ");
-		try {
-			Thread.sleep(4000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		@SuppressWarnings("unchecked")
-		Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
+//		ExtentCucumberAdapter.addTestStepLog("Switching to Web view ");
+//	try {
+//			Thread.sleep(30000);
+//		} catch (InterruptedException e) {
+//		e.printStackTrace();
+//		}
+//		@SuppressWarnings("unchecked")
+//		Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
+//		for (String contextName : contextNames) {
+//			System.out.println(contextName);
+//			if (contextName.contains("WEBVIEW") || contextName.contains("WebView")) {
+//				utils.log().info("Setting WebView: " + contextName);
+//				break;
+//
+//			}
+//			}
+
+
+		Set<String> contextNames = driver.getContextHandles();
 		for (String contextName : contextNames) {
-			if (contextName.contains("WEBVIEW") || contextName.contains("Webview")) {
-				utils.log().info("Setting WebView: " + contextName);
-				break;
-			}
+			System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
 		}
+		driver.context("WEBVIEW_com.frontline.frontlinemobile");
+		String mainwindow = ((AndroidDriver) driver).getWindowHandle();
+		Set<String> handles = ((AndroidDriver) driver).getWindowHandles();
+		utils.log().info(mainwindow);
+		utils.log().info(handles.toString());
+		//String x = (String) handle.toArray()[1];
+		//driver.switchTo().window(x);
+		String pageTitle = null;
+		for (String handle : handles) {
+			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+			driver.switchTo().window(handle);
+			pageTitle = driver.getTitle();
+			utils.log().info("current handle title" + pageTitle);
+			if (pageTitle.equalsIgnoreCase("Snapdeal.com - Payment Details"))
+				break;
+			utils.log().info("window switched:" + handle);
+		}
+		utils.log().info("handle switched to handle::" + pageTitle);
+
 	}
+
 
 	/*
 	 * public void logStepIntoExtentReport(String elementDescription, String action,
@@ -1490,7 +1520,8 @@ public class BasePage {
 		try {
 			utils.log().info(msg +" Locator:" + ele);
 			WebDriverWait wait = new WebDriverWait(driver, 60);
-			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
+			wait.until(ExpectedConditions.visibilityOf(ele));
+			//wait.until(ExpectedConditions.visibilityOf(ele));
 			val = ele.isDisplayed();
 		} catch (Exception e) {
 			val = false;

@@ -96,12 +96,15 @@ public class GlobalParams {
         GlobalParams params = new GlobalParams();
         params.setPlatformName(System.getProperty("platformName", "Android"));
         params.setUDID(System.getProperty("udid", "emulator-5554"));
-        params.setDeviceName(System.getProperty("deviceName", "Google Pixel 3"));
+        //params.setUDID(System.getProperty("udid", "adb-WGC64PKFF6WSMRCI-VXuWIU._adb-tls-connect._tcp."));
+        params.setDeviceName(System.getProperty("deviceName", "Pixel_3a_API_33_arm64-v8a"));
+        //params.setDeviceName(System.getProperty("deviceName", "OPPO CPH2293"));
         params.setEnvironmentName(System.getProperty("environmentName","Local"));
-        params.setOSversion(System.getProperty("osVersion","9.0"));
+        params.setOSversion(System.getProperty("osVersion","13.0"));
         switch(params.getPlatformName()){
             case "Android":
-                params.setSystemPort(System.getProperty("systemPort", "10000"));
+                params.setSystemPort(System.getProperty("systemPort","10000"));
+                //params.setSystemPort(System.getProperty("systemPort","4723"));
                 params.setChromeDriverPort(System.getProperty("chromeDriverPort", "11000"));
                 break;
             case "iOS":

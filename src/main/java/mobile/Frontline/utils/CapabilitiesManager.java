@@ -51,6 +51,9 @@ public class CapabilitiesManager {
                     + File.separator + "resources" + File.separator + "apps" + File.separator + "frontline.apk";
             utils.log().info("appUrl is" + androidAppUrl);
             caps.setCapability("app", androidAppUrl);
+            caps.setCapability("autoGrantPermissions",true);
+            caps.setCapability("autoAcceptAlerts",true);
+
         }
         else if(params.getEnvironmentName().equalsIgnoreCase("Local") && params.getPlatformName().equalsIgnoreCase("iOS"))
         {    caps.setCapability(MobileCapabilityType.PLATFORM_NAME, params.getPlatformName());

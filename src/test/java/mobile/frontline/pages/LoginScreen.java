@@ -1,17 +1,19 @@
 package mobile.frontline.pages;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import org.junit.Assert;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginScreen extends BasePage {
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
+    @AndroidFindBy (xpath = "//android.widget.Button[@text='Get Started']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Get Started']")
-    public MobileElement getStarted;
+    protected MobileElement getStarted;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Without Limits']")
     @iOSXCUITFindBy(accessibility = "Work Without Limits")
@@ -41,7 +43,9 @@ public class LoginScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='The username or password you entered is incorrect']")
     public MobileElement credentialErr;
 
-    @AndroidFindBy(className = "android.view.View")
+   @FindBy(className = "android.widget.TextView")
+    @AndroidFindBy(className = "android.widget.TextView")
+ //  @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in with a Frontline ID']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
     public MobileElement loginPageHeader;
 
@@ -56,7 +60,8 @@ public class LoginScreen extends BasePage {
     public LoginScreen() {
     }
 
-    public boolean waitSplashScreenLoaded() {
+    public boolean waitSplashScreenLoaded() throws Exception{
+        //Thread.sleep(30000);
         return isElementDisplayed(splashScreen, "Searching for text: Work without limits");
     }
 
