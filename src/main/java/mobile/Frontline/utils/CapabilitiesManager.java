@@ -1,5 +1,6 @@
 package mobile.Frontline.utils;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -45,7 +46,7 @@ public class CapabilitiesManager {
             caps.setCapability("appPackage", props.getProperty("androidAppPackage"));
             caps.setCapability("appActivity", props.getProperty("androidAppActivity"));
             caps.setCapability("systemPort", params.getSystemPort());
-            caps.setCapability("chromeDriverPort", params.getChromeDriverPort());
+            caps.setCapability("chromedriverPort", params.getChromeDriverPort());
             //String androidAppUrl = getClass().getResource(props.getProperty("androidAppLocation")).getFile();
             String androidAppUrl = System.getProperty("user.dir") + File.separator + "src" + File.separator + "test"
                     + File.separator + "resources" + File.separator + "apps" + File.separator + "frontline.apk";
@@ -53,6 +54,8 @@ public class CapabilitiesManager {
             caps.setCapability("app", androidAppUrl);
             caps.setCapability("autoGrantPermissions",true);
             caps.setCapability("autoAcceptAlerts",true);
+ //           caps.setCapability("newCommandTimeout", 30000);
+            caps.setCapability("chromeOptions", ImmutableMap.of("w3c", false));
 
         }
         else if(params.getEnvironmentName().equalsIgnoreCase("Local") && params.getPlatformName().equalsIgnoreCase("iOS"))

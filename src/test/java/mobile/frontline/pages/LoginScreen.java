@@ -2,6 +2,7 @@ package mobile.frontline.pages;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidBy;
+import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
@@ -19,14 +20,19 @@ public class LoginScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Work Without Limits")
     public MobileElement splashScreen;
 
-    @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
+    @FindBy(xpath = "//*[@id='Username']")
+//    @AndroidFindAll({
+//    @AndroidBy(className = "android.widget.EditText"),
+//    @AndroidBy(id = "Username")})
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     public MobileElement username;
 
+    @FindBy(xpath = "//*[@id='Password']")
     @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
     public MobileElement password;
 
+    @FindBy(xpath = "//*[@id='qa-button-login']")
     @AndroidFindBy(className = "android.widget.Button") // class_name : qa-button-login
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Sign In with Frontline ID']")
     public MobileElement loginBtn;
@@ -43,9 +49,8 @@ public class LoginScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='The username or password you entered is incorrect']")
     public MobileElement credentialErr;
 
-   @FindBy(className = "android.widget.TextView")
-    @AndroidFindBy(className = "android.widget.TextView")
- //  @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in with a Frontline ID']")
+    @FindBy(xpath = "//*[@id='login-view']/login-product-header/div/div/h3")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in with a Frontline ID']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
     public MobileElement loginPageHeader;
 

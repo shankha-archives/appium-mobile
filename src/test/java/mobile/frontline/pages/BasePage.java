@@ -99,7 +99,7 @@ public class BasePage {
 	}
 
 	public void click(MobileElement e, String msg) {
-		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
+//		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ e);
 		waitForVisibility(e);
 		utils.log().info(msg);
 		e.click();
@@ -1202,7 +1202,7 @@ public class BasePage {
 	 * Switch from WebView to Native
 	 */
 	public void switchToNativeApp() {
-		ExtentCucumberAdapter.addTestStepLog("Switching to native app");
+//		ExtentCucumberAdapter.addTestStepLog("Switching to native app");
 		Set<String> contextNames = driver.getContextHandles();
 		for (String contextName : contextNames) {
 			if (contextName.contains("NATIVE")) {
@@ -1257,10 +1257,10 @@ public class BasePage {
 	 */
 	public void switchToWebView() {
 //		ExtentCucumberAdapter.addTestStepLog("Switching to Web view ");
-//	try {
+//		try {
 //			Thread.sleep(30000);
 //		} catch (InterruptedException e) {
-//		e.printStackTrace();
+//			e.printStackTrace();
 //		}
 //		@SuppressWarnings("unchecked")
 //		Set<String> contextNames = ((AppiumDriver) driver).getContextHandles();
@@ -1271,33 +1271,32 @@ public class BasePage {
 //				break;
 //
 //			}
-//			}
+//		}
+//	}
 
-
-		Set<String> contextNames = driver.getContextHandles();
+		Set<String> contextNames = ((AppiumDriver)driver).getContextHandles();
 		for (String contextName : contextNames) {
 			System.out.println(contextName); //prints out something like NATIVE_APP \n WEBVIEW_1
 		}
 		driver.context("WEBVIEW_com.frontline.frontlinemobile");
-		String mainwindow = ((AndroidDriver) driver).getWindowHandle();
-		Set<String> handles = ((AndroidDriver) driver).getWindowHandles();
-		utils.log().info(mainwindow);
-		utils.log().info(handles.toString());
-		//String x = (String) handle.toArray()[1];
-		//driver.switchTo().window(x);
-		String pageTitle = null;
-		for (String handle : handles) {
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			driver.switchTo().window(handle);
-			pageTitle = driver.getTitle();
-			utils.log().info("current handle title" + pageTitle);
-			if (pageTitle.equalsIgnoreCase("Snapdeal.com - Payment Details"))
-				break;
-			utils.log().info("window switched:" + handle);
-		}
-		utils.log().info("handle switched to handle::" + pageTitle);
-
 	}
+//		String mainwindow = ((AndroidDriver) driver).getWindowHandle();
+//		Set<String> handles = ((AndroidDriver) driver).getWindowHandles();
+//		utils.log().info(mainwindow);
+//		utils.log().info(handles.toString());
+//		//String x = (String) handle.toArray()[1];
+//		//driver.switchTo().window(x);
+//		String pageTitle = null;
+//		for (String handle : handles) {
+//			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//			driver.switchTo().window(handle);
+//			pageTitle = driver.getTitle();
+//			utils.log().info("current handle title" + pageTitle);
+//			if (pageTitle.equalsIgnoreCase(""))
+//				break;
+//			utils.log().info("window switched:" + handle);
+//		}
+//		utils.log().info("handle switched to handle::" + pageTitle);
 
 
 	/*
@@ -1515,17 +1514,15 @@ public class BasePage {
 	}
 
 	public boolean isElementDisplayed(MobileElement ele, String msg) {
-		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 		boolean val = false;
-		try {
+//		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
+
 			utils.log().info(msg +" Locator:" + ele);
 			WebDriverWait wait = new WebDriverWait(driver, 60);
-			wait.until(ExpectedConditions.visibilityOf(ele));
-			//wait.until(ExpectedConditions.visibilityOf(ele));
+			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
+//			wait.until(ExpectedConditions.visibilityOf(ele));
 			val = ele.isDisplayed();
-		} catch (Exception e) {
-			val = false;
-		}
+
 		return val;
 	}
 
@@ -1620,17 +1617,15 @@ public class BasePage {
 		}
 	}
 	public void enterValueInTextField(MobileElement ele, String keysToSend, String msg) {
-		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
-		try {
+//		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
+//		try {
 			utils.log().info(msg+ " Locator :"+ ele);
-			if (isElementDisplayed(ele)) {
 				ele.click();
-				ele.clear();
 				ele.sendKeys(keysToSend);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	public void setValueInTextField(MobileElement ele, String keysToSend) {

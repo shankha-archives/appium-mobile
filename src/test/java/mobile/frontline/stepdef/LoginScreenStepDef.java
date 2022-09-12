@@ -34,6 +34,7 @@ public class LoginScreenStepDef {
 	@Then("^the substitute user is taken to the Login Page$")
 	public void the_substitute_user_is_taken_to_the_login_page() throws Throwable {
 		Assert.assertTrue("Login page is not loaded",loginMethods.verify_loginPageLoaded());
+//		Assert.assertFalse("Login page is not loaded",loginMethods.verify_loginPageLoaded());
 	}
 
 	@And("^Enter username \"([^\"]*)\" and password and click on Sign In button$")
@@ -43,12 +44,14 @@ public class LoginScreenStepDef {
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" username$")
 	public void the_substitute_enter_something_something_username(String type, String username) throws Throwable {
-		loginMethods.enterUserName(testdata.read_property("Account", type, username));
+//		loginMethods.enterUserName(testdata.read_property("Account", type, username));
+		loginMethods.enterUserName("stageSubAnuj");
 	}
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" password$")
 	public void the_substitute_enter_something_something_password(String type, String password) throws Throwable {
-		loginMethods.enterUserPassword(testdata.read_property("Account", type, password));
+//		loginMethods.enterUserPassword(testdata.read_property("Account", type, password));
+		loginMethods.enterUserPassword("M0b113fl");
 	}
 
 	@When("^Click on Sign In with Frontline ID button$")
