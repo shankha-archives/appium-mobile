@@ -36,7 +36,7 @@ public class Hooks {
         new DriverManager().initializeDriver();
     }
 
-    @After
+   @After
     public void quit(Scenario scenario) throws IOException, UnirestException {
         System.out.println("After Class called");
         DriverManager driverManager = new DriverManager();
