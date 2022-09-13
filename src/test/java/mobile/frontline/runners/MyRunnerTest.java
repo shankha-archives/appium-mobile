@@ -21,7 +21,7 @@ import io.cucumber.junit.CucumberOptions;
         ,dryRun=false
         ,monochrome=true
         //,strict=true
-        ,tags = "@MOB-3204"
+        ,tags = "@MOB-3206"
 )
 
 public class MyRunnerTest {

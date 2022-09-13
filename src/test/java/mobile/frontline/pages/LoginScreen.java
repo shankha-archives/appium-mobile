@@ -16,7 +16,8 @@ public class LoginScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Get Started']")
     protected MobileElement getStarted;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Without Limits']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Without Limits']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
     @iOSXCUITFindBy(accessibility = "Work Without Limits")
     public MobileElement splashScreen;
 

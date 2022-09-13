@@ -16,8 +16,8 @@ public class LoginScreenStepDef {
 
 	@When("the user launches the app")
 	public void theUserLaunchesTheApp() throws Throwable {
-		//Assert.assertTrue("Splash screen is not loading",loginMethods.waitSplashScreenLoaded());
-		Assert.assertTrue(true);
+		Assert.assertTrue("Splash screen is not loading",loginMethods.waitSplashScreenLoaded());
+//		Assert.assertTrue(true);
 		Thread.sleep(10000);
 	}
 
@@ -29,6 +29,7 @@ public class LoginScreenStepDef {
 	@Then("The user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
 		loginMethods.clickOnGetStartedBtn();
+		Thread.sleep(10000);
 	}
 
 	@Then("^the substitute user is taken to the Login Page$")
@@ -44,14 +45,14 @@ public class LoginScreenStepDef {
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" username$")
 	public void the_substitute_enter_something_something_username(String type, String username) throws Throwable {
-//		loginMethods.enterUserName(testdata.read_property("Account", type, username));
-		loginMethods.enterUserName("stageSubAnuj");
+		loginMethods.enterUserName(testdata.read_property("Account", type, username));
+//		loginMethods.enterUserName("stageSubAnuj");
 	}
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" password$")
 	public void the_substitute_enter_something_something_password(String type, String password) throws Throwable {
-//		loginMethods.enterUserPassword(testdata.read_property("Account", type, password));
-		loginMethods.enterUserPassword("M0b113fl");
+		loginMethods.enterUserPassword(testdata.read_property("Account", type, password));
+//		loginMethods.enterUserPassword("M0b113fl");
 	}
 
 	@When("^Click on Sign In with Frontline ID button$")
@@ -59,6 +60,7 @@ public class LoginScreenStepDef {
 		loginMethods.clickOnLoginBtn();
 	}
 
+	
 	@Then("^Incorrect username and password error message displays$")
 	public void incorrect_username_and_password_error_message_displays() throws Throwable {
 		Assert.assertTrue("No Invalid Credentials error message is displayed", loginMethods.waitForInvalidCredentials_errorMessage());

@@ -30,10 +30,10 @@ Feature: Login scenarios
 @MOB-3206 @MOB-3145 @AndroidRegression @iOSRegression
   Scenario: Verify substitute user can successfully login with valid credentials
     When the user launches the app
-    #Then The user click on Get Started Button
+    Then The user click on Get Started Button
     Then the substitute user is taken to the Login Page
-    And the substitute enter "valid" "stagesubashish" username
-    And the substitute enter "valid" "M0b113fl" password
+    And the substitute enter "valid" "stageSubAnuj" username
+    And the substitute enter "valid" "Password" password
     When Click on Sign In with Frontline ID button
     Then The substitute navigates to dashboard page
 
