@@ -78,7 +78,8 @@ public class BasePage {
 
 	public void waitForVisibility(MobileElement e) {
 		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
-		wait.until(ExpectedConditions.visibilityOf(e));
+//		wait.until(ExpectedConditions.visibilityOf(e));
+		wait.until(ExpectedConditions.visibilityOfAllElements(e));
 	}
 
 	public void waitForVisibility(By e) {
@@ -1373,7 +1374,7 @@ public class BasePage {
 	 * This method close the running app from the devices attached
 	 */
 	public void bgRunningApp() throws Exception {
-		ExtentCucumberAdapter.addTestStepLog("Run application in background");
+//		ExtentCucumberAdapter.addTestStepLog("Run application in background");
 		driver.runAppInBackground(Duration.ofSeconds(10));
 	}
 
@@ -1788,7 +1789,7 @@ public class BasePage {
 
 	public WebElement androidScrollToElementUsingUiScrollable(String attributeType, String attributeText, String msg)
 			throws Throwable {
-		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ attributeText);
+//		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ attributeText);
 		utils.log().info(msg);
 		switch (attributeType.toLowerCase()) {
 		case "description":
@@ -1818,7 +1819,7 @@ public class BasePage {
 	
 	public String currentDate(String format) throws Exception {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(format);
-		ExtentCucumberAdapter.addTestStepLog( "Current date: "+ dtf.format(LocalDateTime.now()));
+//		ExtentCucumberAdapter.addTestStepLog( "Current date: "+ dtf.format(LocalDateTime.now()));
 		return dtf.format(LocalDateTime.now());
 	}
 

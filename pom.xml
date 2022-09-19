@@ -66,12 +66,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.aventstack</groupId>
-				<artifactId>extentreports</artifactId>
-				<version>4.1.5</version>
-			</dependency>
-
-			<dependency>
 				<groupId>tech.grasshopper</groupId>
 				<artifactId>extentreports-cucumber5-adapter</artifactId>
 				<version>1.1.0</version>

@@ -29,7 +29,7 @@ public class APIServices {
 		JSONObject json = new JSONObject(responseGenerateTokenAPI.getBody());
 		aesoptoken = json.getJSONObject("data").get("token").toString();
 		utils.log().info("Aesop Token : " + printPrettyResponse(responseGenerateTokenAPI.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Aesop Token : " + printPrettyResponse(responseGenerateTokenAPI.getBody()));
+//		ExtentCucumberAdapter.addTestStepLog("Aesop Token : " + printPrettyResponse(responseGenerateTokenAPI.getBody()));
 	}
 
 	public String printPrettyResponse(String response){
