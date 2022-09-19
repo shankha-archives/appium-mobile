@@ -25,7 +25,6 @@
 		<AutomationSubsJobOperations2>AutomationSubJobs2</AutomationSubsJobOperations2>
 		<AutomationSubsJobOperations3>AutomationSubJobs3</AutomationSubsJobOperations3>
 		<AutomationSubsJobOperations4>AutomationSubJobs4</AutomationSubsJobOperations4>
-		<stageSubAnuj>stageSubAnuj</stageSubAnuj>
 		<AutomationSubMutiOrg>MOB_Sub_3601</AutomationSubMutiOrg>
 		<AutomationSubNoOrg>AutomationSub3682</AutomationSubNoOrg>
 		<AutomationEmployeeMOB-4245>Automation4245</AutomationEmployeeMOB-4245>
@@ -58,7 +57,9 @@
 		<AutomationAdminMOB-4277>ATMobileAutomation</AutomationAdminMOB-4277>
 		<AutomationAdminMOB-9794>AutomationAdmin9794</AutomationAdminMOB-9794>
 		<AutomationAdminMOB-9794>AutomationAdmin9794</AutomationAdminMOB-9794>
-		<FrontlinePassword>Global@123</FrontlinePassword>
+		<stageSubAnuj>stageSubAnuj</stageSubAnuj>
+		<AutomationSubMutiRole>Test_stage</AutomationSubMutiRole>
+		<FrontlinePassword>Test@123</FrontlinePassword>
 		<Password>M0b113fl</Password>
 
 	</Account>

@@ -12,13 +12,12 @@ public class LoginScreenStepDef {
 	public TestDataManager testdata = new TestDataManager();
 	public LoginScreen loginMethods = new LoginScreen();
 
-	public RolePickerScreen  rolePickerScreen = new RolePickerScreen();
+//	public RolePickerScreen  rolePickerScreen = new RolePickerScreen();
 
 	@When("the user launches the app")
 	public void theUserLaunchesTheApp() throws Throwable {
 		Assert.assertTrue("Splash screen is not loading",loginMethods.waitSplashScreenLoaded());
-//		Assert.assertTrue(true);
-		Thread.sleep(10000);
+		Thread.sleep(3000);
 	}
 
 	@When("^The user waits and launches the app$")
@@ -28,31 +27,29 @@ public class LoginScreenStepDef {
 
 	@Then("The user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
+		Thread.sleep(3000);
 		loginMethods.clickOnGetStartedBtn();
-		Thread.sleep(10000);
 	}
 
-	@Then("^the substitute user is taken to the Login Page$")
+	@Then("^the user is taken to the Login Page$")
 	public void the_substitute_user_is_taken_to_the_login_page() throws Throwable {
+		Thread.sleep(10000);
 		Assert.assertTrue("Login page is not loaded",loginMethods.verify_loginPageLoaded());
-//		Assert.assertFalse("Login page is not loaded",loginMethods.verify_loginPageLoaded());
 	}
 
 	@And("^Enter username \"([^\"]*)\" and password and click on Sign In button$")
 	public void enter_username_something_and_password_and_click_on_sign_in_button(String username) throws Throwable {
-		loginMethods.loginToApplication(testdata.read_property("Account", "valid", username),testdata.read_property("Account", "valid", "FrontlinePassword") );
+		loginMethods.loginToApplication(testdata.read_property("Account", "valid", username),testdata.read_property("Account", "valid", "Password") );
 	}
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" username$")
 	public void the_substitute_enter_something_something_username(String type, String username) throws Throwable {
 		loginMethods.enterUserName(testdata.read_property("Account", type, username));
-//		loginMethods.enterUserName("stageSubAnuj");
 	}
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" password$")
 	public void the_substitute_enter_something_something_password(String type, String password) throws Throwable {
 		loginMethods.enterUserPassword(testdata.read_property("Account", type, password));
-//		loginMethods.enterUserPassword("M0b113fl");
 	}
 
 	@When("^Click on Sign In with Frontline ID button$")

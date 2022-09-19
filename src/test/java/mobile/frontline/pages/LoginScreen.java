@@ -38,20 +38,23 @@ public class LoginScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Sign In with Frontline ID']")
     public MobileElement loginBtn;
 
+    @FindBy(xpath = "//*[@id='qa-validation-username-required']")
     @AndroidFindBy(xpath = "//android.view.View[@text='Your username is required.']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your username is required.']")
     public MobileElement userNameRequired;
 
+    @FindBy(xpath = "//*[@id='qa-validation-password-required']")
     @AndroidFindBy(xpath = "//android.view.View[@text='Your password is required.']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your password is required.']")
     public MobileElement userPasswordRequired;
 
+    @FindBy(xpath = "//*[@id='qa-validation-credentials']/span")
     @AndroidFindBy(xpath = "//android.view.View[@text='The username or password you entered is incorrect']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='The username or password you entered is incorrect']")
     public MobileElement credentialErr;
 
     @FindBy(xpath = "//*[@id='login-view']/login-product-header/div/div/h3")
-//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in with a Frontline ID']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in with a Frontline ID']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
     public MobileElement loginPageHeader;
 
