@@ -11,7 +11,7 @@ public class InboxScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Inbox_TabBar_Button")
     public MobileElement inboxTab;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/inbox_notification_snippet_text")
+    @AndroidFindBy(id = "inbox_notification_snippet_text")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText)[2]")
     public MobileElement inboxMsg;
 

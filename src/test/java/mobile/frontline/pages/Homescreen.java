@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Homescreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcome_user_text")
+    @AndroidFindBy(id = "welcome_user_text")
     @iOSXCUITFindBy(accessibility = "What's New_ModuleHeader")
     public MobileElement homePageHeader;
 
