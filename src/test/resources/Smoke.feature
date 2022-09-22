@@ -79,7 +79,7 @@ Feature: Smoke scenarios
     When the user clicks on Menu tab
     And Click on Settings
     And Logout from app
-    And Enter username "AutomationAdminMOB-4267" and password and click on Sign In button
+    And Enter username "AutomationAdmin" and password and click on Sign In button
     Then the user navigates to dashboard page
     When click on the inbox
     And Verify inbox screen is display
@@ -94,8 +94,8 @@ Feature: Smoke scenarios
     And Enter username "AutomationEmployeeMOB-4243" and password and click on Sign In button
     Then the user navigates to dashboard page
     When The employee clicks on clockin btn
-    And Approve the required permissions
-    When The employee clicks on clockin btn
+#    And Approve the required permissions
+#    When The employee clicks on clockin btn
     Then Verify the employee is clocked in
     When The user navigates to timesheet widget
     And Select the current day

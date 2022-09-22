@@ -9,6 +9,7 @@ public class InboxMsgScreenStepDef {
 
     @Then("Verify the inbox message")
     public void verifyTheInboxMessage() {
-        Assert.assertEquals(inboxMsgScreen.getInboxMsg(), "Smoke Test Case of inbox");
+//        Assert.assertEquals(inboxMsgScreen.getInboxMsg(), "Smoke Test Case of inbox");
+        Assert.assertEquals(inboxMsgScreen.getInboxMsg(), "WEB ALERT.......................");
     }
 }

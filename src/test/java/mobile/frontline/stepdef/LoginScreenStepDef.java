@@ -39,7 +39,8 @@ public class LoginScreenStepDef {
 
 	@And("^Enter username \"([^\"]*)\" and password and click on Sign In button$")
 	public void enter_username_something_and_password_and_click_on_sign_in_button(String username) throws Throwable {
-		loginMethods.loginToApplication(testdata.read_property("Account", "valid", username),testdata.read_property("Account", "valid", "Password") );
+		Thread.sleep(10000);
+		loginMethods.loginToApplication(testdata.read_property("Account", "valid", username),testdata.read_property("Account", "valid", "FrontlinePassword") );
 	}
 
 	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" username$")
