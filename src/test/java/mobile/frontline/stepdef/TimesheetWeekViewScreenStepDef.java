@@ -16,9 +16,8 @@ public class TimesheetWeekViewScreenStepDef {
 
     @And("Select the current day")
     public void selectTheCurrentDay() throws Exception {
-//        Assert.assertTrue("Tuesday timesheet is not displayed", timesheetWeekViewScreen.verifyTuesday());
-        Assert.assertTrue("Tuesday timesheet is not displayed", timesheetWeekViewScreen.verifyThrusday());
-//        timesheetWeekViewScreen.selectCurrentDayForTimesheet();
+//       Assert.assertTrue("Tuesday timesheet is not displayed", timesheetWeekViewScreen.verifyTuesday());
+        timesheetWeekViewScreen.selectCurrentDayForTimesheet();
     }
 
     @Then("Calculate the week total")
