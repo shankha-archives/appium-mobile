@@ -166,7 +166,7 @@ Feature: Smoke scenarios
     When The comment is edited to the time event
     And Save edited timeevent
     When Navigate back to dayView
-    When Decline review pop up
+#    When Decline review pop up
     And Verify time event is visible
     Then Verify the added event
     And Click on time event

@@ -72,9 +72,9 @@ public class TimesheetWeekViewScreen extends BasePage {
 
     public void selectCurrentDayForTimesheet() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-            click(By.xpath("//android.widget.TextView[contains(@text,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
+            click(By.xpath("//android.widget.TextView[contains(@text,'" + nextWorkingDay("current day", "dd") + "')]"), "Clicking current day on timesheetscreen");
         else
-            click(By.xpath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
+            click(By.xpath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDay("current day", "dd") + "')]"), "Clicking current day on timesheetscreen");
     }
 
     public void weekTotalTime() throws Exception {
