@@ -70,12 +70,13 @@ Scenario: Verify that Unlock Code page is removed from the application
 Scenario: Verify role picker option should not displayed when user account has only one role
     When the user launches the app 
 	Then The user click on Get Started Button
-	And Enter username "AutomationSubMutiOrg" and password and click on Sign In button 
-    Then the user is presented with the org picker
-	Then The user choose the one organization
-    Then The substitute navigates to dashboard page
-	And Click on switch btn
-	Then The user choose the second organization
+#	And Enter username "AutomationSubMutiOrg" and password and click on Sign In button  : Commented since this user is not available
+	And Enter username "AutomationAdmin" and password and click on Sign In button
+#	Then the user is presented with the org picker  : Commented these steps as we dont have any multi org user and also org picker screen doesnt load
+#	Then The user choose the one organization
+#    Then The substitute navigates to dashboard page
+#	And Click on switch btn
+#	Then The user choose the second organization
 	Then The substitute navigates to dashboard page
 
 @Setting @MOB-6019 @AndroidRegression
@@ -98,7 +99,8 @@ Scenario: Verify an employee can view same Intime event value in Timesheet even 
 Scenario: Verify substitute user can validate Feedback form heading
 	When the user launches the app
 	Then The user click on Get Started Button
-	And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
+#	And Enter username "AutomationSubsMOB-7775" and password and click on Sign In button
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
 	Then The substitute navigates to dashboard page
 	When the user clicks on Menu tab
 	Then The user clicks on Feedback
