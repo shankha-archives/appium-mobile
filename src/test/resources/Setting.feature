@@ -53,8 +53,7 @@ Scenario: Verify that a substitute can view next scheduled Job widget
 	 When the user launches the app 
 	 Then The user click on Get Started Button
 	 Then the user is taken to the Login Page
-#	 And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
-	And Enter username "stageSubAnuj" and password and click on Sign In button
+	 And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
 	 Then The substitute navigates to dashboard page
 	 Then The user moves to Next Scheduled Job widget and verify it
 	
