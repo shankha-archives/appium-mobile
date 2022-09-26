@@ -125,7 +125,7 @@ public class JobsScreen extends BasePage {
         By jobDate;
         if (new GlobalParams().getPlatformName().contains("Android")) {
             jobDate = By.xpath(
-                    "(//android.widget.TextView[@text='" + employeeName + "']/following:: android.widget.TextView[@text='"
+                    "(//android.widget.TextView[@text='" + employeeName + "']/ancestor::android.widget.RelativeLayout//android.widget.TextView[@text='"
                             + changeDateFormat(nextWorkingDay("next day", "MM/dd/yyyy"), "MM/dd/yyyy", "MMMM dd") + "'])[1]");
         } else {
             jobDate = By.xpath(

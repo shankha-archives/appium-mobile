@@ -97,7 +97,7 @@ Feature: Jobulator scenarios
   Scenario: Verify that substitute is able to view job widget and jobs in job list
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4173" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
     When Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4172" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
-    When The user waits and launches the app
+    When the user launches the app
     Then The user click on Get Started Button
     And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
     Then The substitute navigates to dashboard page
