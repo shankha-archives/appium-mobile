@@ -43,9 +43,9 @@ public class ServerManager {
         GlobalParams params = new GlobalParams();
         return AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
                 .usingAnyFreePort()
-                .withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-                .withLogFile(new File(params.getPlatformName() + "_"
-                        + params.getDeviceName() + File.separator + "Server.log")));
+                .withArgument(GeneralServerFlag.SESSION_OVERRIDE));
+//                .withLogFile(new File(params.getPlatformName() + "_"
+//                        + params.getDeviceName() + File.separator + "Server.log")));
     }
 
 //    public AppiumDriverLocalService MacGetAppiumService() {
