@@ -131,7 +131,7 @@ Feature: Smoke scenarios
     And Verify the total time of the week
     When Click on submit week timesheet option
     Then Click on submit timesheet
-    When Decline review pop up
+#    When Decline review pop up
     When Click on undo week timesheet btn
     Then Click on undo option
     When Decline review pop up

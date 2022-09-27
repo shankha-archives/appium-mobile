@@ -45,16 +45,18 @@ Feature: Login scenarios
     And Enter username "AutomationSubMutiRole" and password and click on Sign In button
     Then the user is presented with the role picker
 
-#  @MOB-3601  @AndroidRegression @iOSRegression
-#  Scenario: Verify when a user is associated with multiple roles and multiple organization it should display org picker
-#    When the user launches the app
-#    Then The user click on Get Started Button
-#    And Enter username "AutomationSubMutiOrg" and password and click on Sign In button
-#    Then the user is presented with the org picker
+  @MOB-3601  @AndroidRegression @iOSRegression
+  Scenario: Verify when a user is associated with multiple roles and multiple organization it should display org picker
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationSubMutiOrg" and password and click on Sign In button
+    Then The substitute navigates to dashboard page
+    And Click on switch btn
+    Then the user is presented with the org picker
 
-# @MOB-3682 @AndroidRegression @iOSRegression
-#  Scenario: Verify that substitute user has no access to districts
-#   When the user launches the app
-#    Then The user click on Get Started Button
-#   And Enter username "AutomationSubNoOrg" and password and click on Sign In button
-#   Then the system presents a dialog
+ @MOB-3682 @AndroidRegression @iOSRegression
+  Scenario: Verify that substitute user has no access to districts
+   When the user launches the app
+    Then The user click on Get Started Button
+   And Enter username "AutomationSubsJobOperations3" and password and click on Sign In button
+   Then the system presents a dialog
