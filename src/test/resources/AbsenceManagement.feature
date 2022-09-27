@@ -6,7 +6,8 @@ Feature: Absence scenarios
     When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "upcoming day" and delete them
     When the user launches the app
     Then The user click on Get Started Button
-    And Enter username "AutomationAdminMOB-9794" and password and click on Sign In button
+#    And Enter username "AutomationAdminMOB-9794" and password and click on Sign In button
+    And Enter username "AutomationAdminMOB-4249" and password and click on Sign In button
     Then the user navigates to dashboard page
     When Click on absences today widget
     And Click on add absence btn
@@ -24,7 +25,8 @@ Feature: Absence scenarios
     When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "upcoming day" and delete them
     When the user launches the app
     Then The user click on Get Started Button
-    And Enter username "AutomationAdminMOB-9794" and password and click on Sign In button
+#    And Enter username "AutomationAdminMOB-9794" and password and click on Sign In button
+    And Enter username "AutomationAdminMOB-4249" and password and click on Sign In button
     Then the user navigates to dashboard page
     When Click on absences today widget
     And Click on add absence btn

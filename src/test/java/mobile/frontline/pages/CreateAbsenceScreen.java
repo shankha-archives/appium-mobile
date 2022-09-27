@@ -113,7 +113,7 @@ public class CreateAbsenceScreen extends BasePage {
 
     public void selectDate(String absenceDay, String amount) throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            nextWorkingDate = workingDay(absenceDay, "MMMM dd, yyyy", Integer.parseInt(amount));
+            nextWorkingDate = workingDay(absenceDay, "MMM dd, yyyy", Integer.parseInt(amount));
             scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate, "Scrolling to the require date");
             scrolledToElement.click();
         } else {
