@@ -61,10 +61,8 @@
 		<AutomationAdminMOB-9794>AutomationAdmin9794</AutomationAdminMOB-9794>
 		<AutomationAdminMOB-9794>AutomationAdmin9794</AutomationAdminMOB-9794>
 		<AutomationAdmin>AutomationAdmin</AutomationAdmin>
-		<stageSubAnuj>stageSubAnuj</stageSubAnuj>
-		<AutomationSubMutiRole>Test_stage</AutomationSubMutiRole>
+		<multirole>multirole</multirole>
 		<FrontlinePassword>Global@123</FrontlinePassword>
-		<Password>M0b113fl</Password>
 
 	</Account>
 	<testingData type="users">
