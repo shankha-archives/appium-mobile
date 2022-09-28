@@ -15,10 +15,8 @@ import io.cucumber.junit.CucumberOptions;
                 , "de.monochromata.cucumber.report.PrettyReports:target/cucumber-html-reports"
                , "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
         ,features = {"src/test/resources"}
-//        ,glue = {"mobile.frontline.stepdef"}
-        ,glue = {"src/test/java/mobile.frontline/stepdef"}
+        ,glue = {"mobile.frontline.stepdef"}
         ,snippets = CAMELCASE
-        ,dryRun=false
         ,monochrome=true
         //,strict=true
         ,tags = "@MOB-3206"
