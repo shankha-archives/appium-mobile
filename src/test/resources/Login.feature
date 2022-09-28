@@ -32,8 +32,8 @@ Feature: Login scenarios
     When the user launches the app
     Then The user click on Get Started Button
     Then the user is taken to the Login Page
-    And the substitute enter "valid" "stageSubAnuj" username
-    And the substitute enter "valid" "Password" password
+    And the substitute enter "valid" "AutomationSubsMOB-4269" username
+    And the substitute enter "valid" "FrontlinePassword" password
     When Click on Sign In with Frontline ID button
     Then The substitute navigates to dashboard page
 
@@ -42,7 +42,7 @@ Feature: Login scenarios
     When the user launches the app
     Then The user click on Get Started Button
     Then the user is taken to the Login Page
-    And Enter username "AutomationSubMutiRole" and password and click on Sign In button
+    And Enter username "multirole" and password and click on Sign In button
     Then the user is presented with the role picker
 
   @MOB-3601  @AndroidRegression @iOSRegression
