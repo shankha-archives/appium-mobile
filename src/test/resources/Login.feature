@@ -37,6 +37,17 @@ Feature: Login scenarios
     When Click on Sign In with Frontline ID button
     Then The substitute navigates to dashboard page
 
+@MOB-4227 @MOB-4229 @AndroidSmoke @iOSSmoke @MOB-4228 @MOB-4230 @AndroidRegression @iOSRegression
+  Scenario: Verify user remains login when application sent to background or gets relaunched
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-4227" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    And The user minimize and relaunch the application
+    Then the user navigates to dashboard page
+    And The user kill and relaunch the application
+    Then the user navigates to dashboard page
+
 @MOB-3601 @AndroidRegression @iOSRegression
   Scenario: Verify when a user is associated with multiple roles and single organization it should display role picker
     When the user launches the app

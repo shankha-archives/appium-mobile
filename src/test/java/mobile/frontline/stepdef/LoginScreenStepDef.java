@@ -17,7 +17,7 @@ public class LoginScreenStepDef {
 	@When("the user launches the app")
 	public void theUserLaunchesTheApp() throws Throwable {
 		Assert.assertTrue("Splash screen is not loading",loginMethods.waitSplashScreenLoaded());
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 	}
 
 	@When("^The user waits and launches the app$")
@@ -27,7 +27,7 @@ public class LoginScreenStepDef {
 
 	@Then("The user click on Get Started Button")
 	public void user_click_on_get_started_button() throws Throwable {
-		Thread.sleep(3000);
+//		Thread.sleep(3000);
 		loginMethods.clickOnGetStartedBtn();
 	}
 

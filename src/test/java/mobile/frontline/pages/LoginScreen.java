@@ -133,8 +133,8 @@ public class LoginScreen extends BasePage {
     }
 
     public boolean waitAndverify_splashScreenLoaded() throws Exception {
-        isElementDisplayed(splashScreen, "Waiting for splash screen to display");
-        Thread.sleep(10000);                    // Fixed the delay in loading by removing unnecessary waits
+//        isElementDisplayed(splashScreen, "Waiting for splash screen to display");
+//        Thread.sleep(10000);                    // Fixed the delay in loading by removing unnecessary waits
         return isElementDisplayed(splashScreen, "Waiting for splash screen to display");
     }
 

@@ -1,6 +1,32 @@
 @timesheet
 Feature: Timesheet scenarios
 
+  @smoke @MOB-4243 @MOB-4244 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
+  Scenario: Verify an employee should be able to clock in and clock out
+    When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-4243" "APIWorkerID_MOB-4243" "APIOrgID" "APILoginID" "current day"
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-4243" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    When The employee clicks on clockin btn
+#    And Approve the required permissions
+#    When The employee clicks on clockin btn
+    Then Verify the employee is clocked in
+    When The user navigates to timesheet widget
+    And Select the current day
+    And Verify time event is visible
+    And Click on time event
+    And Click on edit timesheet btn
+    And Wait for time entry page to load
+    Then edit the timesheet outtime
+    And Save edited timeevent
+    When Navigate back to dayView
+    And Verify time event is visible
+    Then Verify the added event
+    And Navigate to dashboard
+    Then the user navigates to dashboard page
+    And Verify the timesheet is clocked out
+
   @MOB-5577 @AndroidRegression @iOSRegression
   Scenario: Verify an employee user can submit day timesheet
     When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
@@ -13,6 +39,40 @@ Feature: Timesheet scenarios
     Then Click on submit day timesheet
     Then Click on submit timesheet
     And Verify submission of timesheet
+
+  @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
+  Scenario: Verify an employee can submit weekly timesheet and then undo a timesheet
+    When Undo submitted timesheets "AutomationEmployeeMOB-4263" "APIWorkerID_MOB-4263" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-4263" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    When The user navigates to timesheet widget
+    And Select the current day
+    And Click on add new time event
+    And Wait for time entry page to load
+    Then Add one hour of out time to the event
+    And Click ok after adding out time event
+    And Save timeevent
+    When Navigate back to week View
+    Then Calculate the week total
+    And Verify the total time of the week
+    When Click on submit week timesheet option
+    Then Click on submit timesheet
+#    When Decline review pop up
+    When Click on undo week timesheet btn
+    Then Click on undo option
+    When Decline review pop up
+    Then Verify undo timesheet
+
+  @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression @iOSRegression
+  Scenario: Verify an employee can view week of timesheets
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-4263" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    When The user navigates to timesheet widget
+    Then Verify days of the week
 
   @MOB-5568  @MOB-5569 @AndroidRegression @iOSRegression
   Scenario: Verify an employee cannot add new timeevent when timesheet is in submit state
@@ -54,6 +114,35 @@ Feature: Timesheet scenarios
     And Navigate to dashboard
     Then the user navigates to dashboard page
     And Verify the Timesheet total on dashboard
+
+  @MOB-4261 @AndroidSmoke @MOB-4262 @iOSSmokes @AndroidRegression @iOSRegression
+  Scenario: Verify an employee can edit and delete the time from the timesheet
+    When Verify if timesheet present for an employee and delete it using information "AutomationEmployeeMOB-4261" "APIWorkerID_MOB-4261" "APIOrgID" "APILoginID" "current day"
+    When the user launches the app
+    Then The user click on Get Started Button
+    And Enter username "AutomationEmployeeMOB-4261" and password and click on Sign In button
+    Then the user navigates to dashboard page
+    When The user navigates to timesheet widget
+    And Select the current day
+    And Click on add new time event
+    And Wait for time entry page to load
+    Then edit the timesheet outtime
+    And Save timeevent
+    And Verify time event is visible
+    And Click on time event
+    And Click on edit timesheet btn
+    And Wait for time entry page to load
+    When The comment is edited to the time event
+    And Save edited timeevent
+    When Navigate back to dayView
+#    When Decline review pop up
+    And Verify time event is visible
+    Then Verify the added event
+    And Click on time event
+    And Verify the added comment
+    When Delete time event
+    Then Verify deleted time event
+
 
   @MOB-5585  @MOB-5584 @AndroidRegression @iOSRegression
   Scenario: Verify the message when employee enters wrong pin while submiting timesheet

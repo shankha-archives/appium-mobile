@@ -127,9 +127,9 @@ public class Homescreen extends BasePage {
     }
 
     public boolean verify_homeScreen_displayedWithoutPushVerify() throws Exception {
-        Thread.sleep(8000);
+//        Thread.sleep(8000);
         switchToNativeApp();
-        swipeDown();
+//        swipeDown();
         return isElementDisplayed(homePageHeader, "Waiting for header page to load");
     }
 

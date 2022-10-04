@@ -1,5 +1,22 @@
 @Settings
-Feature: Regression scenarios 
+Feature: Regression scenarios
+
+@MOB-4269 @MOB-4270 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
+	Scenario: Verify the user toggle the Dark mode
+	When the user launches the app
+	Then The user click on Get Started Button
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
+	Then The substitute navigates to dashboard page
+	When the user clicks on Menu tab
+	And Click on Settings
+	Then Verify the dark mode btn is OFF
+	When Toggle the Dark Mode
+	And Logout from app
+	And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
+	Then The substitute navigates to dashboard page
+	When the user clicks on Menu tab
+	And Click on Settings
+	Then Verify the dark mode button is ON
 
 @Setting @MOB-4789  @MOB-4791  @AndroidRegression @iOSRegression
 Scenario: Verify calendar link in substitute Menu 

@@ -1257,7 +1257,13 @@ public class BasePage {
 	 * method to set the default webview context
 	 */
 	public void switchToWebView() {
-		driver.context("WEBVIEW_com.frontline.frontlinemobile");
+		Set<String> contextNames = driver.getContextHandles();
+		for (String contextName : contextNames) {
+			if (contextName.contains("WEBVIEW_com.frontline.frontlinemobile")) {
+				driver.context(contextName);
+				System.out.println("Current context" + driver.getContext());
+			}
+		}
 	}
 
 	/*
@@ -1335,7 +1341,7 @@ public class BasePage {
 	 */
 	public void bgRunningApp() throws Exception {
 //		//ExtentCucumberAdapter.addTestStepLog("Run application in background");
-		driver.runAppInBackground(Duration.ofSeconds(10));
+		driver.runAppInBackground(Duration.ofSeconds(2));
 	}
 
 	/**
@@ -1477,11 +1483,11 @@ public class BasePage {
 	public boolean isElementDisplayed(MobileElement ele, String msg) {
 		boolean val = false;
 //		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
-
 			utils.log().info(msg +" Locator:" + ele);
-			WebDriverWait wait = new WebDriverWait(driver, 60);
-			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
-//			wait.until(ExpectedConditions.visibilityOf(ele));
+//			WebDriverWait wait = new WebDriverWait(driver, 60);
+		FluentWait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS).pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+//			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
+			wait.until(ExpectedConditions.visibilityOf(ele));
 			val = ele.isDisplayed();
 
 		return val;
@@ -1578,7 +1584,7 @@ public class BasePage {
 		}
 	}
 	public void enterValueInTextField(MobileElement ele, String keysToSend, String msg) {
-//		//ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
+		//ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 //		try {
 			utils.log().info(msg+ " Locator :"+ ele);
 				ele.click();
