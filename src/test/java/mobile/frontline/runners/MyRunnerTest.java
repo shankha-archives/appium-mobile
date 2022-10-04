@@ -19,7 +19,7 @@ import io.cucumber.junit.CucumberOptions;
         ,snippets = CAMELCASE
         ,monochrome=true
         //,strict=true
-        ,tags = "@MOB-3206"
+        ,tags = "@login"
 )
 
 public class MyRunnerTest {

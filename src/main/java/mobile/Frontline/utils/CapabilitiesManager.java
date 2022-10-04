@@ -32,8 +32,6 @@ public class CapabilitiesManager {
 
                 caps.setCapability("app", app);
                 caps.setCapability("device", params.getDeviceName());
-//                caps.setCapability("device", "Google Pixel 3");
-//                caps.setCapability("os_version", "9.0");
                 caps.setCapability("os_version", params.getOSversion());
 
             }
