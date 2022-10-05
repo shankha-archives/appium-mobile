@@ -74,9 +74,10 @@ Scenario: Verify created absence is displayed in calendar
   Then the user navigates to dashboard page
   When the user clicks on Menu tab
   When Click on calendar in menu link
-  And verify calendar the search result "searchText"
-  Then Choose the required month "next day"
-  And Click on the event day "next day"
+#  And verify calendar the search result "searchText"
+#  Then Choose the required month "next day"
+#  And Click on the event day "next day"
+  And Click on the event day "upcoming day"
   And Tap on the event title
   And Verify absence confirmation number
 
