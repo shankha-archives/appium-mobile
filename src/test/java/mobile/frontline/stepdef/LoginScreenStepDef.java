@@ -43,15 +43,15 @@ public class LoginScreenStepDef {
 		loginMethods.loginToApplication(testdata.read_property("Account", "valid", username),testdata.read_property("Account", "valid", "FrontlinePassword") );
 	}
 
-	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" username$")
+/*	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" username$")
 	public void the_substitute_enter_something_something_username(String type, String username) throws Throwable {
 		loginMethods.enterUserName(testdata.read_property("Account", type, username));
-	}
+	}*/
 
-	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" password$")
+/*	@And("^the substitute enter \"([^\"]*)\" \"([^\"]*)\" password$")
 	public void the_substitute_enter_something_something_password(String type, String password) throws Throwable {
 		loginMethods.enterUserPassword(testdata.read_property("Account", type, password));
-	}
+	}*/
 
 	@When("^Click on Sign In with Frontline ID button$")
 	public void click_on_sign_in_with_frontline_id_button() throws Throwable {
