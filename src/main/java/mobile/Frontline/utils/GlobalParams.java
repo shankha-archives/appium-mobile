@@ -99,10 +99,10 @@ public class GlobalParams {
         params.setEnvironmentName(System.getProperty("environmentName","Local"));
         switch(params.getPlatformName()){
             case "Android":
-                params.setDeviceName(System.getProperty("deviceName", "Pixel 5"));
+                params.setDeviceName(System.getProperty("deviceName", "Google Pixel 3"));
                 params.setUDID(System.getProperty("udid", "emulator-5554"));
                 params.setOSversion(System.getProperty("osVersion","10.0"));
-                params.setSystemPort(System.getProperty("systemPort","10000"));
+//                params.setSystemPort(System.getProperty("systemPort","10000"));
                 params.setChromeDriverPort(System.getProperty("chromedriverPort", "11000"));
                 break;
             case "iOS":

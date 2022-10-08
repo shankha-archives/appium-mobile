@@ -171,15 +171,15 @@ public class APIServices {
 
 	public void apiPassStatusUpdate(String sessionID) throws UnirestException {
 		HttpResponse<String> responsePassStatusUpdate = apiObject.passTestResult(sessionID);
-		Assert.assertEquals(printPrettyResponse(responsePassStatusUpdate.getBody()),responsePassStatusUpdate.getStatus(), 200);
-		utils.log().info("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
+		Assert.assertEquals(responsePassStatusUpdate.getStatus(), 200);
+		utils.log().info("Pass result update:" + responsePassStatusUpdate.getBody());
 		//ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
 	}
 
 	public void apiFailStatusUpdate(String sessionID) throws UnirestException {
 		HttpResponse<String> responseFailStatusUpdate = apiObject.failTestResult(sessionID);
-		Assert.assertEquals(printPrettyResponse(responseFailStatusUpdate.getBody()),responseFailStatusUpdate.getStatus(), 200);
-		utils.log().info("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
+		Assert.assertEquals(responseFailStatusUpdate.getStatus(), 200);
+		utils.log().info("Pass result update:" + responseFailStatusUpdate.getBody());
 		//ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
 	}
 

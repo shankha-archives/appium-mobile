@@ -20,8 +20,4 @@ import io.cucumber.junit.CucumberOptions;
         ,monochrome=true
         //,strict=true
         ,tags = "@login"
-)
-
-public class MyRunnerTest {
-
-}
+) public class MyRunnerTest { }
