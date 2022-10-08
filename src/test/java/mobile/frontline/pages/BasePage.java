@@ -20,16 +20,8 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
+import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.NoSuchSessionException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -1485,11 +1477,13 @@ public class BasePage {
 //		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 			utils.log().info(msg +" Locator:" + ele);
 //			WebDriverWait wait = new WebDriverWait(driver, 60);
-		FluentWait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS).pollingEvery(2, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+			Wait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS)
+			.pollingEvery(2, TimeUnit.SECONDS)
+			.ignoring(NoSuchElementException.class)
+			.ignoring(StaleElementReferenceException.class);
 //			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
 			wait.until(ExpectedConditions.visibilityOf(ele));
 			val = ele.isDisplayed();
-
 		return val;
 	}
 

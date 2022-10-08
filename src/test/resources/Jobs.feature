@@ -1,5 +1,5 @@
 @jobs
-Feature: Jobulator scenarios
+Feature: Job scenarios
 
 @AndroidRegression @MOB-3325 @iOSRegression
 Scenario: Verify substitute success message while accepting job is dismissed revealing accepted job details page
