@@ -22,9 +22,9 @@ public class LoginScreen extends BasePage {
     public MobileElement splashScreen;
 
     @FindBy(xpath = "//*[@id='Username']")
-//    @AndroidFindAll({
-//    @AndroidBy(className = "android.widget.EditText"),
-//    @AndroidBy(id = "Username")})
+    @AndroidFindAll({
+    @AndroidBy(className = "android.widget.EditText"),
+    @AndroidBy(id = "Username")})
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     public MobileElement username;
 

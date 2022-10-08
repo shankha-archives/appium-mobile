@@ -42,9 +42,8 @@ public class Hooks {
         DriverManager driverManager = new DriverManager();
         String sessionID = driverManager.getDriver().getSessionId().toString();
         if (scenario.isFailed()) {
-            byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png", scenario.getName());
-
+            /*byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png", scenario.getName());*/
             if (params.getEnvironmentName().contains("Cloud"))
                 apiServices.apiFailStatusUpdate(sessionID);
         } else if (params.getEnvironmentName().contains("Cloud"))

@@ -149,8 +149,9 @@ public class ApiMethods {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.put("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionID + ".json")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Basic c2hpdmFuaWdvZWwyOm1xSHFCc3laVW5lNFV3QlRpcDdG")
-                .body("{\"status\":\"passed\", \"reason\":\"Test Case has Passed\"}")
+                .basicAuth(System.getenv("BROWSERSTACK_USERNAME"), System.getenv("BROWSERSTACK_ACCESS_KEY"))
+    //            .header("Authorization", "Basic c2hpdmFuaWdvZWwyOm1xSHFCc3laVW5lNFV3QlRpcDdG")
+                .body("{'status':'passed', 'reason':'Test Case has Passed'}")
                 .asString();
         return response;
     }
@@ -159,8 +160,9 @@ public class ApiMethods {
         Unirest.setTimeouts(0, 0);
         HttpResponse<String> response = Unirest.put("https://api-cloud.browserstack.com/app-automate/sessions/" + sessionID + ".json")
                 .header("Content-Type", "application/json")
-                .header("Authorization", "Basic c2hpdmFuaWdvZWwyOm1xSHFCc3laVW5lNFV3QlRpcDdG")
-                .body("{\"status\":\"failed\", \"reason\":\"Element not found on the login page\"}")
+                .basicAuth(System.getenv("BROWSERSTACK_USERNAME"), System.getenv("BROWSERSTACK_ACCESS_KEY"))
+ //               .header("Authorization", "Basic c2hpdmFuaWdvZWwyOm1xSHFCc3laVW5lNFV3QlRpcDdG")
+                .body("{'status':'failed', 'reason':'Element not found on the login page'}")
                 .asString();
         return response;
     }

@@ -33,6 +33,7 @@ public class CapabilitiesManager {
                 caps.setCapability("app", app);
                 caps.setCapability("device", params.getDeviceName());
                 caps.setCapability("os_version", params.getOSversion());
+                caps.setCapability("browserstack.acceptInsecureCerts", "true");
 
             }
             else if (params.getEnvironmentName().equalsIgnoreCase("Local") && params.getPlatformName().equalsIgnoreCase("Android"))
