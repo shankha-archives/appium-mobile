@@ -9,6 +9,11 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class CapabilitiesManager {
+    String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
+    String username = System.getenv("BROWSERSTACK_USERNAME");
+    String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
+    String app = System.getenv("BROWSERSTACK_APP_ID");
+    String app2 = "bs://e87965404752e8a87aea9f5e533b8a7340e31ea4";
     TestUtils utils = new TestUtils();
 
     public DesiredCapabilities getCaps() throws IOException {
@@ -19,28 +24,34 @@ public class CapabilitiesManager {
             utils.log().info("getting capabilities");
             DesiredCapabilities caps = new DesiredCapabilities();
 
-            if (params.getEnvironmentName().equalsIgnoreCase("Cloud")) {
-                String buildName = System.getenv("BROWSERSTACK_BUILD_NAME");
-                String username = System.getenv("BROWSERSTACK_USERNAME");
-                String accessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
-                String app = System.getenv("BROWSERSTACK_APP_ID");
-
+            if (params.getEnvironmentName().equalsIgnoreCase("Cloud") && params.getPlatformName().equalsIgnoreCase("Android"))
+            {
                 caps.setCapability("browserstack.user", username);
                 caps.setCapability("browserstack.key", accessKey);
                 caps.setCapability("build", buildName);
                 caps.setCapability("name", params.gettestName());
-
                 caps.setCapability("app", app);
                 caps.setCapability("device", params.getDeviceName());
                 caps.setCapability("os_version", params.getOSversion());
                 caps.setCapability("browserstack.acceptInsecureCerts", "true");
-
             }
+            else if (params.getEnvironmentName().equalsIgnoreCase("Cloud") && params.getPlatformName().equalsIgnoreCase("iOS"))
+            {
+                caps.setCapability("browserstack.user", username);
+                caps.setCapability("browserstack.key", accessKey);
+                caps.setCapability("build", "Frontline-iOS");
+                caps.setCapability("name", params.gettestName());
+                caps.setCapability("device", params.getDeviceName());
+                caps.setCapability("os_version", params.getOSversion());
+                caps.setCapability("app", app2);
+                caps.setCapability("project", "Frontline");
+                caps.setCapability("browserstack.acceptInsecureCerts", "true");
+            }
+
             else if (params.getEnvironmentName().equalsIgnoreCase("Local") && params.getPlatformName().equalsIgnoreCase("Android"))
             {     caps.setCapability(MobileCapabilityType.PLATFORM_NAME, params.getPlatformName());
             caps.setCapability(MobileCapabilityType.UDID, params.getUDID());
             caps.setCapability(MobileCapabilityType.DEVICE_NAME, params.getDeviceName());
-
             caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, props.getProperty("androidAutomationName"));
             caps.setCapability("appPackage", props.getProperty("androidAppPackage"));
             caps.setCapability("appActivity", props.getProperty("androidAppActivity"));

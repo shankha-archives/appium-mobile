@@ -106,9 +106,9 @@ public class GlobalParams {
                 params.setChromeDriverPort(System.getProperty("chromedriverPort", "11000"));
                 break;
             case "iOS":
-                params.setDeviceName(System.getProperty("deviceName", "iPhone 13 Pro"));
+                params.setDeviceName(System.getProperty("deviceName", "iPhone 14"));
 //                params.setUDID(System.getProperty("udid", "C7BFB234-69AF-4DF1-8744-DCD110FEDEA3"));
-                params.setOSversion(System.getProperty("osVersion","15.0"));
+                params.setOSversion(System.getProperty("osVersion","16"));
                 params.setWdaLocalPort(System.getProperty("wdaLocalPort", "10001"));
                 params.setWebkitDebugProxyPort(System.getProperty("webkitDebugProxyPort", "11001"));
                 break;
