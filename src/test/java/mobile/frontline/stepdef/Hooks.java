@@ -49,10 +49,10 @@ public class Hooks {
         } else if (params.getEnvironmentName().contains("Cloud"))
             apiServices.apiPassStatusUpdate(sessionID);
 
-        if (driverManager.getDriver() != null) {
+//        if (driverManager.getDriver() != null) {
             driverManager.getDriver().quit();
             driverManager.setDriver(null);
-        }
+
         ServerManager serverManager = new ServerManager();
         if (serverManager.getServer() != null) {
             serverManager.getServer().stop();
