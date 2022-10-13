@@ -69,13 +69,21 @@ public class BasePage {
 	}
 
 	public void waitForVisibility(MobileElement e) {
-		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
-//		wait.until(ExpectedConditions.visibilityOf(e));
-		wait.until(ExpectedConditions.visibilityOfAllElements(e));
+//		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
+		FluentWait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS)
+				.ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class);
+		wait.until(ExpectedConditions.visibilityOf(e));
+//		wait.until(ExpectedConditions.visibilityOfAllElements(e));
 	}
 
 	public void waitForVisibility(By e) {
-		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
+//		WebDriverWait wait = new WebDriverWait(driver, Utils.WAIT);
+		FluentWait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS)
+				.pollingEvery(2, TimeUnit.SECONDS)
+				.ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(e));
 	}
 
@@ -1463,8 +1471,12 @@ public class BasePage {
 		//ExtentCucumberAdapter.addTestStepLog("Waiting for element to display. Locator"+ ele);
 		boolean val = false;
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 60);
-			wait.until(ExpectedConditions.and(ExpectedConditions.visibilityOf(ele)));
+//			WebDriverWait wait = new WebDriverWait(driver, 60);
+			FluentWait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS)
+					.pollingEvery(2, TimeUnit.SECONDS)
+					.ignoring(NoSuchElementException.class)
+					.ignoring(StaleElementReferenceException.class);
+			wait.until(ExpectedConditions.visibilityOf(ele));
 			val = ele.isDisplayed();
 		} catch (Exception e) {
 			val = false;
@@ -1477,7 +1489,7 @@ public class BasePage {
 //		ExtentCucumberAdapter.addTestStepLog(msg + "Locator: "+ ele);
 			utils.log().info(msg +" Locator:" + ele);
 //			WebDriverWait wait = new WebDriverWait(driver, 60);
-			Wait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS)
+			FluentWait wait = new FluentWait<>(driver).withTimeout(60, TimeUnit.SECONDS)
 			.pollingEvery(2, TimeUnit.SECONDS)
 			.ignoring(NoSuchElementException.class)
 			.ignoring(StaleElementReferenceException.class);

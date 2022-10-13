@@ -60,7 +60,6 @@ Scenario: Verify a substitute can view accepted job in-app Calendar
 
 @Setting @MOB-4808  @MOB-4807 @AndroidRegression @iOSRegression
 Scenario: Verify that a substitute can view next scheduled Job widget
-	 When the user launches the app
 	 And Enter username "AutomationSubsMOB-4269" and password and click on Sign In button
 	 Then The substitute navigates to dashboard page
 	 Then The user moves to Next Scheduled Job widget and verify it
