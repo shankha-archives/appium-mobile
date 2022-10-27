@@ -24,7 +24,7 @@ public class TimesheetDayViewScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Not Now")
     public MobileElement declinebtn;
 
-    @AndroidFindBy(id = "menu_item_add_time")
+    @AndroidFindBy(accessibility = "Add Time")
     @iOSXCUITFindBy(accessibility = "Add Time")
     public MobileElement addTimeSheets;
 
@@ -32,7 +32,7 @@ public class TimesheetDayViewScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
     public MobileElement timesheetDayView;
 
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    @AndroidFindBy(accessibility = "Navigate up")
     @iOSXCUITFindBy(accessibility = "Week")
     public MobileElement backBtn;
 
@@ -40,7 +40,7 @@ public class TimesheetDayViewScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "You have no time events for this timesheet.")
     public MobileElement noTimeEvent;
 
-    @AndroidFindBy(id = "day_view_submit_time_sheet_button")
+    @AndroidFindBy(accessibility = "Submit Timesheets")
     @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
     public MobileElement timesheetDaySubmitBtn;
 

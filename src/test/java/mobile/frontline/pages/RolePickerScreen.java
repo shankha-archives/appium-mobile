@@ -7,7 +7,7 @@ import mobile.Frontline.utils.GlobalParams;
 
 public class RolePickerScreen extends BasePage{
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/role_picker_title")
+    @AndroidFindBy(id = "role_picker_title")
     @iOSXCUITFindBy(accessibility = "Select a Role")
     public MobileElement rolePickerPageHeader;
 

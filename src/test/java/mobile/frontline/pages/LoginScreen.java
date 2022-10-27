@@ -58,7 +58,7 @@ public class LoginScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
     public MobileElement loginPageHeader;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/error_description")
+    @AndroidFindBy(id = "error_description")
     @iOSXCUITFindBy(accessibility = "You have not been granted access to any organizations that use the Frontline Insights Platform.")
     public MobileElement noLoginDialogBox;
 

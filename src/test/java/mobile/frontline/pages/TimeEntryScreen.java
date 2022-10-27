@@ -14,15 +14,15 @@ import java.time.Duration;
 
 public class TimeEntryScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/fl_spinner_selection")
+    @AndroidFindBy(id = "fl_spinner_selection")
     @iOSXCUITFindBy(accessibility = "EventType_1")
     public MobileElement workDetails;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
+    @AndroidFindBy(id = "out_time")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[2]")
     public MobileElement timeSheetOutTimeEditState;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/out_time")
+    @AndroidFindBy(id = "out_label")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Edit'])[3]")
     public MobileElement timeSheetOutTime;
 
@@ -30,11 +30,11 @@ public class TimeEntryScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Yes")
     public MobileElement okBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_entry_save_button")
+    @AndroidFindBy(accessibility = "Save")
     @iOSXCUITFindBy(accessibility = "Add")
     public MobileElement saveTimesheets;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_entry_save_button")
+    @AndroidFindBy(id = "time_entry_save_button")
     @iOSXCUITFindBy(accessibility = "Save")
     public MobileElement saveButton;
 
@@ -50,7 +50,7 @@ public class TimeEntryScreen extends BasePage {
     // @iOSXCUITFindBy(xpath = "")
     public MobileElement pm_label;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
+    @AndroidFindBy(id = "save")
     @iOSXCUITFindBy(accessibility = "Done")
     public MobileElement saveOrderWidgetbtn;
 
@@ -62,7 +62,7 @@ public class TimeEntryScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "The timesheet requested is not in an editable state")
     public MobileElement timesheetErrorMessage;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_time")
+    @AndroidFindBy(id = "in_time")
 //	@iOSXCUITFindBy(accessibility = "")
     public MobileElement inTimeEdit;
 

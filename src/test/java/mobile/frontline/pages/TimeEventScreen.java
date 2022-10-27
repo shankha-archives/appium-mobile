@@ -8,23 +8,23 @@ import org.junit.Assert;
 
 public class TimeEventScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_menu_item")
+    @AndroidFindBy(accessibility = "Edit")
     @iOSXCUITFindBy(accessibility = "Edit")
     public MobileElement dailytimeSheetedittbtn;
 
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    @AndroidFindBy(accessibility = "Navigate up")
     @iOSXCUITFindBy(accessibility = "Week")
     public MobileElement backBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/in_comment")
+    @AndroidFindBy(id = "in_comment")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable[@name='TimesheetEventDetailView_Other']/XCUIElementTypeCell[5]/XCUIElementTypeTextView")
     public MobileElement inTimeCommentVerify;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/delete_event_button")
+    @AndroidFindBy(id = "delete_event_button")
     @iOSXCUITFindBy(accessibility = "Delete Event")
     public MobileElement timeSheetDeletebtn;
 
-    @AndroidFindBy(id = "android:id/button1")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='OK']")
     @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement okBtn;
 

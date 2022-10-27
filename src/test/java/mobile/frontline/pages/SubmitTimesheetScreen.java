@@ -10,11 +10,11 @@ import org.openqa.selenium.WebElement;
 
 public class SubmitTimesheetScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/submit_time_sheets_button")
+    @AndroidFindBy(id = "submit_time_sheets_button")
     @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_Submit_Button")
     public MobileElement submitTimesheet;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_time_sheets_button")
+    @AndroidFindBy(id = "undo_time_sheets_button")
     @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_UndoSubmit_Button")
     public MobileElement undobtn;
 

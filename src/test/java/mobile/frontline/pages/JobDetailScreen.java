@@ -9,26 +9,26 @@ import org.openqa.selenium.By;
 
 public class JobDetailScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+    @AndroidFindBy(id = "cell_job_detail_date")
     public MobileElement jobDateOnJobDescription;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Accept']")
+    @AndroidFindBy(id = "job_detail_accept_button_text")
     @iOSXCUITFindBy(accessibility = "JobDetailVC_AcceptButton")
     public MobileElement jobAcceptBtn;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    @AndroidFindBy(id = "job_detail_reject_button_text")
     @iOSXCUITFindBy(accessibility = "Reject")
     public MobileElement jobRejectBtn;
 
-    @AndroidFindBy(id = "android:id/message")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Success!']")
     @iOSXCUITFindBy(accessibility = "You have successfully accepted this job.")
     public MobileElement successMsg;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    @AndroidFindBy(id = "job_detail_reject_button_text")
     @iOSXCUITFindBy(accessibility = "Reject Job")
     public MobileElement jobRejectConfirmBtn;
 
-    @AndroidFindBy(id = "android:id/message")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Are you sure you want to reject this job?']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Are you sure you want to reject this job?']")
     public MobileElement rejectDialogMsg;
 
@@ -36,19 +36,19 @@ public class JobDetailScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Okay")
     public MobileElement successOkBtn;
 
-    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
+    @AndroidFindBy(accessibility = "Navigate up")
     @iOSXCUITFindBy(accessibility = "Back")
     public MobileElement backFromAcceptedJob;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='You have accepted this job']")
+    @AndroidFindBy(accessibility = "You have accepted this job")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='Job Detail']")
     public MobileElement jobDetailsConfirmation;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(@text, 'Conf')]")
+    @AndroidFindBy(id = "job_detail_tv_accepted_conf_no")
     @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Conf')]")
     public MobileElement confirmationNo;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_job_detail_date")
+    @AndroidFindBy(id = "cell_job_detail_date")
     @iOSXCUITFindBy(accessibility = "JobDetailDayView_JobDate_Label")
     public MobileElement jobDetailDate;
 

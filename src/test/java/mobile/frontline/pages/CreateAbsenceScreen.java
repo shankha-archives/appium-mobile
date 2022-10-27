@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 
 public class CreateAbsenceScreen extends BasePage {
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Why?']")
+    @AndroidFindBy(accessibility = "why are you absent... choose from the list")
     @iOSXCUITFindBy(accessibility = "Why?")
     public MobileElement absenceReasonVerification;
 
@@ -18,27 +18,27 @@ public class CreateAbsenceScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
     public MobileElement reason;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_forward_circle")
+    @AndroidFindBy(id = "create_absence_forward_button")
     @iOSXCUITFindBy(accessibility = "Create_Absence_NextStep_Button")
     public MobileElement forwardCaret;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='When?']")
+    @AndroidFindBy(accessibility = "When?")
     @iOSXCUITFindBy(accessibility = "When?")
     public MobileElement datePageVerification;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='How Long?']")
+    @AndroidFindBy(accessibility = "How Long will you be absent... choose from the following options")
     @iOSXCUITFindBy(accessibility = "How Long?")
     public MobileElement durationPageVerification;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_full_day")
+    @AndroidFindBy(id = "shift_type_full_day")
     @iOSXCUITFindBy(accessibility = "CreateAbsence_FullDay_Button")
     public MobileElement selectDuration;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_custom")
+    @AndroidFindBy(id = "shift_type_custom")
     @iOSXCUITFindBy(accessibility = "CreateAbsence_Custom_Button")
     public MobileElement selectCustomDuration;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Substitute']")
+    @AndroidFindBy(accessibility = "Substitute")
     @iOSXCUITFindBy(accessibility = "Substitute")
     public MobileElement subAssignPageVerification;
 
@@ -46,39 +46,39 @@ public class CreateAbsenceScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Review")
     public MobileElement reviewPageVerification;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
+    @AndroidFindBy(id = "progress_footer_submit_button")
     @iOSXCUITFindBy(accessibility = "Submit_Absence")
     public MobileElement submitAbsence;
 
-    @AndroidFindBy(id = "android:id/message")
+    @AndroidFindBy(xpath = "//*[@text='Your absence was created successfully.']")
     @iOSXCUITFindBy(accessibility ="Your absence was created successfully.")
     public MobileElement createdAbsenceVerificationMsg;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_half_day_pm")
+    @AndroidFindBy(id = "shift_type_half_day_pm")
     @iOSXCUITFindBy(accessibility = "CreateAbsence_HalfDayPM_Button")
     public MobileElement halfDaypmDuration;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/shift_type_half_day_am")
+    @AndroidFindBy(id = "shift_type_half_day_am")
     @iOSXCUITFindBy(accessibility = "CreateAbsence_HalfDayAM_Button")
     public MobileElement halfDayamDuration;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/progress_footer_submit_button")
+    @AndroidFindBy(id = "progress_footer_submit_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit_Absence']")
     public MobileElement saveChanges;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/view_absence_button")
+    @AndroidFindBy(id = "view_absence_button")
     @iOSXCUITFindBy(accessibility = "View Absence")
     public MobileElement viewAbsence;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Who?']")
+    @AndroidFindBy(accessibility = "Who?")
     @iOSXCUITFindBy(accessibility = "Who?")
     public MobileElement absenceRequiredFor;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/search_view_edit_text")
+    @AndroidFindBy(id = "search_view_edit_text")
     @iOSXCUITFindBy(accessibility = "Search employees by last name")
     public MobileElement serachEditText;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/create_absence_list_cell_name")
+    @AndroidFindBy(id = "create_absence_list_cell_name")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText")
     public MobileElement selectReqName;
 

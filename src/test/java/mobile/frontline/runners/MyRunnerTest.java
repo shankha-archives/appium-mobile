@@ -19,5 +19,5 @@ import io.cucumber.junit.CucumberOptions;
         ,snippets = CAMELCASE
         ,monochrome=true
         //,strict=true
-        ,tags = "@login"
+        ,tags = "@Dashboard"
 ) public class MyRunnerTest { }

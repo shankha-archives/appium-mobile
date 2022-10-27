@@ -44,23 +44,23 @@ public class TimesheetWeekViewScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_6")
     public MobileElement sunday;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_time_sheet_day_total_time")
+    @AndroidFindBy(id = "cell_time_sheet_day_total_time")
     // @iOSXCUITFindBy(accessibility = "")
     public List<MobileElement> dayTotalTime;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_view_total_amount")
+    @AndroidFindBy(id = "time_sheet_week_view_total_amount")
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_TotalHoursLabel")
     public MobileElement totalWeekTotalAmount;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/submit_time_sheet_button")
+    @AndroidFindBy(accessibility = "Submit Timesheets")
     @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
     public MobileElement submittimesheetsbtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_icon")
+    @AndroidFindBy(id = "undo_icon")
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_UndoContainer_View")
     public MobileElement undoicon;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/review_dialog_decline_button")
+    @AndroidFindBy(id = "review_dialog_decline_button")
     @iOSXCUITFindBy(accessibility = "Not Now")
     public MobileElement declinebtn;
 

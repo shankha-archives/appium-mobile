@@ -12,7 +12,7 @@ public class PeopleScreen extends BasePage{
     @iOSXCUITFindBy(accessibility = "DirectoryView_EmployeeCell_0")
     public MobileElement searchPeople;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/search_view_edit_text")
+    @AndroidFindBy(id = "search_view_edit_text")
     @iOSXCUITFindBy(accessibility = "Search employees by last name")
     public MobileElement serachEditText;
 

@@ -12,15 +12,16 @@ public class JobsScreen extends BasePage {
 
     public TestDataManager testdata = new TestDataManager();
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Jobs']")
+    @AndroidFindBy(accessibility = "Available")
     @iOSXCUITFindBy(accessibility = "view_header")
     public MobileElement availableJobsHeader;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Scheduled']")
+    @AndroidFindBy(accessibility = "Scheduled")
     @iOSXCUITFindBy(accessibility = "Scheduled")
     public MobileElement scheduledJobHeader;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_cell_information_inner_cointainer")
+    @AndroidFindBy(id = "job_cell_information_inner_cointainer")
     @iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
     public MobileElement jobslist;
 
@@ -36,31 +37,31 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "JobFilter_Text")
     public MobileElement postSortBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/sort_by_header")
+    @AndroidFindBy(id = "sort_by_header")
     @iOSXCUITFindBy(accessibility = "Sort By")
     public MobileElement sortByPopUp;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_date_selection_text")
+    @AndroidFindBy(id = "job_date_selection_text")
     @iOSXCUITFindBy(accessibility = "Job Date")
     public MobileElement jobDateFilter;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_check")
+    @AndroidFindBy(id = "job_check")
     @iOSXCUITFindBy(accessibility = "JobSort_Title_Description_Label")
     public MobileElement jobDateSelection;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_check")
+    @AndroidFindBy(id = "post_check")
     @iOSXCUITFindBy(accessibility = "JobSort_Title_Description_Label")
     public MobileElement postDateSelection;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/post_date_selection_text")
+    @AndroidFindBy(id = "post_date_selection_text")
     @iOSXCUITFindBy(accessibility = "Post Date (Premium)")
     public MobileElement postDateFilter;
 
-    @AndroidFindBy(xpath = "(//android.widget.TextView[@index=0])[5]")
+    @AndroidFindBy(id = "job_list_sort_arrows")
     @iOSXCUITFindBy(accessibility = "JobSort_Icon")
     public MobileElement upDownArrowBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/job_header_text")
+    @AndroidFindBy(id = "job_header_text")
     @iOSXCUITFindBy(accessibility = "Most Recently Posted")
     public MobileElement postJobHeader;
 
