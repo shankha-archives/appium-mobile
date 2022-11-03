@@ -14,9 +14,13 @@ public class SubmitTimesheetScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_Submit_Button")
     public MobileElement submitTimesheet;
 
-    @AndroidFindBy(id = "undo_time_sheets_button")
+    @AndroidFindBy(id = "undo_icon")
     @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_UndoSubmit_Button")
     public MobileElement undobtn;
+
+    @AndroidFindBy(id ="undo_time_sheets_button")
+    @iOSXCUITFindBy(accessibility = "To be done later")
+    public MobileElement undoButton;
 
     @AndroidFindBy(xpath = "//android.widget.EditText[@text='Enter PIN']")
     @iOSXCUITFindBy(accessibility = "TimesheetsSubmissionView_EnterPin_TextField")
@@ -47,5 +51,9 @@ public class SubmitTimesheetScreen extends BasePage {
             isElementDisplayed(inValidPin,"Waiting for invalid pip pop up");
             return getElementText(inValidPin);
         }
+    }
+
+    public void clickUndoButton() {
+        click(undoButton, "Clicking on undo button");
     }
 }

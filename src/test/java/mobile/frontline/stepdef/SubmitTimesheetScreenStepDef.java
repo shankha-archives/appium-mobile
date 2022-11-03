@@ -25,7 +25,11 @@ SubmitTimesheetScreen submitTimesheetScreen = new SubmitTimesheetScreen();
 
     @Then("^verify the invalid pin message$")
     public void verify_the_invalid_pin_message() throws Throwable {
-        Assert.assertEquals("The message for invalid pin is incorrect","Invalid PIN", submitTimesheetScreen.toastMessge()); ;
+        Assert.assertEquals("The message for invalid pin is incorrect","Invalid PIN", submitTimesheetScreen.toastMessge());
     }
 
+    @Then("Click on undo again")
+    public void clickOnUndoAgain() {
+        submitTimesheetScreen.clickUndoButton();
+    }
 }

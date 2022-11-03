@@ -28,7 +28,7 @@ Scenario: Verify an employee should be able to clock in and clock out
   And Verify the timesheet is clocked out
 
 @MOB-5577 @AndroidRegression @iOSRegression
-Scenario: Verify an employee user can submit day timesheet
+Scenario: Verify an employee user can submit and undo day timesheet
   When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
   When the user launches the app
   Then The user click on Get Started Button
@@ -39,8 +39,11 @@ Scenario: Verify an employee user can submit day timesheet
   Then Click on submit day timesheet
   Then Click on submit timesheet
   And Verify submission of timesheet
+  Then Click on undo option
+  Then Click on undo again
+  Then Verify undo timesheet
 
-@MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
+  @MOB-4263 @MOB-4264 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
 Scenario: Verify an employee can submit weekly timesheet and then undo a timesheet
   When Undo submitted timesheets "AutomationEmployeeMOB-4263" "APIWorkerID_MOB-4263" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
   When the user launches the app
@@ -59,10 +62,8 @@ Scenario: Verify an employee can submit weekly timesheet and then undo a timeshe
   And Verify the total time of the week
   When Click on submit week timesheet option
   Then Click on submit timesheet
-#    When Decline review pop up
   When Click on undo week timesheet btn
   Then Click on undo option
-  When Decline review pop up
   Then Verify undo timesheet
 
 @MOB-4259 @AndroidSmoke @MOB-4260 @iOSSmoke @AndroidRegression @iOSRegression
@@ -135,7 +136,6 @@ Scenario: Verify an employee can edit and delete the time from the timesheet
   When The comment is edited to the time event
   And Save edited timeevent
   When Navigate back to dayView
-#    When Decline review pop up
   And Verify time event is visible
   Then Verify the added event
   And Click on time event
