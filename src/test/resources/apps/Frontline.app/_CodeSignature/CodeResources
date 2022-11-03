@@ -4,6 +4,10 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>.swiftlint.yml</key>
+		<data>
+		yPtdQzGy0AZFl3Ggxw8ocpqJ3xI=
+		</data>
 		<key>AppIcon60x60@2x.png</key>
 		<data>
 		+CodcKuS6owtvW4+k2pVx2rv8GE=
@@ -14,23 +18,23 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		idbLgZAq4vEcYWuqJJ974VME2ZY=
+		NBhIxUll7uotTu+7CWHAqRsYtuQ=
 		</data>
 		<key>Base.lproj/CheckAbsences.intentdefinition</key>
 		<data>
-		CqyA2Yyp/t8Bb+vm64Iwx+5X+7E=
+		nrgbneBRJeW9ElnStCyAqq898hE=
 		</data>
 		<key>Base.lproj/JobSortingOptionsCell.nib</key>
 		<data>
-		ZSNZpW7BbupeURBYwNVpS69i+Og=
+		QpOENbNxxq4lGNWNLl7xi72zfyM=
 		</data>
 		<key>Base.lproj/JobsSortByView.nib</key>
 		<data>
-		yhoDatpz/5Q9ZswaicYKze1htdE=
+		sPHrskjT+1t7Ym+fZXjfn6nBQ8k=
 		</data>
 		<key>Base.lproj/Main.storyboardc/9h4-6R-N4u-view-qB7-ZZ-kCS.nib</key>
 		<data>
-		m/w4/9EjqD4PI1gmAbPTncBwSRk=
+		Tk6u/x6W7cY+U6C0RLnqXU+vMhg=
 		</data>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
 		<data>
@@ -38,7 +42,15 @@
 		</data>
 		<key>Base.lproj/Main.storyboardc/UIViewController-9h4-6R-N4u.nib</key>
 		<data>
-		wLQT5hNIYmrO9k1U5muLUmRfA0g=
+		gfu1hXnf97g9XCqXH76uiM8S2oM=
+		</data>
+		<key>BreadcrumbCollectionViewCell.nib</key>
+		<data>
+		8NsxXbTirn/yGNCpsCuMJh6CCTY=
+		</data>
+		<key>BreadcrumbsView.nib</key>
+		<data>
+		DdvY/ze3VVcpm1SPGQHpUrGrjqM=
 		</data>
 		<key>Font Awesome 5 Brands-Regular-400.otf</key>
 		<data>
@@ -60,101 +72,561 @@
 		<data>
 		GyLxf9w4Bw3lDm0as6Mtpxqi2Bk=
 		</data>
-		<key>Frameworks/libswiftCloudKit.dylib</key>
+		<key>Frameworks/Instabug.framework/Info.plist</key>
 		<data>
-		zWV7GuvCkyAQ4+njAqti2TCFB1Q=
+		HBNghww5uPA9kw3lT5W5yJI4kP0=
 		</data>
-		<key>Frameworks/libswiftContacts.dylib</key>
+		<key>Frameworks/Instabug.framework/Instabug</key>
 		<data>
-		PjApZAlQATEApg9BXVvEOL2bBX8=
+		OVt43b5Jhfq0jDyV+XsRkKAF5aY=
 		</data>
-		<key>Frameworks/libswiftCore.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Assets.car</key>
 		<data>
-		rrAp64iPhUL40XQR7JlGMDIZaMA=
+		xfASW86VdJbscLW7grjJdnjhfl4=
 		</data>
-		<key>Frameworks/libswiftCoreData.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Config.plist</key>
 		<data>
-		H8h+cOU1Y6PjCAfRdyuckpDWDB0=
+		zmV6UqBSo6r1NOz798vd5O4zTBA=
 		</data>
-		<key>Frameworks/libswiftCoreFoundation.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGActionSheetCell.nib</key>
 		<data>
-		P4IT9OqWCWZ8FyecMxQHhM6h4G8=
+		DpbCnqkUn7QWIEGRSJoDtsNLa7E=
 		</data>
-		<key>Frameworks/libswiftCoreGraphics.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGActionSheetVC-iPhone.nib/objects-11.0+.nib</key>
 		<data>
-		JoDjsNQXE3z2hogOouALtjw8m/g=
+		xSF/jK3jKN+O++bGG+r6to9TogQ=
 		</data>
-		<key>Frameworks/libswiftCoreImage.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGActionSheetVC-iPhone.nib/runtime.nib</key>
 		<data>
-		dccNAYDUBxOzns3c+W4XRSmf1Ps=
+		bKmhjcVCKMsGOaM+X+qCZPqr6/c=
 		</data>
-		<key>Frameworks/libswiftCoreLocation.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGBugVC-iPhone.nib/objects-11.0+.nib</key>
 		<data>
-		GMi1JxCYZe10XWexHCK2KQ5T2Lo=
+		15QhAJTtBlpRbIZKzxDyAMKq9Mw=
 		</data>
-		<key>Frameworks/libswiftDarwin.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGBugVC-iPhone.nib/runtime.nib</key>
 		<data>
-		XJGVexKAsC220QzBQHwL6VS/whc=
+		MazBrNREGqX1ufVgV4Ai7SfjNAs=
 		</data>
-		<key>Frameworks/libswiftDispatch.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatCell.nib</key>
 		<data>
-		xYRhwsR1eeXatGDr8WNyVj93krw=
+		Y957Nk9hXFwKC1pe6A+6hZwNYww=
 		</data>
-		<key>Frameworks/libswiftFoundation.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatListVC-iPhone.nib</key>
 		<data>
-		WclOTQyDfPDOGEjZboBz+yfxGVQ=
+		jVqSZkaCV4RnFmcrD2DJT4PVIOI=
 		</data>
-		<key>Frameworks/libswiftGLKit.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatVC-iPhone.nib/objects-11.0+.nib</key>
 		<data>
-		VUB59UJHyJahGwF2bUHv82TwR1E=
+		VXkm39dvrSnXuXBojcdJDxJwBNs=
 		</data>
-		<key>Frameworks/libswiftIntents.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatVC-iPhone.nib/runtime.nib</key>
 		<data>
-		7RqrnXQ9Cduc93e7QO3LDJfA/n8=
+		kad5XJ9hb/7p82u1QifmtgP+9Hk=
 		</data>
-		<key>Frameworks/libswiftMetal.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGFullScreenImageViewController.nib</key>
 		<data>
-		q6qpoqLxtRrru4zloX0b0xHIJVw=
+		pbRLjKxzPvd/7naZCj45QrUgrjs=
 		</data>
-		<key>Frameworks/libswiftModelIO.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGPoweredByView.nib</key>
 		<data>
-		G+090t+MKu3CUOur1WjaEClGHbA=
+		vviKGxiw3zQGGMbJoUJTNK+GMDY=
 		</data>
-		<key>Frameworks/libswiftObjectiveC.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGPromptCell.nib</key>
 		<data>
-		W4v+YlroD8+v27M4zKa/3r9eqdA=
+		sKDXsk7MOWuh++cOiFXGOjq2DTQ=
 		</data>
-		<key>Frameworks/libswiftQuartzCore.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGReplyView-iPhone.nib</key>
 		<data>
-		OzOL7prTxnOJwhTRps72jdhagI4=
+		ymdoTzDa3YIVXVCmF8iFzNOLI5E=
 		</data>
-		<key>Frameworks/libswiftSpriteKit.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGReportCategoryCell.nib</key>
 		<data>
-		kyUyi846M+DXRgsWbNEE5eFFXBo=
+		giacavr8FtZKd6Ogn6lWI6iPXDs=
 		</data>
-		<key>Frameworks/libswiftUIKit.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGScreenshotVC-iPhone.nib/objects-11.0+.nib</key>
 		<data>
-		G10/WJel9vPNJjANFC1WEM1Jno0=
+		Qt2wLkuweGM61ulL6fkxNZsJuTY=
 		</data>
-		<key>Frameworks/libswiftos.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGScreenshotVC-iPhone.nib/runtime.nib</key>
 		<data>
-		oMpvzHAVfevcqm0jDkhUpqLzhXg=
+		teA5/aKbTcf7byXqKU3V1vb1sN4=
 		</data>
-		<key>Frameworks/libswiftsimd.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGVoiceNoteRecordingViewController-iPhone.nib</key>
 		<data>
-		WoLHcJyyeGsSyBZmaAdBuP9inFQ=
+		ccwhCTIfGr1jCBxPyg7tzbxL4J0=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Info.plist</key>
+		<data>
+		s4zBKsEQNOg65dR+28SVgZehTno=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Inject_DSYM_Project-Archive.sh</key>
+		<data>
+		K+qqKSlG2L7jBTzxekvA8TklxvQ=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 10.mom</key>
+		<data>
+		K4J0TbDxihPBywBZs8Zb7D9lx0o=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 11.mom</key>
+		<data>
+		aYZtuUT7eoJjpa3Za1oon7M7SGE=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 12.mom</key>
+		<data>
+		ggbBhX2/YOs8ffo4BOnUCRDPq7M=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 14.mom</key>
+		<data>
+		A6CeAoCDk4rbRzeFg59iuD+lGz8=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 15.mom</key>
+		<data>
+		53n/Xz+Wtp/V69RFGXRp9dWfI3U=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 16.mom</key>
+		<data>
+		EujV6jX/SEONW3z0q/9ryIisdlg=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 17.mom</key>
+		<data>
+		eMt4J2Qz9H/nLIPJGhfotyOZ+ws=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 18.mom</key>
+		<data>
+		UK6+aZbgwwJJGA72DAanw6Moo8s=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 19.mom</key>
+		<data>
+		eoxY3g4wrS1VJbhOkbu/06uOI70=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 2.mom</key>
+		<data>
+		RNjtkeYWJN6TZ6ufEuGKrPWf8Mc=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 20.mom</key>
+		<data>
+		R7HgVah160MvHHbGBXxxPU+teY4=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 21.mom</key>
+		<data>
+		jop2t4nAtLvuin/uxxstnq/LMPw=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 22.mom</key>
+		<data>
+		iOvsSwC2aG8QC4K5MVRcJTRyzxc=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 23.mom</key>
+		<data>
+		v/ryjS4yetmq7/UYhEzP7/jTc3I=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 24.mom</key>
+		<data>
+		EKpAJ1CmEA8mEHZTUHU9XCksV/w=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 25.mom</key>
+		<data>
+		MwahI29l/4wGPvPR8ti81ebPDHI=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 26.mom</key>
+		<data>
+		pmylgUxgSWFdOk4QnaurlWJg8wA=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 26.omo</key>
+		<data>
+		wF6IhNxwH32uzXiX8y0XuspGVUQ=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 3.mom</key>
+		<data>
+		jJqZ4SZfSkGWP6ro9mL2CRitF2s=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 7.mom</key>
+		<data>
+		qNkvhwRPDwS7fRuzdXan069X25Q=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 8.mom</key>
+		<data>
+		yFoRXMAfQtupyEDVREEaEYY7COg=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 9.mom</key>
+		<data>
+		G26xrGbzTG39J6HYulHLPcK0RBg=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel.mom</key>
+		<data>
+		3pPmqhMXEHEOQxMgWbCRx27FF4k=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/VersionInfo.plist</key>
+		<data>
+		wAMrWZCn+JwU2dTNBhptNhpmIho=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 2.mom</key>
+		<data>
+		UgSiBWCqBoYWa0LkExgQcOj53dk=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 3.mom</key>
+		<data>
+		j3IPwX0NdC5MwnoSgJvvQOAbq5o=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 4.mom</key>
+		<data>
+		2XWXa07DY+uGclvE/nNTwnrPCQA=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 5.mom</key>
+		<data>
+		J9PKxbarGz2osiQIF2XizyvwpIM=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 5.omo</key>
+		<data>
+		w8YDdIAYn9hKTl8Gm4tby1nyP+I=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel.mom</key>
+		<data>
+		Lty0ouTuBJiDBFyAPwhSLqvizxA=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/VersionInfo.plist</key>
+		<data>
+		M+PRwq/IvcMwPWqvCGEG+U8RYww=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel 2.mom</key>
+		<data>
+		sTY0oJ9jNeI+o7B8Iz7JXQ41fMg=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel 3.mom</key>
+		<data>
+		1NYGN3eQErk+L1DW+b1lh0oVBeE=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel 3.omo</key>
+		<data>
+		XcyBT0QkhJCcVQCvDmkkaihetgU=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel.mom</key>
+		<data>
+		pkHa8M0yIEkbTu7tbYSsWAn5Cwk=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/VersionInfo.plist</key>
+		<data>
+		nab4b4gKrDCEJ8KBvhY22cG3pQg=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Instabug_dsym_upload.sh</key>
+		<data>
+		nbpRGnCKy117wnkmFF1koooVRP4=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeDirectory</key>
+		<data>
+		LbOqPKyJOgMzhfwC9ZkapmYHVtI=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeRequirements</key>
+		<data>
+		OnX22wWFKRSOFN1+obRynMCeyXM=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeRequirements-1</key>
+		<data>
+		jNq9Ta4LAhOz8tX1rw35gAR14Mk=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeResources</key>
+		<data>
+		TsYy6psapoZXemzighD+tgKncz8=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeSignature</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ar.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			+Y2/BuWqMkyuwqZGIlTf3/hvYM0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/az.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ZK45dP2nEOtia5r+8kGLrf/IcKk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ca-ES.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			nGrLhhIb9tuX/DLaL65QvblLo04=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ca.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2sIpZ+FXDFJv+orJGH61wNsjtzk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/cs.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			F9vawqnDMiYRVj6xzIjH9gIM2Nk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/da.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			soq8sRVFwSp73vTAaLz8OG1vqew=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/de.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r7mlNkhE9Q/Dscu0A6XpKx/tw0c=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/en.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			O6az//M9RLrkG6AhDuPHbvtoPQk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/en.lproj/Localizable.stringsdict</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JT8QT5SebrK2XFFs3Iov80e9WkI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/es.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			uilsAOfJFImwxZszzbYBWzyC10s=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/fi.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			g7djbILV0w/wut7nSGsW/jhcKvE=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/fr.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6hiJV7VRSyddBWOheuuk9nWSWmQ=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/hu.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			LlZp2fL1uZh8SZTlRaryx15nyiM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/it.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sCBKmk/9gr5yIO5hFAhufsAjc8E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ja.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3v5TDiR5PwEwCZx0yN6aoT7O+VI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ko.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			HOvQ3d10rBKR/0eVlXyjebp3ae0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/nb.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			gDrRtWhmtRdR5uZ9+0NAkw+2r+A=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/nl.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			o0PFgtQvlfQ1kla5Dj/reXjyo1A=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/pl.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			J99OWtkMNAsZoE98TDoXflhHRBk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/pt-BR.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			thbQ3n9EP0nk5wt8FywpaJ3sCwg=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/pt-PT.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			2i2n2HsScV8I3/NgRqzHYQY5f08=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ru.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ymTn6CU5hqmifw/d9hbi53qVEtw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/sk.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SBxlEK5Yp7X3rzXkYlg1iLErGbA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/strip-frameworks.sh</key>
+		<data>
+		+MG0vr81f9BYFi8t9r2Wy0CFRAQ=
+		</data>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/sv.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			gNzB/+ACrPy253Fgca5rn0vZLys=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/tr.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			RGl18oXRUyZk6kc9y0j9liJl7A4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/zh-Hans.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			4uty7mnF3yuf124HhCU4IG1jP5E=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/zh-Hant-TW.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			0FiZ5kqNbt0w8XIJwJ1Xo08eyK0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/zh-Hant.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			lH51MOwIUHJALBXc2Hbnojn1k6c=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/_CodeSignature/CodeResources</key>
+		<data>
+		zpYwq1oMXTWu40zFWJBbQgjOi5s=
+		</data>
+		<key>Frameworks/Instabug.framework/strip-frameworks.sh</key>
+		<data>
+		+MG0vr81f9BYFi8t9r2Wy0CFRAQ=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
-		NE6yyuBG+XNmposLm9PXPHDzavA=
+		QBhgDP9a9xyF2GOjRB6lagP2mJU=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		4CmMgEIxZCtAU/AzM7SqOQL1Eeo=
+		etjaqlwWAz6aGJ5AdpR4fGqNivQ=
+		</data>
+		<key>JobFilterSearchTableViewCell.nib</key>
+		<data>
+		sluwnzEWytfLHD4145XCMDQ4sew=
+		</data>
+		<key>JobFilterSearchViewController.nib</key>
+		<data>
+		0l3OqKbgi4/k02Kg5wTUwDXhn6k=
+		</data>
+		<key>JobFiltersHeaderView.nib</key>
+		<data>
+		yfu5n0RHoCCSj+/st+aT1cWp34I=
+		</data>
+		<key>JobFiltersViewController.nib</key>
+		<data>
+		d09KndbN7qpDZlQmMI7t4BxEE9Q=
+		</data>
+		<key>JobsFilterOptionsCell.nib</key>
+		<data>
+		qNdxQvM85GCi0oqLRYi5DzGJtEw=
 		</data>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		xLpJGRR5hOXqpVzSQIPgjGfBMvM=
+		BvTmW/4HCt9XC6vEsGLisjDJzwU=
 		</data>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -162,7 +634,7 @@
 		</data>
 		<key>LaunchScreen.storyboardc/LoadingViewController.nib</key>
 		<data>
-		LylVhwb5rGnSuDgQJv8O5Tyw3/o=
+		jgzXk2hGLwm3iKs0hfvnBuQbW3A=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -170,13 +642,13 @@
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Assets.car</key>
 		<data>
-		PvPB6WnyN+3GJyNZDOGl8t6NeYc=
+		LIL7ZZeOhWEYkQ09rfbB+k6+hq0=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gtoM5QRnTFAAOM23YiCvF251Sl0=
+			zs/eENaBuGBQkkCS78yNKtXGpXQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -187,15 +659,15 @@
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Frontline Mobile Intents</key>
 		<data>
-		6Oss1BexMK/cCR1DuzxJruTXZoQ=
+		swBMFxMx4j8yYHogjP7wak9y1PM=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/Info.plist</key>
 		<data>
-		R63uziX5ui1d0Hbc6piW4yaTzyk=
+		TpxtIExc6E8JZ3DqDM0URUBbZbA=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/_CodeSignature/CodeResources</key>
 		<data>
-		9xvJUreN8Yr27etzCge6f1W4IGc=
+		4sI4EvPBTwIp9xFM4CPJrsWsxLY=
 		</data>
 		<key>PlugIns/Frontline Mobile Intents.appex/en.lproj/CheckAbsences.strings</key>
 		<dict>
@@ -210,7 +682,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xm5pSst/klhauPoN0udK5KfKLOo=
+			M1FnpYpss7b5/oddHudHuR0WD24=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -228,20 +700,20 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DJ72J/v3ZGrWKf9VApbpiYsafmg=
+			r6Z69HGoCN4I74LVugj01oULhXA=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Assets.car</key>
 		<data>
-		PvPB6WnyN+3GJyNZDOGl8t6NeYc=
+		LIL7ZZeOhWEYkQ09rfbB+k6+hq0=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			sCNPS/79l9zRyA+OiIduTdyGxyo=
+			PTy7fPdwQS9IA8hTwReqFkAaSVw=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -259,7 +731,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fpf31GuZDyCGKQJZ3IlUztShgzo=
+			7UFkEmU/HjPVwIwlo4/eM1hd1G8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -268,7 +740,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SSUBKfJXufnF7h14xpE7dboWmR8=
+			tKBdUlZY00JSaR3cHxz7g6rhsZE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -279,15 +751,15 @@
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Frontline Mobile IntentsUI</key>
 		<data>
-		WFTyzJRuXKZB7InEJlzO8jKhfsA=
+		fN1vUJaPUyEPL8FC5Kq7efPKYtc=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Info.plist</key>
 		<data>
-		RMoo4lhveDegQFCS2xHqZ/1JNbY=
+		aT4S4g2jEOhstuIKUo+7O9NLuc8=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/_CodeSignature/CodeResources</key>
 		<data>
-		XK2sV5LhNUoowsNjFSCAYY9b3XM=
+		C2SBcNohhRaoD09ofIdiwuGsz14=
 		</data>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/en.lproj/CheckAbsences.strings</key>
 		<dict>
@@ -302,7 +774,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xm5pSst/klhauPoN0udK5KfKLOo=
+			M1FnpYpss7b5/oddHudHuR0WD24=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -320,39 +792,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DJ72J/v3ZGrWKf9VApbpiYsafmg=
+			r6Z69HGoCN4I74LVugj01oULhXA=
 			</data>
 			<key>optional</key>
 			<true/>
 		</dict>
-		<key>SubscriptionDetailTableViewCell.nib</key>
-		<data>
-		qGMIauYnd4IPH/B3XulGskPI8/E=
-		</data>
-		<key>SubscriptionDetailsViewController.nib</key>
-		<data>
-		ZfkRkg9aJUspddWuzrQXYZrT3VY=
-		</data>
-		<key>SubscriptionHeaderTableViewCell.nib</key>
-		<data>
-		H9QDaBNgEwuAIR6E+jUu3RjZzT0=
-		</data>
-		<key>SubscriptionPlanCollectionViewCell.nib/objects-12.3+.nib</key>
-		<data>
-		ZR3oVL0xNAyGMhYO5xt5vdtzAuY=
-		</data>
-		<key>SubscriptionPlanCollectionViewCell.nib/runtime.nib</key>
-		<data>
-		w0Ehgdi8hp1ApqSQC050NwIoxSE=
-		</data>
-		<key>SubscriptionPurchaseViewController.nib/objects-14.0+.nib</key>
-		<data>
-		pyg9v6OScSDb6IvgMyH5Dv5MHPQ=
-		</data>
-		<key>SubscriptionPurchaseViewController.nib/runtime.nib</key>
-		<data>
-		oLEAtSpfstqulZarjzciL4kcl4k=
-		</data>
 		<key>Timesheets.mom</key>
 		<data>
 		Zp+jAlfbdlnTUL8iJcbktDPh1nc=
@@ -388,7 +832,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xm5pSst/klhauPoN0udK5KfKLOo=
+			M1FnpYpss7b5/oddHudHuR0WD24=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -424,7 +868,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DJ72J/v3ZGrWKf9VApbpiYsafmg=
+			r6Z69HGoCN4I74LVugj01oULhXA=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -438,9 +882,20 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>jobsFilterOptions.json</key>
+		<data>
+		J3F44I0QhSkGHL/Kfowzpkkt9yE=
+		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>.swiftlint.yml</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gLzUXKwfNbyTD7OWhMeWNDcQrowCRKQSgPhXTn02I44=
+			</data>
+		</dict>
 		<key>AppIcon60x60@2x.png</key>
 		<dict>
 			<key>hash2</key>
@@ -459,35 +914,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4k0Ds9rNW2Ti60NDhliQnMqEVz+N4jz9CS/8K4AQsHc=
+			3nZUgGaDvlolQF2LNo4tRHBdLBVK/obje2iVwRB46ag=
 			</data>
 		</dict>
 		<key>Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wh7pGb7c26WeaP3DFOICfv5R3z31S35Q16ljT+nrwXw=
+			5EDKRJL2c2J9P7ArkAECgqpJYmwO4WZPigpJOGTQ0/I=
 			</data>
 		</dict>
 		<key>Base.lproj/JobSortingOptionsCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			doh6N/4TUqRknsu8PZqRs9URkLwpu6hl/9mj6h14Cls=
+			/NBXcwNl3N5CQkaBQT6tYqG0jsRvDyfTrcNL/niSeJU=
 			</data>
 		</dict>
 		<key>Base.lproj/JobsSortByView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sa2y9FuTOr1aoL/bM0yse/0BFhiJY6qtQ6BMTglmPAI=
+			vXR65IblO8wli8Pc4eqpMCWvi1morK0q0tUwFqIlNKQ=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/9h4-6R-N4u-view-qB7-ZZ-kCS.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DrOlBaH8LGKBPD3kuD/RrRwVAzaIv5PC0s9Q+5MyDMk=
+			qC0J5dBp/muCGo7/79OpaSjWptLwOBnY6cx5NQV/xTc=
 			</data>
 		</dict>
 		<key>Base.lproj/Main.storyboardc/Info.plist</key>
@@ -501,7 +956,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RCC7+2hXP+JsTjagbPFlALLIpi7rZRmj/DBrlHLIJmA=
+			3yX0nRqFszmL9JmA0aLafvrm3alx7l8zYZtRwAVyN8w=
+			</data>
+		</dict>
+		<key>BreadcrumbCollectionViewCell.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JL/TbZWMxt2MjWyrpC8i7ssy5vp7o69ZDpJNJ4nxRL0=
+			</data>
+		</dict>
+		<key>BreadcrumbsView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ma10J8atMo9q7jrT7lbvOaWyREay8AM7Bqlm6BoP61Q=
 			</data>
 		</dict>
 		<key>Font Awesome 5 Brands-Regular-400.otf</key>
@@ -539,165 +1008,781 @@
 			7NcvMZEKjuJyb9F71Fm+JvIwd58/PtX2nr+CnksS52g=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCloudKit.dylib</key>
+		<key>Frameworks/Instabug.framework/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RaD6FZWLKUYVVx/4Cm/zJnkvTkVPYiYTmGh+IoDv6Tk=
+			1Kx82WgR+kFOwFvjpRJ9yyGzgbNBL0hHTfwCkAqXNcs=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftContacts.dylib</key>
+		<key>Frameworks/Instabug.framework/Instabug</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BfBUuIGRZi6DYeeAlVecFLMlV5udeFgxV36ybBhvg1s=
+			m14WiIWK9/j61LEVdoSpnOmIJ4wJUD0OJhbYKfYO7Bc=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCore.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			SVCZK2UG9ihtWggcfIn/i94g//jyC4cI73gURFdHavA=
+			Fpc+5UzerxUNJJglTc4LCLMb2sjAFH6ow+REtWlgJ60=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCoreData.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Config.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kPLtzX3IcbWNP3fVALDbvGPBne3viUsjVuM6JYZd4zo=
+			kmHsztpgjvF0JW5f3HdMHm49z1M0CcG8OT1JDQHHE/E=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCoreFoundation.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGActionSheetCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/wz85l+DKAaQ7/BS+77vK5X998iA4Lwz+DGJ95g4kZw=
+			zYdybi7rcucSPMEkXk9tA5XlKhJ2dHDk2PPrhtNvqVU=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCoreGraphics.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGActionSheetVC-iPhone.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6UmJ5TyRJe3XQ2ANvUh7wapWfH50HDaC5DE8brYBB5U=
+			T2HSk9/HpguKobbhvfKoVHY2OCAkPvDaiW7+EOSbyvg=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCoreImage.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGActionSheetVC-iPhone.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			yd4z45rFP5ibtGizpvCVNJ3AoMhTSP9AnIyUKk/JVGc=
+			+rgH1h2j21C7LaNVx0JAwxEwneylpi46aJJ8J/P5I00=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftCoreLocation.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGBugVC-iPhone.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I430RKmMGhsrGAnn25OPS3EcLck+xsi9NrCX2HT5gTw=
+			IcE8S8bmYuLNU6g16a2S8rkPrmp9LYXerbPP6QFjFuc=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftDarwin.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGBugVC-iPhone.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Fy3X7nPk7IgG+lCSWKHuMHgGz6Yi56UOKe6XajzinhU=
+			W2O/Go6ePCXi68E9vB5/fzXI1O7zzN3RkqWXegWezsw=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftDispatch.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZSH1H7EN5E4TGGB63N2+7rR7N+rDR1LBmkhABOf9RVQ=
+			qfb4+lVDrOPlE25P13YAHbvTw0FB+66tcFGHU6W7cXQ=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftFoundation.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatListVC-iPhone.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6SyHvvl3dAOzLH6bFEeF41TPcUHS3iYOdFK7I0FEU6M=
+			+lT3pKYILNCIqcH+8H6rZbK2w7U+cc6d7YZxw7CA6sw=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftGLKit.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatVC-iPhone.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dkanPOO8gpRS7W8ttK5M1182HeaZhiNPoEjx52cshIU=
+			z4mXoXOJsYbwr54D7jbSZsj/32aaU5meMn3wCCMHTD0=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftIntents.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGChatVC-iPhone.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hM8LoGtCdL/kg9qWEvA2Xmoj2rXBWrIp2RRUHrwJIJU=
+			xZn4YenypUnf96ijRsh7cpzf8Ym/WtRQiMfUlFc/ok0=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftMetal.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGFullScreenImageViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Y51e3klbWCwDOKopGL7Z5cieD4LriiLn9IJFA0FvLTs=
+			jx688mzxSxoIg7K5pmiwSW/iwAxnu9ogMgnq5/vLnOM=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftModelIO.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGPoweredByView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AWwybZgKdXqUSDx1I/0tbFjii1j6cT9oRQV1wm4LINw=
+			QSbEKKEmI08LczsUwSiRHPtXBEqyK4/oHw4svFLgzhE=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftObjectiveC.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGPromptCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zLWBGbdbTQk6chVChX0c8CFwhq8ogd9K00QEU5AufEY=
+			RWf1J5cD5pnW8+xOcIdx8gHxNDLk3hoJSrXXoC9VFd8=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftQuartzCore.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGReplyView-iPhone.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zB0hL5hCB758QPCoQtMOfmCnOq42iXWoTwQdcBU2G1U=
+			BjYWOlEfua2KcwL3rdDdNx3r/8FU2FpIxQMcjq6vi34=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftSpriteKit.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGReportCategoryCell.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n2QrPTUlNJSiHWYjZwD2/zNB4VjAo5ywFGdb4Fd5sZc=
+			rEJHGT/kCaCT9zIy3lywaXk7ZM3G/gUMLRhAprROjj0=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftUIKit.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGScreenshotVC-iPhone.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			sio8OcXJb8oJVNHzTWsEzXEpJrNWpQmF06EEIQKl26k=
+			xw28o3HXPD08qrhYGDeV+VwElOlnGElrQTZWS/YVmnY=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftos.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGScreenshotVC-iPhone.nib/runtime.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KnKo8oZ57w7czhNeCWrd3UlEmiHIpnQ5qjzRz88lPuE=
+			uabpr6qH9ZhpW0Ru/+9+FA6kIJlh6GSvd2RGaLWK/ew=
 			</data>
 		</dict>
-		<key>Frameworks/libswiftsimd.dylib</key>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/IBGVoiceNoteRecordingViewController-iPhone.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+g4HtACkRnZQNjsul0cYKfn4bi+BCKZLd8UwqYiwsv8=
+			KMwwiLtTRXQI9Df8/2MGi4ENlhHv3TlcDmGk3qTI7aQ=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			txdDcNW9vMtROI+mXe07VZWrOviFAgqHBTr6G8h4zsE=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Inject_DSYM_Project-Archive.sh</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			STmY6jc7rqCtoJkhAzZah2dRtLkU77lmbhULW/xd9wo=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 10.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			odCAnGZCARe/8BDhLtSoW8CxTqbaPD9jAZhN/np4Jpw=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 11.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zpH+ZqTSV2l2f0HJ6jWz6p2+Rly6GAlmHNDc3njLyYs=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 12.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LKiVkUydqLVZnRHDbApFHM/VQfNzCv6hvpBHKA4cN1c=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 14.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XpMyNckm4bVH7rZXKhKYsEZDuZE9ZCJ32zOT6Q0b5G8=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 15.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/k+6jWoqOYLx+yR5yMv5VAqnSHypnSv0I5Ou62Vcuhw=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 16.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DASqOcZYgre2NFiYO5R/Z2YzByUxL6ZWU4dQRoP//G8=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 17.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PbhaL7GJjKNcvv2BdzepHXN9CnXeGHsCXscSONGKRBM=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 18.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ECmeHK36I0n1VUQC2IR14B0O3TJrbFmFCk9ETYR5we4=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 19.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ixplGkYkQIWq2o5uibV4MLR6G8fiu12v++2MilehL9s=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 2.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XlzLn1KB31fiwI+Tm17BWuVdV4LU8xXmV99EjMqMatY=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 20.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XS0wWj0Lo6tVTIempR+KAaj5TLUeiJ6j1maINhYdWEs=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 21.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lxn/iZUOlAkEs0sz71tfF0dNN54REfr6Ptjvpn5Usjo=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 22.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Wx/9p4A0CAsFR6pWl8o1OUFPnZyzH8BR/4Saura4cRk=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 23.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			uUcqeQGBTAedUr1l3Eyku6bTd39cATuBT3eDikg3O9A=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 24.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nIyLQYF7Y3Tb1pVWO8nATwjLjjJ0ZboLaYW/pQKJDvg=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 25.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hUr3+t6xUbve2oP6Io7EDxq2eS9GoKgszGEwsUne62c=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 26.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NbScjxo39id+8QRQ5yWJ9ce/s4ovWsbHHs8A3e1jK3A=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 26.omo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Nvnz5RljAeGS9i+ZBIz7LW3PgFwyZegXC0qlpeq2LTE=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 3.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/7+MivWtuK86wwFxQyaB5vUijhFBLKUo/BKe5LRvZkk=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 7.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Qs/adyfIRyX6N4v87QR2wviBi+xxkEKL5G029miZrr0=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 8.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Gg0oV76t4lnAy5K6myBX4LlQg3czZtqTZ1tzivzP7jQ=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel 9.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JWFJPDaqitNFMrwz/+A6FSSNsY7it1Q3Q+hF09KcqcA=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/InstabugDataModel.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			IXW5n6yyTlNStOZKoK/PIJm8U5nNnyORUGVJEWcBpi4=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugDataModel.momd/VersionInfo.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			SmIK/3Uik8+sXWXdPh1FG9lrIobIKLgiaeD1aWHI6OU=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 2.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			99rIIksKQEHIgU0FJNrprxWQBmN6XAzsT4byb3CKhQ8=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 3.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CzZtWzc6xpCS1l5M2JHCGGYkqiJ/03MvkA77owLyyRo=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 4.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			twS6a3NsQhFXRCtz+nEP9iHKVWrnr1LouusEt3dAaMc=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 5.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cx1mp6WJSl4EEF5+GhFWDLtvcUq9qCmS+x6m7CiqL7o=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel 5.omo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			V0+KCnVB2vjm4gO1gsK5UddGPRScxTGS/PC6w5oIGWQ=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/InstabugSurveysDataModel.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			yK0PlBuxloCQuIiqUBBpiiq4BTGTSOrQy25m7CIXcfE=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugSurveysDataModel.momd/VersionInfo.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			W1RwokHavLVmfxJ6l/x8AQe8ICZsNFEYapdUGDmlJwo=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel 2.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zNvmeUSXisutvMgsI0P0q29/WeJDa+L1x7wDIFnCpAo=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel 3.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			fhEwkpvj6TkjKFc2zWdOk/wTG8a0wGdYvw8SbjxQ4sc=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel 3.omo</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			itey4+18liRKpDT8VU18GVZVJxtrRKNdYTSdFr8U/3s=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/UserStepsDataModel.mom</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			O2NC+mOT2iVdGH56EU9DtHnNge9UB87OWYU72J0upRw=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/InstabugUserStepsDataModel.momd/VersionInfo.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KyzmaBsfTZpOBECarbv/SKGwiBCK36mbuckgcHTU5fQ=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/Instabug_dsym_upload.sh</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jBl1C6FVoyB4kGy+/gkUUpaBfRkQE3hWvpUZMKqbP/E=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			TagH/YxhZ9Q6p7S8bilQxGlRNx4JJKHLHI5tf9h+Axc=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mHkgkE6rZQ51eIwFSqCwUk5qgL/HGqMt+NI3phdD+YY=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeRequirements-1</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rwi468GqvMPsAOXqRaVpSnc79RoGXxmpngf+bIq4cvA=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5+k6px/1ZeHqACvzcorZmIgIOp1Oz74yZyrERmjHvYY=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ar.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			WX5i4yODo1hCEcbkhzv2Aqvl3x9QKxE9OL05shkTp1Y=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/az.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			5MoksA5bEL5PylzZFPGGJxiZ8DW53agWL0nmwzBQbP0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ca-ES.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Cjl/jFCidDkLH6N1vKdIIdZxR617CKyRBy9k+Z5MuWQ=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ca.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			t6xwo2u4Rw/UMEsN2mC11TUYpx/1b/UCzRw0FiKvkPM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/cs.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kw33DACk1T4+L922AaQaT8UG9fvZD/hR6HroXoygVU4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/da.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hu5UQjwG0Z11oPXp5R08UtS0aVp6f056kHxS3QCBPwc=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/de.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			j9nLYqL2Ym2TLbgpvBfFAh6OtN+fCS/RxorlRWf/37I=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/en.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			qxYBPVKdg6dp0ZJeqjBu21x0+kOvQ8/12D9mWNrQgaI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/en.lproj/Localizable.stringsdict</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Lr6rDy8EAt8S8WL0sGd9Nn5eViv3p1dMB5ttvTej0fk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/es.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			LT+JFpXEnxUY396m6LcWImsCgtS8NyYeO6UHattk4dQ=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/fi.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			X9XyoiYqakqIHLq/h4AZM3aCkObPMCC/49YLeqG5GxM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/fr.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KZue5dWban6Rzg0yiiXSYldiB5RCGAKmy5ZHSXGNArI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/hu.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			FRhB6pNTQLLvE+Lb7llZeP2IujLW8oaRFFnkfxjoNHk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/it.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Ma82Ez204Q40V6V0ozE+uT+u6NJnYB94A7iD1jNNZoU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ja.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cGPhrnLlU4vRIxxC//YQJpPyrf9kBP36fNa+Zt1yE+0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ko.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JwYuSa4oVjaQMmjYVDa/1drRbCEnCZY/T6rdZB5Iz6o=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/nb.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pDHbUHdqxYwAEoct8oHapvCgFIcbAhXydOy9B+R6LRU=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/nl.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			2FbVwpIatixXp6iu3IJdcHtBG0j+XGm1F5BxdUYt/aM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/pl.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jXn4okhz/eJdLmFDHH6tMV8UG5jY+VYZTKBnaJRcNo4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/pt-BR.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pfbGPaBLgH6prgsuUeL6PvrFcY5rZTNTtk0tZQC1iQA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/pt-PT.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cAN6uiuBDDEd9bxWtSU87uMWt0Ynxdiyah2Nk0YqwZI=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/ru.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NJqNevX7b5oReDenoH6xScvegXdLYkhv66VEz/z3Fk4=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/sk.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NQ8aRaxrtc2OxjFuGNGXYo7te4IvRSvTvdhaPCssakA=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/strip-frameworks.sh</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EFBdsgIKkcB/ZW5AgcnnL3/o0Bpiv6XiPi3sPZMaPdg=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/sv.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			N0Bp0eTjPxmnYvhbBWYqDqgMe5qE15fA3HVgYFuFla0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/tr.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kGeVyA1nVMQ127nZZ0BV7YaVIRN2+Ph5pN4sBZy5RDk=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/zh-Hans.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NqljnLXqsP6yHdV707TJ9YBvkxIedl8bSEkk79K5JMw=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/zh-Hant-TW.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KS4tLQ+icE4IBC/BgqfSeQqzIpb7QCzwfJ4+29xLryM=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/InstabugResources.bundle/zh-Hant.lproj/Localizable.strings</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mPtmksE6HKvO+M/OavN59wueNPrWrxVVGcNRZVxs/u0=
+			</data>
+			<key>optional</key>
+			<true/>
+		</dict>
+		<key>Frameworks/Instabug.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G76Qm0jTM2xHTZJU2jrp0npeqYwVclT/305G0JAKdSQ=
+			</data>
+		</dict>
+		<key>Frameworks/Instabug.framework/strip-frameworks.sh</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			EFBdsgIKkcB/ZW5AgcnnL3/o0Bpiv6XiPi3sPZMaPdg=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			i2rK6bPUeoUfGBHqjvntQYvifFchgNtKnXOu5jcxERo=
+			HEDEu1mGJxesqVG/HINGs7YBf1l0k59/iKn2qVwIoFA=
+			</data>
+		</dict>
+		<key>JobFilterSearchTableViewCell.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DsWwwuCEO1HdjinvM0QzMbzCBkLJ6kYvwS+axZvoFFI=
+			</data>
+		</dict>
+		<key>JobFilterSearchViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gdr/pddUwoSF99L4vc+7P9rDYQV2zEITTdSYKkvgmbk=
+			</data>
+		</dict>
+		<key>JobFiltersHeaderView.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			cAMW200tzSgvOLjS+WPfCO1lmVF7ItMsjawFgW6Iqlo=
+			</data>
+		</dict>
+		<key>JobFiltersViewController.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zShPcjRuPdfuEzhxTBEWt483+MyeI+kejU//RfYg2HE=
+			</data>
+		</dict>
+		<key>JobsFilterOptionsCell.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			xWQVh0J/06lrgaPHQJWedjXkb+5AnnG/W0xIp0ipofw=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rAmDrXrpY5WGbJFEpXabfB+eLQ+sxiyVT9TVEGfk5bc=
+			y4JHGUWmhoafIFDA5qnKZJKexXx84HOp4CAeKums6Ak=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
@@ -711,21 +1796,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			L2h4U4sOVt+HktjYDF7hmwTzIMkaKt5fJStpsRYLG08=
+			UsqjAYe19gRN6p+ldCHQqtnOj2uHHGzt25dGfD0QrwM=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			N7CewJpf3EbESOQ0CNeHvGIFcHm3fI+R/WVHD4I3Ai4=
+			ZS76iE3coGyfDl1rxX8TjUkfBAdkFN/L7rUhcJTeiK8=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4bgKm9Js9pgHXOKWil6KBViwpQms29iBUExUVeiuI1U=
+			eb2g0g75Tln0eGV1smWaq6PFR/aMNLIcummMlh8Z3co=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -741,21 +1826,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			zFccE5oko+g+6qa+Xl6xVwD/pf8TiElNrKLJOW3ZGbo=
+			dL43b3to5bxdxSmRu0Fgkr9dlh/v2VrQouhyfE2cGMA=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cDvE69kNQKbQMYdd0ZeL9kUAHzT1UqPN42nAiW6Y+fs=
+			Z49WCN3+uroxA+XuPkkpeHM9BNjeOevhocVBuSDce6A=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			CmmZRYOP9TPK79cMvKOl6BINQCPAqt26RYKIEeaBM/A=
+			dY/QF8leN+X51eQy8atHdrLs/SanZ1us0RJDWP1YWjE=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile Intents.appex/en.lproj/CheckAbsences.strings</key>
@@ -771,7 +1856,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9UKWA9q2mjIz9ZSZ8z5J9lDBjbeEdohGSZFURV+Gmuo=
+			eX2bNVpKV3kQkmTC/DxbVKI5eNyM8qSr3HrOyjlO6ww=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -789,7 +1874,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h8yt7iRz+vD+jD8pqvB335KipV9HhDkcOzRlJ7QkC2k=
+			B/GrlYzjQEY6uXT5D+Psjr0ZFXDCcZIdevBUUCnRMuI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -798,14 +1883,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			N7CewJpf3EbESOQ0CNeHvGIFcHm3fI+R/WVHD4I3Ai4=
+			ZS76iE3coGyfDl1rxX8TjUkfBAdkFN/L7rUhcJTeiK8=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Base.lproj/CheckAbsences.intentdefinition</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			e7wutgJGWvCvGOcL501dFodA6L00MI68gsO4I4028dU=
+			ifQAclP8mDr9JyFcrAWf2L8QM5ytkTirbHDS4RJQZK4=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -823,7 +1908,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5jXdBG2swY0vSgZadoHkzk2UD27tT/yM+oezjIsqBog=
+			MVoxIp5U3pCIzboXnqrONA+31U1Zqoxhar5QKp9KfGI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -832,7 +1917,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DrNIYNv2aziw8CSXCA0CBb6TiYl3lUwo1JpDPKD3euM=
+			T002vYha97Y8eFKDN7koTo6NLobziqXaNDFkNGOwLZQ=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -848,21 +1933,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			rA+Fmq69OAJPZ2fsXoscuHeOUHXmGziXzzHiPsqWqJE=
+			N04onZjrmjg3a3qxRvl8p2yXz9uff64M3fHjyhjoKJg=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x5Noy63EmIdAdt3G5u+F7Xh7m97Zb8wc6PyzXmRsezM=
+			YteArflUwjhCYGcMxdL7Gvk3m6b+rmvlPtP43osfqVk=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EAJDN/dP/e54Pl6jqJ7qXxuWTdWGJ9pwOiz+KDV+nWw=
+			l4Gtx8G41bx3cdKvvVPPN9Tg92wYQz7VJaf0cbJrbI8=
 			</data>
 		</dict>
 		<key>PlugIns/Frontline Mobile IntentsUI.appex/en.lproj/CheckAbsences.strings</key>
@@ -878,7 +1963,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9UKWA9q2mjIz9ZSZ8z5J9lDBjbeEdohGSZFURV+Gmuo=
+			eX2bNVpKV3kQkmTC/DxbVKI5eNyM8qSr3HrOyjlO6ww=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -896,59 +1981,10 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h8yt7iRz+vD+jD8pqvB335KipV9HhDkcOzRlJ7QkC2k=
+			B/GrlYzjQEY6uXT5D+Psjr0ZFXDCcZIdevBUUCnRMuI=
 			</data>
 			<key>optional</key>
 			<true/>
-		</dict>
-		<key>SubscriptionDetailTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			h/gIbzOhVqrellPZxsKBzG/bDJRanuGJcfJlMc5TsMU=
-			</data>
-		</dict>
-		<key>SubscriptionDetailsViewController.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			0hvC2n8RZNpdixtFOLK/zsW0v++MbU04hBtpOi7jurQ=
-			</data>
-		</dict>
-		<key>SubscriptionHeaderTableViewCell.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			ONKIcsQcp0BdLsbwQJbmok21GW879xtgdc9dZkN7q8o=
-			</data>
-		</dict>
-		<key>SubscriptionPlanCollectionViewCell.nib/objects-12.3+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			VPH6lpoPX5ma0SncUsIivv6uejkQWwMHRjN7GjDOdmQ=
-			</data>
-		</dict>
-		<key>SubscriptionPlanCollectionViewCell.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			E3VYdwi8RUrNAAL/ZRhO0AUuCq7RZkA+XHk+BEBWHfU=
-			</data>
-		</dict>
-		<key>SubscriptionPurchaseViewController.nib/objects-14.0+.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			QaqykmfBgHWiAMOQavw+BgLEZOu6Fo3d2J58/ma48kE=
-			</data>
-		</dict>
-		<key>SubscriptionPurchaseViewController.nib/runtime.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6+TdhG36uVGyP1a6UDqcZObnlcvpYyPuGbWjbOdN5Cw=
-			</data>
 		</dict>
 		<key>Timesheets.mom</key>
 		<dict>
@@ -988,7 +2024,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9UKWA9q2mjIz9ZSZ8z5J9lDBjbeEdohGSZFURV+Gmuo=
+			eX2bNVpKV3kQkmTC/DxbVKI5eNyM8qSr3HrOyjlO6ww=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1024,7 +2060,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			h8yt7iRz+vD+jD8pqvB335KipV9HhDkcOzRlJ7QkC2k=
+			B/GrlYzjQEY6uXT5D+Psjr0ZFXDCcZIdevBUUCnRMuI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -1037,6 +2073,13 @@
 			</data>
 			<key>optional</key>
 			<true/>
+		</dict>
+		<key>jobsFilterOptions.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			W7OFSrlE43iuGyRu5gBkG0Z74NsSSu/47cwUKq9lyvs=
+			</data>
 		</dict>
 	</dict>
 	<key>rules</key>

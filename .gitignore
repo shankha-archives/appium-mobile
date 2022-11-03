@@ -1,14 +1,6 @@
-
 target/
-
 test-output/
-
 .idea/
-
 *.log
-
-src/test/resources/apps
-
 .gitignore
-
 Frontline.iml
