@@ -126,9 +126,9 @@ public class CreateAbsenceScreen extends BasePage {
 
     public void editDate(String absenceDay) throws Throwable {
         if ((new GlobalParams().getPlatformName()).contains("Android")) {
-            nextWorkingDate = nextWorkingDay(absenceDay, "MMMM dd, yyyy");
+            nextWorkingDate = nextWorkingDay(absenceDay, "E, MMM d, yyyy");
             scrolledToElement = androidScrollToElementUsingUiScrollable("description", nextWorkingDate, "Scrolling to the require date");
-            scrolledToElement.click();
+//            scrolledToElement.click();
         } else {
             nextWorkingDate = nextWorkingDay(absenceDay, "MM/dd/yyyy");
             By absenceDate = By.xpath("//XCUIElementTypeCell[contains(@name,'" + nextWorkingDate + "')]");

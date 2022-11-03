@@ -142,11 +142,7 @@ public class Homescreen extends BasePage {
     }
 
     public void clickJobWidget() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(availableJobs, "Clicking available job Widget");
-        else {
-            click(availableJobs, "Clicking available job Widget");
-        }
     }
 
     public void clickOnHomeButton() throws InterruptedException {
@@ -168,10 +164,7 @@ public class Homescreen extends BasePage {
     }
 
     public void clickClockInBtn() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(clockInbtn, "Clicking on Clock In button");
-        else
-            click(clockInbtn, "Click on Clock In button");
     }
 
     public boolean waitClockInBtn() throws Exception {

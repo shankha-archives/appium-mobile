@@ -20,7 +20,7 @@ public class EmployeeAppCalendarScreenStepDef {
 
     @Then("Choose the required month {string}")
     public void chooseTheRequiredMonth(String absenceDay) throws Exception {
-        employeeAppCalendarScreen.getRequiredMonthInCalendar(common.workingDay(absenceDay, "MMMM dd, yyyy", 1).split(" ")[0]);
+        employeeAppCalendarScreen.getRequiredMonthInCalendar(common.workingDay(absenceDay, "MMMM", 1));
     }
 
     @And("Click on the event day {string}")

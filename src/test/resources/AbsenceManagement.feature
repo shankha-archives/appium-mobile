@@ -155,8 +155,8 @@ Then the user navigates to dashboard page
 When the user clicks on Menu tab
 When Click on calendar in menu link
 And verify calendar the search result "searchText"
-Then Choose the required month "next day"
-And Click on the event day "next day"
+Then Choose the required month "upcoming day"
+And Click on the event day "upcoming day"
 And Tap on the event title
 When Click on edit absence
 And Verify absence reason page and click next
@@ -168,7 +168,6 @@ Then Click on view absence btb
 And Verify the edited absence details
 
 
-   #IDM server is down Ticket "OPS-17893" so using AutomationEmployeeMOB-4245 will create AutomationEmp_9814 once IDM is Up
 @MOB-9814 @MOB-9809  @AndroidRegression @iOSRegression
 Scenario: Verify that admin creates custom absence for another user
   When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4249" for "upcoming day" and delete them
