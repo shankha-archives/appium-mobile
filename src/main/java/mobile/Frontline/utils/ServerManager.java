@@ -43,6 +43,7 @@ public class ServerManager {
         GlobalParams params = new GlobalParams();
         return AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
                 .usingAnyFreePort()
+                .withArgument(() -> "--allow-insecure","chromedriver_autodownload")
                 .withArgument(GeneralServerFlag.SESSION_OVERRIDE));
 //                .withLogFile(new File(params.getPlatformName() + "_"
 //                        + params.getDeviceName() + File.separator + "Server.log")));
