@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Homescreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/welcome_user_text")
+    @AndroidFindBy(id = "welcome_user_text")
     @iOSXCUITFindBy(accessibility = "What's New_ModuleHeader")
     public MobileElement homePageHeader;
 
@@ -29,7 +29,7 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Home_TabBar_Button")
     public MobileElement homeButton;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Switch']")
+    @AndroidFindBy(id = "welcomeSwitchButton")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[1]")
     public MobileElement switchbtn;
 
@@ -56,11 +56,11 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[3]")
     public MobileElement ScrollToClockInbtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/location_services_permit_access_button")
+    @AndroidFindBy(id = "location_services_permit_access_button")
     @iOSXCUITFindBy(accessibility = "Enable_Location_Services_Button")
     public MobileElement permissionGrantbtn;
 
-    @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
+    @AndroidFindBy(id = "permission_allow_foreground_only_button")
     @iOSXCUITFindBy(accessibility = "Allow Once")
     public MobileElement permissionGrantonlyForApp;
 
@@ -76,11 +76,11 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "People_ModuleHeader")
     public MobileElement PeopleWidget;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/edit_widget_order_button")
+    @AndroidFindBy(accessibility = "Edit the order of your dashboard widgets")
     @iOSXCUITFindBy(accessibility = "Edit button: double-tap to go to dashboard widget reordering page")
     public MobileElement reOrderWidgetbtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/widget_header_title")
+    @AndroidFindBy(id = "widget_header_title")
     @iOSXCUITFindBy(xpath = "//	XCUIElementTypeButton[contains(@name, 'ModuleHeader')]")
     public List<MobileElement> widgetListFromDashboard;
 
@@ -88,7 +88,7 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "AbsencesModule_Create_Button")
     public MobileElement createAbsBtn;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences Today']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Absences Today']")
     @iOSXCUITFindBy(accessibility = "Absences Today_ModuleHeader")
     public MobileElement absenceWidget;
 
@@ -97,7 +97,7 @@ public class Homescreen extends BasePage {
     public MobileElement nextScheduledJobWidget;
 
     @iOSXCUITFindBy(accessibility = "Scheduled")
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/accepted_status_text")
+    @AndroidFindBy(id = "accepted_status_text")
     public MobileElement nextScheduledJobInWidget;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='TimesheetsModule_AddTime_Button'][1]")
@@ -127,9 +127,9 @@ public class Homescreen extends BasePage {
     }
 
     public boolean verify_homeScreen_displayedWithoutPushVerify() throws Exception {
-        Thread.sleep(8000);
+//        Thread.sleep(8000);
         switchToNativeApp();
-        swipeDown();
+//        swipeDown();
         return isElementDisplayed(homePageHeader, "Waiting for header page to load");
     }
 
@@ -142,11 +142,7 @@ public class Homescreen extends BasePage {
     }
 
     public void clickJobWidget() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(availableJobs, "Clicking available job Widget");
-        else {
-            click(availableJobs, "Clicking available job Widget");
-        }
     }
 
     public void clickOnHomeButton() throws InterruptedException {
@@ -168,10 +164,7 @@ public class Homescreen extends BasePage {
     }
 
     public void clickClockInBtn() throws Exception {
-        if ((new GlobalParams().getPlatformName()).contains("Android"))
             click(clockInbtn, "Clicking on Clock In button");
-        else
-            click(clockInbtn, "Click on Clock In button");
     }
 
     public boolean waitClockInBtn() throws Exception {

@@ -8,15 +8,14 @@ import mobile.frontline.pages.BasePage;
 import mobile.frontline.pages.TimesheetWeekViewScreen;
 import org.junit.Assert;
 
-public class TimesheetWeekViewScreenStepDef {
+public class TimesheetWeekViewScreenStepDef extends  BasePage{
 
     TimesheetWeekViewScreen timesheetWeekViewScreen = new TimesheetWeekViewScreen();
     public static String initialWeekTotalTime;
-    BasePage basePage = new BasePage();
 
     @And("Select the current day")
     public void selectTheCurrentDay() throws Exception {
-        Assert.assertTrue("Tuesday timesheet is not displayed", timesheetWeekViewScreen.verifyTuesday());
+//       Assert.assertTrue("Tuesday timesheet is not displayed", timesheetWeekViewScreen.verifyTuesday());
         timesheetWeekViewScreen.selectCurrentDayForTimesheet();
     }
 

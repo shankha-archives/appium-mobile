@@ -1,51 +1,64 @@
 package mobile.frontline.pages;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidBy;
+import io.appium.java_client.pagefactory.AndroidFindAll;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.Frontline.utils.TestUtils;
 import org.junit.Assert;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginScreen extends BasePage {
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
+    @AndroidFindBy (xpath = "//android.widget.Button[@text='Get Started']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Get Started']")
-    public MobileElement getStarted;
+    protected MobileElement getStarted;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Without Limits']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Work Without Limits']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Get Started']")
     @iOSXCUITFindBy(accessibility = "Work Without Limits")
     public MobileElement splashScreen;
 
-    @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[1]")
+    @FindBy(xpath = "//*[@id='Username']")
+    @AndroidFindAll({
+    @AndroidBy(className = "android.widget.EditText"),
+    @AndroidBy(id = "Username")})
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     public MobileElement username;
 
+    @FindBy(xpath = "//*[@id='Password']")
     @AndroidFindBy(xpath = "(//*[@class='android.widget.EditText'])[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
     public MobileElement password;
 
+    @FindBy(xpath = "//*[@id='qa-button-login']")
     @AndroidFindBy(className = "android.widget.Button") // class_name : qa-button-login
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Sign In with Frontline ID']")
     public MobileElement loginBtn;
 
+    @FindBy(xpath = "//*[@id='qa-validation-username-required']")
     @AndroidFindBy(xpath = "//android.view.View[@text='Your username is required.']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your username is required.']")
     public MobileElement userNameRequired;
 
+    @FindBy(xpath = "//*[@id='qa-validation-password-required']")
     @AndroidFindBy(xpath = "//android.view.View[@text='Your password is required.']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your password is required.']")
     public MobileElement userPasswordRequired;
 
+    @FindBy(xpath = "//*[@id='qa-validation-credentials']/span")
     @AndroidFindBy(xpath = "//android.view.View[@text='The username or password you entered is incorrect']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='The username or password you entered is incorrect']")
     public MobileElement credentialErr;
 
-    @AndroidFindBy(className = "android.view.View")
+    @FindBy(xpath = "//*[@id='login-view']/login-product-header/div/div/h3")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in with a Frontline ID']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sign in with a Frontline ID']")
     public MobileElement loginPageHeader;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/error_description")
+    @AndroidFindBy(id = "error_description")
     @iOSXCUITFindBy(accessibility = "You have not been granted access to any organizations that use the Frontline Insights Platform.")
     public MobileElement noLoginDialogBox;
 
@@ -56,7 +69,8 @@ public class LoginScreen extends BasePage {
     public LoginScreen() {
     }
 
-    public boolean waitSplashScreenLoaded() {
+    public boolean waitSplashScreenLoaded() throws Exception{
+        //Thread.sleep(30000);
         return isElementDisplayed(splashScreen, "Searching for text: Work without limits");
     }
 
@@ -119,10 +133,8 @@ public class LoginScreen extends BasePage {
     }
 
     public boolean waitAndverify_splashScreenLoaded() throws Exception {
-        Thread.sleep(30000);
-        isElementDisplayed(splashScreen, "Waiting for splash screen to display");
-        Thread.sleep(30000);
-
+//        isElementDisplayed(splashScreen, "Waiting for splash screen to display");
+//        Thread.sleep(10000);                    // Fixed the delay in loading by removing unnecessary waits
         return isElementDisplayed(splashScreen, "Waiting for splash screen to display");
     }
 

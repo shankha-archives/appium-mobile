@@ -11,11 +11,11 @@ import java.time.Duration;
 
 public class CustomizeHomeScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/drag_handle")
+    @AndroidFindBy(id = "drag_handle")
     @iOSXCUITFindBy(accessibility = "Reorder New Version Available")
     public MobileElement dragableEle;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/save")
+    @AndroidFindBy(id = "save")
     @iOSXCUITFindBy(accessibility = "Done")
     public MobileElement saveOrderWidgetbtn;
 

@@ -44,7 +44,7 @@ public class MenuScreen extends BasePage{
     public MobileElement frontlineLogo;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Send Diagnostics']")
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/send_diagnostics_button")
+    @AndroidFindBy(id = "send_diagnostics_button")
     public MobileElement sendDiagnosticsBtn;
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")

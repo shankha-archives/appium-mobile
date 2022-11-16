@@ -20,13 +20,13 @@ public class EmployeeAppCalendarScreenStepDef {
 
     @Then("Choose the required month {string}")
     public void chooseTheRequiredMonth(String absenceDay) throws Exception {
-        employeeAppCalendarScreen.getRequiredMonthInCalendar(common.workingDay(absenceDay, "MMMM dd, yyyy", 1).split(" ")[0]);
+        employeeAppCalendarScreen.getRequiredMonthInCalendar(common.workingDay(absenceDay, "MMMM", 1));
     }
 
     @And("Click on the event day {string}")
     public void clickOnTheEventDay(String absenceDay) throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-            employeeAppCalendarScreen.clickCalendarEventDay(common.workingDay(absenceDay, "MMMM dd, yyyy", 1));
+            employeeAppCalendarScreen.clickCalendarEventDay(common.workingDay(absenceDay, "E, MMM d, yyyy", 1));
         else
             employeeAppCalendarScreen.clickCalendarEventDay(common.workingDay(absenceDay, "MM/dd/yyyy",1));
     }

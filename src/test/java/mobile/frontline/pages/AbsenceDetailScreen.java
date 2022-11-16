@@ -11,7 +11,8 @@ public class AbsenceDetailScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Conf')]")
     public MobileElement confirmationNumber;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit']")
+    @AndroidFindBy(id = "edit_absence_menu_item")
     @iOSXCUITFindBy(accessibility = "AbsenceDetail_Edit_Button")
     public MobileElement editTab;
 
@@ -23,15 +24,15 @@ public class AbsenceDetailScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[3]//XCUIElementTypeStaticText[3]")
     public MobileElement assignSubstitute;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+    @AndroidFindBy(id = "substitute_assign_btn")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='SubstituteSearchTableCell_Assign_Button'])[1]")
     public MobileElement selectSubstitute;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Assign']")
+    @AndroidFindBy(id = "assign_substitute_button")
     @iOSXCUITFindBy(accessibility = "AbsenceSubstituteSearchView_FinalAssign_Button")
     public MobileElement confirmAssignSub;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/absence_approve_button")
+    @AndroidFindBy(id = "absence_approve_button")
     @iOSXCUITFindBy(accessibility = "AbsenceRequestDetailView_Approve_Button")
     public MobileElement approvebtn;
 

@@ -6,15 +6,15 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 public class SettingScreen extends BasePage {
 
-    @AndroidFindBy(className = "android.widget.Switch")
+    @AndroidFindBy(id ="dark_mode_switch")
     @iOSXCUITFindBy(accessibility = "darkMode")
     public MobileElement darkMode;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/log_out_button")
+    @AndroidFindBy(id = "log_out_button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Log Out']")
     public MobileElement logoutBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/subscription_details")
+    @AndroidFindBy(id = "subscription_details")
     @iOSXCUITFindBy(accessibility = "Subscription Details")
     public MobileElement subscriptionDetailBtn;
 

@@ -29,7 +29,7 @@ public class APIServices {
 		JSONObject json = new JSONObject(responseGenerateTokenAPI.getBody());
 		aesoptoken = json.getJSONObject("data").get("token").toString();
 		utils.log().info("Aesop Token : " + printPrettyResponse(responseGenerateTokenAPI.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Aesop Token : " + printPrettyResponse(responseGenerateTokenAPI.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Aesop Token : " + printPrettyResponse(responseGenerateTokenAPI.getBody()));
 	}
 
 	public String printPrettyResponse(String response){
@@ -51,7 +51,7 @@ public class APIServices {
 		for (int i = 0; i < numberOfAbsence; i++)
 			confirmationNumbers.add(json.getJSONArray("data").getJSONObject(i).get("id").toString());
 		utils.log().info("Confirmation ids of absences" + printPrettyResponse(responseGetAbsenceConfirmationNumberAPI.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Confirmation ids of absences" + printPrettyResponse(responseGetAbsenceConfirmationNumberAPI.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Confirmation ids of absences" + printPrettyResponse(responseGetAbsenceConfirmationNumberAPI.getBody()));
 	}
 
 	public void apiDeleteAbsence() throws Throwable {
@@ -61,11 +61,11 @@ public class APIServices {
 						aesoptoken);
 				Assert.assertEquals(printPrettyResponse(responseAbsenceDelete.getBody()),responseAbsenceDelete.getStatus(), 200);
 				utils.log().info("Delete absences" + printPrettyResponse(responseAbsenceDelete.getBody()));
-				ExtentCucumberAdapter.addTestStepLog("Delete absences" + printPrettyResponse(responseAbsenceDelete.getBody()));
+				//ExtentCucumberAdapter.addTestStepLog("Delete absences" + printPrettyResponse(responseAbsenceDelete.getBody()));
 			}
 		} else
 			utils.log().info("No Absence Found");
-		ExtentCucumberAdapter.addTestStepLog("No Absence Found");
+		//ExtentCucumberAdapter.addTestStepLog("No Absence Found");
 
 	}
 
@@ -75,7 +75,7 @@ public class APIServices {
 		JSONObject json = new JSONObject(responseCreateAbsence.getBody());
 		confirmationNumber = json.getJSONObject("data").get("absrId").toString();
 		utils.log().info("Create absences" + printPrettyResponse(responseCreateAbsence.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Create absences" + printPrettyResponse(responseCreateAbsence.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Create absences" + printPrettyResponse(responseCreateAbsence.getBody()));
 	}
 
 	public void apiBearerTokenGeneration(String automationEmployee) throws Throwable {
@@ -84,7 +84,7 @@ public class APIServices {
 		JSONObject json = new JSONObject(responseGenerateBearerTokenAPI.getBody());
 		bearerToken = json.get("access_token").toString();
 		utils.log().info("Bearer Token" + printPrettyResponse(responseGenerateBearerTokenAPI.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Bearer Token" + printPrettyResponse(responseGenerateBearerTokenAPI.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Bearer Token" + printPrettyResponse(responseGenerateBearerTokenAPI.getBody()));
 	}
 
 	public void apiCreateTimesheet(String orgID, String workerID, String timesheetDay, String locationID, String shiftID, String eventID) throws Throwable {
@@ -92,14 +92,14 @@ public class APIServices {
 				workerID, timesheetDay, locationID, shiftID, eventID);
 		Assert.assertEquals(printPrettyResponse(responseCreateTimesheet.getBody()),responseCreateTimesheet.getStatus(), 200);
 		utils.log().info("Create timesheet" + printPrettyResponse(responseCreateTimesheet.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Create timesheet" + printPrettyResponse(responseCreateTimesheet.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Create timesheet" + printPrettyResponse(responseCreateTimesheet.getBody()));
 	}
 
 	public void apiAcceptSubstituteJob(String orgID, String confirmationNumber) throws Throwable {
 		HttpResponse<String> responseAcceptSubstituteJob =apiObject.acceptJobinSubstitute(orgID, bearerToken, confirmationNumber);
 		Assert.assertEquals(printPrettyResponse(responseAcceptSubstituteJob.getBody()),responseAcceptSubstituteJob.getStatus(), 200);
 		utils.log().info("Accept substitute job" + printPrettyResponse(responseAcceptSubstituteJob.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Accept substitute job" + printPrettyResponse(responseAcceptSubstituteJob.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Accept substitute job" + printPrettyResponse(responseAcceptSubstituteJob.getBody()));
 	}
 	public void apiUndoSubmittedTimesheets(String timesheetDay,String orgID, String workerID) throws Throwable {
 		HttpResponse<String> responseGetTimeClockIDs = apiObject.getWeekTimesheet(timesheetDay, bearerToken, aesoptoken,
@@ -121,14 +121,14 @@ public class APIServices {
 			json1.remove("totalPaidTimeInMinutes");
 			json1.remove("totalScheduledTimeInMinutes");
 			utils.log().info(json1);
-			ExtentCucumberAdapter.addTestStepLog(json1.toString());
+			//ExtentCucumberAdapter.addTestStepLog(json1.toString());
 
 			HttpResponse<String> responseUndoTimesheet = apiObject.undoSubmittedTimesheets(bearerToken, aesoptoken, orgID, workerID, json1.toString());
 			Assert.assertEquals(printPrettyResponse(responseUndoTimesheet.getBody()), responseUndoTimesheet.getStatus(), 204);
 		}
 		else {
 			utils.log().info("There is no timesheet in the day");
-			ExtentCucumberAdapter.addTestStepLog("There is no timesheet in the day");
+			//ExtentCucumberAdapter.addTestStepLog("There is no timesheet in the day");
 		}
 	}
 
@@ -151,7 +151,7 @@ public class APIServices {
 						.getJSONObject(i).get("id").toString());
 		}
 		utils.log().info("Get All timesheet details" + printPrettyResponse(responseGetTimeClockIDs.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Get All timesheet details" + printPrettyResponse(responseGetTimeClockIDs.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Get All timesheet details" + printPrettyResponse(responseGetTimeClockIDs.getBody()));
 	}
 
 	public void apiDeleteTimeEvents(String orgID, String workerID) throws Throwable {
@@ -161,32 +161,32 @@ public class APIServices {
 						orgID, workerID, timesheetsID, timeEventID);
 				Assert.assertEquals(printPrettyResponse(responseAbsenceDelete.getBody()),responseAbsenceDelete.getStatus(), 204);
 				utils.log().info("Delete timesheet" + printPrettyResponse(responseAbsenceDelete.getBody()));
-				ExtentCucumberAdapter.addTestStepLog("Delete timesheet" + printPrettyResponse(responseAbsenceDelete.getBody()));
+				//ExtentCucumberAdapter.addTestStepLog("Delete timesheet" + printPrettyResponse(responseAbsenceDelete.getBody()));
 			}
 		} else {
 			utils.log().info("No Timesheet Found");
-			ExtentCucumberAdapter.addTestStepLog("No Timesheet Found");
+			//ExtentCucumberAdapter.addTestStepLog("No Timesheet Found");
 		}
 	}
 
 	public void apiPassStatusUpdate(String sessionID) throws UnirestException {
 		HttpResponse<String> responsePassStatusUpdate = apiObject.passTestResult(sessionID);
-		Assert.assertEquals(printPrettyResponse(responsePassStatusUpdate.getBody()),responsePassStatusUpdate.getStatus(), 200);
-		utils.log().info("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
+		Assert.assertEquals(responsePassStatusUpdate.getStatus(), 200);
+		utils.log().info("Pass result update:" + responsePassStatusUpdate.getBody());
+		//ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responsePassStatusUpdate.getBody()));
 	}
 
 	public void apiFailStatusUpdate(String sessionID) throws UnirestException {
 		HttpResponse<String> responseFailStatusUpdate = apiObject.failTestResult(sessionID);
-		Assert.assertEquals(printPrettyResponse(responseFailStatusUpdate.getBody()),responseFailStatusUpdate.getStatus(), 200);
-		utils.log().info("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
+		Assert.assertEquals(responseFailStatusUpdate.getStatus(), 200);
+		utils.log().info("Pass result update:" + responseFailStatusUpdate.getBody());
+		//ExtentCucumberAdapter.addTestStepLog("Pass result update:" + printPrettyResponse(responseFailStatusUpdate.getBody()));
 	}
 
 	public void apiCreateMultidayAbsence(String workerID, String schoolID, String reasonID, String absenceDay, String startDay, String endDay) throws Exception {
 		HttpResponse<String> responseCreateMultidayAbsence = apiObject.createMultiDayAbsence(bearerToken, aesoptoken,workerID,schoolID,reasonID, absenceDay, startDay, endDay);
 		Assert.assertEquals(printPrettyResponse(responseCreateMultidayAbsence.getBody()),responseCreateMultidayAbsence.getStatus(), 200);
 		utils.log().info("Multi day create absence:" + printPrettyResponse(responseCreateMultidayAbsence.getBody()));
-		ExtentCucumberAdapter.addTestStepLog("Multi day create absence:" + printPrettyResponse(responseCreateMultidayAbsence.getBody()));
+		//ExtentCucumberAdapter.addTestStepLog("Multi day create absence:" + printPrettyResponse(responseCreateMultidayAbsence.getBody()));
 	}
 }

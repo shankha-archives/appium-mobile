@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testdata>
 	<Account type="invalid">
-		<invalidlogin>JohnDoe</invalidlogin>
-		<invalidpass>admin123</invalidpass>
+<!--		<invalidlogin>JohnDoe</invalidlogin>
+		<invalidpass>admin123</invalidpass>-->
 	</Account>
 	<Account type="valid">
 		<AutomationSubsMOB-4269>AutomationSubs4275</AutomationSubsMOB-4269>
@@ -25,19 +25,21 @@
 		<AutomationSubsJobOperations2>AutomationSubJobs2</AutomationSubsJobOperations2>
 		<AutomationSubsJobOperations3>AutomationSubJobs3</AutomationSubsJobOperations3>
 		<AutomationSubsJobOperations4>AutomationSubJobs4</AutomationSubsJobOperations4>
-		<AutomationSubMutiRole>multirole</AutomationSubMutiRole>
-		<AutomationSubMutiOrg>MOB_Sub_3601</AutomationSubMutiOrg>
+<!--		<AutomationSubMutiOrg>MOB_Sub_3601</AutomationSubMutiOrg> -->
+		<AutomationSubMutiOrg>AutomationSub5593</AutomationSubMutiOrg>
 		<AutomationSubNoOrg>AutomationSub3682</AutomationSubNoOrg>
 		<AutomationEmployeeMOB-4245>Automation4245</AutomationEmployeeMOB-4245>
 		<AutomationEmployeeMOB-4237>AutomationEmp4237</AutomationEmployeeMOB-4237>
 		<AutomationEmployeeMOB-4247>AutomationEmp4247</AutomationEmployeeMOB-4247>
-		<AutomationEmployeeMOB-4227>Automation4227</AutomationEmployeeMOB-4227>
+<!--	<AutomationEmployeeMOB-4227>Automation4227</AutomationEmployeeMOB-4227>     This was commented as the Emp user is not Active/recovered -->
+		<AutomationEmployeeMOB-4227>AutomationEmp4237</AutomationEmployeeMOB-4227>  <!-- Used AutomationEmp4237 instead since it is working -->
 		<AutomationEmployeeMOB-4257>AutomationEmp4257</AutomationEmployeeMOB-4257>
 		<AutomationEmployeeMOB-4233>AutomationEmp4233</AutomationEmployeeMOB-4233>
 		<AutomationEmployeeMOB-4243>AutomationEmp4243</AutomationEmployeeMOB-4243>
 		<AutomationEmployeeMOB-4263>AutomationEmp4263</AutomationEmployeeMOB-4263>
 		<AutomationEmployeeMOB-4261>AutomationEmp4261</AutomationEmployeeMOB-4261>
-		<AutomationEmployeeMOB-4255>AutomationEmp4255</AutomationEmployeeMOB-4255>
+<!--	<AutomationEmployeeMOB-4255>AutomationEmp4255</AutomationEmployeeMOB-4255>  This was commented as the Emp user is not Active/recovered -->
+		<AutomationEmployeeMOB-4255>AutomationEmp4237</AutomationEmployeeMOB-4255> <!-- Used AutomationEmp4237 instead since it is working -->
 		<AutomationEmployeeMOB-5578>AutomationEmp5578</AutomationEmployeeMOB-5578>
 		<AutomationEmployeeMOB-5577>AutomationEmp5577</AutomationEmployeeMOB-5577>
 		<AutomationEmployeeMOB-5568>AutomationEmp5568</AutomationEmployeeMOB-5568>
@@ -57,7 +59,11 @@
 		<AutomationAdminMOB-6021>AutomationAdmin6021</AutomationAdminMOB-6021>
 		<AutomationAdminMOB-4277>ATMobileAutomation</AutomationAdminMOB-4277>
 		<AutomationAdminMOB-9794>AutomationAdmin9794</AutomationAdminMOB-9794>
+		<AutomationAdminMOB-9794>AutomationAdmin9794</AutomationAdminMOB-9794>
+		<AutomationAdmin>AutomationAdmin</AutomationAdmin>
+		<multirole>multirole</multirole>
 		<FrontlinePassword>Global@123</FrontlinePassword>
+		<invalidlogin>JohnDoe</invalidlogin>
 
 	</Account>
 	<testingData type="users">
@@ -65,7 +71,8 @@
 		<Emp-4257>4257</Emp-4257>
 		<UnFilledUnassigned>AutomationEmp 4249</UnFilledUnassigned>
 		<searchText>Calendar</searchText>
-		<absenceKeyword>AbsReason</absenceKeyword>
+<!--		<absenceKeyword>AbsReason</absenceKeyword>  -->
+		<absenceKeyword>Vacation</absenceKeyword>
 		<AccountingPin>3661</AccountingPin>
 		<APILoginID>report_139984</APILoginID>
 		<APILoginID_GLorg5>report_139985</APILoginID_GLorg5>

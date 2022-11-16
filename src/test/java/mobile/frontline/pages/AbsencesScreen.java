@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbsencesScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/add_absence")
+    @AndroidFindBy(id = "add_absence")
     @iOSXCUITFindBy(accessibility = "iconPlus")
     public MobileElement addAbsence;
 

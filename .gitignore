@@ -1,8 +1,7 @@
-
 target/
-
 test-output/
-
 .idea/
-
 *.log
+.gitignore
+Frontline.iml
+/src/test/resources/apps/

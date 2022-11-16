@@ -7,7 +7,7 @@ import org.junit.Assert;
 
 public class OrgPickerScreen extends BasePage {
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Select an Organization']")
+    @AndroidFindBy(id = "org_picker_title")
     @iOSXCUITFindBy(accessibility = "Select an Organization")
     public MobileElement orgPickerPageHeader;
 
@@ -15,7 +15,7 @@ public class OrgPickerScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[1]")
     public MobileElement associatedOrgForSub1;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='Continue']")
+    @AndroidFindBy(id = "org_picker_continue_btn")
     @iOSXCUITFindBy(accessibility = "Continue")
     public MobileElement contbtn;
 

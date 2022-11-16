@@ -8,11 +8,11 @@ import org.junit.Assert;
 
 public class LeaveBalanceScreen extends BasePage {
     public LeaveBalanceScreen(){}
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Available Leave Balances']")
+    @AndroidFindBy(id = "absence_overview_subtitle")
     @iOSXCUITFindBy(accessibility = "Absences")
     public MobileElement availableLeaveBalanceHeader;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/leave_balance_duration")
+    @AndroidFindBy(id = "leave_balance_duration")
     @iOSXCUITFindBy(accessibility = "Absence_TableView_Cell_Absence_Hours_Text_Label")
     public MobileElement availableDays;
 

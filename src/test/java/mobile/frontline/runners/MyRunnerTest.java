@@ -13,16 +13,11 @@ import io.cucumber.junit.CucumberOptions;
                 , "html:target/cucumber"
                 , "summary"
                 , "de.monochromata.cucumber.report.PrettyReports:target/cucumber-html-reports"
-                , "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+               , "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
         ,features = {"src/test/resources"}
         ,glue = {"mobile.frontline.stepdef"}
         ,snippets = CAMELCASE
-        ,dryRun=false
         ,monochrome=true
-        ,strict=true
-        ,tags = {"@MOB-6028"}
-)
-
-public class MyRunnerTest {
-
-}
+        //,strict=true
+        ,tags = "@Dashboard"
+) public class MyRunnerTest { }

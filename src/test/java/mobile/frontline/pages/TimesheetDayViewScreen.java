@@ -12,44 +12,43 @@ import java.text.DecimalFormat;
 
 public class TimesheetDayViewScreen extends BasePage {
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_summary_event_name")
+    @AndroidFindBy(id = "time_sheet_summary_event_name")
     @iOSXCUITFindBy(accessibility = "Time_Event_Cell_0")
     public MobileElement eventSummary;
 
-    //@AndroidFindBy(xpath = "//android.widget.LinearLayout[@index=0]")
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_summary_right_chevron")
+    @AndroidFindBy(id = "time_sheet_summary_right_chevron")
     @iOSXCUITFindBy(accessibility = "TIME EVENT")
     public MobileElement timeEvent;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/review_dialog_decline_button")
+    @AndroidFindBy(id = "review_dialog_decline_button")
     @iOSXCUITFindBy(accessibility = "Not Now")
     public MobileElement declinebtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/menu_item_add_time")
+    @AndroidFindBy(accessibility = "Add Time")
     @iOSXCUITFindBy(accessibility = "Add Time")
     public MobileElement addTimeSheets;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/timesheet_day_text")
+    @AndroidFindBy(id = "timesheet_day_text")
     @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
     public MobileElement timesheetDayView;
 
-    @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+    @AndroidFindBy(accessibility = "Navigate up")
     @iOSXCUITFindBy(accessibility = "Week")
     public MobileElement backBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/no_time_events")
+    @AndroidFindBy(id = "no_time_events")
     @iOSXCUITFindBy(accessibility = "You have no time events for this timesheet.")
     public MobileElement noTimeEvent;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/day_view_submit_time_sheet_button")
+    @AndroidFindBy(accessibility = "Submit Timesheets")
     @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
     public MobileElement timesheetDaySubmitBtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_icon")
+    @AndroidFindBy(id = "undo_icon")
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_UndoContainer_View")
     public MobileElement undoicon;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_day_view_total_amount")
+    @AndroidFindBy(id = "time_sheet_day_view_total_amount")
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_WorkHours_Label")
     public MobileElement dayTotalTimesheet;
 

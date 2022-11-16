@@ -16,15 +16,15 @@ public class EmployeeAppCalendarScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Calendar']")
     public MobileElement calendar;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_title")
+    @AndroidFindBy(id = "calendar_title")
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeOther//XCUIElementTypeStaticText)[2]")
     public MobileElement calendartitle;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_right_button_image")
+    @AndroidFindBy(id = "calendar_right_button_image")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DatePicker_RightTapArea_Other']")
     public MobileElement nextMonthCalendar;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/calendar_event_cell_line_two")
+    @AndroidFindBy(id = "calendar_event_cell_line_two")
     @iOSXCUITFindBy(accessibility = "EventView_Absence_Other")
     public MobileElement eventTitle_absences;
 

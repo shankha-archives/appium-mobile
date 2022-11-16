@@ -36,24 +36,23 @@ public class Hooks {
         new DriverManager().initializeDriver();
     }
 
-    @After
+   @After
     public void quit(Scenario scenario) throws IOException, UnirestException {
         System.out.println("After Class called");
         DriverManager driverManager = new DriverManager();
         String sessionID = driverManager.getDriver().getSessionId().toString();
         if (scenario.isFailed()) {
-            byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png", scenario.getName());
-
+            /*byte[] screenshot = new DriverManager().getDriver().getScreenshotAs(OutputType.BYTES);
+            scenario.embed(screenshot, "image/png", scenario.getName());*/
             if (params.getEnvironmentName().contains("Cloud"))
                 apiServices.apiFailStatusUpdate(sessionID);
         } else if (params.getEnvironmentName().contains("Cloud"))
             apiServices.apiPassStatusUpdate(sessionID);
 
-        if (driverManager.getDriver() != null) {
+//        if (driverManager.getDriver() != null) {
             driverManager.getDriver().quit();
             driverManager.setDriver(null);
-        }
+
         ServerManager serverManager = new ServerManager();
         if (serverManager.getServer() != null) {
             serverManager.getServer().stop();

@@ -44,23 +44,23 @@ public class TimesheetWeekViewScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "TimesheetDashboard_TableViewCell_DateSpan_Label_6")
     public MobileElement sunday;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/cell_time_sheet_day_total_time")
+    @AndroidFindBy(id = "cell_time_sheet_day_total_time")
     // @iOSXCUITFindBy(accessibility = "")
     public List<MobileElement> dayTotalTime;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/time_sheet_week_view_total_amount")
+    @AndroidFindBy(id = "time_sheet_week_view_total_amount")
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_TotalHoursLabel")
     public MobileElement totalWeekTotalAmount;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/submit_time_sheet_button")
+    @AndroidFindBy(accessibility = "Submit Timesheets")
     @iOSXCUITFindBy(accessibility = "TimesheetWeekView_Submit_Button")
     public MobileElement submittimesheetsbtn;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/undo_icon")
+    @AndroidFindBy(id = "undo_icon")
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_UndoContainer_View")
     public MobileElement undoicon;
 
-    @AndroidFindBy(id = "com.frontline.frontlinemobile:id/review_dialog_decline_button")
+    @AndroidFindBy(id = "review_dialog_decline_button")
     @iOSXCUITFindBy(accessibility = "Not Now")
     public MobileElement declinebtn;
 
@@ -72,9 +72,9 @@ public class TimesheetWeekViewScreen extends BasePage {
 
     public void selectCurrentDayForTimesheet() throws Exception {
         if ((new GlobalParams().getPlatformName()).contains("Android"))
-            click(By.xpath("//android.widget.TextView[contains(@text,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
+            click(By.xpath("//android.widget.TextView[contains(@text,'" + nextWorkingDay("current day", "E, MMM d, yyyy").toUpperCase() + "')]"), "Clicking current day on timesheetscreen");
         else
-            click(By.xpath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDay("current day", "M/dd") + "')]"), "Clicking current day on timesheetscreen");
+            click(By.xpath("//XCUIElementTypeStaticText[contains(@value,'" + nextWorkingDay("current day", "E, MMM d, yyyy").toUpperCase() + "')]"), "Clicking current day on timesheetscreen");
     }
 
     public void weekTotalTime() throws Exception {
