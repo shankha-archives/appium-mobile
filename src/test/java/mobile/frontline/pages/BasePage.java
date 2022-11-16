@@ -60,7 +60,7 @@ public class BasePage {
 	private CommandPrompt cmd = new CommandPrompt();
 
 	//public AppiumDriver<MobileElement> driver;
-	static public AppiumDriver<MobileElement> driver;
+	public AppiumDriver<MobileElement> driver;
 	Utils utils = new Utils();
 
 	public BasePage() {

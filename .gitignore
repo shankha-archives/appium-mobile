@@ -4,3 +4,4 @@ test-output/
 *.log
 .gitignore
 Frontline.iml
+/src/test/resources/apps/
