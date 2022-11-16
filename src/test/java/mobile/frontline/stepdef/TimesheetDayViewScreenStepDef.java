@@ -3,9 +3,7 @@ package mobile.frontline.stepdef;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.TimesheetDayViewScreen;
-import mobile.frontline.pages.TimesheetWeekViewScreen;
 import org.junit.Assert;
 
 public class TimesheetDayViewScreenStepDef {
@@ -51,7 +49,7 @@ public class TimesheetDayViewScreenStepDef {
 
     @And("Verify submission of timesheet")
     public void verifySubmissionOfTimesheet() {
-        Assert.assertTrue("Day Timesheet is not submitted", timesheetDayViewScreen.verifySubmission());;
+        Assert.assertTrue("Day Timesheet is not submitted", timesheetDayViewScreen.verifySubmission());
     }
 
     @When("Calculating the total week time value")
@@ -62,12 +60,28 @@ public class TimesheetDayViewScreenStepDef {
 
     @Then("verify the decimal format")
     public void verifyTheDecimalFormat() throws Exception {
-        Assert.assertTrue("Time is not in h.mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1.00") );  ;
+        Assert.assertTrue("Time is not in h.mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1.00") );
     }
 
     @Then("^verify the time format$")
     public void verify_the_time_format() throws Throwable {
-        Assert.assertTrue("Time is not in h:mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1:00") );  ;
+        Assert.assertTrue("Time is not in h:mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1:00") );
+    }
+    @When("the user clicks on Timeclock widget")
+    public void theUserClicksOnTimeclockWidget() {
+        timesheetDayViewScreen.clickTimeClock();
+
+    }
+
+    @Then("Verify time events are visible")
+    public void verifyTimeEventsAreVisible() {
+        Assert.assertTrue("Verifying if timeevents are visibile on the Timeclock screen", timesheetDayViewScreen.verifyTimeEventVisible());
+
+    }
+
+    @When("the user clicks on any of the events")
+    public void theUserClicksOnAnyOfTheEvents() {
+        timesheetDayViewScreen.clickOnTimeEvent();
     }
 
 }

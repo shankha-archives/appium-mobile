@@ -55,4 +55,6 @@ public class TimeEventScreen extends BasePage {
         click(okBtn, "Clicking on Ok Button");
     }
 
+    public boolean verifyEventDetailsLoaded() { return isElementDisplayed(timeSheetDeletebtn); }
+
 }

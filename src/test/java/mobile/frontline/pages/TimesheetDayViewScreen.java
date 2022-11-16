@@ -52,9 +52,13 @@ public class TimesheetDayViewScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "TimesheetSummaryView_WorkHours_Label")
     public MobileElement dayTotalTimesheet;
 
-    public TimesheetDayViewScreen() {
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Time Clock']")
+    public MobileElement timeClock;
 
-    }
+    @AndroidFindBy(id = "tv_time_clock_history_shift_type")
+    public MobileElement timeClockEvents;
+
+    public TimesheetDayViewScreen() { }
 
     public boolean verifyTimeEventPresent() {
         return isElementDisplayed(eventSummary, "Waiting for the time event to be displayed");
@@ -110,4 +114,10 @@ public class TimesheetDayViewScreen extends BasePage {
         isElementDisplayed(dayTotalTimesheet, "Waiting for day total of timesheet to display");
         return getElementText(dayTotalTimesheet, "Extracting values of day timesheet total");
     }
+
+    public void clickTimeClock() { click(timeClock); }
+
+    public boolean verifyTimeEventVisible() { return isElementDisplayed(timeClockEvents);    }
+
+    public void clickOnTimeEvent() {  click(timeClockEvents); }
 }
