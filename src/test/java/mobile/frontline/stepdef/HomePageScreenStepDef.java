@@ -157,4 +157,9 @@ public class HomePageScreenStepDef {
     public void verifyWeekTotalTimeFromDashboardAfterAddingTimesheet() throws Exception {
         Assert.assertEquals("The calculated time and total time is not equal", homescreen.calculateTotalTime(), homescreen.getWeekTimeText());
     }
+
+    @When("the user clicks on Timeclock widget")
+    public void theUserClicksOnTimeclockWidget() {
+        homescreen.clickTimeClock();
+    }
 }

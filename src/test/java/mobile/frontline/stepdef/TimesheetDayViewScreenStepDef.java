@@ -67,11 +67,7 @@ public class TimesheetDayViewScreenStepDef {
     public void verify_the_time_format() throws Throwable {
         Assert.assertTrue("Time is not in h:mm format",timesheetDayViewScreen.verifyTimeFormat().equals("1:00") );
     }
-    @When("the user clicks on Timeclock widget")
-    public void theUserClicksOnTimeclockWidget() {
-        timesheetDayViewScreen.clickTimeClock();
 
-    }
 
     @Then("Verify time events are visible")
     public void verifyTimeEventsAreVisible() {
