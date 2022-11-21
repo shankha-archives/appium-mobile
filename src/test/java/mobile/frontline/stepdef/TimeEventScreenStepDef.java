@@ -26,12 +26,17 @@ TimeEventScreen timeEventScreen = new TimeEventScreen();
 
     @And("Verify the added comment")
     public void verifyTheAddedComment() throws Throwable {
-        Assert.assertEquals("The comment displayed is not matching",timeEventScreen.verifyEditedComment(), "Automation Smoke Test");;
+        Assert.assertEquals("The comment displayed is not matching",timeEventScreen.verifyEditedComment(), "Automation Smoke Test");
     }
 
     @When("Delete time event")
     public void deleteTimeEvent() throws Throwable {
         timeEventScreen.clickDeleteTimesheet();
         timeEventScreen.clickOkPopUp();
+    }
+
+    @Then("Time event details page must load")
+    public void timeEventDetailsPageMustLoad() {
+        Assert.assertTrue("Verifying in TimeEvent details page is loaded", timeEventScreen.verifyEventDetailsLoaded());
     }
 }

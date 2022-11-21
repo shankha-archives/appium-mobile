@@ -103,6 +103,10 @@ public class Homescreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='TimesheetsModule_AddTime_Button'][1]")
     public MobileElement addTimeButtonTimesheet;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Time Clock']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@text ='Time Clock']")
+    public MobileElement timeClock;
+
     public static String inTime;
     public WebElement scrolledToElement;
     public static ArrayList<String> widgetlistbeforeReorder;
@@ -283,4 +287,6 @@ public class Homescreen extends BasePage {
         minutes = minutes % 60;
         return (hours + ":" + formatter.format(minutes));
     }
+
+    public void clickTimeClock() { click(timeClock); }
 }

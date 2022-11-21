@@ -27,6 +27,22 @@ Scenario: Verify an employee should be able to clock in and clock out
   Then the user navigates to dashboard page
   And Verify the timesheet is clocked out
 
+@MOB-14916 @MOB-15035 @AndroidRegression @iOSRegression
+Scenario: Verify an employee is able to view existing time events and edit time event in Timeclock
+  When Verify if timesheet present for an employee delete and create it using information "AutomationEmployeeMOB-4243" "APIWorkerID_MOB-4243" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
+  When the user launches the app
+  Then The user click on Get Started Button
+  And Enter username "AutomationEmployeeMOB-4243" and password and click on Sign In button
+  Then the user navigates to dashboard page
+  When the user clicks on Timeclock widget
+  Then Verify time events are visible
+  When the user clicks on any of the events
+  Then Time event details page must load
+  When Click on edit timesheet btn
+  And edit the timesheet outtime
+  And The comment is edited to the time event
+  Then Save edited timeevent
+
 @MOB-5577 @AndroidRegression @iOSRegression
 Scenario: Verify an employee user can submit and undo day timesheet
   When Undo submitted timesheets "AutomationEmployeeMOB-5577" "APIWorkerID_MOB-5577" "APIOrgID" "APILoginID" "current day" "locationID_Org1" "shiftID_Org1" "eventID_Org1"
