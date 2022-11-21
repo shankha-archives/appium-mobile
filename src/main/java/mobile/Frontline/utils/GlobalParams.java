@@ -101,7 +101,7 @@ public class GlobalParams {
             case "Android":
                 params.setDeviceName(System.getProperty("deviceName", "Google Pixel 3"));
                 params.setUDID(System.getProperty("udid", "emulator-5554"));
-                params.setOSversion(System.getProperty("osVersion","13.0"));
+                params.setOSversion(System.getProperty("osVersion","10.0"));
 //                params.setSystemPort(System.getProperty("systemPort","10000"));
                 params.setChromeDriverPort(System.getProperty("chromedriverPort", "11000"));
                 break;
