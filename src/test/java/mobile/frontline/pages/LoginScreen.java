@@ -39,17 +39,17 @@ public class LoginScreen extends BasePage {
     public MobileElement loginBtn;
 
     @FindBy(xpath = "//*[@id='qa-validation-username-required']")
-    @AndroidFindBy(xpath = "//android.view.View[@text='Your username is required.']")
+    @AndroidFindBy(xpath = "//*[@text='Your username is required.']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your username is required.']")
     public MobileElement userNameRequired;
 
     @FindBy(xpath = "//*[@id='qa-validation-password-required']")
-    @AndroidFindBy(xpath = "//android.view.View[@text='Your password is required.']")
+    @AndroidFindBy(xpath = "//*[@text='Your password is required.']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Your password is required.']")
     public MobileElement userPasswordRequired;
 
     @FindBy(xpath = "//*[@id='qa-validation-credentials']/span")
-    @AndroidFindBy(xpath = "//android.view.View[@text='The username or password you entered is incorrect']")
+    @AndroidFindBy(xpath = "//*[@text='The username or password you entered is incorrect']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='The username or password you entered is incorrect']")
     public MobileElement credentialErr;
 
