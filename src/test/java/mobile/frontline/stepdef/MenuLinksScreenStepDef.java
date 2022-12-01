@@ -1,11 +1,13 @@
 package mobile.frontline.stepdef;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import mobile.Frontline.utils.GlobalParams;
 import mobile.frontline.pages.MenuScreen;
 import org.junit.Assert;
+import java.util.List;
 
 public class MenuLinksScreenStepDef {
 
@@ -62,5 +64,20 @@ public class MenuLinksScreenStepDef {
     @Then("Validate Feedback Header")
     public void validateFeedbackHeader() throws InterruptedException {
         Assert.assertTrue("Unable to Locate Feedback Header", menuScreen.waitForFeedbackHeader());
+    }
+
+    @Then ("Verify the below menu options")
+    public void verifyTheBelowMenuOptions(DataTable table) throws Throwable {
+        List<String> data = table.asList();
+        for (int i=0; i<data.size();i++)
+        {
+            Assert.assertTrue(menuScreen.verifyMenuLinkText(data.get(i)));
+        }
+
+    }
+
+    @And ("Verify menu screen loaded")
+    public void verifyMenuScreenLoaded() {
+        Assert.assertTrue("Menu screen not loaded", menuScreen.menuScreen());
     }
 }
