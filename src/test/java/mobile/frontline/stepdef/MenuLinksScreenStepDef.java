@@ -67,7 +67,7 @@ public class MenuLinksScreenStepDef {
     }
 
     @Then ("Verify the below menu options")
-    public void verifyTheBelowMenuOptions(DataTable table) throws Throwable {
+    public void verifyTheBelowMenuOptions(DataTable table) {
         List<String> data = table.asList();
         for (int i=0; i<data.size();i++)
         {

@@ -124,17 +124,17 @@ public class MenuScreen extends BasePage{
         return isElementDisplayed(feedbackHeader, "Waiting for feedback header");
     }
 
-    public boolean verifyMenuLinkText(String s)
+    public boolean verifyMenuLinkText(String menuItem)
     {
-        String str = null;
+        String menuLocator = null;
         if(new GlobalParams().getPlatformName().equalsIgnoreCase("Android")) {
-            str = "//android.widget.TextView[contains(@text, '" + s + "')]";
-            return driver.findElement(By.xpath(str)).isDisplayed();
+            menuLocator = "//android.widget.TextView[contains(@text, '" + menuItem + "')]";
+            return driver.findElement(By.xpath(menuLocator)).isDisplayed();
         }
         else
         {
-            str = ""+s+"_MenuOption";
-            return driver.findElementByAccessibilityId(str).isDisplayed();
+            menuLocator = ""+menuItem+"_MenuOption";
+            return driver.findElementByAccessibilityId(menuLocator).isDisplayed();
         }
 
     }
