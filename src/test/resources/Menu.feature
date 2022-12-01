@@ -1,5 +1,5 @@
 @menu
-Feature: Smoke scenarios
+Feature: Menu scenarios
 
 @MOB-4233 @MOB-4235 @AndroidSmoke @MOB-4234 @MOB-4236 @iOSSmoke @AndroidRegression @iOSRegression
 Scenario: Entered text should be searchable when user perform search operation
@@ -30,3 +30,61 @@ Scenario: The user with directory access can view the full directory list and de
   And Click on the searched person
   Then Verify user details are displayed
 
+@MOB-10493 @MOB-10497 @AndroidRegression @iOSRegression
+Scenario: Verify all menu options for Employee
+  When the user launches the app
+  And The user click on Get Started Button
+  And Enter username "AutomationEmployeeMOB-4233" and password and click on Sign In button
+  And the user navigates to dashboard page
+  And the user clicks on Menu tab
+  And Verify menu screen loaded
+  Then Verify the below menu options
+    | Home           |
+    | Absences       |
+    | Calendar       |
+    | Inbox          |
+    | Help Center    |
+    | Settings       |
+    | Feedback       |
+    | Privacy Policy |
+    | Visit Website  |
+
+@MOB-10489 @MOB-10485 @AndroidRegression @iOSRegression
+Scenario: Verify all menu options for Admin
+  When the user launches the app
+  And The user click on Get Started Button
+  And Enter username "AutomationAdmin" and password and click on Sign In button
+  And the user navigates to dashboard page
+  And the user clicks on Menu tab
+  And Verify menu screen loaded
+  Then Verify the below menu options
+    | Home           |
+    | Absences       |
+    | Approvals      |
+    | Calendar       |
+    | Insights       |
+    | Inbox          |
+    | Help Center    |
+    | Settings       |
+    | Feedback       |
+    | Privacy Policy |
+    | Visit Website  |
+
+@MOB-10473 @MOB-10477 @AndroidRegression @iOSRegression
+Scenario: Verify all menu options for Substitute
+  When the user launches the app
+  And The user click on Get Started Button
+  And Enter username "AutomationSubsJobOperations" and password and click on Sign In button
+  And the user navigates to dashboard page
+  And the user clicks on Menu tab
+  And Verify menu screen loaded
+  Then Verify the below menu options
+    | Home           |
+    | Jobs           |
+    | Calendar       |
+    | Inbox          |
+    | Help Center    |
+    | Settings       |
+    | Feedback       |
+    | Privacy Policy |
+    | Visit Website  |

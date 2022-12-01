@@ -124,4 +124,22 @@ public class MenuScreen extends BasePage{
         return isElementDisplayed(feedbackHeader, "Waiting for feedback header");
     }
 
+    public boolean verifyMenuLinkText(String menuItem)
+    {
+        String menuLocator = null;
+        if(new GlobalParams().getPlatformName().equalsIgnoreCase("Android")) {
+            menuLocator = "//android.widget.TextView[contains(@text, '" + menuItem + "')]";
+            return driver.findElement(By.xpath(menuLocator)).isDisplayed();
+        }
+        else
+        {
+            menuLocator = ""+menuItem+"_MenuOption";
+            return driver.findElementByAccessibilityId(menuLocator).isDisplayed();
+        }
+
+    }
+
+    public boolean menuScreen() {
+        return isElementDisplayed(settings);
+    }
 }
