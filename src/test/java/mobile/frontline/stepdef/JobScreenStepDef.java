@@ -113,4 +113,9 @@ public class JobScreenStepDef {
     public void validateTheUpDownArrows() {
         Assert.assertTrue("Job filter up down arrow is not displayed",jobsScreen.waitForUpDownArrow());
     }
+    @And("Click on Reject button")
+    public void clickOnRejectButton() {
+        jobsScreen.clickReject();
+
+    }
 }

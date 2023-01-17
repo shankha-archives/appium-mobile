@@ -21,6 +21,9 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Scheduled")
     public MobileElement scheduledJobHeader;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    public MobileElement rejectBtn;
+
     @AndroidFindBy(id = "job_cell_information_inner_cointainer")
     @iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
     public MobileElement jobslist;
@@ -36,6 +39,10 @@ public class JobsScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Post']")
     @iOSXCUITFindBy(accessibility = "JobFilter_Text")
     public MobileElement postSortBtn;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    //@iOSXCUITFindBy(accessibility = "JobFilter_Text")
+    public MobileElement rejectButton;
 
     @AndroidFindBy(id = "sort_by_header")
     @iOSXCUITFindBy(accessibility = "Sort By")
@@ -162,6 +169,10 @@ public class JobsScreen extends BasePage {
         click(scheduledJobHeader, "Clicking on Scheduled job page header");
     }
 
+    public void clickReject()
+    {
+        click(rejectButton, "Clicking on Reject Button");
+    }
     public void clickJobSortBtn(){
         click(jobSortBtn, "Clicking on Job sort filter btn");
     }
