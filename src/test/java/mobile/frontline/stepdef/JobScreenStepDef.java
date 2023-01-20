@@ -116,6 +116,5 @@ public class JobScreenStepDef {
     @And("Click on Reject button")
     public void clickOnRejectButton() {
         jobsScreen.clickReject();
-
     }
 }
