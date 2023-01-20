@@ -244,3 +244,18 @@ Scenario: Verify Scheduled Jobs Display by Job and Post Date
   Then Verify sort by post header
   And Click on post sort filter btn
   And Validate the post selected filter
+
+  Scenario: Verify substitute user can reject available job
+    Given Create absence for employee "APILoginID" with workerid "APIWorkerID_MOB-4247" for "upcoming day" with "APISchoolID" "APIReasonID" and delete the existing ones
+    When The user waits and launches the app
+    And The user click on Get Started Button
+    And Enter username "AutomationSubsMOB-4265" and password and click on Sign In button
+    And The substitute navigates to dashboard page
+    And Click on the Available Jobs
+    And View job list
+    And Click on the job "Automation 4247"
+    And Click on Reject button
+    And Clicked on Okay
+    And View job list
+    Then Validate job "AutomationEmp 4247" is not visible in Job List
+

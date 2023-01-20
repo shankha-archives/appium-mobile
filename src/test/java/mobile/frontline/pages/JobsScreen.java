@@ -37,6 +37,10 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "JobFilter_Text")
     public MobileElement postSortBtn;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
+    //@iOSXCUITFindBy(accessibility = "JobFilter_Text")
+    public MobileElement rejectButton;
+
     @AndroidFindBy(id = "sort_by_header")
     @iOSXCUITFindBy(accessibility = "Sort By")
     public MobileElement sortByPopUp;
@@ -162,6 +166,10 @@ public class JobsScreen extends BasePage {
         click(scheduledJobHeader, "Clicking on Scheduled job page header");
     }
 
+    public void clickReject()
+    {
+        click(rejectButton, "Clicking on Reject Button");
+    }
     public void clickJobSortBtn(){
         click(jobSortBtn, "Clicking on Job sort filter btn");
     }
