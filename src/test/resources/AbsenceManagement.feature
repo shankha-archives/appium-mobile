@@ -51,10 +51,10 @@ Scenario: Verify that admin creates half day pm absence for another user
 
 @MOB-4245 @MOB-4246 @AndroidSmoke @iOSSmoke @AndroidRegression @iOSRegression
 Scenario: Verify employee can create full day absence
-  When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" for "upcoming day" and delete them
+  When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4237" for "upcoming day" and delete them
   When the user launches the app
   Then The user click on Get Started Button
-  And Enter username "AutomationEmployeeMOB-4245" and password and click on Sign In button
+  And Enter username "AutomationEmployeeMOB-4237" and password and click on Sign In button
   Then the user navigates to dashboard page
   And click on the create absences
   When Select absence reason and click on next btn
@@ -116,10 +116,11 @@ Scenario: Verify employee can create half day pm absence
    #IDM server is down Ticket "OPS-17893" so using AutomationEmployeeMOB-4245 will create AutomationEmp_9814 once IDM is Up
 @MOB-9814 @iOSRegression @AndroidRegression @MOB-9809
 Scenario: Verify employee can create custom absence
-When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" for "upcoming day" and delete them
+# When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-4245" for "upcoming day" and delete them
+When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-9798" for "upcoming day" and delete them
 When the user launches the app
 Then The user click on Get Started Button
-And Enter username "AutomationEmployeeMOB-4245" and password and click on Sign In button
+And Enter username "AutomationEmployeeMOB-9798" and password and click on Sign In button
 Then the user navigates to dashboard page
 And click on the create absences
 When Select absence reason and click on next btn
@@ -132,8 +133,10 @@ Then Verify the absence creation pop up
 
 @MOB-8595 @AndroidRegression @MOB-8725 @iOSRegression
 Scenario: Verify employee user is able to create multiday absence
-  When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-8595" for "upcoming day" and delete them
-  And Enter username "AutomationEmployeeMOB-8595" and password and click on Sign In button
+  When Verify if absences present for employee "APILoginID" with workerid "APIWorkerID_MOB-9798" for "upcoming day" and delete them
+  When the user launches the app
+  Then The user click on Get Started Button
+  And Enter username "AutomationEmployeeMOB-9798" and password and click on Sign In button
   Then the user navigates to dashboard page
   And click on the create absences
   When Select absence reason and click on next btn
