@@ -21,9 +21,6 @@ public class JobsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Scheduled")
     public MobileElement scheduledJobHeader;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Reject']")
-    public MobileElement rejectBtn;
-
     @AndroidFindBy(id = "job_cell_information_inner_cointainer")
     @iOSXCUITFindBy(accessibility = "jobListingCell_right_angle_arrow")
     public MobileElement jobslist;
